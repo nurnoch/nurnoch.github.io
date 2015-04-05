@@ -1,0 +1,157 @@
+<!DOCTYPE html> 
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+<html lang="zh">
+<head>
+        <title>wwt</title>
+        <!-- Fonts -->
+        <link href='http://fonts.googleapis.com/css?family=Inconsolata' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=The+Girl+Next+Door' rel='stylesheet' type='text/css'>
+        
+        <!-- CSS -->
+        <link rel="stylesheet" href="http://www.wengweitao.com/theme/css/main.css" type="text/css" />
+        <link rel="stylesheet" href="http://www.wengweitao.com/theme/css/pygments.css" type="text/css" />
+        <link rel="stylesheet" href="http://www.wengweitao.com/theme/css/font-awesome.css" type="text/css" />
+        <meta charset="utf-8" />
+      
+
+        <!-- Javascript-->
+        <script src="http://www.wengweitao.com/theme/js/invisible-menu-scroll.js"></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
+        <script type="text/javascript"> 
+          $(function() {
+            invisibleMenu();
+          });
+        </script> 
+</head>
+
+<body id="index" class="home">
+     <div class="navigation">
+        <ol class="nav">
+          <li class="current"><a href="http://www.wengweitao.com">首页</a> </li>
+          <li><a href="http://www.wengweitao.com/archives.html">归档</a></li>
+          <li><a href="http://www.wengweitao.com/categories.html">分类</a> </li>
+          <li><a href="http://www.wengweitao.com/pages/about-me">About me</a> </li>
+        </ol>
+      </div>
+        <header id="banner" class="body">
+                <div class="banner"><a href="http://www.wengweitao.com">wwt <strong></strong></a></div>
+        </header><!-- /#banner -->
+        <nav id="menu"><ul>
+            <li><a href="http://www.wengweitao.com/category/misc.html">misc</a></li>
+            <li class="active"><a href="http://www.wengweitao.com/category/suan-fa-yu-shu-ju-jie-gou.html">算法与数据结构</a></li>
+        </ul></nav><!-- /#menu -->
+        <div class="box">
+<section id="content" class="body">
+  <header class="post">
+    <h2 class="entry-title">
+      斐波那契数列及其相关问题
+    </h2>
+  </header>
+  <footer class="post-info">
+    <abbr>
+      Sun 05 April 2015 
+         By <a class="url fn" href="http://www.wengweitao.com/author/wwt.html">wwt</a>
+  
+    </abbr>
+  </footer><!-- /.post-info -->
+  <div class="entry-content">
+    <p>很多书在提到递归的时候，总是会拿斐波那契数列作为例子，它的定义如下：
+<img alt="Fibonacci" src="http://ac.jobdu.com/upload/201201/image/fbncslie.jpg" /></p>
+<p>现在要求输出斐波那契数列的第n项。</p>
+<p>首先，最容易想到的方法就是直接利用递归求解：</p>
+<div class="highlight"><pre><span class="kt">long</span> <span class="kt">long</span> <span class="nf">fib</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">n</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="n">n</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="k">return</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="k">else</span>
+        <span class="k">return</span> <span class="n">fib</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">fib</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">2</span><span class="p">);</span> 
+<span class="p">}</span>
+</pre></div>
+
+
+<p>递归求解的形式非常简单易懂，但是递归的解法存在很严重的效率问题，因为计算过程中很多结点都是重复计算的，而且重复的结点数随着n的增大而急剧增加。例如，假设n=100，那么程序的速度将慢到无法忍受！</p>
+<p>上面递归的方法之所以慢，是因为大量的重复计算，我们只需要把已经得到的数列的中间项保存起来，下次需要的时候直接查找，就不用重复计算了。</p>
+<div class="highlight"><pre><span class="kt">long</span> <span class="kt">long</span> <span class="nf">fib</span><span class="p">(</span><span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">n</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">fibs</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">};</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">n</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">)</span> <span class="k">return</span> <span class="n">fibs</span><span class="p">[</span><span class="n">n</span><span class="p">];</span>                                                                                                                                                                             
+    <span class="kt">long</span> <span class="kt">long</span> <span class="n">fib1</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="kt">long</span> <span class="kt">long</span> <span class="n">fib2</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="kt">long</span> <span class="kt">long</span> <span class="n">result</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">for</span><span class="p">(</span><span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">n</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">fib1</span> <span class="o">+</span> <span class="n">fib2</span><span class="p">;</span>
+        <span class="n">fib1</span> <span class="o">=</span> <span class="n">fib2</span><span class="p">;</span>
+        <span class="n">fib2</span> <span class="o">=</span> <span class="n">result</span><span class="p">;</span>
+    <span class="p">}</span>   
+    <span class="k">return</span> <span class="n">result</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<hr />
+<p>另外，斐波那契数列数列还有不少的应用，下面列出几个例子。</p>
+<h3>1. 跳台阶的问题</h3>
+<p>一只青蛙一次可以跳上1级台阶，也可以跳上2级。求该青蛙跳上一个n级的台阶总共有多少种跳法？</p>
+<p>当只有1级台阶，有1种跳法；当只有2级台阶，有2种跳法。
+当台阶数大于2，第一次跳有两种选择：第一次只跳1级，那么此时跳法的数目等于后面剩下的n-1级台阶的跳法数目；第一次跳2级，那么此时跳法的数目等于后面剩下的n-1级台阶的跳法数目。所以n级台阶不同跳法总数为f(n) = f(n-1) + f(n-2)。实际上就是斐波那契数列了。</p>
+<div class="highlight"><pre><span class="kt">long</span> <span class="kt">long</span> <span class="nf">numJump</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">n</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="k">return</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="n">n</span> <span class="o">==</span> <span class="mi">2</span><span class="p">)</span>
+        <span class="k">return</span> <span class="mi">2</span><span class="p">;</span>
+    <span class="k">else</span> <span class="p">{</span>
+        <span class="kt">long</span> <span class="kt">long</span> <span class="n">jump1</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+        <span class="kt">long</span> <span class="kt">long</span> <span class="n">jump2</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+        <span class="kt">long</span> <span class="kt">long</span> <span class="n">result</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">result</span> <span class="o">=</span> <span class="n">jump1</span> <span class="o">+</span> <span class="n">jump2</span><span class="p">;</span>
+            <span class="n">jump1</span> <span class="o">=</span> <span class="n">jump2</span><span class="p">;</span>
+            <span class="n">jump2</span> <span class="o">=</span> <span class="n">result</span><span class="p">;</span>
+        <span class="p">}</span>   
+    <span class="k">return</span> <span class="n">result</span><span class="p">;</span>                                                                        
+    <span class="p">}</span>   
+<span class="p">}</span>
+</pre></div>
+
+
+<h3>2. 变态跳台阶</h3>
+<p>一只青蛙一次可以跳上1级台阶，也可以跳上2级……它也可以跳上n级。求该青蛙跳上一个n级的台阶总共有多少种跳法？</p>
+<p>与上面的跳台阶问题类似。当n&gt;2时，第一次跳有n种选择：第一次只跳1级，那么此时跳法的数目等于后面剩下的n-1级台阶的跳法数目；第一次跳2级，那么此时跳法的数目等于后面剩下的n-1级台阶的跳法数目，依次类推，第一次直接跳n级。所以，所以n级台阶不同跳法总数为f(n) = f(n-1) + f(n-2) + ... + f(1) + 1。利用归纳法可以证明f(n) = 2^(n-1).</p>
+<h3>3. 矩形覆盖</h3>
+<p>我们可以用2<em>1的小矩形横着或者竖着去覆盖更大的矩形。请问用n个2</em>1的小矩形无重叠地覆盖一个2*n的大矩形，总共有多少种方法？</p>
+<p>假设2<em>n的大矩形总共有f(n)中覆盖方法。首先，用2</em>1的小矩形去覆盖大矩形最左边时有两个选择，若横着覆盖，则这个小矩形下面的那个小矩形也必须要横着覆盖，此时剩余2 * (n - 2)的区域，这种情形下的覆盖方法记为f(n - 2)；若竖着覆盖，则剩余2 * (n - 1)的区域，这种情形下覆盖的方法记为f(n - 1)。所以总的覆盖方法有：f(n - 1) + f(n - 2)。仍然是一个斐波那契数列。</p>
+  </div><!-- /.entry-content -->
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'wengwt'; 
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</section>
+            <hr/>
+            <footer id="contentinfo" class="footer">
+                <div>
+                    Copyright 2014-2016 <a href="http://www.wengweitao.com">wwt</a>  
+                </div>
+                <div>
+                    powered by <a href="http://getpelican.com/">Pelican</a>
+                    and <a href="http://python.org">Python</a>. 
+                    <a href="http://github.com/slok/iris">Theme</a> by <a href="http://xlarrakoetxea.org">Xabier Larrakoetxea</a> based on <a href="http://flask.pocoo.org/">Flask</a> theme
+                </div>
+                
+                <div class="social">
+                        <a href="https://github.com/nurnoch"><i class="icon-github"></i>  </a>
+                        <a href="http://twitter.com/wwttc"><i class="icon-twitter"></i>  </a>
+                        <a href="http://www.facebook.com/翁蔚涛"><i class="icon-facebook"></i>  </a>
+                        <a href="http://weibo.com/u/2678027854"><i class="icon-weibo"></i>  </a>
+                </div>
+            </footer><!-- /#contentinfo -->
+        </div>
+        <!--Add statistycs-->
+</body>
+</html>
