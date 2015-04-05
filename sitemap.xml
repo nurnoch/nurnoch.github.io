@@ -4,77 +4,77 @@ xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitem
 xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
-<loc>/</loc>
-<lastmod>2015-04-05T20:18:13-00:00</lastmod>
+<loc>http://www.wengweitao.com/</loc>
+<lastmod>2015-04-05T20:26:50-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>/archives.html</loc>
-<lastmod>2015-04-05T20:18:13-00:00</lastmod>
+<loc>http://www.wengweitao.com/archives.html</loc>
+<lastmod>2015-04-05T20:26:50-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>/tags.html</loc>
-<lastmod>2015-04-05T20:18:13-00:00</lastmod>
+<loc>http://www.wengweitao.com/tags.html</loc>
+<lastmod>2015-04-05T20:26:50-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>/categories.html</loc>
-<lastmod>2015-04-05T20:18:13-00:00</lastmod>
+<loc>http://www.wengweitao.com/categories.html</loc>
+<lastmod>2015-04-05T20:26:50-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>/pages/about-me.html</loc>
+<loc>http://www.wengweitao.com/pages/about-me.html</loc>
 <lastmod>2013-04-18T00:00:00-00:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.3</priority>
 </url>
 
 <url>
-<loc>/ha-ha.html</loc>
+<loc>http://www.wengweitao.com/ha-ha.html</loc>
 <lastmod>2015-04-05T00:00:00-00:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
-<loc>/hello-world.html</loc>
+<loc>http://www.wengweitao.com/hello-world.html</loc>
 <lastmod>2014-07-20T00:00:00-00:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
-<loc>/ni-hao-ce-shi.html</loc>
+<loc>http://www.wengweitao.com/ni-hao-ce-shi.html</loc>
 <lastmod>2014-07-20T00:00:00-00:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
-<loc>/shu-ju-jie-gou-yu-suan-fa.html</loc>
+<loc>http://www.wengweitao.com/shu-ju-jie-gou-yu-suan-fa.html</loc>
 <lastmod>2014-07-20T00:00:00-00:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
-<loc>/category/test.html</loc>
+<loc>http://www.wengweitao.com/category/test.html</loc>
 <lastmod>2015-04-05T00:00:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>/author/wwt.html</loc>
+<loc>http://www.wengweitao.com/author/wwt.html</loc>
 <lastmod>2015-04-05T00:00:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
