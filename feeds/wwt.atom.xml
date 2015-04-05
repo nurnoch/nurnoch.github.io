@@ -7,7 +7,7 @@
   首先，假设表中元素是按升序排列，将表中间位置记录的关键字与查找关键字比较，如果两者相等，则查找成功；&lt;br /&gt;
   否则利用中间位置记录将表分成前、后两个子表，如果中间位置记录的关键字大于查找关键字，则进一步查找前一子表，否则进一步查找后一子表。&lt;br /&gt;
   重复以上过程，直到找到满足条件的记录，使查找成功，或直到子表不存在为止，此时查找不成功&lt;/li&gt;
-&lt;/ul&gt;</summary></entry><entry><title>Hello, world</title><link href="http://www.wengweitao.com/hello-world.html" rel="alternate"></link><updated>2014-07-20T00:00:00+08:00</updated><author><name>wwt</name></author><id>tag:www.wengweitao.com,2014-07-20:hello-world.html</id><summary type="html">&lt;p&gt;Hello, world!&lt;/p&gt;</summary></entry><entry><title>你好测试</title><link href="http://www.wengweitao.com/ni-hao-ce-shi.html" rel="alternate"></link><updated>2014-07-20T00:00:00+08:00</updated><author><name>wwt</name></author><id>tag:www.wengweitao.com,2014-07-20:ni-hao-ce-shi.html</id><summary type="html">&lt;ul&gt;
+&lt;/ul&gt;</summary></entry><entry><title>Hello, world</title><link href="http://www.wengweitao.com/hello-world.html" rel="alternate"></link><updated>2014-07-20T00:00:00+08:00</updated><author><name>wwt</name></author><id>tag:www.wengweitao.com,2014-07-20:hello-world.html</id><summary type="html">&lt;p&gt;Hello, world!&lt;/p&gt;</summary><category term="测试"></category></entry><entry><title>你好测试</title><link href="http://www.wengweitao.com/ni-hao-ce-shi.html" rel="alternate"></link><updated>2014-07-20T00:00:00+08:00</updated><author><name>wwt</name></author><id>tag:www.wengweitao.com,2014-07-20:ni-hao-ce-shi.html</id><summary type="html">&lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;二分查找算法&lt;/strong&gt;&lt;br /&gt;
   二分查找又称折半查找，优点是比较次数少，查找速度快，平均性能好；&lt;br /&gt;
   其缺点是要求待查表为有序表，且插入删除困难。&lt;br /&gt;
@@ -52,4 +52,4 @@
 &lt;li&gt;希尔排序(Shell sort)  ??&lt;/li&gt;
 &lt;li&gt;搜索&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;img alt="screenshot" src="/imgs/screenshot.png" /&gt;&lt;/p&gt;</summary></entry></feed>
+&lt;p&gt;&lt;img alt="screenshot" src="/imgs/screenshot.png" /&gt;&lt;/p&gt;</summary><category term="算法"></category></entry></feed>
