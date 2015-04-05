@@ -1,76 +1,83 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <title>wwt</title>
-    <link rel="stylesheet" type="text/css" href="/theme/css/skeleton.css" />
-    <link rel="stylesheet" type="text/css" href="/theme/css/main.css" />
-    <link rel="shortcut icon" type="text/css" href="/favicon.ico" />
-    <link rel="alternate" type="application/atom+xml"
-                           title="wwt — Flux Atom"
-                           href="/" /> 
-    <!--[if lte IE 8]><script src="/theme/js/html5shiv.js"></script><![endif]-->
-    <meta name="viewport" content="initial-scale=1.0, width=device-width, user-scalable=no" />
-  </head>
-  <body>
-    <div class="page">
-      <header class="page-head">
-        <h1>
-          <a href="/index.html">wwt</a>
-        </h1>
-      </header>
+<html lang="zh">
+<head>
+        <title>wwt</title>
+        <!-- Fonts -->
+        <link href='http://fonts.googleapis.com/css?family=Inconsolata' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=The+Girl+Next+Door' rel='stylesheet' type='text/css'>
+        
+        <!-- CSS -->
+        <link rel="stylesheet" href="/theme/css/main.css" type="text/css" />
+        <link rel="stylesheet" href="/theme/css/pygments.css" type="text/css" />
+        <link rel="stylesheet" href="/theme/css/font-awesome.css" type="text/css" />
+        <meta charset="utf-8" />
+      
 
-      <div class="page-content">
-    <section class="content">
-      <h1>Archives</h1>
-       <dl>
-          <dt>
-             <h2>七月 2014</h2>
-             <ul>
-          
-             <li>
-                <a rel="bookmark"
-                  href="/hello-world.html"
-                  title="Lien permanent vers «Hello, world»">
-                Hello, world
-                </a>
-             </li>
+        <!-- Javascript-->
+        <script src="/theme/js/invisible-menu-scroll.js"></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
+        <script type="text/javascript"> 
+          $(function() {
+            invisibleMenu();
+          });
+        </script> 
+</head>
 
-             </ul>
-          </dt>
-       </dl>
-    </section>
+<body id="index" class="home">
+     <div class="navigation">
+        <ol class="nav">
+          <li><a href="">Blog</a> </li>
+          <li class="current"><a href="/archives.html">Archive</a></li>
+          <li><a href="/tags.html">Tags</a> </li>
+          <li><a href="/">RSS</a> </li>
+        </ol>
       </div>
-    <aside class="page-sidebar">
-      <nav class="widget">
-      <h3>Site</h3>
-        <ul>
-          <li><a href="">Accueil</a></li>
-          <li><a href="/archives.html">Archives</a></li>
-          <li><a href="/tags.html">Mots-clés</a></li>
-        </ul>
-      </nav>
+        <header id="banner" class="body">
+                <div class="banner"><a href="">wwt <strong></strong></a></div>
+        </header><!-- /#banner -->
+        <nav id="menu"><ul>
+            <li><a href="/pages/about-me.html">About Me</a></li>
+        </ul></nav><!-- /#menu -->
+        <div class="box">
+<h2>Archives:</h2>
 
-      <nav class="widget">
-        <h3>Catégories</h3>
-        <ul>
-          <li><a href="/category/test.html">Test</a></li>
-        </ul>
-      </nav>
-
-      <nav class="widget">
-        <h3>Social</h3>
-        <ul>
-          <li><a href="You can add links in your config file">#</a></li>
-          <li><a href="Another social link">#</a></li>
-          <li><a href="/" rel="alternate">Flux Atom</a></li>
-        </ul>
-      </nav>
-    </aside> 
-
-      <footer class="page-footer">
-        <p> Powered by <a href="http://pelican.readthedocs.org">Pelican</a></p>
-      </footer>
-    </div>
-  </body>
+<table class="archives">
+    <tr>
+        <td>Sun 05 April 2015</td>
+        <td><a href="/ha-ha.html">哈哈</a></td>
+    </tr>
+    <tr>
+        <td>Sun 20 July 2014</td>
+        <td><a href="/hello-world.html">Hello, world</a></td>
+    </tr>
+    <tr>
+        <td>Sun 20 July 2014</td>
+        <td><a href="/ni-hao-ce-shi.html">你好测试</a></td>
+    </tr>
+    <tr>
+        <td>Sun 20 July 2014</td>
+        <td><a href="/shu-ju-jie-gou-yu-suan-fa.html">数据结构与算法</a></td>
+    </tr>
+</table>
+            <hr/>
+            <footer id="contentinfo" class="footer">
+                <div>
+                    Copyright © 2014-2015 <a href="">wwt</a>  
+                </div>
+                <div>
+                    powered by <a href="http://getpelican.com/">Pelican</a>
+                    and <a href="http://python.org">Python</a>. 
+                    <a href="http://github.com/slok/iris">Theme</a> by <a href="http://xlarrakoetxea.org">Xabier Larrakoetxea</a> based on <a href="http://flask.pocoo.org/">Flask</a> theme
+                </div>
+                
+                <div class="social">
+                        <a href="https://github.com/nurnoch"><i class="icon-github"></i>  </a>
+                        <a href="http://twitter.com/wwttc"><i class="icon-twitter"></i>  </a>
+                        <a href="<http://www.facebook.com/farseerfc>"><i class="icon-facebook"></i>  </a>
+                        <a href="http://weibo.com/u/2678027854"><i class="icon-weibo"></i>  </a>
+                </div>
+            </footer><!-- /#contentinfo -->
+        </div>
+        <!--Add statistycs-->
+</body>
 </html>

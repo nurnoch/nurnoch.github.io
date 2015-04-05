@@ -1,73 +1,66 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <title>wwt — Mots-clés</title>
-    <link rel="stylesheet" type="text/css" href="/theme/css/skeleton.css" />
-    <link rel="stylesheet" type="text/css" href="/theme/css/main.css" />
-    <link rel="shortcut icon" type="text/css" href="/favicon.ico" />
-    <link rel="alternate" type="application/atom+xml"
-                           title="wwt — Flux Atom"
-                           href="/" /> 
-    <!--[if lte IE 8]><script src="/theme/js/html5shiv.js"></script><![endif]-->
-    <meta name="viewport" content="initial-scale=1.0, width=device-width, user-scalable=no" />
+<html lang="zh">
+<head>
+        <title>wwt tags</title>
+        <!-- Fonts -->
+        <link href='http://fonts.googleapis.com/css?family=Inconsolata' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=The+Girl+Next+Door' rel='stylesheet' type='text/css'>
+        
+        <!-- CSS -->
+        <link rel="stylesheet" href="/theme/css/main.css" type="text/css" />
+        <link rel="stylesheet" href="/theme/css/pygments.css" type="text/css" />
+        <link rel="stylesheet" href="/theme/css/font-awesome.css" type="text/css" />
+        <meta charset="utf-8" />
+      
 
-    <script type="text/javascript" src="/theme/js/microTags.js"></script>
-    <script>
-      function tag_cloud_init() {
-        var el = document.getElementById("tagslist");
-        window._tagcloud = new µTags(el);
-      }
-      if (window.addEventListener) window.addEventListener("load", tag_cloud_init, false);
-      else if (window.attachEvent) window.attachEvent("onload", tag_cloud_init);
-      else window.onload = tag_cloud_init;
-    </script>
-  </head>
-  <body>
-    <div class="page">
-      <header class="page-head">
-        <h1>
-          <a href="/index.html">wwt</a>
-        </h1>
-      </header>
+        <!-- Javascript-->
+        <script src="/theme/js/invisible-menu-scroll.js"></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
+        <script type="text/javascript"> 
+          $(function() {
+            invisibleMenu();
+          });
+        </script> 
+</head>
 
-      <div class="page-content">
-    <section class="content">
-      <h1>Mots-clés</h1>
-      <ul id="tagslist">
-      </ul>
-    </section>
+<body id="index" class="home">
+     <div class="navigation">
+        <ol class="nav">
+          <li><a href="">Blog</a> </li>
+          <li><a href="/archives.html">Archive</a></li>
+          <li class="current"><a href="/tags.html">Tags</a> </li>
+          <li><a href="/">RSS</a> </li>
+        </ol>
       </div>
-    <aside class="page-sidebar">
-      <nav class="widget">
-      <h3>Site</h3>
-        <ul>
-          <li><a href="">Accueil</a></li>
-          <li><a href="/archives.html">Archives</a></li>
-          <li><a href="/tags.html">Mots-clés</a></li>
-        </ul>
-      </nav>
-
-      <nav class="widget">
-        <h3>Catégories</h3>
-        <ul>
-          <li><a href="/category/test.html">Test</a></li>
-        </ul>
-      </nav>
-
-      <nav class="widget">
-        <h3>Social</h3>
-        <ul>
-          <li><a href="You can add links in your config file">#</a></li>
-          <li><a href="Another social link">#</a></li>
-          <li><a href="/" rel="alternate">Flux Atom</a></li>
-        </ul>
-      </nav>
-    </aside> 
-
-      <footer class="page-footer">
-        <p> Powered by <a href="http://pelican.readthedocs.org">Pelican</a></p>
-      </footer>
-    </div>
-  </body>
+        <header id="banner" class="body">
+                <div class="banner"><a href="">wwt <strong></strong></a></div>
+        </header><!-- /#banner -->
+        <nav id="menu"><ul>
+            <li><a href="/pages/about-me.html">About Me</a></li>
+        </ul></nav><!-- /#menu -->
+        <div class="box">
+<h2>Tags:</h2>
+<ul>
+</ul>
+            <hr/>
+            <footer id="contentinfo" class="footer">
+                <div>
+                    Copyright © 2014-2015 <a href="">wwt</a>  
+                </div>
+                <div>
+                    powered by <a href="http://getpelican.com/">Pelican</a>
+                    and <a href="http://python.org">Python</a>. 
+                    <a href="http://github.com/slok/iris">Theme</a> by <a href="http://xlarrakoetxea.org">Xabier Larrakoetxea</a> based on <a href="http://flask.pocoo.org/">Flask</a> theme
+                </div>
+                
+                <div class="social">
+                        <a href="https://github.com/nurnoch"><i class="icon-github"></i>  </a>
+                        <a href="http://twitter.com/wwttc"><i class="icon-twitter"></i>  </a>
+                        <a href="<http://www.facebook.com/farseerfc>"><i class="icon-facebook"></i>  </a>
+                        <a href="http://weibo.com/u/2678027854"><i class="icon-weibo"></i>  </a>
+                </div>
+            </footer><!-- /#contentinfo -->
+        </div>
+        <!--Add statistycs-->
+</body>
 </html>
