@@ -37,6 +37,7 @@
                 <div class="banner"><a href="http://www.wengweitao.com">wwt <strong></strong></a></div>
         </header><!-- /#banner -->
         <nav id="menu"><ul>
+            <li><a href="http://www.wengweitao.com/category/du-shu-bi-ji.html">读书笔记</a></li>
             <li><a href="http://www.wengweitao.com/category/misc.html">misc</a></li>
             <li class="active"><a href="http://www.wengweitao.com/category/suan-fa-yu-shu-ju-jie-gou.html">算法与数据结构</a></li>
         </ul></nav><!-- /#menu -->
@@ -119,7 +120,7 @@
 <p>与上面的跳台阶问题类似。当n&gt;2时，第一次跳有n种选择：第一次只跳1级，那么此时跳法的数目等于后面剩下的n-1级台阶的跳法数目；第一次跳2级，那么此时跳法的数目等于后面剩下的n-1级台阶的跳法数目，依次类推，第一次直接跳n级。所以，所以n级台阶不同跳法总数为f(n) = f(n-1) + f(n-2) + ... + f(1) + 1。利用归纳法可以证明f(n) = 2^(n-1).</p>
 <h3>3. 矩形覆盖</h3>
 <p>我们可以用2<em>1的小矩形横着或者竖着去覆盖更大的矩形。请问用n个2</em>1的小矩形无重叠地覆盖一个2*n的大矩形，总共有多少种方法？</p>
-<p>假设2<em>n的大矩形总共有f(n)中覆盖方法。首先，用2</em>1的小矩形去覆盖大矩形最左边时有两个选择，若横着覆盖，则这个小矩形下面的那个小矩形也必须要横着覆盖，此时剩余2 * (n - 2)的区域，这种情形下的覆盖方法记为f(n - 2)；若竖着覆盖，则剩余2 * (n - 1)的区域，这种情形下覆盖的方法记为f(n - 1)。所以总的覆盖方法有：f(n - 1) + f(n - 2)。仍然是一个斐波那契数列。</p>
+<p>假设2 * n的大矩形总共有f(n)中覆盖方法。首先，用2*1的小矩形去覆盖大矩形最左边时有两个选择，若横着覆盖，则这个小矩形下面的那个小矩形也必须要横着覆盖，此时剩余2 * (n - 2)的区域，这种情形下的覆盖方法记为f(n - 2)；若竖着覆盖，则剩余2 * (n - 1)的区域，这种情形下覆盖的方法记为f(n - 1)。所以总的覆盖方法有：f(n - 1) + f(n - 2)。仍然是一个斐波那契数列。</p>
   </div><!-- /.entry-content -->
 <div id="disqus_thread"></div>
 <script type="text/javascript">
@@ -147,7 +148,7 @@
                 <div class="social">
                         <a href="https://github.com/nurnoch"><i class="icon-github"></i>  </a>
                         <a href="http://twitter.com/wwttc"><i class="icon-twitter"></i>  </a>
-                        <a href="http://www.facebook.com/翁蔚涛"><i class="icon-facebook"></i>  </a>
+                        <a href="http://www.facebook.com/100001903577931"><i class="icon-facebook"></i>  </a>
                         <a href="http://weibo.com/u/2678027854"><i class="icon-weibo"></i>  </a>
                 </div>
             </footer><!-- /#contentinfo -->

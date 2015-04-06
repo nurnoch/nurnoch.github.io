@@ -1,0 +1,274 @@
+<!DOCTYPE html> 
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+<html lang="zh">
+<head>
+        <title>wwt</title>
+        <!-- Fonts -->
+        <link href='http://fonts.googleapis.com/css?family=Inconsolata' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=The+Girl+Next+Door' rel='stylesheet' type='text/css'>
+        
+        <!-- CSS -->
+        <link rel="stylesheet" href="http://www.wengweitao.com/theme/css/main.css" type="text/css" />
+        <link rel="stylesheet" href="http://www.wengweitao.com/theme/css/pygments.css" type="text/css" />
+        <link rel="stylesheet" href="http://www.wengweitao.com/theme/css/font-awesome.css" type="text/css" />
+        <meta charset="utf-8" />
+      
+
+        <!-- Javascript-->
+        <script src="http://www.wengweitao.com/theme/js/invisible-menu-scroll.js"></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
+        <script type="text/javascript"> 
+          $(function() {
+            invisibleMenu();
+          });
+        </script> 
+</head>
+
+<body id="index" class="home">
+     <div class="navigation">
+        <ol class="nav">
+          <li class="current"><a href="http://www.wengweitao.com">首页</a> </li>
+          <li><a href="http://www.wengweitao.com/archives.html">归档</a></li>
+          <li><a href="http://www.wengweitao.com/categories.html">分类</a> </li>
+          <li><a href="http://www.wengweitao.com/pages/about-me">About me</a> </li>
+        </ol>
+      </div>
+        <header id="banner" class="body">
+                <div class="banner"><a href="http://www.wengweitao.com">wwt <strong></strong></a></div>
+        </header><!-- /#banner -->
+        <nav id="menu"><ul>
+            <li class="active"><a href="http://www.wengweitao.com/category/du-shu-bi-ji.html">读书笔记</a></li>
+            <li><a href="http://www.wengweitao.com/category/misc.html">misc</a></li>
+            <li><a href="http://www.wengweitao.com/category/suan-fa-yu-shu-ju-jie-gou.html">算法与数据结构</a></li>
+        </ul></nav><!-- /#menu -->
+        <div class="box">
+<section id="content" class="body">
+  <header class="post">
+    <h2 class="entry-title">
+      编写高质量Python代码（1）
+    </h2>
+  </header>
+  <footer class="post-info">
+    <abbr>
+      Mon 06 April 2015 
+         By <a class="url fn" href="http://www.wengweitao.com/author/wwt.html">wwt</a>
+  
+    </abbr>
+  </footer><!-- /.post-info -->
+  <div class="entry-content">
+    <blockquote>
+<p>去年参加了珠海的PyCon大会，幸运地抽中了三本书，其中一本是《编写高质量代码：改善Python程序的91个建议》。本书从多个方面给出了编写高质量Python代码的91个建议，我把每一章的建议都先总结下来，分享给大家。</p>
+</blockquote>
+<h3>建议1： 理解Pythonic概念</h3>
+<h4>（1）Pythonic的定义</h4>
+<p>遵循Pythonic的代码看起来像伪代码：</p>
+<div class="highlight"><pre><span class="k">def</span> <span class="nf">quicksort</span><span class="p">(</span><span class="n">array</span><span class="p">):</span>
+    <span class="n">less</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">greater</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">array</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">array</span>
+    <span class="n">pivot</span> <span class="o">=</span> <span class="n">array</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">array</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="n">pivot</span><span class="p">:</span>
+            <span class="n">greater</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">less</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">quicksort</span><span class="p">(</span><span class="n">less</span><span class="p">)</span> <span class="o">+</span> <span class="p">[</span><span class="n">pivot</span><span class="p">]</span> <span class="o">+</span> <span class="n">quicksort</span><span class="p">(</span><span class="n">greater</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="k">print</span> <span class="n">quicksort</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">])</span>
+</pre></div>
+
+
+<p>可读性比伪代码还要好！</p>
+<h4>（2）代码风格</h4>
+<p>Pythonic的代码要充分体现Python自身特色。
+例如交换两个数(packaging/unpackaging)：</p>
+<div class="highlight"><pre><span class="n">a</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">b</span><span class="p">,</span> <span class="n">a</span>
+</pre></div>
+
+
+<p>还有需要安全关闭文件描述符，可以使用with语句：</p>
+<div class="highlight"><pre><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">path</span><span class="p">,</span><span class="s">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">do_st</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+</pre></div>
+
+
+<p>我们应当追求充分利用Python的语法，但不应过分追求奇技淫巧，比如利用Slice语法：</p>
+<div class="highlight"><pre><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">]</span>
+<span class="n">c</span> <span class="o">=</span> <span class="s">&#39;abcdef&#39;</span>
+<span class="k">print</span> <span class="n">a</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="k">print</span> <span class="n">c</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+</pre></div>
+
+
+<p>这是一个实现列表倒序输出的功能，但是如果不熟悉该语法的可能就看不懂，实际上，这个时候更能体现Pythonic的代码是充分利用Python的库里的reversed函数：</p>
+<div class="highlight"><pre><span class="nb">list</span><span class="p">(</span><span class="nb">reversed</span><span class="p">(</span><span class="n">a</span><span class="p">))</span>
+<span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+</pre></div>
+
+
+<h4>（3）标准库</h4>
+<p>写Pythonic的程序必须对Python的标准库有充分了解，特别是内置函数与内置数据类型。
+例如格式化输出字符串,通常的做法：</p>
+<div class="highlight"><pre><span class="k">print</span> <span class="s">&#39;Hello </span><span class="si">%s</span><span class="s">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="s">&#39;Tom&#39;</span><span class="p">,)</span>
+<span class="n">Pythonic</span><span class="err">的代码：</span>
+<span class="k">print</span> <span class="s">&#39;Hello %{name}s&#39;</span> <span class="o">%</span> <span class="p">{</span><span class="s">&#39;name&#39;</span><span class="p">:</span> <span class="s">&#39;Tom&#39;</span><span class="p">}</span>
+</pre></div>
+
+
+<p>尤其是参数多的时候可读性更好。
+str.format()是Python最为推荐的字符串格式化方法，当然也是最Pythonic的。</p>
+<div class="highlight"><pre><span class="k">print</span> <span class="s">&#39;{greet} from {language}.&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">greet</span> <span class="o">=</span> <span class="s">&#39;Hello world&#39;</span><span class="p">,</span> <span class="n">language</span> <span class="o">=</span> <span class="s">&#39;Python&#39;</span><span class="p">)</span>
+</pre></div>
+
+
+<h4>（4）Python的库或框架</h4>
+<p>公认Flask这个框架式比较Pythonic的。可以仔细阅读这些优秀Python开源项目的源码。</p>
+<h3>建议2： 编写Pythonic代码</h3>
+<h4>（1）避免劣化代码</h4>
+<p>通常有几个需要注意：</p>
+<ul>
+<li>避免只用大小写来区分不同的对象。如a和A</li>
+<li>避免使用容易引起混淆的名称</li>
+<li>不要害怕过长的变量名，如person_info比pi可读性强得多。</li>
+</ul>
+<h4>（2）深入认识Python有助于编写Pythonic代码</h4>
+<ul>
+<li>看官方Reference</li>
+<li>学习新版本特性</li>
+<li>深入学习公认的Pythonic的代码，比如Flask、gevent和requests等。</li>
+</ul>
+<h4>（3）使用工具检查程序PEP8</h4>
+<p>安装PEP8的检测程序</p>
+<div class="highlight"><pre><span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">U</span> <span class="n">pep8</span>
+</pre></div>
+
+
+<p>下面使用工具检查：</p>
+<div class="highlight"><pre><span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="k">print</span> <span class="n">quicksort</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">])</span>
+</pre></div>
+
+
+<p>可以看到检查的结果：</p>
+<div class="highlight"><pre><span class="n">pep8</span> <span class="o">--</span><span class="n">first</span> <span class="n">quick_sort</span><span class="p">.</span><span class="n">py</span>
+<span class="n">quick_sort</span><span class="p">.</span><span class="n">py</span><span class="o">:</span><span class="mi">17</span><span class="o">:</span><span class="mi">23</span><span class="o">:</span> <span class="n">E231</span> <span class="n">missing</span> <span class="n">whitespace</span> <span class="n">after</span> <span class="sc">&#39;,&#39;</span>
+<span class="n">quick_sort</span><span class="p">.</span><span class="n">py</span><span class="o">:</span><span class="mi">18</span><span class="o">:</span><span class="mi">1</span><span class="o">:</span> <span class="n">W391</span> <span class="n">blank</span> <span class="n">line</span> <span class="n">at</span> <span class="n">end</span> <span class="n">of</span> <span class="n">file</span>
+</pre></div>
+
+
+<p>就是，后面要空格，文件最后不应该有空行。
+还可以展示出非常详细的错误和警告：</p>
+<div class="highlight"><pre><span class="n">pep8</span> <span class="o">--</span><span class="n">show</span><span class="o">-</span><span class="n">source</span> <span class="o">--</span><span class="n">show</span><span class="o">-</span><span class="n">pep8</span> <span class="n">quick_sort</span><span class="p">.</span><span class="n">py</span>
+</pre></div>
+
+
+<p>PEP8也并非是唯一的规范，还有Google Python Style Guide等等。</p>
+<h3>建议3： 理解Python与C语言的不同之处</h3>
+<p>Python底层是使用C来写的，但不要把C语言的思维方式带入Python。
+可以利用Python实现C中Python并不自带的功能：
+三元运算符：  C ? X : Y  =&gt;  X if C else Y
+类似switch的跳转功能：</p>
+<div class="highlight"><pre><span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">{</span>
+            <span class="mi">0</span><span class="p">:</span> <span class="s">&quot;You typed zero.</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span>
+            <span class="mi">1</span><span class="p">:</span> <span class="s">&quot;You are in top.</span><span class="se">\n</span><span class="s">&quot;</span>
+            <span class="p">}</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="s">&quot;Only single-digit numbers are allowed</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="k">print</span> <span class="n">f</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+
+
+<h3>建议4： 在代码中适当注释</h3>
+<p>Python中有3种形式的注释：块注释、行注释和文档注释（docstring）。
+注释和代码隔开一定的距离；
+给外部访问的函数和方法添加文档注释，包括方法功能，参数，返回值以及可能的异常进行说明。</p>
+<h3>建议5： 通过适当添加空行使代码布局更为优雅、合理</h3>
+<p>如以下代码：</p>
+<div class="highlight"><pre><span class="kn">import</span> <span class="nn">random</span>
+<span class="n">guess_made</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">name</span> <span class="o">=</span> <span class="nb">raw_input</span><span class="p">(</span><span class="s">&#39;Hello! What is your name?</span><span class="se">\n</span><span class="s">&#39;</span><span class="p">)</span>
+<span class="n">number</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+<span class="k">print</span> <span class="s">&#39;Well, {0}, I am thinking of a number between 1 and 20.&#39;</span>\
+        <span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+<span class="k">while</span> <span class="n">guess_made</span> <span class="o">&lt;</span> <span class="mi">6</span><span class="p">:</span>
+    <span class="n">guess</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">raw_input</span><span class="p">(</span><span class="s">&#39;Take a guess: &#39;</span><span class="p">))</span>
+    <span class="n">guess_made</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="k">if</span> <span class="n">guess</span> <span class="o">&lt;</span> <span class="n">number</span><span class="p">:</span>
+        <span class="k">print</span> <span class="s">&#39;Your guess is too low.&#39;</span>
+    <span class="k">if</span> <span class="n">guess</span> <span class="o">&gt;</span> <span class="n">number</span><span class="p">:</span>
+        <span class="k">print</span> <span class="s">&#39;Your guess is too high.&#39;</span>
+    <span class="k">if</span> <span class="n">guess</span> <span class="o">==</span> <span class="n">number</span><span class="p">:</span>
+        <span class="k">break</span>
+<span class="k">if</span> <span class="n">guess</span> <span class="o">==</span> <span class="n">number</span><span class="p">:</span>
+    <span class="k">print</span> <span class="s">&#39;Good job&#39;</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="k">print</span> <span class="s">&#39;Nope&#39;</span>
+</pre></div>
+
+
+<ul>
+<li>一组代码表达完一个完整的思路后，应该用空白行隔开</li>
+<li>尽量保持上下文语义的易理解性。如当一个函数调用另一个函数时，尽量将它们放在一起，最好调用者在上，被调用者在下。</li>
+</ul>
+<div class="highlight"><pre><span class="k">def</span> <span class="nf">A</span><span class="p">():</span>
+    <span class="n">B</span><span class="p">()</span>
+<span class="k">def</span> <span class="nf">B</span><span class="p">():</span>
+    <span class="k">pass</span>
+</pre></div>
+
+
+<ul>
+<li>避免过长的代码行。超过部分使用括号进行连接</li>
+<li>逗号和分号之前不要空格；二元运算符左右应该有空格；</li>
+<li>函数名和左括号不需要空格</li>
+</ul>
+<h3>建议6： 编写函数的4个原则</h3>
+<ul>
+<li>函数设计尽量短小，嵌套层次不宜过深。尽量不要太长，需要来回滚动。</li>
+<li>函数声明做到合理、简单、易于使用</li>
+<li>函数设计考虑向下兼容，如加入默认参数避免退化，做到向下兼容。</li>
+<li>一个函数只做一件事！</li>
+</ul>
+<h3>建议7：将常量集中到一个文件中</h3>
+<ul>
+<li>通过命名风格提醒使用者该变量代表为常量，如使用大写字母加下划线。</li>
+<li>通过自定义的类实现常量功能。</li>
+</ul>
+  </div><!-- /.entry-content -->
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'wengwt'; 
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</section>
+            <hr/>
+            <footer id="contentinfo" class="footer">
+                <div>
+                    Copyright 2014-2016 <a href="http://www.wengweitao.com">wwt</a>  
+                </div>
+                <div>
+                    powered by <a href="http://getpelican.com/">Pelican</a>
+                    and <a href="http://python.org">Python</a>. 
+                    <a href="http://github.com/slok/iris">Theme</a> by <a href="http://xlarrakoetxea.org">Xabier Larrakoetxea</a> based on <a href="http://flask.pocoo.org/">Flask</a> theme
+                </div>
+                
+                <div class="social">
+                        <a href="https://github.com/nurnoch"><i class="icon-github"></i>  </a>
+                        <a href="http://twitter.com/wwttc"><i class="icon-twitter"></i>  </a>
+                        <a href="http://www.facebook.com/100001903577931"><i class="icon-facebook"></i>  </a>
+                        <a href="http://weibo.com/u/2678027854"><i class="icon-weibo"></i>  </a>
+                </div>
+            </footer><!-- /#contentinfo -->
+        </div>
+        <!--Add statistycs-->
+</body>
+</html>
