@@ -1,0 +1,196 @@
+<!DOCTYPE html> 
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+<html lang="zh">
+<head>
+        <title>wwt</title>
+        <!-- Fonts -->
+        <link href='http://fonts.googleapis.com/css?family=Inconsolata' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=The+Girl+Next+Door' rel='stylesheet' type='text/css'>
+        
+        <!-- CSS -->
+        <link rel="stylesheet" href="http://www.wengweitao.com/theme/css/main.css" type="text/css" />
+        <link rel="stylesheet" href="http://www.wengweitao.com/theme/css/pygments.css" type="text/css" />
+        <link rel="stylesheet" href="http://www.wengweitao.com/theme/css/font-awesome.css" type="text/css" />
+        <meta charset="utf-8" />
+      
+
+        <!-- Javascript-->
+        <script src="http://www.wengweitao.com/theme/js/invisible-menu-scroll.js"></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
+        <script type="text/javascript"> 
+          $(function() {
+            invisibleMenu();
+          });
+        </script> 
+</head>
+
+<body id="index" class="home">
+     <div class="navigation">
+        <ol class="nav">
+          <li class="current"><a href="http://www.wengweitao.com">首页</a> </li>
+          <li><a href="http://www.wengweitao.com/archives.html">归档</a></li>
+          <li><a href="http://www.wengweitao.com/categories.html">分类</a> </li>
+          <li><a href="http://www.wengweitao.com/pages/about-me">About me</a> </li>
+        </ol>
+      </div>
+        <header id="banner" class="body">
+                <div class="banner"><a href="http://www.wengweitao.com">wwt <strong></strong></a></div>
+        </header><!-- /#banner -->
+        <nav id="menu"><ul>
+            <li><a href="http://www.wengweitao.com/category/du-shu-bi-ji.html">读书笔记</a></li>
+            <li><a href="http://www.wengweitao.com/category/misc.html">misc</a></li>
+            <li class="active"><a href="http://www.wengweitao.com/category/python.html">Python</a></li>
+            <li><a href="http://www.wengweitao.com/category/suan-fa-yu-shu-ju-jie-gou.html">算法与数据结构</a></li>
+        </ul></nav><!-- /#menu -->
+        <div class="box">
+<section id="content" class="body">
+  <header class="post">
+    <h2 class="entry-title">
+      Python代码格式化工具——YAPF
+    </h2>
+  </header>
+  <footer class="post-info">
+    <abbr>
+      Mon 06 April 2015 
+         By <a class="url fn" href="http://www.wengweitao.com/author/wwt.html">wwt</a>
+  
+    </abbr>
+  </footer><!-- /.post-info -->
+  <div class="entry-content">
+    <blockquote>
+<p><a href="https://github.com/google/yapf">YAPF</a>是Google开源的一个工具，可以用来格式化Python代码，使Python代码拥有一致的编程风格，减轻了团队或者个人进行代码风格维护的单调的工作。</p>
+</blockquote>
+<h3>介绍</h3>
+<p>之前已经有一些类似的Python代码风格格式化工具如：<a href="https://github.com/hhatto/autopep8">autopep8</a>和<a href="https://github.com/spulec/pep8ify">pep8ify</a>等。这些工具基于<a href="http://clang.llvm.org/docs/ClangFormat.html">clang-format</a>,能够很好的解决大多数pep8报告的格式问题。然而，有些代码虽然遵从了PEP8的编程风格指南，但这并不意味着这些代码看起来就足够好，对于这种问题之前的那些Python代码格式化工具就无能为力了。
+YAPF与其他的格式化工具不同，其算法能够把代码重新格式化为符合编程风格的最佳格式，无论原始的代码是否违法了某种指定的编程风格指南。YAPF的最终目标就是通过YAPF格式化后的代码能够与程序员完全遵从编程风格写的代码一样的好。</p>
+<h3>YAPF的使用</h3>
+<h4>1.安装</h4>
+<p>可以直接通过pip进行安装：</p>
+<div class="highlight"><pre><span class="n">pip</span> <span class="n">install</span> <span class="n">yapf</span>
+</pre></div>
+
+
+<h4>2.使用。</h4>
+<p>安装完成之后，就可以直接在命令行中使用了。
+以下是yapf的命令行参数：</p>
+<div class="highlight"><pre><span class="n">usage</span><span class="o">:</span> <span class="n">yapf</span> <span class="o">[-</span><span class="n">h</span><span class="o">]</span> <span class="o">[--</span><span class="n">style</span> <span class="n">STYLE</span><span class="o">]</span> <span class="o">[-</span><span class="n">d</span> <span class="o">|</span> <span class="o">-</span><span class="n">i</span><span class="o">]</span> <span class="o">[-</span><span class="n">l</span> <span class="n">START</span><span class="o">-</span><span class="n">END</span> <span class="o">|</span> <span class="o">-</span><span class="n">r</span><span class="o">]</span> <span class="o">...</span>
+
+<span class="n">Formatter</span> <span class="k">for</span> <span class="n">Python</span> <span class="n">code</span><span class="o">.</span>
+
+<span class="n">positional</span> <span class="k">arguments</span><span class="o">:</span>
+  <span class="n">files</span>
+
+<span class="n">optional</span> <span class="k">arguments</span><span class="o">:</span>
+  <span class="o">-</span><span class="n">h</span><span class="o">,</span> <span class="o">--</span><span class="n">help</span>            <span class="err">显示帮助信息</span>
+  <span class="o">--</span><span class="n">style</span> <span class="n">STYLE</span>         <span class="err">指定需要格式化的编程风格，如</span><span class="n">pep8</span><span class="err">或者</span><span class="n">google</span><span class="err">等</span>
+                        <span class="err">也可以是自定义的设置文件。默认是</span><span class="n">pep8</span>
+  <span class="o">-</span><span class="n">d</span><span class="o">,</span> <span class="o">--</span><span class="n">diff</span>            <span class="err">比较格式化后的文件和原文件的区别</span>
+  <span class="o">-</span><span class="n">i</span><span class="o">,</span> <span class="o">--</span><span class="k">in</span><span class="o">-</span><span class="n">place</span>        <span class="err">直接把格式化的文件更改在源文件上</span>
+  <span class="o">-</span><span class="n">l</span> <span class="n">START</span><span class="o">-</span><span class="n">END</span><span class="o">,</span> <span class="o">--</span><span class="n">lines</span> <span class="n">START</span><span class="o">-</span><span class="n">END</span>
+                        <span class="err">指定格式化的行的范围</span>
+  <span class="o">-</span><span class="n">r</span><span class="o">,</span> <span class="o">--</span><span class="n">recursive</span>       <span class="err">在目录中递归运行</span>
+</pre></div>
+
+
+<h4>3.例子</h4>
+<p>以下是一段非常ugly的代码：</p>
+<div class="highlight"><pre><span class="n">x</span> <span class="o">=</span> <span class="p">{</span>  <span class="s">&#39;a&#39;</span><span class="p">:</span><span class="mi">37</span><span class="p">,</span><span class="s">&#39;b&#39;</span><span class="p">:</span><span class="mi">42</span><span class="p">,</span>
+
+<span class="s">&#39;c&#39;</span><span class="p">:</span><span class="mi">927</span><span class="p">}</span>
+
+<span class="n">y</span> <span class="o">=</span> <span class="s">&#39;hello &#39;&#39;world&#39;</span>
+<span class="n">z</span> <span class="o">=</span> <span class="s">&#39;hello &#39;</span><span class="o">+</span><span class="s">&#39;world&#39;</span>
+<span class="n">a</span> <span class="o">=</span> <span class="s">&#39;hello {}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s">&#39;world&#39;</span><span class="p">)</span>
+<span class="k">class</span> <span class="nc">foo</span>  <span class="p">(</span>     <span class="nb">object</span>  <span class="p">):</span>
+  <span class="k">def</span> <span class="nf">f</span>    <span class="p">(</span><span class="bp">self</span>   <span class="p">):</span>
+    <span class="k">return</span>       <span class="mi">37</span><span class="o">*-+</span><span class="mi">2</span>
+  <span class="k">def</span> <span class="nf">g</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="mi">42</span><span class="p">):</span>
+      <span class="k">return</span> <span class="n">y</span>
+<span class="k">def</span> <span class="nf">f</span>  <span class="p">(</span>   <span class="n">a</span> <span class="p">)</span> <span class="p">:</span>
+  <span class="k">return</span>      <span class="mi">37</span><span class="o">+-+</span><span class="n">a</span><span class="p">[</span><span class="mi">42</span><span class="o">-</span><span class="n">x</span> <span class="p">:</span>  <span class="n">y</span><span class="o">**</span><span class="mi">3</span><span class="p">]</span>
+</pre></div>
+
+
+<p>利用yapf将它格式化：</p>
+<div class="highlight"><pre><span class="n">x</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;a&#39;</span><span class="p">:</span> <span class="mi">37</span><span class="p">,</span> <span class="s">&#39;b&#39;</span><span class="p">:</span> <span class="mi">42</span><span class="p">,</span> <span class="s">&#39;c&#39;</span><span class="p">:</span> <span class="mi">927</span><span class="p">}</span>
+
+<span class="n">y</span> <span class="o">=</span> <span class="s">&#39;hello &#39;</span> <span class="s">&#39;world&#39;</span>
+<span class="n">z</span> <span class="o">=</span> <span class="s">&#39;hello &#39;</span> <span class="o">+</span> <span class="s">&#39;world&#39;</span>
+<span class="n">a</span> <span class="o">=</span> <span class="s">&#39;hello {}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s">&#39;world&#39;</span><span class="p">)</span>
+
+
+<span class="k">class</span> <span class="nc">foo</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="mi">37</span> <span class="o">*</span> <span class="o">-+</span><span class="mi">2</span>
+
+    <span class="k">def</span> <span class="nf">g</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mi">42</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">y</span>
+
+
+<span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">a</span><span class="p">):</span>
+    <span class="k">return</span> <span class="mi">37</span> <span class="o">+</span> <span class="o">-+</span><span class="n">a</span><span class="p">[</span><span class="mi">42</span> <span class="o">-</span> <span class="n">x</span><span class="p">:</span><span class="n">y</span> <span class="o">**</span> <span class="mi">3</span><span class="p">]</span>
+</pre></div>
+
+
+<p>好看很多！</p>
+<p>另外，YAPF在格式化的时候仍然有一些问题。如：</p>
+<div class="highlight"><pre><span class="n">BAZ</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">12</span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>当有一大段内容的时候，我们都习惯分行排列，因为这显然更方便我们阅读。但是，使用YAPF格式化后：</p>
+<div class="highlight"><pre><span class="n">BAZ</span> <span class="o">=</span> <span class="p">{[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">],</span> <span class="p">[</span><span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">12</span><span class="p">]}</span>
+</pre></div>
+
+
+<p>遇到这种情况，YAPF也提供了解决的方法，就是在代码段的后面加上：
+ # yapf: disable</p>
+<div class="highlight"><pre><span class="n">BAZ</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">12</span><span class="p">]</span>
+<span class="p">}</span> <span class="c"># yapf: disable</span>
+</pre></div>
+
+
+<hr />
+<p>所以，YAPF是一个非常有用的工具，它可以帮助你将代码变得更加一致、更加容易阅读并且Pythonic。</p>
+  </div><!-- /.entry-content -->
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'wengwt'; 
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</section>
+            <hr/>
+            <footer id="contentinfo" class="footer">
+                <div>
+                    Copyright 2014-2016 <a href="http://www.wengweitao.com">wwt</a>  
+                </div>
+                <div>
+                    powered by <a href="http://getpelican.com/">Pelican</a>
+                    and <a href="http://python.org">Python</a>. 
+                    <a href="http://github.com/slok/iris">Theme</a> by <a href="http://xlarrakoetxea.org">Xabier Larrakoetxea</a> based on <a href="http://flask.pocoo.org/">Flask</a> theme
+                </div>
+                
+                <div class="social">
+                        <a href="https://github.com/nurnoch"><i class="icon-github"></i>  </a>
+                        <a href="http://twitter.com/wwttc"><i class="icon-twitter"></i>  </a>
+                        <a href="http://www.facebook.com/100001903577931"><i class="icon-facebook"></i>  </a>
+                        <a href="http://weibo.com/u/2678027854"><i class="icon-weibo"></i>  </a>
+                </div>
+            </footer><!-- /#contentinfo -->
+        </div>
+        <!--Add statistycs-->
+</body>
+</html>

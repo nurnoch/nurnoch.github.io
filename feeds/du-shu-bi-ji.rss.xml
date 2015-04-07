@@ -56,8 +56,11 @@
 &lt;p&gt;写Pythonic的程序必须对Python的标准库有充分了解，特别是内置函数与内置数据类型。
 例如格式化输出字符串,通常的做法：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;print&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;Hello &lt;/span&gt;&lt;span class="si"&gt;%s&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;Tom&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,)&lt;/span&gt;
-&lt;span class="n"&gt;Pythonic&lt;/span&gt;&lt;span class="err"&gt;的代码：&lt;/span&gt;
-&lt;span class="k"&gt;print&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;Hello %{name}s&amp;#39;&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;name&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;Tom&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Pythonic的代码：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;print&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;Hello %{name}s&amp;#39;&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;name&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;Tom&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -111,9 +114,9 @@ str.format()是Python最为推荐的字符串格式化方法，当然也是最Py
 &lt;p&gt;PEP8也并非是唯一的规范，还有Google Python Style Guide等等。&lt;/p&gt;
 &lt;h3&gt;建议3： 理解Python与C语言的不同之处&lt;/h3&gt;
 &lt;p&gt;Python底层是使用C来写的，但不要把C语言的思维方式带入Python。
-可以利用Python实现C中Python并不自带的功能：
-三元运算符：  C ? X : Y  =&amp;gt;  X if C else Y
-类似switch的跳转功能：&lt;/p&gt;
+可以利用Python实现C中Python并不自带的功能：&lt;/p&gt;
+&lt;p&gt;三元运算符：  C ? X : Y  =&amp;gt;  X if C else Y&lt;/p&gt;
+&lt;p&gt;类似switch的跳转功能：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;f&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
     &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
             &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;You typed zero.&lt;/span&gt;&lt;span class="se"&gt;\n&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;

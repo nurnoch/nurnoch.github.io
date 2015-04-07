@@ -5,28 +5,28 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://www.wengweitao.com/</loc>
-<lastmod>2015-04-06T19:04:41-00:00</lastmod>
+<lastmod>2015-04-07T15:08:26-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://www.wengweitao.com/archives.html</loc>
-<lastmod>2015-04-06T19:04:41-00:00</lastmod>
+<lastmod>2015-04-07T15:08:26-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://www.wengweitao.com/tags.html</loc>
-<lastmod>2015-04-06T19:04:41-00:00</lastmod>
+<lastmod>2015-04-07T15:08:26-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://www.wengweitao.com/categories.html</loc>
-<lastmod>2015-04-06T19:04:41-00:00</lastmod>
+<lastmod>2015-04-07T15:08:26-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -40,6 +40,13 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://www.wengweitao.com/bian-xie-gao-zhi-liang-pythondai-ma-1.html</loc>
+<lastmod>2015-04-06T18:42:00-00:00</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+
+<url>
+<loc>http://www.wengweitao.com/pythondai-ma-ge-shi-hua-gong-ju-yapf.html</loc>
 <lastmod>2015-04-06T18:42:00-00:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
@@ -74,6 +81,13 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
+<loc>http://www.wengweitao.com/category/python.html</loc>
+<lastmod>2015-04-06T18:42:00+08:06</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
 <loc>http://www.wengweitao.com/category/suan-fa-yu-shu-ju-jie-gou.html</loc>
 <lastmod>2015-04-05T00:00:00+08:06</lastmod>
 <changefreq>daily</changefreq>
@@ -82,6 +96,13 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://www.wengweitao.com/tag/python.html</loc>
+<lastmod>2015-04-06T18:42:00+08:06</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>http://www.wengweitao.com/tag/gong-ju.html</loc>
 <lastmod>2015-04-06T18:42:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>

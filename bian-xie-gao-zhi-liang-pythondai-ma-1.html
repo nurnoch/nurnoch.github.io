@@ -39,6 +39,7 @@
         <nav id="menu"><ul>
             <li class="active"><a href="http://www.wengweitao.com/category/du-shu-bi-ji.html">读书笔记</a></li>
             <li><a href="http://www.wengweitao.com/category/misc.html">misc</a></li>
+            <li><a href="http://www.wengweitao.com/category/python.html">Python</a></li>
             <li><a href="http://www.wengweitao.com/category/suan-fa-yu-shu-ju-jie-gou.html">算法与数据结构</a></li>
         </ul></nav><!-- /#menu -->
         <div class="box">
@@ -113,8 +114,11 @@
 <p>写Pythonic的程序必须对Python的标准库有充分了解，特别是内置函数与内置数据类型。
 例如格式化输出字符串,通常的做法：</p>
 <div class="highlight"><pre><span class="k">print</span> <span class="s">&#39;Hello </span><span class="si">%s</span><span class="s">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="s">&#39;Tom&#39;</span><span class="p">,)</span>
-<span class="n">Pythonic</span><span class="err">的代码：</span>
-<span class="k">print</span> <span class="s">&#39;Hello %{name}s&#39;</span> <span class="o">%</span> <span class="p">{</span><span class="s">&#39;name&#39;</span><span class="p">:</span> <span class="s">&#39;Tom&#39;</span><span class="p">}</span>
+</pre></div>
+
+
+<p>Pythonic的代码：</p>
+<div class="highlight"><pre><span class="k">print</span> <span class="s">&#39;Hello %{name}s&#39;</span> <span class="o">%</span> <span class="p">{</span><span class="s">&#39;name&#39;</span><span class="p">:</span> <span class="s">&#39;Tom&#39;</span><span class="p">}</span>
 </pre></div>
 
 
@@ -168,9 +172,9 @@ str.format()是Python最为推荐的字符串格式化方法，当然也是最Py
 <p>PEP8也并非是唯一的规范，还有Google Python Style Guide等等。</p>
 <h3>建议3： 理解Python与C语言的不同之处</h3>
 <p>Python底层是使用C来写的，但不要把C语言的思维方式带入Python。
-可以利用Python实现C中Python并不自带的功能：
-三元运算符：  C ? X : Y  =&gt;  X if C else Y
-类似switch的跳转功能：</p>
+可以利用Python实现C中Python并不自带的功能：</p>
+<p>三元运算符：  C ? X : Y  =&gt;  X if C else Y</p>
+<p>类似switch的跳转功能：</p>
 <div class="highlight"><pre><span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
     <span class="k">return</span> <span class="p">{</span>
             <span class="mi">0</span><span class="p">:</span> <span class="s">&quot;You typed zero.</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span>
