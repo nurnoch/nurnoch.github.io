@@ -2,7 +2,8 @@
 <feed xmlns="http://www.w3.org/2005/Atom"><title>wwt</title><link href="http://www.wengweitao.com/" rel="alternate"></link><link href="http://www.wengweitao.com/feeds%5Call.atom.xml" rel="self"></link><id>http://www.wengweitao.com/</id><updated>2015-04-07T22:39:00+08:00</updated><entry><title>编写高质量Python代码（2）</title><link href="http://www.wengweitao.com/bian-xie-gao-zhi-liang-pythondai-ma-2.html" rel="alternate"></link><updated>2015-04-07T22:39:00+08:00</updated><author><name>wwt</name></author><id>tag:www.wengweitao.com,2015-04-07:bian-xie-gao-zhi-liang-pythondai-ma-2.html</id><summary type="html">&lt;h3&gt;建议8： 利用assert语句来发现问题&lt;/h3&gt;
 &lt;p&gt;assert语句主要为调试程序服务，能够快速方便地检查程序的异常或者发现不恰当的输入等，防止意想不到的情况出现。
 基本语法如下：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;assert&lt;/span&gt; &lt;span class="n"&gt;expression1&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;,&amp;quot;&lt;/span&gt; &lt;span class="n"&gt;expression2&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="err"&gt;　&lt;/span&gt;&lt;span class="c"&gt;#assert x == y, &amp;quot;not equals&amp;quot;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;assert&lt;/span&gt; &lt;span class="n"&gt;expression1&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;,&amp;quot;&lt;/span&gt; &lt;span class="n"&gt;expression2&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; 
+&lt;span class="c"&gt;#assert x == y, &amp;quot;not equals&amp;quot;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 

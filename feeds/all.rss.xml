@@ -2,7 +2,8 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>wwt</title><link>http://www.wengweitao.com/</link><description></description><atom:link href="http://www.wengweitao.com/feeds/all.rss.xml" rel="self"></atom:link><lastBuildDate>Tue, 07 Apr 2015 22:39:00 +0800</lastBuildDate><item><title>编写高质量Python代码（2）</title><link>http://www.wengweitao.com/bian-xie-gao-zhi-liang-pythondai-ma-2.html</link><description>&lt;h3&gt;建议8： 利用assert语句来发现问题&lt;/h3&gt;
 &lt;p&gt;assert语句主要为调试程序服务，能够快速方便地检查程序的异常或者发现不恰当的输入等，防止意想不到的情况出现。
 基本语法如下：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;assert&lt;/span&gt; &lt;span class="n"&gt;expression1&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;,&amp;quot;&lt;/span&gt; &lt;span class="n"&gt;expression2&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="err"&gt;　&lt;/span&gt;&lt;span class="c"&gt;#assert x == y, &amp;quot;not equals&amp;quot;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;assert&lt;/span&gt; &lt;span class="n"&gt;expression1&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;,&amp;quot;&lt;/span&gt; &lt;span class="n"&gt;expression2&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; 
+&lt;span class="c"&gt;#assert x == y, &amp;quot;not equals&amp;quot;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
