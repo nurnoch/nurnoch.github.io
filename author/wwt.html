@@ -52,6 +52,46 @@
             <article class="archive">
                 <header> 
                     <h2 class="archive-entry-title">
+                        <a href="http://www.wengweitao.com/pythondai-ma-ge-shi-hua-gong-ju-yapf.html" rel="bookmark" title="Permalink to Python代码格式化工具——YAPF">Python代码格式化工具——YAPF</a>
+                    </h2> 
+                </header>
+                <footer class="post-info">
+                    <abbr>
+                      Tue 07 April 2015 
+                         By <a class="url fn" href="http://www.wengweitao.com/author/wwt.html">wwt</a>
+  
+                    </abbr>
+                    <div class="entry-summary"> <blockquote>
+<p><a href="https://github.com/google/yapf">YAPF</a>是Google开源的一个工具，可以用来格式化Python代码，使Python代码拥有一致的编程风格，减轻了团队或者个人进行代码风格维护的单调的工作。</p>
+</blockquote>
+<h3>介绍</h3>
+<p>之前已经有一些类似的Python代码风格格式化工具如：<a href="https://github.com/hhatto/autopep8">autopep8</a>和<a href="https://github.com/spulec/pep8ify">pep8ify</a>等。这些工具基于<a href="http://clang.llvm.org/docs/ClangFormat.html">clang-format</a>,能够很好的解决大多数pep8报告的格式问题。然而，有些代码虽然遵从了PEP8的编程风格指南，但这并不意味着这些代码看起来就足够好，对于这种问题之前的那些Python代码格式化工具就无能为力了。
+YAPF与其他的格式化工具不同，其算法能够把代码重新格式化为符合编程风格的最佳格式，无论原始的代码是否违法了某种指定的编程风格指南。YAPF的最终目标就是通过YAPF格式化后的代码能够与程序员完全遵从编程风格写的代码一样的好。</p>
+<h3>YAPF的使用</h3>
+<h4>1.安装</h4>
+<p>可以直接通过pip进行安装：</p>
+<div class="highlight"><pre><span class="n">pip</span> <span class="n">install</span> <span class="n">yapf</span>
+</pre></div>
+
+
+<h4>2.使用。</h4>
+<p>安装完成之后，就可以直接在命令行中使用了。
+以下是yapf的命令行参数：</p>
+<div class="highlight"><pre><span class="n">usage</span><span class="o">:</span> <span class="n">yapf</span> <span class="o">[-</span><span class="n">h</span><span class="o">]</span> <span class="o">[--</span><span class="n">style</span> <span class="n">STYLE</span><span class="o">]</span> <span class="o">[-</span><span class="n">d</span> <span class="o">|</span> <span class="o">-</span><span class="n">i</span><span class="o">]</span> <span class="o">[-</span><span class="n">l</span> <span class="n">START</span><span class="o">-</span><span class="n">END</span> <span class="o">|</span> <span class="o">-</span><span class="n">r</span><span class="o">]</span> <span class="o">...</span>
+
+<span class="n">Formatter</span> <span class="k">for</span> <span class="n">Python</span> <span class="n">code</span><span class="o">.</span>
+
+<span class="n">positional ...</span></pre></div>
+                    <a href="http://www.wengweitao.com/pythondai-ma-ge-shi-hua-gong-ju-yapf.html">read more</a></div>
+                </footer><!-- /.post-info -->
+                <!-- /.entry-content -->
+            </article>
+        </li>
+        
+        <li>
+            <article class="archive">
+                <header> 
+                    <h2 class="archive-entry-title">
                         <a href="http://www.wengweitao.com/bian-xie-gao-zhi-liang-pythondai-ma-1.html" rel="bookmark" title="Permalink to 编写高质量Python代码（1）">编写高质量Python代码（1）</a>
                     </h2> 
                 </header>
@@ -81,46 +121,6 @@
     <span class="k">return</span> <span class="n">quicksort</span><span class="p">(</span><span class="n">less</span><span class="p">)</span> <span class="o">+</span> <span class="p">[</span><span class="n">pivot</span><span class="p">]</span> <span class="o">+</span> <span class="n">quicksort</span><span class="p">(</span><span class="n">greater</span><span class="p">)</span>
 <span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&#39;__main__ ...</span></pre></div>
                     <a href="http://www.wengweitao.com/bian-xie-gao-zhi-liang-pythondai-ma-1.html">read more</a></div>
-                </footer><!-- /.post-info -->
-                <!-- /.entry-content -->
-            </article>
-        </li>
-        
-        <li>
-            <article class="archive">
-                <header> 
-                    <h2 class="archive-entry-title">
-                        <a href="http://www.wengweitao.com/pythondai-ma-ge-shi-hua-gong-ju-yapf.html" rel="bookmark" title="Permalink to Python代码格式化工具——YAPF">Python代码格式化工具——YAPF</a>
-                    </h2> 
-                </header>
-                <footer class="post-info">
-                    <abbr>
-                      Mon 06 April 2015 
-                         By <a class="url fn" href="http://www.wengweitao.com/author/wwt.html">wwt</a>
-  
-                    </abbr>
-                    <div class="entry-summary"> <blockquote>
-<p><a href="https://github.com/google/yapf">YAPF</a>是Google开源的一个工具，可以用来格式化Python代码，使Python代码拥有一致的编程风格，减轻了团队或者个人进行代码风格维护的单调的工作。</p>
-</blockquote>
-<h3>介绍</h3>
-<p>之前已经有一些类似的Python代码风格格式化工具如：<a href="https://github.com/hhatto/autopep8">autopep8</a>和<a href="https://github.com/spulec/pep8ify">pep8ify</a>等。这些工具基于<a href="http://clang.llvm.org/docs/ClangFormat.html">clang-format</a>,能够很好的解决大多数pep8报告的格式问题。然而，有些代码虽然遵从了PEP8的编程风格指南，但这并不意味着这些代码看起来就足够好，对于这种问题之前的那些Python代码格式化工具就无能为力了。
-YAPF与其他的格式化工具不同，其算法能够把代码重新格式化为符合编程风格的最佳格式，无论原始的代码是否违法了某种指定的编程风格指南。YAPF的最终目标就是通过YAPF格式化后的代码能够与程序员完全遵从编程风格写的代码一样的好。</p>
-<h3>YAPF的使用</h3>
-<h4>1.安装</h4>
-<p>可以直接通过pip进行安装：</p>
-<div class="highlight"><pre><span class="n">pip</span> <span class="n">install</span> <span class="n">yapf</span>
-</pre></div>
-
-
-<h4>2.使用。</h4>
-<p>安装完成之后，就可以直接在命令行中使用了。
-以下是yapf的命令行参数：</p>
-<div class="highlight"><pre><span class="n">usage</span><span class="o">:</span> <span class="n">yapf</span> <span class="o">[-</span><span class="n">h</span><span class="o">]</span> <span class="o">[--</span><span class="n">style</span> <span class="n">STYLE</span><span class="o">]</span> <span class="o">[-</span><span class="n">d</span> <span class="o">|</span> <span class="o">-</span><span class="n">i</span><span class="o">]</span> <span class="o">[-</span><span class="n">l</span> <span class="n">START</span><span class="o">-</span><span class="n">END</span> <span class="o">|</span> <span class="o">-</span><span class="n">r</span><span class="o">]</span> <span class="o">...</span>
-
-<span class="n">Formatter</span> <span class="k">for</span> <span class="n">Python</span> <span class="n">code</span><span class="o">.</span>
-
-<span class="n">positional ...</span></pre></div>
-                    <a href="http://www.wengweitao.com/pythondai-ma-ge-shi-hua-gong-ju-yapf.html">read more</a></div>
                 </footer><!-- /.post-info -->
                 <!-- /.entry-content -->
             </article>
