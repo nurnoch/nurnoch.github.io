@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+
+        <title>wwt - Python</title>
+        <meta charset="utf-8" />
+        <link href="http://www.wengweitao.com/feeds\all.atom.xml" type="application/atom+xml" rel="alternate" title="wwt Full Atom Feed" />
+        <link href="http://www.wengweitao.com/feeds/all.rss.xml" type="application/rss+xml" rel="alternate" title="wwt Full RSS Feed" />
+
+
+        <!-- Mobile viewport optimized: j.mp/bplateviewport -->
+        <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1">
+
+        <link rel="stylesheet" type="text/css" href="http://www.wengweitao.com/theme/gumby.css" />
+        <link rel="stylesheet" type="text/css" href="http://www.wengweitao.com/theme/style.css" />
+        <link rel="stylesheet" type="text/css" href="http://www.wengweitao.com/theme/pygment.css" />
+
+        <script src="http://www.wengweitao.com/theme/js/libs/modernizr-2.6.2.min.js"></script>
+
+
+
+
+</head>
+
+<body id="index" class="home">
+
+
+    <div class="container">
+
+        <div class="row">
+
+          <header id="banner" class="body">
+                  <h1><a href="http://www.wengweitao.com/">wwt <strong></strong></a></h1>
+          </header><!-- /#banner -->
+
+            <div id="navigation" class="navbar row">
+              <a href="#" gumby-trigger="#navigation &gt; ul" class="toggle"><i class="icon-menu"></i></a>
+             
+              <ul class="columns">
+                <li><a href="http://www.wengweitao.com/">Home</a></li>
+
+                <li><a href="http://www.wengweitao.com/pages/about-me.html">About Me</a></li>
+
+              </ul>
+            </div>
+
+<section id="content">
+
+
+
+   <div class="row">
+
+
+        <div class="eleven columns">
+                 <ol id="post-list">
+                        <li><article class="hentry">
+                                <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/pythonrong-qi-counterde-shi-yong.html" rel="bookmark" title="Permalink to Python容器——Counter的使用">Python容器——Counter的使用</a></h2> </header>
+                                <footer class="post-info">
+                                    <abbr class="published" title="2015-04-08T14:52:00"> Wed 08 April 2015 </abbr>
+                                    <address class="vcard author">By 
+                                    <a class="url fn" href="http://www.wengweitao.com/author/wwt.html"> wwt</a>
+                                    </address>
+                                </footer><!-- /.post-info -->
+                                <div class="entry-content"> <blockquote>
+<p>Counter是Python标准库提供的一个非常有用的容器，可以用来对序列中出现的各个元素，进行计数。这篇文章中，利用Counter来实现多元集合(MultiSets)、概率质量函数(PMFs)以及贝叶斯假设。</p>
+</blockquote>
+<p>在Python代码中使用Counter，只需从collections包引入：</p>
+<div class="highlight"><pre><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">Counter</span>
+</pre></div>
+
+
+<h3>1.判断两个字符串是否由相同的字母集合调换顺序而成的（anagram）</h3>
+<div class="highlight"><pre><span class="k">def</span> <span class="nf">is_anagram</span><span class="p">(</span><span class="n">word1</span><span class="p">,</span> <span class="n">word2</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Checks whether the words are anagrams.</span>
+
+<span class="sd">    word1: string</span>
+<span class="sd">    word2: string</span>
+
+<span class="sd">    returns: boolean</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">return</span> <span class="n">Counter</span><span class="p">(</span><span class="n">word1</span><span class="p">)</span> <span class="o">==</span> <span class="n">Counter</span><span class="p">(</span><span class="n">word2</span><span class="p">)</span>
+</pre></div>
+
+
+<p>Counter如果传入的参数是字符串，就会统计字符串中每个字符出现的次数，如果两个字符串由相同的字母集合颠倒顺序而成，则它们Counter的结果应该是一样的。</p>
+<h3>2.多元集合(MultiSets)</h3>
+<p>multiset是相同元素可以出现多次的集合，Counter可以非常自然地用来表示multiset。并且可以将Counter扩展，使之拥有set的一些操作如is_subset ...</p> </div><!-- /.entry-content -->
+
+                                <div class="medium primary btn"><a href="http://www.wengweitao.com/pythonrong-qi-counterde-shi-yong.html" rel="bookmark" title="Permalink to Python容器——Counter的使用">Read more <i class="icon-arrow-right"></i></a></div>
+
+
+
+                                <div class="row tag-row">
+                                        <span>Tagged as : </span>
+                                            <a class="danger label" href="http://www.wengweitao.com/tag/python.html">Python</a>
+                                </div>
+
+
+
+                        </article></li>
+                        <li><article class="hentry">
+                                <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/bian-xie-gao-zhi-liang-pythondai-ma-2.html" rel="bookmark" title="Permalink to 编写高质量Python代码（2）">编写高质量Python代码（2）</a></h2> </header>
+                                <footer class="post-info">
+                                    <abbr class="published" title="2015-04-07T22:39:00"> Tue 07 April 2015 </abbr>
+                                    <address class="vcard author">By 
+                                    <a class="url fn" href="http://www.wengweitao.com/author/wwt.html"> wwt</a>
+                                    </address>
+                                </footer><!-- /.post-info -->
+                                <div class="entry-content"> <h3>建议8： 利用assert语句来发现问题</h3>
+<p>assert语句主要为调试程序服务，能够快速方便地检查程序的异常或者发现不恰当的输入等，防止意想不到的情况出现。
+基本语法如下：</p>
+<div class="highlight"><pre><span class="k">assert</span> <span class="n">expression1</span> <span class="p">[</span><span class="s">&quot;,&quot;</span> <span class="n">expression2</span><span class="p">]</span> 
+<span class="c">#assert x == y, &quot;not equals&quot;</span>
+</pre></div>
+
+
+<p>其中计算expressi1的值若为False则会引发一个AssertionError，expression是可选的，用来传递具体的异常信息。</p>
+<p>另外，需要注意的是断言是对程序的性能有一定的影响，禁用断言的方法是运行时加上 -O标志。</p>
+<h3>建议9： 交换值时不推荐使用中间变量</h3>
+<div class="highlight"><pre><span class="n">In</span> <span class="p">[</span><span class="mi">1</span><span class="p">]:</span> <span class="kn">from</span> <span class="nn">timeit</span> <span class="kn">import</span> <span class="n">Timer</span>
+<span class="n">In</span> <span class="p">[</span><span class="mi">2</span><span class="p">]:</span> <span class="n">Timer</span><span class="p">(</span><span class="s">&#39;temp = x; x = y; y = temp&#39;</span><span class="p">,</span> <span class="s">&#39;x = 2; y = 3&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">timeit</span><span class="p">()</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">2</span><span class="p">]:</span> <span class="mf">0.054762504979284254</span>
+<span class="n">In</span> <span class="p">[</span><span class="mi">3</span><span class="p">]:</span> <span class="n">Timer ...</span></pre></div> </div><!-- /.entry-content -->
+
+                                <div class="medium primary btn"><a href="http://www.wengweitao.com/bian-xie-gao-zhi-liang-pythondai-ma-2.html" rel="bookmark" title="Permalink to 编写高质量Python代码（2）">Read more <i class="icon-arrow-right"></i></a></div>
+
+
+
+                                <div class="row tag-row">
+                                        <span>Tagged as : </span>
+                                            <a class="danger label" href="http://www.wengweitao.com/tag/python.html">Python</a>
+                                </div>
+
+
+
+                        </article></li>
+                        <li><article class="hentry">
+                                <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/pythondai-ma-ge-shi-hua-gong-ju-yapf.html" rel="bookmark" title="Permalink to Python代码格式化工具——YAPF">Python代码格式化工具——YAPF</a></h2> </header>
+                                <footer class="post-info">
+                                    <abbr class="published" title="2015-04-07T15:10:00"> Tue 07 April 2015 </abbr>
+                                    <address class="vcard author">By 
+                                    <a class="url fn" href="http://www.wengweitao.com/author/wwt.html"> wwt</a>
+                                    </address>
+                                </footer><!-- /.post-info -->
+                                <div class="entry-content"> <blockquote>
+<p><a href="https://github.com/google/yapf">YAPF</a>是Google开源的一个工具，可以用来格式化Python代码，使Python代码拥有一致的编程风格，减轻了团队或者个人进行代码风格维护的单调的工作。</p>
+</blockquote>
+<h3>介绍</h3>
+<p>之前已经有一些类似的Python代码风格格式化工具如：<a href="https://github.com/hhatto/autopep8">autopep8</a>和<a href="https://github.com/spulec/pep8ify">pep8ify</a>等。这些工具基于<a href="http://clang.llvm.org/docs/ClangFormat.html">clang-format</a>,能够很好的解决大多数pep8报告的格式问题。然而，有些代码虽然遵从了PEP8的编程风格指南，但这并不意味着这些代码看起来就足够好，对于这种问题之前的那些Python代码格式化工具就无能为力了。
+YAPF与其他的格式化工具不同，其算法能够把代码重新格式化为符合编程风格的最佳格式，无论原始的代码是否违法了某种指定的编程风格指南。YAPF的最终目标就是通过YAPF格式化后的代码能够与程序员完全遵从编程风格写的代码一样的好。</p>
+<h3>YAPF的使用</h3>
+<h4>1.安装</h4>
+<p>可以直接通过pip进行安装：</p>
+<div class="highlight"><pre><span class="n">pip</span> <span class="n">install</span> <span class="n">yapf</span>
+</pre></div>
+
+
+<h4>2.使用。</h4>
+<p>安装完成之后，就可以直接在命令行中使用了。
+以下是yapf的命令行参数：</p>
+<div class="highlight"><pre><span class="n">usage</span><span class="o">:</span> <span class="n">yapf</span> <span class="o">[-</span><span class="n">h</span><span class="o">]</span> <span class="o">[--</span><span class="n">style</span> <span class="n">STYLE</span><span class="o">]</span> <span class="o">[-</span><span class="n">d</span> <span class="o">|</span> <span class="o">-</span><span class="n">i</span><span class="o">]</span> <span class="o">[-</span><span class="n">l</span> <span class="n">START</span><span class="o">-</span><span class="n">END</span> <span class="o">|</span> <span class="o">-</span><span class="n">r</span><span class="o">]</span> <span class="o">...</span>
+
+<span class="n">Formatter</span> <span class="k">for</span> <span class="n">Python</span> <span class="n">code</span><span class="o">.</span>
+
+<span class="n">positional ...</span></pre></div> </div><!-- /.entry-content -->
+
+                                <div class="medium primary btn"><a href="http://www.wengweitao.com/pythondai-ma-ge-shi-hua-gong-ju-yapf.html" rel="bookmark" title="Permalink to Python代码格式化工具——YAPF">Read more <i class="icon-arrow-right"></i></a></div>
+
+
+
+                                <div class="row tag-row">
+                                        <span>Tagged as : </span>
+                                            <a class="danger label" href="http://www.wengweitao.com/tag/python.html">Python</a>
+                                            <a class="danger label" href="http://www.wengweitao.com/tag/gong-ju.html">工具</a>
+                                </div>
+
+
+
+                        </article></li>
+                        <li><article class="hentry">
+                                <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/bian-xie-gao-zhi-liang-pythondai-ma-1.html" rel="bookmark" title="Permalink to 编写高质量Python代码（1）">编写高质量Python代码（1）</a></h2> </header>
+                                <footer class="post-info">
+                                    <abbr class="published" title="2015-04-06T18:42:00"> Mon 06 April 2015 </abbr>
+                                    <address class="vcard author">By 
+                                    <a class="url fn" href="http://www.wengweitao.com/author/wwt.html"> wwt</a>
+                                    </address>
+                                </footer><!-- /.post-info -->
+                                <div class="entry-content"> <blockquote>
+<p>去年参加了珠海的PyCon大会，幸运地抽中了三本书，其中一本是《编写高质量代码：改善Python程序的91个建议》。本书从多个方面给出了编写高质量Python代码的91个建议，我把每一章的建议都先总结下来，分享给大家。</p>
+</blockquote>
+<h3>建议1： 理解Pythonic概念</h3>
+<h4>（1）Pythonic的定义</h4>
+<p>遵循Pythonic的代码看起来像伪代码：</p>
+<div class="highlight"><pre><span class="k">def</span> <span class="nf">quicksort</span><span class="p">(</span><span class="n">array</span><span class="p">):</span>
+    <span class="n">less</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">greater</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">array</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">array</span>
+    <span class="n">pivot</span> <span class="o">=</span> <span class="n">array</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">array</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="n">pivot</span><span class="p">:</span>
+            <span class="n">greater</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">less</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">quicksort</span><span class="p">(</span><span class="n">less</span><span class="p">)</span> <span class="o">+</span> <span class="p">[</span><span class="n">pivot</span><span class="p">]</span> <span class="o">+</span> <span class="n">quicksort</span><span class="p">(</span><span class="n">greater</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&#39;__main__ ...</span></pre></div> </div><!-- /.entry-content -->
+
+                                <div class="medium primary btn"><a href="http://www.wengweitao.com/bian-xie-gao-zhi-liang-pythondai-ma-1.html" rel="bookmark" title="Permalink to 编写高质量Python代码（1）">Read more <i class="icon-arrow-right"></i></a></div>
+
+
+
+                                <div class="row tag-row">
+                                        <span>Tagged as : </span>
+                                            <a class="danger label" href="http://www.wengweitao.com/tag/python.html">Python</a>
+                                </div>
+
+
+
+                        </article></li>
+                </ol><!-- /#posts-list -->
+
+        </div><!-- /.eleven.columns -->
+        
+<div class="three columns">
+
+<h4>Pages</h4>
+
+ <ul>
+      <li><a href="http://www.wengweitao.com/pages/about-me.html">About Me</a></li>
+  </ul>
+
+<h4>Categories</h4>
+<ul>
+		<li><a href="http://www.wengweitao.com/category/du-shu-bi-ji.html">读书笔记</a></li>
+		<li><a href="http://www.wengweitao.com/category/python.html">Python</a></li>
+		<li><a href="http://www.wengweitao.com/category/sheng-huo.html">生活</a></li>
+		<li><a href="http://www.wengweitao.com/category/suan-fa-yu-shu-ju-jie-gou.html">算法与数据结构</a></li>
+</ul>
+
+
+<h4>Tags</h4>
+	<ul>
+	    <li class="tag-4"><a href="http://www.wengweitao.com/tag/gong-ju.html">工具</a></li>
+	    <li class="tag-1"><a href="http://www.wengweitao.com/tag/python.html">Python</a></li>
+	    <li class="tag-4"><a href="http://www.wengweitao.com/tag/ce-shi.html">测试</a></li>
+	    <li class="tag-4"><a href="http://www.wengweitao.com/tag/mian-shi-ti.html">面试题</a></li>
+</ul>
+
+
+<nav class="widget">
+  <h4>Social</h4>
+  <ul>
+    <li><a href="https://github.com/nurnoch">github</a></li>
+    <li><a href="http://twitter.com/wwttc">twitter</a></li>
+    <li><a href="http://www.facebook.com/100001903577931">facebook</a></li>
+    <li><a href="http://weibo.com/u/2678027854">weibo</a></li>
+  </ul>
+</nav>
+
+</div> </div><!-- /.row -->
+
+<p class="paginator">
+    Page 1 / 1
+</p>
+</section><!-- /#content -->
+
+       </div><!-- /.row -->
+    </div><!-- /.container -->
+
+
+       <div class="container.nopad bg">
+
+    
+        <footer id="credits" class="row">
+          <div class="seven columns left-center">
+
+                   <address id="about" class="vcard body">
+                    Proudly powered by <a href="http://getpelican.com/">Pelican</a>,
+                    which takes great advantage of <a href="http://python.org">Python</a>.
+                    <br />
+                    Based on the <a target="_blank" href="http://gumbyframework.com">Gumby Framework</a>
+                    </address>
+          </div>
+
+
+          <div class="seven columns">
+            <div class="row">
+              <ul class="socbtns">
+
+
+
+
+
+              </ul>
+            </div>
+          </div>
+        </footer>
+
+    </div>
+
+
+<script type="text/javascript">
+    var disqus_shortname = 'wengwt';
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+  <script src="http://www.wengweitao.com/theme/js/libs/jquery-1.9.1.min.js"></script>
+  <script src="http://www.wengweitao.com/theme/js/libs/gumby.min.js"></script>
+  <script src="http://www.wengweitao.com/theme/js/plugins.js"></script>
+</body>
+</html>
