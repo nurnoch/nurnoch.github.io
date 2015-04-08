@@ -1,63 +1,81 @@
-<!DOCTYPE html> 
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
-<html lang="zh">
-<head>
-        <title>wwt</title>
-        <!-- Fonts -->
-        <link href='http://fonts.googleapis.com/css?family=Inconsolata' rel='stylesheet' type='text/css'>
-        <link href='http://fonts.googleapis.com/css?family=The+Girl+Next+Door' rel='stylesheet' type='text/css'>
-        
-        <!-- CSS -->
-        <link rel="stylesheet" href="http://www.wengweitao.com/theme/css/main.css" type="text/css" />
-        <link rel="stylesheet" href="http://www.wengweitao.com/theme/css/pygments.css" type="text/css" />
-        <link rel="stylesheet" href="http://www.wengweitao.com/theme/css/font-awesome.css" type="text/css" />
-        <meta charset="utf-8" />
-      
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <meta charset="utf-8"> 
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="author" content="wwt" />
+        <meta name="copyright" content="wwt" />
 
-        <!-- Javascript-->
-        <script src="http://www.wengweitao.com/theme/js/invisible-menu-scroll.js"></script>
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
-        <script type="text/javascript"> 
-          $(function() {
-            invisibleMenu();
-          });
-        </script> 
-</head>
+<meta name="keywords" content="Python, Python, " />
+        <title>Python容器——Counter的使用  · wwt
+</title>
+        <link href="http://cdn-images.mailchimp.com/embedcode/slim-081711.css" rel="stylesheet" type="text/css">
+        <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="http://www.wengweitao.com/theme/css/style.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="http://www.wengweitao.com/theme/css/solarizedlight.css" media="screen">
+        <link rel="shortcut icon" href="http://www.wengweitao.com/theme/images/favicon.ico" type="image/x-icon" />
+        <link rel="apple-touch-icon" href="http://www.wengweitao.com/theme/images/apple-touch-icon.png" />
+        <link rel="apple-touch-icon" sizes="57x57" href="http://www.wengweitao.com/theme/images/apple-touch-icon-57x57.png" />
+        <link rel="apple-touch-icon" sizes="72x72" href="http://www.wengweitao.com/theme/images/apple-touch-icon-72x72.png" />
+        <link rel="apple-touch-icon" sizes="114x114" href="http://www.wengweitao.com/theme/images/apple-touch-icon-114x114.png" />
+        <link rel="apple-touch-icon" sizes="144x144" href="http://www.wengweitao.com/theme/images/apple-touch-icon-144x144.png" />
+        <link rel="icon" href="http://www.wengweitao.com/theme/images/apple-touch-icon-144x144.png" />
+        <link href="http://www.wengweitao.com/feeds\all.atom.xml" type="application/atom+xml" rel="alternate" title="wwt - Full Atom Feed" />
+        <link href="http://www.wengweitao.com/feeds/all.rss.xml" type="application/rss+xml" rel="alternate" title="wwt - Full RSS Feed" />
+        <link href="http://www.wengweitao.com/feeds/读书笔记.rss.xml" type="application/atom+xml" rel="alternate" title="wwt - 读书笔记 Category Atom Feed" />
+        <link href="http://www.wengweitao.com/feeds/Python.rss.xml" type="application/atom+xml" rel="alternate" title="wwt - Python Category Atom Feed" />
+        <link href="http://www.wengweitao.com/feeds/生活.rss.xml" type="application/atom+xml" rel="alternate" title="wwt - 生活 Category Atom Feed" />
+        <link href="http://www.wengweitao.com/feeds/算法与数据结构.rss.xml" type="application/atom+xml" rel="alternate" title="wwt - 算法与数据结构 Category Atom Feed" />
+    <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-61641360-1']);
+    _gaq.push(['_trackPageview']);
+    (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+    </script>
+    </head>
+    <body>
+        <div id="content-sans-footer">
+        <div class="navbar navbar-static-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </a>
+                    <a class="brand" href="http://www.wengweitao.com/"><span class=site-name>wwt</span></a>
+                    <div class="nav-collapse collapse">
+                        <ul class="nav pull-right top-menu">
+                            <li ><a href="http://www.wengweitao.com">Home</a></li>
+                            <li ><a href="http://www.wengweitao.com/pages/about-me.html">About Me</a></li>
+                            <li ><a href="http://www.wengweitao.com/categories.html">Categories</a></li>
+                            <li ><a href="http://www.wengweitao.com/tags.html">Tags</a></li>
+                            <li ><a href="http://www.wengweitao.com/archives.html">Archives</a></li>
+                            <li><form class="navbar-search" action="http://www.wengweitao.com/search.html" onsubmit="return validateForm(this.elements['q'].value);"> <input type="text" class="search-query" placeholder="Search" name="q" id="tipue_search_input"></form></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="row-fluid">
+                <div class="span1"></div>
+                <div class="span10">
+<article>
+<div class="row-fluid">
+    <header class="page_header span10 offset2">
+    <h1><a href="http://www.wengweitao.com/pythonrong-qi-counterde-shi-yong.html"> Python容器——Counter的使用  </a></h1>
+    </header>
+</div>
 
-<body id="index" class="home">
-     <div class="navigation">
-        <ol class="nav">
-          <li class="current"><a href="http://www.wengweitao.com">首页</a> </li>
-          <li><a href="http://www.wengweitao.com/archives.html">归档</a></li>
-          <li><a href="http://www.wengweitao.com/categories.html">分类</a> </li>
-          <li><a href="http://www.wengweitao.com/pages/about-me">About me</a> </li>
-        </ol>
-      </div>
-        <header id="banner" class="body">
-                <div class="banner"><a href="http://www.wengweitao.com">wwt <strong></strong></a></div>
-        </header><!-- /#banner -->
-        <nav id="menu"><ul>
-            <li><a href="http://www.wengweitao.com/category/du-shu-bi-ji.html">读书笔记</a></li>
-            <li class="active"><a href="http://www.wengweitao.com/category/python.html">Python</a></li>
-            <li><a href="http://www.wengweitao.com/category/sheng-huo.html">生活</a></li>
-            <li><a href="http://www.wengweitao.com/category/suan-fa-yu-shu-ju-jie-gou.html">算法与数据结构</a></li>
-        </ul></nav><!-- /#menu -->
-        <div class="box">
-<section id="content" class="body">
-  <header class="post">
-    <h2 class="entry-title">
-      Python容器——Counter的使用
-    </h2>
-  </header>
-  <footer class="post-info">
-    <abbr>
-      Wed 08 April 2015 
-         By <a class="url fn" href="http://www.wengweitao.com/author/wwt.html">wwt</a>
-  
-    </abbr>
-  </footer><!-- /.post-info -->
-  <div class="entry-content">
-    <blockquote>
+<div class="row-fluid">
+        <div class="span8 offset2 article-content">
+
+            <blockquote>
 <p>Counter是Python标准库提供的一个非常有用的容器，可以用来对序列中出现的各个元素，进行计数。这篇文章中，利用Counter来实现多元集合(MultiSets)、概率质量函数(PMFs)以及贝叶斯假设。</p>
 </blockquote>
 <p>在Python代码中使用Counter，只需从collections包引入：</p>
@@ -272,38 +290,110 @@ hypo: 可能掷出的那个骰子</p>
 <p>以上的几个例子，展示了Counter的用处。实际中，Counter的使用还比较少，如果能够恰当的使用起来将会带来非常多的方便。</p>
 <p><strong>Reference</strong>：
 Using Counters : http://nbviewer.ipython.org/github/AllenDowney/PythonCounterPmf/blob/master/PythonCounterPmf.ipynb</p>
-  </div><!-- /.entry-content -->
+<section>
+<div class="accordion" id="accordion2">
+    <div class="accordion-group">
+        <div class="accordion-heading">
+            <a class="accordion-toggle disqus-comment-count" data-toggle="collapse" data-parent="#accordion2"
+                href="http://www.wengweitao.com/pythonrong-qi-counterde-shi-yong.html#disqus_thread">
+                Comments
+            </a>
+        </div>
+        <div id="disqus_thread" class="accordion-body collapse">
+            <div class="accordion-inner">
+                <div class="comments">
 <div id="disqus_thread"></div>
 <script type="text/javascript">
-    var disqus_shortname = 'wengwt'; 
+    var disqus_shortname = 'wengwt';
+        var disqus_identifier = 'http://www.wengweitao.com/pythonrong-qi-counterde-shi-yong.html';
+    var disqus_url = 'http://www.wengweitao.com/pythonrong-qi-counterde-shi-yong.html';
 
     (function() {
-        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
-        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-    })();
+         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+         dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+         (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+     })();
 </script>
 <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-</section>
-            <hr/>
-            <footer id="contentinfo" class="footer">
-                <div>
-                    Copyright 2014-2016 <a href="http://www.wengweitao.com">wwt</a>  
-                </div>
-                <div>
-                    powered by <a href="http://getpelican.com/">Pelican</a>
-                    and <a href="http://python.org">Python</a>. 
-                    <a href="http://github.com/slok/iris">Theme</a> by <a href="http://xlarrakoetxea.org">Xabier Larrakoetxea</a> based on <a href="http://flask.pocoo.org/">Flask</a> theme
-                </div>
-                
-                <div class="social">
-                        <a href="https://github.com/nurnoch"><i class="icon-github"></i>  </a>
-                        <a href="http://twitter.com/wwttc"><i class="icon-twitter"></i>  </a>
-                        <a href="http://www.facebook.com/100001903577931"><i class="icon-facebook"></i>  </a>
-                        <a href="http://weibo.com/u/2678027854"><i class="icon-weibo"></i>  </a>
-                </div>
-            </footer><!-- /#contentinfo -->
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>                </div>
+            </div>
         </div>
-        <!--Add statistycs-->
-</body>
+    </div>
+</div>
+</section>
+            <aside>
+            <hr/>
+            <nav>
+            <ul class="articles_timeline">
+ 
+                <li class="previous_article">« <a href="http://www.wengweitao.com/bian-xie-gao-zhi-liang-pythondai-ma-2.html" title="Previous: 编写高质量Python代码（2）">编写高质量Python代码（2）</a></li>
+            </ul>
+            </nav>
+            </aside>
+        </div>
+        <section>
+        <div class="span2" style="float:right;font-size:0.9em;">
+ 
+            <h4>Published</h4>
+            <time pubdate="pubdate" datetime="2015-04-08T14:52:00">Apr 8, 2015</time>
+            <h4>Category</h4>
+            <a class="category-link" href="/categories.html#Python-ref">Python</a> 
+            <h4>Tags</h4>
+            <ul class="list-of-tags tags-in-article"> 
+                <li><a href="/tags.html#Python-ref">Python
+                    <span>4</span>
+</a></li>
+            </ul>
+
+        </div>
+        </section>
+</div>
+</article>
+                </div>
+                <div class="span1"></div>
+            </div>
+        </div>
+    </div>
+<footer>
+<div id="footer">
+    <ul class="footer-content">
+        <li class="elegant-power">Powered by <a href="http://getpelican.com/" title="Pelican Home Page">Pelican</a>. Theme: <a href="http://oncrashreboot.com/pelican-elegant" title="Theme Elegant Home Page">Elegant</a> by <a href="http://oncrashreboot.com" title="Talha Mansoor Home Page">Talha Mansoor</a></li>
+    </ul>
+</div>
+</footer>            <script src="http://code.jquery.com/jquery.min.js"></script>
+        <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/js/bootstrap.min.js"></script>
+        <script>
+            function validateForm(query)
+            {
+                return (query.length > 0);
+            }
+        </script>
+
+<script type="text/javascript">
+    var disqus_shortname = 'wengwt';
+
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+    </script>
+        <script  language="javascript" type="text/javascript">
+            function uncollapse() {
+                var hash_str = window.location.hash;
+                if (window.location.hash.match(/^#comment-\d+$/))
+                {
+                    var hash_str = '#disqus_thread';
+                }
+                $(hash_str).collapse({
+                    toggle: true
+                    })
+            }
+        </script>
+
+        <script type="text/javascript" language="JavaScript">
+            uncollapse(); 
+        </script>
+    </body>
 </html>
