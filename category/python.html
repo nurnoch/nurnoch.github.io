@@ -52,6 +52,50 @@
             <article class="archive">
                 <header> 
                     <h2 class="archive-entry-title">
+                        <a href="http://www.wengweitao.com/pythonrong-qi-counterde-shi-yong.html" rel="bookmark" title="Permalink to Python容器——Counter的使用">Python容器——Counter的使用</a>
+                    </h2> 
+                </header>
+                <footer class="post-info">
+                    <abbr>
+                      Wed 08 April 2015 
+                         By <a class="url fn" href="http://www.wengweitao.com/author/wwt.html">wwt</a>
+  
+                    </abbr>
+                    <div class="entry-summary"> <blockquote>
+<p>Counter是Python标准库提供的一个非常有用的容器，可以用来对序列中出现的各个元素，进行计数。这篇文章中，利用Counter来实现多元集合(MultiSets)、概率质量函数(PMFs)以及贝叶斯假设。</p>
+</blockquote>
+<p>在Python代码中使用Counter，只需从collections包引入：</p>
+<div class="highlight"><pre><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">Counter</span>
+</pre></div>
+
+
+<h3>1.判断两个字符串是否由相同的字母集合调换顺序而成的（anagram）</h3>
+<div class="highlight"><pre><span class="k">def</span> <span class="nf">is_anagram</span><span class="p">(</span><span class="n">word1</span><span class="p">,</span> <span class="n">word2</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Checks whether the words are anagrams.</span>
+
+<span class="sd">    word1: string</span>
+<span class="sd">    word2: string</span>
+
+<span class="sd">    returns: boolean</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">return</span> <span class="n">Counter</span><span class="p">(</span><span class="n">word1</span><span class="p">)</span> <span class="o">==</span> <span class="n">Counter</span><span class="p">(</span><span class="n">word2</span><span class="p">)</span>
+</pre></div>
+
+
+<p>Counter如果传入的参数是字符串，就会统计字符串中每个字符出现的次数，如果两个字符串由相同的字母集合颠倒顺序而成，则它们Counter的结果应该是一样的。</p>
+<h3>2.多元集合(MultiSets)</h3>
+<p>multiset是相同元素可以出现多次的集合，Counter可以非常自然地用来表示multiset。并且可以将Counter扩展，使之拥有set的一些操作如is_subset ...</p>
+                    <a href="http://www.wengweitao.com/pythonrong-qi-counterde-shi-yong.html">read more</a></div>
+                </footer><!-- /.post-info -->
+                <!-- /.entry-content -->
+            </article>
+        </li>
+        
+        <li>
+            <article class="archive">
+                <header> 
+                    <h2 class="archive-entry-title">
                         <a href="http://www.wengweitao.com/pythondai-ma-ge-shi-hua-gong-ju-yapf.html" rel="bookmark" title="Permalink to Python代码格式化工具——YAPF">Python代码格式化工具——YAPF</a>
                     </h2> 
                 </header>
