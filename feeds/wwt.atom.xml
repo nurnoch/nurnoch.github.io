@@ -1,6 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>wwt's blog</title><link href="http://www.wengweitao.com/" rel="alternate"></link><link href="http://www.wengweitao.com/feeds%5Cwwt.atom.xml" rel="self"></link><id>http://www.wengweitao.com/</id><updated>2015-04-10T18:57:00+08:00</updated><entry><title>Mathjax测试</title><link href="http://www.wengweitao.com/mathjaxce-shi.html" rel="alternate"></link><updated>2015-04-10T18:57:00+08:00</updated><author><name>wwt</name></author><id>tag:www.wengweitao.com,2015-04-10:mathjaxce-shi.html</id><summary type="html">&lt;div class="math"&gt;$$ a + b = 1 $$&lt;/div&gt;
-&lt;p&gt;测试：$ 2^n - 1&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>wwt's blog</title><link href="http://www.wengweitao.com/" rel="alternate"></link><link href="http://www.wengweitao.com/feeds%5Cwwt.atom.xml" rel="self"></link><id>http://www.wengweitao.com/</id><updated>2015-04-10T19:35:00+08:00</updated><entry><title>使Pelican支持LaTex数学公式</title><link href="http://www.wengweitao.com/shi-pelicanzhi-chi-latexshu-xue-gong-shi.html" rel="alternate"></link><updated>2015-04-10T19:35:00+08:00</updated><author><name>wwt</name></author><id>tag:www.wengweitao.com,2015-04-10:shi-pelicanzhi-chi-latexshu-xue-gong-shi.html</id><summary type="html">&lt;p&gt;作为一个技术博客，在写文章的时候，肯定需要经常输入各种公式符号。在之前写一篇文章的时候，发现Pelican默认是不支持编辑数学公式的。之前用过一些在线的markdonw编辑器，都是通过&lt;a href="https://github.com/mathjax/mathjax"&gt;MathJax&lt;/a&gt;来支持在markdown中书写数学公式，而且用起来非常的方便，语法基本和LaTex一样。于是，就找到了一种简单的使Pelican支持LaTex语法的数学公式，在这里分享给大家。&lt;/p&gt;
+&lt;h2&gt;如何使Pelican支持渲染数学公式&lt;/h2&gt;
+&lt;p&gt;最简单的方法就是使用Pelican的一个插件——&lt;a href="https://github.com/barrysteyn/pelican_plugin-render_math"&gt;pelican_plugin-render_math&lt;/a&gt;。
+这个插件可以通过使用MathJax使pelican拥有渲染数学公式的能力，并且同时支持Markdown 和reStructuredText，用起来也非常的方便！&lt;/p&gt;
+&lt;h2&gt;安装&lt;/h2&gt;
+&lt;p&gt;在Pelican的安装目录中找到Pelican的配置文件pelicanconf.py，在文件中增加：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;PLUGIN_PATH&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;u&amp;quot;pelican-plugins&amp;quot;&lt;/span&gt;
+
+&lt;span class="n"&gt;PLUGINS&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;render_math&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;为了使插件生效，必须保证插件render_path所在的目录是可以访问的。通常，这个插件同其他插件都一起放在pelican-plugins目录中。&lt;/p&gt;
+&lt;p&gt;没错，只要这一步你的pelican网站就可以通过mathjax渲染数学公式了！不需要更改任何模板文件。&lt;/p&gt;
+&lt;p&gt;Just use and enjoy!&lt;/p&gt;
+&lt;h2&gt;开始使用&lt;/h2&gt;
+&lt;p&gt;对于内联的公式，将公式用\&lt;span class="math"&gt;\(...\\)&lt;/span&gt;包含起来，对于需要单独另起一行显示的公式使用\&lt;span class="math"&gt;\(\\)&lt;/span&gt;...\&lt;span class="math"&gt;\(\\)&lt;/span&gt;包含起来。例如：&lt;span class="math"&gt;\(1 + 1 = 2\)&lt;/span&gt; 和
+&lt;/p&gt;
+&lt;div class="math"&gt;$$1 + 1 = 2$$&lt;/div&gt;
+&lt;h3&gt;书写一个质能守恒公式&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="sb"&gt;$$&lt;/span&gt;&lt;span class="nb"&gt;E &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="nb"&gt; mc^&lt;/span&gt;&lt;span class="m"&gt;2&lt;/span&gt;&lt;span class="s"&gt;$$&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class="math"&gt;$$E=mc^2$$&lt;/div&gt;
+&lt;h3&gt;希腊字母&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="s"&gt;$&lt;/span&gt;&lt;span class="nv"&gt;\alpha&lt;/span&gt;&lt;span class="nb"&gt;, &lt;/span&gt;&lt;span class="nv"&gt;\beta&lt;/span&gt;&lt;span class="nb"&gt;, ..., &lt;/span&gt;&lt;span class="nv"&gt;\omega&lt;/span&gt;&lt;span class="s"&gt;$&lt;/span&gt;
+&lt;span class="s"&gt;$&lt;/span&gt;&lt;span class="nv"&gt;\Gamma&lt;/span&gt;&lt;span class="nb"&gt;, &lt;/span&gt;&lt;span class="nv"&gt;\Delta&lt;/span&gt;&lt;span class="nb"&gt;, …, &lt;/span&gt;&lt;span class="nv"&gt;\Omega&lt;/span&gt;&lt;span class="s"&gt;$&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;小写希腊字母：&lt;span class="math"&gt;\(\alpha, \beta, ..., \omega\)&lt;/span&gt;
+大写希腊字母：&lt;span class="math"&gt;\(\Gamma, \Delta, …, \Omega\)&lt;/span&gt;&lt;/p&gt;
+&lt;h3&gt;上标和下标&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="s"&gt;$&lt;/span&gt;&lt;span class="nb"&gt;x_i^&lt;/span&gt;&lt;span class="m"&gt;2&lt;/span&gt;&lt;span class="s"&gt;$&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;上标和下标分别为^ 和 _. 例如：&lt;span class="math"&gt;\(x_i^2\)&lt;/span&gt;.&lt;/p&gt;
+&lt;h3&gt;求和与积分&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="sb"&gt;$$&lt;/span&gt;&lt;span class="nv"&gt;\sum&lt;/span&gt;&lt;span class="nb"&gt;_{k&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="nb"&gt;}^{n}&lt;/span&gt;&lt;span class="nv"&gt;\frac&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="nb"&gt;}{k}&lt;/span&gt;&lt;span class="s"&gt;$$&lt;/span&gt; 
+&lt;span class="sb"&gt;$$&lt;/span&gt;&lt;span class="nv"&gt;\sum&lt;/span&gt;&lt;span class="nb"&gt;_{k&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="nb"&gt;}^n&lt;/span&gt;&lt;span class="nv"&gt;\frac&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="nb"&gt;}{k}&lt;/span&gt;&lt;span class="s"&gt;$$&lt;/span&gt; 
+&lt;span class="sb"&gt;$$&lt;/span&gt;&lt;span class="nv"&gt;\int&lt;/span&gt;&lt;span class="nb"&gt;_a^b f&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;x&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;&lt;span class="nb"&gt;dx&lt;/span&gt;&lt;span class="s"&gt;$$&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class="math"&gt;$$\sum_{k=1}^{n}\frac{1}{k}$$&lt;/div&gt;
+&lt;div class="math"&gt;$$\sum_{k=1}^n\frac{1}{k}$$&lt;/div&gt;
+&lt;div class="math"&gt;$$\int_a^b f(x)dx$$&lt;/div&gt;
+&lt;p&gt;如果你使用过LaTex那么用起来就非常熟悉了，语法基本和LaTex一样。可以访问 &lt;a href="http://meta.math.stackexchange.com/questions/5020/mathjax-basic-tutorial-and-quick-reference"&gt;MathJax&lt;/a&gt; 参考更多使用方法。&lt;/p&gt;
 &lt;script type="text/javascript"&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
     var align = "center",
         indent = "0em",
@@ -38,7 +86,7 @@
         "}); ";
     (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
 }
-&lt;/script&gt;</summary><category term="测试"></category></entry><entry><title>求字符的所有组合和所有排列</title><link href="http://www.wengweitao.com/qiu-zi-fu-de-suo-you-zu-he-he-suo-you-pai-lie.html" rel="alternate"></link><updated>2015-04-10T14:41:00+08:00</updated><author><name>wwt</name></author><id>tag:www.wengweitao.com,2015-04-10:qiu-zi-fu-de-suo-you-zu-he-he-suo-you-pai-lie.html</id><summary type="html">&lt;blockquote&gt;
+&lt;/script&gt;</summary><category term="教程"></category></entry><entry><title>求字符的所有组合和所有排列</title><link href="http://www.wengweitao.com/qiu-zi-fu-de-suo-you-zu-he-he-suo-you-pai-lie.html" rel="alternate"></link><updated>2015-04-10T14:41:00+08:00</updated><author><name>wwt</name></author><id>tag:www.wengweitao.com,2015-04-10:qiu-zi-fu-de-suo-you-zu-he-he-suo-you-pai-lie.html</id><summary type="html">&lt;blockquote&gt;
 &lt;p&gt;昨天看到一道关于求解字符串的排列的问题。如何求出几个字符的所有排列，发现对这种类似的题型还不是很熟练，因此本文对字符的全排列和全组合的问题作下总结，加深自己的理解和记忆，同时也希望能够帮助大家更好的学习和理解该类问题。&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h2&gt;字符串的排列&lt;/h2&gt;

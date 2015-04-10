@@ -2,11 +2,10 @@
 <html lang="zh">
 <head>
 
-        <title>Hello, world</title>
+        <title>wwt's blog - 教程</title>
         <meta charset="utf-8" />
         <link href="http://www.wengweitao.com/feeds\all.atom.xml" type="application/atom+xml" rel="alternate" title="wwt's blog Full Atom Feed" />
         <link href="http://www.wengweitao.com/feeds/all.rss.xml" type="application/rss+xml" rel="alternate" title="wwt's blog Full RSS Feed" />
-        <link href="http://www.wengweitao.com/feeds/sheng-huo.rss.xml" type="application/atom+xml" rel="alternate" title="wwt's blog Categories Atom Feed" />
 
 
         <!-- Mobile viewport optimized: j.mp/bplateviewport -->
@@ -45,45 +44,57 @@
               </ul>
             </div>
 
-<section id="content" class="body">
+<section id="content">
+
+
 
    <div class="row">
+
+
         <div class="eleven columns">
+                 <ol id="post-list">
+                        <li><article class="hentry">
+                                <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/shi-pelicanzhi-chi-latexshu-xue-gong-shi.html" rel="bookmark" title="Permalink to 使Pelican支持LaTex数学公式">使Pelican支持LaTex数学公式</a></h2> </header>
+                                <footer class="post-info">
+                                    <abbr class="published" title="2015-04-10T19:35:00"> Fri 10 April 2015 </abbr>
+                                    <address class="vcard author">By 
+                                    <a class="url fn" href="http://www.wengweitao.com/author/wwt.html"> wwt</a>
+                                    </address>
+                                </footer><!-- /.post-info -->
+                                <div class="entry-content"> <p>作为一个技术博客，在写文章的时候，肯定需要经常输入各种公式符号。在之前写一篇文章的时候，发现Pelican默认是不支持编辑数学公式的。之前用过一些在线的markdonw编辑器，都是通过<a href="https://github.com/mathjax/mathjax">MathJax</a>来支持在markdown中书写数学公式，而且用起来非常的方便，语法基本和LaTex一样。于是，就找到了一种简单的使Pelican支持LaTex语法的数学公式，在这里分享给大家。</p>
+<h2>如何使Pelican支持渲染数学公式</h2>
+<p>最简单的方法就是使用Pelican的一个插件——<a href="https://github.com/barrysteyn/pelican_plugin-render_math">pelican_plugin-render_math</a>。
+这个插件可以通过使用MathJax使pelican拥有渲染数学公式的能力，并且同时支持Markdown 和reStructuredText，用起来也非常的方便！</p>
+<h2>安装</h2>
+<p>在Pelican的安装目录中找到Pelican的配置文件pelicanconf.py，在文件中增加：</p>
+<div class="highlight"><pre><span class="n">PLUGIN_PATH</span> <span class="o">=</span> <span class="s">u&quot;pelican-plugins&quot;</span>
+
+<span class="n">PLUGINS</span> <span class="o">=</span> <span class="p">[</span> <span class="s">&quot;render_math&quot;</span><span class="p">]</span>
+</pre></div>
 
 
-            <header>
-              <h2 class="entry-title">
-                <a href="http://www.wengweitao.com/hello-world.html" rel="bookmark"
-                   title="Permalink to Hello, world">Hello, world</a></h2>
-           
-            </header>
-            <footer class="post-info">
-              <abbr class="published" title="2014-07-20T00:00:00">
-                Sun 20 July 2014
-              </abbr>
-              <address class="vcard author">By 
-                <a class="url fn" href="http://www.wengweitao.com/author/wwt.html"> wwt</a>
-              </address>
-            </footer><!-- /.post-info -->
-            <div class="entry-content">
-              <p>Hello, world!</p>
-            </div><!-- /.entry-content -->
-            <div class="comments">
-              <h3>Comments</h3>
-              <div id="disqus_thread"></div>
-              <script type="text/javascript">
-                var disqus_identifier = "hello-world.html";
-                (function() {
-                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-                dsq.src = 'http://wengwt.disqus.com/embed.js';
-                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-                })();
-              </script>
-            </div>
+<p>为了使插件生效，必须保证插件render_path所在的目录是可以访问的。通常，这个插件同其他插件都一起放在pelican-plugins目录中。</p>
+<p>没错，只要这一步你的pelican网站就可以通过mathjax渲染数学公式了！不需要更改任何模板文件。</p>
+<p>Just use and enjoy!</p>
+<h2>开始使用</h2>
+<p>对于内联的公式，将公式用\<span class="math">\(...\\)</span>包含起来，对于需要单独另起一行显示的公式使用\<span class="math">\(\\)</span>...\<span class="math">\(\\)</span>包含起来。例如：<span class="math">\(1 + 1 ...</span></p> </div><!-- /.entry-content -->
 
+                                <div class="medium primary btn"><a href="http://www.wengweitao.com/shi-pelicanzhi-chi-latexshu-xue-gong-shi.html" rel="bookmark" title="Permalink to 使Pelican支持LaTex数学公式">Read more <i class="icon-arrow-right"></i></a></div>
+
+
+
+                                <div class="row tag-row">
+                                        <span>Tagged as : </span>
+                                            <a class="danger label" href="http://www.wengweitao.com/tag/jiao-cheng.html">教程</a>
+                                </div>
+
+
+
+                        </article></li>
+                </ol><!-- /#posts-list -->
 
         </div><!-- /.eleven.columns -->
-
+        
 <div class="three columns">
 
 <h4>Pages</h4>
@@ -124,8 +135,10 @@
 
 </div> </div><!-- /.row -->
 
-
-</section>
+<p class="paginator">
+    Page 1 / 1
+</p>
+</section><!-- /#content -->
 
        </div><!-- /.row -->
     </div><!-- /.container -->

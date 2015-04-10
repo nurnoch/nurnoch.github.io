@@ -5,28 +5,28 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://www.wengweitao.com/</loc>
-<lastmod>2015-04-10T18:58:26-00:00</lastmod>
+<lastmod>2015-04-10T19:36:24-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://www.wengweitao.com/archives.html</loc>
-<lastmod>2015-04-10T18:58:26-00:00</lastmod>
+<lastmod>2015-04-10T19:36:24-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://www.wengweitao.com/tags.html</loc>
-<lastmod>2015-04-10T18:58:26-00:00</lastmod>
+<lastmod>2015-04-10T19:36:24-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://www.wengweitao.com/categories.html</loc>
-<lastmod>2015-04-10T18:58:26-00:00</lastmod>
+<lastmod>2015-04-10T19:36:24-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -39,8 +39,8 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
-<loc>http://www.wengweitao.com/mathjaxce-shi.html</loc>
-<lastmod>2015-04-10T18:57:00-00:00</lastmod>
+<loc>http://www.wengweitao.com/shi-pelicanzhi-chi-latexshu-xue-gong-shi.html</loc>
+<lastmod>2015-04-10T19:35:00-00:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
@@ -109,6 +109,13 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
+<loc>http://www.wengweitao.com/category/gong-ju.html</loc>
+<lastmod>2015-04-10T19:35:00+08:06</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
 <loc>http://www.wengweitao.com/category/python.html</loc>
 <lastmod>2015-04-08T14:52:00+08:06</lastmod>
 <changefreq>daily</changefreq>
@@ -117,7 +124,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://www.wengweitao.com/category/sheng-huo.html</loc>
-<lastmod>2015-04-10T18:57:00+08:06</lastmod>
+<lastmod>2014-07-20T00:00:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -132,6 +139,13 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
 <loc>http://www.wengweitao.com/tag/python.html</loc>
 <lastmod>2015-04-08T22:58:00+08:06</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>http://www.wengweitao.com/tag/jiao-cheng.html</loc>
+<lastmod>2015-04-10T19:35:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -152,14 +166,14 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://www.wengweitao.com/tag/ce-shi.html</loc>
-<lastmod>2015-04-10T18:57:00+08:06</lastmod>
+<lastmod>2014-07-20T00:00:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://www.wengweitao.com/author/wwt.html</loc>
-<lastmod>2015-04-10T18:57:00+08:06</lastmod>
+<lastmod>2015-04-10T19:35:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
