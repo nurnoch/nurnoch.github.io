@@ -672,7 +672,8 @@ threading模块基于thread进行封装，将线程操作对象化，在语言�
 </pre></div>
 
 
-<p>运行结果：</p>
+<p>运行结果：
+<img alt="threading_join" src="./imgs/threading_join.png" /></p>
 <p>主线程main上使用t1的join()方法，主线程会等待t1结束后才继续运行后面的语句。线程t2的启动在join语句之后，t2一直等到t1退出后才会开始运行。</p>
 <p>thread模块不支持守护进程。thread模块在主线程退出后，所有的主线程无论是否还在工作，都会被强制结束。threading模块，支持守护进程，可以通过setDaemon()来设定线程的daemon属性，当daemon属性为True时，表面主线程的退出可以不用等待子线程的完成（默认为False，即所有子线程结束后主线程才会结束）</p>
 <div class="highlight"><pre><span class="kn">import</span> <span class="nn">threading</span>
@@ -802,8 +803,8 @@ threading模块基于thread进行封装，将线程操作对象化，在语言�
 <h4>Tags</h4>
 	<ul>
 	    <li class="tag-4"><a href="http://www.wengweitao.com/tag/gong-ju.html">工具</a></li>
-	    <li class="tag-4"><a href="http://www.wengweitao.com/tag/mian-shi-ti.html">面试题</a></li>
 	    <li class="tag-4"><a href="http://www.wengweitao.com/tag/ce-shi.html">测试</a></li>
+	    <li class="tag-2"><a href="http://www.wengweitao.com/tag/mian-shi-ti.html">面试题</a></li>
 	    <li class="tag-1"><a href="http://www.wengweitao.com/tag/python.html">Python</a></li>
 </ul>
 

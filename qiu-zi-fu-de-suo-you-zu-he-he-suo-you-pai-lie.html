@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+
+        <title>求字符的所有组合和所有排列</title>
+        <meta charset="utf-8" />
+        <link href="http://www.wengweitao.com/feeds\all.atom.xml" type="application/atom+xml" rel="alternate" title="wwt Full Atom Feed" />
+        <link href="http://www.wengweitao.com/feeds/all.rss.xml" type="application/rss+xml" rel="alternate" title="wwt Full RSS Feed" />
+        <link href="http://www.wengweitao.com/feeds/suan-fa-yu-shu-ju-jie-gou.rss.xml" type="application/atom+xml" rel="alternate" title="wwt Categories Atom Feed" />
+
+
+        <!-- Mobile viewport optimized: j.mp/bplateviewport -->
+        <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1">
+
+        <link rel="stylesheet" type="text/css" href="http://www.wengweitao.com/theme/gumby.css" />
+        <link rel="stylesheet" type="text/css" href="http://www.wengweitao.com/theme/style.css" />
+        <link rel="stylesheet" type="text/css" href="http://www.wengweitao.com/theme/pygment.css" />
+
+        <script src="http://www.wengweitao.com/theme/js/libs/modernizr-2.6.2.min.js"></script>
+
+
+
+
+</head>
+
+<body id="index" class="home">
+
+
+    <div class="container">
+
+        <div class="row">
+
+          <header id="banner" class="body">
+                  <h1><a href="http://www.wengweitao.com/">wwt <strong></strong></a></h1>
+          </header><!-- /#banner -->
+
+            <div id="navigation" class="navbar row">
+              <a href="#" gumby-trigger="#navigation &gt; ul" class="toggle"><i class="icon-menu"></i></a>
+             
+              <ul class="columns">
+                <li><a href="http://www.wengweitao.com/">Home</a></li>
+
+                <li><a href="http://www.wengweitao.com/pages/about-me.html">About Me</a></li>
+
+              </ul>
+            </div>
+
+<section id="content" class="body">
+
+   <div class="row">
+        <div class="eleven columns">
+
+
+            <header>
+              <h2 class="entry-title">
+                <a href="http://www.wengweitao.com/qiu-zi-fu-de-suo-you-zu-he-he-suo-you-pai-lie.html" rel="bookmark"
+                   title="Permalink to 求字符的所有组合和所有排列">求字符的所有组合和所有排列</a></h2>
+           
+            </header>
+            <footer class="post-info">
+              <abbr class="published" title="2015-04-10T14:41:00">
+                Fri 10 April 2015
+              </abbr>
+              <address class="vcard author">By 
+                <a class="url fn" href="http://www.wengweitao.com/author/wwt.html"> wwt</a>
+              </address>
+            </footer><!-- /.post-info -->
+            <div class="entry-content">
+              <blockquote>
+<p>昨天看到一道关于求解字符串的排列的问题。如何求出几个字符的所有排列，发现对这种类似的题型还不是很熟练，因此本文对字符的全排列和全组合的问题作下总结，加深自己的理解和记忆，同时也希望能够帮助大家更好的学习和理解该类问题。</p>
+</blockquote>
+<h2>字符串的排列</h2>
+<p><strong>题目描述</strong>：
+输入一个字符串,按字典序打印出该字符串中字符的所有排列。例如输入字符串abc,则打印出由字符a,b,c所能排列出来的所有字符串abc,acb,bac,bca,cab和cba。</p>
+<p><strong>题目分析</strong>：
+考虑把这个复杂的问题分解成为小的问题。整个字符串的排列，可以看成两个部分：</p>
+<ol>
+<li>首先，求所有可能出现在第一个位置的字符</li>
+<li>然后，固定第一个字符，求后面所有字符的排列。这个时候仍然把后面的所有字符分成两个部分：后面的第一个字符，以及这个字符之后的所有字符。</li>
+</ol>
+<p>分析到这里，可以看出这是非常典型的递归。接下来，就可以写出代码。</p>
+<p><strong>代码实现</strong>:</p>
+<div class="highlight"><pre><span class="kt">void</span> <span class="nf">Permutation</span><span class="p">(</span><span class="kt">char</span><span class="o">*</span> <span class="n">str</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">str</span> <span class="o">==</span> <span class="nb">NULL</span><span class="p">)</span>
+        <span class="k">return</span><span class="p">;</span>
+    <span class="n">PermutationCore</span><span class="p">(</span><span class="n">str</span><span class="p">,</span> <span class="n">str</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="kt">void</span> <span class="nf">PermutationCore</span><span class="p">(</span><span class="kt">char</span><span class="o">*</span> <span class="n">str</span><span class="p">,</span> <span class="kt">char</span><span class="o">*</span> <span class="n">begin</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span><span class="p">(</span><span class="o">*</span><span class="n">begin</span> <span class="o">==</span> <span class="sc">&#39;\0&#39;</span><span class="p">)</span>
+        <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">str</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+    <span class="k">else</span> <span class="p">{</span>
+        <span class="k">for</span><span class="p">(</span><span class="kt">char</span> <span class="o">*</span><span class="n">pCh</span> <span class="o">=</span> <span class="n">begin</span><span class="p">;</span> <span class="o">*</span><span class="n">pCh</span> <span class="o">!=</span> <span class="sc">&#39;\0&#39;</span><span class="p">;</span> <span class="o">++</span><span class="n">pCh</span><span class="p">)</span> <span class="p">{</span>
+            <span class="kt">char</span> <span class="o">*</span><span class="n">temp</span> <span class="o">=</span> <span class="n">begin</span><span class="p">;</span>
+            <span class="o">*</span><span class="n">begin</span> <span class="o">=</span> <span class="o">*</span><span class="n">pCh</span><span class="p">;</span>
+            <span class="o">*</span><span class="n">pCh</span> <span class="o">=</span> <span class="o">*</span><span class="n">temp</span><span class="p">;</span>
+            <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="o">*</span><span class="n">begin</span> <span class="o">&lt;&lt;</span> <span class="sc">&#39;\t&#39;</span> <span class="o">&lt;&lt;</span> <span class="o">*</span><span class="n">pCh</span> <span class="o">&lt;&lt;</span> <span class="sc">&#39;\t&#39;</span> <span class="o">&lt;&lt;</span> <span class="o">*</span><span class="p">(</span><span class="n">begin</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+            <span class="n">PermutationCore</span><span class="p">(</span><span class="n">str</span><span class="p">,</span> <span class="n">begin</span><span class="o">+</span><span class="mi">1</span><span class="p">);</span>
+            <span class="n">temp</span> <span class="o">=</span> <span class="o">*</span><span class="n">begin</span><span class="p">;</span>
+            <span class="o">*</span><span class="n">begin</span> <span class="o">=</span> <span class="o">*</span><span class="n">pCh</span><span class="p">;</span>
+            <span class="o">*</span><span class="n">pCh</span> <span class="o">=</span> <span class="n">temp</span><span class="p">;</span>
+        <span class="p">}</span>   
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<h2>字符串的组合</h2>
+<p><strong>题目描述</strong>：
+不是求字符的所有排列，而是求字符的所有组合呢？还是输入三个字符a、b、c，组合有：a, b, c , ab, ac, bc, abc。</p>
+<p><strong>题目分析</strong>：
+字符串的组合与排列不同，当交换字符串中的两个字符时，虽然能得到两个不同的排列，但却是一个组合。比如ab和ba是两个排列，但是一个组合。
+假设输入n个字符，则这n个字符能构成长度为1的组合、长度为2的组合、......、长度为n的组合。在求n个字符组成长度为m的组合的时候，与字符串全排列的求解思想类似，我们可以把这n个字符分为两个部分：第一个字符和剩余的其他所有的n-1个字符。这个时候可以分为两种情况：</p>
+<ul>
+<li>如果组合里包含第一个字符，则从所有剩余n-1个字符里选取<strong>m-1</strong>个字符；</li>
+<li>如果组合里不包含第一个字符，则下一步在剩余的n-1个字符选取<strong>m</strong>个字符。</li>
+</ul>
+<p>也就是说，我们可以把求n个字符组成长度为m的组合问题分解成两个子问题，分别求n-1个字符串长度为m-1的组合，以及求n-1个字符的长度为m的组合。这两个子问题都可以用递归方式解决。</p>
+<p><strong>代码实现</strong>:</p>
+<div class="highlight"><pre><span class="kt">void</span> <span class="nf">Combination</span><span class="p">(</span><span class="kt">char</span><span class="o">*</span> <span class="n">str</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">str</span> <span class="o">==</span> <span class="nb">NULL</span><span class="p">)</span>
+        <span class="k">return</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">length</span> <span class="o">=</span> <span class="n">strlen</span><span class="p">(</span><span class="n">str</span><span class="p">);</span>
+    <span class="n">vector</span><span class="o">&lt;</span><span class="kt">char</span><span class="o">&gt;</span> <span class="n">result</span><span class="p">;</span>
+    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">length</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+        <span class="n">CombinationCore</span><span class="p">(</span><span class="n">str</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">result</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="kt">void</span> <span class="nf">CombinationCore</span><span class="p">(</span><span class="kt">char</span><span class="o">*</span> <span class="n">str</span><span class="p">,</span> <span class="kt">int</span> <span class="n">number</span><span class="p">,</span> <span class="n">vector</span><span class="o">&lt;</span><span class="kt">char</span><span class="o">&gt;&amp;</span> <span class="n">result</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">number</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">vector</span><span class="o">&lt;</span><span class="kt">char</span><span class="o">&gt;::</span><span class="n">iterator</span> <span class="n">iter</span> <span class="o">=</span> <span class="n">result</span><span class="p">.</span><span class="n">begin</span><span class="p">();</span>
+        <span class="k">for</span><span class="p">(;</span> <span class="n">iter</span> <span class="o">!=</span> <span class="n">result</span><span class="p">.</span><span class="n">end</span><span class="p">();</span> <span class="o">++</span><span class="n">iter</span><span class="p">)</span>
+            <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="o">*</span><span class="n">iter</span><span class="p">;</span>
+        <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+        <span class="k">return</span><span class="p">;</span>
+    <span class="p">}</span>   
+    <span class="k">if</span><span class="p">(</span><span class="o">*</span><span class="n">str</span> <span class="o">==</span> <span class="sc">&#39;\0&#39;</span><span class="p">)</span>
+        <span class="k">return</span><span class="p">;</span>
+    <span class="c1">// n-1个字符串中，选取number-1个字符</span>
+    <span class="n">result</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="o">*</span><span class="n">str</span><span class="p">);</span>
+    <span class="n">CombinationCore</span><span class="p">(</span><span class="n">str</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">number</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">result</span><span class="p">);</span>
+    <span class="c1">// n-1个字符串中，选取number个字符</span>
+    <span class="n">result</span><span class="p">.</span><span class="n">pop_back</span><span class="p">();</span>
+    <span class="n">CombinationCore</span><span class="p">(</span><span class="n">str</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">number</span><span class="p">,</span> <span class="n">result</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>Cobination函数中，分别求解字符个数为1到n的所有组合；使用一个vector容器来保存放进组合中的字符。</p>
+<p>另外，还有另一种思路可以求解——基于位图。
+假设一共有n个字符，则可能的组合结果共有$2^n - 1$种。
+以输入3个字符a、b、c为例：
+3个字符，可以用3个位来表示，从右到左的每一位分别用来代表a、b、c，该位为1表示取该元素，该位为0表示不取该元素。例如如组合a表示为001，组合b表示为010，组合ac表示为101，组合abc表示为111，而000是没有意义的，所以总共的结果就是$2^n - 1$种。</p>
+<p>因此，我们可以从值1开始循环到$2^n - 1$，输出每个值所代表的组合即可。</p>
+<div class="highlight"><pre><span class="kt">void</span> <span class="nf">Combination2</span><span class="p">(</span><span class="kt">char</span> <span class="o">*</span><span class="n">str</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">str</span> <span class="o">==</span> <span class="nb">NULL</span><span class="p">)</span>
+        <span class="k">return</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">,</span><span class="n">temp</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">length</span> <span class="o">=</span> <span class="n">strlen</span><span class="p">(</span><span class="n">str</span><span class="p">);</span>
+    <span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="n">length</span><span class="p">;</span>   
+    <span class="k">for</span><span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>   <span class="c1">// 依次输出值1到2^n-1所代表值的组合</span>
+        <span class="k">for</span><span class="p">(</span><span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">length</span><span class="p">;</span> <span class="n">j</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>  <span class="c1">// 判断第j位是否为1</span>
+            <span class="n">temp</span> <span class="o">=</span> <span class="n">i</span><span class="p">;</span>
+            <span class="k">if</span><span class="p">(</span><span class="n">temp</span> <span class="o">&amp;</span> <span class="p">(</span><span class="mi">1</span><span class="o">&lt;&lt;</span><span class="n">j</span><span class="p">))</span>
+                <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="o">*</span><span class="p">(</span><span class="n">str</span><span class="o">+</span><span class="n">j</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<hr />
+<h2>相关题目</h2>
+<h3>求正方体对面顶点和相等数组</h3>
+<p><strong>问题描述</strong>：
+输入一个含有8个数字的数组，判断有没有可能把这8个数字分别放到正方体的8个顶点上，使得正方体上三组相对的面上的4个顶点的和都相等。</p>
+<p><strong>问题分析</strong>：
+我们可以求出这8个数字的全排列，然后从中找出是否符合题目条件的排列。即先得到a1、a2、a3、a4、a5、a6、a7和a8这8个数字的所有排列，然后判断有没有某个排列符合条件：
+$$a1 + a2 + a3 + a4 = a5 + a6 + a7 + a8$$ 
+$$a1 + a3 + a5 + a7 = a2 + a4 + a6 +a8$$
+$$a1 + a2 + a5 + a6 = a3 + a4 + a7 + a8$$</p>
+<p><img alt="cubic" src="./imgs/cube.png" /></p>
+<p><strong>代码实现</strong>：</p>
+<div class="highlight"><pre><span class="kt">bool</span> <span class="nf">IsEqual</span><span class="p">(</span><span class="kt">int</span> <span class="o">*</span><span class="n">nums</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">sum1</span> <span class="o">=</span> <span class="n">nums</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">nums</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">nums</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">+</span> <span class="n">nums</span><span class="p">[</span><span class="mi">3</span><span class="p">];</span>
+    <span class="kt">int</span> <span class="n">sum2</span> <span class="o">=</span> <span class="n">nums</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">+</span> <span class="n">nums</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="o">+</span> <span class="n">nums</span><span class="p">[</span><span class="mi">6</span><span class="p">]</span> <span class="o">+</span> <span class="n">nums</span><span class="p">[</span><span class="mi">7</span><span class="p">];</span>
+    <span class="kt">int</span> <span class="n">sum3</span> <span class="o">=</span> <span class="n">nums</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">nums</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">+</span> <span class="n">nums</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">+</span> <span class="n">nums</span><span class="p">[</span><span class="mi">6</span><span class="p">];</span>
+    <span class="kt">int</span> <span class="n">sum4</span> <span class="o">=</span> <span class="n">nums</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">nums</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">+</span> <span class="n">nums</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="o">+</span> <span class="n">nums</span><span class="p">[</span><span class="mi">7</span><span class="p">];</span>
+    <span class="kt">int</span> <span class="n">sum5</span> <span class="o">=</span> <span class="n">nums</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">nums</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">nums</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">+</span> <span class="n">nums</span><span class="p">[</span><span class="mi">5</span><span class="p">];</span>
+    <span class="kt">int</span> <span class="n">sum6</span> <span class="o">=</span> <span class="n">nums</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">+</span> <span class="n">nums</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">+</span> <span class="n">nums</span><span class="p">[</span><span class="mi">6</span><span class="p">]</span> <span class="o">+</span> <span class="n">nums</span><span class="p">[</span><span class="mi">7</span><span class="p">];</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">sum1</span> <span class="o">==</span> <span class="n">sum2</span> <span class="o">&amp;&amp;</span> <span class="n">sum3</span> <span class="o">==</span> <span class="n">sum4</span> <span class="o">&amp;&amp;</span> <span class="n">sum5</span> <span class="o">==</span> <span class="n">sum6</span><span class="p">)</span>
+        <span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
+    <span class="k">else</span>
+        <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="kt">void</span> <span class="nf">swap</span><span class="p">(</span><span class="kt">int</span><span class="o">&amp;</span> <span class="n">a</span><span class="p">,</span> <span class="kt">int</span><span class="o">&amp;</span> <span class="n">b</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">temp</span> <span class="o">=</span> <span class="n">a</span><span class="p">;</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="n">b</span><span class="p">;</span>
+    <span class="n">b</span> <span class="o">=</span> <span class="n">temp</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="kt">void</span> <span class="nf">CubicEqualExist</span><span class="p">(</span><span class="kt">int</span> <span class="o">*</span><span class="n">numbers</span><span class="p">,</span> <span class="kt">int</span> <span class="n">begin</span><span class="p">,</span> <span class="kt">int</span> <span class="n">length</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">numbers</span> <span class="o">==</span> <span class="nb">NULL</span> <span class="o">||</span> <span class="n">begin</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="o">||</span> <span class="n">length</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="k">return</span><span class="p">;</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">begin</span> <span class="o">==</span> <span class="n">length</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kt">bool</span> <span class="n">result</span> <span class="o">=</span> <span class="n">IsEqual</span><span class="p">(</span><span class="n">numbers</span><span class="p">);</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">result</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">length</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+                <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">numbers</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+            <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+        <span class="p">}</span>   
+    <span class="p">}</span>   
+    <span class="k">else</span> <span class="p">{</span>
+        <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">begin</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">length</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">swap</span><span class="p">(</span><span class="n">numbers</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">numbers</span><span class="p">[</span><span class="n">begin</span><span class="p">]);</span>
+            <span class="n">CubicEqualExist</span><span class="p">(</span><span class="n">numbers</span><span class="p">,</span> <span class="n">begin</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">length</span><span class="p">);</span>
+            <span class="n">swap</span><span class="p">(</span><span class="n">numbers</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">numbers</span><span class="p">[</span><span class="n">begin</span><span class="p">]);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<h3>八皇后问题</h3>
+<p><strong>问题描述</strong>：
+在8 X 8的国际象棋上摆放八个皇后，使其不能相互攻击，即任意两个皇后不得处于同一行，同一列或者同一对角线上，求出所有符合条件的摆法。</p>
+<p><strong>问题分析</strong>：
+任意两个皇后不得处于同一行，由此可得每个皇后都单独占据一行。我们可以定义一个数组ColumnIndex[8]，其中ColumnIndex[i]表示处在第i行位置的那个皇后对应在ColumnIndex[i]列，例如ColumnIndex<a href="http://book.douban.com/subject/6966465/">1</a> = 3 表示处在第1行的皇后在第3列上。
+接下来，分别用0~7这8个数字对ColumnIndex进行初始化。注意，此时所有的皇后不同行也不同列。
+因此，我们只需要对ColumnIndex数组进行全排列，判断每一个排列所对应的8个皇后的位置是否在对角线上即可。</p>
+<p><strong>代码实现</strong>：</p>
+<div class="highlight"><pre><span class="kt">void</span> <span class="nf">swap</span><span class="p">(</span><span class="kt">int</span><span class="o">&amp;</span> <span class="n">a</span><span class="p">,</span> <span class="kt">int</span><span class="o">&amp;</span> <span class="n">b</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">temp</span> <span class="o">=</span> <span class="n">a</span><span class="p">;</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="n">b</span><span class="p">;</span>
+    <span class="n">b</span> <span class="o">=</span> <span class="n">temp</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="kt">bool</span> <span class="nf">IsRight</span><span class="p">(</span><span class="kt">int</span><span class="o">*</span> <span class="n">ColumnIndex</span><span class="p">,</span> <span class="kt">int</span> <span class="n">length</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">bool</span> <span class="n">result</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">length</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+        <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">length</span><span class="p">;</span> <span class="n">j</span><span class="o">++</span><span class="p">)</span>
+            <span class="k">if</span><span class="p">(</span><span class="n">i</span> <span class="o">-</span> <span class="n">j</span> <span class="o">==</span> <span class="n">ColumnIndex</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-</span> <span class="n">ColumnIndex</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">||</span> <span class="n">i</span> <span class="o">-</span> <span class="n">j</span> <span class="o">==</span> <span class="n">ColumnIndex</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">-</span> <span class="n">ColumnIndex</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="p">{</span>                                                                                                    
+                <span class="n">result</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+                <span class="k">break</span><span class="p">;</span>
+            <span class="p">}</span>   
+    <span class="k">return</span> <span class="n">result</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="kt">void</span> <span class="nf">Permutation</span><span class="p">(</span><span class="kt">int</span><span class="o">*</span> <span class="n">ColumnIndex</span><span class="p">,</span> <span class="kt">int</span> <span class="n">begin</span><span class="p">,</span> <span class="kt">int</span> <span class="n">length</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">begin</span> <span class="o">==</span> <span class="n">length</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kt">bool</span> <span class="n">result</span> <span class="o">=</span> <span class="n">IsRight</span><span class="p">(</span><span class="n">ColumnIndex</span><span class="p">,</span> <span class="n">length</span><span class="p">);</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">result</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">length</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+                <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">ColumnIndex</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+            <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+        <span class="p">}</span>   
+    <span class="p">}</span>   
+    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">begin</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">length</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">swap</span><span class="p">(</span><span class="n">ColumnIndex</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">ColumnIndex</span><span class="p">[</span><span class="n">begin</span><span class="p">]);</span>
+        <span class="n">Permutation</span><span class="p">(</span><span class="n">ColumnIndex</span><span class="p">,</span> <span class="n">begin</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">length</span><span class="p">);</span>
+        <span class="n">swap</span><span class="p">(</span><span class="n">ColumnIndex</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">ColumnIndex</span><span class="p">[</span><span class="n">begin</span><span class="p">]);</span>
+    <span class="p">}</span>   
+<span class="p">}</span>
+<span class="kt">void</span> <span class="nf">EightQueens</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">ColumnIndex</span><span class="p">[</span><span class="mi">8</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">};</span>
+    <span class="n">Permutation</span><span class="p">(</span><span class="n">ColumnIndex</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">8</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<hr />
+<h2>References:</h2>
+<ul>
+<li><a href="http://book.douban.com/subject/6966465/">剑指offer</a></li>
+</ul>
+            </div><!-- /.entry-content -->
+            <div class="comments">
+              <h3>Comments</h3>
+              <div id="disqus_thread"></div>
+              <script type="text/javascript">
+                var disqus_identifier = "qiu-zi-fu-de-suo-you-zu-he-he-suo-you-pai-lie.html";
+                (function() {
+                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                dsq.src = 'http://wengwt.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                })();
+              </script>
+            </div>
+
+
+        </div><!-- /.eleven.columns -->
+
+<div class="three columns">
+
+<h4>Pages</h4>
+
+ <ul>
+      <li><a href="http://www.wengweitao.com/pages/about-me.html">About Me</a></li>
+  </ul>
+
+<h4>Categories</h4>
+<ul>
+		<li><a href="http://www.wengweitao.com/category/du-shu-bi-ji.html">读书笔记</a></li>
+		<li><a href="http://www.wengweitao.com/category/python.html">Python</a></li>
+		<li><a href="http://www.wengweitao.com/category/sheng-huo.html">生活</a></li>
+		<li><a href="http://www.wengweitao.com/category/suan-fa-yu-shu-ju-jie-gou.html">算法与数据结构</a></li>
+</ul>
+
+
+<h4>Tags</h4>
+	<ul>
+	    <li class="tag-4"><a href="http://www.wengweitao.com/tag/gong-ju.html">工具</a></li>
+	    <li class="tag-4"><a href="http://www.wengweitao.com/tag/ce-shi.html">测试</a></li>
+	    <li class="tag-2"><a href="http://www.wengweitao.com/tag/mian-shi-ti.html">面试题</a></li>
+	    <li class="tag-1"><a href="http://www.wengweitao.com/tag/python.html">Python</a></li>
+</ul>
+
+
+<nav class="widget">
+  <h4>Social</h4>
+  <ul>
+    <li><a href="https://github.com/nurnoch">github</a></li>
+    <li><a href="http://twitter.com/wwttc">twitter</a></li>
+    <li><a href="http://www.facebook.com/100001903577931">facebook</a></li>
+    <li><a href="http://weibo.com/u/2678027854">weibo</a></li>
+  </ul>
+</nav>
+
+</div> </div><!-- /.row -->
+
+
+</section>
+
+       </div><!-- /.row -->
+    </div><!-- /.container -->
+
+
+       <div class="container.nopad bg">
+
+    
+        <footer id="credits" class="row">
+          <div class="seven columns left-center">
+
+                   <address id="about" class="vcard body">
+                    Proudly powered by <a href="http://getpelican.com/">Pelican</a>,
+                    which takes great advantage of <a href="http://python.org">Python</a>.
+                    <br />
+                    Based on the <a target="_blank" href="http://gumbyframework.com">Gumby Framework</a>
+                    </address>
+          </div>
+
+
+          <div class="seven columns">
+            <div class="row">
+              <ul class="socbtns">
+
+
+
+
+
+              </ul>
+            </div>
+          </div>
+        </footer>
+
+    </div>
+
+
+<script type="text/javascript">
+    var disqus_shortname = 'wengwt';
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+  <script src="http://www.wengweitao.com/theme/js/libs/jquery-1.9.1.min.js"></script>
+  <script src="http://www.wengweitao.com/theme/js/libs/gumby.min.js"></script>
+  <script src="http://www.wengweitao.com/theme/js/plugins.js"></script>
+</body>
+</html>

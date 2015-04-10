@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>wwt</title><link href="http://www.wengweitao.com/" rel="alternate"></link><link href="http://www.wengweitao.com/feeds/suan-fa-yu-shu-ju-jie-gou.rss.xml" rel="self"></link><id>http://www.wengweitao.com/</id><updated>2015-04-10T14:41:00+08:00</updated><entry><title>求字符的所有组合和所有排列</title><link href="http://www.wengweitao.com/qiu-zi-fu-de-suo-you-zu-he-he-suo-you-pai-lie.html" rel="alternate"></link><updated>2015-04-10T14:41:00+08:00</updated><author><name>wwt</name></author><id>tag:www.wengweitao.com,2015-04-10:qiu-zi-fu-de-suo-you-zu-he-he-suo-you-pai-lie.html</id><summary type="html">&lt;blockquote&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>wwt</title><link href="www.wengweitao.com/" rel="alternate"></link><link href="www.wengweitao.com/feeds/suan-fa-yu-shu-ju-jie-gou.atom.xml" rel="self"></link><id>www.wengweitao.com/</id><updated>2015-04-10T14:41:00+08:00</updated><entry><title>求字符的所有组合和所有排列</title><link href="www.wengweitao.com/qiu-zi-fu-de-suo-you-zu-he-he-suo-you-pai-lie.html" rel="alternate"></link><updated>2015-04-10T14:41:00+08:00</updated><author><name>wwt</name></author><id>tag:,2015-04-10:www.wengweitao.com/qiu-zi-fu-de-suo-you-zu-he-he-suo-you-pai-lie.html</id><summary type="html">&lt;blockquote&gt;
 &lt;p&gt;昨天看到一道关于求解字符串的排列的问题。如何求出几个字符的所有排列，发现对这种类似的题型还不是很熟练，因此本文对字符的全排列和全组合的问题作下总结，加深自己的理解和记忆，同时也希望能够帮助大家更好的学习和理解该类问题。&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h2&gt;字符串的排列&lt;/h2&gt;
@@ -201,7 +201,7 @@ $$a1 + a2 + a5 + a6 = a3 + a4 + a7 + a8$$&lt;/p&gt;
 &lt;h2&gt;References:&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href="http://book.douban.com/subject/6966465/"&gt;剑指offer&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</summary><category term="面试题"></category></entry><entry><title>斐波那契数列及其相关问题</title><link href="http://www.wengweitao.com/fei-bo-na-qi-shu-lie-ji-qi-xiang-guan-wen-ti.html" rel="alternate"></link><updated>2015-04-05T00:00:00+08:00</updated><author><name>wwt</name></author><id>tag:www.wengweitao.com,2015-04-05:fei-bo-na-qi-shu-lie-ji-qi-xiang-guan-wen-ti.html</id><summary type="html">&lt;p&gt;很多书在提到递归的时候，总是会拿斐波那契数列作为例子，它的定义如下：
+&lt;/ul&gt;</summary><category term="面试题"></category></entry><entry><title>斐波那契数列及其相关问题</title><link href="www.wengweitao.com/fei-bo-na-qi-shu-lie-ji-qi-xiang-guan-wen-ti.html" rel="alternate"></link><updated>2015-04-05T00:00:00+08:00</updated><author><name>wwt</name></author><id>tag:,2015-04-05:www.wengweitao.com/fei-bo-na-qi-shu-lie-ji-qi-xiang-guan-wen-ti.html</id><summary type="html">&lt;p&gt;很多书在提到递归的时候，总是会拿斐波那契数列作为例子，它的定义如下：
 &lt;img alt="Fibonacci" src="http://ac.jobdu.com/upload/201201/image/fbncslie.jpg" /&gt;&lt;/p&gt;
 &lt;p&gt;现在要求输出斐波那契数列的第n项。&lt;/p&gt;
 &lt;p&gt;首先，最容易想到的方法就是直接利用递归求解：&lt;/p&gt;
