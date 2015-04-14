@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+
+        <title>编写高质量Python代码（4）——设计模式</title>
+        <meta charset="utf-8" />
+        <link href="http://www.wengweitao.com/feeds\all.atom.xml" type="application/atom+xml" rel="alternate" title="wwt's blog Full Atom Feed" />
+        <link href="http://www.wengweitao.com/feeds/all.rss.xml" type="application/rss+xml" rel="alternate" title="wwt's blog Full RSS Feed" />
+        <link href="http://www.wengweitao.com/feeds/du-shu-bi-ji.rss.xml" type="application/atom+xml" rel="alternate" title="wwt's blog Categories Atom Feed" />
+
+
+        <!-- Mobile viewport optimized: j.mp/bplateviewport -->
+        <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1">
+
+        <link rel="stylesheet" type="text/css" href="http://www.wengweitao.com/theme/gumby.css" />
+        <link rel="stylesheet" type="text/css" href="http://www.wengweitao.com/theme/style.css" />
+        <link rel="stylesheet" type="text/css" href="http://www.wengweitao.com/theme/pygment.css" />
+
+        <script src="http://www.wengweitao.com/theme/js/libs/modernizr-2.6.2.min.js"></script>
+
+
+
+
+</head>
+
+<body id="index" class="home">
+
+
+    <div class="container">
+
+        <div class="row">
+
+          <header id="banner" class="body">
+                  <h1><a href="http://www.wengweitao.com/">wwt's blog <strong></strong></a></h1>
+          </header><!-- /#banner -->
+
+            <div id="navigation" class="navbar row">
+              <a href="#" gumby-trigger="#navigation &gt; ul" class="toggle"><i class="icon-menu"></i></a>
+             
+              <ul class="columns">
+                <li><a href="http://www.wengweitao.com/">Home</a></li>
+
+                <li><a href="http://www.wengweitao.com/pages/about-me.html">About Me</a></li>
+
+              </ul>
+            </div>
+
+<section id="content" class="body">
+
+   <div class="row">
+        <div class="eleven columns">
+
+
+            <header>
+              <h2 class="entry-title">
+                <a href="http://www.wengweitao.com/bian-xie-gao-zhi-liang-pythondai-ma-4-she-ji-mo-shi.html" rel="bookmark"
+                   title="Permalink to 编写高质量Python代码（4）——设计模式">编写高质量Python代码（4）——设计模式</a></h2>
+           
+            </header>
+            <footer class="post-info">
+              <abbr class="published" title="2015-04-13T23:31:00">
+                Mon 13 April 2015
+              </abbr>
+              <address class="vcard author">By 
+                <a class="url fn" href="http://www.wengweitao.com/author/wwt.html"> wwt</a>
+              </address>
+            </footer><!-- /.post-info -->
+            <div class="entry-content">
+              <blockquote>
+<p>本文将介绍如何写出Pythonic的设计模式代码，让设计模式更好的应用在实际的Python编程当中。</p>
+</blockquote>
+<h3>建议50：利用模块设计实现单例模式</h3>
+<p>GOF的23种设计模式中，单例是最常用的模式，通过单例模式可以保证系统中一个类只有一个实例而且该实例易于被外界访问，从而方便对实例个数的控制并节约系统资源。</p>
+<p>Python语言实现实例没有那么方便，因为缺乏声明私有构造函数的语法元素，实例又带有类型信息。如：</p>
+<div class="highlight"><pre><span class="k">class</span> <span class="nc">_Singleton</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">pass</span>
+<span class="n">Singleton</span> <span class="o">=</span> <span class="n">_Singleton</span><span class="p">()</span>
+<span class="k">del</span> <span class="n">_Singleton</span>
+<span class="n">another</span> <span class="o">=</span> <span class="n">Singleton</span><span class="o">.</span><span class="n">__class__</span><span class="p">()</span>
+<span class="k">print</span> <span class="nb">type</span><span class="p">(</span><span class="n">another</span><span class="p">)</span>
+
+<span class="c"># 输出 &lt;class &#39;__main__._Singleton&#39;&gt;</span>
+</pre></div>
+
+
+<p>虽然把Singleton的类定义删除了，但是还是可以通过已有实例的__class__属性生成一个新的实例。</p>
+<p>其实模块采用的方法是天然的单例实现方式：</p>
+<ul>
+<li>所有变量都会绑定到模块</li>
+<li>模块只初始化一次</li>
+<li>import 机制是线程安全的</li>
+</ul>
+<p>例如：</p>
+<div class="highlight"><pre><span class="c"># World.py</span>
+<span class="kn">import</span> <span class="nn">Sun</span>
+<span class="k">def</span> <span class="nf">run</span><span class="p">():</span>
+    <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+        <span class="n">Sun</span><span class="o">.</span><span class="n">rise</span><span class="p">()</span>
+        <span class="n">Sun</span><span class="o">.</span><span class="n">set</span><span class="p">()</span>
+
+<span class="c"># 在入口文件main.py里导入</span>
+<span class="kn">import</span> <span class="nn">World</span>
+<span class="n">World</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+</pre></div>
+
+
+<p>Borg模式：“实例的唯一性”本身是有问题的，实际更关注的是实例的状态，只要所有的实例共享状态（可以简单理解为属性）、行为（简单理解为方法）一致就可以了。</p>
+<div class="highlight"><pre><span class="k">class</span> <span class="nc">Borg</span><span class="p">:</span>
+  <span class="n">__shared_state</span> <span class="o">=</span> <span class="p">{}</span>
+  <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">__dict__</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__shared_state</span>
+</pre></div>
+
+
+<h3>建议51：用mixin模式让程序更加灵活</h3>
+<p>在理解mixin之前，需要重温下模板方法模式。所谓<strong>模板方法模式</strong>就是在一个方法中定义一个算法（行为）的骨架，并将一些实现步骤延迟到子类中。可以使子类在不改变算法结构的情况下，重新定义算法中的某些步骤。</p>
+<p>每一个类都有一个__bases__属性，它是一个元组，用来存放所有的基类。与其他静态语言不同，Python中的基类在运行中可以动态改变。所以当我们向其中增加新的基类时，这个类就拥有了新的方法，也就是所谓的<strong>混入(mixin)</strong>。这种动态性的好处就是代码获得了更丰富的扩展功能。可以后期增加基类，就可以增强功能，多么方便！</p>
+<div class="highlight"><pre><span class="k">class</span> <span class="nc">UseSimpleTeapot</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">get_teapot</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">SimpleTeapot</span><span class="p">()</span>
+<span class="k">class</span> <span class="nc">UseKungfuTeapot</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">get_teapot</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">KungfuTeapot</span><span class="p">()</span>
+<span class="k">def</span> <span class="nf">simple_tea_people</span><span class="p">():</span>
+    <span class="n">people</span> <span class="o">=</span> <span class="n">People</span><span class="p">()</span>
+    <span class="n">people</span><span class="o">.</span><span class="n">__bases__</span> <span class="o">+=</span> <span class="p">(</span><span class="n">UseSimpleTeapot</span><span class="p">,)</span>
+    <span class="k">return</span> <span class="n">people</span>
+<span class="k">def</span> <span class="nf">coffee_people</span><span class="p">():</span>
+    <span class="n">people</span> <span class="o">=</span> <span class="n">People</span><span class="p">()</span>
+    <span class="n">people</span><span class="o">.</span><span class="n">__bases__</span> <span class="o">+=</span> <span class="p">(</span><span class="n">UseCoffeepot</span><span class="p">,)</span>
+    <span class="k">return</span> <span class="n">people</span>
+<span class="k">def</span> <span class="nf">tea_and_coffee_people</span><span class="p">():</span>
+    <span class="n">people</span> <span class="o">=</span> <span class="n">People</span><span class="p">()</span>
+    <span class="n">people</span><span class="o">.</span><span class="n">__bases__</span> <span class="o">+=</span> <span class="p">(</span><span class="n">UseSimpleTeapot</span><span class="p">,</span> <span class="n">UseCoffeepot</span><span class="p">,)</span>
+    <span class="k">return</span> <span class="n">people</span>
+</pre></div>
+
+
+<h3>建议52：用发布订阅模式实现松耦合</h3>
+<p><strong>发布订阅模式(publis/subscribe或者pub/sub)</strong>是一种编程模式，消息的发送者不会发送其消息给特定接收者，而是将发布消息分为不同类别直接发布，并不关注订阅者是谁。而订阅者可以对一个或者多个类别感兴趣，且只接收感兴趣的消息，并且不关注是哪个发布者发布的消息。
+发布订阅模式的优点是发布者与订阅者松散的耦合，双方不需要知道对方的存在。要实现这个模式需要一个中间代理人，在实现中一般称为Broker，它维护着发布者和订阅者的关系：订阅者把感兴趣的主题告诉它，而发布者的信息也通过它路由到各个订阅者处。简单的实现如下：</p>
+<div class="highlight"><pre><span class="c"># Broker.py</span>
+<span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">defaultdict</span>
+<span class="n">route_table</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">sub</span><span class="p">(</span><span class="n">topic</span><span class="p">,</span> <span class="n">callback</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">callback</span> <span class="ow">in</span> <span class="n">route_table</span><span class="p">[</span><span class="n">topic</span><span class="p">]:</span>
+        <span class="k">return</span>
+    <span class="n">route_table</span><span class="p">[</span><span class="n">topic</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">callback</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">pub</span><span class="p">(</span><span class="n">topic</span><span class="p">,</span> <span class="o">*</span><span class="n">a</span><span class="p">,</span> <span class="o">**</span><span class="n">kw</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">func</span> <span class="ow">in</span> <span class="n">route_table</span><span class="p">[</span><span class="n">topic</span><span class="p">]:</span>
+        <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">a</span><span class="p">,</span> <span class="o">**</span><span class="n">kw</span><span class="p">)</span>
+</pre></div>
+
+
+<p>它的应用：</p>
+<div class="highlight"><pre><span class="kn">import</span> <span class="nn">Broker</span>
+<span class="k">def</span> <span class="nf">greeting</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
+    <span class="k">print</span> <span class="s">&#39;Hello, </span><span class="si">%s</span><span class="s">.&#39;</span> <span class="o">%</span> <span class="n">name</span>
+<span class="n">Broker</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s">&#39;greet&#39;</span><span class="p">,</span><span class="n">greeting</span><span class="p">)</span>
+<span class="n">Broker</span><span class="o">.</span><span class="n">pub</span><span class="p">(</span><span class="s">&#39;greet&#39;</span><span class="p">,</span><span class="s">&#39;wwt&#39;</span><span class="p">)</span>
+</pre></div>
+
+
+<p>输出：</p>
+<div class="highlight"><pre><span class="n">Hello</span><span class="p">,</span> <span class="n">wwt</span><span class="p">.</span>
+</pre></div>
+
+
+<p>上面是简化的实现，blinker和Python-message两个模块提供了更加完备的实现。下面以python-message为例说明。
+首先需要安装：</p>
+<div class="highlight"><pre><span class="n">pip</span> <span class="n">install</span> <span class="n">message</span>
+</pre></div>
+
+
+<div class="highlight"><pre><span class="kn">import</span> <span class="nn">message</span>
+<span class="k">def</span> <span class="nf">hello</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
+    <span class="k">print</span> <span class="s">&#39;hello </span><span class="si">%s</span><span class="s">.&#39;</span> <span class="o">%</span> <span class="n">name</span>
+<span class="n">message</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s">&#39;greet&#39;</span><span class="p">,</span><span class="n">hello</span><span class="p">)</span>
+<span class="n">message</span><span class="o">.</span><span class="n">pub</span><span class="p">(</span><span class="s">&#39;greet&#39;</span><span class="p">,</span><span class="s">&#39;wwt&#39;</span><span class="p">)</span>
+</pre></div>
+
+
+<p>除了sub()/pub()之外，Python-message还支持取消订阅和终止消息传递。</p>
+<h3>建议53：用状态模式美化代码</h3>
+<p>所谓<strong>状态模式</strong>，就是当一个对象的内在状态改变时允许改变其行为，但这个对象看起来像是改变了其类。
+状态模式主要用于控制一个对象状态的条件表达式过于复杂的情况，其可把状态的判断逻辑转移到表示不同状态的一系列类中，进而把复杂的判断逻辑简化。
+例如，一个人，工作日和周日的日常生活是不同的：</p>
+<div class="highlight"><pre><span class="k">def</span> <span class="nf">workday</span><span class="p">():</span>
+    <span class="k">print</span> <span class="s">&#39;work hard&#39;</span>
+<span class="k">def</span> <span class="nf">weekend</span><span class="p">():</span>
+    <span class="k">print</span> <span class="s">&#39;play harder!&#39;</span>
+
+<span class="k">class</span> <span class="nc">People</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span> <span class="k">pass</span>
+
+<span class="n">people</span> <span class="o">=</span> <span class="n">People</span><span class="p">()</span>
+
+<span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">xrange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">8</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">6</span><span class="p">:</span>
+            <span class="n">people</span><span class="o">.</span><span class="n">day</span> <span class="o">=</span> <span class="n">weekend</span>
+        <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">people</span><span class="o">.</span><span class="n">day</span> <span class="o">=</span> <span class="n">workday</span>
+        <span class="n">people</span><span class="o">.</span><span class="n">day</span><span class="p">()</span>
+</pre></div>
+
+
+<p>通过在不同条件下将实例的方法替换掉，就实现了状态模式。</p>
+<p>在网络编程中，需要判断用户是否登录，只有登录后才能调用某些函数，如果每个函数前面都加上if ... raise ... 那么这样代码会很难看。一个解决方法是使用decorator:</p>
+<div class="highlight"><pre><span class="k">def</span> <span class="nf">ensure_signin</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">_func</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">a</span><span class="p">,</span> <span class="o">**</span><span class="n">kw</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_signin</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">NeedSignin</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">a</span><span class="p">,</span> <span class="o">**</span><span class="n">kw</span><span class="p">)</span>
+<span class="nd">@ensure_signin</span>
+<span class="k">def</span> <span class="nf">do_sth</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">a</span><span class="p">,</span> <span class="o">**</span><span class="n">kw</span><span class="p">):</span>
+    <span class="o">...</span>
+</pre></div>
+
+
+<p>但是如果需要检查的不仅仅是用户是否登陆，还有其他需求，那么如果在每个函数前面都加上4,5个装饰器，那样也很难看。这时候就可以使用state的状态转移。</p>
+<hr />
+<blockquote>
+<p>Read from《<a href="http://book.douban.com/subject/25910544/">编写高质量代码：改善Python程序的91个建议</a>》</p>
+</blockquote>
+            </div><!-- /.entry-content -->
+            <div class="comments">
+              <h3>Comments</h3>
+              <div id="disqus_thread"></div>
+              <script type="text/javascript">
+                var disqus_identifier = "bian-xie-gao-zhi-liang-pythondai-ma-4-she-ji-mo-shi.html";
+                (function() {
+                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                dsq.src = 'http://wengwt.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                })();
+              </script>
+            </div>
+
+
+        </div><!-- /.eleven.columns -->
+
+<div class="three columns">
+
+<h4>Pages</h4>
+
+ <ul>
+      <li><a href="http://www.wengweitao.com/pages/about-me.html">About Me</a></li>
+  </ul>
+
+<h4>Categories</h4>
+<ul>
+		<li><a href="http://www.wengweitao.com/category/du-shu-bi-ji.html">读书笔记</a></li>
+		<li><a href="http://www.wengweitao.com/category/gong-ju.html">工具</a></li>
+		<li><a href="http://www.wengweitao.com/category/python.html">Python</a></li>
+		<li><a href="http://www.wengweitao.com/category/sheng-huo.html">生活</a></li>
+		<li><a href="http://www.wengweitao.com/category/suan-fa-yu-shu-ju-jie-gou.html">算法与数据结构</a></li>
+</ul>
+
+
+<h4>Tags</h4>
+	<ul>
+	    <li class="tag-4"><a href="http://www.wengweitao.com/tag/gong-ju.html">工具</a></li>
+	    <li class="tag-2"><a href="http://www.wengweitao.com/tag/mian-shi-ti.html">面试题</a></li>
+	    <li class="tag-4"><a href="http://www.wengweitao.com/tag/jiao-cheng.html">教程</a></li>
+	    <li class="tag-0"><a href="http://www.wengweitao.com/tag/python.html">Python</a></li>
+	    <li class="tag-4"><a href="http://www.wengweitao.com/tag/ce-shi.html">测试</a></li>
+</ul>
+
+
+<nav class="widget">
+  <h4>Social</h4>
+  <ul>
+    <li><a href="https://github.com/nurnoch">github</a></li>
+    <li><a href="http://twitter.com/wwttc">twitter</a></li>
+    <li><a href="http://www.facebook.com/100001903577931">facebook</a></li>
+    <li><a href="http://weibo.com/u/2678027854">weibo</a></li>
+  </ul>
+</nav>
+
+</div> </div><!-- /.row -->
+
+
+</section>
+
+       </div><!-- /.row -->
+    </div><!-- /.container -->
+
+
+       <div class="container.nopad bg">
+
+    
+        <footer id="credits" class="row">
+          <div class="seven columns left-center">
+
+                   <address id="about" class="vcard body">
+                    Proudly powered by <a href="http://getpelican.com/">Pelican</a>,
+                    which takes great advantage of <a href="http://python.org">Python</a>.
+                    <br />
+                    Based on the <a target="_blank" href="http://gumbyframework.com">Gumby Framework</a>
+                    </address>
+          </div>
+
+
+          <div class="seven columns">
+            <div class="row">
+              <ul class="socbtns">
+
+
+
+
+
+              </ul>
+            </div>
+          </div>
+        </footer>
+
+    </div>
+
+
+<script type="text/javascript">
+    var disqus_shortname = 'wengwt';
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+  <script src="http://www.wengweitao.com/theme/js/libs/jquery-1.9.1.min.js"></script>
+  <script src="http://www.wengweitao.com/theme/js/libs/gumby.min.js"></script>
+  <script src="http://www.wengweitao.com/theme/js/plugins.js"></script>
+</body>
+</html>

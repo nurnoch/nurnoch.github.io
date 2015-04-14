@@ -54,6 +54,58 @@
         <div class="eleven columns">
                  <ol id="post-list">
                         <li><article class="hentry">
+                                <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/bian-xie-gao-zhi-liang-pythondai-ma-4-she-ji-mo-shi.html" rel="bookmark" title="Permalink to 编写高质量Python代码（4）——设计模式">编写高质量Python代码（4）——设计模式</a></h2> </header>
+                                <footer class="post-info">
+                                    <abbr class="published" title="2015-04-13T23:31:00"> Mon 13 April 2015 </abbr>
+                                    <address class="vcard author">By 
+                                    <a class="url fn" href="http://www.wengweitao.com/author/wwt.html"> wwt</a>
+                                    </address>
+                                </footer><!-- /.post-info -->
+                                <div class="entry-content"> <blockquote>
+<p>本文将介绍如何写出Pythonic的设计模式代码，让设计模式更好的应用在实际的Python编程当中。</p>
+</blockquote>
+<h3>建议50：利用模块设计实现单例模式</h3>
+<p>GOF的23种设计模式中，单例是最常用的模式，通过单例模式可以保证系统中一个类只有一个实例而且该实例易于被外界访问，从而方便对实例个数的控制并节约系统资源。</p>
+<p>Python语言实现实例没有那么方便，因为缺乏声明私有构造函数的语法元素，实例又带有类型信息。如：</p>
+<div class="highlight"><pre><span class="k">class</span> <span class="nc">_Singleton</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">pass</span>
+<span class="n">Singleton</span> <span class="o">=</span> <span class="n">_Singleton</span><span class="p">()</span>
+<span class="k">del</span> <span class="n">_Singleton</span>
+<span class="n">another</span> <span class="o">=</span> <span class="n">Singleton</span><span class="o">.</span><span class="n">__class__</span><span class="p">()</span>
+<span class="k">print</span> <span class="nb">type</span><span class="p">(</span><span class="n">another</span><span class="p">)</span>
+
+<span class="c"># 输出 &lt;class &#39;__main__._Singleton&#39;&gt;</span>
+</pre></div>
+
+
+<p>虽然把Singleton的类定义删除了，但是还是可以通过已有实例的__class__属性生成一个新的实例。</p>
+<p>其实模块采用的方法是天然的单例实现方式：</p>
+<ul>
+<li>所有变量都会绑定到模块</li>
+<li>模块只初始化一次</li>
+<li>import 机制是线程安全的</li>
+</ul>
+<p>例如：</p>
+<div class="highlight"><pre><span class="c"># World.py</span>
+<span class="kn">import</span> <span class="nn">Sun</span>
+<span class="k">def</span> <span class="nf">run</span><span class="p">():</span>
+    <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+        <span class="n">Sun</span><span class="o">.</span><span class="n">rise</span><span class="p">()</span>
+        <span class="n">Sun</span><span class="o">.</span><span class="n">set ...</span></pre></div> </div><!-- /.entry-content -->
+
+                                <div class="medium primary btn"><a href="http://www.wengweitao.com/bian-xie-gao-zhi-liang-pythondai-ma-4-she-ji-mo-shi.html" rel="bookmark" title="Permalink to 编写高质量Python代码（4）——设计模式">Read more <i class="icon-arrow-right"></i></a></div>
+
+
+
+                                <div class="row tag-row">
+                                        <span>Tagged as : </span>
+                                            <a class="danger label" href="http://www.wengweitao.com/tag/python.html">Python</a>
+                                </div>
+
+
+
+                        </article></li>
+                        <li><article class="hentry">
                                 <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/bian-xie-gao-zhi-liang-pythondai-ma-3-ku.html" rel="bookmark" title="Permalink to 编写高质量Python代码（3）——库">编写高质量Python代码（3）——库</a></h2> </header>
                                 <footer class="post-info">
                                     <abbr class="published" title="2015-04-08T22:58:00"> Wed 08 April 2015 </abbr>
@@ -302,11 +354,11 @@ YAPF与其他的格式化工具不同，其算法能够把代码重新格式化�
 
 <h4>Tags</h4>
 	<ul>
-	    <li class="tag-4"><a href="http://www.wengweitao.com/tag/ce-shi.html">测试</a></li>
-	    <li class="tag-2"><a href="http://www.wengweitao.com/tag/mian-shi-ti.html">面试题</a></li>
-	    <li class="tag-1"><a href="http://www.wengweitao.com/tag/python.html">Python</a></li>
-	    <li class="tag-4"><a href="http://www.wengweitao.com/tag/jiao-cheng.html">教程</a></li>
 	    <li class="tag-4"><a href="http://www.wengweitao.com/tag/gong-ju.html">工具</a></li>
+	    <li class="tag-2"><a href="http://www.wengweitao.com/tag/mian-shi-ti.html">面试题</a></li>
+	    <li class="tag-4"><a href="http://www.wengweitao.com/tag/jiao-cheng.html">教程</a></li>
+	    <li class="tag-0"><a href="http://www.wengweitao.com/tag/python.html">Python</a></li>
+	    <li class="tag-4"><a href="http://www.wengweitao.com/tag/ce-shi.html">测试</a></li>
 </ul>
 
 
