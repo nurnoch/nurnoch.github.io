@@ -1,5 +1,256 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>wwt's blog</title><link href="http://www.wengweitao.com/" rel="alternate"></link><link href="http://www.wengweitao.com/feeds/gong-ju.rss.xml" rel="self"></link><id>http://www.wengweitao.com/</id><updated>2015-04-10T19:35:00+08:00</updated><entry><title>使Pelican支持LaTex数学公式</title><link href="http://www.wengweitao.com/shi-pelicanzhi-chi-latexshu-xue-gong-shi.html" rel="alternate"></link><updated>2015-04-10T19:35:00+08:00</updated><author><name>wwt</name></author><id>tag:www.wengweitao.com,2015-04-10:shi-pelicanzhi-chi-latexshu-xue-gong-shi.html</id><summary type="html">&lt;p&gt;作为一个技术博客，在写文章的时候，肯定需要经常输入各种公式符号。在之前写一篇文章的时候，发现Pelican默认是不支持编辑数学公式的。之前用过一些在线的markdonw编辑器，都是通过&lt;a href="https://github.com/mathjax/mathjax"&gt;MathJax&lt;/a&gt;来支持在markdown中书写数学公式，而且用起来非常的方便，语法基本和LaTex一样。于是，就找到了一种简单的使Pelican支持LaTex语法的数学公式，在这里分享给大家。&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>wwt's blog</title><link href="http://www.wengweitao.com/" rel="alternate"></link><link href="http://www.wengweitao.com/feeds/gong-ju.rss.xml" rel="self"></link><id>http://www.wengweitao.com/</id><updated>2015-04-16T13:46:00+08:00</updated><entry><title>使用Pelican + Github Pages搭建个人博客</title><link href="http://www.wengweitao.com/shi-yong-pelican-github-pagesda-jian-ge-ren-bo-ke.html" rel="alternate"></link><updated>2015-04-16T13:46:00+08:00</updated><author><name>wwt</name></author><id>tag:www.wengweitao.com,2015-04-16:shi-yong-pelican-github-pagesda-jian-ge-ren-bo-ke.html</id><summary type="html">&lt;blockquote&gt;
+&lt;p&gt;最近有不少同学问我，如何使用Python的Pelican搭建一个像我这样的一个个人博客。今天正好论文投稿结束，于是便抽出时间写这篇教程，希望对大家有用。有任何疑问欢迎在评论里说明。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2&gt;静态网站&lt;/h2&gt;
+&lt;p&gt;早在多年之前，我就使用过WordPress + MySQL + Apache在国外的主机上搭建过个人博客。但是，对于个人博客而言，使用WordPress这种动态网站，还需要后台支持各种数据库，就显得过于臃肿。最近几年人们纷纷转向静态博客，加之Github Pages和Dropbox这些地方可以免费的放置这些静态页面，于是各种静态网站生成器便如雨后春笋出现，不完全统计的就有392种之多，这里由列出了所有的&lt;a href="https://staticsitegenerators.net/"&gt;Static site generator 列表及 Github 关注度排名&lt;/a&gt;。&lt;/p&gt;
+&lt;h3&gt;什么是静态网站&lt;/h3&gt;
+&lt;p&gt;静态的网站全部由静态网页构成，这些网页都是提前生成好的，不需要与后台数据库进行交交互，并且内容不会动态改变。静态网站具有如下特点：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;不需要数据库&lt;/li&gt;
+&lt;li&gt;访问速度更快&lt;/li&gt;
+&lt;li&gt;基本没有安全性的问题&lt;/li&gt;
+&lt;li&gt;使写作者更加专注于内容本身&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;所以我们只需要使用任何一个编辑器利用markdown写出文章，生成静态html即可，不需要php，也不需要数据库，你可以发布在任何你喜爱的服务器上。 也可以运行在 GitHub Page 上，也就是说，你可以使用 GitHub 的服务来搭建你的项目页面、博客或者网站，而且是完全免费的！&lt;/p&gt;
+&lt;h3&gt;几种常见的静态博客&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;1.&lt;a href="https://github.com/jekyll/jekyll"&gt;Jekyll&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Jekyll可以说是静态网站的鼻祖，也是最著名的静态博客引擎。它是由GitHub创始人之一使用Ruby写的。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;2.&lt;a href="https://github.com/imathis/octopress"&gt;Octopress&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Octopress是Jekyll的一个框架，但是降低了使用和部署的难度，目前也有大量的人在使用。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;3.&lt;a href="https://github.com/hexojs/hexo"&gt;Hexo&lt;/a&gt;&lt;/strong&gt;
+Hexo是使用Node.js编写的快速、简单且功能强大静态博客框架，值得一提的是Hexo作者来自中国台湾。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;4.&lt;a href="https://github.com/spf13/hugo"&gt;Hugo&lt;/a&gt;&lt;/strong&gt;
+Hugo是使用Go语言编写的，特点是网站编译的速度非常快。记得在听IPN旗下的博客节目&lt;a href="https://ipn.li/kernelpanic/3/"&gt;内核恐慌&lt;/a&gt;中Rio谈到，使用Jekyll编译2000+网页需要12分钟左右，使用未经优化的Python多核程序进行编译需要5分钟左右，而使用Hugo只用了12秒！可见速度之快。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;5.&lt;a href="https://github.com/getpelican/pelican"&gt;Pelican&lt;/a&gt;&lt;/strong&gt;
+这就是本博客使用的框架，是Python编写的静态博客框架中最流行的一种。Pelican作者来自法国，pelican在法语中的是记事本的意思，非常适合用来作为个人博客，作为一名Pythoner使用Pelican也就理所当然了。&lt;/p&gt;
+&lt;h2&gt;如何搭建静态博客&lt;/h2&gt;
+&lt;p&gt;这一部分，我将详细介绍如何使用Github Pages + Pelican搭建一个非常cool且完全免费的个人博客。&lt;/p&gt;
+&lt;h3&gt;在本地搭建Pelican&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;1.安装&lt;/strong&gt;
+直接使用pip安装Pelican即可：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;pip&lt;/span&gt; &lt;span class="n"&gt;install&lt;/span&gt; &lt;span class="n"&gt;pelican&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;通常我们都是使用Markdown来书写文章，所以还需要Pelican支持Markdown：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;pip&lt;/span&gt; &lt;span class="n"&gt;install&lt;/span&gt; &lt;span class="n"&gt;markdown&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;strong&gt;2.生成站点&lt;/strong&gt;
+在你的电脑上，建立一个目录，作为博客的主目录。我们假定，它的名称为blog。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;mkdir&lt;/span&gt; &lt;span class="n"&gt;blog&lt;/span&gt;
+&lt;span class="n"&gt;cd&lt;/span&gt; &lt;span class="n"&gt;blog&lt;/span&gt;
+&lt;span class="n"&gt;pelican&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;quickstart&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;运行一下命令后，就生成了一个站点，包含以下目录：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;blog&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;
+&lt;span class="err"&gt;├──&lt;/span&gt; &lt;span class="n"&gt;content&lt;/span&gt;              &lt;span class="err"&gt;#&lt;/span&gt; &lt;span class="err"&gt;存放输入的源文件&lt;/span&gt;
+&lt;span class="err"&gt;│&lt;/span&gt;   &lt;span class="err"&gt;└──&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;pages&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;          &lt;span class="err"&gt;#&lt;/span&gt; &lt;span class="err"&gt;存放手工创建的静态页面&lt;/span&gt;
+&lt;span class="err"&gt;├──&lt;/span&gt; &lt;span class="n"&gt;output&lt;/span&gt;               &lt;span class="err"&gt;#&lt;/span&gt; &lt;span class="err"&gt;生成的输出文件&lt;/span&gt;
+&lt;span class="err"&gt;├──&lt;/span&gt; &lt;span class="n"&gt;develop_server&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;sh&lt;/span&gt;    &lt;span class="err"&gt;#&lt;/span&gt; &lt;span class="err"&gt;方便开启测试服务器&lt;/span&gt;
+&lt;span class="err"&gt;├──&lt;/span&gt; &lt;span class="n"&gt;Makefile&lt;/span&gt;             &lt;span class="err"&gt;#&lt;/span&gt; &lt;span class="err"&gt;方便管理博客的&lt;/span&gt;&lt;span class="n"&gt;Makefile&lt;/span&gt;
+&lt;span class="err"&gt;├──&lt;/span&gt; &lt;span class="n"&gt;pelicanconf&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;py&lt;/span&gt;       &lt;span class="err"&gt;#&lt;/span&gt; &lt;span class="err"&gt;主配置文件&lt;/span&gt;
+&lt;span class="err"&gt;└──&lt;/span&gt; &lt;span class="n"&gt;publishconf&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;py&lt;/span&gt;       &lt;span class="err"&gt;#&lt;/span&gt; &lt;span class="err"&gt;主发布文件，可删除&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;另外，生成的过程中需要配置一些东西，大部分都可以一路回车，选择默认设置，其中有一步需要你填写自己的网站域名，如果暂时没有，可以先随便设置，之后可以在pelicanconf.py文件中进行修改。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;3.创建文件&lt;/strong&gt;
+接下来，就可以使用你喜欢的任何编辑器用markdown语法写你的第一篇文章。需要在每篇文章的开头填入以下关于文章的元信息：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Title: 文章标题
+Date: 创建日期
+Modified: 修改日期
+Category: 文章分类，标志本文处于该分类下
+Tags: 文章标签，标志本文处于该标签下
+Slug: URL中该文章的链接地址
+Author: 作者&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;其中Title和Category是必选的，其他的选择可以不写。在这些元信息的后面就是文章的内容了，例如：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Title: My super title
+Date: 2010-12-03 10:20
+Modified: 2010-12-05 19:30
+Category: Python
+Tags: pelican, publishing
+Slug: my-super-post
+Authors: Alexis Metaireau, Conan Doyle
+Summary: Short version for index and feeds
+This is the content of my super blog post.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;把以上的文件保存在content目录下，如保存为./content/test.md&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;4.生成静态页面&lt;/strong&gt;
+返回博客的主目录（即包含pelican文件的目录），然后在命令行中运行：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;make&lt;/span&gt; &lt;span class="n"&gt;html&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;这样就会自动在output目录下生成content目录下markdown文件对应的静态页面&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;5.预览站点&lt;/strong&gt;
+可以先在本地预览站点，在博客主目录下：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;python&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;m&lt;/span&gt; &lt;span class="n"&gt;SimpleHTTPServer&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;现在通过在浏览器中访问 http://localhost:8000/ 就可以看到你的站点了。&lt;/p&gt;
+&lt;h3&gt;部署到Github上&lt;/h3&gt;
+&lt;p&gt;Github就提供了&lt;a href="https://pages.github.com/"&gt;Pages&lt;/a&gt;功能，允许用户自定义项目首页，用来替代默认的源码列表。所以，github Pages可以被认为是用户编写的、托管在github上的静态网页。于是，我们就可以将生成的静态网页部署在Github Pages上。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;1.建立一个repository&lt;/strong&gt;
+登陆自己的Github主页，创建一个名字为：username.github.io 的repository。
+其中必须修改username为自己账号的username，如：nurnoch.github.io&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;2.将生成的静态网站上传到repository&lt;/strong&gt;
+进入到output目录下，运行：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;git&lt;/span&gt; &lt;span class="n"&gt;init&lt;/span&gt;
+&lt;span class="n"&gt;git&lt;/span&gt; &lt;span class="n"&gt;remote&lt;/span&gt; &lt;span class="n"&gt;add&lt;/span&gt; &lt;span class="n"&gt;origin&lt;/span&gt; &lt;span class="n"&gt;https&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="c1"&gt;//github.com/username/username.github.com.git&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;将username替换为自己的github用户名，初始化，并添加远程repository，将会生成 .git的目录，然后我们将output目录下的所有文件上传到github：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;git&lt;/span&gt; &lt;span class="n"&gt;add&lt;/span&gt; &lt;span class="p"&gt;.&lt;/span&gt;
+&lt;span class="n"&gt;git&lt;/span&gt; &lt;span class="n"&gt;commit&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;m&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;update&amp;quot;&lt;/span&gt;
+&lt;span class="n"&gt;git&lt;/span&gt; &lt;span class="n"&gt;push&lt;/span&gt; &lt;span class="n"&gt;origin&lt;/span&gt; &lt;span class="n"&gt;master&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;此时可能需要输入账户和密码。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;3.开始访问&lt;/strong&gt;
+访问http://username.github.io 就可以看到自己的个人博客站点了。
+注意：第一次需要等待一段时间后才能看到。&lt;/p&gt;
+&lt;h2&gt;配置Pelican&lt;/h2&gt;
+&lt;p&gt;通过修改在博客根目录下的pelicanconf.py文件，可以对Pelican进行配置，具体配置可以&lt;a href="http://docs.getpelican.com/en/3.4.0/settings.html"&gt;参考这里&lt;/a&gt;。以下，是官方文档给出的一个配置例子：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c"&gt;# -*- coding: utf-8 -*-&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;__future__&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;unicode_literals&lt;/span&gt;
+
+&lt;span class="n"&gt;AUTHOR&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;Alexis Métaireau&amp;#39;&lt;/span&gt;
+&lt;span class="n"&gt;SITENAME&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;Alexis&amp;#39; log&amp;quot;&lt;/span&gt;
+&lt;span class="n"&gt;SITEURL&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;http://blog.notmyidea.org&amp;#39;&lt;/span&gt;
+&lt;span class="n"&gt;TIMEZONE&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;Europe/Paris&amp;quot;&lt;/span&gt;
+
+&lt;span class="c"&gt;# can be useful in development, but set to False when you&amp;#39;re ready to publish&lt;/span&gt;
+&lt;span class="n"&gt;RELATIVE_URLS&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;True&lt;/span&gt;
+
+&lt;span class="n"&gt;GITHUB_URL&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;http://github.com/ametaireau/&amp;#39;&lt;/span&gt;
+&lt;span class="n"&gt;DISQUS_SITENAME&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;blog-notmyidea&amp;quot;&lt;/span&gt;
+&lt;span class="n"&gt;PDF_GENERATOR&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;False&lt;/span&gt;
+&lt;span class="n"&gt;REVERSE_CATEGORY_ORDER&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;True&lt;/span&gt;
+&lt;span class="n"&gt;LOCALE&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;C&amp;quot;&lt;/span&gt;
+&lt;span class="n"&gt;DEFAULT_PAGINATION&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;4&lt;/span&gt;
+&lt;span class="n"&gt;DEFAULT_DATE&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;2012&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;14&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="n"&gt;FEED_ALL_RSS&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;feeds/all.rss.xml&amp;#39;&lt;/span&gt;
+&lt;span class="n"&gt;CATEGORY_FEED_RSS&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;feeds/&lt;/span&gt;&lt;span class="si"&gt;%s&lt;/span&gt;&lt;span class="s"&gt;.rss.xml&amp;#39;&lt;/span&gt;
+
+&lt;span class="n"&gt;LINKS&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;Biologeek&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;http://biologeek.org&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+         &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;Filyb&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;http://filyb.info/&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+         &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;Libert-fr&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;http://www.libert-fr.com&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+         &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;N1k0&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;http://prendreuncafe.com/blog/&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+         &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;Tarek Ziadé&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;http://ziade.org/blog&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+         &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;Zubin Mithra&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;http://zubin71.wordpress.com/&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;),)&lt;/span&gt;
+
+&lt;span class="n"&gt;SOCIAL&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;twitter&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;http://twitter.com/ametaireau&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+          &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;lastfm&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;http://lastfm.com/user/akounet&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+          &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;github&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;http://github.com/ametaireau&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;),)&lt;/span&gt;
+
+&lt;span class="c"&gt;# global metadata to all the contents&lt;/span&gt;
+&lt;span class="n"&gt;DEFAULT_METADATA&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;yeah&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;it is&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;),)&lt;/span&gt;
+
+&lt;span class="c"&gt;# path-specific metadata&lt;/span&gt;
+&lt;span class="n"&gt;EXTRA_PATH_METADATA&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="s"&gt;&amp;#39;extra/robots.txt&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;path&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;robots.txt&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;},&lt;/span&gt;
+    &lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="c"&gt;# static paths will be copied without parsing their contents&lt;/span&gt;
+&lt;span class="n"&gt;STATIC_PATHS&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;
+    &lt;span class="s"&gt;&amp;#39;pictures&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="s"&gt;&amp;#39;extra/robots.txt&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="p"&gt;]&lt;/span&gt;
+
+&lt;span class="c"&gt;# custom page generated with a jinja2 template&lt;/span&gt;
+&lt;span class="n"&gt;TEMPLATE_PAGES&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;pages/jinja2_template.html&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;jinja2_template.html&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="c"&gt;# code blocks with line numbers&lt;/span&gt;
+&lt;span class="n"&gt;PYGMENTS_RST_OPTIONS&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;linenos&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;table&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="c"&gt;# foobar will not be used, because it&amp;#39;s not in caps. All configuration keys&lt;/span&gt;
+&lt;span class="c"&gt;# have to be in caps&lt;/span&gt;
+&lt;span class="n"&gt;foobar&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;barbaz&amp;quot;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;我们可以根据自己的需求修改其中的：站点信息、时区和日期格式、默认语言和环境、主题、插件等。&lt;/p&gt;
+&lt;h3&gt;增加sitemap&lt;/h3&gt;
+&lt;p&gt;Pelican有着丰富的插件，可以配置sitemap插件, 生成 sitemap.xml 供搜索引擎使用。
+首先，下载Pelican的所有插件：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;git&lt;/span&gt; &lt;span class="n"&gt;clone&lt;/span&gt; &lt;span class="n"&gt;git&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="c1"&gt;//github.com/getpelican/pelican-plugins.git&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;修改pelicanconf.py文件：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;PLUGIN_PATH&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;u&amp;quot;pelican-plugins&amp;quot;&lt;/span&gt;
+
+&lt;span class="n"&gt;PLUGINS&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;sitemap&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+
+&lt;span class="c"&gt;# 配置sitemap 插件&lt;/span&gt;
+&lt;span class="n"&gt;SITEMAP&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="s"&gt;&amp;quot;format&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;xml&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="s"&gt;&amp;quot;priorities&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+        &lt;span class="s"&gt;&amp;quot;articles&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mf"&gt;0.7&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="s"&gt;&amp;quot;indexes&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mf"&gt;0.5&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="s"&gt;&amp;quot;pages&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mf"&gt;0.3&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="p"&gt;},&lt;/span&gt;
+    &lt;span class="s"&gt;&amp;quot;changefreqs&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+        &lt;span class="s"&gt;&amp;quot;articles&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;monthly&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="s"&gt;&amp;quot;indexes&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;daily&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="s"&gt;&amp;quot;pages&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;monthly&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;使用浏览器访问 &lt;em&gt;your domain name&lt;/em&gt;/sitemap.xml即可看到生成的 Sitemap 了。&lt;/p&gt;
+&lt;h3&gt;增加评论功能&lt;/h3&gt;
+&lt;p&gt;Pelican支持Disqus评论, 可以在Disqus上申请一个账号, 然后在pelicanconf.py里添加或修改DISQUS_SITENAME项:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;DISQUS_SITENAME&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;u&amp;quot;*your Disqus username*&amp;quot;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;这样你的博客就自动支持评论功能了。&lt;/p&gt;
+&lt;h3&gt;在文章中插入本地图片&lt;/h3&gt;
+&lt;p&gt;content目录下建立一个 imgs目录
+然后在 pelicanconf.py 中添加:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;STATIC_PATHS&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s"&gt;u&amp;quot;imgs&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;在文章中引用图片：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt; &lt;span class="o"&gt;!&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;aimg&lt;/span&gt;&lt;span class="p"&gt;](&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;imgs&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;test&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;png&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;插入数学公式&lt;/h3&gt;
+&lt;p&gt;Pelican默认是不支持数学公式的，如果想要方便的使用Pelican书写数学公式，可以&lt;a href="http://www.wengweitao.com/shi-pelicanzhi-chi-latexshu-xue-gong-shi.html"&gt;参考这里&lt;/a&gt;。&lt;/p&gt;
+&lt;h2&gt;绑定域名&lt;/h2&gt;
+&lt;p&gt;你现在可以通过https://username.github.io 访问你的博客，但是如果拥有一个自己的域名不是更酷吗？&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;1.购买一个域名&lt;/strong&gt;
+很多地方都能买到域名，如godaddy等。价格基本都差不多，我是在&lt;a href="http://client.gegehost.com/domainchecker.php"&gt;GegeHost&lt;/a&gt;上买的。现在有好多种顶级域名，不过我还是推荐.com的。输入一个域名，如果没有人注册过，你就可以注册，付款后这个域名就归你了。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;2.增加CNAME文件&lt;/strong&gt;
+在repo的根目录下面，新建一个名为CNAME的文本文件，里面写入你要绑定的域名，如：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;www.wengweitao.com&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;如果绑定的是顶级域名，则DNS要新建一条A记录，指向204.232.175.78。如果绑定的是二级域名，则DNS要新建一条CNAME记录，指向username.github.com（请将username换成你的用户名）。这里推荐将你的域名添加到&lt;a href="https://www.dnspod.cn/"&gt;DNSPod&lt;/a&gt;，方便管理。&lt;/p&gt;
+&lt;p&gt;Ok，现在你的个人博客站点就搭建好了！搭建容易，写博客难，希望各位都能坚持下去，把自己的心得体会分享给大家！&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h2&gt;REFERENCES&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;Static Site Generators: https://staticsitegenerators.net/&lt;/li&gt;
+&lt;li&gt;Pelican Docs: http://docs.getpelican.com/en/3.5.0/&lt;/li&gt;
+&lt;li&gt;github Pages和Jekyll入门：http://www.ruanyifeng.com/blog/2012/08/blogging_with_jekyll.html&lt;/li&gt;
+&lt;/ol&gt;</summary><category term="教程"></category></entry><entry><title>使Pelican支持LaTex数学公式</title><link href="http://www.wengweitao.com/shi-pelicanzhi-chi-latexshu-xue-gong-shi.html" rel="alternate"></link><updated>2015-04-10T19:35:00+08:00</updated><author><name>wwt</name></author><id>tag:www.wengweitao.com,2015-04-10:shi-pelicanzhi-chi-latexshu-xue-gong-shi.html</id><summary type="html">&lt;p&gt;作为一个技术博客，在写文章的时候，肯定需要经常输入各种公式符号。在之前写一篇文章的时候，发现Pelican默认是不支持编辑数学公式的。之前用过一些在线的markdonw编辑器，都是通过&lt;a href="https://github.com/mathjax/mathjax"&gt;MathJax&lt;/a&gt;来支持在markdown中书写数学公式，而且用起来非常的方便，语法基本和LaTex一样。于是，就找到了一种简单的使Pelican支持LaTex语法的数学公式，在这里分享给大家。&lt;/p&gt;
 &lt;h2&gt;如何使Pelican支持渲染数学公式&lt;/h2&gt;
 &lt;p&gt;最简单的方法就是使用Pelican的一个插件——&lt;a href="https://github.com/barrysteyn/pelican_plugin-render_math"&gt;pelican_plugin-render_math&lt;/a&gt;。
 这个插件可以通过使用MathJax使pelican拥有渲染数学公式的能力，并且同时支持Markdown 和reStructuredText，用起来也非常的方便！&lt;/p&gt;

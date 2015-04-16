@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+
+        <title>使用Pelican + Github Pages搭建个人博客</title>
+        <meta charset="utf-8" />
+        <link href="http://www.wengweitao.com/feeds\all.atom.xml" type="application/atom+xml" rel="alternate" title="wwt's blog Full Atom Feed" />
+        <link href="http://www.wengweitao.com/feeds/all.rss.xml" type="application/rss+xml" rel="alternate" title="wwt's blog Full RSS Feed" />
+        <link href="http://www.wengweitao.com/feeds/gong-ju.rss.xml" type="application/atom+xml" rel="alternate" title="wwt's blog Categories Atom Feed" />
+
+
+        <!-- Mobile viewport optimized: j.mp/bplateviewport -->
+        <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1">
+
+        <link rel="stylesheet" type="text/css" href="http://www.wengweitao.com/theme/gumby.css" />
+        <link rel="stylesheet" type="text/css" href="http://www.wengweitao.com/theme/style.css" />
+        <link rel="stylesheet" type="text/css" href="http://www.wengweitao.com/theme/pygment.css" />
+
+        <script src="http://www.wengweitao.com/theme/js/libs/modernizr-2.6.2.min.js"></script>
+
+
+
+
+</head>
+
+<body id="index" class="home">
+
+
+    <div class="container">
+
+        <div class="row">
+
+          <header id="banner" class="body">
+                  <h1><a href="http://www.wengweitao.com/">wwt's blog <strong></strong></a></h1>
+          </header><!-- /#banner -->
+
+            <div id="navigation" class="navbar row">
+              <a href="#" gumby-trigger="#navigation &gt; ul" class="toggle"><i class="icon-menu"></i></a>
+             
+              <ul class="columns">
+                <li><a href="http://www.wengweitao.com/">Home</a></li>
+
+                <li><a href="http://www.wengweitao.com/pages/about-me.html">About Me</a></li>
+
+              </ul>
+            </div>
+
+<section id="content" class="body">
+
+   <div class="row">
+        <div class="eleven columns">
+
+
+            <header>
+              <h2 class="entry-title">
+                <a href="http://www.wengweitao.com/shi-yong-pelican-github-pagesda-jian-ge-ren-bo-ke.html" rel="bookmark"
+                   title="Permalink to 使用Pelican + Github Pages搭建个人博客">使用Pelican + Github Pages搭建个人博客</a></h2>
+           
+            </header>
+            <footer class="post-info">
+              <abbr class="published" title="2015-04-16T13:46:00">
+                Thu 16 April 2015
+              </abbr>
+              <address class="vcard author">By 
+                <a class="url fn" href="http://www.wengweitao.com/author/wwt.html"> wwt</a>
+              </address>
+            </footer><!-- /.post-info -->
+            <div class="entry-content">
+              <blockquote>
+<p>最近有不少同学问我，如何使用Python的Pelican搭建一个像我这样的一个个人博客。今天正好论文投稿结束，于是便抽出时间写这篇教程，希望对大家有用。有任何疑问欢迎在评论里说明。</p>
+</blockquote>
+<h2>静态网站</h2>
+<p>早在多年之前，我就使用过WordPress + MySQL + Apache在国外的主机上搭建过个人博客。但是，对于个人博客而言，使用WordPress这种动态网站，还需要后台支持各种数据库，就显得过于臃肿。最近几年人们纷纷转向静态博客，加之Github Pages和Dropbox这些地方可以免费的放置这些静态页面，于是各种静态网站生成器便如雨后春笋出现，不完全统计的就有392种之多，这里由列出了所有的<a href="https://staticsitegenerators.net/">Static site generator 列表及 Github 关注度排名</a>。</p>
+<h3>什么是静态网站</h3>
+<p>静态的网站全部由静态网页构成，这些网页都是提前生成好的，不需要与后台数据库进行交交互，并且内容不会动态改变。静态网站具有如下特点：</p>
+<ul>
+<li>不需要数据库</li>
+<li>访问速度更快</li>
+<li>基本没有安全性的问题</li>
+<li>使写作者更加专注于内容本身</li>
+</ul>
+<p>所以我们只需要使用任何一个编辑器利用markdown写出文章，生成静态html即可，不需要php，也不需要数据库，你可以发布在任何你喜爱的服务器上。 也可以运行在 GitHub Page 上，也就是说，你可以使用 GitHub 的服务来搭建你的项目页面、博客或者网站，而且是完全免费的！</p>
+<h3>几种常见的静态博客</h3>
+<p><strong>1.<a href="https://github.com/jekyll/jekyll">Jekyll</a></strong></p>
+<p>Jekyll可以说是静态网站的鼻祖，也是最著名的静态博客引擎。它是由GitHub创始人之一使用Ruby写的。</p>
+<p><strong>2.<a href="https://github.com/imathis/octopress">Octopress</a></strong></p>
+<p>Octopress是Jekyll的一个框架，但是降低了使用和部署的难度，目前也有大量的人在使用。</p>
+<p><strong>3.<a href="https://github.com/hexojs/hexo">Hexo</a></strong>
+Hexo是使用Node.js编写的快速、简单且功能强大静态博客框架，值得一提的是Hexo作者来自中国台湾。</p>
+<p><strong>4.<a href="https://github.com/spf13/hugo">Hugo</a></strong>
+Hugo是使用Go语言编写的，特点是网站编译的速度非常快。记得在听IPN旗下的博客节目<a href="https://ipn.li/kernelpanic/3/">内核恐慌</a>中Rio谈到，使用Jekyll编译2000+网页需要12分钟左右，使用未经优化的Python多核程序进行编译需要5分钟左右，而使用Hugo只用了12秒！可见速度之快。</p>
+<p><strong>5.<a href="https://github.com/getpelican/pelican">Pelican</a></strong>
+这就是本博客使用的框架，是Python编写的静态博客框架中最流行的一种。Pelican作者来自法国，pelican在法语中的是记事本的意思，非常适合用来作为个人博客，作为一名Pythoner使用Pelican也就理所当然了。</p>
+<h2>如何搭建静态博客</h2>
+<p>这一部分，我将详细介绍如何使用Github Pages + Pelican搭建一个非常cool且完全免费的个人博客。</p>
+<h3>在本地搭建Pelican</h3>
+<p><strong>1.安装</strong>
+直接使用pip安装Pelican即可：</p>
+<div class="highlight"><pre><span class="n">pip</span> <span class="n">install</span> <span class="n">pelican</span>
+</pre></div>
+
+
+<p>通常我们都是使用Markdown来书写文章，所以还需要Pelican支持Markdown：</p>
+<div class="highlight"><pre><span class="n">pip</span> <span class="n">install</span> <span class="n">markdown</span>
+</pre></div>
+
+
+<p><strong>2.生成站点</strong>
+在你的电脑上，建立一个目录，作为博客的主目录。我们假定，它的名称为blog。</p>
+<div class="highlight"><pre><span class="n">mkdir</span> <span class="n">blog</span>
+<span class="n">cd</span> <span class="n">blog</span>
+<span class="n">pelican</span><span class="o">-</span><span class="n">quickstart</span>
+</pre></div>
+
+
+<p>运行一下命令后，就生成了一个站点，包含以下目录：</p>
+<div class="highlight"><pre><span class="n">blog</span><span class="o">/</span>
+<span class="err">├──</span> <span class="n">content</span>              <span class="err">#</span> <span class="err">存放输入的源文件</span>
+<span class="err">│</span>   <span class="err">└──</span> <span class="p">(</span><span class="n">pages</span><span class="p">)</span>          <span class="err">#</span> <span class="err">存放手工创建的静态页面</span>
+<span class="err">├──</span> <span class="n">output</span>               <span class="err">#</span> <span class="err">生成的输出文件</span>
+<span class="err">├──</span> <span class="n">develop_server</span><span class="p">.</span><span class="n">sh</span>    <span class="err">#</span> <span class="err">方便开启测试服务器</span>
+<span class="err">├──</span> <span class="n">Makefile</span>             <span class="err">#</span> <span class="err">方便管理博客的</span><span class="n">Makefile</span>
+<span class="err">├──</span> <span class="n">pelicanconf</span><span class="p">.</span><span class="n">py</span>       <span class="err">#</span> <span class="err">主配置文件</span>
+<span class="err">└──</span> <span class="n">publishconf</span><span class="p">.</span><span class="n">py</span>       <span class="err">#</span> <span class="err">主发布文件，可删除</span>
+</pre></div>
+
+
+<p>另外，生成的过程中需要配置一些东西，大部分都可以一路回车，选择默认设置，其中有一步需要你填写自己的网站域名，如果暂时没有，可以先随便设置，之后可以在pelicanconf.py文件中进行修改。</p>
+<p><strong>3.创建文件</strong>
+接下来，就可以使用你喜欢的任何编辑器用markdown语法写你的第一篇文章。需要在每篇文章的开头填入以下关于文章的元信息：</p>
+<blockquote>
+<p>Title: 文章标题
+Date: 创建日期
+Modified: 修改日期
+Category: 文章分类，标志本文处于该分类下
+Tags: 文章标签，标志本文处于该标签下
+Slug: URL中该文章的链接地址
+Author: 作者</p>
+</blockquote>
+<p>其中Title和Category是必选的，其他的选择可以不写。在这些元信息的后面就是文章的内容了，例如：</p>
+<blockquote>
+<p>Title: My super title
+Date: 2010-12-03 10:20
+Modified: 2010-12-05 19:30
+Category: Python
+Tags: pelican, publishing
+Slug: my-super-post
+Authors: Alexis Metaireau, Conan Doyle
+Summary: Short version for index and feeds
+This is the content of my super blog post.</p>
+</blockquote>
+<p>把以上的文件保存在content目录下，如保存为./content/test.md</p>
+<p><strong>4.生成静态页面</strong>
+返回博客的主目录（即包含pelican文件的目录），然后在命令行中运行：</p>
+<div class="highlight"><pre><span class="n">make</span> <span class="n">html</span>
+</pre></div>
+
+
+<p>这样就会自动在output目录下生成content目录下markdown文件对应的静态页面</p>
+<p><strong>5.预览站点</strong>
+可以先在本地预览站点，在博客主目录下：</p>
+<div class="highlight"><pre><span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">SimpleHTTPServer</span>
+</pre></div>
+
+
+<p>现在通过在浏览器中访问 http://localhost:8000/ 就可以看到你的站点了。</p>
+<h3>部署到Github上</h3>
+<p>Github就提供了<a href="https://pages.github.com/">Pages</a>功能，允许用户自定义项目首页，用来替代默认的源码列表。所以，github Pages可以被认为是用户编写的、托管在github上的静态网页。于是，我们就可以将生成的静态网页部署在Github Pages上。</p>
+<p><strong>1.建立一个repository</strong>
+登陆自己的Github主页，创建一个名字为：username.github.io 的repository。
+其中必须修改username为自己账号的username，如：nurnoch.github.io</p>
+<p><strong>2.将生成的静态网站上传到repository</strong>
+进入到output目录下，运行：</p>
+<div class="highlight"><pre><span class="n">git</span> <span class="n">init</span>
+<span class="n">git</span> <span class="n">remote</span> <span class="n">add</span> <span class="n">origin</span> <span class="n">https</span><span class="o">:</span><span class="c1">//github.com/username/username.github.com.git</span>
+</pre></div>
+
+
+<p>将username替换为自己的github用户名，初始化，并添加远程repository，将会生成 .git的目录，然后我们将output目录下的所有文件上传到github：</p>
+<div class="highlight"><pre><span class="n">git</span> <span class="n">add</span> <span class="p">.</span>
+<span class="n">git</span> <span class="n">commit</span> <span class="o">-</span><span class="n">m</span> <span class="s">&quot;update&quot;</span>
+<span class="n">git</span> <span class="n">push</span> <span class="n">origin</span> <span class="n">master</span>
+</pre></div>
+
+
+<p>此时可能需要输入账户和密码。</p>
+<p><strong>3.开始访问</strong>
+访问http://username.github.io 就可以看到自己的个人博客站点了。
+注意：第一次需要等待一段时间后才能看到。</p>
+<h2>配置Pelican</h2>
+<p>通过修改在博客根目录下的pelicanconf.py文件，可以对Pelican进行配置，具体配置可以<a href="http://docs.getpelican.com/en/3.4.0/settings.html">参考这里</a>。以下，是官方文档给出的一个配置例子：</p>
+<div class="highlight"><pre><span class="c"># -*- coding: utf-8 -*-</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">unicode_literals</span>
+
+<span class="n">AUTHOR</span> <span class="o">=</span> <span class="s">&#39;Alexis Métaireau&#39;</span>
+<span class="n">SITENAME</span> <span class="o">=</span> <span class="s">&quot;Alexis&#39; log&quot;</span>
+<span class="n">SITEURL</span> <span class="o">=</span> <span class="s">&#39;http://blog.notmyidea.org&#39;</span>
+<span class="n">TIMEZONE</span> <span class="o">=</span> <span class="s">&quot;Europe/Paris&quot;</span>
+
+<span class="c"># can be useful in development, but set to False when you&#39;re ready to publish</span>
+<span class="n">RELATIVE_URLS</span> <span class="o">=</span> <span class="bp">True</span>
+
+<span class="n">GITHUB_URL</span> <span class="o">=</span> <span class="s">&#39;http://github.com/ametaireau/&#39;</span>
+<span class="n">DISQUS_SITENAME</span> <span class="o">=</span> <span class="s">&quot;blog-notmyidea&quot;</span>
+<span class="n">PDF_GENERATOR</span> <span class="o">=</span> <span class="bp">False</span>
+<span class="n">REVERSE_CATEGORY_ORDER</span> <span class="o">=</span> <span class="bp">True</span>
+<span class="n">LOCALE</span> <span class="o">=</span> <span class="s">&quot;C&quot;</span>
+<span class="n">DEFAULT_PAGINATION</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="n">DEFAULT_DATE</span> <span class="o">=</span> <span class="p">(</span><span class="mi">2012</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="n">FEED_ALL_RSS</span> <span class="o">=</span> <span class="s">&#39;feeds/all.rss.xml&#39;</span>
+<span class="n">CATEGORY_FEED_RSS</span> <span class="o">=</span> <span class="s">&#39;feeds/</span><span class="si">%s</span><span class="s">.rss.xml&#39;</span>
+
+<span class="n">LINKS</span> <span class="o">=</span> <span class="p">((</span><span class="s">&#39;Biologeek&#39;</span><span class="p">,</span> <span class="s">&#39;http://biologeek.org&#39;</span><span class="p">),</span>
+         <span class="p">(</span><span class="s">&#39;Filyb&#39;</span><span class="p">,</span> <span class="s">&quot;http://filyb.info/&quot;</span><span class="p">),</span>
+         <span class="p">(</span><span class="s">&#39;Libert-fr&#39;</span><span class="p">,</span> <span class="s">&quot;http://www.libert-fr.com&quot;</span><span class="p">),</span>
+         <span class="p">(</span><span class="s">&#39;N1k0&#39;</span><span class="p">,</span> <span class="s">&quot;http://prendreuncafe.com/blog/&quot;</span><span class="p">),</span>
+         <span class="p">(</span><span class="s">&#39;Tarek Ziadé&#39;</span><span class="p">,</span> <span class="s">&quot;http://ziade.org/blog&quot;</span><span class="p">),</span>
+         <span class="p">(</span><span class="s">&#39;Zubin Mithra&#39;</span><span class="p">,</span> <span class="s">&quot;http://zubin71.wordpress.com/&quot;</span><span class="p">),)</span>
+
+<span class="n">SOCIAL</span> <span class="o">=</span> <span class="p">((</span><span class="s">&#39;twitter&#39;</span><span class="p">,</span> <span class="s">&#39;http://twitter.com/ametaireau&#39;</span><span class="p">),</span>
+          <span class="p">(</span><span class="s">&#39;lastfm&#39;</span><span class="p">,</span> <span class="s">&#39;http://lastfm.com/user/akounet&#39;</span><span class="p">),</span>
+          <span class="p">(</span><span class="s">&#39;github&#39;</span><span class="p">,</span> <span class="s">&#39;http://github.com/ametaireau&#39;</span><span class="p">),)</span>
+
+<span class="c"># global metadata to all the contents</span>
+<span class="n">DEFAULT_METADATA</span> <span class="o">=</span> <span class="p">((</span><span class="s">&#39;yeah&#39;</span><span class="p">,</span> <span class="s">&#39;it is&#39;</span><span class="p">),)</span>
+
+<span class="c"># path-specific metadata</span>
+<span class="n">EXTRA_PATH_METADATA</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">&#39;extra/robots.txt&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s">&#39;path&#39;</span><span class="p">:</span> <span class="s">&#39;robots.txt&#39;</span><span class="p">},</span>
+    <span class="p">}</span>
+
+<span class="c"># static paths will be copied without parsing their contents</span>
+<span class="n">STATIC_PATHS</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s">&#39;pictures&#39;</span><span class="p">,</span>
+    <span class="s">&#39;extra/robots.txt&#39;</span><span class="p">,</span>
+    <span class="p">]</span>
+
+<span class="c"># custom page generated with a jinja2 template</span>
+<span class="n">TEMPLATE_PAGES</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;pages/jinja2_template.html&#39;</span><span class="p">:</span> <span class="s">&#39;jinja2_template.html&#39;</span><span class="p">}</span>
+
+<span class="c"># code blocks with line numbers</span>
+<span class="n">PYGMENTS_RST_OPTIONS</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;linenos&#39;</span><span class="p">:</span> <span class="s">&#39;table&#39;</span><span class="p">}</span>
+
+<span class="c"># foobar will not be used, because it&#39;s not in caps. All configuration keys</span>
+<span class="c"># have to be in caps</span>
+<span class="n">foobar</span> <span class="o">=</span> <span class="s">&quot;barbaz&quot;</span>
+</pre></div>
+
+
+<p>我们可以根据自己的需求修改其中的：站点信息、时区和日期格式、默认语言和环境、主题、插件等。</p>
+<h3>增加sitemap</h3>
+<p>Pelican有着丰富的插件，可以配置sitemap插件, 生成 sitemap.xml 供搜索引擎使用。
+首先，下载Pelican的所有插件：</p>
+<div class="highlight"><pre><span class="n">git</span> <span class="n">clone</span> <span class="n">git</span><span class="o">:</span><span class="c1">//github.com/getpelican/pelican-plugins.git</span>
+</pre></div>
+
+
+<p>修改pelicanconf.py文件：</p>
+<div class="highlight"><pre><span class="n">PLUGIN_PATH</span> <span class="o">=</span> <span class="s">u&quot;pelican-plugins&quot;</span>
+
+<span class="n">PLUGINS</span> <span class="o">=</span> <span class="p">[</span><span class="s">&quot;sitemap&quot;</span><span class="p">]</span>
+
+<span class="c"># 配置sitemap 插件</span>
+<span class="n">SITEMAP</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">&quot;format&quot;</span><span class="p">:</span> <span class="s">&quot;xml&quot;</span><span class="p">,</span>
+    <span class="s">&quot;priorities&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s">&quot;articles&quot;</span><span class="p">:</span> <span class="mf">0.7</span><span class="p">,</span>
+        <span class="s">&quot;indexes&quot;</span><span class="p">:</span> <span class="mf">0.5</span><span class="p">,</span>
+        <span class="s">&quot;pages&quot;</span><span class="p">:</span> <span class="mf">0.3</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="s">&quot;changefreqs&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s">&quot;articles&quot;</span><span class="p">:</span> <span class="s">&quot;monthly&quot;</span><span class="p">,</span>
+        <span class="s">&quot;indexes&quot;</span><span class="p">:</span> <span class="s">&quot;daily&quot;</span><span class="p">,</span>
+        <span class="s">&quot;pages&quot;</span><span class="p">:</span> <span class="s">&quot;monthly&quot;</span><span class="p">,</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>使用浏览器访问 <em>your domain name</em>/sitemap.xml即可看到生成的 Sitemap 了。</p>
+<h3>增加评论功能</h3>
+<p>Pelican支持Disqus评论, 可以在Disqus上申请一个账号, 然后在pelicanconf.py里添加或修改DISQUS_SITENAME项:</p>
+<div class="highlight"><pre><span class="n">DISQUS_SITENAME</span> <span class="o">=</span> <span class="s">u&quot;*your Disqus username*&quot;</span>
+</pre></div>
+
+
+<p>这样你的博客就自动支持评论功能了。</p>
+<h3>在文章中插入本地图片</h3>
+<p>content目录下建立一个 imgs目录
+然后在 pelicanconf.py 中添加:</p>
+<div class="highlight"><pre><span class="n">STATIC_PATHS</span> <span class="o">=</span> <span class="p">[</span><span class="s">u&quot;imgs&quot;</span><span class="p">]</span>
+</pre></div>
+
+
+<p>在文章中引用图片：</p>
+<div class="highlight"><pre> <span class="o">!</span><span class="p">[</span><span class="n">aimg</span><span class="p">](</span><span class="o">/</span><span class="n">imgs</span><span class="o">/</span><span class="n">test</span><span class="p">.</span><span class="n">png</span><span class="p">)</span>
+</pre></div>
+
+
+<h3>插入数学公式</h3>
+<p>Pelican默认是不支持数学公式的，如果想要方便的使用Pelican书写数学公式，可以<a href="http://www.wengweitao.com/shi-pelicanzhi-chi-latexshu-xue-gong-shi.html">参考这里</a>。</p>
+<h2>绑定域名</h2>
+<p>你现在可以通过https://username.github.io 访问你的博客，但是如果拥有一个自己的域名不是更酷吗？</p>
+<p><strong>1.购买一个域名</strong>
+很多地方都能买到域名，如godaddy等。价格基本都差不多，我是在<a href="http://client.gegehost.com/domainchecker.php">GegeHost</a>上买的。现在有好多种顶级域名，不过我还是推荐.com的。输入一个域名，如果没有人注册过，你就可以注册，付款后这个域名就归你了。</p>
+<p><strong>2.增加CNAME文件</strong>
+在repo的根目录下面，新建一个名为CNAME的文本文件，里面写入你要绑定的域名，如：</p>
+<blockquote>
+<p>www.wengweitao.com</p>
+</blockquote>
+<p>如果绑定的是顶级域名，则DNS要新建一条A记录，指向204.232.175.78。如果绑定的是二级域名，则DNS要新建一条CNAME记录，指向username.github.com（请将username换成你的用户名）。这里推荐将你的域名添加到<a href="https://www.dnspod.cn/">DNSPod</a>，方便管理。</p>
+<p>Ok，现在你的个人博客站点就搭建好了！搭建容易，写博客难，希望各位都能坚持下去，把自己的心得体会分享给大家！</p>
+<hr />
+<h2>REFERENCES</h2>
+<ol>
+<li>Static Site Generators: https://staticsitegenerators.net/</li>
+<li>Pelican Docs: http://docs.getpelican.com/en/3.5.0/</li>
+<li>github Pages和Jekyll入门：http://www.ruanyifeng.com/blog/2012/08/blogging_with_jekyll.html</li>
+</ol>
+            </div><!-- /.entry-content -->
+            <div class="comments">
+              <h3>Comments</h3>
+              <div id="disqus_thread"></div>
+              <script type="text/javascript">
+                var disqus_identifier = "shi-yong-pelican-github-pagesda-jian-ge-ren-bo-ke.html";
+                (function() {
+                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                dsq.src = 'http://wengwt.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                })();
+              </script>
+            </div>
+
+
+        </div><!-- /.eleven.columns -->
+
+<div class="three columns">
+
+<h4>Pages</h4>
+
+ <ul>
+      <li><a href="http://www.wengweitao.com/pages/about-me.html">About Me</a></li>
+  </ul>
+
+<h4>Categories</h4>
+<ul>
+		<li><a href="http://www.wengweitao.com/category/du-shu-bi-ji.html">读书笔记</a></li>
+		<li><a href="http://www.wengweitao.com/category/gong-ju.html">工具</a></li>
+		<li><a href="http://www.wengweitao.com/category/python.html">Python</a></li>
+		<li><a href="http://www.wengweitao.com/category/sheng-huo.html">生活</a></li>
+		<li><a href="http://www.wengweitao.com/category/suan-fa-yu-shu-ju-jie-gou.html">算法与数据结构</a></li>
+</ul>
+
+
+<h4>Tags</h4>
+	<ul>
+	    <li class="tag-2"><a href="http://www.wengweitao.com/tag/mian-shi-ti.html">面试题</a></li>
+	    <li class="tag-4"><a href="http://www.wengweitao.com/tag/gong-ju.html">工具</a></li>
+	    <li class="tag-0"><a href="http://www.wengweitao.com/tag/python.html">Python</a></li>
+	    <li class="tag-4"><a href="http://www.wengweitao.com/tag/ce-shi.html">测试</a></li>
+	    <li class="tag-2"><a href="http://www.wengweitao.com/tag/jiao-cheng.html">教程</a></li>
+</ul>
+
+
+<nav class="widget">
+  <h4>Social</h4>
+  <ul>
+    <li><a href="https://github.com/nurnoch">github</a></li>
+    <li><a href="http://twitter.com/wwttc">twitter</a></li>
+    <li><a href="http://www.facebook.com/100001903577931">facebook</a></li>
+    <li><a href="http://weibo.com/u/2678027854">weibo</a></li>
+  </ul>
+</nav>
+
+</div> </div><!-- /.row -->
+
+
+</section>
+
+       </div><!-- /.row -->
+    </div><!-- /.container -->
+
+
+       <div class="container.nopad bg">
+
+    
+        <footer id="credits" class="row">
+          <div class="seven columns left-center">
+
+                   <address id="about" class="vcard body">
+                    Proudly powered by <a href="http://getpelican.com/">Pelican</a>,
+                    which takes great advantage of <a href="http://python.org">Python</a>.
+                    <br />
+                    Based on the <a target="_blank" href="http://gumbyframework.com">Gumby Framework</a>
+                    </address>
+          </div>
+
+
+          <div class="seven columns">
+            <div class="row">
+              <ul class="socbtns">
+
+
+
+
+
+              </ul>
+            </div>
+          </div>
+        </footer>
+
+    </div>
+
+
+<script type="text/javascript">
+    var disqus_shortname = 'wengwt';
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+  <script src="http://www.wengweitao.com/theme/js/libs/jquery-1.9.1.min.js"></script>
+  <script src="http://www.wengweitao.com/theme/js/libs/gumby.min.js"></script>
+  <script src="http://www.wengweitao.com/theme/js/plugins.js"></script>
+</body>
+</html>

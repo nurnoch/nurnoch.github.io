@@ -146,10 +146,10 @@
 
 <p>Cobination函数中，分别求解字符个数为1到n的所有组合；使用一个vector容器来保存放进组合中的字符。</p>
 <p>另外，还有另一种思路可以求解——基于位图。
-假设一共有n个字符，则可能的组合结果共有$2^n - 1$种。
+假设一共有n个字符，则可能的组合结果共有<span class="math">\(2^n - 1\)</span>种。
 以输入3个字符a、b、c为例：
-3个字符，可以用3个位来表示，从右到左的每一位分别用来代表a、b、c，该位为1表示取该元素，该位为0表示不取该元素。例如如组合a表示为001，组合b表示为010，组合ac表示为101，组合abc表示为111，而000是没有意义的，所以总共的结果就是$2^n - 1$种。</p>
-<p>因此，我们可以从值1开始循环到$2^n - 1$，输出每个值所代表的组合即可。</p>
+3个字符，可以用3个位来表示，从右到左的每一位分别用来代表a、b、c，该位为1表示取该元素，该位为0表示不取该元素。例如如组合a表示为001，组合b表示为010，组合ac表示为101，组合abc表示为111，而000是没有意义的，所以总共的结果就是<span class="math">\(2^n - 1\)</span>种。</p>
+<p>因此，我们可以从值1开始循环到<span class="math">\(2^n - 1\)</span>，输出每个值所代表的组合即可。</p>
 <div class="highlight"><pre><span class="kt">void</span> <span class="nf">Combination2</span><span class="p">(</span><span class="kt">char</span> <span class="o">*</span><span class="n">str</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">if</span><span class="p">(</span><span class="n">str</span> <span class="o">==</span> <span class="nb">NULL</span><span class="p">)</span>
         <span class="k">return</span><span class="p">;</span>
@@ -174,10 +174,10 @@
 <p><strong>问题描述</strong>：
 输入一个含有8个数字的数组，判断有没有可能把这8个数字分别放到正方体的8个顶点上，使得正方体上三组相对的面上的4个顶点的和都相等。</p>
 <p><strong>问题分析</strong>：
-我们可以求出这8个数字的全排列，然后从中找出是否符合题目条件的排列。即先得到a1、a2、a3、a4、a5、a6、a7和a8这8个数字的所有排列，然后判断有没有某个排列符合条件：
-$$a1 + a2 + a3 + a4 = a5 + a6 + a7 + a8$$ 
-$$a1 + a3 + a5 + a7 = a2 + a4 + a6 +a8$$
-$$a1 + a2 + a5 + a6 = a3 + a4 + a7 + a8$$</p>
+我们可以求出这8个数字的全排列，然后从中找出是否符合题目条件的排列。即先得到a1、a2、a3、a4、a5、a6、a7和a8这8个数字的所有排列，然后判断有没有某个排列符合条件：</p>
+<div class="math">$$a1 + a2 + a3 + a4 = a5 + a6 + a7 + a8$$</div>
+<div class="math">$$a1 + a3 + a5 + a7 = a2 + a4 + a6 +a8$$</div>
+<div class="math">$$a1 + a2 + a5 + a6 = a3 + a4 + a7 + a8$$</div>
 <p><img alt="cubic" src="./imgs/cube.png" /></p>
 <p><strong>代码实现</strong>：</p>
 <div class="highlight"><pre><span class="kt">bool</span> <span class="nf">IsEqual</span><span class="p">(</span><span class="kt">int</span> <span class="o">*</span><span class="n">nums</span><span class="p">)</span> <span class="p">{</span>
@@ -269,6 +269,44 @@ $$a1 + a2 + a5 + a6 = a3 + a4 + a7 + a8$$</p>
 <ul>
 <li><a href="http://book.douban.com/subject/6966465/">剑指offer</a></li>
 </ul>
+<script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "false";
+
+    if (false) {
+        align = (screen.width < 768) ? "left" : align;
+        indent = (screen.width < 768) ? "0em" : indent;
+        linebreak = (screen.width < 768) ? 'true' : linebreak;
+    }
+    
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = '//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); ";
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+</script>
             </div><!-- /.entry-content -->
             <div class="comments">
               <h3>Comments</h3>
@@ -306,11 +344,11 @@ $$a1 + a2 + a5 + a6 = a3 + a4 + a7 + a8$$</p>
 
 <h4>Tags</h4>
 	<ul>
-	    <li class="tag-4"><a href="http://www.wengweitao.com/tag/gong-ju.html">工具</a></li>
 	    <li class="tag-2"><a href="http://www.wengweitao.com/tag/mian-shi-ti.html">面试题</a></li>
-	    <li class="tag-4"><a href="http://www.wengweitao.com/tag/jiao-cheng.html">教程</a></li>
+	    <li class="tag-4"><a href="http://www.wengweitao.com/tag/gong-ju.html">工具</a></li>
 	    <li class="tag-0"><a href="http://www.wengweitao.com/tag/python.html">Python</a></li>
 	    <li class="tag-4"><a href="http://www.wengweitao.com/tag/ce-shi.html">测试</a></li>
+	    <li class="tag-2"><a href="http://www.wengweitao.com/tag/jiao-cheng.html">教程</a></li>
 </ul>
 
 
