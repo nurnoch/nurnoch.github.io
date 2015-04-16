@@ -128,27 +128,30 @@ Hugo是使用Go语言编写的，特点是网站编译的速度非常快。记�
 <p>另外，生成的过程中需要配置一些东西，大部分都可以一路回车，选择默认设置，其中有一步需要你填写自己的网站域名，如果暂时没有，可以先随便设置，之后可以在pelicanconf.py文件中进行修改。</p>
 <p><strong>3.创建文件</strong>
 接下来，就可以使用你喜欢的任何编辑器用markdown语法写你的第一篇文章。需要在每篇文章的开头填入以下关于文章的元信息：</p>
-<blockquote>
-<p>Title: 文章标题
-Date: 创建日期
-Modified: 修改日期
-Category: 文章分类，标志本文处于该分类下
-Tags: 文章标签，标志本文处于该标签下
-Slug: URL中该文章的链接地址
-Author: 作者</p>
-</blockquote>
+<div class="highlight"><pre><span class="nl">Title:</span> <span class="err">文章标题</span>
+<span class="nl">Date:</span> <span class="err">创建日期</span>
+<span class="nl">Modified:</span> <span class="err">修改日期</span>
+<span class="nl">Category:</span> <span class="err">文章分类，标志本文处于该分类下</span>
+<span class="nl">Tags:</span> <span class="err">文章标签，标志本文处于该标签下</span>
+<span class="nl">Slug:</span> <span class="n">URL</span><span class="err">中该文章的链接地址</span>
+<span class="nl">Author:</span> <span class="err">作者</span>
+</pre></div>
+
+
 <p>其中Title和Category是必选的，其他的选择可以不写。在这些元信息的后面就是文章的内容了，例如：</p>
-<blockquote>
-<p>Title: My super title
-Date: 2010-12-03 10:20
-Modified: 2010-12-05 19:30
-Category: Python
-Tags: pelican, publishing
-Slug: my-super-post
-Authors: Alexis Metaireau, Conan Doyle
-Summary: Short version for index and feeds
-This is the content of my super blog post.</p>
-</blockquote>
+<div class="highlight"><pre><span class="n">Title</span><span class="o">:</span> <span class="n">My</span> <span class="kd">super</span> <span class="n">title</span>
+<span class="n">Date</span><span class="o">:</span> <span class="mi">2010</span><span class="o">-</span><span class="mi">12</span><span class="o">-</span><span class="mi">03</span> <span class="mi">10</span><span class="o">:</span><span class="mi">20</span>
+<span class="n">Modified</span><span class="o">:</span> <span class="mi">2010</span><span class="o">-</span><span class="mi">12</span><span class="o">-</span><span class="mi">05</span> <span class="mi">19</span><span class="o">:</span><span class="mi">30</span>
+<span class="n">Category</span><span class="o">:</span> <span class="n">Python</span>
+<span class="n">Tags</span><span class="o">:</span> <span class="n">pelican</span><span class="o">,</span> <span class="n">publishing</span>
+<span class="n">Slug</span><span class="o">:</span> <span class="n">my</span><span class="o">-</span><span class="kd">super</span><span class="o">-</span><span class="n">post</span>
+<span class="n">Authors</span><span class="o">:</span> <span class="n">Alexis</span> <span class="n">Metaireau</span><span class="o">,</span> <span class="n">Conan</span> <span class="n">Doyle</span>
+<span class="n">Summary</span><span class="o">:</span> <span class="n">Short</span> <span class="n">version</span> <span class="k">for</span> <span class="n">index</span> <span class="n">and</span> <span class="n">feeds</span>
+
+<span class="n">This</span> <span class="k">is</span> <span class="n">the</span> <span class="n">content</span> <span class="n">of</span> <span class="n">my</span> <span class="kd">super</span> <span class="n">blog</span> <span class="n">post</span><span class="o">.</span>
+</pre></div>
+
+
 <p>把以上的文件保存在content目录下，如保存为./content/test.md</p>
 <p><strong>4.生成静态页面</strong>
 返回博客的主目录（即包含pelican文件的目录），然后在命令行中运行：</p>
@@ -355,11 +358,11 @@ This is the content of my super blog post.</p>
 
 <h4>Tags</h4>
 	<ul>
-	    <li class="tag-2"><a href="http://www.wengweitao.com/tag/jiao-cheng.html">教程</a></li>
+	    <li class="tag-4"><a href="http://www.wengweitao.com/tag/gong-ju.html">工具</a></li>
 	    <li class="tag-4"><a href="http://www.wengweitao.com/tag/ce-shi.html">测试</a></li>
 	    <li class="tag-0"><a href="http://www.wengweitao.com/tag/python.html">Python</a></li>
+	    <li class="tag-2"><a href="http://www.wengweitao.com/tag/jiao-cheng.html">教程</a></li>
 	    <li class="tag-2"><a href="http://www.wengweitao.com/tag/mian-shi-ti.html">面试题</a></li>
-	    <li class="tag-4"><a href="http://www.wengweitao.com/tag/gong-ju.html">工具</a></li>
 </ul>
 
 
