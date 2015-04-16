@@ -26,17 +26,17 @@
 &lt;p&gt;Jekyll可以说是静态网站的鼻祖，也是最著名的静态博客引擎。它是由GitHub创始人之一使用Ruby写的。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;2.&lt;a href="https://github.com/imathis/octopress"&gt;Octopress&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;Octopress是Jekyll的一个框架，但是降低了使用和部署的难度，目前也有大量的人在使用。&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;3.&lt;a href="https://github.com/hexojs/hexo"&gt;Hexo&lt;/a&gt;&lt;/strong&gt;
-Hexo是使用Node.js编写的快速、简单且功能强大静态博客框架，值得一提的是Hexo作者来自中国台湾。&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;4.&lt;a href="https://github.com/spf13/hugo"&gt;Hugo&lt;/a&gt;&lt;/strong&gt;
-Hugo是使用Go语言编写的，特点是网站编译的速度非常快。记得在听IPN旗下的博客节目&lt;a href="https://ipn.li/kernelpanic/3/"&gt;内核恐慌&lt;/a&gt;中Rio谈到，使用Jekyll编译2000+网页需要12分钟左右，使用未经优化的Python多核程序进行编译需要5分钟左右，而使用Hugo只用了12秒！可见速度之快。&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;5.&lt;a href="https://github.com/getpelican/pelican"&gt;Pelican&lt;/a&gt;&lt;/strong&gt;
-这就是本博客使用的框架，是Python编写的静态博客框架中最流行的一种。Pelican作者来自法国，pelican在法语中的是记事本的意思，非常适合用来作为个人博客，作为一名Pythoner使用Pelican也就理所当然了。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;3.&lt;a href="https://github.com/hexojs/hexo"&gt;Hexo&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Hexo是使用Node.js编写的快速、简单且功能强大静态博客框架，值得一提的是Hexo作者来自中国台湾。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;4.&lt;a href="https://github.com/spf13/hugo"&gt;Hugo&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Hugo是使用Go语言编写的，特点是网站编译的速度非常快。记得在听IPN旗下的博客节目&lt;a href="https://ipn.li/kernelpanic/3/"&gt;内核恐慌&lt;/a&gt;中Rio谈到，使用Jekyll编译2000+网页需要12分钟左右，使用未经优化的Python多核程序进行编译需要5分钟左右，而使用Hugo只用了12秒！可见速度之快。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;5.&lt;a href="https://github.com/getpelican/pelican"&gt;Pelican&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;这就是本博客使用的框架，是Python编写的静态博客框架中最流行的一种。Pelican作者来自法国，pelican在法语中的是记事本的意思，非常适合用来作为个人博客，作为一名Pythoner使用Pelican也就理所当然了。&lt;/p&gt;
 &lt;h2&gt;如何搭建静态博客&lt;/h2&gt;
 &lt;p&gt;这一部分，我将详细介绍如何使用Github Pages + Pelican搭建一个非常cool且完全免费的个人博客。&lt;/p&gt;
 &lt;h3&gt;在本地搭建Pelican&lt;/h3&gt;
-&lt;p&gt;&lt;strong&gt;1.安装&lt;/strong&gt;
-直接使用pip安装Pelican即可：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;1.安装&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;直接使用pip安装Pelican即可：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;pip&lt;/span&gt; &lt;span class="n"&gt;install&lt;/span&gt; &lt;span class="n"&gt;pelican&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
@@ -46,8 +46,8 @@ Hugo是使用Go语言编写的，特点是网站编译的速度非常快。记�
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;&lt;strong&gt;2.生成站点&lt;/strong&gt;
-在你的电脑上，建立一个目录，作为博客的主目录。我们假定，它的名称为blog。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;2.生成站点&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;在你的电脑上，建立一个目录，作为博客的主目录。我们假定，它的名称为blog。&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;mkdir&lt;/span&gt; &lt;span class="n"&gt;blog&lt;/span&gt;
 &lt;span class="n"&gt;cd&lt;/span&gt; &lt;span class="n"&gt;blog&lt;/span&gt;
 &lt;span class="n"&gt;pelican&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;quickstart&lt;/span&gt;
@@ -67,8 +67,8 @@ Hugo是使用Go语言编写的，特点是网站编译的速度非常快。记�
 
 
 &lt;p&gt;另外，生成的过程中需要配置一些东西，大部分都可以一路回车，选择默认设置，其中有一步需要你填写自己的网站域名，如果暂时没有，可以先随便设置，之后可以在pelicanconf.py文件中进行修改。&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;3.创建文件&lt;/strong&gt;
-接下来，就可以使用你喜欢的任何编辑器用markdown语法写你的第一篇文章。需要在每篇文章的开头填入以下关于文章的元信息：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;3.创建文件&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;接下来，就可以使用你喜欢的任何编辑器用markdown语法写你的第一篇文章。需要在每篇文章的开头填入以下关于文章的元信息：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nl"&gt;Title:&lt;/span&gt; &lt;span class="err"&gt;文章标题&lt;/span&gt;
 &lt;span class="nl"&gt;Date:&lt;/span&gt; &lt;span class="err"&gt;创建日期&lt;/span&gt;
 &lt;span class="nl"&gt;Modified:&lt;/span&gt; &lt;span class="err"&gt;修改日期&lt;/span&gt;
@@ -94,15 +94,15 @@ Hugo是使用Go语言编写的，特点是网站编译的速度非常快。记�
 
 
 &lt;p&gt;把以上的文件保存在content目录下，如保存为./content/test.md&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;4.生成静态页面&lt;/strong&gt;
-返回博客的主目录（即包含pelican文件的目录），然后在命令行中运行：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;4.生成静态页面&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;返回博客的主目录（即包含pelican文件的目录），然后在命令行中运行：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;make&lt;/span&gt; &lt;span class="n"&gt;html&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;这样就会自动在output目录下生成content目录下markdown文件对应的静态页面&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;5.预览站点&lt;/strong&gt;
-可以先在本地预览站点，在博客主目录下：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;5.预览站点&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;可以先在本地预览站点，在博客主目录下：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;python&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;m&lt;/span&gt; &lt;span class="n"&gt;SimpleHTTPServer&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
@@ -110,11 +110,11 @@ Hugo是使用Go语言编写的，特点是网站编译的速度非常快。记�
 &lt;p&gt;现在通过在浏览器中访问 http://localhost:8000/ 就可以看到你的站点了。&lt;/p&gt;
 &lt;h3&gt;部署到Github上&lt;/h3&gt;
 &lt;p&gt;Github就提供了&lt;a href="https://pages.github.com/"&gt;Pages&lt;/a&gt;功能，允许用户自定义项目首页，用来替代默认的源码列表。所以，github Pages可以被认为是用户编写的、托管在github上的静态网页。于是，我们就可以将生成的静态网页部署在Github Pages上。&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;1.建立一个repository&lt;/strong&gt;
-登陆自己的Github主页，创建一个名字为：username.github.io 的repository。
+&lt;p&gt;&lt;strong&gt;1.建立一个repository&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;登陆自己的Github主页，创建一个名字为：username.github.io 的repository。
 其中必须修改username为自己账号的username，如：nurnoch.github.io&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;2.将生成的静态网站上传到repository&lt;/strong&gt;
-进入到output目录下，运行：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;2.将生成的静态网站上传到repository&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;进入到output目录下，运行：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;git&lt;/span&gt; &lt;span class="n"&gt;init&lt;/span&gt;
 &lt;span class="n"&gt;git&lt;/span&gt; &lt;span class="n"&gt;remote&lt;/span&gt; &lt;span class="n"&gt;add&lt;/span&gt; &lt;span class="n"&gt;origin&lt;/span&gt; &lt;span class="n"&gt;https&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="c1"&gt;//github.com/username/username.github.com.git&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
@@ -128,8 +128,8 @@ Hugo是使用Go语言编写的，特点是网站编译的速度非常快。记�
 
 
 &lt;p&gt;此时可能需要输入账户和密码。&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;3.开始访问&lt;/strong&gt;
-访问http://username.github.io 就可以看到自己的个人博客站点了。
+&lt;p&gt;&lt;strong&gt;3.开始访问&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;访问http://username.github.io 就可以看到自己的个人博客站点了。
 注意：第一次需要等待一段时间后才能看到。&lt;/p&gt;
 &lt;h2&gt;配置Pelican&lt;/h2&gt;
 &lt;p&gt;通过修改在博客根目录下的pelicanconf.py文件，可以对Pelican进行配置，具体配置可以&lt;a href="http://docs.getpelican.com/en/3.4.0/settings.html"&gt;参考这里&lt;/a&gt;。以下，是官方文档给出的一个配置例子：&lt;/p&gt;

@@ -93,17 +93,17 @@
 <p>Jekyll可以说是静态网站的鼻祖，也是最著名的静态博客引擎。它是由GitHub创始人之一使用Ruby写的。</p>
 <p><strong>2.<a href="https://github.com/imathis/octopress">Octopress</a></strong></p>
 <p>Octopress是Jekyll的一个框架，但是降低了使用和部署的难度，目前也有大量的人在使用。</p>
-<p><strong>3.<a href="https://github.com/hexojs/hexo">Hexo</a></strong>
-Hexo是使用Node.js编写的快速、简单且功能强大静态博客框架，值得一提的是Hexo作者来自中国台湾。</p>
-<p><strong>4.<a href="https://github.com/spf13/hugo">Hugo</a></strong>
-Hugo是使用Go语言编写的，特点是网站编译的速度非常快。记得在听IPN旗下的博客节目<a href="https://ipn.li/kernelpanic/3/">内核恐慌</a>中Rio谈到，使用Jekyll编译2000+网页需要12分钟左右，使用未经优化的Python多核程序进行编译需要5分钟左右，而使用Hugo只用了12秒！可见速度之快。</p>
-<p><strong>5.<a href="https://github.com/getpelican/pelican">Pelican</a></strong>
-这就是本博客使用的框架，是Python编写的静态博客框架中最流行的一种。Pelican作者来自法国，pelican在法语中的是记事本的意思，非常适合用来作为个人博客，作为一名Pythoner使用Pelican也就理所当然了。</p>
+<p><strong>3.<a href="https://github.com/hexojs/hexo">Hexo</a></strong></p>
+<p>Hexo是使用Node.js编写的快速、简单且功能强大静态博客框架，值得一提的是Hexo作者来自中国台湾。</p>
+<p><strong>4.<a href="https://github.com/spf13/hugo">Hugo</a></strong></p>
+<p>Hugo是使用Go语言编写的，特点是网站编译的速度非常快。记得在听IPN旗下的博客节目<a href="https://ipn.li/kernelpanic/3/">内核恐慌</a>中Rio谈到，使用Jekyll编译2000+网页需要12分钟左右，使用未经优化的Python多核程序进行编译需要5分钟左右，而使用Hugo只用了12秒！可见速度之快。</p>
+<p><strong>5.<a href="https://github.com/getpelican/pelican">Pelican</a></strong></p>
+<p>这就是本博客使用的框架，是Python编写的静态博客框架中最流行的一种。Pelican作者来自法国，pelican在法语中的是记事本的意思，非常适合用来作为个人博客，作为一名Pythoner使用Pelican也就理所当然了。</p>
 <h2>如何搭建静态博客</h2>
 <p>这一部分，我将详细介绍如何使用Github Pages + Pelican搭建一个非常cool且完全免费的个人博客。</p>
 <h3>在本地搭建Pelican</h3>
-<p><strong>1.安装</strong>
-直接使用pip安装Pelican即可：</p>
+<p><strong>1.安装</strong></p>
+<p>直接使用pip安装Pelican即可：</p>
 <div class="highlight"><pre><span class="n">pip</span> <span class="n">install</span> <span class="n">pelican</span>
 </pre></div>
 
@@ -113,8 +113,8 @@ Hugo是使用Go语言编写的，特点是网站编译的速度非常快。记�
 </pre></div>
 
 
-<p><strong>2.生成站点</strong>
-在你的电脑上，建立一个目录，作为博客的主目录。我们假定，它的名称为blog。</p>
+<p><strong>2.生成站点</strong></p>
+<p>在你的电脑上，建立一个目录，作为博客的主目录。我们假定，它的名称为blog。</p>
 <div class="highlight"><pre><span class="n">mkdir</span> <span class="n">blog</span>
 <span class="n">cd</span> <span class="n">blog</span>
 <span class="n">pelican</span><span class="o">-</span><span class="n">quickstart</span>
@@ -134,8 +134,8 @@ Hugo是使用Go语言编写的，特点是网站编译的速度非常快。记�
 
 
 <p>另外，生成的过程中需要配置一些东西，大部分都可以一路回车，选择默认设置，其中有一步需要你填写自己的网站域名，如果暂时没有，可以先随便设置，之后可以在pelicanconf.py文件中进行修改。</p>
-<p><strong>3.创建文件</strong>
-接下来，就可以使用你喜欢的任何编辑器用markdown语法写你的第一篇文章。需要在每篇文章的开头填入以下关于文章的元信息：</p>
+<p><strong>3.创建文件</strong></p>
+<p>接下来，就可以使用你喜欢的任何编辑器用markdown语法写你的第一篇文章。需要在每篇文章的开头填入以下关于文章的元信息：</p>
 <div class="highlight"><pre><span class="nl">Title:</span> <span class="err">文章标题</span>
 <span class="nl">Date:</span> <span class="err">创建日期</span>
 <span class="nl">Modified:</span> <span class="err">修改日期</span>
@@ -161,15 +161,15 @@ Hugo是使用Go语言编写的，特点是网站编译的速度非常快。记�
 
 
 <p>把以上的文件保存在content目录下，如保存为./content/test.md</p>
-<p><strong>4.生成静态页面</strong>
-返回博客的主目录（即包含pelican文件的目录），然后在命令行中运行：</p>
+<p><strong>4.生成静态页面</strong></p>
+<p>返回博客的主目录（即包含pelican文件的目录），然后在命令行中运行：</p>
 <div class="highlight"><pre><span class="n">make</span> <span class="n">html</span>
 </pre></div>
 
 
 <p>这样就会自动在output目录下生成content目录下markdown文件对应的静态页面</p>
-<p><strong>5.预览站点</strong>
-可以先在本地预览站点，在博客主目录下：</p>
+<p><strong>5.预览站点</strong></p>
+<p>可以先在本地预览站点，在博客主目录下：</p>
 <div class="highlight"><pre><span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">SimpleHTTPServer</span>
 </pre></div>
 
@@ -177,11 +177,11 @@ Hugo是使用Go语言编写的，特点是网站编译的速度非常快。记�
 <p>现在通过在浏览器中访问 http://localhost:8000/ 就可以看到你的站点了。</p>
 <h3>部署到Github上</h3>
 <p>Github就提供了<a href="https://pages.github.com/">Pages</a>功能，允许用户自定义项目首页，用来替代默认的源码列表。所以，github Pages可以被认为是用户编写的、托管在github上的静态网页。于是，我们就可以将生成的静态网页部署在Github Pages上。</p>
-<p><strong>1.建立一个repository</strong>
-登陆自己的Github主页，创建一个名字为：username.github.io 的repository。
+<p><strong>1.建立一个repository</strong></p>
+<p>登陆自己的Github主页，创建一个名字为：username.github.io 的repository。
 其中必须修改username为自己账号的username，如：nurnoch.github.io</p>
-<p><strong>2.将生成的静态网站上传到repository</strong>
-进入到output目录下，运行：</p>
+<p><strong>2.将生成的静态网站上传到repository</strong></p>
+<p>进入到output目录下，运行：</p>
 <div class="highlight"><pre><span class="n">git</span> <span class="n">init</span>
 <span class="n">git</span> <span class="n">remote</span> <span class="n">add</span> <span class="n">origin</span> <span class="n">https</span><span class="o">:</span><span class="c1">//github.com/username/username.github.com.git</span>
 </pre></div>
@@ -195,8 +195,8 @@ Hugo是使用Go语言编写的，特点是网站编译的速度非常快。记�
 
 
 <p>此时可能需要输入账户和密码。</p>
-<p><strong>3.开始访问</strong>
-访问http://username.github.io 就可以看到自己的个人博客站点了。
+<p><strong>3.开始访问</strong></p>
+<p>访问http://username.github.io 就可以看到自己的个人博客站点了。
 注意：第一次需要等待一段时间后才能看到。</p>
 <h2>配置Pelican</h2>
 <p>通过修改在博客根目录下的pelicanconf.py文件，可以对Pelican进行配置，具体配置可以<a href="http://docs.getpelican.com/en/3.4.0/settings.html">参考这里</a>。以下，是官方文档给出的一个配置例子：</p>
@@ -366,11 +366,11 @@ Hugo是使用Go语言编写的，特点是网站编译的速度非常快。记�
 
 <h4>Tags</h4>
 	<ul>
-	    <li class="tag-4"><a href="http://www.wengweitao.com/tag/gong-ju.html">工具</a></li>
-	    <li class="tag-2"><a href="http://www.wengweitao.com/tag/jiao-cheng.html">教程</a></li>
-	    <li class="tag-0"><a href="http://www.wengweitao.com/tag/python.html">Python</a></li>
-	    <li class="tag-4"><a href="http://www.wengweitao.com/tag/ce-shi.html">测试</a></li>
 	    <li class="tag-2"><a href="http://www.wengweitao.com/tag/mian-shi-ti.html">面试题</a></li>
+	    <li class="tag-4"><a href="http://www.wengweitao.com/tag/gong-ju.html">工具</a></li>
+	    <li class="tag-0"><a href="http://www.wengweitao.com/tag/python.html">Python</a></li>
+	    <li class="tag-2"><a href="http://www.wengweitao.com/tag/jiao-cheng.html">教程</a></li>
+	    <li class="tag-4"><a href="http://www.wengweitao.com/tag/ce-shi.html">测试</a></li>
 </ul>
 
 
