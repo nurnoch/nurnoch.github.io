@@ -242,7 +242,7 @@ This is the content of my super blog post.&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;www.wengweitao.com&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;如果绑定的是顶级域名，则DNS要新建一条A记录，指向204.232.175.78。如果绑定的是二级域名，则DNS要新建一条CNAME记录，指向username.github.com（请将username换成你的用户名）。这里推荐将你的域名添加到&lt;a href="https://www.dnspod.cn/"&gt;DNSPod&lt;/a&gt;，方便管理。&lt;/p&gt;
+&lt;p&gt;在DNS要新建一条CNAME记录，指向username.github.com（请将username换成你的用户名）。这里推荐将你的域名添加到&lt;a href="https://www.dnspod.cn/"&gt;DNSPod&lt;/a&gt;，方便管理。&lt;/p&gt;
 &lt;p&gt;Ok，现在你的个人博客站点就搭建好了！搭建容易，写博客难，希望各位都能坚持下去，把自己的心得体会分享给大家！&lt;/p&gt;
 &lt;hr /&gt;
 &lt;h2&gt;REFERENCES&lt;/h2&gt;
