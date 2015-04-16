@@ -2,7 +2,7 @@
 <html lang="zh">
 <head>
 
-        <title>wwt's blog - 测试</title>
+        <title>wwt's blog - Vim</title>
         <meta charset="utf-8" />
         <link href="http://www.wengweitao.com/feeds\all.atom.xml" type="application/atom+xml" rel="alternate" title="wwt's blog Full Atom Feed" />
         <link href="http://www.wengweitao.com/feeds/all.rss.xml" type="application/rss+xml" rel="alternate" title="wwt's blog Full RSS Feed" />
@@ -54,22 +54,44 @@
         <div class="eleven columns">
                  <ol id="post-list">
                         <li><article class="hentry">
-                                <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/hello-world.html" rel="bookmark" title="Permalink to Hello, world">Hello, world</a></h2> </header>
+                                <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/vimru-men-jiao-cheng.html" rel="bookmark" title="Permalink to Vim入门教程">Vim入门教程</a></h2> </header>
                                 <footer class="post-info">
-                                    <abbr class="published" title="2014-07-20T00:00:00"> Sun 20 July 2014 </abbr>
+                                    <abbr class="published" title="2015-04-16T20:12:00"> Thu 16 April 2015 </abbr>
                                     <address class="vcard author">By 
                                     <a class="url fn" href="http://www.wengweitao.com/author/wwt.html"> wwt</a>
                                     </address>
                                 </footer><!-- /.post-info -->
-                                <div class="entry-content"> <p>Hello, world!</p> </div><!-- /.entry-content -->
+                                <div class="entry-content"> <blockquote>
+<p>Vim 在编辑器中是神一样的存在，熟练掌握Vim将极大提高编辑文本的效率。本文将介绍Vim最基本的操作和技巧。</p>
+</blockquote>
+<h1>操作篇</h1>
+<h3>模式</h3>
+<p>Vim中一共有4种模式：</p>
+<ol>
+<li>普通模式：启动Vim后，为普通模式，所有键都为功能键。</li>
+<li>插入模式：按下键i，进入插入模式，此时可以输入文本，返回普通模式，按Esc键。</li>
+<li>可视模式：按下键v，进入可视模式，可以移动光标对文本进行选择</li>
+<li>命令行模式：输入":"进入命令行模式，运行Vim的命令</li>
+</ol>
+<h3>最基本的移动</h3>
+<p>将光标上下左右移动，分别对应kjhl四个键。可以在前面加数字代表移动多个单位。如10j下移10行。</p>
+<h3>在文件中的移动</h3>
+<p>G-----移动到最后一行</p>
+<p>gg ------ 移动到第一行</p>
+<p>10G ------ 跳到第10行</p>
+<p>75% ----- 跳转到全文75%的地方</p>
+<h3>移动到指定字符</h3>
+<p>使用f,t,F,T可以再当前行快速移动。</p>
+<p>fx ----- 移动到光标右边的第一个’x'字符上</p>
+<p>Fx ----- 反方向查找 ...</p> </div><!-- /.entry-content -->
 
-                                <div class="medium primary btn"><a href="http://www.wengweitao.com/hello-world.html" rel="bookmark" title="Permalink to Hello, world">Read more <i class="icon-arrow-right"></i></a></div>
+                                <div class="medium primary btn"><a href="http://www.wengweitao.com/vimru-men-jiao-cheng.html" rel="bookmark" title="Permalink to Vim入门教程">Read more <i class="icon-arrow-right"></i></a></div>
 
 
 
                                 <div class="row tag-row">
                                         <span>Tagged as : </span>
-                                            <a class="danger label" href="http://www.wengweitao.com/tag/ce-shi.html">测试</a>
+                                            <a class="danger label" href="http://www.wengweitao.com/tag/vim.html">Vim</a>
                                 </div>
 
 

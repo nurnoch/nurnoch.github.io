@@ -1,5 +1,201 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>wwt's blog</title><link href="http://www.wengweitao.com/" rel="alternate"></link><link href="http://www.wengweitao.com/feeds/gong-ju.rss.xml" rel="self"></link><id>http://www.wengweitao.com/</id><updated>2015-04-16T13:46:00+08:00</updated><entry><title>使用Pelican + Github Pages搭建个人博客</title><link href="http://www.wengweitao.com/shi-yong-pelican-github-pagesda-jian-ge-ren-bo-ke.html" rel="alternate"></link><updated>2015-04-16T13:46:00+08:00</updated><author><name>wwt</name></author><id>tag:www.wengweitao.com,2015-04-16:shi-yong-pelican-github-pagesda-jian-ge-ren-bo-ke.html</id><summary type="html">&lt;blockquote&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>wwt's blog</title><link href="http://www.wengweitao.com/" rel="alternate"></link><link href="http://www.wengweitao.com/feeds/gong-ju.rss.xml" rel="self"></link><id>http://www.wengweitao.com/</id><updated>2015-04-16T20:12:00+08:00</updated><entry><title>Vim入门教程</title><link href="http://www.wengweitao.com/vimru-men-jiao-cheng.html" rel="alternate"></link><updated>2015-04-16T20:12:00+08:00</updated><author><name>wwt</name></author><id>tag:www.wengweitao.com,2015-04-16:vimru-men-jiao-cheng.html</id><summary type="html">&lt;blockquote&gt;
+&lt;p&gt;Vim 在编辑器中是神一样的存在，熟练掌握Vim将极大提高编辑文本的效率。本文将介绍Vim最基本的操作和技巧。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h1&gt;操作篇&lt;/h1&gt;
+&lt;h3&gt;模式&lt;/h3&gt;
+&lt;p&gt;Vim中一共有4种模式：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;普通模式：启动Vim后，为普通模式，所有键都为功能键。&lt;/li&gt;
+&lt;li&gt;插入模式：按下键i，进入插入模式，此时可以输入文本，返回普通模式，按Esc键。&lt;/li&gt;
+&lt;li&gt;可视模式：按下键v，进入可视模式，可以移动光标对文本进行选择&lt;/li&gt;
+&lt;li&gt;命令行模式：输入":"进入命令行模式，运行Vim的命令&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3&gt;最基本的移动&lt;/h3&gt;
+&lt;p&gt;将光标上下左右移动，分别对应kjhl四个键。可以在前面加数字代表移动多个单位。如10j下移10行。&lt;/p&gt;
+&lt;h3&gt;在文件中的移动&lt;/h3&gt;
+&lt;p&gt;G-----移动到最后一行&lt;/p&gt;
+&lt;p&gt;gg ------ 移动到第一行&lt;/p&gt;
+&lt;p&gt;10G ------ 跳到第10行&lt;/p&gt;
+&lt;p&gt;75% ----- 跳转到全文75%的地方&lt;/p&gt;
+&lt;h3&gt;移动到指定字符&lt;/h3&gt;
+&lt;p&gt;使用f,t,F,T可以再当前行快速移动。&lt;/p&gt;
+&lt;p&gt;fx ----- 移动到光标右边的第一个’x'字符上&lt;/p&gt;
+&lt;p&gt;Fx ----- 反方向查找，也就是移动到光标左边的指定字符上。&lt;/p&gt;
+&lt;p&gt;tx ----- 移动到光标右边的第一个’x'字符之前&lt;/p&gt;
+&lt;p&gt;Tx ----- 它移动到光标右边的指定字符'x'之后。&lt;/p&gt;
+&lt;p&gt;; ----- 重复前一次输入的f, t, F, T命令&lt;/p&gt;
+&lt;p&gt;, ----- 反方向重复前一次输入的f, t, F,T命令。&lt;/p&gt;
+&lt;p&gt;";"和","这两个命令前也可以使用数字来表示倍数。也可以在命令前面使用数字，表示倍数。例如：
+3fx ----- 移动到光标右边的第3个’x'字符上。&lt;/p&gt;
+&lt;h3&gt;移动到行首行尾&lt;/h3&gt;
+&lt;p&gt;0 ------ 移动到行首&lt;/p&gt;
+&lt;p&gt;$ ------ 移动到行尾&lt;/p&gt;
+&lt;p&gt;^ -------移动到第一个非空白字符行首&lt;/p&gt;
+&lt;h3&gt;按单词移动&lt;/h3&gt;
+&lt;p&gt;w ------ 移动光标的下一个单词的词首&lt;/p&gt;
+&lt;p&gt;b ------ 移动光标的上一个单词的词首&lt;/p&gt;
+&lt;p&gt;e ------ 移动光标的下一个单词的词尾&lt;/p&gt;
+&lt;p&gt;ge ------ 移动光标的上一个单词的词尾&lt;/p&gt;
+&lt;h3&gt;按窗口移动&lt;/h3&gt;
+&lt;p&gt;H ------ 让光标跳到当前窗口的顶部
+M ------ 让光标跳到当前窗口的中部
+L ------ 让光标跳到当前窗口的底部&lt;/p&gt;
+&lt;h3&gt;相对于光标滚屏&lt;/h3&gt;
+&lt;p&gt;zt ------ 把光标所在行移动窗口的顶端
+zz ------ 把光标所在行移动窗口的中间
+zb ------ 把光标所在行移动窗口的底部&lt;/p&gt;
+&lt;h3&gt;各种插入&lt;/h3&gt;
+&lt;p&gt;i ------ 在光标处插入
+a ------ 在光标后插入
+o ------ 在当前行后插入一个新行
+O ------ 在当前行前插入一个新行
+cw ------ 替换从光标所在位置后到一个单词结尾的字符（c键和w键）&lt;/p&gt;
+&lt;h3&gt;复制和粘贴&lt;/h3&gt;
+&lt;p&gt;yy ------ 拷贝当前行
+p ------ 粘贴
+也可以在yy和p的前面加上数字：
+3yy ------ 拷贝当前行起的3行
+3p ------ 粘贴文本3次&lt;/p&gt;
+&lt;h3&gt;查找&lt;/h3&gt;
+&lt;p&gt;在normal模式下进行查找。
+/ ------ 在Normal模式下输入”/“，然后输入你想查询的字符串，回车，就跳转到第一个匹配的地方了。
+? ------ 与/相反的方向查找
+n ------ 重复上一次的查找命令
+N ------ 按相反方向重复上一次的查找命令&lt;/p&gt;
+&lt;p&gt;在输入”/“或”?“后，用上、下光标键(或CTRL-P/CTRL-N)翻看历史记录，然后再次执行这个查找。
+你还可以使用”q/“和”q?“命令，在vim窗口最下面打开一个新的窗口，这个窗口会列出你的查找历史记录，你可以使用任何vim编辑命令对此窗口的内容进行编辑，然后再按回车，就会对光标所在的行的内容进行查找。如下图所示：
+&lt;img alt="q_search" src="./imgs/q_search.png" /&gt;&lt;/p&gt;
+&lt;p&gt;* ------ 查找光标所在位置的单词，所有匹配的单词将高亮显示，并跳到下一个匹配项上
+# ------ 查找光标所在位置的单词，所有匹配的单词将高亮显示，并跳到上一个匹配项上&lt;/p&gt;
+&lt;p&gt;% ------ 括号匹配移动，即移动到与当前光标所在括号匹配的括号的位置&lt;/p&gt;
+&lt;h3&gt;替换字符串&lt;/h3&gt;
+&lt;p&gt;%s/源字符串/目的字符串/g ------ 将当前文档中所有的源字符串替换为目的字符串&lt;/p&gt;
+&lt;h3&gt;删除、撤销和重做&lt;/h3&gt;
+&lt;p&gt;dd ------ 删除当前行
+dt ------ 删除当前行直到遇到它后面跟的符号
+u ------ 撤销上一次操作
+ctrl + r ------ redo重做 
+如我用dd删除了当前行，如果后悔了不想删除可以使用u命令撤销，如果还是想删除可以使用ctrl + r继续删除。&lt;/p&gt;
+&lt;h3&gt;打开、保存和退出&lt;/h3&gt;
+&lt;p&gt;以下操作除非特别说明都在命令模式下操作，即每个命令前都要加入":"，如:q退出。
+q ------ 退出当前文件
+q! ------ 强制退出当前文件，不保存
+w ------ 写入文件，存盘
+wq ------ 保存退出当前文件
+x ------ 保存退出当前文件
+ZZ ------ 保存退出当前文件（普通模式下运行）
+e filepath ------ 打开一个文件
+saveas filepath ------ 另存为
+bn ------ 当同时打开很多文件后，可以使用bn切换下一个文件。
+bp ------ 当同时打开很多文件后，可以使用bp切换上一个文件。&lt;/p&gt;
+&lt;h3&gt;重复命令&lt;/h3&gt;
+&lt;p&gt;. ------ 重复上一次离开插入模式之前的全部命令
+n&amp;lt; command &amp;gt; ------ 之前提到过的重复command命令n次&lt;/p&gt;
+&lt;h3&gt;光标移动和命令配合使用&lt;/h3&gt;
+&lt;p&gt;0y&lt;span class="math"&gt;\( ------ 复制本行（0移动到行首，y从这里开始复制，\)&lt;/span&gt;直到本行最后一个字符） 
+ye ------ 复制从当前位置到下一个单词的词尾&lt;/p&gt;
+&lt;h1&gt;技巧篇&lt;/h1&gt;
+&lt;h3&gt;找出当前文档中相同的行&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;sort&lt;/span&gt;
+&lt;span class="o"&gt;/^&lt;/span&gt;&lt;span class="err"&gt;\&lt;/span&gt;&lt;span class="p"&gt;(.&lt;/span&gt;&lt;span class="err"&gt;\&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="err"&gt;\&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="err"&gt;$\&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="err"&gt;\&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;按时间撤消&lt;/h3&gt;
+&lt;p&gt;Vim 7 包括了一个让用户跳转到任何编辑点之前或之后的新特性。如使用&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;earlier&lt;/span&gt; &lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="n"&gt;m&lt;/span&gt; 
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;可以返回到 10 分钟以前的编辑状态。
+又如使用&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;later&lt;/span&gt; &lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="n"&gt;s&lt;/span&gt; 
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;可以跳转到 5 秒以后的编辑点。另外，可以使用 :undolist 命令查看缓冲区存在的撤销分支列表。而通过 :undo &amp;lt; number&amp;gt; 命令则能够移到撤销的某个分支。&lt;/p&gt;
+&lt;h3&gt;删除当前文档的所有空行&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;g&lt;/span&gt;&lt;span class="o"&gt;/^&lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;d&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;在每行的行首或行尾插入指定字符串&lt;/h3&gt;
+&lt;p&gt;行首插入： &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;:%&lt;/span&gt;&lt;span class="n"&gt;s&lt;/span&gt;&lt;span class="o"&gt;/^/&lt;/span&gt;&lt;span class="n"&gt;your_word&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;行尾插入：  &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;:%&lt;/span&gt;&lt;span class="n"&gt;s&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;your_word&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;例如在每行前面插入行号如下：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;:%&lt;/span&gt;&lt;span class="n"&gt;s&lt;/span&gt;&lt;span class="o"&gt;/^/&lt;/span&gt;&lt;span class="err"&gt;\&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;line&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;.&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;读取shell命令&lt;/h3&gt;
+&lt;p&gt;如插入日期：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;r&lt;/span&gt;&lt;span class="o"&gt;!&lt;/span&gt;&lt;span class="n"&gt;date&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;:r 是:read的缩写，!是表明要运行一个shell命令，意思是我要把shell命令的输出读到vim里来。&lt;/p&gt;
+&lt;h3&gt;统计某个单词出现的次数&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;:%&lt;/span&gt;&lt;span class="n"&gt;s&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;word&lt;/span&gt;&lt;span class="c1"&gt;//gn&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;统计的结果会在底部的状态栏显示。&lt;/p&gt;
+&lt;h3&gt;Vim粘贴缩进问题&lt;/h3&gt;
+&lt;p&gt;在Vim中粘贴Python代码后，缩进就全乱了。进入paste模式以后，可以在插入模式下粘贴内容，不会有任何变形。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;set&lt;/span&gt; &lt;span class="n"&gt;paste&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;最后使用:set nopaste恢复普通模式。&lt;/p&gt;
+&lt;hr /&gt;
+&lt;p&gt;好了，这篇文章已经说了不少关于Vim的基本操作和技巧，如果能掌握这些就可以比较流畅的使用Vim了。之后会有更多关于Vim操作的文章。&lt;/p&gt;
+&lt;script type="text/javascript"&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "false";
+
+    if (false) {
+        align = (screen.width &lt; 768) ? "left" : align;
+        indent = (screen.width &lt; 768) ? "0em" : indent;
+        linebreak = (screen.width &lt; 768) ? 'true' : linebreak;
+    }
+    
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = '//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); ";
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+&lt;/script&gt;</summary><category term="Vim"></category></entry><entry><title>使用Pelican + Github Pages搭建个人博客</title><link href="http://www.wengweitao.com/shi-yong-pelican-github-pagesda-jian-ge-ren-bo-ke.html" rel="alternate"></link><updated>2015-04-16T13:46:00+08:00</updated><author><name>wwt</name></author><id>tag:www.wengweitao.com,2015-04-16:shi-yong-pelican-github-pagesda-jian-ge-ren-bo-ke.html</id><summary type="html">&lt;blockquote&gt;
 &lt;p&gt;最近有不少同学问我，如何使用Python的Pelican搭建一个像我这样的一个个人博客。今天正好论文投稿结束，于是便抽出时间写这篇教程，希望对大家有用。有任何疑问欢迎在评论里说明。&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h2&gt;静态网站&lt;/h2&gt;

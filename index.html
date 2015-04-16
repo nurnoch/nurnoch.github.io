@@ -54,6 +54,50 @@
         <div class="eleven columns">
                  <ol id="post-list">
                         <li><article class="hentry">
+                                <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/vimru-men-jiao-cheng.html" rel="bookmark" title="Permalink to Vim入门教程">Vim入门教程</a></h2> </header>
+                                <footer class="post-info">
+                                    <abbr class="published" title="2015-04-16T20:12:00"> Thu 16 April 2015 </abbr>
+                                    <address class="vcard author">By 
+                                    <a class="url fn" href="http://www.wengweitao.com/author/wwt.html"> wwt</a>
+                                    </address>
+                                </footer><!-- /.post-info -->
+                                <div class="entry-content"> <blockquote>
+<p>Vim 在编辑器中是神一样的存在，熟练掌握Vim将极大提高编辑文本的效率。本文将介绍Vim最基本的操作和技巧。</p>
+</blockquote>
+<h1>操作篇</h1>
+<h3>模式</h3>
+<p>Vim中一共有4种模式：</p>
+<ol>
+<li>普通模式：启动Vim后，为普通模式，所有键都为功能键。</li>
+<li>插入模式：按下键i，进入插入模式，此时可以输入文本，返回普通模式，按Esc键。</li>
+<li>可视模式：按下键v，进入可视模式，可以移动光标对文本进行选择</li>
+<li>命令行模式：输入":"进入命令行模式，运行Vim的命令</li>
+</ol>
+<h3>最基本的移动</h3>
+<p>将光标上下左右移动，分别对应kjhl四个键。可以在前面加数字代表移动多个单位。如10j下移10行。</p>
+<h3>在文件中的移动</h3>
+<p>G-----移动到最后一行</p>
+<p>gg ------ 移动到第一行</p>
+<p>10G ------ 跳到第10行</p>
+<p>75% ----- 跳转到全文75%的地方</p>
+<h3>移动到指定字符</h3>
+<p>使用f,t,F,T可以再当前行快速移动。</p>
+<p>fx ----- 移动到光标右边的第一个’x'字符上</p>
+<p>Fx ----- 反方向查找 ...</p> </div><!-- /.entry-content -->
+
+                                <div class="medium primary btn"><a href="http://www.wengweitao.com/vimru-men-jiao-cheng.html" rel="bookmark" title="Permalink to Vim入门教程">Read more <i class="icon-arrow-right"></i></a></div>
+
+
+
+                                <div class="row tag-row">
+                                        <span>Tagged as : </span>
+                                            <a class="danger label" href="http://www.wengweitao.com/tag/vim.html">Vim</a>
+                                </div>
+
+
+
+                        </article></li>
+                        <li><article class="hentry">
                                 <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/shi-yong-pelican-github-pagesda-jian-ge-ren-bo-ke.html" rel="bookmark" title="Permalink to 使用Pelican + Github Pages搭建个人博客">使用Pelican + Github Pages搭建个人博客</a></h2> </header>
                                 <footer class="post-info">
                                     <abbr class="published" title="2015-04-16T13:46:00"> Thu 16 April 2015 </abbr>
@@ -452,46 +496,6 @@ YAPF与其他的格式化工具不同，其算法能够把代码重新格式化�
 
 
                         </article></li>
-                        <li><article class="hentry">
-                                <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/fei-bo-na-qi-shu-lie-ji-qi-xiang-guan-wen-ti.html" rel="bookmark" title="Permalink to 斐波那契数列及其相关问题">斐波那契数列及其相关问题</a></h2> </header>
-                                <footer class="post-info">
-                                    <abbr class="published" title="2015-04-05T00:00:00"> Sun 05 April 2015 </abbr>
-                                    <address class="vcard author">By 
-                                    <a class="url fn" href="http://www.wengweitao.com/author/wwt.html"> wwt</a>
-                                    </address>
-                                </footer><!-- /.post-info -->
-                                <div class="entry-content"> <p>很多书在提到递归的时候，总是会拿斐波那契数列作为例子，它的定义如下：
-<img alt="Fibonacci" src="http://ac.jobdu.com/upload/201201/image/fbncslie.jpg" /></p>
-<p>现在要求输出斐波那契数列的第n项。</p>
-<p>首先，最容易想到的方法就是直接利用递归求解：</p>
-<div class="highlight"><pre><span class="kt">long</span> <span class="kt">long</span> <span class="nf">fib</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">if</span><span class="p">(</span><span class="n">n</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
-        <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
-    <span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="n">n</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span>
-        <span class="k">return</span> <span class="mi">1</span><span class="p">;</span>
-    <span class="k">else</span>
-        <span class="k">return</span> <span class="n">fib</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">fib</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">2</span><span class="p">);</span> 
-<span class="p">}</span>
-</pre></div>
-
-
-<p>递归求解的形式非常简单易懂，但是递归的解法存在很严重的效率问题，因为计算过程中很多结点都是重复计算的，而且重复的结点数随着n的增大而急剧增加。例如，假设n=100，那么程序的速度将慢到无法忍受！</p>
-<p>上面递归的方法之所以慢，是因为大量的重复计算，我们只需要把已经得到的数列的中间项保存起来，下次需要的时候直接查找，就不用重复计算了。</p>
-<div class="highlight"><pre><span class="kt">long</span> <span class="kt">long</span> <span class="nf">fib</span><span class="p">(</span><span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">n</span><span class="p">)</span> <span class="p">{</span>
-    <span class="kt">int ...</span></pre></div> </div><!-- /.entry-content -->
-
-                                <div class="medium primary btn"><a href="http://www.wengweitao.com/fei-bo-na-qi-shu-lie-ji-qi-xiang-guan-wen-ti.html" rel="bookmark" title="Permalink to 斐波那契数列及其相关问题">Read more <i class="icon-arrow-right"></i></a></div>
-
-
-
-                                <div class="row tag-row">
-                                        <span>Tagged as : </span>
-                                            <a class="danger label" href="http://www.wengweitao.com/tag/mian-shi-ti.html">面试题</a>
-                                </div>
-
-
-
-                        </article></li>
                 </ol><!-- /#posts-list -->
 
         </div><!-- /.eleven.columns -->
@@ -516,11 +520,12 @@ YAPF与其他的格式化工具不同，其算法能够把代码重新格式化�
 
 <h4>Tags</h4>
 	<ul>
-	    <li class="tag-2"><a href="http://www.wengweitao.com/tag/mian-shi-ti.html">面试题</a></li>
 	    <li class="tag-4"><a href="http://www.wengweitao.com/tag/gong-ju.html">工具</a></li>
-	    <li class="tag-0"><a href="http://www.wengweitao.com/tag/python.html">Python</a></li>
-	    <li class="tag-2"><a href="http://www.wengweitao.com/tag/jiao-cheng.html">教程</a></li>
+	    <li class="tag-2"><a href="http://www.wengweitao.com/tag/mian-shi-ti.html">面试题</a></li>
 	    <li class="tag-4"><a href="http://www.wengweitao.com/tag/ce-shi.html">测试</a></li>
+	    <li class="tag-2"><a href="http://www.wengweitao.com/tag/jiao-cheng.html">教程</a></li>
+	    <li class="tag-0"><a href="http://www.wengweitao.com/tag/python.html">Python</a></li>
+	    <li class="tag-4"><a href="http://www.wengweitao.com/tag/vim.html">Vim</a></li>
 </ul>
 
 
