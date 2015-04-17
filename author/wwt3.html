@@ -2,11 +2,10 @@
 <html lang="zh">
 <head>
 
-        <title>wwt's blog</title>
+        <title>wwt's blog - Articles by wwt</title>
         <meta charset="utf-8" />
         <link href="http://www.wengweitao.com/feeds\all.atom.xml" type="application/atom+xml" rel="alternate" title="wwt's blog Full Atom Feed" />
         <link href="http://www.wengweitao.com/feeds/all.rss.xml" type="application/rss+xml" rel="alternate" title="wwt's blog Full RSS Feed" />
-        <link href="http://www.wengweitao.com/feeds/suan-fa-yu-shu-ju-jie-gou.rss.xml" type="application/atom+xml" rel="alternate" title="wwt's blog Categories Atom Feed" />
 
 
         <!-- Mobile viewport optimized: j.mp/bplateviewport -->
@@ -49,7 +48,7 @@
             </div>
 
 <section id="content">
-<h2>Articles in the 算法与数据结构 category</h2>
+<h2>Articles by wwt</h2>
 
 
    <div class="row">
@@ -57,47 +56,6 @@
 
         <div class="eleven columns">
                  <ol id="post-list">
-                        <li><article class="hentry">
-                                <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/qiu-zi-fu-de-suo-you-zu-he-he-suo-you-pai-lie.html" rel="bookmark" title="Permalink to 求字符的所有组合和所有排列">求字符的所有组合和所有排列</a></h2> </header>
-                                <footer class="post-info">
-                                    <abbr class="published" title="2015-04-10T14:41:00"> Fri 10 April 2015 </abbr>
-                                    <address class="vcard author">By 
-                                    <a class="url fn" href="http://www.wengweitao.com/author/wwt.html"> wwt</a>
-                                    </address>
-                                </footer><!-- /.post-info -->
-                                <div class="entry-content"> <blockquote>
-<p>昨天看到一道关于求解字符串的排列的问题。如何求出几个字符的所有排列，发现对这种类似的题型还不是很熟练，因此本文对字符的全排列和全组合的问题作下总结，加深自己的理解和记忆，同时也希望能够帮助大家更好的学习和理解该类问题。</p>
-</blockquote>
-<h2>字符串的排列</h2>
-<p><strong>题目描述</strong>：
-输入一个字符串,按字典序打印出该字符串中字符的所有排列。例如输入字符串abc,则打印出由字符a,b,c所能排列出来的所有字符串abc,acb,bac,bca,cab和cba。</p>
-<p><strong>题目分析</strong>：
-考虑把这个复杂的问题分解成为小的问题。整个字符串的排列，可以看成两个部分：</p>
-<ol>
-<li>首先，求所有可能出现在第一个位置的字符</li>
-<li>然后，固定第一个字符，求后面所有字符的排列。这个时候仍然把后面的所有字符分成两个部分：后面的第一个字符，以及这个字符之后的所有字符。</li>
-</ol>
-<p>分析到这里，可以看出这是非常典型的递归。接下来，就可以写出代码。</p>
-<p><strong>代码实现</strong>:</p>
-<div class="highlight"><pre><span class="kt">void</span> <span class="nf">Permutation</span><span class="p">(</span><span class="kt">char</span><span class="o">*</span> <span class="n">str</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">if</span><span class="p">(</span><span class="n">str</span> <span class="o">==</span> <span class="nb">NULL</span><span class="p">)</span>
-        <span class="k">return</span><span class="p">;</span>
-    <span class="n">PermutationCore</span><span class="p">(</span><span class="n">str</span><span class="p">,</span> <span class="n">str</span><span class="p">);</span>
-<span class="p">}</span>
-<span class="kt">void</span> <span class="nf">PermutationCore</span><span class="p">(</span><span class="kt">char</span><span class="o">*</span> <span class="n">str ...</span></pre></div> </div><!-- /.entry-content -->
-
-                                <div class="medium primary btn"><a href="http://www.wengweitao.com/qiu-zi-fu-de-suo-you-zu-he-he-suo-you-pai-lie.html" rel="bookmark" title="Permalink to 求字符的所有组合和所有排列">Read more <i class="icon-arrow-right"></i></a></div>
-
-
-
-                                <div class="row tag-row">
-                                        <span>Tagged as : </span>
-                                            <a class="danger label" href="http://www.wengweitao.com/tag/mian-shi-ti.html">面试题</a>
-                                </div>
-
-
-
-                        </article></li>
                         <li><article class="hentry">
                                 <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/fei-bo-na-qi-shu-lie-ji-qi-xiang-guan-wen-ti.html" rel="bookmark" title="Permalink to 斐波那契数列及其相关问题">斐波那契数列及其相关问题</a></h2> </header>
                                 <footer class="post-info">
@@ -133,6 +91,62 @@
                                 <div class="row tag-row">
                                         <span>Tagged as : </span>
                                             <a class="danger label" href="http://www.wengweitao.com/tag/mian-shi-ti.html">面试题</a>
+                                </div>
+
+
+
+                        </article></li>
+                        <li><article class="hentry">
+                                <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/xin-xi-ji-zhu-xie-hui-di-yi-qi-dian-nao-ji-zhu-pei-xun-shun-li-ju-ban.html" rel="bookmark" title="Permalink to 信息技术协会第一期电脑技术培训顺利举办">信息技术协会第一期电脑技术培训顺利举办</a></h2> </header>
+                                <footer class="post-info">
+                                    <abbr class="published" title="2014-10-18T20:12:00"> Sat 18 October 2014 </abbr>
+                                    <address class="vcard author">By 
+                                    <a class="url fn" href="http://www.wengweitao.com/author/wwt.html"> wwt</a>
+                                    </address>
+                                </footer><!-- /.post-info -->
+                                <div class="entry-content"> <blockquote>
+<p>新的学年开始了，一直想着信协能够举办几个新的有意思的活动，想了好久觉得既有意义，又能吸引其他专业的同学参加的，那么技术培训是个不错的选择。于是，就和协会的小伙伴们商量，准备定期举办同学们最感兴趣的系列技术专题培训。第一期便是Photoshop培训。</p>
+</blockquote>
+<p>2014年10月17日晚七点，南燕信息技术协会举办了第一期电脑培训活动--Photoshop基础入门与应用的培训讲座。活动受到了同学们的广泛欢迎和好评。 </p>
+<p>本次培训讲座邀请2013级计算机应用技术的高龙飞同学担任主讲人。他深入浅出地介绍了Photoshop中常用的工具并通过实例操作向同学们清晰地展示各种操作方法。在讲解各种基础知识和工具之后，又通过PS常用的三个实例讲述了PS的使用技巧。同学们跟随主讲人的演示学习操作。两个小时的讲座很快就进入了尾声，同学们依然兴致盎然。</p>
+<p><img alt="培训现场" src="http://www.pkusz.edu.cn/uploadfile/2014/1020/20141020050506774.jpg" /></p>
+<p>培训结束后，信息协会会长翁蔚涛对本次讲座作了简单的总结，并强调希望同学们在讲座后能多多练习，“纸上得来终觉浅，绝知此事要躬行”，并向同学们有奖征集协会的新海报设计，鼓励大家学以致用。简单总结过后，进入到抽奖环节，来自汇丰的陈敬钰同学获得了由协会送出的精美礼品。</p>
+<p>最后，协会成员和部分到场同学合影留念，第一期电脑培训活动圆满结束。接下来信息技术协会还会举办一系列培训，包括Matlab编程、网页制作等，希望同学们能够继续踊跃参加。</p>
+<p><img alt="合影" src="http://www.pkusz.edu.cn/uploadfile/2014/1020/20141020050520418.jpg" /></p>
+<blockquote>
+<p>信息技术协会致力于为北大深研院的同学们营造一个学习和交流信息学科得环境和氛围，为大家提供有关信息领域的设计、应用、资讯等方面的信息。信息技术协会积极打造与深港信息类企业合作和联动的平台，帮助学生走出校园，观察产业发展动态；积极开展电脑维护活动，帮助同学们解决生活中遇到的技术困难。在以后，信息技术协会仍然会坚持协会宗旨，继续为大家服务。</p>
+</blockquote>
+<p>转自：http ...</p> </div><!-- /.entry-content -->
+
+                                <div class="medium primary btn"><a href="http://www.wengweitao.com/xin-xi-ji-zhu-xie-hui-di-yi-qi-dian-nao-ji-zhu-pei-xun-shun-li-ju-ban.html" rel="bookmark" title="Permalink to 信息技术协会第一期电脑技术培训顺利举办">Read more <i class="icon-arrow-right"></i></a></div>
+
+
+
+                                <div class="row tag-row">
+                                        <span>Tagged as : </span>
+                                            <a class="danger label" href="http://www.wengweitao.com/tag/xiao-yuan.html">校园</a>
+                                </div>
+
+
+
+                        </article></li>
+                        <li><article class="hentry">
+                                <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/hello-world.html" rel="bookmark" title="Permalink to Hello, world">Hello, world</a></h2> </header>
+                                <footer class="post-info">
+                                    <abbr class="published" title="2014-07-20T00:00:00"> Sun 20 July 2014 </abbr>
+                                    <address class="vcard author">By 
+                                    <a class="url fn" href="http://www.wengweitao.com/author/wwt.html"> wwt</a>
+                                    </address>
+                                </footer><!-- /.post-info -->
+                                <div class="entry-content"> <p>Hello, world!</p> </div><!-- /.entry-content -->
+
+                                <div class="medium primary btn"><a href="http://www.wengweitao.com/hello-world.html" rel="bookmark" title="Permalink to Hello, world">Read more <i class="icon-arrow-right"></i></a></div>
+
+
+
+                                <div class="row tag-row">
+                                        <span>Tagged as : </span>
+                                            <a class="danger label" href="http://www.wengweitao.com/tag/ce-shi.html">测试</a>
                                 </div>
 
 
@@ -202,7 +216,8 @@
 </div> </div><!-- /.row -->
 
 <p class="paginator">
-    Page 1 / 1
+            <a href="http://www.wengweitao.com/author/wwt2.html"><i class="icon-arrow-left"></i></a>
+    Page 3 / 3
 </p>
 </section><!-- /#content -->
 

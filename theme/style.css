@@ -199,3 +199,34 @@ a:focus { color: #34495E; }
 @media only screen and (max-width: 600px) {
   #banner h1 a {font-size:22px!important; line-height:24px;}
 }
+
+/* Tags cloud
+--------------------------------------------------------- */
+ul.tagcloud {
+  list-style: none;
+    padding: 0;
+}
+
+ul.tagcloud li {
+    display: inline-block;
+}
+
+li.tag-0 {
+    font-size: 200%;
+}
+
+li.tag-1 {
+    font-size: 150%;
+}
+
+li.tag-2 {
+    font-size: 120%;
+}
+
+li.tag-3 {
+    font-size: 100%;
+}
+
+li.tag-4 {
+    font-size: 100%;
+}

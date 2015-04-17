@@ -37,9 +37,12 @@
               <a href="#" gumby-trigger="#navigation &gt; ul" class="toggle"><i class="icon-menu"></i></a>
              
               <ul class="columns">
-                <li><a href="http://www.wengweitao.com/">Home</a></li>
+                <li><a href="http://www.wengweitao.com/">首页</a></li>
 
-                <li><a href="http://www.wengweitao.com/pages/about-me.html">About Me</a></li>
+                <li><a href="categories.html">分类</a></li>
+                <li><a href="tags.html">标签</a></li>
+                <li><a href="archives.html">归档</a></li>
+                <li><a href="/pages/about-me.html">关于我</a></li>
 
               </ul>
             </div>
@@ -290,59 +293,24 @@ YAPF与其他的格式化工具不同，其算法能够把代码重新格式化�
 
 
                         </article></li>
-                        <li><article class="hentry">
-                                <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/bian-xie-gao-zhi-liang-pythondai-ma-1.html" rel="bookmark" title="Permalink to 编写高质量Python代码（1）">编写高质量Python代码（1）</a></h2> </header>
-                                <footer class="post-info">
-                                    <abbr class="published" title="2015-04-06T18:42:00"> Mon 06 April 2015 </abbr>
-                                    <address class="vcard author">By 
-                                    <a class="url fn" href="http://www.wengweitao.com/author/wwt.html"> wwt</a>
-                                    </address>
-                                </footer><!-- /.post-info -->
-                                <div class="entry-content"> <blockquote>
-<p>去年参加了珠海的PyCon大会，幸运地抽中了三本书，其中一本是《编写高质量代码：改善Python程序的91个建议》。本书从多个方面给出了编写高质量Python代码的91个建议，我把每一章的建议都先总结下来，分享给大家。</p>
-</blockquote>
-<h3>建议1： 理解Pythonic概念</h3>
-<h4>（1）Pythonic的定义</h4>
-<p>遵循Pythonic的代码看起来像伪代码：</p>
-<div class="highlight"><pre><span class="k">def</span> <span class="nf">quicksort</span><span class="p">(</span><span class="n">array</span><span class="p">):</span>
-    <span class="n">less</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="n">greater</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">array</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">array</span>
-    <span class="n">pivot</span> <span class="o">=</span> <span class="n">array</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
-    <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">array</span><span class="p">:</span>
-        <span class="k">if</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="n">pivot</span><span class="p">:</span>
-            <span class="n">greater</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="n">less</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">quicksort</span><span class="p">(</span><span class="n">less</span><span class="p">)</span> <span class="o">+</span> <span class="p">[</span><span class="n">pivot</span><span class="p">]</span> <span class="o">+</span> <span class="n">quicksort</span><span class="p">(</span><span class="n">greater</span><span class="p">)</span>
-<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&#39;__main__ ...</span></pre></div> </div><!-- /.entry-content -->
-
-                                <div class="medium primary btn"><a href="http://www.wengweitao.com/bian-xie-gao-zhi-liang-pythondai-ma-1.html" rel="bookmark" title="Permalink to 编写高质量Python代码（1）">Read more <i class="icon-arrow-right"></i></a></div>
-
-
-
-                                <div class="row tag-row">
-                                        <span>Tagged as : </span>
-                                            <a class="danger label" href="http://www.wengweitao.com/tag/python.html">Python</a>
-                                </div>
-
-
-
-                        </article></li>
                 </ol><!-- /#posts-list -->
 
         </div><!-- /.eleven.columns -->
         
 <div class="three columns">
 
+<!--
 <h4>Pages</h4>
 
  <ul>
-      <li><a href="http://www.wengweitao.com/pages/about-me.html">About Me</a></li>
+      <li><a href="categories.html">分类</a></li>
+      <li><a href="tags.html">标签</a></li>
+      <li><a href="archives.html">归档</a></li>
+      <li><a href="/pages/about-me.html">关于我</a></li>
   </ul>
+-->
 
-<h4>Categories</h4>
+<h4>分类</h4>
 <ul>
 		<li><a href="http://www.wengweitao.com/category/du-shu-bi-ji.html">读书笔记</a></li>
 		<li><a href="http://www.wengweitao.com/category/gong-ju.html">工具</a></li>
@@ -351,33 +319,46 @@ YAPF与其他的格式化工具不同，其算法能够把代码重新格式化�
 		<li><a href="http://www.wengweitao.com/category/suan-fa-yu-shu-ju-jie-gou.html">算法与数据结构</a></li>
 </ul>
 
-
-<h4>Tags</h4>
-	<ul>
-	    <li class="tag-4"><a href="http://www.wengweitao.com/tag/gong-ju.html">工具</a></li>
-	    <li class="tag-4"><a href="http://www.wengweitao.com/tag/ce-shi.html">测试</a></li>
-	    <li class="tag-4"><a href="http://www.wengweitao.com/tag/vim.html">Vim</a></li>
-	    <li class="tag-2"><a href="http://www.wengweitao.com/tag/mian-shi-ti.html">面试题</a></li>
-	    <li class="tag-0"><a href="http://www.wengweitao.com/tag/python.html">Python</a></li>
-	    <li class="tag-2"><a href="http://www.wengweitao.com/tag/jiao-cheng.html">教程</a></li>
-	    <li class="tag-4"><a href="http://www.wengweitao.com/tag/xiao-yuan.html">校园</a></li>
+<!--
+<h4>标签</h4>
+<ul class="tagcloud">
+        <li class="tag-4"><a href="http://www.wengweitao.com/tag/gong-ju.html">工具</a></li>
+        <li class="tag-4"><a href="http://www.wengweitao.com/tag/ce-shi.html">测试</a></li>
+        <li class="tag-0"><a href="http://www.wengweitao.com/tag/python.html">Python</a></li>
+        <li class="tag-2"><a href="http://www.wengweitao.com/tag/mian-shi-ti.html">面试题</a></li>
+        <li class="tag-4"><a href="http://www.wengweitao.com/tag/xiao-yuan.html">校园</a></li>
+        <li class="tag-4"><a href="http://www.wengweitao.com/tag/vim.html">Vim</a></li>
+        <li class="tag-2"><a href="http://www.wengweitao.com/tag/jiao-cheng.html">教程</a></li>
 </ul>
+-->
 
 
 <nav class="widget">
-  <h4>Social</h4>
+  <h4>社交</h4>
   <ul>
-    <li><a href="https://github.com/nurnoch">github</a></li>
-    <li><a href="http://twitter.com/wwttc">twitter</a></li>
-    <li><a href="http://www.facebook.com/100001903577931">facebook</a></li>
-    <li><a href="http://weibo.com/u/2678027854">weibo</a></li>
+    <li><a href="http://weibo.com/u/2678027854">新浪微博</a></li>
+    <li><a href="http://www.douban.com/people/wengwt/">豆瓣</a></li>
+    <li><a href="http://www.zhihu.com/people/vita-49">知乎</a></li>
+    <li><a href="https://github.com/nurnoch">Github</a></li>
+    <li><a href="https://www.v2ex.com/member/wwttc">V2EX</a></li>
   </ul>
 </nav>
+
+<nav class="widget">
+  <h4>友情链接</h4>
+  <ul>
+    <li><a href="http://netlab.pkusz.edu.cn/">互联网信息工程研发中心</a></li>
+    <li><a href="http://houcj.net/">houcj's blog</a></li>
+    <li><a href="http://www.rudy-yuan.net/">rundy-yuan's blog</a></li>
+  </ul>
+</nav>
+
 
 </div> </div><!-- /.row -->
 
 <p class="paginator">
-    Page 1 / 1
+    Page 1 / 2
+        <a href="http://www.wengweitao.com/tag/python2.html"><i class="icon-arrow-right"></i></a>
 </p>
 </section><!-- /#content -->
 
@@ -392,10 +373,7 @@ YAPF与其他的格式化工具不同，其算法能够把代码重新格式化�
           <div class="seven columns left-center">
 
                    <address id="about" class="vcard body">
-                    Proudly powered by <a href="http://getpelican.com/">Pelican</a>,
-                    which takes great advantage of <a href="http://python.org">Python</a>.
-                    <br />
-                    Based on the <a target="_blank" href="http://gumbyframework.com">Gumby Framework</a>
+                    Proudly powered by  <a href="http://getpelican.com/">Pelican</a> and Theme by Gum © 2015 wwt
                     </address>
           </div>
 

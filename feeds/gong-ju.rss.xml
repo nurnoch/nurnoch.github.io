@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom"><title>wwt's blog</title><link href="http://www.wengweitao.com/" rel="alternate"></link><link href="http://www.wengweitao.com/feeds/gong-ju.rss.xml" rel="self"></link><id>http://www.wengweitao.com/</id><updated>2015-04-16T20:12:00+08:00</updated><entry><title>Vim入门教程</title><link href="http://www.wengweitao.com/vimru-men-jiao-cheng.html" rel="alternate"></link><updated>2015-04-16T20:12:00+08:00</updated><author><name>wwt</name></author><id>tag:www.wengweitao.com,2015-04-16:vimru-men-jiao-cheng.html</id><summary type="html">&lt;blockquote&gt;
 &lt;p&gt;Vim 在编辑器中是神一样的存在，熟练掌握Vim将极大提高编辑文本的效率。本文将介绍Vim最基本的操作和技巧。&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;h1&gt;操作篇&lt;/h1&gt;
+&lt;h2&gt;操作篇&lt;/h2&gt;
 &lt;h3&gt;模式&lt;/h3&gt;
 &lt;p&gt;Vim中一共有4种模式：&lt;/p&gt;
 &lt;ol&gt;
@@ -95,7 +95,7 @@ n&amp;lt; command &amp;gt; ------ 之前提到过的重复command命令n次&lt;/
 &lt;h3&gt;光标移动和命令配合使用&lt;/h3&gt;
 &lt;p&gt;0y&lt;span class="math"&gt;\( ------ 复制本行（0移动到行首，y从这里开始复制，\)&lt;/span&gt;直到本行最后一个字符） 
 ye ------ 复制从当前位置到下一个单词的词尾&lt;/p&gt;
-&lt;h1&gt;技巧篇&lt;/h1&gt;
+&lt;h2&gt;技巧篇&lt;/h2&gt;
 &lt;h3&gt;找出当前文档中相同的行&lt;/h3&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;sort&lt;/span&gt;
 &lt;span class="o"&gt;/^&lt;/span&gt;&lt;span class="err"&gt;\&lt;/span&gt;&lt;span class="p"&gt;(.&lt;/span&gt;&lt;span class="err"&gt;\&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="err"&gt;\&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="err"&gt;$\&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="err"&gt;\&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;
