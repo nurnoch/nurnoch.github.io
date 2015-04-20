@@ -2,11 +2,11 @@
 <html lang="zh">
 <head>
 
-        <title>使Pelican支持LaTex数学公式</title>
+        <title>梯度下降法</title>
         <meta charset="utf-8" />
         <link href="http://www.wengweitao.com/feeds\all.atom.xml" type="application/atom+xml" rel="alternate" title="wwt's blog Full Atom Feed" />
         <link href="http://www.wengweitao.com/feeds/all.rss.xml" type="application/rss+xml" rel="alternate" title="wwt's blog Full RSS Feed" />
-        <link href="http://www.wengweitao.com/feeds/gong-ju.rss.xml" type="application/atom+xml" rel="alternate" title="wwt's blog Categories Atom Feed" />
+        <link href="http://www.wengweitao.com/feeds/ji-qi-xue-xi.rss.xml" type="application/atom+xml" rel="alternate" title="wwt's blog Categories Atom Feed" />
 
 
         <!-- Mobile viewport optimized: j.mp/bplateviewport -->
@@ -56,69 +56,83 @@
 
             <header>
               <h2 class="entry-title">
-                <a href="http://www.wengweitao.com/shi-pelicanzhi-chi-latexshu-xue-gong-shi.html" rel="bookmark"
-                   title="Permalink to 使Pelican支持LaTex数学公式">使Pelican支持LaTex数学公式</a></h2>
+                <a href="http://www.wengweitao.com/ti-du-xia-jiang-fa.html" rel="bookmark"
+                   title="Permalink to 梯度下降法">梯度下降法</a></h2>
            
             </header>
             <footer class="post-info">
-              <abbr class="published" title="2015-04-10T19:35:00">
-                Fri 10 April 2015
+              <abbr class="published" title="2014-07-26T16:18:00">
+                Sat 26 July 2014
               </abbr>
               <address class="vcard author">By 
                 <a class="url fn" href="http://www.wengweitao.com/author/wwt.html"> wwt</a>
               </address>
             </footer><!-- /.post-info -->
             <div class="entry-content">
-              <p>作为一个技术博客，在写文章的时候，肯定需要经常输入各种公式符号。在之前写一篇文章的时候，发现Pelican默认是不支持编辑数学公式的。之前用过一些在线的markdonw编辑器，都是通过<a href="https://github.com/mathjax/mathjax">MathJax</a>来支持在markdown中书写数学公式，而且用起来非常的方便，语法基本和LaTex一样。于是，就找到了一种简单的使Pelican支持LaTex语法的数学公式，在这里分享给大家。</p>
-<h2>如何使Pelican支持渲染数学公式</h2>
-<p>最简单的方法就是使用Pelican的一个插件——<a href="https://github.com/barrysteyn/pelican_plugin-render_math">pelican_plugin-render_math</a>。
-这个插件可以通过使用MathJax使pelican拥有渲染数学公式的能力，并且同时支持Markdown 和reStructuredText，用起来也非常的方便！</p>
-<h2>安装</h2>
-<p>在Pelican的安装目录中找到Pelican的配置文件pelicanconf.py，在文件中增加：</p>
-<div class="highlight"><pre><span class="n">PLUGIN_PATH</span> <span class="o">=</span> <span class="s">u&quot;pelican-plugins&quot;</span>
-
-<span class="n">PLUGINS</span> <span class="o">=</span> <span class="p">[</span> <span class="s">&quot;render_math&quot;</span><span class="p">]</span>
-</pre></div>
-
-
-<p>为了使插件生效，必须保证插件render_path所在的目录是可以访问的。通常，这个插件同其他插件都一起放在pelican-plugins目录中。</p>
-<p>没错，只要这一步你的pelican网站就可以通过mathjax渲染数学公式了！不需要更改任何模板文件。</p>
-<p>Just use and enjoy!</p>
-<h2>开始使用</h2>
-<p>对于内联的公式，将公式用\<span class="math">\(...\\)</span>包含起来，对于需要单独另起一行显示的公式使用\<span class="math">\(\\)</span>...\<span class="math">\(\\)</span>包含起来。例如：<span class="math">\(1 + 1 = 2\)</span> 和
+              <p><strong>梯度下降法（Gradient Descent）</strong>是一种常见的最优化算法，用于求解函数的最大值或者最小值。</p>
+<h2>梯度的概念</h2>
+<p>一个函数<span class="math">\(J(\theta)\)</span>对它的一个变量<span class="math">\(\theta\)</span>的梯度定义为：
 </p>
-<div class="math">$$1 + 1 = 2$$</div>
-<h3>书写一个质能守恒公式</h3>
-<div class="highlight"><pre><span class="sb">$$</span><span class="nb">E </span><span class="o">=</span><span class="nb"> mc^</span><span class="m">2</span><span class="s">$$</span>
-</pre></div>
-
-
-<div class="math">$$E=mc^2$$</div>
-<h3>希腊字母</h3>
-<div class="highlight"><pre><span class="s">$</span><span class="nv">\alpha</span><span class="nb">, </span><span class="nv">\beta</span><span class="nb">, ..., </span><span class="nv">\omega</span><span class="s">$</span>
-<span class="s">$</span><span class="nv">\Gamma</span><span class="nb">, </span><span class="nv">\Delta</span><span class="nb">, …, </span><span class="nv">\Omega</span><span class="s">$</span>
-</pre></div>
-
-
-<p>小写希腊字母：<span class="math">\(\alpha, \beta, ..., \omega\)</span>
-大写希腊字母：<span class="math">\(\Gamma, \Delta, …, \Omega\)</span></p>
-<h3>上标和下标</h3>
-<div class="highlight"><pre><span class="s">$</span><span class="nb">x_i^</span><span class="m">2</span><span class="s">$</span>
-</pre></div>
-
-
-<p>上标和下标分别为^ 和 _. 例如：<span class="math">\(x_i^2\)</span>.</p>
-<h3>求和与积分</h3>
-<div class="highlight"><pre><span class="sb">$$</span><span class="nv">\sum</span><span class="nb">_{k</span><span class="o">=</span><span class="m">1</span><span class="nb">}^{n}</span><span class="nv">\frac</span><span class="nb">{</span><span class="m">1</span><span class="nb">}{k}</span><span class="s">$$</span> 
-<span class="sb">$$</span><span class="nv">\sum</span><span class="nb">_{k</span><span class="o">=</span><span class="m">1</span><span class="nb">}^n</span><span class="nv">\frac</span><span class="nb">{</span><span class="m">1</span><span class="nb">}{k}</span><span class="s">$$</span> 
-<span class="sb">$$</span><span class="nv">\int</span><span class="nb">_a^b f</span><span class="o">(</span><span class="nb">x</span><span class="o">)</span><span class="nb">dx</span><span class="s">$$</span>
-</pre></div>
-
-
-<div class="math">$$\sum_{k=1}^{n}\frac{1}{k}$$</div>
-<div class="math">$$\sum_{k=1}^n\frac{1}{k}$$</div>
-<div class="math">$$\int_a^b f(x)dx$$</div>
-<p>如果你使用过LaTex那么用起来就非常熟悉了，语法基本和LaTex一样。可以访问 <a href="http://meta.math.stackexchange.com/questions/5020/mathjax-basic-tutorial-and-quick-reference">MathJax</a> 参考更多使用方法。</p>
+<div class="math">$$\frac{\partial J(\theta))}{\partial \theta} = \lim_{\delta \theta\rightarrow 0}\frac{J(\theta + \delta \theta)-J(\theta ))}{\delta \theta}$$</div>
+<p>
+某一点上的梯度指向标量场增长最快的方向，梯度的长度就是最大的变化率。</p>
+<h2>梯度下降</h2>
+<p>在高数中，我们求解一个函数的最小值时，最常用的方法就是求出它的导数为0的那个点，进而判断这个点是否能够取最小值。但是，在实际很多情况，我们很难求解出使函数的导数为0的方程，这个时候就可以使用梯度下降。我们知道对于一个函数沿着梯度的那个方向是下降是最快的。例如为了选取一个<span class="math">\(\theta\)</span>使<span class="math">\(J(\theta)\)</span>最小，我们可以先随机选择<span class="math">\(\theta\)</span>一个初始值，然后不断的修改<span class="math">\(\theta\)</span>以减小<span class="math">\(J(\theta)\)</span>，直到<span class="math">\(\theta\)</span>的值不再改变。对于梯度下降法，可以表示为：
+</p>
+<div class="math">$$\theta_{j} = \theta_j - \alpha \frac{\partial J(\theta))}{\partial \theta_j} $$</div>
+<p>
+即不断地向梯度的那个方向（减小最快的方向）更新<span class="math">\(\theta\)</span>，最终使得<span class="math">\(J(\theta)\)</span>最小。其中<span class="math">\(\alpha\)</span>称为学习速率（learning rate），取值太小会导致迭代过慢，取值太大可能错过最值点。</p>
+<blockquote>
+<p>举一个具体的例子，假如你在一座山的山顶准备下山，往哪一个方向走下山最快呢？下山最快的方向是最陡的那个方向，每一步你都应该朝最陡的那个方向走，直到到达山底，学习速率就表示你每一步迈的步伐有多大。</p>
+</blockquote>
+<h2>为什么从函数的梯度方向下降可以得到函数的最小值</h2>
+<p>梯度下降法，基于这样的观察：如果实值函数F(x)在点a 处可微且有定义，那么函数 F(x)在a点沿着梯度相反的方向<span class="math">\(-\bigtriangledown F(a)\)</span>下降最快。</p>
+<p>因而，如果
+</p>
+<div class="math">$$b=a-\alpha\bigtriangledown F(a)$$</div>
+<p>
+那么<span class="math">\(F(b) \leq F(a)\)</span>。</p>
+<p>考虑如下序列<span class="math">\(x_0,x_1,x_2,...\)</span>使得
+</p>
+<div class="math">$$x_{n+1}=x_n-\alpha\bigtriangledown F(x_n)$$</div>
+<p>
+因此可以得到：
+<span class="math">\(F(x_0) \geq F(x_1) \geq F(x_2) \geq ...\)</span>
+如果顺利的话序列最终可以收敛到期望的极值。</p>
+<p><img alt="梯度下降描述" src="http://upload.wikimedia.org/wikipedia/commons/thumb/7/79/Gradient_descent.png/350px-Gradient_descent.png" /></p>
+<p><strong>注意</strong>：梯度下降得到的结果可能是局部最优值。如果<span class="math">\(F(x)\)</span>是凸函数，则可以保证梯度下降得到的是全局最优值。</p>
+<h2>批梯度下降法</h2>
+<p>批梯度下降法（batch gradient descent）的算法描述如下：</p>
+<p>对每一个j重复以下过程直到收敛 {
+    </p>
+<div class="math">$$\theta_{j} = \theta_j - \alpha \sum_{i=1}^{m}\frac{\partial J(\theta , z))}{\partial \theta_j} $$</div>
+<p>
+}</p>
+<p>其中假设训练样本数有m个，每个样本用<span class="math">\(z_i\)</span>可以表示为<span class="math">\((x_i, y_i)\)</span>。可以看出，使用批梯度下降法每一次更新<span class="math">\(\theta_j\)</span>都需要遍历训练样本中的所有样本。</p>
+<h2>随机梯度下降法</h2>
+<p>除了批梯度下降法之外，还有一种算法称为——<strong>随机梯度下降法（stochastic gradient descent，SGD）</strong>。算法描述如下：</p>
+<blockquote>
+<p>Loop {
+for i=1 to m, {
+<div class="math">$$\theta_{j} = \theta_j - \alpha\frac{\partial J(\theta , z_i))}{\partial \theta_j} $$</div>
+}
+}</p>
+</blockquote>
+<p>每一次更新只使用了一个训练样本，但更新了m次。</p>
+<p>批梯度下降法每更新一步都需要遍历所有的样本数据，如果样本数m很大的话，就会非常的耗时；而对于随机梯度下降，每一遇到一个样本数据，就可以马上更新。通常情况下，使用随机梯度下降法的速度会比批梯度下降法快很多。因此，当样本数很大的时候，我们通常都选择使用随机梯度下降法。</p>
+<h2>关于梯度下降法中学习速率的取值问题</h2>
+<p>前面提到<span class="math">\(\alpha\)</span>称为学习速率（learning rate），取值太小会导致迭代过慢，取值太大可能错过最值点。所以对<span class="math">\(\alpha\)</span>还是非常重要的。最常见的对<span class="math">\(\alpha\)</span>的选择策略为：</p>
+<ol>
+<li>不变策略：<span class="math">\(\alpha_k=\alpha_0\)</span>.</li>
+<li>1/k策略：<span class="math">\(\alpha_k=\alpha_0\frac{\tau}{\tau + k}\)</span>.</li>
+</ol>
+<p>具体的取值方法，还是需要根据实际的数据进行实验得出。</p>
+<hr />
+<h2>References</h2>
+<ol>
+<li>http://zh.wikipedia.org/wiki/%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D%E6%B3%95</li>
+<li>http://www.iro.umontreal.ca/~bengioy/ift6266/H12/html/gradient_en.html</li>
+</ol>
 <script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
     var align = "center",
         indent = "0em",
@@ -162,7 +176,7 @@
               <h3>Comments</h3>
               <div id="disqus_thread"></div>
               <script type="text/javascript">
-                var disqus_identifier = "shi-pelicanzhi-chi-latexshu-xue-gong-shi.html";
+                var disqus_identifier = "ti-du-xia-jiang-fa.html";
                 (function() {
                 var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
                 dsq.src = 'http://wengwt.disqus.com/embed.js';

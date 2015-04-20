@@ -474,8 +474,8 @@ ye ------ 复制从当前位置到下一个单词的词尾&lt;/p&gt;
 &lt;/ul&gt;
 &lt;h3&gt;行程&lt;/h3&gt;
 &lt;p&gt;&lt;strong&gt;野趣沟风景区&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img alt="野趣沟1" src="./imgs/河源2.JPG" /&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img alt="野趣沟2" src="./imgs/河源3.JPG" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="野趣沟1" src="./imgs/河源1.JPG" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="野趣沟2" src="./imgs/河源2.JPG" /&gt;&lt;/p&gt;
 &lt;p&gt;&lt;img alt="野趣沟3" src="./imgs/河源5.JPG" /&gt;&lt;/p&gt;
 &lt;p&gt;山上的风景还挺不错&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;镜花缘&lt;/strong&gt;
@@ -2510,7 +2510,108 @@ str.format()是Python最为推荐的字符串格式化方法，当然也是最Py
 &lt;blockquote&gt;
 &lt;p&gt;信息技术协会致力于为北大深研院的同学们营造一个学习和交流信息学科得环境和氛围，为大家提供有关信息领域的设计、应用、资讯等方面的信息。信息技术协会积极打造与深港信息类企业合作和联动的平台，帮助学生走出校园，观察产业发展动态；积极开展电脑维护活动，帮助同学们解决生活中遇到的技术困难。在以后，信息技术协会仍然会坚持协会宗旨，继续为大家服务。&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;转自：http://news.pkusz.edu.cn/article-143-4357.html&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">wwt</dc:creator><pubDate>Sat, 18 Oct 2014 20:12:00 +0800</pubDate><guid>tag:www.wengweitao.com,2014-10-18:xin-xi-ji-zhu-xie-hui-di-yi-qi-dian-nao-ji-zhu-pei-xun-shun-li-ju-ban.html</guid><category>校园</category></item><item><title>统计学习方法概论</title><link>http://www.wengweitao.com/tong-ji-xue-xi-fang-fa-gai-lun.html</link><description>&lt;blockquote&gt;
+&lt;p&gt;转自：http://news.pkusz.edu.cn/article-143-4357.html&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">wwt</dc:creator><pubDate>Sat, 18 Oct 2014 20:12:00 +0800</pubDate><guid>tag:www.wengweitao.com,2014-10-18:xin-xi-ji-zhu-xie-hui-di-yi-qi-dian-nao-ji-zhu-pei-xun-shun-li-ju-ban.html</guid><category>校园</category></item><item><title>梯度下降法</title><link>http://www.wengweitao.com/ti-du-xia-jiang-fa.html</link><description>&lt;p&gt;&lt;strong&gt;梯度下降法（Gradient Descent）&lt;/strong&gt;是一种常见的最优化算法，用于求解函数的最大值或者最小值。&lt;/p&gt;
+&lt;h2&gt;梯度的概念&lt;/h2&gt;
+&lt;p&gt;一个函数&lt;span class="math"&gt;\(J(\theta)\)&lt;/span&gt;对它的一个变量&lt;span class="math"&gt;\(\theta\)&lt;/span&gt;的梯度定义为：
+&lt;/p&gt;
+&lt;div class="math"&gt;$$\frac{\partial J(\theta))}{\partial \theta} = \lim_{\delta \theta\rightarrow 0}\frac{J(\theta + \delta \theta)-J(\theta ))}{\delta \theta}$$&lt;/div&gt;
+&lt;p&gt;
+某一点上的梯度指向标量场增长最快的方向，梯度的长度就是最大的变化率。&lt;/p&gt;
+&lt;h2&gt;梯度下降&lt;/h2&gt;
+&lt;p&gt;在高数中，我们求解一个函数的最小值时，最常用的方法就是求出它的导数为0的那个点，进而判断这个点是否能够取最小值。但是，在实际很多情况，我们很难求解出使函数的导数为0的方程，这个时候就可以使用梯度下降。我们知道对于一个函数沿着梯度的那个方向是下降是最快的。例如为了选取一个&lt;span class="math"&gt;\(\theta\)&lt;/span&gt;使&lt;span class="math"&gt;\(J(\theta)\)&lt;/span&gt;最小，我们可以先随机选择&lt;span class="math"&gt;\(\theta\)&lt;/span&gt;一个初始值，然后不断的修改&lt;span class="math"&gt;\(\theta\)&lt;/span&gt;以减小&lt;span class="math"&gt;\(J(\theta)\)&lt;/span&gt;，直到&lt;span class="math"&gt;\(\theta\)&lt;/span&gt;的值不再改变。对于梯度下降法，可以表示为：
+&lt;/p&gt;
+&lt;div class="math"&gt;$$\theta_{j} = \theta_j - \alpha \frac{\partial J(\theta))}{\partial \theta_j} $$&lt;/div&gt;
+&lt;p&gt;
+即不断地向梯度的那个方向（减小最快的方向）更新&lt;span class="math"&gt;\(\theta\)&lt;/span&gt;，最终使得&lt;span class="math"&gt;\(J(\theta)\)&lt;/span&gt;最小。其中&lt;span class="math"&gt;\(\alpha\)&lt;/span&gt;称为学习速率（learning rate），取值太小会导致迭代过慢，取值太大可能错过最值点。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;举一个具体的例子，假如你在一座山的山顶准备下山，往哪一个方向走下山最快呢？下山最快的方向是最陡的那个方向，每一步你都应该朝最陡的那个方向走，直到到达山底，学习速率就表示你每一步迈的步伐有多大。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2&gt;为什么从函数的梯度方向下降可以得到函数的最小值&lt;/h2&gt;
+&lt;p&gt;梯度下降法，基于这样的观察：如果实值函数F(x)在点a 处可微且有定义，那么函数 F(x)在a点沿着梯度相反的方向&lt;span class="math"&gt;\(-\bigtriangledown F(a)\)&lt;/span&gt;下降最快。&lt;/p&gt;
+&lt;p&gt;因而，如果
+&lt;/p&gt;
+&lt;div class="math"&gt;$$b=a-\alpha\bigtriangledown F(a)$$&lt;/div&gt;
+&lt;p&gt;
+那么&lt;span class="math"&gt;\(F(b) \leq F(a)\)&lt;/span&gt;。&lt;/p&gt;
+&lt;p&gt;考虑如下序列&lt;span class="math"&gt;\(x_0,x_1,x_2,...\)&lt;/span&gt;使得
+&lt;/p&gt;
+&lt;div class="math"&gt;$$x_{n+1}=x_n-\alpha\bigtriangledown F(x_n)$$&lt;/div&gt;
+&lt;p&gt;
+因此可以得到：
+&lt;span class="math"&gt;\(F(x_0) \geq F(x_1) \geq F(x_2) \geq ...\)&lt;/span&gt;
+如果顺利的话序列最终可以收敛到期望的极值。&lt;/p&gt;
+&lt;p&gt;&lt;img alt="梯度下降描述" src="http://upload.wikimedia.org/wikipedia/commons/thumb/7/79/Gradient_descent.png/350px-Gradient_descent.png" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;注意&lt;/strong&gt;：梯度下降得到的结果可能是局部最优值。如果&lt;span class="math"&gt;\(F(x)\)&lt;/span&gt;是凸函数，则可以保证梯度下降得到的是全局最优值。&lt;/p&gt;
+&lt;h2&gt;批梯度下降法&lt;/h2&gt;
+&lt;p&gt;批梯度下降法（batch gradient descent）的算法描述如下：&lt;/p&gt;
+&lt;p&gt;对每一个j重复以下过程直到收敛 {
+    &lt;/p&gt;
+&lt;div class="math"&gt;$$\theta_{j} = \theta_j - \alpha \sum_{i=1}^{m}\frac{\partial J(\theta , z))}{\partial \theta_j} $$&lt;/div&gt;
+&lt;p&gt;
+}&lt;/p&gt;
+&lt;p&gt;其中假设训练样本数有m个，每个样本用&lt;span class="math"&gt;\(z_i\)&lt;/span&gt;可以表示为&lt;span class="math"&gt;\((x_i, y_i)\)&lt;/span&gt;。可以看出，使用批梯度下降法每一次更新&lt;span class="math"&gt;\(\theta_j\)&lt;/span&gt;都需要遍历训练样本中的所有样本。&lt;/p&gt;
+&lt;h2&gt;随机梯度下降法&lt;/h2&gt;
+&lt;p&gt;除了批梯度下降法之外，还有一种算法称为——&lt;strong&gt;随机梯度下降法（stochastic gradient descent，SGD）&lt;/strong&gt;。算法描述如下：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Loop {
+for i=1 to m, {
+&lt;div class="math"&gt;$$\theta_{j} = \theta_j - \alpha\frac{\partial J(\theta , z_i))}{\partial \theta_j} $$&lt;/div&gt;
+}
+}&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;每一次更新只使用了一个训练样本，但更新了m次。&lt;/p&gt;
+&lt;p&gt;批梯度下降法每更新一步都需要遍历所有的样本数据，如果样本数m很大的话，就会非常的耗时；而对于随机梯度下降，每一遇到一个样本数据，就可以马上更新。通常情况下，使用随机梯度下降法的速度会比批梯度下降法快很多。因此，当样本数很大的时候，我们通常都选择使用随机梯度下降法。&lt;/p&gt;
+&lt;h2&gt;关于梯度下降法中学习速率的取值问题&lt;/h2&gt;
+&lt;p&gt;前面提到&lt;span class="math"&gt;\(\alpha\)&lt;/span&gt;称为学习速率（learning rate），取值太小会导致迭代过慢，取值太大可能错过最值点。所以对&lt;span class="math"&gt;\(\alpha\)&lt;/span&gt;还是非常重要的。最常见的对&lt;span class="math"&gt;\(\alpha\)&lt;/span&gt;的选择策略为：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;不变策略：&lt;span class="math"&gt;\(\alpha_k=\alpha_0\)&lt;/span&gt;.&lt;/li&gt;
+&lt;li&gt;1/k策略：&lt;span class="math"&gt;\(\alpha_k=\alpha_0\frac{\tau}{\tau + k}\)&lt;/span&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;具体的取值方法，还是需要根据实际的数据进行实验得出。&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h2&gt;References&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;http://zh.wikipedia.org/wiki/%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D%E6%B3%95&lt;/li&gt;
+&lt;li&gt;http://www.iro.umontreal.ca/~bengioy/ift6266/H12/html/gradient_en.html&lt;/li&gt;
+&lt;/ol&gt;
+&lt;script type="text/javascript"&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "false";
+
+    if (false) {
+        align = (screen.width &lt; 768) ? "left" : align;
+        indent = (screen.width &lt; 768) ? "0em" : indent;
+        linebreak = (screen.width &lt; 768) ? 'true' : linebreak;
+    }
+    
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = '//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); ";
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+&lt;/script&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">wwt</dc:creator><pubDate>Sat, 26 Jul 2014 16:18:00 +0800</pubDate><guid>tag:www.wengweitao.com,2014-07-26:ti-du-xia-jiang-fa.html</guid><category>基本概念</category></item><item><title>统计学习方法概论</title><link>http://www.wengweitao.com/tong-ji-xue-xi-fang-fa-gai-lun.html</link><description>&lt;blockquote&gt;
 &lt;p&gt;本文主要介绍统计学习方法的一些基本概念。首先叙述统计学习的定义、研究对象与方法；然后叙述什么是监督学习；接着提出统计学习方法的三要素：模型、测量和算法；然后又介绍了模型选择的方法，包括：正则化与交叉验证；也介绍了学习方法的泛化能力；接着介绍了监督学习中的两种模型：生成模型和判别模型；最后介绍了监督学习方法的应用：分类问题、标注问题与回归问题。&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h2&gt;统计学习&lt;/h2&gt;
@@ -2734,7 +2835,7 @@ J(f)为模型的复杂度，模型f越复杂，复杂度J(f)就越大；反之�
 &lt;p&gt;回归问题可以用于预测股票，如将影响股票价格的各种因素作为自变量（输入特征），而将股价作为因变量（输出的值），将过去的数据作为训练数据，就可以学习一个回归模型，对未来的股价进行预测。&lt;/p&gt;
 &lt;hr /&gt;
 &lt;h2&gt;Reference&lt;/h2&gt;
-&lt;p&gt;[统计学习方法]第一章&lt;a href="http://book.douban.com/subject/10590856/"&gt;1&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://book.douban.com/subject/10590856/"&gt;统计学习方法&lt;/a&gt;第一章&lt;/p&gt;
 &lt;script type="text/javascript"&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
     var align = "center",
         indent = "0em",
