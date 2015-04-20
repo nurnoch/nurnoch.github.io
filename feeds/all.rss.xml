@@ -2510,7 +2510,153 @@ str.format()是Python最为推荐的字符串格式化方法，当然也是最Py
 &lt;blockquote&gt;
 &lt;p&gt;信息技术协会致力于为北大深研院的同学们营造一个学习和交流信息学科得环境和氛围，为大家提供有关信息领域的设计、应用、资讯等方面的信息。信息技术协会积极打造与深港信息类企业合作和联动的平台，帮助学生走出校园，观察产业发展动态；积极开展电脑维护活动，帮助同学们解决生活中遇到的技术困难。在以后，信息技术协会仍然会坚持协会宗旨，继续为大家服务。&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;转自：http://news.pkusz.edu.cn/article-143-4357.html&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">wwt</dc:creator><pubDate>Sat, 18 Oct 2014 20:12:00 +0800</pubDate><guid>tag:www.wengweitao.com,2014-10-18:xin-xi-ji-zhu-xie-hui-di-yi-qi-dian-nao-ji-zhu-pei-xun-shun-li-ju-ban.html</guid><category>校园</category></item><item><title>梯度下降法</title><link>http://www.wengweitao.com/ti-du-xia-jiang-fa.html</link><description>&lt;p&gt;&lt;strong&gt;梯度下降法（Gradient Descent）&lt;/strong&gt;是一种常见的最优化算法，用于求解函数的最大值或者最小值。&lt;/p&gt;
+&lt;p&gt;转自：http://news.pkusz.edu.cn/article-143-4357.html&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">wwt</dc:creator><pubDate>Sat, 18 Oct 2014 20:12:00 +0800</pubDate><guid>tag:www.wengweitao.com,2014-10-18:xin-xi-ji-zhu-xie-hui-di-yi-qi-dian-nao-ji-zhu-pei-xun-shun-li-ju-ban.html</guid><category>校园</category></item><item><title>感知机</title><link>http://www.wengweitao.com/gan-zhi-ji.html</link><description>&lt;blockquote&gt;
+&lt;p&gt;感知机（perceptron）是二类分类的线性分类模型，其输入为实例的特征向量，输出为实例的类别，取+1和-1二值。感知机对应于输入空间中将实例划分为正负两类的分离超平面，属于判别模型。感知机学习旨在求出将训练数据进行线性划分的分离超平面，为此导入了基于误分类的损失函数，利用梯度下降法对损失函数进行极小化，求得感知机模型。感知机学习算法具有简单而易于实现的优点，分为原始形式和对偶形式。感知机是神经网络与支持向量机的基础。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2&gt;感知机模型&lt;/h2&gt;
+&lt;p&gt;由输入空间到输出空间的如下函数：
+&lt;/p&gt;
+&lt;div class="math"&gt;$$f(x)=sign(w.x+b)$$&lt;/div&gt;
+&lt;p&gt;
+称为&lt;strong&gt;感知机&lt;/strong&gt;。其中w和b称为感知机模型参数，&lt;strong&gt;w叫做权值&lt;/strong&gt;（weight）或权值向量，b叫做偏置（bias）。感知机（perceptron）是&lt;strong&gt;二类分类的线性分类模型&lt;/strong&gt;，属于判别模型。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;感知机的几何解释&lt;/strong&gt;：线性方程
+&lt;/p&gt;
+&lt;div class="math"&gt;$$w.x+b=0$$&lt;/div&gt;
+&lt;p&gt;
+对应于特征空间&lt;span class="math"&gt;\(R^n\)&lt;/span&gt;中的一个超平面S，其中w是超平面的法向量，b是超平面的截距。这个超平面将特征空间划分为两个部分，位于两部分的点分别被分为正、负两类。因此，超平面S称为&lt;strong&gt;分离超平面（separating hyperplanes）&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;感知机学习，就是通过训练数据集，求得感知机模型，即求的模型参数w，b。&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h2&gt;感知机学习策略&lt;/h2&gt;
+&lt;h3&gt;数据集的线性可分性&lt;/h3&gt;
+&lt;p&gt;如果存在某个超平面S
+&lt;/p&gt;
+&lt;div class="math"&gt;$$w.x+b=0$$&lt;/div&gt;
+&lt;p&gt;
+能够将数据集的正实例点和负实例点完全正确地划分到超平面的两侧，即对所有&lt;span class="math"&gt;\(y_i=+1\)&lt;/span&gt;的实例i，有&lt;span class="math"&gt;\(w.x_i+b&amp;gt;0\)&lt;/span&gt;，对所有&lt;span class="math"&gt;\(y_i=-1\)&lt;/span&gt;的实例i，有&lt;span class="math"&gt;\(w.x_i+b&amp;lt;0\)&lt;/span&gt;，则称数据集T为&lt;strong&gt;线性可分数据集&lt;/strong&gt;；否则为线性不可分。&lt;/p&gt;
+&lt;h3&gt;感知机学习策略&lt;/h3&gt;
+&lt;p&gt;假设数据集线性可分，感知机的学习目标是求得一个能够将训练集正实例点和负实例点完全正确分开的超平面。为了找到这个超平面，即确定感知机模型参数w，b，需要确定一个学习策略，即定义（经验）损失函数并将损失函数极小化。&lt;/p&gt;
+&lt;p&gt;损失函数的一个自然选择是误分类点的总数，但是损失函数不是w，b的连续可导函数，不易优化。损失函数的另一个选择是计算误分类点到超平面的总距离。
+输入空间中任一点&lt;span class="math"&gt;\(x_0\)&lt;/span&gt;到超平面S的距离为：
+&lt;/p&gt;
+&lt;div class="math"&gt;$$\frac{1}{\left \| w \right \|}|w.x_0+b|$$&lt;/div&gt;
+&lt;p&gt;
+对于误分类的数据点&lt;span class="math"&gt;\(-y_i(w.x_1+b)&amp;gt;0\)&lt;/span&gt;那么所有误分类点到超平面的距离为：
+&lt;/p&gt;
+&lt;div class="math"&gt;$$-\frac{1}{\left \| w \right \|}\sum y_i(w.x_1+b)$$&lt;/div&gt;
+&lt;p&gt;&lt;strong&gt;感知机&lt;span class="math"&gt;\(sign(w.x+b)\)&lt;/span&gt;学习的损失函数定义为&lt;/strong&gt;：
+&lt;/p&gt;
+&lt;div class="math"&gt;$$L(w,b)=-\sum y_i(w.x_1+b)$$&lt;/div&gt;
+&lt;p&gt;
+一个特定样本的损失函数，在误分类的时候该函数是w和b的线性函数，而正确分类的时候是0，因此损失函数时w和b的连续可导函数。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;感知机学习策略&lt;/strong&gt;就是在假设空间中选取使感知机的损失函数最小的模型参数w和b，即感知机模型。&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h2&gt;感知机学习算法&lt;/h2&gt;
+&lt;p&gt;感知机学习算法转化为求解感知机损失函数的最优化问题，最优化的方法是随机梯度下降法。&lt;/p&gt;
+&lt;h3&gt;感知机学习算法的原始形式&lt;/h3&gt;
+&lt;p&gt;首先，任意选取一个超平面&lt;span class="math"&gt;\(w_0,b_0\)&lt;/span&gt;，然后用梯度下降法不断地极小化目标函数，极小化的过程不是一次使M中所有误分类点的梯度下降，而是&lt;strong&gt;一次随机选取一个误分类点使其梯度下降&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;假设误分类点集合M是固定的，那么损失函数L(w,b)的梯度由：
+&lt;/p&gt;
+&lt;div class="math"&gt;$$\frac{\partial L(w,b)}{\partial w}=-\sum_{x_i\in M}y_ix_i$$&lt;/div&gt;
+&lt;div class="math"&gt;$$\frac{\partial L(w,b)}{\partial b}=-\sum_{x_i\in M}y_i$$&lt;/div&gt;
+&lt;p&gt;
+给出。
+随机选取一个误分类点&lt;span class="math"&gt;\((x_i,y_i)\)&lt;/span&gt;，对w,b进行更新：
+&lt;/p&gt;
+&lt;div class="math"&gt;$$w \leftarrow  w + \eta y_i x_i$$&lt;/div&gt;
+&lt;div class="math"&gt;$$b \leftarrow  b + \eta y_i $$&lt;/div&gt;
+&lt;p&gt;
+其中&lt;span class="math"&gt;\(\eta\)&lt;/span&gt;是步长，又称为学习速率。这样通过迭代可以期待损失函数L(w,b)不断减小，直到0. &lt;/p&gt;
+&lt;p&gt;这种学习算法直观上解释：当一个实例类被误分类，即位于分离超平面的错误一侧时，则调整w,b的值，使分离超平面向该分类点的一侧移动，以减少该误分类点与超平面的距离，直至超平面越过该误分类点使其被正确分类。&lt;/p&gt;
+&lt;p&gt;感知机学习算法的原始形式：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;输入：训练数据集T、学习率α
+输出：w,b；感知机模型f(x)=sign(w.x + b)
+(1)选取初值w0,b0
+(2)在训练集中选取数据(xi,yi)
+(3)如果yi(w.xi + b) &lt;span class="err"&gt;&amp;lt;&lt;/span&gt;= 0，使用随机梯度下降法更新w和b
+(4)转至(2)，直至训练集中没有误分类点（重复的将误分类的点一直更新）
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;当采用不同的初值或者选取不同的误分类点的顺序时，解可能不同。&lt;/p&gt;
+&lt;p&gt;这种算法是感知机学习的基本算法，对应于后面的对偶形式，称为&lt;strong&gt;原始形式&lt;/strong&gt;。&lt;/p&gt;
+&lt;h3&gt;算法的收敛性&lt;/h3&gt;
+&lt;p&gt;可以证明，对于&lt;strong&gt;线性可分数据集感知机学习算法原始形式收敛&lt;/strong&gt;，即经过有限次迭代可以得到一个将训练数据集完全正确划分的分割超平面及感知机模型。
+可以证明：
+&lt;/p&gt;
+&lt;div class="math"&gt;$$k \leq (\frac{R}{\gamma})^2$$&lt;/div&gt;
+&lt;p&gt;
+其中k是误分类的次数，&lt;span class="math"&gt;\(R=max\left \| x_i \right \|\)&lt;/span&gt;，&lt;span class="math"&gt;\(\gamma &amp;gt; 0\)&lt;/span&gt;。
+即误分类的次数k是有上界的，经过有限次搜索可以找到将训练数据完全正确分开的分离超平面。感知机学习算法存在许多解，这些解依赖于初值的选择和迭代过程中误分类点的选择顺序。为了得到唯一的超平面，需要对分离超平面增加约束条件（这就是SVM的思想）。&lt;/p&gt;
+&lt;h3&gt;感知机学习算法的对偶形式&lt;/h3&gt;
+&lt;p&gt;感知机学习算法的原始形式和对偶形式与SVM中的原始形式和对偶形式相对应。&lt;/p&gt;
+&lt;p&gt;对偶形式的基本想法是：把w和b表示成实例&lt;span class="math"&gt;\(x_i\)&lt;/span&gt;与标记&lt;span class="math"&gt;\(y_i\)&lt;/span&gt;的线性组合的形式，通过求解其系数而求得w和b。
+误分类点&lt;span class="math"&gt;\((x_i, y_i)\)&lt;/span&gt;对w,b进行逐步更新：
+&lt;/p&gt;
+&lt;div class="math"&gt;$$w \leftarrow  w + \eta y_i x_i$$&lt;/div&gt;
+&lt;div class="math"&gt;$$b \leftarrow  b + \eta y_i $$&lt;/div&gt;
+&lt;p&gt;
+假设误分类点&lt;span class="math"&gt;\((x_i, y_i)\)&lt;/span&gt;修改了n次w，b，则w,b关于误分类点&lt;span class="math"&gt;\((x_i, y_i)\)&lt;/span&gt;的增量分别是&lt;span class="math"&gt;\(\alpha_i y_i x_i\)&lt;/span&gt;和&lt;span class="math"&gt;\(\alpha_i y_i\)&lt;/span&gt;，这里&lt;span class="math"&gt;\(\alpha_i=n_i \eta\)&lt;/span&gt;。假设初始值&lt;span class="math"&gt;\(w_0,b_0\)&lt;/span&gt;均为0，那么最后可以学习到w,b的表示为：
+&lt;/p&gt;
+&lt;div class="math"&gt;$$w=\sum_{i=1}^{N}\alpha_i y_i x_i$$&lt;/div&gt;
+&lt;div class="math"&gt;$$b=\sum_{i=1}^{N}\alpha_i y_i$$&lt;/div&gt;
+&lt;p&gt;感知机学习算法的对偶形式：
+输入：训练数据集T、学习率η
+输出：α,b；感知机模型&lt;span class="math"&gt;\(f(x)=sign(\sum_{j=1}^{N}\alpha_j y_j x_j + b)\)&lt;/span&gt;
+(1)选取初值&lt;span class="math"&gt;\(\alpha_0,b_0\)&lt;/span&gt;
+(2)在训练集中选取数据(xi,yi)
+(3)如果&lt;span class="math"&gt;\(yi(\sum_{j=1}^{N}\alpha_j y_j x_j + b) \leq 0\)&lt;/span&gt;，更新&lt;span class="math"&gt;\(\alpha_i\)&lt;/span&gt;和b
+&lt;/p&gt;
+&lt;div class="math"&gt;$$\alpha_i = \alpha_i + \eta$$&lt;/div&gt;
+&lt;div class="math"&gt;$$b = b + \eta y_i$$&lt;/div&gt;
+&lt;p&gt;
+(4)转至(2)，直至训练集中没有误分类点（重复的将误分类的点一直更新）&lt;/p&gt;
+&lt;p&gt;为了方便，可以预先将训练集中实例间的内积计算出来并以矩阵的形式存储，这个矩阵就是所谓的Gram矩阵：
+&lt;/p&gt;
+&lt;div class="math"&gt;$$G=[x_i.x_j]_{N \times N}$$&lt;/div&gt;
+&lt;p&gt;
+如&lt;span class="math"&gt;\(G_{1,1}\)&lt;/span&gt;为向量&lt;span class="math"&gt;\(x_i\)&lt;/span&gt;与&lt;span class="math"&gt;\(x_i\)&lt;/span&gt;的相乘结果。&lt;/p&gt;
+&lt;p&gt;与原始形式一样，感知机学习算法的对偶形式是收敛的，存在多个解。&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h2&gt;Reference&lt;/h2&gt;
+&lt;p&gt;&lt;a href="http://book.douban.com/subject/10590856/"&gt;统计学习方法&lt;/a&gt;第二章&lt;/p&gt;
+&lt;script type="text/javascript"&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "false";
+
+    if (false) {
+        align = (screen.width &lt; 768) ? "left" : align;
+        indent = (screen.width &lt; 768) ? "0em" : indent;
+        linebreak = (screen.width &lt; 768) ? 'true' : linebreak;
+    }
+    
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = '//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); ";
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+&lt;/script&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">wwt</dc:creator><pubDate>Sat, 26 Jul 2014 20:12:00 +0800</pubDate><guid>tag:www.wengweitao.com,2014-07-26:gan-zhi-ji.html</guid><category>读书笔记</category></item><item><title>梯度下降法</title><link>http://www.wengweitao.com/ti-du-xia-jiang-fa.html</link><description>&lt;p&gt;&lt;strong&gt;梯度下降法（Gradient Descent）&lt;/strong&gt;是一种常见的最优化算法，用于求解函数的最大值或者最小值。&lt;/p&gt;
 &lt;h2&gt;梯度的概念&lt;/h2&gt;
 &lt;p&gt;一个函数&lt;span class="math"&gt;\(J(\theta)\)&lt;/span&gt;对它的一个变量&lt;span class="math"&gt;\(\theta\)&lt;/span&gt;的梯度定义为：
 &lt;/p&gt;

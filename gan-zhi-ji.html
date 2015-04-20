@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+
+        <title>感知机</title>
+        <meta charset="utf-8" />
+        <link href="http://www.wengweitao.com/feeds\all.atom.xml" type="application/atom+xml" rel="alternate" title="wwt's blog Full Atom Feed" />
+        <link href="http://www.wengweitao.com/feeds/all.rss.xml" type="application/rss+xml" rel="alternate" title="wwt's blog Full RSS Feed" />
+        <link href="http://www.wengweitao.com/feeds/ji-qi-xue-xi.rss.xml" type="application/atom+xml" rel="alternate" title="wwt's blog Categories Atom Feed" />
+
+
+        <!-- Mobile viewport optimized: j.mp/bplateviewport -->
+        <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1">
+
+        <link rel="stylesheet" type="text/css" href="http://www.wengweitao.com/theme/gumby.css" />
+        <link rel="stylesheet" type="text/css" href="http://www.wengweitao.com/theme/style.css" />
+        <link rel="stylesheet" type="text/css" href="http://www.wengweitao.com/theme/pygment.css" />
+
+        <script src="http://www.wengweitao.com/theme/js/libs/modernizr-2.6.2.min.js"></script>
+
+
+
+
+</head>
+
+<body id="index" class="home">
+
+
+    <div class="container">
+
+        <div class="row">
+
+          <header id="banner" class="body">
+                  <h1><a href="http://www.wengweitao.com/">wwt's blog <strong></strong></a></h1>
+          </header><!-- /#banner -->
+
+            <div id="navigation" class="navbar row">
+              <a href="#" gumby-trigger="#navigation &gt; ul" class="toggle"><i class="icon-menu"></i></a>
+             
+              <ul class="columns">
+                <li><a href="http://www.wengweitao.com/">首页</a></li>
+
+                <li><a href="/categories.html">分类</a></li>
+                <li><a href="/tags.html">标签</a></li>
+                <li><a href="/archives.html">归档</a></li>
+                <li><a href="/pages/about-me.html">关于我</a></li>
+
+              </ul>
+            </div>
+
+<section id="content" class="body">
+
+   <div class="row">
+        <div class="eleven columns">
+
+
+            <header>
+              <h2 class="entry-title">
+                <a href="http://www.wengweitao.com/gan-zhi-ji.html" rel="bookmark"
+                   title="Permalink to 感知机">感知机</a></h2>
+           
+            </header>
+            <footer class="post-info">
+              <abbr class="published" title="2014-07-26T20:12:00">
+                Sat 26 July 2014
+              </abbr>
+              <address class="vcard author">By 
+                <a class="url fn" href="http://www.wengweitao.com/author/wwt.html"> wwt</a>
+              </address>
+            </footer><!-- /.post-info -->
+            <div class="entry-content">
+              <blockquote>
+<p>感知机（perceptron）是二类分类的线性分类模型，其输入为实例的特征向量，输出为实例的类别，取+1和-1二值。感知机对应于输入空间中将实例划分为正负两类的分离超平面，属于判别模型。感知机学习旨在求出将训练数据进行线性划分的分离超平面，为此导入了基于误分类的损失函数，利用梯度下降法对损失函数进行极小化，求得感知机模型。感知机学习算法具有简单而易于实现的优点，分为原始形式和对偶形式。感知机是神经网络与支持向量机的基础。</p>
+</blockquote>
+<h2>感知机模型</h2>
+<p>由输入空间到输出空间的如下函数：
+</p>
+<div class="math">$$f(x)=sign(w.x+b)$$</div>
+<p>
+称为<strong>感知机</strong>。其中w和b称为感知机模型参数，<strong>w叫做权值</strong>（weight）或权值向量，b叫做偏置（bias）。感知机（perceptron）是<strong>二类分类的线性分类模型</strong>，属于判别模型。</p>
+<p><strong>感知机的几何解释</strong>：线性方程
+</p>
+<div class="math">$$w.x+b=0$$</div>
+<p>
+对应于特征空间<span class="math">\(R^n\)</span>中的一个超平面S，其中w是超平面的法向量，b是超平面的截距。这个超平面将特征空间划分为两个部分，位于两部分的点分别被分为正、负两类。因此，超平面S称为<strong>分离超平面（separating hyperplanes）</strong>。</p>
+<p>感知机学习，就是通过训练数据集，求得感知机模型，即求的模型参数w，b。</p>
+<hr />
+<h2>感知机学习策略</h2>
+<h3>数据集的线性可分性</h3>
+<p>如果存在某个超平面S
+</p>
+<div class="math">$$w.x+b=0$$</div>
+<p>
+能够将数据集的正实例点和负实例点完全正确地划分到超平面的两侧，即对所有<span class="math">\(y_i=+1\)</span>的实例i，有<span class="math">\(w.x_i+b&gt;0\)</span>，对所有<span class="math">\(y_i=-1\)</span>的实例i，有<span class="math">\(w.x_i+b&lt;0\)</span>，则称数据集T为<strong>线性可分数据集</strong>；否则为线性不可分。</p>
+<h3>感知机学习策略</h3>
+<p>假设数据集线性可分，感知机的学习目标是求得一个能够将训练集正实例点和负实例点完全正确分开的超平面。为了找到这个超平面，即确定感知机模型参数w，b，需要确定一个学习策略，即定义（经验）损失函数并将损失函数极小化。</p>
+<p>损失函数的一个自然选择是误分类点的总数，但是损失函数不是w，b的连续可导函数，不易优化。损失函数的另一个选择是计算误分类点到超平面的总距离。
+输入空间中任一点<span class="math">\(x_0\)</span>到超平面S的距离为：
+</p>
+<div class="math">$$\frac{1}{\left \| w \right \|}|w.x_0+b|$$</div>
+<p>
+对于误分类的数据点<span class="math">\(-y_i(w.x_1+b)&gt;0\)</span>那么所有误分类点到超平面的距离为：
+</p>
+<div class="math">$$-\frac{1}{\left \| w \right \|}\sum y_i(w.x_1+b)$$</div>
+<p><strong>感知机<span class="math">\(sign(w.x+b)\)</span>学习的损失函数定义为</strong>：
+</p>
+<div class="math">$$L(w,b)=-\sum y_i(w.x_1+b)$$</div>
+<p>
+一个特定样本的损失函数，在误分类的时候该函数是w和b的线性函数，而正确分类的时候是0，因此损失函数时w和b的连续可导函数。</p>
+<p><strong>感知机学习策略</strong>就是在假设空间中选取使感知机的损失函数最小的模型参数w和b，即感知机模型。</p>
+<hr />
+<h2>感知机学习算法</h2>
+<p>感知机学习算法转化为求解感知机损失函数的最优化问题，最优化的方法是随机梯度下降法。</p>
+<h3>感知机学习算法的原始形式</h3>
+<p>首先，任意选取一个超平面<span class="math">\(w_0,b_0\)</span>，然后用梯度下降法不断地极小化目标函数，极小化的过程不是一次使M中所有误分类点的梯度下降，而是<strong>一次随机选取一个误分类点使其梯度下降</strong>。</p>
+<p>假设误分类点集合M是固定的，那么损失函数L(w,b)的梯度由：
+</p>
+<div class="math">$$\frac{\partial L(w,b)}{\partial w}=-\sum_{x_i\in M}y_ix_i$$</div>
+<div class="math">$$\frac{\partial L(w,b)}{\partial b}=-\sum_{x_i\in M}y_i$$</div>
+<p>
+给出。
+随机选取一个误分类点<span class="math">\((x_i,y_i)\)</span>，对w,b进行更新：
+</p>
+<div class="math">$$w \leftarrow  w + \eta y_i x_i$$</div>
+<div class="math">$$b \leftarrow  b + \eta y_i $$</div>
+<p>
+其中<span class="math">\(\eta\)</span>是步长，又称为学习速率。这样通过迭代可以期待损失函数L(w,b)不断减小，直到0. </p>
+<p>这种学习算法直观上解释：当一个实例类被误分类，即位于分离超平面的错误一侧时，则调整w,b的值，使分离超平面向该分类点的一侧移动，以减少该误分类点与超平面的距离，直至超平面越过该误分类点使其被正确分类。</p>
+<p>感知机学习算法的原始形式：</p>
+<div class="highlight"><pre>输入：训练数据集T、学习率α
+输出：w,b；感知机模型f(x)=sign(w.x + b)
+(1)选取初值w0,b0
+(2)在训练集中选取数据(xi,yi)
+(3)如果yi(w.xi + b) <span class="err">&lt;</span>= 0，使用随机梯度下降法更新w和b
+(4)转至(2)，直至训练集中没有误分类点（重复的将误分类的点一直更新）
+</pre></div>
+
+
+<p>当采用不同的初值或者选取不同的误分类点的顺序时，解可能不同。</p>
+<p>这种算法是感知机学习的基本算法，对应于后面的对偶形式，称为<strong>原始形式</strong>。</p>
+<h3>算法的收敛性</h3>
+<p>可以证明，对于<strong>线性可分数据集感知机学习算法原始形式收敛</strong>，即经过有限次迭代可以得到一个将训练数据集完全正确划分的分割超平面及感知机模型。
+可以证明：
+</p>
+<div class="math">$$k \leq (\frac{R}{\gamma})^2$$</div>
+<p>
+其中k是误分类的次数，<span class="math">\(R=max\left \| x_i \right \|\)</span>，<span class="math">\(\gamma &gt; 0\)</span>。
+即误分类的次数k是有上界的，经过有限次搜索可以找到将训练数据完全正确分开的分离超平面。感知机学习算法存在许多解，这些解依赖于初值的选择和迭代过程中误分类点的选择顺序。为了得到唯一的超平面，需要对分离超平面增加约束条件（这就是SVM的思想）。</p>
+<h3>感知机学习算法的对偶形式</h3>
+<p>感知机学习算法的原始形式和对偶形式与SVM中的原始形式和对偶形式相对应。</p>
+<p>对偶形式的基本想法是：把w和b表示成实例<span class="math">\(x_i\)</span>与标记<span class="math">\(y_i\)</span>的线性组合的形式，通过求解其系数而求得w和b。
+误分类点<span class="math">\((x_i, y_i)\)</span>对w,b进行逐步更新：
+</p>
+<div class="math">$$w \leftarrow  w + \eta y_i x_i$$</div>
+<div class="math">$$b \leftarrow  b + \eta y_i $$</div>
+<p>
+假设误分类点<span class="math">\((x_i, y_i)\)</span>修改了n次w，b，则w,b关于误分类点<span class="math">\((x_i, y_i)\)</span>的增量分别是<span class="math">\(\alpha_i y_i x_i\)</span>和<span class="math">\(\alpha_i y_i\)</span>，这里<span class="math">\(\alpha_i=n_i \eta\)</span>。假设初始值<span class="math">\(w_0,b_0\)</span>均为0，那么最后可以学习到w,b的表示为：
+</p>
+<div class="math">$$w=\sum_{i=1}^{N}\alpha_i y_i x_i$$</div>
+<div class="math">$$b=\sum_{i=1}^{N}\alpha_i y_i$$</div>
+<p>感知机学习算法的对偶形式：
+输入：训练数据集T、学习率η
+输出：α,b；感知机模型<span class="math">\(f(x)=sign(\sum_{j=1}^{N}\alpha_j y_j x_j + b)\)</span>
+(1)选取初值<span class="math">\(\alpha_0,b_0\)</span>
+(2)在训练集中选取数据(xi,yi)
+(3)如果<span class="math">\(yi(\sum_{j=1}^{N}\alpha_j y_j x_j + b) \leq 0\)</span>，更新<span class="math">\(\alpha_i\)</span>和b
+</p>
+<div class="math">$$\alpha_i = \alpha_i + \eta$$</div>
+<div class="math">$$b = b + \eta y_i$$</div>
+<p>
+(4)转至(2)，直至训练集中没有误分类点（重复的将误分类的点一直更新）</p>
+<p>为了方便，可以预先将训练集中实例间的内积计算出来并以矩阵的形式存储，这个矩阵就是所谓的Gram矩阵：
+</p>
+<div class="math">$$G=[x_i.x_j]_{N \times N}$$</div>
+<p>
+如<span class="math">\(G_{1,1}\)</span>为向量<span class="math">\(x_i\)</span>与<span class="math">\(x_i\)</span>的相乘结果。</p>
+<p>与原始形式一样，感知机学习算法的对偶形式是收敛的，存在多个解。</p>
+<hr />
+<h2>Reference</h2>
+<p><a href="http://book.douban.com/subject/10590856/">统计学习方法</a>第二章</p>
+<script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "false";
+
+    if (false) {
+        align = (screen.width < 768) ? "left" : align;
+        indent = (screen.width < 768) ? "0em" : indent;
+        linebreak = (screen.width < 768) ? 'true' : linebreak;
+    }
+    
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = '//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); ";
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+</script>
+            </div><!-- /.entry-content -->
+            <div class="comments">
+              <h3>Comments</h3>
+              <div id="disqus_thread"></div>
+              <script type="text/javascript">
+                var disqus_identifier = "gan-zhi-ji.html";
+                (function() {
+                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                dsq.src = 'http://wengwt.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                })();
+              </script>
+            </div>
+
+
+        </div><!-- /.eleven.columns -->
+
+<div class="three columns">
+
+<!--
+<h4>Pages</h4>
+
+ <ul>
+      <li><a href="/categories.html">分类</a></li>
+      <li><a href="/tags.html">标签</a></li>
+      <li><a href="/archives.html">归档</a></li>
+      <li><a href="/pages/about-me.html">关于我</a></li>
+  </ul>
+-->
+
+<h4>分类</h4>
+<ul>
+		<li><a href="http://www.wengweitao.com/category/du-shu-bi-ji.html">读书笔记</a></li>
+		<li><a href="http://www.wengweitao.com/category/gong-ju.html">工具</a></li>
+		<li><a href="http://www.wengweitao.com/category/ji-qi-xue-xi.html">机器学习</a></li>
+		<li><a href="http://www.wengweitao.com/category/python.html">Python</a></li>
+		<li><a href="http://www.wengweitao.com/category/sheng-huo.html">生活</a></li>
+		<li><a href="http://www.wengweitao.com/category/suan-fa-yu-shu-ju-jie-gou.html">算法与数据结构</a></li>
+</ul>
+
+<!--
+<h4>标签</h4>
+<ul class="tagcloud">
+        <li class="tag-2"><a href="http://www.wengweitao.com/tag/jiao-cheng.html">教程</a></li>
+        <li class="tag-2"><a href="http://www.wengweitao.com/tag/du-shu-bi-ji.html">读书笔记</a></li>
+        <li class="tag-4"><a href="http://www.wengweitao.com/tag/gong-ju.html">工具</a></li>
+        <li class="tag-4"><a href="http://www.wengweitao.com/tag/wan.html">玩</a></li>
+        <li class="tag-4"><a href="http://www.wengweitao.com/tag/xiao-yuan.html">校园</a></li>
+        <li class="tag-4"><a href="http://www.wengweitao.com/tag/vim.html">Vim</a></li>
+        <li class="tag-4"><a href="http://www.wengweitao.com/tag/ce-shi.html">测试</a></li>
+        <li class="tag-2"><a href="http://www.wengweitao.com/tag/mian-shi-ti.html">面试题</a></li>
+        <li class="tag-4"><a href="http://www.wengweitao.com/tag/ji-ben-gai-nian.html">基本概念</a></li>
+        <li class="tag-0"><a href="http://www.wengweitao.com/tag/python.html">Python</a></li>
+</ul>
+-->
+
+
+<nav class="widget">
+  <h4>社交</h4>
+  <ul>
+    <li><a href="http://weibo.com/u/2678027854">新浪微博</a></li>
+    <li><a href="http://www.douban.com/people/wengwt/">豆瓣</a></li>
+    <li><a href="http://www.zhihu.com/people/vita-49">知乎</a></li>
+    <li><a href="https://github.com/nurnoch">Github</a></li>
+    <li><a href="https://www.v2ex.com/member/wwttc">V2EX</a></li>
+  </ul>
+</nav>
+
+<nav class="widget">
+  <h4>友情链接</h4>
+  <ul>
+    <li><a href="http://netlab.pkusz.edu.cn/">互联网信息工程研发中心</a></li>
+    <li><a href="http://www.houcj.net/">houcj's blog</a></li>
+    <li><a href="http://www.rudy-yuan.net/">rundy-yuan's blog</a></li>
+  </ul>
+</nav>
+
+
+</div> </div><!-- /.row -->
+
+
+</section>
+
+       </div><!-- /.row -->
+    </div><!-- /.container -->
+
+
+       <div class="container.nopad bg">
+
+    
+        <footer id="credits" class="row">
+          <div class="seven columns left-center">
+
+                   <address id="about" class="vcard body">
+                    Proudly powered by  <a href="http://getpelican.com/">Pelican</a> and Theme by Gum © 2015 wwt
+                    </address>
+          </div>
+
+
+          <div class="seven columns">
+            <div class="row">
+              <ul class="socbtns">
+
+
+
+
+
+              </ul>
+            </div>
+          </div>
+        </footer>
+
+    </div>
+
+
+<script type="text/javascript">
+    var disqus_shortname = 'wengwt';
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+  <script src="http://www.wengweitao.com/theme/js/libs/jquery-1.9.1.min.js"></script>
+  <script src="http://www.wengweitao.com/theme/js/libs/gumby.min.js"></script>
+  <script src="http://www.wengweitao.com/theme/js/plugins.js"></script>
+</body>
+</html>
