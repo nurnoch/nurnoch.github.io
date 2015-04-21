@@ -5,28 +5,28 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://www.wengweitao.com/</loc>
-<lastmod>2015-04-20T19:04:39-00:00</lastmod>
+<lastmod>2015-04-21T15:32:47-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://www.wengweitao.com/archives.html</loc>
-<lastmod>2015-04-20T19:04:39-00:00</lastmod>
+<lastmod>2015-04-21T15:32:47-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://www.wengweitao.com/tags.html</loc>
-<lastmod>2015-04-20T19:04:39-00:00</lastmod>
+<lastmod>2015-04-21T15:32:47-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://www.wengweitao.com/categories.html</loc>
-<lastmod>2015-04-20T19:04:39-00:00</lastmod>
+<lastmod>2015-04-21T15:32:47-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -130,6 +130,20 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
+<loc>http://www.wengweitao.com/po-su-bei-xie-si-fa.html</loc>
+<lastmod>2014-07-28T14:06:00-00:00</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+
+<url>
+<loc>http://www.wengweitao.com/kjin-lin-fa.html</loc>
+<lastmod>2014-07-27T16:18:00-00:00</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+
+<url>
 <loc>http://www.wengweitao.com/gan-zhi-ji.html</loc>
 <lastmod>2014-07-26T20:12:00-00:00</lastmod>
 <changefreq>monthly</changefreq>
@@ -173,7 +187,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://www.wengweitao.com/category/ji-qi-xue-xi.html</loc>
-<lastmod>2014-07-26T20:12:00+08:06</lastmod>
+<lastmod>2014-07-28T14:06:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -229,7 +243,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://www.wengweitao.com/tag/du-shu-bi-ji.html</loc>
-<lastmod>2014-07-26T20:12:00+08:06</lastmod>
+<lastmod>2014-07-28T14:06:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>

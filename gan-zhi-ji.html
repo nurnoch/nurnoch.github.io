@@ -158,17 +158,15 @@
 </p>
 <div class="math">$$w=\sum_{i=1}^{N}\alpha_i y_i x_i$$</div>
 <div class="math">$$b=\sum_{i=1}^{N}\alpha_i y_i$$</div>
-<p>感知机学习算法的对偶形式：
-输入：训练数据集T、学习率η
-输出：α,b；感知机模型<span class="math">\(f(x)=sign(\sum_{j=1}^{N}\alpha_j y_j x_j + b)\)</span>
-(1)选取初值<span class="math">\(\alpha_0,b_0\)</span>
-(2)在训练集中选取数据(xi,yi)
-(3)如果<span class="math">\(yi(\sum_{j=1}^{N}\alpha_j y_j x_j + b) \leq 0\)</span>，更新<span class="math">\(\alpha_i\)</span>和b
-</p>
+<p>感知机学习算法的对偶形式：</p>
+<p>输入：训练数据集T、学习率η</p>
+<p>输出：α,b；感知机模型<span class="math">\(f(x)=sign(\sum_{j=1}^{N}\alpha_j y_j x_j + b)\)</span></p>
+<p>(1)选取初值<span class="math">\(\alpha_0,b_0\)</span></p>
+<p>(2)在训练集中选取数据(xi,yi)</p>
+<p>(3)如果<span class="math">\(yi(\sum_{j=1}^{N}\alpha_j y_j x_j + b) \leq 0\)</span>，更新<span class="math">\(\alpha_i\)</span>和b</p>
 <div class="math">$$\alpha_i = \alpha_i + \eta$$</div>
 <div class="math">$$b = b + \eta y_i$$</div>
-<p>
-(4)转至(2)，直至训练集中没有误分类点（重复的将误分类的点一直更新）</p>
+<p>(4)转至(2)，直至训练集中没有误分类点（重复的将误分类的点一直更新）</p>
 <p>为了方便，可以预先将训练集中实例间的内积计算出来并以矩阵的形式存储，这个矩阵就是所谓的Gram矩阵：
 </p>
 <div class="math">$$G=[x_i.x_j]_{N \times N}$$</div>
@@ -259,16 +257,16 @@
 <!--
 <h4>标签</h4>
 <ul class="tagcloud">
-        <li class="tag-2"><a href="http://www.wengweitao.com/tag/jiao-cheng.html">教程</a></li>
-        <li class="tag-2"><a href="http://www.wengweitao.com/tag/du-shu-bi-ji.html">读书笔记</a></li>
+        <li class="tag-0"><a href="http://www.wengweitao.com/tag/python.html">Python</a></li>
+        <li class="tag-1"><a href="http://www.wengweitao.com/tag/du-shu-bi-ji.html">读书笔记</a></li>
+        <li class="tag-2"><a href="http://www.wengweitao.com/tag/mian-shi-ti.html">面试题</a></li>
         <li class="tag-4"><a href="http://www.wengweitao.com/tag/gong-ju.html">工具</a></li>
+        <li class="tag-4"><a href="http://www.wengweitao.com/tag/ji-ben-gai-nian.html">基本概念</a></li>
+        <li class="tag-4"><a href="http://www.wengweitao.com/tag/ce-shi.html">测试</a></li>
+        <li class="tag-4"><a href="http://www.wengweitao.com/tag/vim.html">Vim</a></li>
         <li class="tag-4"><a href="http://www.wengweitao.com/tag/wan.html">玩</a></li>
         <li class="tag-4"><a href="http://www.wengweitao.com/tag/xiao-yuan.html">校园</a></li>
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/vim.html">Vim</a></li>
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/ce-shi.html">测试</a></li>
-        <li class="tag-2"><a href="http://www.wengweitao.com/tag/mian-shi-ti.html">面试题</a></li>
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/ji-ben-gai-nian.html">基本概念</a></li>
-        <li class="tag-0"><a href="http://www.wengweitao.com/tag/python.html">Python</a></li>
+        <li class="tag-2"><a href="http://www.wengweitao.com/tag/jiao-cheng.html">教程</a></li>
 </ul>
 -->
 

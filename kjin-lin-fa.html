@@ -2,11 +2,11 @@
 <html lang="zh">
 <head>
 
-        <title>使Pelican支持LaTex数学公式</title>
+        <title>k近邻法</title>
         <meta charset="utf-8" />
         <link href="http://www.wengweitao.com/feeds\all.atom.xml" type="application/atom+xml" rel="alternate" title="wwt's blog Full Atom Feed" />
         <link href="http://www.wengweitao.com/feeds/all.rss.xml" type="application/rss+xml" rel="alternate" title="wwt's blog Full RSS Feed" />
-        <link href="http://www.wengweitao.com/feeds/gong-ju.rss.xml" type="application/atom+xml" rel="alternate" title="wwt's blog Categories Atom Feed" />
+        <link href="http://www.wengweitao.com/feeds/ji-qi-xue-xi.rss.xml" type="application/atom+xml" rel="alternate" title="wwt's blog Categories Atom Feed" />
 
 
         <!-- Mobile viewport optimized: j.mp/bplateviewport -->
@@ -56,69 +56,77 @@
 
             <header>
               <h2 class="entry-title">
-                <a href="http://www.wengweitao.com/shi-pelicanzhi-chi-latexshu-xue-gong-shi.html" rel="bookmark"
-                   title="Permalink to 使Pelican支持LaTex数学公式">使Pelican支持LaTex数学公式</a></h2>
+                <a href="http://www.wengweitao.com/kjin-lin-fa.html" rel="bookmark"
+                   title="Permalink to k近邻法">k近邻法</a></h2>
            
             </header>
             <footer class="post-info">
-              <abbr class="published" title="2015-04-10T19:35:00">
-                Fri 10 April 2015
+              <abbr class="published" title="2014-07-27T16:18:00">
+                Sun 27 July 2014
               </abbr>
               <address class="vcard author">By 
                 <a class="url fn" href="http://www.wengweitao.com/author/wwt.html"> wwt</a>
               </address>
             </footer><!-- /.post-info -->
             <div class="entry-content">
-              <p>作为一个技术博客，在写文章的时候，肯定需要经常输入各种公式符号。在之前写一篇文章的时候，发现Pelican默认是不支持编辑数学公式的。之前用过一些在线的markdonw编辑器，都是通过<a href="https://github.com/mathjax/mathjax">MathJax</a>来支持在markdown中书写数学公式，而且用起来非常的方便，语法基本和LaTex一样。于是，就找到了一种简单的使Pelican支持LaTex语法的数学公式，在这里分享给大家。</p>
-<h2>如何使Pelican支持渲染数学公式</h2>
-<p>最简单的方法就是使用Pelican的一个插件——<a href="https://github.com/barrysteyn/pelican_plugin-render_math">pelican_plugin-render_math</a>。
-这个插件可以通过使用MathJax使pelican拥有渲染数学公式的能力，并且同时支持Markdown 和reStructuredText，用起来也非常的方便！</p>
-<h2>安装</h2>
-<p>在Pelican的安装目录中找到Pelican的配置文件pelicanconf.py，在文件中增加：</p>
-<div class="highlight"><pre><span class="n">PLUGIN_PATH</span> <span class="o">=</span> <span class="s">u&quot;pelican-plugins&quot;</span>
-
-<span class="n">PLUGINS</span> <span class="o">=</span> <span class="p">[</span> <span class="s">&quot;render_math&quot;</span><span class="p">]</span>
-</pre></div>
-
-
-<p>为了使插件生效，必须保证插件render_path所在的目录是可以访问的。通常，这个插件同其他插件都一起放在pelican-plugins目录中。</p>
-<p>没错，只要这一步你的pelican网站就可以通过mathjax渲染数学公式了！不需要更改任何模板文件。</p>
-<p>Just use and enjoy!</p>
-<h2>开始使用</h2>
-<p>对于内联的公式，将公式用\<span class="math">\(...\\)</span>包含起来，对于需要单独另起一行显示的公式使用\<span class="math">\(\\)</span>...\<span class="math">\(\\)</span>包含起来。例如：<span class="math">\(1 + 1 = 2\)</span> 和
+              <blockquote>
+<p>k近邻法（k-nearest neighbor, k-NN）是一种基于分类与回归的方法。分类时，对新的待分类的实例，根据其k个最近邻的训练实例的类别，通过多数表决等方式进行预测。因此，k近邻算法不具有显示的学习过程。k值的选择、距离度量及分类决策规则是k近邻法的3个基本要素。</p>
+</blockquote>
+<h2>k近邻算法</h2>
+<p>k近邻算法简单、直观：对新的待分类的实例，根据其k个最近邻的训练实例的类别，通过多数表决等方式进行预测。</p>
+<h2>k近邻模型</h2>
+<p>k近邻法的使用的模型实际上对应于对特征空间的划分。模型由三个要素——距离度量、k值的选择和分类决策规则决定。</p>
+<h3>模型</h3>
+<p>当训练集、距离度量、k值以及分类决策规程确定后，对于任何一个新的输入实例，它所属的类唯一确定。k近邻法的模型对应特征空间的一个划分，将特征空间划分为一些子空间，确定子空间里的每一个点所属的类。</p>
+<p>在特征空间中，对每个训练实例点<span class="math">\(x_i\)</span>，距离该点比其他点更近的所有点组成一个区域，叫做单元（cell）。最近邻将实例<span class="math">\(x_i\)</span>的类作为类<span class="math">\(y_i\)</span>作为其单元中所有点的类标记（class label）。</p>
+<h3>距离度量</h3>
+<p>特征空间中两个实例点的距离是两个实例点相似程度的反映。</p>
+<p>设特征空间是n维实数向量空间，对于<span class="math">\(x_i,x_j\)</span>的<span class="math">\(L_p\)</span>距离定义为：
 </p>
-<div class="math">$$1 + 1 = 2$$</div>
-<h3>书写一个质能守恒公式</h3>
-<div class="highlight"><pre><span class="sb">$$</span><span class="nb">E </span><span class="o">=</span><span class="nb"> mc^</span><span class="m">2</span><span class="s">$$</span>
+<div class="math">$$L_p(x_i,x_j)=(\sum_{l=1}^{n}|x_i^{(l)}-x_j^{(l)}|^p)^{\frac{1}{p}}$$</div>
+<p>
+当p=2时，是欧氏距离；</p>
+<p>当p=1时，是曼哈顿距离；</p>
+<p>当p=<span class="math">\(\infty\)</span>时，它是各个坐标距离的最大值，即
+</p>
+<div class="math">$$L(x_i,x_j)=max|x_i^{(l)}-x_j^{(l)}|$$</div>
+<h3>k值的选择</h3>
+<p>k值的选择会对k近邻法的结果产生重大的影响。如果选择较小的k值，那么就相当于用较小的领域中的训练实例进行预测，“学习”的近似误差（approximation error）会减小，只有与输入实例较近的训练实例才会对预测结果有作用。但缺点是“学习”的估计误差（estimation error）会增大，预测结果对近邻的实例点非常敏感，如果近邻点切好是噪音，那么预测就会出错。也就是说，k值较小整体模型越复杂，容易发生拟合。k值较大则相反。</p>
+<p>实际中通常k值取一个较小的数，采用交叉验证法来选取最优的k值。</p>
+<h3>分类决策规则</h3>
+<p>由输入实例的k个近邻中的多数类来决定输入实例的类。其实多数表决的功能就等价于经验风险最小化。</p>
+<hr />
+<h2>k近邻法的实现：kd树</h2>
+<p>实现k近邻法时，主要考虑的问题是如果对训练数据进行快速k近邻搜索。最简单的实现方法就是线性扫描，计算新的输入实例与每一个训练实例的距离。当训练集很大，计算非常耗时，不可行。</p>
+<p>为了提高k近邻搜索效率，可以考虑使用特殊的结构存储训练数据，以减少计算距离的次数。</p>
+<h3>构造kd树</h3>
+<p>kd树是一种对k维空间中的实例点进行存储以便对其进行快速检索的树形数据结构。kd树是二叉树，表示对k维空间的一个划分（partition）。构造kd树相当于不断地用垂直于坐标轴的超平面将k维空间切分，构成一系列的k维超矩形区域。kd树的每一个结点对应于一个k维超矩形区域。</p>
+<p><strong>构造平衡kd树的算法</strong>：</p>
+<p>输入：k维空间数据集<span class="math">\(T={x_1,x_2,...,x_N}\)</span>，其中<span class="math">\(x_i=(x_i^{(1)},x_i^{(2)},...,x_i^{(k)})^T\)</span>，i=1,2,...,N；</p>
+<p>输出：kd树</p>
+<p>（1）开始：构造根结点，根结点对应于包含T的k维空间的超矩形区域。
+选择<span class="math">\(x^{(1)}\)</span>为坐标轴，以T中所有实例的<span class="math">\(x^{(1)}\)</span>坐标的中位数为切分点，将根结点对应的超矩形区域切分为两个子区域。切分由通过切分点并与坐标轴<span class="math">\(x^{(1)}\)</span>垂直的超平面实现。由根结点生成深度为1的左、右结点，左子结点区域的<span class="math">\(x^{(1)}\)</span>坐标对应的值小于切分点的值；右子结点区域的<span class="math">\(x^{(1)}\)</span>坐标对应的值大于切分点的值。将落在切分超平面上的实例点保存在根结点。</p>
+<p>（2）重复：对于深度为j的结点，选择<span class="math">\(x^{(l)}\)</span>为切分的坐标轴，<span class="math">\(l=j \mod k + 1\)</span>（如对于2维空间，（0,1）、（1,2）、（2,1）、（3,2）...），以该结点区域中所有实例的<span class="math">\(x^{(l)}\)</span>坐标的中位数为切分点，将根结点对应的超矩形区域切分为两个子区域。</p>
+<p>（3）直到两个区域没有实例存在时停止（所有实例点都在超平面上）。</p>
+<h3>搜索kd树</h3>
+<p>kd树可以省去对大部分数据点的搜索，从而减少搜索的计算量。</p>
+<p><strong>用kd树的最邻近搜索的算法</strong>：</p>
+<p>输入：已构造的kd树；目标点x；</p>
+<p>输出：x的最近邻</p>
+<p>（1）在kd树中找到包含目标点x的叶结点</p>
+<p>（2）以此叶节点为“当前最近点”</p>
+<p>（3）递归向上回退</p>
+<div class="highlight"><pre><span class="err">（</span><span class="n">a</span><span class="err">）如果该结点保存的实例点比当前最几点距离目标点更近，则以该实例点为“当前”最近点</span>
+
+<span class="err">（</span><span class="n">b</span><span class="err">）当前最近点一定存在于该结点一个子结点对应的区域。检查该子结点的父结点的另一子结点对应的区域是否有更近的点。即以目标点为球心，以目标点与当前最近点间的距离为半径的球体是否与另一子结点对应的区域相交。如果相交，可能在另一个子结点对应的区域中存在更近的点。移动到另一个子结点，接着递归地进行最邻近搜索。如果不相交，则向上回退。</span>
 </pre></div>
 
 
-<div class="math">$$E=mc^2$$</div>
-<h3>希腊字母</h3>
-<div class="highlight"><pre><span class="s">$</span><span class="nv">\alpha</span><span class="nb">, </span><span class="nv">\beta</span><span class="nb">, ..., </span><span class="nv">\omega</span><span class="s">$</span>
-<span class="s">$</span><span class="nv">\Gamma</span><span class="nb">, </span><span class="nv">\Delta</span><span class="nb">, …, </span><span class="nv">\Omega</span><span class="s">$</span>
-</pre></div>
-
-
-<p>小写希腊字母：<span class="math">\(\alpha, \beta, ..., \omega\)</span>
-大写希腊字母：<span class="math">\(\Gamma, \Delta, …, \Omega\)</span></p>
-<h3>上标和下标</h3>
-<div class="highlight"><pre><span class="s">$</span><span class="nb">x_i^</span><span class="m">2</span><span class="s">$</span>
-</pre></div>
-
-
-<p>上标和下标分别为^ 和 _. 例如：<span class="math">\(x_i^2\)</span>.</p>
-<h3>求和与积分</h3>
-<div class="highlight"><pre><span class="sb">$$</span><span class="nv">\sum</span><span class="nb">_{k</span><span class="o">=</span><span class="m">1</span><span class="nb">}^{n}</span><span class="nv">\frac</span><span class="nb">{</span><span class="m">1</span><span class="nb">}{k}</span><span class="s">$$</span> 
-<span class="sb">$$</span><span class="nv">\sum</span><span class="nb">_{k</span><span class="o">=</span><span class="m">1</span><span class="nb">}^n</span><span class="nv">\frac</span><span class="nb">{</span><span class="m">1</span><span class="nb">}{k}</span><span class="s">$$</span> 
-<span class="sb">$$</span><span class="nv">\int</span><span class="nb">_a^b f</span><span class="o">(</span><span class="nb">x</span><span class="o">)</span><span class="nb">dx</span><span class="s">$$</span>
-</pre></div>
-
-
-<div class="math">$$\sum_{k=1}^{n}\frac{1}{k}$$</div>
-<div class="math">$$\sum_{k=1}^n\frac{1}{k}$$</div>
-<div class="math">$$\int_a^b f(x)dx$$</div>
-<p>如果你使用过LaTex那么用起来就非常熟悉了，语法基本和LaTex一样。可以访问 <a href="http://meta.math.stackexchange.com/questions/5020/mathjax-basic-tutorial-and-quick-reference">MathJax</a> 参考更多使用方法。</p>
+<p>（4）当回退到根结点，搜索结束，此时的当前最近结点即为最邻近点</p>
+<p>如果实例点是均匀分布的，那么kd树的搜索的平均计算复杂度是O(logN)，N为训练实例数。kd树适用于训练实例远大于空间维数时的k近邻搜索。当空间维数接近训练实例的时候，几乎接近线性搜索，效率迅速下降。</p>
+<hr />
+<h2>Reference</h2>
+<p><a href="http://book.douban.com/subject/10590856/">统计学习方法</a>第三章</p>
 <script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
     var align = "center",
         indent = "0em",
@@ -162,7 +170,7 @@
               <h3>Comments</h3>
               <div id="disqus_thread"></div>
               <script type="text/javascript">
-                var disqus_identifier = "shi-pelicanzhi-chi-latexshu-xue-gong-shi.html";
+                var disqus_identifier = "kjin-lin-fa.html";
                 (function() {
                 var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
                 dsq.src = 'http://wengwt.disqus.com/embed.js';

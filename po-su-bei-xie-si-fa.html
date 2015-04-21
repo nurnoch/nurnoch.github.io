@@ -2,11 +2,11 @@
 <html lang="zh">
 <head>
 
-        <title>Hello, world</title>
+        <title>朴素贝叶斯法</title>
         <meta charset="utf-8" />
         <link href="http://www.wengweitao.com/feeds\all.atom.xml" type="application/atom+xml" rel="alternate" title="wwt's blog Full Atom Feed" />
         <link href="http://www.wengweitao.com/feeds/all.rss.xml" type="application/rss+xml" rel="alternate" title="wwt's blog Full RSS Feed" />
-        <link href="http://www.wengweitao.com/feeds/sheng-huo.rss.xml" type="application/atom+xml" rel="alternate" title="wwt's blog Categories Atom Feed" />
+        <link href="http://www.wengweitao.com/feeds/ji-qi-xue-xi.rss.xml" type="application/atom+xml" rel="alternate" title="wwt's blog Categories Atom Feed" />
 
 
         <!-- Mobile viewport optimized: j.mp/bplateviewport -->
@@ -56,26 +56,114 @@
 
             <header>
               <h2 class="entry-title">
-                <a href="http://www.wengweitao.com/hello-world.html" rel="bookmark"
-                   title="Permalink to Hello, world">Hello, world</a></h2>
+                <a href="http://www.wengweitao.com/po-su-bei-xie-si-fa.html" rel="bookmark"
+                   title="Permalink to 朴素贝叶斯法">朴素贝叶斯法</a></h2>
            
             </header>
             <footer class="post-info">
-              <abbr class="published" title="2014-07-20T00:00:00">
-                Sun 20 July 2014
+              <abbr class="published" title="2014-07-28T14:06:00">
+                Mon 28 July 2014
               </abbr>
               <address class="vcard author">By 
                 <a class="url fn" href="http://www.wengweitao.com/author/wwt.html"> wwt</a>
               </address>
             </footer><!-- /.post-info -->
             <div class="entry-content">
-              <p>Hello, world!</p>
+              <blockquote>
+<p>朴素贝叶斯法（naive Bayes）是基于贝叶斯定理与特征条件独立假设的分类方法。对于给定的训练数据集，利用特征条件独立假设学习输入/输出的联合概率分布；然后基于此模型，对给定的输入x，利用贝叶斯定理求出后验概率最大的输出y。</p>
+</blockquote>
+<h2>朴素贝叶斯法的学习与分类</h2>
+<h3>基本方法</h3>
+<p>朴素贝叶斯法通过训练数据集学习联合概率分布P(X,Y).x为输入特征向量，y为输出的类标记。
+先求先验概率
+</p>
+<div class="math">$$P(Y=c_k), k = 1,2,...,K$$</div>
+<p>
+然后求条件概率分布
+</p>
+<div class="math">$$P(X=x|Y=c_k)$$</div>
+<p>
+于是学习到联合概率分布P(X,Y)。</p>
+<p>条件概率分布<span class="math">\(P(X=x|Y=c_k)\)</span>有指级数量的次数，其估计实际是不可行的。假设<span class="math">\(x^{(j)}\)</span>的可能有<span class="math">\(S_j\)</span>个，j=1,2,...,n，Y的取值有K个，那么参数的个数为<span class="math">\(K\prod S_j\)</span>.</p>
+<p>朴素贝叶斯法是典型的生成方法。之所以叫做朴素贝叶斯法是因为该方法<strong>对条件概率的分布作了条件独立性的假设</strong>
+</p>
+<div class="math">$$P(X=x|Y=c_k)=P(X^{(1)}=x^{(1)},...,X^{(n)}=x^{(n)}|Y=c_k)=\prod_{j=1}^{n}P(X^{(j)}=x^{(j)}|Y=c_k)$$</div>
+<p>朴素贝叶斯分类时，对给定的输入x，通过学习到的模型计算后验概率分布<span class="math">\(P(Y=c_k|X=x)\)</span>，将后验概率最大的类作为x的类输出。</p>
+<div class="math">$$P(Y|X)=\frac{P(X,Y)}{P(X)}=\frac{P(X|Y)P(Y)}{\sum P(Y)P(X|Y)}$$</div>
+<p>
+这是朴实贝叶斯分类器的基本形式。因为分母对于所有的<span class="math">\(c_k\)</span>都是相同的，所以朴素贝叶斯的分类器可以表示为
+</p>
+<div class="math">$$y=argmaxP(Y=c_k)\prod_{j=1}^{n}P(X^{(j)}=x^{(j)}|Y=c_k)$$</div>
+<p>
+将n维的输入向量x代入，求出y值最大的那个分类<span class="math">\(c_k\)</span>，就是输入x的类。</p>
+<blockquote>
+<p>什么是先验概率和后验概率？
+先验概率P(h)：就是在事情尚未发生之前，我们对该事件发生概率的估计，是根据以往经验分析得到的概率；
+后验概率P(h|D)：给定D时，h发生的概率。是表示在某事件已经发生的条件下，求该事件由某个元素引起的可能性大小。</p>
+</blockquote>
+<h3>后验概率最大化的含义</h3>
+<p>朴素贝叶斯法将实例分到后验概率最大的类中，这等价于期望经验风险最小化。</p>
+<hr />
+<h2>朴素贝叶斯法的参数估计</h2>
+<h3>极大似然估计</h3>
+<p>在朴素贝叶斯法中，学习意味着估计<span class="math">\(P(Y=c_k)\)</span>和<span class="math">\(P(X^{(j)}=x^{(j)}|Y=c_k)\)</span>。可以运用极大似然估计法估计相应的概率
+</p>
+<div class="math">$$P(Y=c_k)=\frac{\sum_{i=1}^{N}I(y_i=c_k)}{N}$$</div>
+<div class="math">$$P(X^{(j)}=a_{jl}|Y=c_k)=\frac{\sum_{i=1}^{N}I(x^{(j)}=a_{jl}|y_i=c_k)}{N}$$</div>
+<h3>贝叶斯估计</h3>
+<p>用极大似然估计可能会出现所要估计的概率值为0的情况。这时会影响到后验概率的计算结果，使分类产生偏差。解决这一问题的方法是采用贝叶斯估计。
+</p>
+<div class="math">$$P(Y=c_k)=\frac{\sum_{i=1}^{N}I(y_i=c_k)+\lambda}{N+K\lambda}$$</div>
+<div class="math">$$P(X^{(j)}=a_{jl}|Y=c_k)=\frac{\sum_{i=1}^{N}I(x^{(j)}=a_{jl}|y_i=c_k)+\lambda}{N+S_j\lambda}$$</div>
+<p>
+等价于在随机变量各个取值的频数上赋予一个正数<span class="math">\(\lambda\)</span>。常取<span class="math">\(\lambda=1\)</span>成为拉普拉斯平滑。</p>
+<hr />
+<h2>Reference</h2>
+<p><a href="http://book.douban.com/subject/10590856/">统计学习方法</a>第四章</p>
+<script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "false";
+
+    if (false) {
+        align = (screen.width < 768) ? "left" : align;
+        indent = (screen.width < 768) ? "0em" : indent;
+        linebreak = (screen.width < 768) ? 'true' : linebreak;
+    }
+    
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = '//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); ";
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+</script>
             </div><!-- /.entry-content -->
             <div class="comments">
               <h3>Comments</h3>
               <div id="disqus_thread"></div>
               <script type="text/javascript">
-                var disqus_identifier = "hello-world.html";
+                var disqus_identifier = "po-su-bei-xie-si-fa.html";
                 (function() {
                 var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
                 dsq.src = 'http://wengwt.disqus.com/embed.js';

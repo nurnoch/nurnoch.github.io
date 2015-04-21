@@ -1,5 +1,188 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>wwt's blog</title><link href="http://www.wengweitao.com/" rel="alternate"></link><link href="http://www.wengweitao.com/feeds/ji-qi-xue-xi.rss.xml" rel="self"></link><id>http://www.wengweitao.com/</id><updated>2014-07-26T20:12:00+08:00</updated><entry><title>感知机</title><link href="http://www.wengweitao.com/gan-zhi-ji.html" rel="alternate"></link><updated>2014-07-26T20:12:00+08:00</updated><author><name>wwt</name></author><id>tag:www.wengweitao.com,2014-07-26:gan-zhi-ji.html</id><summary type="html">&lt;blockquote&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>wwt's blog</title><link href="http://www.wengweitao.com/" rel="alternate"></link><link href="http://www.wengweitao.com/feeds/ji-qi-xue-xi.rss.xml" rel="self"></link><id>http://www.wengweitao.com/</id><updated>2014-07-28T14:06:00+08:00</updated><entry><title>朴素贝叶斯法</title><link href="http://www.wengweitao.com/po-su-bei-xie-si-fa.html" rel="alternate"></link><updated>2014-07-28T14:06:00+08:00</updated><author><name>wwt</name></author><id>tag:www.wengweitao.com,2014-07-28:po-su-bei-xie-si-fa.html</id><summary type="html">&lt;blockquote&gt;
+&lt;p&gt;朴素贝叶斯法（naive Bayes）是基于贝叶斯定理与特征条件独立假设的分类方法。对于给定的训练数据集，利用特征条件独立假设学习输入/输出的联合概率分布；然后基于此模型，对给定的输入x，利用贝叶斯定理求出后验概率最大的输出y。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2&gt;朴素贝叶斯法的学习与分类&lt;/h2&gt;
+&lt;h3&gt;基本方法&lt;/h3&gt;
+&lt;p&gt;朴素贝叶斯法通过训练数据集学习联合概率分布P(X,Y).x为输入特征向量，y为输出的类标记。
+先求先验概率
+&lt;/p&gt;
+&lt;div class="math"&gt;$$P(Y=c_k), k = 1,2,...,K$$&lt;/div&gt;
+&lt;p&gt;
+然后求条件概率分布
+&lt;/p&gt;
+&lt;div class="math"&gt;$$P(X=x|Y=c_k)$$&lt;/div&gt;
+&lt;p&gt;
+于是学习到联合概率分布P(X,Y)。&lt;/p&gt;
+&lt;p&gt;条件概率分布&lt;span class="math"&gt;\(P(X=x|Y=c_k)\)&lt;/span&gt;有指级数量的次数，其估计实际是不可行的。假设&lt;span class="math"&gt;\(x^{(j)}\)&lt;/span&gt;的可能有&lt;span class="math"&gt;\(S_j\)&lt;/span&gt;个，j=1,2,...,n，Y的取值有K个，那么参数的个数为&lt;span class="math"&gt;\(K\prod S_j\)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;朴素贝叶斯法是典型的生成方法。之所以叫做朴素贝叶斯法是因为该方法&lt;strong&gt;对条件概率的分布作了条件独立性的假设&lt;/strong&gt;
+&lt;/p&gt;
+&lt;div class="math"&gt;$$P(X=x|Y=c_k)=P(X^{(1)}=x^{(1)},...,X^{(n)}=x^{(n)}|Y=c_k)=\prod_{j=1}^{n}P(X^{(j)}=x^{(j)}|Y=c_k)$$&lt;/div&gt;
+&lt;p&gt;朴素贝叶斯分类时，对给定的输入x，通过学习到的模型计算后验概率分布&lt;span class="math"&gt;\(P(Y=c_k|X=x)\)&lt;/span&gt;，将后验概率最大的类作为x的类输出。&lt;/p&gt;
+&lt;div class="math"&gt;$$P(Y|X)=\frac{P(X,Y)}{P(X)}=\frac{P(X|Y)P(Y)}{\sum P(Y)P(X|Y)}$$&lt;/div&gt;
+&lt;p&gt;
+这是朴实贝叶斯分类器的基本形式。因为分母对于所有的&lt;span class="math"&gt;\(c_k\)&lt;/span&gt;都是相同的，所以朴素贝叶斯的分类器可以表示为
+&lt;/p&gt;
+&lt;div class="math"&gt;$$y=argmaxP(Y=c_k)\prod_{j=1}^{n}P(X^{(j)}=x^{(j)}|Y=c_k)$$&lt;/div&gt;
+&lt;p&gt;
+将n维的输入向量x代入，求出y值最大的那个分类&lt;span class="math"&gt;\(c_k\)&lt;/span&gt;，就是输入x的类。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;什么是先验概率和后验概率？
+先验概率P(h)：就是在事情尚未发生之前，我们对该事件发生概率的估计，是根据以往经验分析得到的概率；
+后验概率P(h|D)：给定D时，h发生的概率。是表示在某事件已经发生的条件下，求该事件由某个元素引起的可能性大小。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3&gt;后验概率最大化的含义&lt;/h3&gt;
+&lt;p&gt;朴素贝叶斯法将实例分到后验概率最大的类中，这等价于期望经验风险最小化。&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h2&gt;朴素贝叶斯法的参数估计&lt;/h2&gt;
+&lt;h3&gt;极大似然估计&lt;/h3&gt;
+&lt;p&gt;在朴素贝叶斯法中，学习意味着估计&lt;span class="math"&gt;\(P(Y=c_k)\)&lt;/span&gt;和&lt;span class="math"&gt;\(P(X^{(j)}=x^{(j)}|Y=c_k)\)&lt;/span&gt;。可以运用极大似然估计法估计相应的概率
+&lt;/p&gt;
+&lt;div class="math"&gt;$$P(Y=c_k)=\frac{\sum_{i=1}^{N}I(y_i=c_k)}{N}$$&lt;/div&gt;
+&lt;div class="math"&gt;$$P(X^{(j)}=a_{jl}|Y=c_k)=\frac{\sum_{i=1}^{N}I(x^{(j)}=a_{jl}|y_i=c_k)}{N}$$&lt;/div&gt;
+&lt;h3&gt;贝叶斯估计&lt;/h3&gt;
+&lt;p&gt;用极大似然估计可能会出现所要估计的概率值为0的情况。这时会影响到后验概率的计算结果，使分类产生偏差。解决这一问题的方法是采用贝叶斯估计。
+&lt;/p&gt;
+&lt;div class="math"&gt;$$P(Y=c_k)=\frac{\sum_{i=1}^{N}I(y_i=c_k)+\lambda}{N+K\lambda}$$&lt;/div&gt;
+&lt;div class="math"&gt;$$P(X^{(j)}=a_{jl}|Y=c_k)=\frac{\sum_{i=1}^{N}I(x^{(j)}=a_{jl}|y_i=c_k)+\lambda}{N+S_j\lambda}$$&lt;/div&gt;
+&lt;p&gt;
+等价于在随机变量各个取值的频数上赋予一个正数&lt;span class="math"&gt;\(\lambda\)&lt;/span&gt;。常取&lt;span class="math"&gt;\(\lambda=1\)&lt;/span&gt;成为拉普拉斯平滑。&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h2&gt;Reference&lt;/h2&gt;
+&lt;p&gt;&lt;a href="http://book.douban.com/subject/10590856/"&gt;统计学习方法&lt;/a&gt;第四章&lt;/p&gt;
+&lt;script type="text/javascript"&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "false";
+
+    if (false) {
+        align = (screen.width &lt; 768) ? "left" : align;
+        indent = (screen.width &lt; 768) ? "0em" : indent;
+        linebreak = (screen.width &lt; 768) ? 'true' : linebreak;
+    }
+    
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = '//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); ";
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+&lt;/script&gt;</summary><category term="读书笔记"></category></entry><entry><title>k近邻法</title><link href="http://www.wengweitao.com/kjin-lin-fa.html" rel="alternate"></link><updated>2014-07-27T16:18:00+08:00</updated><author><name>wwt</name></author><id>tag:www.wengweitao.com,2014-07-27:kjin-lin-fa.html</id><summary type="html">&lt;blockquote&gt;
+&lt;p&gt;k近邻法（k-nearest neighbor, k-NN）是一种基于分类与回归的方法。分类时，对新的待分类的实例，根据其k个最近邻的训练实例的类别，通过多数表决等方式进行预测。因此，k近邻算法不具有显示的学习过程。k值的选择、距离度量及分类决策规则是k近邻法的3个基本要素。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2&gt;k近邻算法&lt;/h2&gt;
+&lt;p&gt;k近邻算法简单、直观：对新的待分类的实例，根据其k个最近邻的训练实例的类别，通过多数表决等方式进行预测。&lt;/p&gt;
+&lt;h2&gt;k近邻模型&lt;/h2&gt;
+&lt;p&gt;k近邻法的使用的模型实际上对应于对特征空间的划分。模型由三个要素——距离度量、k值的选择和分类决策规则决定。&lt;/p&gt;
+&lt;h3&gt;模型&lt;/h3&gt;
+&lt;p&gt;当训练集、距离度量、k值以及分类决策规程确定后，对于任何一个新的输入实例，它所属的类唯一确定。k近邻法的模型对应特征空间的一个划分，将特征空间划分为一些子空间，确定子空间里的每一个点所属的类。&lt;/p&gt;
+&lt;p&gt;在特征空间中，对每个训练实例点&lt;span class="math"&gt;\(x_i\)&lt;/span&gt;，距离该点比其他点更近的所有点组成一个区域，叫做单元（cell）。最近邻将实例&lt;span class="math"&gt;\(x_i\)&lt;/span&gt;的类作为类&lt;span class="math"&gt;\(y_i\)&lt;/span&gt;作为其单元中所有点的类标记（class label）。&lt;/p&gt;
+&lt;h3&gt;距离度量&lt;/h3&gt;
+&lt;p&gt;特征空间中两个实例点的距离是两个实例点相似程度的反映。&lt;/p&gt;
+&lt;p&gt;设特征空间是n维实数向量空间，对于&lt;span class="math"&gt;\(x_i,x_j\)&lt;/span&gt;的&lt;span class="math"&gt;\(L_p\)&lt;/span&gt;距离定义为：
+&lt;/p&gt;
+&lt;div class="math"&gt;$$L_p(x_i,x_j)=(\sum_{l=1}^{n}|x_i^{(l)}-x_j^{(l)}|^p)^{\frac{1}{p}}$$&lt;/div&gt;
+&lt;p&gt;
+当p=2时，是欧氏距离；&lt;/p&gt;
+&lt;p&gt;当p=1时，是曼哈顿距离；&lt;/p&gt;
+&lt;p&gt;当p=&lt;span class="math"&gt;\(\infty\)&lt;/span&gt;时，它是各个坐标距离的最大值，即
+&lt;/p&gt;
+&lt;div class="math"&gt;$$L(x_i,x_j)=max|x_i^{(l)}-x_j^{(l)}|$$&lt;/div&gt;
+&lt;h3&gt;k值的选择&lt;/h3&gt;
+&lt;p&gt;k值的选择会对k近邻法的结果产生重大的影响。如果选择较小的k值，那么就相当于用较小的领域中的训练实例进行预测，“学习”的近似误差（approximation error）会减小，只有与输入实例较近的训练实例才会对预测结果有作用。但缺点是“学习”的估计误差（estimation error）会增大，预测结果对近邻的实例点非常敏感，如果近邻点切好是噪音，那么预测就会出错。也就是说，k值较小整体模型越复杂，容易发生拟合。k值较大则相反。&lt;/p&gt;
+&lt;p&gt;实际中通常k值取一个较小的数，采用交叉验证法来选取最优的k值。&lt;/p&gt;
+&lt;h3&gt;分类决策规则&lt;/h3&gt;
+&lt;p&gt;由输入实例的k个近邻中的多数类来决定输入实例的类。其实多数表决的功能就等价于经验风险最小化。&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h2&gt;k近邻法的实现：kd树&lt;/h2&gt;
+&lt;p&gt;实现k近邻法时，主要考虑的问题是如果对训练数据进行快速k近邻搜索。最简单的实现方法就是线性扫描，计算新的输入实例与每一个训练实例的距离。当训练集很大，计算非常耗时，不可行。&lt;/p&gt;
+&lt;p&gt;为了提高k近邻搜索效率，可以考虑使用特殊的结构存储训练数据，以减少计算距离的次数。&lt;/p&gt;
+&lt;h3&gt;构造kd树&lt;/h3&gt;
+&lt;p&gt;kd树是一种对k维空间中的实例点进行存储以便对其进行快速检索的树形数据结构。kd树是二叉树，表示对k维空间的一个划分（partition）。构造kd树相当于不断地用垂直于坐标轴的超平面将k维空间切分，构成一系列的k维超矩形区域。kd树的每一个结点对应于一个k维超矩形区域。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;构造平衡kd树的算法&lt;/strong&gt;：&lt;/p&gt;
+&lt;p&gt;输入：k维空间数据集&lt;span class="math"&gt;\(T={x_1,x_2,...,x_N}\)&lt;/span&gt;，其中&lt;span class="math"&gt;\(x_i=(x_i^{(1)},x_i^{(2)},...,x_i^{(k)})^T\)&lt;/span&gt;，i=1,2,...,N；&lt;/p&gt;
+&lt;p&gt;输出：kd树&lt;/p&gt;
+&lt;p&gt;（1）开始：构造根结点，根结点对应于包含T的k维空间的超矩形区域。
+选择&lt;span class="math"&gt;\(x^{(1)}\)&lt;/span&gt;为坐标轴，以T中所有实例的&lt;span class="math"&gt;\(x^{(1)}\)&lt;/span&gt;坐标的中位数为切分点，将根结点对应的超矩形区域切分为两个子区域。切分由通过切分点并与坐标轴&lt;span class="math"&gt;\(x^{(1)}\)&lt;/span&gt;垂直的超平面实现。由根结点生成深度为1的左、右结点，左子结点区域的&lt;span class="math"&gt;\(x^{(1)}\)&lt;/span&gt;坐标对应的值小于切分点的值；右子结点区域的&lt;span class="math"&gt;\(x^{(1)}\)&lt;/span&gt;坐标对应的值大于切分点的值。将落在切分超平面上的实例点保存在根结点。&lt;/p&gt;
+&lt;p&gt;（2）重复：对于深度为j的结点，选择&lt;span class="math"&gt;\(x^{(l)}\)&lt;/span&gt;为切分的坐标轴，&lt;span class="math"&gt;\(l=j \mod k + 1\)&lt;/span&gt;（如对于2维空间，（0,1）、（1,2）、（2,1）、（3,2）...），以该结点区域中所有实例的&lt;span class="math"&gt;\(x^{(l)}\)&lt;/span&gt;坐标的中位数为切分点，将根结点对应的超矩形区域切分为两个子区域。&lt;/p&gt;
+&lt;p&gt;（3）直到两个区域没有实例存在时停止（所有实例点都在超平面上）。&lt;/p&gt;
+&lt;h3&gt;搜索kd树&lt;/h3&gt;
+&lt;p&gt;kd树可以省去对大部分数据点的搜索，从而减少搜索的计算量。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;用kd树的最邻近搜索的算法&lt;/strong&gt;：&lt;/p&gt;
+&lt;p&gt;输入：已构造的kd树；目标点x；&lt;/p&gt;
+&lt;p&gt;输出：x的最近邻&lt;/p&gt;
+&lt;p&gt;（1）在kd树中找到包含目标点x的叶结点&lt;/p&gt;
+&lt;p&gt;（2）以此叶节点为“当前最近点”&lt;/p&gt;
+&lt;p&gt;（3）递归向上回退&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;（&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="err"&gt;）如果该结点保存的实例点比当前最几点距离目标点更近，则以该实例点为“当前”最近点&lt;/span&gt;
+
+&lt;span class="err"&gt;（&lt;/span&gt;&lt;span class="n"&gt;b&lt;/span&gt;&lt;span class="err"&gt;）当前最近点一定存在于该结点一个子结点对应的区域。检查该子结点的父结点的另一子结点对应的区域是否有更近的点。即以目标点为球心，以目标点与当前最近点间的距离为半径的球体是否与另一子结点对应的区域相交。如果相交，可能在另一个子结点对应的区域中存在更近的点。移动到另一个子结点，接着递归地进行最邻近搜索。如果不相交，则向上回退。&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;（4）当回退到根结点，搜索结束，此时的当前最近结点即为最邻近点&lt;/p&gt;
+&lt;p&gt;如果实例点是均匀分布的，那么kd树的搜索的平均计算复杂度是O(logN)，N为训练实例数。kd树适用于训练实例远大于空间维数时的k近邻搜索。当空间维数接近训练实例的时候，几乎接近线性搜索，效率迅速下降。&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h2&gt;Reference&lt;/h2&gt;
+&lt;p&gt;&lt;a href="http://book.douban.com/subject/10590856/"&gt;统计学习方法&lt;/a&gt;第三章&lt;/p&gt;
+&lt;script type="text/javascript"&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "false";
+
+    if (false) {
+        align = (screen.width &lt; 768) ? "left" : align;
+        indent = (screen.width &lt; 768) ? "0em" : indent;
+        linebreak = (screen.width &lt; 768) ? 'true' : linebreak;
+    }
+    
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = '//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); ";
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+&lt;/script&gt;</summary><category term="读书笔记"></category></entry><entry><title>感知机</title><link href="http://www.wengweitao.com/gan-zhi-ji.html" rel="alternate"></link><updated>2014-07-26T20:12:00+08:00</updated><author><name>wwt</name></author><id>tag:www.wengweitao.com,2014-07-26:gan-zhi-ji.html</id><summary type="html">&lt;blockquote&gt;
 &lt;p&gt;感知机（perceptron）是二类分类的线性分类模型，其输入为实例的特征向量，输出为实例的类别，取+1和-1二值。感知机对应于输入空间中将实例划分为正负两类的分离超平面，属于判别模型。感知机学习旨在求出将训练数据进行线性划分的分离超平面，为此导入了基于误分类的损失函数，利用梯度下降法对损失函数进行极小化，求得感知机模型。感知机学习算法具有简单而易于实现的优点，分为原始形式和对偶形式。感知机是神经网络与支持向量机的基础。&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h2&gt;感知机模型&lt;/h2&gt;
@@ -88,17 +271,15 @@
 &lt;/p&gt;
 &lt;div class="math"&gt;$$w=\sum_{i=1}^{N}\alpha_i y_i x_i$$&lt;/div&gt;
 &lt;div class="math"&gt;$$b=\sum_{i=1}^{N}\alpha_i y_i$$&lt;/div&gt;
-&lt;p&gt;感知机学习算法的对偶形式：
-输入：训练数据集T、学习率η
-输出：α,b；感知机模型&lt;span class="math"&gt;\(f(x)=sign(\sum_{j=1}^{N}\alpha_j y_j x_j + b)\)&lt;/span&gt;
-(1)选取初值&lt;span class="math"&gt;\(\alpha_0,b_0\)&lt;/span&gt;
-(2)在训练集中选取数据(xi,yi)
-(3)如果&lt;span class="math"&gt;\(yi(\sum_{j=1}^{N}\alpha_j y_j x_j + b) \leq 0\)&lt;/span&gt;，更新&lt;span class="math"&gt;\(\alpha_i\)&lt;/span&gt;和b
-&lt;/p&gt;
+&lt;p&gt;感知机学习算法的对偶形式：&lt;/p&gt;
+&lt;p&gt;输入：训练数据集T、学习率η&lt;/p&gt;
+&lt;p&gt;输出：α,b；感知机模型&lt;span class="math"&gt;\(f(x)=sign(\sum_{j=1}^{N}\alpha_j y_j x_j + b)\)&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;(1)选取初值&lt;span class="math"&gt;\(\alpha_0,b_0\)&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;(2)在训练集中选取数据(xi,yi)&lt;/p&gt;
+&lt;p&gt;(3)如果&lt;span class="math"&gt;\(yi(\sum_{j=1}^{N}\alpha_j y_j x_j + b) \leq 0\)&lt;/span&gt;，更新&lt;span class="math"&gt;\(\alpha_i\)&lt;/span&gt;和b&lt;/p&gt;
 &lt;div class="math"&gt;$$\alpha_i = \alpha_i + \eta$$&lt;/div&gt;
 &lt;div class="math"&gt;$$b = b + \eta y_i$$&lt;/div&gt;
-&lt;p&gt;
-(4)转至(2)，直至训练集中没有误分类点（重复的将误分类的点一直更新）&lt;/p&gt;
+&lt;p&gt;(4)转至(2)，直至训练集中没有误分类点（重复的将误分类的点一直更新）&lt;/p&gt;
 &lt;p&gt;为了方便，可以预先将训练集中实例间的内积计算出来并以矩阵的形式存储，这个矩阵就是所谓的Gram矩阵：
 &lt;/p&gt;
 &lt;div class="math"&gt;$$G=[x_i.x_j]_{N \times N}$$&lt;/div&gt;
