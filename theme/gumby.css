@@ -254,7 +254,7 @@ ul, ol {
 }
 
 ul {
-  list-style: none outside;
+  list-style: circle;
 }
 
 ol {

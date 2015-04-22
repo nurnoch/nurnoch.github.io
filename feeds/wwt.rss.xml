@@ -2510,7 +2510,239 @@ str.format()是Python最为推荐的字符串格式化方法，当然也是最Py
 &lt;blockquote&gt;
 &lt;p&gt;信息技术协会致力于为北大深研院的同学们营造一个学习和交流信息学科得环境和氛围，为大家提供有关信息领域的设计、应用、资讯等方面的信息。信息技术协会积极打造与深港信息类企业合作和联动的平台，帮助学生走出校园，观察产业发展动态；积极开展电脑维护活动，帮助同学们解决生活中遇到的技术困难。在以后，信息技术协会仍然会坚持协会宗旨，继续为大家服务。&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;转自：http://news.pkusz.edu.cn/article-143-4357.html&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">wwt</dc:creator><pubDate>Sat, 18 Oct 2014 20:12:00 +0800</pubDate><guid>tag:www.wengweitao.com,2014-10-18:xin-xi-ji-zhu-xie-hui-di-yi-qi-dian-nao-ji-zhu-pei-xun-shun-li-ju-ban.html</guid><category>校园</category></item><item><title>朴素贝叶斯法</title><link>http://www.wengweitao.com/po-su-bei-xie-si-fa.html</link><description>&lt;blockquote&gt;
+&lt;p&gt;转自：http://news.pkusz.edu.cn/article-143-4357.html&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">wwt</dc:creator><pubDate>Sat, 18 Oct 2014 20:12:00 +0800</pubDate><guid>tag:www.wengweitao.com,2014-10-18:xin-xi-ji-zhu-xie-hui-di-yi-qi-dian-nao-ji-zhu-pei-xun-shun-li-ju-ban.html</guid><category>校园</category></item><item><title>决策树</title><link>http://www.wengweitao.com/jue-ce-shu.html</link><description>&lt;blockquote&gt;
+&lt;p&gt;决策树（decision tree）是一种基本的分类与回归方法。它可以认为是if-then规则的集合，也可以认为是定义在特征空间与类空间上的条件概率分布。其主要优点是模型可读性好，分类速度快。决策树的学习通常包含3个部分：特征选择、决策树生成和决策树的修剪。学习时，利用训练数据，根据损失函数最小化的原则建立决策树模型；预测时，对新的数据，利用决策树模型进行分类。常用的算法有ID3、C4.5和CART。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2&gt;决策树模型与学习&lt;/h2&gt;
+&lt;h3&gt;决策树模型&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;决策树&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;分类决策树模型是一种描述对实例进行分类的树形结构。决策树由结点和有向边组成。结点有两种类型：内部结点和叶结点。&lt;strong&gt;内部结点&lt;/strong&gt;表示一个特征或者属性，&lt;strong&gt;叶节点&lt;/strong&gt;表示一个类。&lt;/p&gt;
+&lt;p&gt;用决策树分类，从根结点开始，对实例的某一特征进行测试，根据测试结果，将实例分配到其子结点；这时，每一个子结点对应着该特征的一个取值。如此递归的对实例进行测试并分配，直至到达叶节点，最后将实例分配到叶节点的类中。&lt;/p&gt;
+&lt;h3&gt;决策树与if-then规则&lt;/h3&gt;
+&lt;p&gt;互斥且完备&lt;/p&gt;
+&lt;h3&gt;决策树与条件概率分布&lt;/h3&gt;
+&lt;p&gt;决策树还可以表示为&lt;strong&gt;给定特征条件下类的条件概率分布&lt;/strong&gt;。各叶节点上的条件概率往往偏向某一个类，决策树分类时将该结点的实例强行分到条件概率大的那一类去。&lt;/p&gt;
+&lt;h3&gt;决策树学习&lt;/h3&gt;
+&lt;p&gt;学习的目标：根据给定的训练数据集构建一个决策树模型，使它能够对实例进行正确的分类。&lt;/p&gt;
+&lt;p&gt;决策树模型可以看成是由训练数据集估计条件概率模型。&lt;/p&gt;
+&lt;p&gt;决策树的学习的策略是以损失函数为目标函数的最小化。决策树的损失函数通常是正则化的极大似然函数。&lt;strong&gt;学习的问题就变成了在损失函数意义下选择最优决策树的问题。&lt;/strong&gt;因为从所有可能的决策树中选取最优决策树是NP完全问题，所以现实中决策树的学习算法通常采用启发式方法，近似求解这一优化问题。这样得到的决策树是次最优（sub-optimal）的。&lt;/p&gt;
+&lt;p&gt;决策树的学习算法通常是一个递归的选择最优特征，并根据该特征对训练数据进行分割，使得对各个子数据集有一个最好的分类过程。这一过程对应着对特征空间的划分，也对应着决策树的构建。
+（1）开始构建根结点，将所有的训练数据都放入根结点；&lt;/p&gt;
+&lt;p&gt;（2）选择一个最优特征，按照这一特征将训练数据分割成子集，使得各个子集有一个在当前条件下最好的分类；&lt;/p&gt;
+&lt;p&gt;（3）如果这些子集已经基本被正确分类，那么就把这些子集分到所对应的叶节点中去；&lt;/p&gt;
+&lt;p&gt;（4）如果还有子集未能基本正确分类，那么就对这些子集选择新的最优特征，继续对其进行分割&lt;/p&gt;
+&lt;p&gt;（5）如此递归下去，直到全部基本正确分类，最后每一个子集都被分配到叶节点上，即都有了明确的分类，这就生成了一棵决策树。&lt;/p&gt;
+&lt;p&gt;以上生成的决策树对训练数据有很好的分类能力，但可能发生过拟合的情况。我们需要对生成的决策树进行自下而上的剪枝（去掉过于细分的叶结点，使其回退到父节点或者更高的结点，使树变得更简单），使其具有更好的泛化能力。&lt;/p&gt;
+&lt;p&gt;如果特征数量过多，可以在决策树学习开始的时候，对特征进行选择，留下对训练数据有足够充分分类能力的特征。&lt;/p&gt;
+&lt;p&gt;可以看出决策树的学习算法包含特征选择、决策树生成和决策树剪枝过程。由于决策树表示一个条件概率分布，所以深浅不同的决策树对应着不同复杂度的概率模型。决策树的生成对应于模型的局部选择，决策树的剪枝对应于模型的全局选择。&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h2&gt;特征选择&lt;/h2&gt;
+&lt;h3&gt;特征选择问题&lt;/h3&gt;
+&lt;p&gt;特征的选择在于选取对训练数据具有分类能力的特征，这样可以提高决策树学习的效率。&lt;strong&gt;通常特征选择的准则是信息增益或信息增益比&lt;/strong&gt;。特征选择是决定用哪个特征来划分特征空间。如果一个特征具有较强的分类能力，那么我们就应该选择这个特征（或者说一个特征能使划分后的子集在当前条件下有最好的分类）。信息增益（information gain）就能够很好的表示这一准则。&lt;/p&gt;
+&lt;h3&gt;信息增益&lt;/h3&gt;
+&lt;p&gt;先给出熵和条件熵的定义。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;熵（entropy）&lt;/strong&gt;表示随机变量不确定性的度量。假设X是一个取有限个值的离散变量，X的熵定义为：
+&lt;/p&gt;
+&lt;div class="math"&gt;$$H(X)=-\sum_{i=1}^{n}p_ilogp_i$$&lt;/div&gt;
+&lt;p&gt;
+其中&lt;span class="math"&gt;\(p_i\)&lt;/span&gt;为X取每一个可能值的概率，上式中的对数以2为底或者以e为底，这时熵的单位分别称作比特（bit）或纳特（nat）。可以看出X的熵只依赖于X的分布，而与X的取值无关，所以可以将X的熵记为
+&lt;/p&gt;
+&lt;div class="math"&gt;$$H(p)=-\sum_{i=1}^{n}p_ilogp_i$$&lt;/div&gt;
+&lt;p&gt;
+熵越大，随机变量的不确定性就越大。从定义可以验证：
+&lt;/p&gt;
+&lt;div class="math"&gt;$$0 \leq H(p) \leq logn$$&lt;/div&gt;
+&lt;p&gt;
+即熵达到最大值（所有可能的事件等概率时不确定性最高）。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;条件熵H(Y|X)&lt;/strong&gt;表示在已知随机变量X的条件下随机变量Y的不确定性。定义为X给定条件下Y的条件概率分布的熵对X的数学期望
+&lt;/p&gt;
+&lt;div class="math"&gt;$$H(Y|X)=\sum_{i=1}^{n}p_iH(Y|X=x_i)$$&lt;/div&gt;
+&lt;p&gt;
+这里&lt;span class="math"&gt;\(p_i=P(X=x_i), i=1,2,...,n\)&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;当熵和条件熵中的概率由数据统计得到时，所对应的熵与条件熵分别称为&lt;strong&gt;经验熵（empirical entropy）和经验条件熵（empirical conditional entropy）&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;信息增益（information gain）&lt;/strong&gt;表示得知特征X的信息而使得类Y的信息不确定性的&lt;strong&gt;减少&lt;/strong&gt;长度。&lt;/p&gt;
+&lt;p&gt;特征A对训练数据集D的信息增益g(D,A)，定义为集合D的经验熵H(D)与特征A给定条件下D的经验条件熵H(D|A)之差：
+&lt;/p&gt;
+&lt;div class="math"&gt;$$g(D|A)=H(D)-H(D|A)$$&lt;/div&gt;
+&lt;p&gt;
+一般地，熵H(Y)与条件熵H(Y|X)之差称为互信息（mutual information）。决策树学习中的信息增益等价于训练数据集中类与特征的互信息。
+信息增益大的特征具有更强的分类能力。&lt;/p&gt;
+&lt;p&gt;根据学习增益准则的特征选择方法：对训练数据集D，计算其每个特征的信息增益，并比较它们的大小，选择信息增益最大的特征。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;信息增益的算法&lt;/strong&gt;：&lt;/p&gt;
+&lt;p&gt;输入：训练数据集D和特征A；&lt;/p&gt;
+&lt;p&gt;输出：特征A对训练数据集D的信息增益g(D,A)&lt;/p&gt;
+&lt;p&gt;（1）计算数据集D的经验熵
+&lt;/p&gt;
+&lt;div class="math"&gt;$$H(D)=-\sum_{k=1}^{K}\frac{C_k}{|D|}log_2\frac{C_k}{|D|}$$&lt;/div&gt;
+&lt;p&gt;
+（2）计算特征A对数据集D的经验条件熵
+&lt;/p&gt;
+&lt;div class="math"&gt;$$H(D|A)=\sum_{i=1}^{n}\frac{|D_i|}{|D|}H(D_i)=-\sum_{i=1}^{n}\frac{|D_i|}{|D|}\sum_{k=1}^{K}\frac{|D_{ik}|}{|D_i|}log_2\frac{|D_{ik}|}{|D_i|}$$&lt;/div&gt;
+&lt;p&gt;
+（3）计算信息增益
+&lt;/p&gt;
+&lt;div class="math"&gt;$$g(D|A)=H(D)-H(D|A)$$&lt;/div&gt;
+&lt;p&gt;&lt;span class="math"&gt;\(|D|\)&lt;/span&gt;表示样本容量，设有K个类&lt;span class="math"&gt;\(C_k，|C_k|\)&lt;/span&gt;属于类&lt;span class="math"&gt;\(C_k\)&lt;/span&gt;的样本数量。特征A将D划分为n个子集&lt;span class="math"&gt;\(D_1,D_2,...,D_n，|D_i|\)&lt;/span&gt;为&lt;span class="math"&gt;\(D_i\)&lt;/span&gt;的样本数。子集&lt;span class="math"&gt;\(D_i\)&lt;/span&gt;中属于类&lt;span class="math"&gt;\(C_k\)&lt;/span&gt;的样本的集合为&lt;span class="math"&gt;\(D_{ik}\)&lt;/span&gt;。&lt;/p&gt;
+&lt;h3&gt;信息增益比&lt;/h3&gt;
+&lt;p&gt;以信息增益作为划分训练数据集的特征，存在&lt;strong&gt;偏向于选择取值较多的特征&lt;/strong&gt;的问题。使用信息增益比（information gain ratio）可以对这一问题进行校正。这是特征选择的另一准则。&lt;/p&gt;
+&lt;p&gt;特征A对训练数据集D的信息增益比&lt;span class="math"&gt;\(g_R(D,A)\)&lt;/span&gt;定义为其信息增益g(D,A)与训练数据集D关于特征A的值的熵&lt;span class="math"&gt;\(H_A(D)\)&lt;/span&gt;之比：
+&lt;/p&gt;
+&lt;div class="math"&gt;$$g_R(D,A)=\frac{g(D,A)}{H_A(D)}$$&lt;/div&gt;
+&lt;p&gt;
+其中&lt;span class="math"&gt;\(H_A(D)=-\sum_{i=1}^{n}\frac{|D_{i}|}{|D|}log_2\frac{|D_{i}|}{|D|}\)&lt;/span&gt;，n为特征A的取值个数，&lt;span class="math"&gt;\(D_i\)&lt;/span&gt;表示特征A将D分成的子集。&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h2&gt;决策树的生成&lt;/h2&gt;
+&lt;h3&gt;ID3算法&lt;/h3&gt;
+&lt;p&gt;ID3算法的核心是在决策树各个结点上应用信息增益准则选择特征，递归地构建决策树。具体的方法是：&lt;/p&gt;
+&lt;p&gt;（1）从根结点开始，对结点计算所有可能的特征的信息增益，选择信息增益最大的特征作为结点的特征，由该特征的不同取值建立子节点&lt;/p&gt;
+&lt;p&gt;（2）对子节点递归的调用以上方法，构建决策树&lt;/p&gt;
+&lt;p&gt;（3）直到所有特征的信息增益均很小或没有特征选择为止。&lt;/p&gt;
+&lt;p&gt;ID3算法相当于用极大似然估计法进行概率模型的选择。&lt;/p&gt;
+&lt;h3&gt;C4.5的生成算法&lt;/h3&gt;
+&lt;p&gt;C4.5算法与ID3算法类似，在生成的过程中，用信息增益比来选择特征。&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h2&gt;决策树的剪枝&lt;/h2&gt;
+&lt;p&gt;决策树生成算法产生的决策树，会出现过拟合的现象。因为在学习的过程中过多地考虑如何提高对训练数据的正确分类，从而构建出过于复杂的决策树。解决这个问题的办法就是考虑决策树的复杂度，对已生成的决策树进行简化。对已生成的决策树进行简化的过程称为&lt;strong&gt;剪枝（pruning）&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;决策树的剪枝往往通过极小化决策树整体的损失函数或代价函数来实现。决策树的损失函数可以定义为：
+&lt;/p&gt;
+&lt;div class="math"&gt;$$C_\alpha(T)=\sum_{t=1}^{|T|}N_tH_t(T)+\alpha|T|$$&lt;/div&gt;
+&lt;p&gt;
+其中，树T的叶节点数为|T|，叶节点t有&lt;span class="math"&gt;\(|N_t|\)&lt;/span&gt;个样本点，其中属于k类的数目为&lt;span class="math"&gt;\(|N_{tk}|\)&lt;/span&gt;个，&lt;span class="math"&gt;\(H_t(T)\)&lt;/span&gt;为叶节点t的经验熵
+&lt;/p&gt;
+&lt;div class="math"&gt;$$H_t(T)=-\sum_{k=1}^{K}\frac{|N_{tk}|}{|N_t|}log_2\frac{|N_{tk}|}{|N_t|}$$&lt;/div&gt;
+&lt;p&gt;
+决策树的损失函数可以表示为：
+&lt;/p&gt;
+&lt;div class="math"&gt;$$C_\alpha(T)=C(T)+\alpha|T|$$&lt;/div&gt;
+&lt;p&gt;
+这时C(T)表示模型对训练数据的预测误差，即模型与训练数据的拟合程度，|T|表示模型的复杂度，参数α控制二者直接的影响。较大的α促使选择较简答的模型，较小反之。&lt;/p&gt;
+&lt;p&gt;剪枝，就是当&lt;span class="math"&gt;\(\alpha\)&lt;/span&gt;确定时，选择损失函数最小的模型，即损失函数最小的子树。利用损失函数最小原则进行剪枝就是用正则化的极大似然估计进行模型选择。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;树的剪枝算法&lt;/strong&gt;：&lt;/p&gt;
+&lt;p&gt;输入：生成算法产生的整棵树T，参数&lt;span class="math"&gt;\(\alpha\)&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;输出：修剪后的子树&lt;span class="math"&gt;\(T_\alpha\)&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;（1）计算每个结点的经验熵&lt;/p&gt;
+&lt;p&gt;（2）递归地从叶节点向上回缩。设叶节点回到到其父节点之前与之后的整体树分别为&lt;span class="math"&gt;\(T_B\)&lt;/span&gt;和&lt;span class="math"&gt;\(T_A\)&lt;/span&gt;，如果其对应的损失函数有：
+&lt;/p&gt;
+&lt;div class="math"&gt;$$C_\alpha(T_A) \leq C_\alpha(T_B)$$&lt;/div&gt;
+&lt;p&gt;
+则进行剪枝，即将父节点变为新的叶结点。&lt;/p&gt;
+&lt;p&gt;（3）返回（2）直至不能继续，得到损失函数最小的子树。&lt;/p&gt;
+&lt;p&gt;上式只需考虑两棵树的损失函数的差，其计算可以在局部进行，所以决策树的剪枝算法可以由一种动态规划算法实现。&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h2&gt;CART算法&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;分类与回归树（classification and regression tree, CART）&lt;/strong&gt;是应用广泛的决策树学习方法。既可以用于分类也可以用于回归。CART假设决策树是&lt;strong&gt;二叉树&lt;/strong&gt;，内部结点的特征取值为“是”或“否”，左分支是取值为“是”的分支，右分支是取值为“否”的的分支。这样的决策树等于递归地二分每个特征，将输入空间划分为有限个单元，并在这些单元上确定预测的概率分布。&lt;/p&gt;
+&lt;p&gt;CART算法由以下两步组成：&lt;/p&gt;
+&lt;p&gt;（1）决策树的生成&lt;/p&gt;
+&lt;p&gt;（2）决策树的剪枝&lt;/p&gt;
+&lt;h3&gt;CART生成&lt;/h3&gt;
+&lt;p&gt;决策树的生成就是递归地构建二叉决策树的过程，对回归树用平方误差最小化准则，对分类树&lt;strong&gt;用基尼指数（Gini index）最小化准则，进行特征选择&lt;/strong&gt;，生成二叉树。&lt;/p&gt;
+&lt;h4&gt;回归树的生成&lt;/h4&gt;
+&lt;p&gt;遍历所有输入变量，找到最优的切分变量j和切分点（可以用平方误差来表示回归树对于训练数据的预测误差，使预测误差最小），构成一个对（j,s）。依次将输入空间划分为两个区域，接着对每个区域重复上述划分过程，直到满足停止条件为止。这样就生成一棵回归树。这样的&lt;strong&gt;回归树通常称为最小二乘回归树（least squares regression tree）&lt;/strong&gt;。&lt;/p&gt;
+&lt;h6&gt;分类树的生成&lt;/h6&gt;
+&lt;p&gt;分类树用基尼指数选择最优特征，同时决定该特征的最优二值切分点。&lt;/p&gt;
+&lt;p&gt;在分类问题中，假设有K个类，样本点属于第k类的概率为&lt;span class="math"&gt;\(p_k\)&lt;/span&gt;，则概率分布的基尼指数定义为
+&lt;/p&gt;
+&lt;div class="math"&gt;$$Gini(p)=\sum_{k=1}^{K}p_k(1-p_k)=1-\sum_{k=1}^{K}p_k^2$$&lt;/div&gt;
+&lt;p&gt;
+对于给定的样本集合D，其基尼指数为
+&lt;/p&gt;
+&lt;div class="math"&gt;$$Gini(p)=1-\sum_{k=1}^{K}(\frac{|C_k|}{|D|})^2$$&lt;/div&gt;
+&lt;p&gt;
+假设样本集合D根据特征A是否取某一可能值a被分割成两个部分&lt;span class="math"&gt;\(D_1\)&lt;/span&gt;和&lt;span class="math"&gt;\(D_2\)&lt;/span&gt;，则在特征A的条件下，集合D的基尼系数定义为
+&lt;/p&gt;
+&lt;div class="math"&gt;$$Gini(D,A)=\frac{|D_1|}{|D|}Gini(D_1)+\frac{|D_2|}{|D|}Gini(D_2)$$&lt;/div&gt;
+&lt;p&gt;
+&lt;strong&gt;基尼指数Gini(D)表示集合D的不确定性&lt;/strong&gt;，基尼指数Gini(D,A)表示经A=a分割后集合D的不确定性。基尼指数越大，样本集合的不确定性也就越大（与熵类似）。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;CART生成算法：&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;输入：训练数据集D，停止计算的条件（如结点中样本个数小于预定阈值，或样本集的基尼指数小于预定阈值）&lt;/p&gt;
+&lt;p&gt;输出：CART决策树&lt;/p&gt;
+&lt;p&gt;从根结点开始，递归地对每个结点进行以下操作：&lt;/p&gt;
+&lt;p&gt;（1）设结点的训练数据集为D，计算现有特征对该数据集的基尼指数，对每一个特征A，对其可能的每一个取值a，根据样本点对A=a的测试为“是”或“否”将D分割成&lt;span class="math"&gt;\(D_1\)&lt;/span&gt;和&lt;span class="math"&gt;\(D_2\)&lt;/span&gt;两部分，计算A=a时的基尼指数。&lt;/p&gt;
+&lt;p&gt;（2）在所有的特征A以及它们所有可能的切分点a中，&lt;strong&gt;选择基尼指数最小的特征及其对应的切分点作为最优特征与最优切分点&lt;/strong&gt;。依最优特征与最优切分点，从现结点生成两个子结点，将训练数据集依特征分配到两个子结点中去。&lt;/p&gt;
+&lt;h3&gt;CART剪枝&lt;/h3&gt;
+&lt;p&gt;CART剪枝算法由两步组成：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;（1）剪枝，形成一个子树序列&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;从生成算法产生的决策树&lt;span class="math"&gt;\(T_0\)&lt;/span&gt;低端开始不断剪枝，直到&lt;span class="math"&gt;\(T_0\)&lt;/span&gt;的根结点，形成一个子树序列&lt;span class="math"&gt;\({T_0,T_1,...,T_n}\)&lt;/span&gt;。&lt;/p&gt;
+&lt;p&gt;在剪枝的过程中，计算子树的损失函数：
+&lt;/p&gt;
+&lt;div class="math"&gt;$$C_\alpha(T)=C(T)+\alpha|T|$$&lt;/div&gt;
+&lt;p&gt;
+其中，T为任意子树，C(T)为对训练数据的预测误差（如基尼指数），|T|为子树的叶结点个数。&lt;/p&gt;
+&lt;p&gt;从整体树&lt;span class="math"&gt;\(T_0\)&lt;/span&gt;开始剪枝，对&lt;span class="math"&gt;\(T_0\)&lt;/span&gt;的任意内部结点t，以t为单结点树的损失函数是（叶结点个数为0）
+&lt;/p&gt;
+&lt;div class="math"&gt;$$C_\alpha(t)=C(t)+\alpha$$&lt;/div&gt;
+&lt;p&gt;
+以t为根结点的子树&lt;span class="math"&gt;\(T_t\)&lt;/span&gt;的损失函数是
+&lt;/p&gt;
+&lt;div class="math"&gt;$$C_\alpha(T_t)=C(T_t)+\alpha|T_t|$$&lt;/div&gt;
+&lt;p&gt;
+当&lt;span class="math"&gt;\(\alpha=0及\alpha\)&lt;/span&gt;充分小时，有不等式
+&lt;/p&gt;
+&lt;div class="math"&gt;$$C_\alpha(T_t) \leq C_\alpha(t)$$&lt;/div&gt;
+&lt;p&gt;
+当&lt;span class="math"&gt;\(\alpha\)&lt;/span&gt;增大时，上面&lt;span class="math"&gt;\(C_\alpha(T_t) = C_\alpha(t)\)&lt;/span&gt;，当&lt;span class="math"&gt;\(\alpha\)&lt;/span&gt;再增大时，上面的不等式就反向了。只要&lt;span class="math"&gt;\(\alpha = \frac{C(t)-C(T_t)}{|T_t|-1}\)&lt;/span&gt;，&lt;span class="math"&gt;\(T_t与t\)&lt;/span&gt;有相同的损失函数值，而t的结点少，因此t比&lt;span class="math"&gt;\(T_t\)&lt;/span&gt;更可取，对&lt;span class="math"&gt;\(T_t\)&lt;/span&gt;进行剪枝。&lt;/p&gt;
+&lt;p&gt;为此对&lt;span class="math"&gt;\(T_0\)&lt;/span&gt;中每一内部结点t，计算
+&lt;/p&gt;
+&lt;div class="math"&gt;$$g(t) = \frac{C(t)-C(T_t)}{|T_t|-1}$$&lt;/div&gt;
+&lt;p&gt;
+上式的分子可以表示误差的增加，分母部分表示剪枝后树叶数量的减小。它表示剪枝后整体损失函数减少的程度。在&lt;span class="math"&gt;\(T_0\)&lt;/span&gt;中减去g(t)最小的&lt;span class="math"&gt;\(T_t\)&lt;/span&gt;，将得到子树作为&lt;span class="math"&gt;\(T_1\)&lt;/span&gt;，同时将最小的g(t)设为&lt;span class="math"&gt;\(\alpha_1\)&lt;/span&gt;。&lt;span class="math"&gt;\(T_1\)&lt;/span&gt;为区间&lt;span class="math"&gt;\([\alpha_1,\alpha_2)\)&lt;/span&gt;的最优子树。&lt;/p&gt;
+&lt;p&gt;如此剪枝下去，直至得到根结点。在这一过程中，不断增加&lt;span class="math"&gt;\(\alpha\)&lt;/span&gt;的值，产生新的区间。&lt;/p&gt;
+&lt;p&gt;（1）对于所有的子树t，我们想用合适的叶子节点来代替t，然后计算增加的误差E与t的叶子节点的比值（即g(t)）。我们选择比值最小的那个子树t，用合适的叶子节点代替之。&lt;/p&gt;
+&lt;p&gt;（2）重复迭代以上步骤，每次都替换掉一棵子树。我们会得到从完全增长的树&lt;span class="math"&gt;\(T_0\)&lt;/span&gt;到只有根节点一个决策结点的树&lt;span class="math"&gt;\(T_n\)&lt;/span&gt;的一系列决策树：&lt;span class="math"&gt;\(T_0,T_1,...,T_n\)&lt;/span&gt;。然后我们用独立的验证集(我们可以从可用数据集中抽取三分之一作为验证集，剩下的三分之二作为训练集)来验证各个决策树的分类准确性。选取准确性最高的决策树为最终的CART决策树。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;（2）在剪枝得到的子树序列&lt;span class="math"&gt;\(T_0,T_1,...,T_n\)&lt;/span&gt;中通过交叉验证选取最优子树&lt;span class="math"&gt;\(T_\alpha\)&lt;/span&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;测试子树序列&lt;span class="math"&gt;\(T_0,T_1,...,T_n\)&lt;/span&gt;中各棵子树的平方误差或基尼指数。平方误差或基尼指数最小的决策树被认为是最优的决策树。在子树序列中每棵子树&lt;span class="math"&gt;\(T_0,T_1,...,T_n\)&lt;/span&gt;都对应于一个参数&lt;span class="math"&gt;\(\alpha_0,\alpha_1,...,\alpha_n\)&lt;/span&gt;。所以当最优子树&lt;span class="math"&gt;\(T_k\)&lt;/span&gt;确定时，对应的&lt;span class="math"&gt;\(\alpha_k\)&lt;/span&gt;也确定了，即得到最优决策树&lt;span class="math"&gt;\(T_\alpha\)&lt;/span&gt;。&lt;/p&gt;
+&lt;p&gt;如果一个结点是叶节点那么其g(t)为无穷大，如果不是叶节点那么按照以上的方法计算g(t)。每次从当前的树中选择一个g(t)最小的（因为该结点增加的误差率是最小的），然后删去该结点或结点集合，得到一棵新的树，然后递归上面的过程。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;CART剪枝算法&lt;/strong&gt;：&lt;/p&gt;
+&lt;p&gt;输入：CART算法生成的决策树&lt;span class="math"&gt;\(T_0\)&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;输出：最优决策树&lt;span class="math"&gt;\(T_\alpha\)&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;（1）设k=0, T=&lt;span class="math"&gt;\(T_0\)&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;（2）$\alpha = +\infty $&lt;/p&gt;
+&lt;p&gt;（3）自下而上对各内部结点计算&lt;span class="math"&gt;\(C(T_t)\)&lt;/span&gt;，计算出g(t)，并且将各结点计算出的最小的g(t)保存在&lt;span class="math"&gt;\(\alpha\)&lt;/span&gt;中&lt;/p&gt;
+&lt;p&gt;（4）自上而下访问内部结点，如果g(t)=&lt;span class="math"&gt;\(\alpha\)&lt;/span&gt;，剪去g(t)最小的T，并对叶节点t以多数表决法决定其类，得到树T&lt;/p&gt;
+&lt;p&gt;（5）k=k+1,在&lt;span class="math"&gt;\(\alpha_k=\alpha, T_k=T\)&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;（6）T不是由根结点单独一个结点构成的树，就&lt;strong&gt;返回（4）（（2）？）&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;（7）采用交叉验证在剪枝得到的子树序列&lt;span class="math"&gt;\(T_0,T_1,...,T_n\)&lt;/span&gt;中选取最优子树&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h2&gt;Reference&lt;/h2&gt;
+&lt;p&gt;&lt;a href="http://book.douban.com/subject/10590856/"&gt;统计学习方法&lt;/a&gt;第五章&lt;/p&gt;
+&lt;script type="text/javascript"&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "false";
+
+    if (false) {
+        align = (screen.width &lt; 768) ? "left" : align;
+        indent = (screen.width &lt; 768) ? "0em" : indent;
+        linebreak = (screen.width &lt; 768) ? 'true' : linebreak;
+    }
+    
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = '//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); ";
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+&lt;/script&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">wwt</dc:creator><pubDate>Tue, 29 Jul 2014 10:00:00 +0800</pubDate><guid>tag:www.wengweitao.com,2014-07-29:jue-ce-shu.html</guid><category>读书笔记</category></item><item><title>朴素贝叶斯法</title><link>http://www.wengweitao.com/po-su-bei-xie-si-fa.html</link><description>&lt;blockquote&gt;
 &lt;p&gt;朴素贝叶斯法（naive Bayes）是基于贝叶斯定理与特征条件独立假设的分类方法。对于给定的训练数据集，利用特征条件独立假设学习输入/输出的联合概率分布；然后基于此模型，对给定的输入x，利用贝叶斯定理求出后验概率最大的输出y。&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h2&gt;朴素贝叶斯法的学习与分类&lt;/h2&gt;
