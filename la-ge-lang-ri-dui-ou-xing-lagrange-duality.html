@@ -2,7 +2,7 @@
 <html lang="zh">
 <head>
 
-        <title>k近邻法</title>
+        <title>拉格朗日对偶性（Lagrange Duality）</title>
         <meta charset="utf-8" />
         <link href="http://www.wengweitao.com/feeds\all.atom.xml" type="application/atom+xml" rel="alternate" title="wwt's blog Full Atom Feed" />
         <link href="http://www.wengweitao.com/feeds/all.rss.xml" type="application/rss+xml" rel="alternate" title="wwt's blog Full RSS Feed" />
@@ -59,13 +59,13 @@
 
             <header>
               <h2 class="entry-title">
-                <a href="http://www.wengweitao.com/kjin-lin-fa.html" rel="bookmark"
-                   title="Permalink to k近邻法">k近邻法</a></h2>
+                <a href="http://www.wengweitao.com/la-ge-lang-ri-dui-ou-xing-lagrange-duality.html" rel="bookmark"
+                   title="Permalink to 拉格朗日对偶性（Lagrange Duality）">拉格朗日对偶性（Lagrange Duality）</a></h2>
            
             </header>
             <footer class="post-info">
-              <abbr class="published" title="2014-07-27T16:18:00">
-                Sun 27 July 2014
+              <abbr class="published" title="2014-07-30T09:56:00">
+                Wed 30 July 2014
               </abbr>
               <address class="vcard author">By 
                 <a class="url fn" href="http://www.wengweitao.com/author/wwt.html"> wwt</a>
@@ -73,63 +73,86 @@
             </footer><!-- /.post-info -->
             <div class="entry-content">
               <blockquote>
-<p>k近邻法（k-nearest neighbor, k-NN）是一种基于分类与回归的方法。分类时，对新的待分类的实例，根据其k个最近邻的训练实例的类别，通过多数表决等方式进行预测。因此，k近邻算法不具有显示的学习过程。k值的选择、距离度量及分类决策规则是k近邻法的3个基本要素。</p>
+<p>在求解约束优化问题的时候，常常利用拉格朗日对偶性（Lagrange Duality）将原始问题转化为对偶问题，通过求解对偶问题而得到原始问题的解。该方法用在许多统计学习方法中，如最大熵模型和SVM等。</p>
 </blockquote>
-<h2>k近邻算法</h2>
-<p>k近邻算法简单、直观：对新的待分类的实例，根据其k个最近邻的训练实例的类别，通过多数表决等方式进行预测。</p>
-<h2>k近邻模型</h2>
-<p>k近邻法的使用的模型实际上对应于对特征空间的划分。模型由三个要素——距离度量、k值的选择和分类决策规则决定。</p>
-<h3>模型</h3>
-<p>当训练集、距离度量、k值以及分类决策规程确定后，对于任何一个新的输入实例，它所属的类唯一确定。k近邻法的模型对应特征空间的一个划分，将特征空间划分为一些子空间，确定子空间里的每一个点所属的类。</p>
-<p>在特征空间中，对每个训练实例点<span class="math">\(x_i\)</span>，距离该点比其他点更近的所有点组成一个区域，叫做单元（cell）。最近邻将实例<span class="math">\(x_i\)</span>的类作为类<span class="math">\(y_i\)</span>作为其单元中所有点的类标记（class label）。</p>
-<h3>距离度量</h3>
-<p>特征空间中两个实例点的距离是两个实例点相似程度的反映。</p>
-<p>设特征空间是n维实数向量空间，对于<span class="math">\(x_i,x_j\)</span>的<span class="math">\(L_p\)</span>距离定义为：
-</p>
-<div class="math">$$L_p(x_i,x_j)=(\sum_{l=1}^{n}|x_i^{(l)}-x_j^{(l)}|^p)^{\frac{1}{p}}$$</div>
+<h2>原始问题</h2>
+<h3>原始最优化问题</h3>
+<p>考虑最优化问题：</p>
+<blockquote>
 <p>
-当p=2时，是欧氏距离；</p>
-<p>当p=1时，是曼哈顿距离；</p>
-<p>当p=<span class="math">\(\infty\)</span>时，它是各个坐标距离的最大值，即
+<div class="math">$$min_x f(x)$$</div>
+<div class="math">$$s.t. c_i(x) \leq 0  \:\:\:\:\: i=1,2,...,k$$</div>
+<div class="math">$$h_j(x) = 0   \:\:\:\:\: j=1,2,...,l$$</div>
+称此约束最优化问题为原始最优化问题或原始问题。</p>
+</blockquote>
+<h3>广义拉格朗日函数</h3>
+<p>为了解决原始问题，我们先引入广义拉格朗日（generalized Lagrangian）函数：
 </p>
-<div class="math">$$L(x_i,x_j)=max|x_i^{(l)}-x_j^{(l)}|$$</div>
-<h3>k值的选择</h3>
-<p>k值的选择会对k近邻法的结果产生重大的影响。如果选择较小的k值，那么就相当于用较小的领域中的训练实例进行预测，“学习”的近似误差（approximation error）会减小，只有与输入实例较近的训练实例才会对预测结果有作用。但缺点是“学习”的估计误差（estimation error）会增大，预测结果对近邻的实例点非常敏感，如果近邻点切好是噪音，那么预测就会出错。也就是说，k值较小整体模型越复杂，容易发生拟合。k值较大则相反。</p>
-<p>实际中通常k值取一个较小的数，采用交叉验证法来选取最优的k值。</p>
-<h3>分类决策规则</h3>
-<p>由输入实例的k个近邻中的多数类来决定输入实例的类。其实多数表决的功能就等价于经验风险最小化。</p>
-<hr />
-<h2>k近邻法的实现：kd树</h2>
-<p>实现k近邻法时，主要考虑的问题是如果对训练数据进行快速k近邻搜索。最简单的实现方法就是线性扫描，计算新的输入实例与每一个训练实例的距离。当训练集很大，计算非常耗时，不可行。</p>
-<p>为了提高k近邻搜索效率，可以考虑使用特殊的结构存储训练数据，以减少计算距离的次数。</p>
-<h3>构造kd树</h3>
-<p>kd树是一种对k维空间中的实例点进行存储以便对其进行快速检索的树形数据结构。kd树是二叉树，表示对k维空间的一个划分（partition）。构造kd树相当于不断地用垂直于坐标轴的超平面将k维空间切分，构成一系列的k维超矩形区域。kd树的每一个结点对应于一个k维超矩形区域。</p>
-<p><strong>构造平衡kd树的算法</strong>：</p>
-<p>输入：k维空间数据集<span class="math">\(T={x_1,x_2,...,x_N}\)</span>，其中<span class="math">\(x_i=(x_i^{(1)},x_i^{(2)},...,x_i^{(k)})^T\)</span>，i=1,2,...,N；</p>
-<p>输出：kd树</p>
-<p>（1）开始：构造根结点，根结点对应于包含T的k维空间的超矩形区域。
-选择<span class="math">\(x^{(1)}\)</span>为坐标轴，以T中所有实例的<span class="math">\(x^{(1)}\)</span>坐标的中位数为切分点，将根结点对应的超矩形区域切分为两个子区域。切分由通过切分点并与坐标轴<span class="math">\(x^{(1)}\)</span>垂直的超平面实现。由根结点生成深度为1的左、右结点，左子结点区域的<span class="math">\(x^{(1)}\)</span>坐标对应的值小于切分点的值；右子结点区域的<span class="math">\(x^{(1)}\)</span>坐标对应的值大于切分点的值。将落在切分超平面上的实例点保存在根结点。</p>
-<p>（2）重复：对于深度为j的结点，选择<span class="math">\(x^{(l)}\)</span>为切分的坐标轴，<span class="math">\(l=j \mod k + 1\)</span>（如对于2维空间，（0,1）、（1,2）、（2,1）、（3,2）...），以该结点区域中所有实例的<span class="math">\(x^{(l)}\)</span>坐标的中位数为切分点，将根结点对应的超矩形区域切分为两个子区域。</p>
-<p>（3）直到两个区域没有实例存在时停止（所有实例点都在超平面上）。</p>
-<h3>搜索kd树</h3>
-<p>kd树可以省去对大部分数据点的搜索，从而减少搜索的计算量。</p>
-<p><strong>用kd树的最邻近搜索的算法</strong>：</p>
-<p>输入：已构造的kd树；目标点x；</p>
-<p>输出：x的最近邻</p>
-<p>（1）在kd树中找到包含目标点x的叶结点</p>
-<p>（2）以此叶节点为“当前最近点”</p>
-<p>（3）递归向上回退</p>
-<div class="highlight"><pre><span class="err">（</span><span class="n">a</span><span class="err">）如果该结点保存的实例点比当前最几点距离目标点更近，则以该实例点为“当前”最近点</span>
-
-<span class="err">（</span><span class="n">b</span><span class="err">）当前最近点一定存在于该结点一个子结点对应的区域。检查该子结点的父结点的另一子结点对应的区域是否有更近的点。即以目标点为球心，以目标点与当前最近点间的距离为半径的球体是否与另一子结点对应的区域相交。如果相交，可能在另一个子结点对应的区域中存在更近的点。移动到另一个子结点，接着递归地进行最邻近搜索。如果不相交，则向上回退。</span>
-</pre></div>
-
-
-<p>（4）当回退到根结点，搜索结束，此时的当前最近结点即为最邻近点</p>
-<p>如果实例点是均匀分布的，那么kd树的搜索的平均计算复杂度是O(logN)，N为训练实例数。kd树适用于训练实例远大于空间维数时的k近邻搜索。当空间维数接近训练实例的时候，几乎接近线性搜索，效率迅速下降。</p>
+<div class="math">$$L(x, \alpha, \beta) = f(x) + \sum_{i=1}^{k}\alpha_i  c_i(x) + \sum_{j=1}^{l}\beta_j h_j(x)$$</div>
+<p>
+这里的<span class="math">\(\alpha_i\)</span>和<span class="math">\(\beta_j\)</span>称为拉格朗日乘子。</p>
+<h3>极小极大问题</h3>
+<p>现在考虑<span class="math">\(L(x, \alpha, \beta)\)</span>的最大值：
+</p>
+<div class="math">$$\theta_p(x) = max_{\alpha, \beta: \alpha_i \geq 0}L(x, \alpha, \beta) $$</div>
+<p>
+上式中的下标p代表“primal（原始问题）”。如果上式中的x不满足原始问题的约束条件（即存在某些i使得<span class="math">\(c_i(x)&gt;0\)</span>或者<span class="math">\(h_i(x) \neq 0\)</span>），那么就有
+</p>
+<div class="math">$$\theta_p(x) =  f(x) + \sum_{i=1}^{k}\alpha_i  c_i(x) + \sum_{j=1}^{l}\beta_j h_j(x)= \infty$$</div>
+<p>
+因为若<span class="math">\(c_i(x)&gt;0\)</span>，可取<span class="math">\(\alpha_i \rightarrow +\infty\)</span>，或者<span class="math">\(h_i(x) \neq 0\)</span>，可令<span class="math">\(\beta_j h_j(x) \rightarrow +\infty\)</span>，而将其余的<span class="math">\(\alpha_i ，\beta_j\)</span>都取0.</p>
+<p>相反的，若满足原始优化问题的约束条件，那么有<span class="math">\(\theta_p(x) = f(x)\)</span>。所以有
+</p>
+<div class="math">$$\theta_p(x) = \left\{\begin{matrix}
+f(x)   \:\:\:\:\: x满足约束条件\\
+\infty  \:\:\:\:\: 其他
+\end{matrix}\right.$$</div>
+<p>
+因此，如果我们考虑极小化问题
+</p>
+<div class="math">$$min_x\theta_p(x) = min_xmax_{\alpha, \beta: \alpha_i \geq 0}L(x, \alpha, \beta) $$</div>
+<p>
+我们可以看到这与原始最优化问题是等价的，称为<strong>广义拉格朗日函数的极小极大问题</strong>。这样就把原始最优化问题转化为求解拉格朗日函数的极小极大问题。我们定义原始最优化问题的最优值为
+</p>
+<div class="math">$$p^* = min_x\theta_p(x)$$</div>
+<p>
+称为<strong>原始问题的值</strong>。</p>
+<h2>对偶问题</h2>
+<p>定义
+</p>
+<div class="math">$$\theta_D(x) = min_xL(x, \alpha, \beta) $$</div>
+<p>
+上式中的下标D代表“dual（对偶问题）”。与前面定义的原始问题不同的是，原始问题是通过参数<span class="math">\(\alpha, \beta\)</span>进行优化（极大化），而这里定义的问题是通过<span class="math">\(x\)</span>进行优化（极小化）。</p>
+<p>对<span class="math">\(\theta_D(x)\)</span>极大化，就可以得到<strong>对偶优化问题</strong></p>
+<blockquote>
+<p>
+<div class="math">$$max_{\alpha, \beta: \alpha_i \geq 0}\theta_D(\alpha, \beta) = max_{\alpha, \beta: \alpha_i \geq 0}min_xL(x, \alpha, \beta) $$</div>
+</p>
+</blockquote>
+<p>称为<strong>广义拉格朗日函数的极大极小问题</strong>。</p>
+<p>对偶问题与原始问题除了交换式子中max和min的顺序外，是一样的。同样，我也定义<strong>对偶优化问题的最优值</strong>
+</p>
+<div class="math">$$d^* = max_{\alpha, \beta: \alpha_i \geq 0}\theta_D(\alpha, \beta)$$</div>
+<p>
+称为<strong>对偶问题的值</strong>。</p>
+<h2>原始问题和对偶问题的关系</h2>
+<p>容易得到（max min 小于等于 min max）：
+</p>
+<div class="math">$$d^* = max_{\alpha, \beta: \alpha_i \geq 0}min_xL(x, \alpha, \beta) \leq min_xmax_{\alpha, \beta: \alpha_i \geq 0}L(x, \alpha, \beta)= p^*$$</div>
+<p>在某些条件下，原始问题和对偶问题的最优值相等即<span class="math">\(d^* = p^*\)</span>，这时可以<strong>用对偶问题替代原始问题</strong>。</p>
+<p><strong>定理1：</strong>考虑原始问题和对偶问题。假设<span class="math">\(f(x)\)</span>和<span class="math">\(c_i(x)\)</span>是凸函数（convex），<span class="math">\(h_j(x)\)</span>是仿射函数（affine，与线性函数类似只是允许增加一个截距b）；并且存在x，对所有的i有<span class="math">\(c_i(x) &lt; 0\)</span>. 则存在<span class="math">\(x^* , \alpha^* ,\beta^* $，使得在\)</span>x^<em> <span class="math">\(是原始问题的解，\)</span>\alpha^</em> ,\beta^*$是对偶问题的解，并且</p>
+<div class="math">$$d^* = p^* = L(x^*, \alpha^*, \beta^*)$$</div>
+<p><strong>定理2：</strong>考虑原始问题和对偶问题。假设<span class="math">\(f(x)\)</span>和<span class="math">\(c_i(x)\)</span>是凸函数（convex），<span class="math">\(h_j(x)\)</span>是仿射函数（affine）；并且存在x，对所有的i有<span class="math">\(c_i(x) &lt; 0\)</span>. 则<span class="math">\(x^* $是原始问题的解，并且\)</span>\alpha^<em> , \beta^</em> <span class="math">\(是对偶问题的解的充分必要条件是\)</span>x^<em> , \alpha^</em> ,\beta^<em> <span class="math">( 满足下面的<strong>Karush-Kuhn-Tucker(KKT)条件</strong>：<div class="math">$$\bigtriangledown_x L(x^*, \alpha^*, \beta^*)=0$$</div>
+<div class="math">$$\bigtriangledown_\alpha L(x^*, \alpha^*, \beta^*)=0$$</div>
+<div class="math">$$\bigtriangledown_\beta L(x^*, \alpha^*, \beta^*)=0$$</div>
+<div class="math">$$\alpha^* c_i(x^*) = 0  \:\:\:\:\: i=1,2,...,k$$</div>
+<div class="math">$$c_i(x^*) \leq 0  \:\:\:\:\: i=1,2,...,k$$</div>
+<div class="math">$$\alpha^* \geq 0  \:\:\:\:\: i=1,2,...,k$$</div>
+<div class="math">$$h_j(x^*) = 0   \:\:\:\:\: j=1,2,...,l$$</div>
+其中，上面的第4个式子，称为KKT的对偶互补条件，由此条件可得，若\)</span>\alpha^</em>　&gt; 0<span class="math">\(那么\)</span>c_i(x^*) = 0$.</p>
 <hr />
 <h2>Reference</h2>
-<p><a href="http://book.douban.com/subject/10590856/">统计学习方法</a>第三章</p>
+<p><a href="http://book.douban.com/subject/10590856/">统计学习方法</a></p>
 <script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
     var align = "center",
         indent = "0em",
@@ -173,7 +196,7 @@
               <h3>Comments</h3>
               <div id="disqus_thread"></div>
               <script type="text/javascript">
-                var disqus_identifier = "kjin-lin-fa.html";
+                var disqus_identifier = "la-ge-lang-ri-dui-ou-xing-lagrange-duality.html";
                 (function() {
                 var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
                 dsq.src = 'http://wengwt.disqus.com/embed.js';
