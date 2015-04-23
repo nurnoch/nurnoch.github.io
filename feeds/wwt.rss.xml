@@ -2510,7 +2510,164 @@ str.format()是Python最为推荐的字符串格式化方法，当然也是最Py
 &lt;blockquote&gt;
 &lt;p&gt;信息技术协会致力于为北大深研院的同学们营造一个学习和交流信息学科得环境和氛围，为大家提供有关信息领域的设计、应用、资讯等方面的信息。信息技术协会积极打造与深港信息类企业合作和联动的平台，帮助学生走出校园，观察产业发展动态；积极开展电脑维护活动，帮助同学们解决生活中遇到的技术困难。在以后，信息技术协会仍然会坚持协会宗旨，继续为大家服务。&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;转自：http://news.pkusz.edu.cn/article-143-4357.html&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">wwt</dc:creator><pubDate>Sat, 18 Oct 2014 20:12:00 +0800</pubDate><guid>tag:www.wengweitao.com,2014-10-18:xin-xi-ji-zhu-xie-hui-di-yi-qi-dian-nao-ji-zhu-pei-xun-shun-li-ju-ban.html</guid><category>校园</category></item><item><title>拉格朗日对偶性（Lagrange Duality）</title><link>http://www.wengweitao.com/la-ge-lang-ri-dui-ou-xing-lagrange-duality.html</link><description>&lt;blockquote&gt;
+&lt;p&gt;转自：http://news.pkusz.edu.cn/article-143-4357.html&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">wwt</dc:creator><pubDate>Sat, 18 Oct 2014 20:12:00 +0800</pubDate><guid>tag:www.wengweitao.com,2014-10-18:xin-xi-ji-zhu-xie-hui-di-yi-qi-dian-nao-ji-zhu-pei-xun-shun-li-ju-ban.html</guid><category>校园</category></item><item><title>牛顿法</title><link>http://www.wengweitao.com/niu-dun-fa.html</link><description>&lt;blockquote&gt;
+&lt;p&gt;牛顿法是近似求解方程的方法，方法是使用函数的泰勒级数的前面几项来寻找方程的根。在统计学习中，牛顿法（Newton method）和拟牛顿法（quasi Newton method）也是&lt;strong&gt;求解无约束最优化问题&lt;/strong&gt;的常用方法。有&lt;strong&gt;收敛速度快&lt;/strong&gt;的优点。牛顿法是&lt;strong&gt;迭代方法&lt;/strong&gt;，每一步需要求解目标函数的海森矩阵（Hessian matrix）的逆矩阵，计算比较复杂。拟牛顿法通过正定矩阵近似海赛矩阵的逆矩阵或海赛矩阵，简化了这一过程。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2&gt;牛顿法&lt;/h2&gt;
+&lt;h3&gt;目标&lt;/h3&gt;
+&lt;p&gt;考虑无约束最优化问题
+&lt;/p&gt;
+&lt;div class="math"&gt;$$minf(x)$$&lt;/div&gt;
+&lt;p&gt;其中&lt;span class="math"&gt;\(x^* $为目标函数的极小点。求出f(x)的极小点 $x^*\)&lt;/span&gt;&lt;/p&gt;
+&lt;h3&gt;基本概念&lt;/h3&gt;
+&lt;h4&gt;泰勒级数&lt;/h4&gt;
+&lt;p&gt;若函数f（x）在点的某一临域内具有直到（n+1）阶导数，则在该邻域内f（x）的n阶泰勒公式为
+用无限项的级数连加式来表示一个函数，这些相加的项由函数在某一点的导数求得。在该点邻域内f（x）的n阶泰勒公式表示为&lt;img alt="泰勒级数" src="http://upload.wikimedia.org/math/0/2/8/02837e50dddb76c237328172e2040135.png" /&gt;。
+对于二阶泰勒展开，二阶的项可以使用海森矩阵来表示。&lt;/p&gt;
+&lt;h4&gt;海森矩阵&lt;/h4&gt;
+&lt;p&gt;海森矩阵（Hessian matrix）是一个自变量为向量的实值函数的二阶偏导数组成的方块矩阵。可以表示为：
+&lt;img alt="海森矩阵" src="http://upload.wikimedia.org/math/d/c/e/dce355e43fb1539863302f482da7e6f6.png" /&gt;&lt;/p&gt;
+&lt;h3&gt;牛顿法算法&lt;/h3&gt;
+&lt;p&gt;函数f(x)有极值的必要条件是在极值点处一阶导数为0，即梯度向量为0.
+&lt;/p&gt;
+&lt;div class="math"&gt;$$\bigtriangledown f(x)=0$$&lt;/div&gt;
+&lt;p&gt;
+假设f(x)具有二阶连续偏导数，则将f(x)在第k次迭代值&lt;span class="math"&gt;\(x^{(k)}\)&lt;/span&gt;邻域内进行二阶展开。&lt;/p&gt;
+&lt;p&gt;每次迭代从点&lt;span class="math"&gt;\(x^{(k)}\)&lt;/span&gt;开始，求目标函数的极小点，作为第k+1次迭代值&lt;span class="math"&gt;\(x^{(k+1)}\)&lt;/span&gt;。对将f(x)在第k次迭代值&lt;span class="math"&gt;\(x^{(k)}\)&lt;/span&gt;邻域内进行二阶展开，然后对x求导有：
+&lt;/p&gt;
+&lt;div class="math"&gt;$$\bigtriangledown f(x)=g_k + H_k(x-x^{(k)})$$&lt;/div&gt;
+&lt;p&gt;
+其中&lt;span class="math"&gt;\(g_k=\bigtriangledown f(x^{(k)})\)&lt;/span&gt;，&lt;span class="math"&gt;\(H_k\)&lt;/span&gt;是f(x)的海森矩阵在&lt;span class="math"&gt;\(x^{(k)}\)&lt;/span&gt;的值。
+假设&lt;span class="math"&gt;\(x^{(k+1)}\)&lt;/span&gt;满足：
+&lt;/p&gt;
+&lt;div class="math"&gt;$$\bigtriangledown f(x^{(k+1)})=0$$&lt;/div&gt;
+&lt;p&gt;
+由前面两个式子，可以得到：
+&lt;/p&gt;
+&lt;div class="math"&gt;$$g_k + H_k(x^{(k+1)}-x^{(k)})=0$$&lt;/div&gt;
+&lt;p&gt;
+因此可得
+&lt;/p&gt;
+&lt;div class="math"&gt;$$x^{(k+1)}=x^{(k)}+p_k  \; \; \; 其中H_kp_k=-g_k$$&lt;/div&gt;
+&lt;p&gt;&lt;strong&gt;算法：&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;输入：目标函数f(x)，梯度&lt;span class="math"&gt;\(g(x)=\bigtriangledown f(x)\)&lt;/span&gt;矩阵,海森矩阵&lt;span class="math"&gt;\(H(x)\)&lt;/span&gt;，精度要求&lt;span class="math"&gt;\(\varepsilon\)&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;输出：f(x)的极小值点&lt;span class="math"&gt;\(x^*\)&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;（1）取初始点&lt;span class="math"&gt;\(x^{(0)}\)&lt;/span&gt;，置k=0&lt;/p&gt;
+&lt;p&gt;（2）计算&lt;span class="math"&gt;\(g_k=\bigtriangledown f(x^{(k)})\)&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;（3）若&lt;span class="math"&gt;\(\left \| g_k \right \| &amp;lt; \varepsilon\)&lt;/span&gt;，则停止计算，得近似解&lt;span class="math"&gt;\(x^*=x^{(k)}\)&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;（4）计算&lt;span class="math"&gt;\(H_k=H(x^{(k)})\)&lt;/span&gt;，并求&lt;span class="math"&gt;\(p_k\)&lt;/span&gt;
+&lt;/p&gt;
+&lt;div class="math"&gt;$$p_k=-H_k^{-1}g_k$$&lt;/div&gt;
+&lt;p&gt;（5）置&lt;span class="math"&gt;\(x^{(k+1)}=x^{(k)}+p_k\)&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;（6）置k=k+1，转（2）&lt;/p&gt;
+&lt;p&gt;步骤（4）中求&lt;span class="math"&gt;\(p_k=-H_k^{-1}g_k\)&lt;/span&gt;，先求&lt;span class="math"&gt;\(H_k^{-1}\)&lt;/span&gt;计算比较复杂，所以有其他改进算法。&lt;/p&gt;
+&lt;h2&gt;拟牛顿法思路&lt;/h2&gt;
+&lt;p&gt;考虑用一个n阶矩阵&lt;span class="math"&gt;\(G_k=G(x^{(k)})\)&lt;/span&gt;来代替&lt;span class="math"&gt;\(H_k^{-1}=H^{-1}(x^{(k)})\)&lt;/span&gt;。这就是拟牛顿法的基本想法。&lt;/p&gt;
+&lt;p&gt;将&lt;span class="math"&gt;\(x=x^{(k+1)}\)&lt;/span&gt;代入下式：
+&lt;/p&gt;
+&lt;div class="math"&gt;$$\bigtriangledown f(x)=g_k + H_k(x-x^{(k)})$$&lt;/div&gt;
+&lt;p&gt;
+得到
+&lt;/p&gt;
+&lt;div class="math"&gt;$$g_{k+1} - g_k = H_k(x^{(k+1)}-x^{(k)})$$&lt;/div&gt;
+&lt;p&gt;
+记$y_k=g_{k+1} - g_k, \delta_k = x^{(k+1)}-x^{(k)} $，则
+&lt;/p&gt;
+&lt;div class="math"&gt;$$y_k = H_k\delta_k$$&lt;/div&gt;
+&lt;p&gt;
+或
+&lt;/p&gt;
+&lt;div class="math"&gt;$$\delta_k = H_k^{-1}y_k$$&lt;/div&gt;
+&lt;p&gt;
+上式就称为拟牛顿条件。&lt;/p&gt;
+&lt;div class="math"&gt;$$x=x^{(k)}+\lambda p_k = x^{(k)}-\lambda H_k^{-1}g_k$$&lt;/div&gt;
+&lt;p&gt;
+所以f(x)在&lt;span class="math"&gt;\(x^{(k)}\)&lt;/span&gt;的泰勒展开式可以近似写成：
+&lt;/p&gt;
+&lt;div class="math"&gt;$$ f(x) = f(x^{(k)})-\lambda g_k^TH_k^{-1}g_k$$&lt;/div&gt;
+&lt;p&gt;
+因为&lt;span class="math"&gt;\(H_k^{-1}\)&lt;/span&gt;是正定的，当&lt;span class="math"&gt;\(\lambda\)&lt;/span&gt;为一个充分小的正数时，总有&lt;span class="math"&gt;\(f(x)&amp;lt; f(x^{(k)})\)&lt;/span&gt;，也就是说&lt;span class="math"&gt;\(p_k\)&lt;/span&gt;是下降方向。&lt;/p&gt;
+&lt;p&gt;拟牛顿法将&lt;span class="math"&gt;\(G_k\)&lt;/span&gt;作为&lt;span class="math"&gt;\(H_k^{-1}\)&lt;/span&gt;的近似，要求矩阵&lt;span class="math"&gt;\(G_k\)&lt;/span&gt;满足同样的条件。首先，&lt;span class="math"&gt;\(G_k\)&lt;/span&gt;是正定的，同时&lt;span class="math"&gt;\(G_k\)&lt;/span&gt;满足下面的拟牛顿条件：
+&lt;/p&gt;
+&lt;div class="math"&gt;$$\delta_k = G_{k+1}y_k$$&lt;/div&gt;
+&lt;p&gt;
+按照拟牛顿条件选择将&lt;span class="math"&gt;\(G_k\)&lt;/span&gt;作为&lt;span class="math"&gt;\(H_k^{-1}\)&lt;/span&gt;的近似或者将&lt;span class="math"&gt;\(B_k\)&lt;/span&gt;作为&lt;span class="math"&gt;\(H_k\)&lt;/span&gt;的近似的算法就称为&lt;strong&gt;拟牛顿法&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;按照拟牛顿条件，在每次迭代中可以选择更新矩阵&lt;span class="math"&gt;\(G_{k+1}\)&lt;/span&gt;：
+&lt;/p&gt;
+&lt;div class="math"&gt;$$G_{k+1} = G_{k} + \Delta G_{k} $$&lt;/div&gt;
+&lt;p&gt;
+这种选择有一定的灵活性，因此有多种具体实现方法。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;DFP算法&lt;/strong&gt;：选择&lt;span class="math"&gt;\(G_{k+1}\)&lt;/span&gt;的方法是，假设每一步迭代中矩阵&lt;span class="math"&gt;\(G_{k+1}\)&lt;/span&gt;是由&lt;span class="math"&gt;\(G_{k}加上两个附加项构成\)&lt;/span&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;BFGS算法&lt;/strong&gt;: 最流行的拟牛顿算法。BFGS算法与DFP算法类似，只是采用的B来近似H&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Broyden类算法&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;BFGS的详细算法：&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;这时相应的拟牛顿条件是
+&lt;/p&gt;
+&lt;div class="math"&gt;$$B_{k+1}\delta_k = y_k$$&lt;/div&gt;
+&lt;p&gt;
+令
+&lt;/p&gt;
+&lt;div class="math"&gt;$$B_{k+1}=B_{k}+P_{k}+Q_{k}$$&lt;/div&gt;
+&lt;p&gt;
+找到适合条件的&lt;span class="math"&gt;\(P_{k}和Q_{k}\)&lt;/span&gt;可以求得&lt;span class="math"&gt;\(B_{k+1}\)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;输入：目标函数f(x)，梯度&lt;span class="math"&gt;\(g(x)=\bigtriangledown f(x)\)&lt;/span&gt;矩阵，精度要求&lt;span class="math"&gt;\(\varepsilon\)&lt;/span&gt; （不需要输入海森矩阵）&lt;/p&gt;
+&lt;p&gt;输出：f(x)的极小值点&lt;span class="math"&gt;\(x^*\)&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;（1）取初始点&lt;span class="math"&gt;\(x^{(0)}\)&lt;/span&gt;，取&lt;span class="math"&gt;\(B_0\)&lt;/span&gt;为正定对称矩阵，置k=0&lt;/p&gt;
+&lt;p&gt;（2）计算&lt;span class="math"&gt;\(g_k=\bigtriangledown f(x^{(k)})\)&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;（3）若&lt;span class="math"&gt;\(|\left \| g_k \right \|| &amp;lt; \varepsilon\)&lt;/span&gt;，则停止计算，得近似解&lt;span class="math"&gt;\(x^*=x^{(k)}\)&lt;/span&gt; ，否则转向（4）&lt;/p&gt;
+&lt;p&gt;（4）计算&lt;span class="math"&gt;\(p_k\)&lt;/span&gt;
+&lt;/p&gt;
+&lt;div class="math"&gt;$$p_k=-B_k^{-1}g_k$$&lt;/div&gt;
+&lt;p&gt;（5）一维搜索：求&lt;span class="math"&gt;\(\lambda_k\)&lt;/span&gt;使得
+&lt;/p&gt;
+&lt;div class="math"&gt;$$f(x^{(k)}+\lambda_k p_k) = min_{\lambda \geq 0}f(x^{(k)}+\lambda_k p_k)$$&lt;/div&gt;
+&lt;p&gt;（6）置&lt;span class="math"&gt;\(x^{(k+1)}=x^{(k)}+\lambda_k p_k\)&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;（7）计算&lt;span class="math"&gt;\(g_{k+1} =g(x^{(k+1)})\)&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;（8）若&lt;span class="math"&gt;\(|\left \| g_{k+1} \right \|| &amp;lt; \varepsilon\)&lt;/span&gt;，则停止计算，得近似解&lt;span class="math"&gt;\(x^*=x^{(k+1)}\)&lt;/span&gt; ，否则计算出&lt;span class="math"&gt;\(B_{k+1}\)&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;（9）置k=k+1，转（4）&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h2&gt;Reference&lt;/h2&gt;
+&lt;p&gt;&lt;a href="http://book.douban.com/subject/10590856/"&gt;统计学习方法&lt;/a&gt;&lt;/p&gt;
+&lt;script type="text/javascript"&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "false";
+
+    if (false) {
+        align = (screen.width &lt; 768) ? "left" : align;
+        indent = (screen.width &lt; 768) ? "0em" : indent;
+        linebreak = (screen.width &lt; 768) ? 'true' : linebreak;
+    }
+    
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = '//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); ";
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+&lt;/script&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">wwt</dc:creator><pubDate>Wed, 30 Jul 2014 20:12:00 +0800</pubDate><guid>tag:www.wengweitao.com,2014-07-30:niu-dun-fa.html</guid><category>基本概念</category></item><item><title>拉格朗日对偶性（Lagrange Duality）</title><link>http://www.wengweitao.com/la-ge-lang-ri-dui-ou-xing-lagrange-duality.html</link><description>&lt;blockquote&gt;
 &lt;p&gt;在求解约束优化问题的时候，常常利用拉格朗日对偶性（Lagrange Duality）将原始问题转化为对偶问题，通过求解对偶问题而得到原始问题的解。该方法用在许多统计学习方法中，如最大熵模型和SVM等。&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h2&gt;原始问题&lt;/h2&gt;
@@ -2521,14 +2678,15 @@ str.format()是Python最为推荐的字符串格式化方法，当然也是最Py
 &lt;div class="math"&gt;$$min_x f(x)$$&lt;/div&gt;
 &lt;div class="math"&gt;$$s.t. c_i(x) \leq 0  \:\:\:\:\: i=1,2,...,k$$&lt;/div&gt;
 &lt;div class="math"&gt;$$h_j(x) = 0   \:\:\:\:\: j=1,2,...,l$$&lt;/div&gt;
-称此约束最优化问题为原始最优化问题或原始问题。&lt;/p&gt;
+&lt;/p&gt;
 &lt;/blockquote&gt;
+&lt;p&gt;称此约束最优化问题为原始最优化问题或原始问题。&lt;/p&gt;
 &lt;h3&gt;广义拉格朗日函数&lt;/h3&gt;
-&lt;p&gt;为了解决原始问题，我们先引入广义拉格朗日（generalized Lagrangian）函数：
+&lt;p&gt;为了解决原始问题，我们先引入&lt;strong&gt;广义拉格朗日（generalized Lagrangian）函数&lt;/strong&gt;：
 &lt;/p&gt;
 &lt;div class="math"&gt;$$L(x, \alpha, \beta) = f(x) + \sum_{i=1}^{k}\alpha_i  c_i(x) + \sum_{j=1}^{l}\beta_j h_j(x)$$&lt;/div&gt;
 &lt;p&gt;
-这里的&lt;span class="math"&gt;\(\alpha_i\)&lt;/span&gt;和&lt;span class="math"&gt;\(\beta_j\)&lt;/span&gt;称为拉格朗日乘子。&lt;/p&gt;
+这里的&lt;span class="math"&gt;\(\alpha_i\)&lt;/span&gt;和&lt;span class="math"&gt;\(\beta_j\)&lt;/span&gt;称为&lt;strong&gt;拉格朗日乘子&lt;/strong&gt;。&lt;/p&gt;
 &lt;h3&gt;极小极大问题&lt;/h3&gt;
 &lt;p&gt;现在考虑&lt;span class="math"&gt;\(L(x, \alpha, \beta)\)&lt;/span&gt;的最大值：
 &lt;/p&gt;
@@ -2580,14 +2738,16 @@ f(x)   \:\:\:\:\: x满足约束条件\\
 &lt;p&gt;在某些条件下，原始问题和对偶问题的最优值相等即&lt;span class="math"&gt;\(d^* = p^*\)&lt;/span&gt;，这时可以&lt;strong&gt;用对偶问题替代原始问题&lt;/strong&gt;。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;定理1：&lt;/strong&gt;考虑原始问题和对偶问题。假设&lt;span class="math"&gt;\(f(x)\)&lt;/span&gt;和&lt;span class="math"&gt;\(c_i(x)\)&lt;/span&gt;是凸函数（convex），&lt;span class="math"&gt;\(h_j(x)\)&lt;/span&gt;是仿射函数（affine，与线性函数类似只是允许增加一个截距b）；并且存在x，对所有的i有&lt;span class="math"&gt;\(c_i(x) &amp;lt; 0\)&lt;/span&gt;. 则存在&lt;span class="math"&gt;\(x^* , \alpha^* ,\beta^* $，使得在\)&lt;/span&gt;x^&lt;em&gt; &lt;span class="math"&gt;\(是原始问题的解，\)&lt;/span&gt;\alpha^&lt;/em&gt; ,\beta^*$是对偶问题的解，并且&lt;/p&gt;
 &lt;div class="math"&gt;$$d^* = p^* = L(x^*, \alpha^*, \beta^*)$$&lt;/div&gt;
-&lt;p&gt;&lt;strong&gt;定理2：&lt;/strong&gt;考虑原始问题和对偶问题。假设&lt;span class="math"&gt;\(f(x)\)&lt;/span&gt;和&lt;span class="math"&gt;\(c_i(x)\)&lt;/span&gt;是凸函数（convex），&lt;span class="math"&gt;\(h_j(x)\)&lt;/span&gt;是仿射函数（affine）；并且存在x，对所有的i有&lt;span class="math"&gt;\(c_i(x) &amp;lt; 0\)&lt;/span&gt;. 则&lt;span class="math"&gt;\(x^* $是原始问题的解，并且\)&lt;/span&gt;\alpha^&lt;em&gt; , \beta^&lt;/em&gt; &lt;span class="math"&gt;\(是对偶问题的解的充分必要条件是\)&lt;/span&gt;x^&lt;em&gt; , \alpha^&lt;/em&gt; ,\beta^&lt;em&gt; &lt;span class="math"&gt;( 满足下面的&lt;strong&gt;Karush-Kuhn-Tucker(KKT)条件&lt;/strong&gt;：&lt;div class="math"&gt;$$\bigtriangledown_x L(x^*, \alpha^*, \beta^*)=0$$&lt;/div&gt;
+&lt;p&gt;&lt;strong&gt;定理2：&lt;/strong&gt;考虑原始问题和对偶问题。假设&lt;span class="math"&gt;\(f(x)\)&lt;/span&gt;和&lt;span class="math"&gt;\(c_i(x)\)&lt;/span&gt;是凸函数（convex），&lt;span class="math"&gt;\(h_j(x)\)&lt;/span&gt;是仿射函数（affine）；并且存在x，对所有的i有&lt;span class="math"&gt;\(c_i(x) &amp;lt; 0\)&lt;/span&gt;. 则&lt;span class="math"&gt;\(x^* $是原始问题的解，并且\)&lt;/span&gt;\alpha^&lt;em&gt; , \beta^&lt;/em&gt; &lt;span class="math"&gt;\(是对偶问题的解的充分必要条件是\)&lt;/span&gt;x^&lt;em&gt; , \alpha^&lt;/em&gt; ,\beta^* $ 满足下面的&lt;strong&gt;Karush-Kuhn-Tucker(KKT)条件&lt;/strong&gt;：
+&lt;/p&gt;
+&lt;div class="math"&gt;$$\bigtriangledown_x L(x^*, \alpha^*, \beta^*)=0$$&lt;/div&gt;
 &lt;div class="math"&gt;$$\bigtriangledown_\alpha L(x^*, \alpha^*, \beta^*)=0$$&lt;/div&gt;
 &lt;div class="math"&gt;$$\bigtriangledown_\beta L(x^*, \alpha^*, \beta^*)=0$$&lt;/div&gt;
 &lt;div class="math"&gt;$$\alpha^* c_i(x^*) = 0  \:\:\:\:\: i=1,2,...,k$$&lt;/div&gt;
 &lt;div class="math"&gt;$$c_i(x^*) \leq 0  \:\:\:\:\: i=1,2,...,k$$&lt;/div&gt;
 &lt;div class="math"&gt;$$\alpha^* \geq 0  \:\:\:\:\: i=1,2,...,k$$&lt;/div&gt;
 &lt;div class="math"&gt;$$h_j(x^*) = 0   \:\:\:\:\: j=1,2,...,l$$&lt;/div&gt;
-其中，上面的第4个式子，称为KKT的对偶互补条件，由此条件可得，若\)&lt;/span&gt;\alpha^&lt;/em&gt;　&amp;gt; 0&lt;span class="math"&gt;\(那么\)&lt;/span&gt;c_i(x^*) = 0$.&lt;/p&gt;
+&lt;p&gt;其中，上面的第4个式子，称为KKT的对偶互补条件，由此条件可得，若&lt;span class="math"&gt;\(\alpha^*　&amp;gt; 0\)&lt;/span&gt;那么&lt;span class="math"&gt;\(c_i(x^*) = 0\)&lt;/span&gt;.&lt;/p&gt;
 &lt;hr /&gt;
 &lt;h2&gt;Reference&lt;/h2&gt;
 &lt;p&gt;&lt;a href="http://book.douban.com/subject/10590856/"&gt;统计学习方法&lt;/a&gt;&lt;/p&gt;
