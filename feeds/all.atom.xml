@@ -2510,7 +2510,188 @@ str.format()是Python最为推荐的字符串格式化方法，当然也是最Py
 &lt;blockquote&gt;
 &lt;p&gt;信息技术协会致力于为北大深研院的同学们营造一个学习和交流信息学科得环境和氛围，为大家提供有关信息领域的设计、应用、资讯等方面的信息。信息技术协会积极打造与深港信息类企业合作和联动的平台，帮助学生走出校园，观察产业发展动态；积极开展电脑维护活动，帮助同学们解决生活中遇到的技术困难。在以后，信息技术协会仍然会坚持协会宗旨，继续为大家服务。&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;转自：http://news.pkusz.edu.cn/article-143-4357.html&lt;/p&gt;</summary><category term="校园"></category></entry><entry><title>牛顿法</title><link href="http://www.wengweitao.com/niu-dun-fa.html" rel="alternate"></link><updated>2014-07-30T20:12:00+08:00</updated><author><name>wwt</name></author><id>tag:www.wengweitao.com,2014-07-30:niu-dun-fa.html</id><summary type="html">&lt;blockquote&gt;
+&lt;p&gt;转自：http://news.pkusz.edu.cn/article-143-4357.html&lt;/p&gt;</summary><category term="校园"></category></entry><entry><title>逻辑斯谛回归与最大熵模型</title><link href="http://www.wengweitao.com/luo-ji-si-di-hui-gui-yu-zui-da-shang-mo-xing.html" rel="alternate"></link><updated>2014-08-01T09:53:00+08:00</updated><author><name>wwt</name></author><id>tag:www.wengweitao.com,2014-08-01:luo-ji-si-di-hui-gui-yu-zui-da-shang-mo-xing.html</id><summary type="html">&lt;blockquote&gt;
+&lt;p&gt;逻辑斯谛回归（logistic regression）是统计学习中的经典分类方法，可以用于二类分类也可以用于多类分类。最大熵模型由最大熵原理推导出来，最大熵原理是概率模型学习或估计的一个准则，最大熵原理认为在所有可能的概率模型的集合中，熵最大的模型是最好的模型，最大熵模型也可以用于二类分类和多类分类。逻辑斯谛回归模型与最大熵模型都属于对数线性模型&lt;sup id="fnref:log"&gt;&lt;a class="footnote-ref" href="#fn:log" rel="footnote"&gt;1&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2&gt;逻辑斯谛回归模型&lt;/h2&gt;
+&lt;h3&gt;逻辑斯谛分布&lt;/h3&gt;
+&lt;p&gt;设X是连续随机变量，X服从逻辑斯谛分布是指X具有如下分布函数和密度函数：
+&lt;/p&gt;
+&lt;div class="math"&gt;$$F(X)=P(X \leq x)=\frac{1}{1+e^{-(x-u)/\gamma}}$$&lt;/div&gt;
+&lt;div class="math"&gt;$$f(x)=F'(x)=\frac{e^{-(x-u)/\gamma}}{\gamma(1+e^{-(x-u)/\gamma})^2}$$&lt;/div&gt;
+&lt;p&gt;
+其中&lt;span class="math"&gt;\(\mu\)&lt;/span&gt;为位置参数，&lt;span class="math"&gt;\(\gamma &amp;gt; 0\)&lt;/span&gt;为形状参数。
+&lt;strong&gt;分布函数的图形是一条S形曲线&lt;/strong&gt;（sigmoid curve），是中心对称的，曲线在中心点附近增长的较快，在两端增长的较慢。&lt;span class="math"&gt;\(\gamma\)&lt;/span&gt;的值越小，曲线在中心附近增长的越快。&lt;/p&gt;
+&lt;h3&gt;逻辑斯谛回归模型&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;二项逻辑斯谛回归模型&lt;/strong&gt;是如下的条件概率分布：
+&lt;/p&gt;
+&lt;div class="math"&gt;$$P(Y=1|x)=\frac{exp(w.x+b)}{1+exp(w.x+b)}$$&lt;/div&gt;
+&lt;div class="math"&gt;$$P(Y=0|x)=\frac{1}{1+exp(w.x+b)}$$&lt;/div&gt;
+&lt;p&gt;
+随机变量X取值为实数，输出Y是0或1，w称为权值向量，b称为偏置。二项逻辑斯谛回归模型是一种分类模型，由条件概率P(Y|X)表示，形式为参数化的逻辑斯谛分布。&lt;/p&gt;
+&lt;p&gt;有时为了方便，将权值向量和输入向量加以扩展，将偏置放入权值向量中，输入向量也增加一个值为1的分量，这时逻辑斯谛回归模型可以表示为：
+&lt;/p&gt;
+&lt;div class="math"&gt;$$P(Y=1|x)=\frac{exp(w.x)}{1+exp(w.x)}$$&lt;/div&gt;
+&lt;div class="math"&gt;$$P(Y=0|x)=\frac{1}{1+exp(w.x)}$$&lt;/div&gt;
+&lt;p&gt;对逻辑斯谛回归而言，x输入分类为Y=1的对数几率&lt;sup id="fnref:odds"&gt;&lt;a class="footnote-ref" href="#fn:odds" rel="footnote"&gt;2&lt;/a&gt;&lt;/sup&gt;或logit函数是：
+&lt;/p&gt;
+&lt;div class="math"&gt;$$log\frac{P(Y=1|X)}{P(Y=0|X)}=w.x$$&lt;/div&gt;
+&lt;p&gt;
+也就是说再逻辑斯谛回归模型中，输出Y=1的对数几率是输入x的线性函数。或者&lt;strong&gt;说Y=1的对数几率是由输入x的线性函数&lt;span class="math"&gt;\(w.x\)&lt;/span&gt;表示的模型，即逻辑斯谛回归模型&lt;/strong&gt;。
+线性函数越接近正无穷，概率值就越接近1；越接近负无穷，概率值就越接近0.这样的模型就是逻辑斯谛回归模型。&lt;/p&gt;
+&lt;p&gt;而在使用线性回归进行二类分类的时候：
+&lt;/p&gt;
+&lt;div class="math"&gt;$$P(Y=1|x)= w_0 + w_1x_1 + ... + w_nx_n$$&lt;/div&gt;
+&lt;p&gt;
+存在两个问题：&lt;/p&gt;
+&lt;p&gt;（1）等式两边的取值范围不同。左边为概率是[0, 1]，右边是无穷&lt;/p&gt;
+&lt;p&gt;（2）实际很多问题中，概率P和输入并非简单的线性关系，在x很小或很大的时候，可能对于P的影响很小，而x在某些值附近可能对P的影响很大。&lt;/p&gt;
+&lt;p&gt;逻辑斯谛回归模型对线性回归模型进行了修正，解决了以上的2个问题。&lt;/p&gt;
+&lt;h3&gt;模型参数估计&lt;/h3&gt;
+&lt;p&gt;我们通过监督学习的方法来估计模型参数。对于给定的训练数据集，可以运用极大似然法估计模型参数，从而得到逻辑斯谛回归模型。&lt;/p&gt;
+&lt;p&gt;假设
+&lt;/p&gt;
+&lt;div class="math"&gt;$$P(Y=1|X)=\pi(x)$$&lt;/div&gt;
+&lt;div class="math"&gt;$$P(Y=0|X)=1 - \pi(x)$$&lt;/div&gt;
+&lt;p&gt;
+似然函数可以表示为
+&lt;/p&gt;
+&lt;div class="math"&gt;$$\prod_{i=1}^{N}[\pi(x_i)]^{y_i}[1 - \pi(x_i)]^{1-y_i}$$&lt;/div&gt;
+&lt;p&gt;
+对数似然函数表示为&lt;span class="math"&gt;\(L(w)\)&lt;/span&gt;，&lt;strong&gt;对&lt;span class="math"&gt;\(L(w)\)&lt;/span&gt;求最大值，得到w的估计值&lt;/strong&gt;。得到了
+w就可以学到逻辑斯谛回归模型。&lt;/p&gt;
+&lt;p&gt;这样问题就变成了以对数似然函数为目标的最优化问题。逻辑斯谛回归学习中常用的方法是梯度下降&lt;sup id="fnref:gradient descent"&gt;&lt;a class="footnote-ref" href="#fn:gradient descent" rel="footnote"&gt;3&lt;/a&gt;&lt;/sup&gt;及拟牛顿法&lt;sup id="fnref:newton method"&gt;&lt;a class="footnote-ref" href="#fn:newton method" rel="footnote"&gt;4&lt;/a&gt;&lt;/sup&gt;。&lt;/p&gt;
+&lt;h3&gt;多项逻辑斯谛回归&lt;/h3&gt;
+&lt;p&gt;上面介绍的是二类分类，也可以将逻辑斯谛回归模型推广到多类分类。假设离散型随机变量Y的取值集合是{1,2,...,K}，那么多项逻辑斯谛回归模型是
+&lt;/p&gt;
+&lt;div class="math"&gt;$$P(Y=k|x)=\frac{exp(w_k.x)}{1+\sum_{k=1}^{K-1}exp(w_k.x)}$$&lt;/div&gt;
+&lt;div class="math"&gt;$$P(Y=K|x)=\frac{1}{1+\sum_{k=1}^{K-1}exp(w_k.x)}$$&lt;/div&gt;
+&lt;hr /&gt;
+&lt;h2&gt;最大熵模型&lt;/h2&gt;
+&lt;h3&gt;最大熵原理&lt;/h3&gt;
+&lt;p&gt;最大熵原理认为，学习概率模型时，在所有可能的概率模型中，熵最大的模型是最好的模型。通常用约束条件来确定概率模型的集合。最大熵原理认为选择的概率模型首先必须满足已有的事实，即约束条件。所以最大熵原理可以表示为：&lt;strong&gt;在满足约束条件的模型集合中选取熵最大的模型。&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;在没有更多信息的情况下，可以按照满足约束条件下求等概率的方法估计概率分布（因为均匀分布，熵最大）。&lt;/p&gt;
+&lt;h3&gt;最大熵模型的定义&lt;/h3&gt;
+&lt;p&gt;将最大熵原理应用到分类就得到最大熵模型。&lt;/p&gt;
+&lt;p&gt;给定训练数据集可以确定联合分布P(X,Y)的经验分布和边缘分布P(X)的经验分布&lt;span class="math"&gt;\(\widetilde{P}(X,Y)和\widetilde{P}(X)\)&lt;/span&gt;。用特征函数f(x,y)描述输入x和输出y之间的某一个事实，定义为：
+&lt;/p&gt;
+&lt;div class="math"&gt;$$f(x,y)=\left\{\begin{matrix}
+1,x与y满足某一事实\\ 
+0,不满足某一事实
+\end{matrix}\right.$$&lt;/div&gt;
+&lt;p&gt;特征函数f(x,y)&lt;strong&gt;关于经验分布&lt;span class="math"&gt;\(\widetilde{P}(X,Y)\)&lt;/span&gt;的期望值&lt;/strong&gt;，用&lt;span class="math"&gt;\(E_\widetilde{P}(f)\)&lt;/span&gt;表示：
+&lt;/p&gt;
+&lt;div class="math"&gt;$$E_\widetilde{P}(f)=\sum_{x,y}\widetilde{P}(x,y)f(x,y)$$&lt;/div&gt;
+&lt;p&gt;特征函数f(x,y)&lt;strong&gt;关于模型P(Y|X)与经验分布&lt;span class="math"&gt;\(\widetilde{P}(X)\)&lt;/span&gt;的期望值&lt;/strong&gt;，用&lt;span class="math"&gt;\(E_{P}(f)\)&lt;/span&gt;表示：
+ &lt;/p&gt;
+&lt;div class="math"&gt;$$E_p(f)=\sum_{x,y}\widetilde{P}(X)P(y|x)f(x,y)$$&lt;/div&gt;
+&lt;p&gt;如果模型可以获取训练数据中的信息，那么可以假设以上两个期望值相等：
+ &lt;/p&gt;
+&lt;div class="math"&gt;$$E_\widetilde{P}(f)=E_p(f)$$&lt;/div&gt;
+&lt;p&gt;
+ 或
+ &lt;/p&gt;
+&lt;div class="math"&gt;$$\sum_{x,y}\widetilde{P}(x,y)f(x,y)=\sum_{x,y}\widetilde{P}(X)P(y|x)f(x,y)$$&lt;/div&gt;
+&lt;p&gt;
+以上两式作为&lt;strong&gt;模型学习的约束条件&lt;/strong&gt;。假如有n个特征函数&lt;span class="math"&gt;\(f_i(x,y)， i=1,2,...,n\)&lt;/span&gt;那么就有&lt;em&gt;n个约束条件&lt;/em&gt;。&lt;/p&gt;
+&lt;h3&gt;最大熵模型的学习&lt;/h3&gt;
+&lt;p&gt;最大熵模型的学习可以形式化为约束最优化问题。&lt;/p&gt;
+&lt;p&gt;给定训练数据集T已经特征函数&lt;span class="math"&gt;\(f_i(x,y)， i=1,2,...,n\)&lt;/span&gt;，最大熵模型的学习等价于约束最优化问题：
+&lt;/p&gt;
+&lt;div class="math"&gt;$$max_{P \in C} H(P)=-\sum_{x,y}\widetilde{P}(x)P(y|x)logP(y|x)$$&lt;/div&gt;
+&lt;div class="math"&gt;$$s.t. E_\widetilde{P}(f)=E_p(f)， i=1,2,...,n　并且　\sum_yP(y|x)=1$$&lt;/div&gt;
+&lt;p&gt;
+按照最优化问题的习惯，将求最大值问题改写为等价的求最小值问题：
+&lt;/p&gt;
+&lt;div class="math"&gt;$$min_{P \in C} -H(P)=\sum_{x,y}\widetilde{P}(x)P(y|x)logP(y|x)$$&lt;/div&gt;
+&lt;div class="math"&gt;$$s.t. E_\widetilde{P}(f)-E_p(f)=0， i=1,2,...,n　并且　\sum_yP(y|x)=1$$&lt;/div&gt;
+&lt;p&gt;
+求解以上最优化问题，所得出的解，就是最大熵模型学习的解。&lt;/p&gt;
+&lt;p&gt;这里，将约束最优化问题的原始问题转换为无约束最优化的对偶问题，通过求解对偶问题求解原始问题。&lt;/p&gt;
+&lt;p&gt;（1）引入拉格朗日乘子，定义拉格朗日函数&lt;span class="math"&gt;\(L(P,w)\)&lt;/span&gt;。&lt;/p&gt;
+&lt;p&gt;（2）首先求解&lt;span class="math"&gt;\(L(P,w)\)&lt;/span&gt;关于P的极小化问题，固定拉格朗日乘子&lt;span class="math"&gt;\(w_0,w_1,...,w_n\)&lt;/span&gt;，对P求偏导数&lt;/p&gt;
+&lt;p&gt;（3）另各偏导数等于0，解出各个P，得到&lt;span class="math"&gt;\(min_PL(P,w)\)&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;（4）求解&lt;span class="math"&gt;\(L(P_w,w)\)&lt;/span&gt;关于w的极大化问题&lt;/p&gt;
+&lt;p&gt;（5）令&lt;span class="math"&gt;\(L(P_w,w)\)&lt;/span&gt;对w的各偏导数为0&lt;/p&gt;
+&lt;p&gt;（6）得到最大熵模型&lt;/p&gt;
+&lt;p&gt;可以求解得到：
+&lt;/p&gt;
+&lt;div class="math"&gt;$$P_w(y|x)=\frac{1}{Z_w(x)}exp(\sum_{i=1}^{n}w_if_i(x,y))$$&lt;/div&gt;
+&lt;p&gt;
+其中
+&lt;/p&gt;
+&lt;div class="math"&gt;$$Z_w(x)=\sum_{y}exp(\sum_{i=1}^{n}w_if_i(x,y))$$&lt;/div&gt;
+&lt;p&gt;
+&lt;span class="math"&gt;\(Z_w(x)\)&lt;/span&gt;称为&lt;strong&gt;规范化因子&lt;/strong&gt;；&lt;span class="math"&gt;\(f_i(x,y)\)&lt;/span&gt;是特征函数；&lt;span class="math"&gt;\(w_i\)&lt;/span&gt;是特征的权值。有上式表示的模型&lt;span class="math"&gt;\(P_w=P_w(y|x)\)&lt;/span&gt;就是最大熵模型。最后，最大熵模型的学习归结为对偶函数的极大化。&lt;/p&gt;
+&lt;h3&gt;极大似然函数&lt;/h3&gt;
+&lt;p&gt;可以证明对偶函数的极大化等价于最大熵模型的极大似然估计。这样最大熵模型的学习问题就转化为具体求解对数似然函数极大化或对偶函数极大化问题。&lt;/p&gt;
+&lt;p&gt;最大熵模型与逻辑斯谛回归模型有类似的形式，它们又称为&lt;strong&gt;对数线性模型(log linear model)&lt;/strong&gt;。模型学习就是在给定的训练数据条件下对模型进行极大似然估计或正则化的极大似然估计。&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h2&gt;模型学习的最优化选择&lt;/h2&gt;
+&lt;p&gt;最大熵模型与逻辑斯谛回归模型学习归结为以似然函数为目标函数的最优化问题，通常通过迭代算法求解。这时的目标函数是光滑的凸函数，因此多种最优化的方法都适用，保证能找到全局最优解。常用的方法有改进的迭代尺度法、梯度下降法、牛顿法或拟牛顿法。牛顿法或拟牛顿法一般收敛速度更快。&lt;/p&gt;
+&lt;h3&gt;改进的迭代尺度法&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;改进的迭代尺度法（improved iterative scaling, IIS）&lt;/strong&gt;是一种最大熵模型学习的最优化算法。IIS的想法是：假设最大熵模型的当前的参数向量是&lt;span class="math"&gt;\(w\)&lt;/span&gt;，我们希望找到一个新的参数向量&lt;span class="math"&gt;\(w=w+\delta\)&lt;/span&gt;，使得模型的对数似然函数值增大。如果能有一种参数向量的更新方法&lt;span class="math"&gt;\(w \rightarrow w+\delta\)&lt;/span&gt;，那么就可以重复使用这一方法，直到找到对数似然函数的最大值。&lt;/p&gt;
+&lt;h3&gt;拟牛顿法&lt;/h3&gt;
+&lt;p&gt;最大熵模型还可以使用牛顿法或拟牛顿法。&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h2&gt;Reference&lt;/h2&gt;
+&lt;p&gt;&lt;a href="http://book.douban.com/subject/10590856/"&gt;统计学习方法&lt;/a&gt;第六章&lt;/p&gt;
+&lt;p&gt;http://blog.csdn.net/lilyth_lilyth/article/details/10032993&lt;/p&gt;
+&lt;div class="footnote"&gt;
+&lt;hr /&gt;
+&lt;ol&gt;
+&lt;li id="fn:log"&gt;
+&lt;p&gt;对数线性模型是对线性模型的一个变形，使用原始数据的对数建模。&amp;#160;&lt;a class="footnote-backref" href="#fnref:log" rev="footnote" title="Jump back to footnote 1 in the text"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id="fn:odds"&gt;
+&lt;p&gt;一个事件的几率（odds）是指该事件发生的概率与该事件不发生的概率的比值。&amp;#160;&lt;a class="footnote-backref" href="#fnref:odds" rev="footnote" title="Jump back to footnote 2 in the text"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id="fn:gradient descent"&gt;
+&lt;p&gt;参考我之前的另一篇文章&lt;a href="http://www.wengweitao.com/ti-du-xia-jiang-fa.html"&gt;梯度下降法&lt;/a&gt; &amp;#160;&lt;a class="footnote-backref" href="#fnref:gradient descent" rev="footnote" title="Jump back to footnote 3 in the text"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id="fn:newton method"&gt;
+&lt;p&gt;参考我之前的另一篇文章&lt;a href="http://www.wengweitao.com/niu-dun-fa.html"&gt;牛顿法&lt;/a&gt;&amp;#160;&lt;a class="footnote-backref" href="#fnref:newton method" rev="footnote" title="Jump back to footnote 4 in the text"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;script type="text/javascript"&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "false";
+
+    if (false) {
+        align = (screen.width &lt; 768) ? "left" : align;
+        indent = (screen.width &lt; 768) ? "0em" : indent;
+        linebreak = (screen.width &lt; 768) ? 'true' : linebreak;
+    }
+    
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = '//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); ";
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+&lt;/script&gt;</summary><category term="读书笔记"></category></entry><entry><title>牛顿法</title><link href="http://www.wengweitao.com/niu-dun-fa.html" rel="alternate"></link><updated>2014-07-30T20:12:00+08:00</updated><author><name>wwt</name></author><id>tag:www.wengweitao.com,2014-07-30:niu-dun-fa.html</id><summary type="html">&lt;blockquote&gt;
 &lt;p&gt;牛顿法是近似求解方程的方法，方法是使用函数的泰勒级数的前面几项来寻找方程的根。在统计学习中，牛顿法（Newton method）和拟牛顿法（quasi Newton method）也是&lt;strong&gt;求解无约束最优化问题&lt;/strong&gt;的常用方法。有&lt;strong&gt;收敛速度快&lt;/strong&gt;的优点。牛顿法是&lt;strong&gt;迭代方法&lt;/strong&gt;，每一步需要求解目标函数的海森矩阵（Hessian matrix）的逆矩阵，计算比较复杂。拟牛顿法通过正定矩阵近似海赛矩阵的逆矩阵或海赛矩阵，简化了这一过程。&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h2&gt;牛顿法&lt;/h2&gt;
@@ -2528,7 +2709,7 @@ str.format()是Python最为推荐的字符串格式化方法，当然也是最Py
 &lt;p&gt;海森矩阵（Hessian matrix）是一个自变量为向量的实值函数的二阶偏导数组成的方块矩阵。可以表示为：
 &lt;img alt="海森矩阵" src="http://upload.wikimedia.org/math/d/c/e/dce355e43fb1539863302f482da7e6f6.png" /&gt;&lt;/p&gt;
 &lt;h3&gt;牛顿法算法&lt;/h3&gt;
-&lt;p&gt;函数f(x)有极值的必要条件是在极值点处一阶导数为0，即梯度向量为0.
+&lt;p&gt;函数f(x)有极值的必要条件是在极值点处一阶导数为0，即梯度向量为0.特别是当&lt;span class="math"&gt;\(H(x^{(k)})\)&lt;/span&gt;是正定矩阵时，函数f(x)的极值为极小值。
 &lt;/p&gt;
 &lt;div class="math"&gt;$$\bigtriangledown f(x)=0$$&lt;/div&gt;
 &lt;p&gt;

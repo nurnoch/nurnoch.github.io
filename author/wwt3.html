@@ -174,6 +174,39 @@
 
                         </article></li>
                         <li><article class="hentry">
+                                <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/luo-ji-si-di-hui-gui-yu-zui-da-shang-mo-xing.html" rel="bookmark" title="Permalink to 逻辑斯谛回归与最大熵模型">逻辑斯谛回归与最大熵模型</a></h2> </header>
+                                <footer class="post-info">
+                                    <abbr class="published" title="2014-08-01T09:53:00"> Fri 01 August 2014 </abbr>
+                                    <address class="vcard author">By 
+                                    <a class="url fn" href="http://www.wengweitao.com/author/wwt.html"> wwt</a>
+                                    </address>
+                                </footer><!-- /.post-info -->
+                                <div class="entry-content"> <blockquote>
+<p>逻辑斯谛回归（logistic regression）是统计学习中的经典分类方法，可以用于二类分类也可以用于多类分类。最大熵模型由最大熵原理推导出来，最大熵原理是概率模型学习或估计的一个准则，最大熵原理认为在所有可能的概率模型的集合中，熵最大的模型是最好的模型，最大熵模型也可以用于二类分类和多类分类。逻辑斯谛回归模型与最大熵模型都属于对数线性模型<sup id="fnref:log"><a class="footnote-ref" href="#fn:log" rel="footnote">1</a></sup></p>
+</blockquote>
+<h2>逻辑斯谛回归模型</h2>
+<h3>逻辑斯谛分布</h3>
+<p>设X是连续随机变量，X服从逻辑斯谛分布是指X具有如下分布函数和密度函数：
+</p>
+<div class="math">$$F(X)=P(X \leq x)=\frac{1}{1+e^{-(x-u)/\gamma}}$$</div>
+<div class="math">$$f(x)=F'(x)=\frac{e^{-(x-u)/\gamma}}{\gamma(1+e^{-(x-u)/\gamma})^2}$$</div>
+<p>
+其中<span class="math">\(\mu\)</span>为位置参数，<span class="math">\(\gamma &gt; 0\)</span>为形状参数。
+<strong>分布函数的图形是一条S形曲线</strong>（sigmoid ...</p> </div><!-- /.entry-content -->
+
+                                <div class="medium primary btn"><a href="http://www.wengweitao.com/luo-ji-si-di-hui-gui-yu-zui-da-shang-mo-xing.html" rel="bookmark" title="Permalink to 逻辑斯谛回归与最大熵模型">Read more <i class="icon-arrow-right"></i></a></div>
+
+
+
+                                <div class="row tag-row">
+                                        <span>Tagged as : </span>
+                                            <a class="danger label" href="http://www.wengweitao.com/tag/du-shu-bi-ji.html">读书笔记</a>
+                                </div>
+
+
+
+                        </article></li>
+                        <li><article class="hentry">
                                 <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/niu-dun-fa.html" rel="bookmark" title="Permalink to 牛顿法">牛顿法</a></h2> </header>
                                 <footer class="post-info">
                                     <abbr class="published" title="2014-07-30T20:12:00"> Wed 30 July 2014 </abbr>
@@ -202,45 +235,6 @@
                                 <div class="row tag-row">
                                         <span>Tagged as : </span>
                                             <a class="danger label" href="http://www.wengweitao.com/tag/ji-ben-gai-nian.html">基本概念</a>
-                                </div>
-
-
-
-                        </article></li>
-                        <li><article class="hentry">
-                                <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/la-ge-lang-ri-dui-ou-xing-lagrange-duality.html" rel="bookmark" title="Permalink to 拉格朗日对偶性（Lagrange Duality）">拉格朗日对偶性（Lagrange Duality）</a></h2> </header>
-                                <footer class="post-info">
-                                    <abbr class="published" title="2014-07-30T09:56:00"> Wed 30 July 2014 </abbr>
-                                    <address class="vcard author">By 
-                                    <a class="url fn" href="http://www.wengweitao.com/author/wwt.html"> wwt</a>
-                                    </address>
-                                </footer><!-- /.post-info -->
-                                <div class="entry-content"> <blockquote>
-<p>在求解约束优化问题的时候，常常利用拉格朗日对偶性（Lagrange Duality）将原始问题转化为对偶问题，通过求解对偶问题而得到原始问题的解。该方法用在许多统计学习方法中，如最大熵模型和SVM等。</p>
-</blockquote>
-<h2>原始问题</h2>
-<h3>原始最优化问题</h3>
-<p>考虑最优化问题：</p>
-<blockquote>
-<p>
-<div class="math">$$min_x f(x)$$</div>
-<div class="math">$$s.t. c_i(x) \leq 0  \:\:\:\:\: i=1,2,...,k$$</div>
-<div class="math">$$h_j(x) = 0   \:\:\:\:\: j=1,2,...,l$$</div>
-</p>
-</blockquote>
-<p>称此约束最优化问题为原始最优化问题或原始问题。</p>
-<h3>广义拉格朗日函数</h3>
-<p>为了解决原始问题，我们先引入<strong>广义拉格朗日（generalized Lagrangian）函数</strong>：
-</p>
-<div class="math">$$L(x, \alpha, \beta) = f(x) + \sum_{i=1}^{k}\alpha_i ...</div> </div><!-- /.entry-content -->
-
-                                <div class="medium primary btn"><a href="http://www.wengweitao.com/la-ge-lang-ri-dui-ou-xing-lagrange-duality.html" rel="bookmark" title="Permalink to 拉格朗日对偶性（Lagrange Duality）">Read more <i class="icon-arrow-right"></i></a></div>
-
-
-
-                                <div class="row tag-row">
-                                        <span>Tagged as : </span>
-                                            <a class="danger label" href="http://www.wengweitao.com/tag/ji-chu-gai-nian.html">基础概念</a>
                                 </div>
 
 
@@ -276,17 +270,17 @@
 <!--
 <h4>标签</h4>
 <ul class="tagcloud">
-        <li class="tag-1"><a href="http://www.wengweitao.com/tag/du-shu-bi-ji.html">读书笔记</a></li>
-        <li class="tag-2"><a href="http://www.wengweitao.com/tag/jiao-cheng.html">教程</a></li>
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/gong-ju.html">工具</a></li>
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/ce-shi.html">测试</a></li>
         <li class="tag-4"><a href="http://www.wengweitao.com/tag/wan.html">玩</a></li>
+        <li class="tag-2"><a href="http://www.wengweitao.com/tag/ji-ben-gai-nian.html">基本概念</a></li>
+        <li class="tag-0"><a href="http://www.wengweitao.com/tag/du-shu-bi-ji.html">读书笔记</a></li>
+        <li class="tag-4"><a href="http://www.wengweitao.com/tag/vim.html">Vim</a></li>
         <li class="tag-2"><a href="http://www.wengweitao.com/tag/mian-shi-ti.html">面试题</a></li>
+        <li class="tag-4"><a href="http://www.wengweitao.com/tag/ji-chu-gai-nian.html">基础概念</a></li>
+        <li class="tag-2"><a href="http://www.wengweitao.com/tag/jiao-cheng.html">教程</a></li>
         <li class="tag-4"><a href="http://www.wengweitao.com/tag/xiao-yuan.html">校园</a></li>
         <li class="tag-0"><a href="http://www.wengweitao.com/tag/python.html">Python</a></li>
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/ji-chu-gai-nian.html">基础概念</a></li>
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/vim.html">Vim</a></li>
-        <li class="tag-2"><a href="http://www.wengweitao.com/tag/ji-ben-gai-nian.html">基本概念</a></li>
+        <li class="tag-4"><a href="http://www.wengweitao.com/tag/gong-ju.html">工具</a></li>
+        <li class="tag-4"><a href="http://www.wengweitao.com/tag/ce-shi.html">测试</a></li>
 </ul>
 -->
 
