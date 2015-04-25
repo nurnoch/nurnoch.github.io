@@ -2634,7 +2634,7 @@ str.format()是Python最为推荐的字符串格式化方法，当然也是最Py
 分类决策函数：
 &lt;/p&gt;
 &lt;div class="math"&gt;$$f(x)=sign(w^*.x+b^*)$$&lt;/div&gt;
-&lt;p&gt;其中，&lt;span class="math"&gt;\(w^* 与 b^* $有由[KKT条件][2]得到的。\)&lt;/span&gt;w^&lt;em&gt; 与 b^&lt;/em&gt; &lt;span class="math"&gt;\(只依赖于训练数据中对应于\)&lt;/span&gt;\alpha_i &amp;gt; 0&lt;span class="math"&gt;\(的样本点，而其他样本点对它们没有影响，因此，我们也可以将\)&lt;/span&gt;\alpha_i &amp;gt; 0$的样本点称为&lt;strong&gt;支持向量&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;其中，&lt;span class="math"&gt;\(w^*与b^*\)&lt;/span&gt;有由&lt;a href="http://www.wengweitao.com/la-ge-lang-ri-dui-ou-xing-lagrange-duality.html"&gt;KKT条件&lt;/a&gt;得到的。&lt;span class="math"&gt;\(w^*与b^*\)&lt;/span&gt;只依赖于训练数据中对应于&lt;span class="math"&gt;\(\alpha_i &amp;gt; 0\)&lt;/span&gt;的样本点，而其他样本点对它们没有影响，因此，我们也可以将&lt;span class="math"&gt;\(\alpha_i &amp;gt; 0\)&lt;/span&gt;的样本点称为&lt;strong&gt;支持向量&lt;/strong&gt;。&lt;/p&gt;
 &lt;hr /&gt;
 &lt;h2&gt;Reference&lt;/h2&gt;
 &lt;p&gt;&lt;a href="http://book.douban.com/subject/10590856/"&gt;统计学习方法&lt;/a&gt;第七章&lt;/p&gt;
