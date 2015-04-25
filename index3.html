@@ -174,6 +174,37 @@
 
                         </article></li>
                         <li><article class="hentry">
+                                <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/zhi-chi-xiang-liang-ji-xian-xing-ke-fen-zhi-chi-xiang-liang-ji.html" rel="bookmark" title="Permalink to 支持向量机——线性可分支持向量机">支持向量机——线性可分支持向量机</a></h2> </header>
+                                <footer class="post-info">
+                                    <abbr class="published" title="2014-08-02T20:32:00"> Sat 02 August 2014 </abbr>
+                                    <address class="vcard author">By 
+                                    <a class="url fn" href="http://www.wengweitao.com/author/wwt.html"> wwt</a>
+                                    </address>
+                                </footer><!-- /.post-info -->
+                                <div class="entry-content"> <blockquote>
+<p>支持向量机（support vector machine， SVM）是一种二类分类模型。它的基本模型是定义在特征空间上的间隔最大的线性分类器，间隔最大使之有别与感知机。支持向量机还包括核技巧，这使它成为实质上的非线性分类器。SVM的学习策略是间隔最大化，可形式化为一个求解凸二次规划的问题，也等价于正则化的合页损失函数的最小化问题。SVM的学习算法是求解凸二次规划的最优算法。SVM学习方法包含构建由简至烦的模型：
+- 线性可分支持向量机：当训练数据线性可分时，通过硬间隔最大化（hard margin maximization），学习一个线性分类器
+- 线性支持向量机：当训练数据近似线性可分时，通过软间隔最大化（soft margin maximization），学习一个线性分类器，也称为软间隔支持向量机
+- 非线性支持向量机：当训练数据线性不可分时，通过使用核技巧（kernel trick）即软间隔最大化，学习非线性支持向量机。
+核函数（kernel function）表示将输入从输入空间映射到特征空间得到的特征向量之间的内积。通过使用核函数可以学习非线性支持向量机，等价于隐式地在高维的特征空间中学习线性支持向量机。这样的方法称为核技巧。核方法是比支持向量机更为一般的机器学习方法。</p>
+</blockquote>
+<h2>线性可分支持向量机与硬间隔最大化</h2>
+<h3>线性可分支持向量机</h3>
+<p>支持向量机中，输入都由输入空间转换到特征空间将输入映射为特征向量，支持向量机的学习是在特征空间中进行的 ...</p> </div><!-- /.entry-content -->
+
+                                <div class="medium primary btn"><a href="http://www.wengweitao.com/zhi-chi-xiang-liang-ji-xian-xing-ke-fen-zhi-chi-xiang-liang-ji.html" rel="bookmark" title="Permalink to 支持向量机——线性可分支持向量机">Read more <i class="icon-arrow-right"></i></a></div>
+
+
+
+                                <div class="row tag-row">
+                                        <span>Tagged as : </span>
+                                            <a class="danger label" href="http://www.wengweitao.com/tag/du-shu-bi-ji.html">读书笔记</a>
+                                </div>
+
+
+
+                        </article></li>
+                        <li><article class="hentry">
                                 <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/luo-ji-si-di-hui-gui-yu-zui-da-shang-mo-xing.html" rel="bookmark" title="Permalink to 逻辑斯谛回归与最大熵模型">逻辑斯谛回归与最大熵模型</a></h2> </header>
                                 <footer class="post-info">
                                     <abbr class="published" title="2014-08-01T09:53:00"> Fri 01 August 2014 </abbr>
@@ -201,40 +232,6 @@
                                 <div class="row tag-row">
                                         <span>Tagged as : </span>
                                             <a class="danger label" href="http://www.wengweitao.com/tag/du-shu-bi-ji.html">读书笔记</a>
-                                </div>
-
-
-
-                        </article></li>
-                        <li><article class="hentry">
-                                <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/niu-dun-fa.html" rel="bookmark" title="Permalink to 牛顿法">牛顿法</a></h2> </header>
-                                <footer class="post-info">
-                                    <abbr class="published" title="2014-07-30T20:12:00"> Wed 30 July 2014 </abbr>
-                                    <address class="vcard author">By 
-                                    <a class="url fn" href="http://www.wengweitao.com/author/wwt.html"> wwt</a>
-                                    </address>
-                                </footer><!-- /.post-info -->
-                                <div class="entry-content"> <blockquote>
-<p>牛顿法是近似求解方程的方法，方法是使用函数的泰勒级数的前面几项来寻找方程的根。在统计学习中，牛顿法（Newton method）和拟牛顿法（quasi Newton method）也是<strong>求解无约束最优化问题</strong>的常用方法。有<strong>收敛速度快</strong>的优点。牛顿法是<strong>迭代方法</strong>，每一步需要求解目标函数的海森矩阵（Hessian matrix）的逆矩阵，计算比较复杂。拟牛顿法通过正定矩阵近似海赛矩阵的逆矩阵或海赛矩阵，简化了这一过程。</p>
-</blockquote>
-<h2>牛顿法</h2>
-<h3>目标</h3>
-<p>考虑无约束最优化问题
-</p>
-<div class="math">$$minf(x)$$</div>
-<p>其中<span class="math">\(x^* $为目标函数的极小点。求出f(x)的极小点 $x^*\)</span></p>
-<h3>基本概念</h3>
-<h4>泰勒级数</h4>
-<p>若函数f（x）在点的某一临域内具有直到（n+1）阶导数，则在该邻域内f（x）的n阶泰勒公式为
-用无限项的级数连加式来表示一个函数，这些相加的项由函数在某一点的导数求得 ...</p> </div><!-- /.entry-content -->
-
-                                <div class="medium primary btn"><a href="http://www.wengweitao.com/niu-dun-fa.html" rel="bookmark" title="Permalink to 牛顿法">Read more <i class="icon-arrow-right"></i></a></div>
-
-
-
-                                <div class="row tag-row">
-                                        <span>Tagged as : </span>
-                                            <a class="danger label" href="http://www.wengweitao.com/tag/ji-ben-gai-nian.html">基本概念</a>
                                 </div>
 
 
@@ -270,17 +267,17 @@
 <!--
 <h4>标签</h4>
 <ul class="tagcloud">
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/wan.html">玩</a></li>
-        <li class="tag-2"><a href="http://www.wengweitao.com/tag/ji-ben-gai-nian.html">基本概念</a></li>
-        <li class="tag-0"><a href="http://www.wengweitao.com/tag/du-shu-bi-ji.html">读书笔记</a></li>
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/vim.html">Vim</a></li>
-        <li class="tag-2"><a href="http://www.wengweitao.com/tag/mian-shi-ti.html">面试题</a></li>
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/ji-chu-gai-nian.html">基础概念</a></li>
-        <li class="tag-2"><a href="http://www.wengweitao.com/tag/jiao-cheng.html">教程</a></li>
+        <li class="tag-1"><a href="http://www.wengweitao.com/tag/du-shu-bi-ji.html">读书笔记</a></li>
+        <li class="tag-1"><a href="http://www.wengweitao.com/tag/python.html">Python</a></li>
         <li class="tag-4"><a href="http://www.wengweitao.com/tag/xiao-yuan.html">校园</a></li>
-        <li class="tag-0"><a href="http://www.wengweitao.com/tag/python.html">Python</a></li>
+        <li class="tag-4"><a href="http://www.wengweitao.com/tag/wan.html">玩</a></li>
         <li class="tag-4"><a href="http://www.wengweitao.com/tag/gong-ju.html">工具</a></li>
         <li class="tag-4"><a href="http://www.wengweitao.com/tag/ce-shi.html">测试</a></li>
+        <li class="tag-2"><a href="http://www.wengweitao.com/tag/ji-ben-gai-nian.html">基本概念</a></li>
+        <li class="tag-2"><a href="http://www.wengweitao.com/tag/mian-shi-ti.html">面试题</a></li>
+        <li class="tag-2"><a href="http://www.wengweitao.com/tag/jiao-cheng.html">教程</a></li>
+        <li class="tag-4"><a href="http://www.wengweitao.com/tag/vim.html">Vim</a></li>
+        <li class="tag-4"><a href="http://www.wengweitao.com/tag/ji-chu-gai-nian.html">基础概念</a></li>
 </ul>
 -->
 

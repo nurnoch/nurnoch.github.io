@@ -60,6 +60,37 @@
         <div class="eleven columns">
                  <ol id="post-list">
                         <li><article class="hentry">
+                                <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/zhi-chi-xiang-liang-ji-xian-xing-ke-fen-zhi-chi-xiang-liang-ji.html" rel="bookmark" title="Permalink to 支持向量机——线性可分支持向量机">支持向量机——线性可分支持向量机</a></h2> </header>
+                                <footer class="post-info">
+                                    <abbr class="published" title="2014-08-02T20:32:00"> Sat 02 August 2014 </abbr>
+                                    <address class="vcard author">By 
+                                    <a class="url fn" href="http://www.wengweitao.com/author/wwt.html"> wwt</a>
+                                    </address>
+                                </footer><!-- /.post-info -->
+                                <div class="entry-content"> <blockquote>
+<p>支持向量机（support vector machine， SVM）是一种二类分类模型。它的基本模型是定义在特征空间上的间隔最大的线性分类器，间隔最大使之有别与感知机。支持向量机还包括核技巧，这使它成为实质上的非线性分类器。SVM的学习策略是间隔最大化，可形式化为一个求解凸二次规划的问题，也等价于正则化的合页损失函数的最小化问题。SVM的学习算法是求解凸二次规划的最优算法。SVM学习方法包含构建由简至烦的模型：
+- 线性可分支持向量机：当训练数据线性可分时，通过硬间隔最大化（hard margin maximization），学习一个线性分类器
+- 线性支持向量机：当训练数据近似线性可分时，通过软间隔最大化（soft margin maximization），学习一个线性分类器，也称为软间隔支持向量机
+- 非线性支持向量机：当训练数据线性不可分时，通过使用核技巧（kernel trick）即软间隔最大化，学习非线性支持向量机。
+核函数（kernel function）表示将输入从输入空间映射到特征空间得到的特征向量之间的内积。通过使用核函数可以学习非线性支持向量机，等价于隐式地在高维的特征空间中学习线性支持向量机。这样的方法称为核技巧。核方法是比支持向量机更为一般的机器学习方法。</p>
+</blockquote>
+<h2>线性可分支持向量机与硬间隔最大化</h2>
+<h3>线性可分支持向量机</h3>
+<p>支持向量机中，输入都由输入空间转换到特征空间将输入映射为特征向量，支持向量机的学习是在特征空间中进行的 ...</p> </div><!-- /.entry-content -->
+
+                                <div class="medium primary btn"><a href="http://www.wengweitao.com/zhi-chi-xiang-liang-ji-xian-xing-ke-fen-zhi-chi-xiang-liang-ji.html" rel="bookmark" title="Permalink to 支持向量机——线性可分支持向量机">Read more <i class="icon-arrow-right"></i></a></div>
+
+
+
+                                <div class="row tag-row">
+                                        <span>Tagged as : </span>
+                                            <a class="danger label" href="http://www.wengweitao.com/tag/du-shu-bi-ji.html">读书笔记</a>
+                                </div>
+
+
+
+                        </article></li>
+                        <li><article class="hentry">
                                 <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/luo-ji-si-di-hui-gui-yu-zui-da-shang-mo-xing.html" rel="bookmark" title="Permalink to 逻辑斯谛回归与最大熵模型">逻辑斯谛回归与最大熵模型</a></h2> </header>
                                 <footer class="post-info">
                                     <abbr class="published" title="2014-08-01T09:53:00"> Fri 01 August 2014 </abbr>
@@ -198,41 +229,6 @@
 
 
                         </article></li>
-                        <li><article class="hentry">
-                                <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/gan-zhi-ji.html" rel="bookmark" title="Permalink to 感知机">感知机</a></h2> </header>
-                                <footer class="post-info">
-                                    <abbr class="published" title="2014-07-26T20:12:00"> Sat 26 July 2014 </abbr>
-                                    <address class="vcard author">By 
-                                    <a class="url fn" href="http://www.wengweitao.com/author/wwt.html"> wwt</a>
-                                    </address>
-                                </footer><!-- /.post-info -->
-                                <div class="entry-content"> <blockquote>
-<p>感知机（perceptron）是二类分类的线性分类模型，其输入为实例的特征向量，输出为实例的类别，取+1和-1二值。感知机对应于输入空间中将实例划分为正负两类的分离超平面，属于判别模型。感知机学习旨在求出将训练数据进行线性划分的分离超平面，为此导入了基于误分类的损失函数，利用梯度下降法对损失函数进行极小化，求得感知机模型。感知机学习算法具有简单而易于实现的优点，分为原始形式和对偶形式。感知机是神经网络与支持向量机的基础。</p>
-</blockquote>
-<h2>感知机模型</h2>
-<p>由输入空间到输出空间的如下函数：
-</p>
-<div class="math">$$f(x)=sign(w.x+b)$$</div>
-<p>
-称为<strong>感知机</strong>。其中w和b称为感知机模型参数，<strong>w叫做权值</strong>（weight）或权值向量，b叫做偏置（bias）。感知机（perceptron）是<strong>二类分类的线性分类模型</strong>，属于判别模型。</p>
-<p><strong>感知机的几何解释</strong>：线性方程
-</p>
-<div class="math">$$w.x+b=0$$</div>
-<p>
-对应于特征空间<span class="math">\(R^n\)</span>中的一个超平面S，其中w是超平面的法向量，b是超平面的截距。这个超平面将特征空间划分为两个部分 ...</p> </div><!-- /.entry-content -->
-
-                                <div class="medium primary btn"><a href="http://www.wengweitao.com/gan-zhi-ji.html" rel="bookmark" title="Permalink to 感知机">Read more <i class="icon-arrow-right"></i></a></div>
-
-
-
-                                <div class="row tag-row">
-                                        <span>Tagged as : </span>
-                                            <a class="danger label" href="http://www.wengweitao.com/tag/du-shu-bi-ji.html">读书笔记</a>
-                                </div>
-
-
-
-                        </article></li>
                 </ol><!-- /#posts-list -->
 
         </div><!-- /.eleven.columns -->
@@ -263,17 +259,17 @@
 <!--
 <h4>标签</h4>
 <ul class="tagcloud">
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/wan.html">玩</a></li>
-        <li class="tag-2"><a href="http://www.wengweitao.com/tag/ji-ben-gai-nian.html">基本概念</a></li>
-        <li class="tag-0"><a href="http://www.wengweitao.com/tag/du-shu-bi-ji.html">读书笔记</a></li>
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/vim.html">Vim</a></li>
-        <li class="tag-2"><a href="http://www.wengweitao.com/tag/mian-shi-ti.html">面试题</a></li>
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/ji-chu-gai-nian.html">基础概念</a></li>
-        <li class="tag-2"><a href="http://www.wengweitao.com/tag/jiao-cheng.html">教程</a></li>
+        <li class="tag-1"><a href="http://www.wengweitao.com/tag/du-shu-bi-ji.html">读书笔记</a></li>
+        <li class="tag-1"><a href="http://www.wengweitao.com/tag/python.html">Python</a></li>
         <li class="tag-4"><a href="http://www.wengweitao.com/tag/xiao-yuan.html">校园</a></li>
-        <li class="tag-0"><a href="http://www.wengweitao.com/tag/python.html">Python</a></li>
+        <li class="tag-4"><a href="http://www.wengweitao.com/tag/wan.html">玩</a></li>
         <li class="tag-4"><a href="http://www.wengweitao.com/tag/gong-ju.html">工具</a></li>
         <li class="tag-4"><a href="http://www.wengweitao.com/tag/ce-shi.html">测试</a></li>
+        <li class="tag-2"><a href="http://www.wengweitao.com/tag/ji-ben-gai-nian.html">基本概念</a></li>
+        <li class="tag-2"><a href="http://www.wengweitao.com/tag/mian-shi-ti.html">面试题</a></li>
+        <li class="tag-2"><a href="http://www.wengweitao.com/tag/jiao-cheng.html">教程</a></li>
+        <li class="tag-4"><a href="http://www.wengweitao.com/tag/vim.html">Vim</a></li>
+        <li class="tag-4"><a href="http://www.wengweitao.com/tag/ji-chu-gai-nian.html">基础概念</a></li>
 </ul>
 -->
 

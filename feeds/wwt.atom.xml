@@ -2510,7 +2510,182 @@ str.format()是Python最为推荐的字符串格式化方法，当然也是最Py
 &lt;blockquote&gt;
 &lt;p&gt;信息技术协会致力于为北大深研院的同学们营造一个学习和交流信息学科得环境和氛围，为大家提供有关信息领域的设计、应用、资讯等方面的信息。信息技术协会积极打造与深港信息类企业合作和联动的平台，帮助学生走出校园，观察产业发展动态；积极开展电脑维护活动，帮助同学们解决生活中遇到的技术困难。在以后，信息技术协会仍然会坚持协会宗旨，继续为大家服务。&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;转自：http://news.pkusz.edu.cn/article-143-4357.html&lt;/p&gt;</summary><category term="校园"></category></entry><entry><title>逻辑斯谛回归与最大熵模型</title><link href="http://www.wengweitao.com/luo-ji-si-di-hui-gui-yu-zui-da-shang-mo-xing.html" rel="alternate"></link><updated>2014-08-01T09:53:00+08:00</updated><author><name>wwt</name></author><id>tag:www.wengweitao.com,2014-08-01:luo-ji-si-di-hui-gui-yu-zui-da-shang-mo-xing.html</id><summary type="html">&lt;blockquote&gt;
+&lt;p&gt;转自：http://news.pkusz.edu.cn/article-143-4357.html&lt;/p&gt;</summary><category term="校园"></category></entry><entry><title>支持向量机——线性可分支持向量机</title><link href="http://www.wengweitao.com/zhi-chi-xiang-liang-ji-xian-xing-ke-fen-zhi-chi-xiang-liang-ji.html" rel="alternate"></link><updated>2014-08-02T20:32:00+08:00</updated><author><name>wwt</name></author><id>tag:www.wengweitao.com,2014-08-02:zhi-chi-xiang-liang-ji-xian-xing-ke-fen-zhi-chi-xiang-liang-ji.html</id><summary type="html">&lt;blockquote&gt;
+&lt;p&gt;支持向量机（support vector machine， SVM）是一种二类分类模型。它的基本模型是定义在特征空间上的间隔最大的线性分类器，间隔最大使之有别与感知机。支持向量机还包括核技巧，这使它成为实质上的非线性分类器。SVM的学习策略是间隔最大化，可形式化为一个求解凸二次规划的问题，也等价于正则化的合页损失函数的最小化问题。SVM的学习算法是求解凸二次规划的最优算法。SVM学习方法包含构建由简至烦的模型：
+- 线性可分支持向量机：当训练数据线性可分时，通过硬间隔最大化（hard margin maximization），学习一个线性分类器
+- 线性支持向量机：当训练数据近似线性可分时，通过软间隔最大化（soft margin maximization），学习一个线性分类器，也称为软间隔支持向量机
+- 非线性支持向量机：当训练数据线性不可分时，通过使用核技巧（kernel trick）即软间隔最大化，学习非线性支持向量机。
+核函数（kernel function）表示将输入从输入空间映射到特征空间得到的特征向量之间的内积。通过使用核函数可以学习非线性支持向量机，等价于隐式地在高维的特征空间中学习线性支持向量机。这样的方法称为核技巧。核方法是比支持向量机更为一般的机器学习方法。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2&gt;线性可分支持向量机与硬间隔最大化&lt;/h2&gt;
+&lt;h3&gt;线性可分支持向量机&lt;/h3&gt;
+&lt;p&gt;支持向量机中，输入都由输入空间转换到特征空间将输入映射为特征向量，支持向量机的学习是在特征空间中进行的。&lt;/p&gt;
+&lt;p&gt;假设训练数据是线性可分的，学习的目标是在特征空间中找到一个分离超平面，能将实例分到不同的类。分离超平面对应于方程&lt;span class="math"&gt;\(w.x+b=0\)&lt;/span&gt;，它由法向量w和截距b决定，可用(w,b)来表示。分离超平面将特征空间划分为两部分，一部分为正类，一部分为负类。法向量执行的一侧为正类，另一侧为负类。&lt;/p&gt;
+&lt;p&gt;一般地，当训练数据集线性可分时，存在无穷个超平面可将两类数据正确分开。感知机利用误分类最小的策略，求得分离超平面，不过这时的解有无穷多个。线性可分支持向量机利用间隔最大化求最优分离超平面，这时，解是唯一的。&lt;/p&gt;
+&lt;p&gt;给定线性可分训练数据集，通过间隔最大化或等价的求解相应的凸二次规划问题学习得到的分离超平面为
+&lt;/p&gt;
+&lt;div class="math"&gt;$$w^*.x+b^*=0$$&lt;/div&gt;
+&lt;p&gt;
+以及相应的分类决策函数
+&lt;/p&gt;
+&lt;div class="math"&gt;$$f(x)=sign(w^*.x+b^*)$$&lt;/div&gt;
+&lt;p&gt;
+称为&lt;strong&gt;线性可分支持向量机&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;线性可分支持向量机对应着将两类数据正确划分并且间隔最大的直线。&lt;/p&gt;
+&lt;h3&gt;函数间隔和几何间隔&lt;/h3&gt;
+&lt;p&gt;一个点距离超平面的远近可以表示分类预测的确信程度（越远就越可信）。在超平面程&lt;span class="math"&gt;\(w.x+b=0\)&lt;/span&gt;确定的情况下，程&lt;span class="math"&gt;\(|w.x+b|\)&lt;/span&gt;能够相对地表示点x距离超平面的远近。而&lt;span class="math"&gt;\(w.x+b\)&lt;/span&gt;的符号与类标记y的符号是否一致能够表示分类是否正确。所以可以用&lt;span class="math"&gt;\(y(w.x+b)\)&lt;/span&gt;来表示分类的正确性及确信度。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;函数间隔：&lt;/strong&gt; 定义超平面(w,b)关于样本点&lt;span class="math"&gt;\((x_i, y_i)\)&lt;/span&gt;的函数间隔为
+&lt;/p&gt;
+&lt;div class="math"&gt;$$\widehat{\gamma_i}=y_i(w.x_i+b)  $$&lt;/div&gt;
+&lt;p&gt;
+定义超平面(w,b)关于训练数据集T的函数间隔为超平面(w,b)关于T中所有样本点&lt;span class="math"&gt;\((x_i, y_i)\)&lt;/span&gt;的函数间隔之最小值。&lt;/p&gt;
+&lt;p&gt;但是，对于函数间隔只要成比例地改变w和b，例如变为2w和2b，超平面并没有改变，但是函数间隔却成为原来的2倍。可以对分离超平面的法向量w加某些约束，如规范化，||w||=1，使得间隔是确定的。这时函数间隔成为几何间隔（geometric margin）。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;几何间隔：&lt;/strong&gt; 定义超平面(w,b)关于样本点&lt;span class="math"&gt;\((x_i, y_i)\)&lt;/span&gt;的几何间隔为
+&lt;/p&gt;
+&lt;div class="math"&gt;$$\gamma_i=y_i(\frac{w}{||w||}.x_i+\frac{b}{||w||})  $$&lt;/div&gt;
+&lt;p&gt;
+定义超平面(w,b)关于训练数据集T的函数间隔为超平面(w,b)关于T中所有样本点&lt;span class="math"&gt;\((x_i, y_i)\)&lt;/span&gt;的几何间隔之最小值。&lt;/p&gt;
+&lt;p&gt;如果||w||=1，函数间隔和几何间隔相等。如果超平面参数w和b成比例地改变，函数间隔也按比例改变，而几何间隔不变。&lt;/p&gt;
+&lt;h3&gt;间隔最大化&lt;/h3&gt;
+&lt;p&gt;支持向量机学习的基本想法是求解能够正确划分训练数据集并且几何间隔最大的分离超平面。这里的集合间隔最大的分离超平面是唯一的，这里的间隔最大化又称为&lt;strong&gt;硬间隔最大化&lt;/strong&gt;。间隔最大化最直观的解释就是，不仅将正负实例点分开，而且对最难分的实例点（离超平面最近的点）也有足够大的确信度将它们分开。&lt;/p&gt;
+&lt;h4&gt;1.最大间隔分离超平面&lt;/h4&gt;
+&lt;p&gt;最大间隔分离超平面这个问题可以表示为下面的约束最优化问题：
+&lt;/p&gt;
+&lt;div class="math"&gt;$$max_{w,b} \gamma$$&lt;/div&gt;
+&lt;div class="math"&gt;$$ s.t. 　y_i(\frac{w}{||w||}.x_i+\frac{b}{||w||}) \geq \gamma 　i=1,2,...,N$$&lt;/div&gt;
+&lt;p&gt;
+约束条件表示为超平面(w,b)关于每个训练样本点的几何间隔至少是&lt;span class="math"&gt;\(\gamma\)&lt;/span&gt;。考虑几何间隔和函数间隔的关系式：
+&lt;/p&gt;
+&lt;div class="math"&gt;$$\gamma_i = \frac{\widehat{\gamma_i}}{||w||}$$&lt;/div&gt;
+&lt;p&gt;
+可以将这个问题改写为：
+&lt;/p&gt;
+&lt;div class="math"&gt;$$max_{w,b} \frac{\widehat{\gamma_i}}{||w||}$$&lt;/div&gt;
+&lt;div class="math"&gt;$$ s.t. 　y_i(w.x_i+b) \geq \gamma 　i=1,2,...,N$$&lt;/div&gt;
+&lt;p&gt;
+&lt;strong&gt;函数间隔&lt;/strong&gt;的取值&lt;span class="math"&gt;\(\widehat{\gamma_i}\)&lt;/span&gt;的取值并不影响最优化问题的解。可以将w和b成比例的改变，对上面最优化问题的不等式约束没有影响。也就是说，它产生一个等价的最优化问题。这样，就可以取&lt;span class="math"&gt;\(\widehat{\gamma_i}=1\)&lt;/span&gt;。将&lt;span class="math"&gt;\(\widehat{\gamma_i}=1\)&lt;/span&gt;代入上面的最优化问题，&lt;strong&gt;可以得到线性可分支持向量机学习的最优化问题&lt;/strong&gt;：
+&lt;/p&gt;
+&lt;div class="math"&gt;$$min_{w,b} \frac{1}{2}{||w||^2}$$&lt;/div&gt;
+&lt;div class="math"&gt;$$ s.t. 　y_i(w.x_i+b) - 1\geq 0 　i=1,2,...,N$$&lt;/div&gt;
+&lt;p&gt;
+这是一个凸二次规划&lt;sup id="fnref:convex"&gt;&lt;a class="footnote-ref" href="#fn:convex" rel="footnote"&gt;1&lt;/a&gt;&lt;/sup&gt;（convex quadratic programming）问题。
+如果解出了约束最优化问题的&lt;span class="math"&gt;\(w^*, b^*\)&lt;/span&gt;那么就可以得到最大间隔分离超平面&lt;span class="math"&gt;\(w^*.x + b^*=0\)&lt;/span&gt;及分类决策函数，也就是线性可分支持向量机模型。&lt;/p&gt;
+&lt;h4&gt;最大间隔分类超平面的存在唯一性&lt;/h4&gt;
+&lt;p&gt;线性可分训练数据集的最大间隔分离超平面是&lt;strong&gt;存在且唯一的&lt;/strong&gt;。&lt;/p&gt;
+&lt;h4&gt;支持向量和间隔边界&lt;/h4&gt;
+&lt;p&gt;训练数据集的样本点中与分离超平面距离最近的样本点的实例称为&lt;strong&gt;支持向量（support vector）&lt;/strong&gt;。支持向量是使约束条件等号成立的点，即
+&lt;/p&gt;
+&lt;div class="math"&gt;$$y_i(w.x_i+b) - 1= 0 $$&lt;/div&gt;
+&lt;p&gt;
+对&lt;span class="math"&gt;\(y_i=+1\)&lt;/span&gt;的正例点，支持向量在超平面：
+&lt;/p&gt;
+&lt;div class="math"&gt;$$H_1: w.x_i+b = 1 $$&lt;/div&gt;
+&lt;p&gt;
+上，对&lt;span class="math"&gt;\(y_i=-1\)&lt;/span&gt;的负例点，支持向量在超平面：
+&lt;/p&gt;
+&lt;div class="math"&gt;$$H_2: w.x_i+b = -1 $$&lt;/div&gt;
+&lt;p&gt;
+上。&lt;span class="math"&gt;\(H_1\)&lt;/span&gt;与&lt;span class="math"&gt;\(H_2\)&lt;/span&gt;上的点就是支持向量。&lt;span class="math"&gt;\(H_1\)&lt;/span&gt;与&lt;span class="math"&gt;\(H_2\)&lt;/span&gt;是平行的，它们之间的距离称为&lt;strong&gt;间隔（margin）&lt;/strong&gt;。间隔依赖于超平面的法向量w，等于&lt;span class="math"&gt;\(\frac{2}{||w||}\)&lt;/span&gt;。&lt;/p&gt;
+&lt;p&gt;在决定分离超平面时只有支持向量其作用，而其他实例点并不起作用，所以将这种分类模型称为支持向量机。支持向量的个数一般很少，所以支持向量机由很少的“重要”训练样本确定。&lt;/p&gt;
+&lt;h3&gt;学习的对偶算法&lt;/h3&gt;
+&lt;p&gt;为了求解线性可分支持向量机的最优化问题，将它作为原始最优化问题，应用拉格朗日对偶性。通过求解对偶问题得到原始问题的最优解，这就是线性可分支持向量机的对偶算法。这样做的优点，一是对偶问题往往更容易求解；而是自然引入核函数，进而推广到非线性分类问题。&lt;/p&gt;
+&lt;p&gt;线性可分支持向量机学习的最优化问题为：
+&lt;/p&gt;
+&lt;div class="math"&gt;$$min_{w,b} \frac{1}{2}{||w||^2}$$&lt;/div&gt;
+&lt;div class="math"&gt;$$ s.t. 　y_i(w.x_i+b) - 1\geq 0 　i=1,2,...,N$$&lt;/div&gt;
+&lt;p&gt;（1）构建拉格朗日函数
+&lt;/p&gt;
+&lt;div class="math"&gt;$$L(w,b,\alpha)=\frac{1}{2}{||w||^2} - \sum_{i=1}^{N}\alpha_iy_i(w.x_i+b)+ \sum_{i=1}^{N}\alpha_i$$&lt;/div&gt;
+&lt;p&gt;
+对每一个约束引进拉格朗日乘子&lt;span class="math"&gt;\(\alpha_i \geq 0\)&lt;/span&gt;。&lt;/p&gt;
+&lt;p&gt;（2）根据拉格朗日对偶性，原始问题的对偶问题是极大极小问题:
+&lt;/p&gt;
+&lt;div class="math"&gt;$$原始问题：min_{w,b}max_{\alpha_i \geq 0}L(w, b, \alpha)$$&lt;/div&gt;
+&lt;div class="math"&gt;$$对偶问题：max_{\alpha_i \geq 0}min_{w,b}L(w, b, \alpha)$$&lt;/div&gt;
+&lt;p&gt;（3）求解对偶问题的解，需要先求&lt;span class="math"&gt;\(L(w, b, \alpha)\)&lt;/span&gt;对w,b的极小，再求对&lt;span class="math"&gt;\(\alpha\)&lt;/span&gt;的极大&lt;/p&gt;
+&lt;p&gt;（4）先求&lt;span class="math"&gt;\(min_{w,b}L(w, b, \alpha)\)&lt;/span&gt;
+将拉格朗日函数分别对w,b求偏导数并令偏导数等于0. 将求得的结果代入拉格朗日函数中可以得到：
+&lt;/p&gt;
+&lt;div class="math"&gt;$$min_{w,b}L(w,b,\alpha)=-\frac{1}{2} \sum_{i=1}^{N}\sum_{j=1}^{N}\alpha_i\alpha_jy_iy_j(x_ix_j)+ \sum_{i=1}^{N}\alpha_i$$&lt;/div&gt;
+&lt;p&gt;（5）求&lt;span class="math"&gt;\(min_{w,b}L(w, b, \alpha)\)&lt;/span&gt;对&lt;span class="math"&gt;\(\alpha\)&lt;/span&gt;的极大，即是对偶问题
+&lt;/p&gt;
+&lt;div class="math"&gt;$$max_{w,b}L(w,b,\alpha)=-\frac{1}{2} \sum_{i=1}^{N}\sum_{j=1}^{N}\alpha_i\alpha_jy_iy_j(x_ix_j)+ \sum_{i=1}^{N}\alpha_i$$&lt;/div&gt;
+&lt;div class="math"&gt;$$s.t. \sum_{i=1}^{N}\alpha_iy_i = 0　\alpha_i \geq 0, i=1,2,...,N$$&lt;/div&gt;
+&lt;p&gt;可以将上面的目标函数由极大转换为求极小，得到&lt;strong&gt;线性可分支持向量机的学习算法&lt;/strong&gt;：&lt;/p&gt;
+&lt;p&gt;输入：现在可分训练数据集T&lt;/p&gt;
+&lt;p&gt;输出：分离超平面和分类决策函数&lt;/p&gt;
+&lt;p&gt;（1）构造并求解约束最优化问题
+&lt;/p&gt;
+&lt;div class="math"&gt;$$min_{w,b}L(w,b,\alpha)=\frac{1}{2} \sum_{i=1}^{N}\sum_{j=1}^{N}\alpha_i\alpha_jy_iy_j(x_ix_j)- \sum_{i=1}^{N}\alpha_i$$&lt;/div&gt;
+&lt;div class="math"&gt;$$s.t. \sum_{i=1}^{N}\alpha_iy_i = 0　\alpha_i \geq 0, i=1,2,...,N$$&lt;/div&gt;
+&lt;p&gt;
+求得最优解&lt;span class="math"&gt;\(\alpha^* = (\alpha_1^* ... \alpha_n^*)\)&lt;/span&gt;（必须满足&lt;span class="math"&gt;\(\alpha_i \geq 0\)&lt;/span&gt;，如果找不到则最小值在边界上）.&lt;/p&gt;
+&lt;p&gt;（2）计算
+&lt;/p&gt;
+&lt;div class="math"&gt;$$w^* = \sum_{i=1}^{N}\alpha_i^*y_ix_i$$&lt;/div&gt;
+&lt;p&gt;
+并选择一个&lt;span class="math"&gt;\(\alpha_j^* &amp;gt; 0\)&lt;/span&gt;，计算
+&lt;/p&gt;
+&lt;div class="math"&gt;$$b^* = y_j - \sum_{i=1}^{N}\alpha_i^*y_i(x_ix_j)$$&lt;/div&gt;
+&lt;p&gt;（3）求得分离超平面
+&lt;/p&gt;
+&lt;div class="math"&gt;$$w^*.x+b^*=0$$&lt;/div&gt;
+&lt;p&gt;
+分类决策函数：
+&lt;/p&gt;
+&lt;div class="math"&gt;$$f(x)=sign(w^*.x+b^*)$$&lt;/div&gt;
+&lt;p&gt;其中，&lt;span class="math"&gt;\(w^* 与 b^* $有由[KKT条件][2]得到的。\)&lt;/span&gt;w^&lt;em&gt; 与 b^&lt;/em&gt; &lt;span class="math"&gt;\(只依赖于训练数据中对应于\)&lt;/span&gt;\alpha_i &amp;gt; 0&lt;span class="math"&gt;\(的样本点，而其他样本点对它们没有影响，因此，我们也可以将\)&lt;/span&gt;\alpha_i &amp;gt; 0$的样本点称为&lt;strong&gt;支持向量&lt;/strong&gt;。&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h2&gt;Reference&lt;/h2&gt;
+&lt;p&gt;&lt;a href="http://book.douban.com/subject/10590856/"&gt;统计学习方法&lt;/a&gt;第七章&lt;/p&gt;
+&lt;div class="footnote"&gt;
+&lt;hr /&gt;
+&lt;ol&gt;
+&lt;li id="fn:convex"&gt;
+&lt;p&gt;凸优化问题是指约束最优化问题
+&lt;div class="math"&gt;$$min_x f(x)$$&lt;/div&gt;
+&lt;div class="math"&gt;$$s.t. g_i(x) \leq0　h_i(x) \leq 0　i=1,2,...,N$$&lt;/div&gt;&amp;#160;&lt;a class="footnote-backref" href="#fnref:convex" rev="footnote" title="Jump back to footnote 1 in the text"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;script type="text/javascript"&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "false";
+
+    if (false) {
+        align = (screen.width &lt; 768) ? "left" : align;
+        indent = (screen.width &lt; 768) ? "0em" : indent;
+        linebreak = (screen.width &lt; 768) ? 'true' : linebreak;
+    }
+    
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = '//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); ";
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+&lt;/script&gt;</summary><category term="读书笔记"></category></entry><entry><title>逻辑斯谛回归与最大熵模型</title><link href="http://www.wengweitao.com/luo-ji-si-di-hui-gui-yu-zui-da-shang-mo-xing.html" rel="alternate"></link><updated>2014-08-01T09:53:00+08:00</updated><author><name>wwt</name></author><id>tag:www.wengweitao.com,2014-08-01:luo-ji-si-di-hui-gui-yu-zui-da-shang-mo-xing.html</id><summary type="html">&lt;blockquote&gt;
 &lt;p&gt;逻辑斯谛回归（logistic regression）是统计学习中的经典分类方法，可以用于二类分类也可以用于多类分类。最大熵模型由最大熵原理推导出来，最大熵原理是概率模型学习或估计的一个准则，最大熵原理认为在所有可能的概率模型的集合中，熵最大的模型是最好的模型，最大熵模型也可以用于二类分类和多类分类。逻辑斯谛回归模型与最大熵模型都属于对数线性模型&lt;sup id="fnref:log"&gt;&lt;a class="footnote-ref" href="#fn:log" rel="footnote"&gt;1&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h2&gt;逻辑斯谛回归模型&lt;/h2&gt;
