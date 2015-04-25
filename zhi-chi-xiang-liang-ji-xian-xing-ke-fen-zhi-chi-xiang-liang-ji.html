@@ -174,14 +174,14 @@
 <div class="math">$$max_{\alpha}L(w,b,\alpha)=-\frac{1}{2} \sum_{i=1}^{N}\sum_{j=1}^{N}\alpha_i\alpha_jy_iy_j(x_ix_j)+ \sum_{i=1}^{N}\alpha_i$$</div>
 <div class="math">$$s.t. \sum_{i=1}^{N}\alpha_iy_i = 0　\alpha_i \geq 0, i=1,2,...,N$$</div>
 <p>可以将上面的目标函数由极大转换为求极小，得到<strong>线性可分支持向量机的学习算法</strong>：</p>
-<p>输入：现在可分训练数据集T</p>
+<p>输入：线性可分训练数据集T</p>
 <p>输出：分离超平面和分类决策函数</p>
 <p>（1）构造并求解约束最优化问题
 </p>
 <div class="math">$$min_{w,b}L(w,b,\alpha)=\frac{1}{2} \sum_{i=1}^{N}\sum_{j=1}^{N}\alpha_i\alpha_jy_iy_j(x_ix_j)- \sum_{i=1}^{N}\alpha_i$$</div>
 <div class="math">$$s.t. \sum_{i=1}^{N}\alpha_iy_i = 0　\alpha_i \geq 0, i=1,2,...,N$$</div>
 <p>
-求得最优解<span class="math">\(\alpha^* = (\alpha_1^* ... \alpha_n^*)\)</span>（必须满足<span class="math">\(\alpha_i \geq 0\)</span>，如果找不到则最小值在边界上）.</p>
+求得最优解<span class="math">\(\alpha^* = (\alpha_1^* ... \alpha_n^*)^T\)</span>（必须满足<span class="math">\(\alpha_i \geq 0\)</span>，如果找不到则最小值在边界上）.</p>
 <p>（2）计算
 </p>
 <div class="math">$$w^* = \sum_{i=1}^{N}\alpha_i^*y_ix_i$$</div>
@@ -291,17 +291,17 @@
 <!--
 <h4>标签</h4>
 <ul class="tagcloud">
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/vim.html">Vim</a></li>
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/wan.html">玩</a></li>
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/gong-ju.html">工具</a></li>
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/xiao-yuan.html">校园</a></li>
         <li class="tag-4"><a href="http://www.wengweitao.com/tag/ce-shi.html">测试</a></li>
-        <li class="tag-1"><a href="http://www.wengweitao.com/tag/python.html">Python</a></li>
         <li class="tag-3"><a href="http://www.wengweitao.com/tag/mian-shi-ti.html">面试题</a></li>
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/ji-chu-gai-nian.html">基础概念</a></li>
+        <li class="tag-4"><a href="http://www.wengweitao.com/tag/gong-ju.html">工具</a></li>
+        <li class="tag-4"><a href="http://www.wengweitao.com/tag/vim.html">Vim</a></li>
+        <li class="tag-4"><a href="http://www.wengweitao.com/tag/xiao-yuan.html">校园</a></li>
         <li class="tag-3"><a href="http://www.wengweitao.com/tag/jiao-cheng.html">教程</a></li>
-        <li class="tag-1"><a href="http://www.wengweitao.com/tag/du-shu-bi-ji.html">读书笔记</a></li>
+        <li class="tag-4"><a href="http://www.wengweitao.com/tag/ji-chu-gai-nian.html">基础概念</a></li>
+        <li class="tag-1"><a href="http://www.wengweitao.com/tag/python.html">Python</a></li>
+        <li class="tag-4"><a href="http://www.wengweitao.com/tag/wan.html">玩</a></li>
         <li class="tag-3"><a href="http://www.wengweitao.com/tag/ji-ben-gai-nian.html">基本概念</a></li>
+        <li class="tag-1"><a href="http://www.wengweitao.com/tag/du-shu-bi-ji.html">读书笔记</a></li>
 </ul>
 -->
 

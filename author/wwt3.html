@@ -217,23 +217,26 @@ YAPF与其他的格式化工具不同，其算法能够把代码重新格式化�
 
                         </article></li>
                         <li><article class="hentry">
-                                <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/zhi-chi-xiang-liang-ji-xian-xing-zhi-chi-xiang-liang-ji.html" rel="bookmark" title="Permalink to 支持向量机——线性支持向量机">支持向量机——线性支持向量机</a></h2> </header>
+                                <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/zhi-chi-xiang-liang-ji-fei-xian-xing-zhi-chi-xiang-liang-ji.html" rel="bookmark" title="Permalink to 支持向量机——非线性支持向量机">支持向量机——非线性支持向量机</a></h2> </header>
                                 <footer class="post-info">
-                                    <abbr class="published" title="2014-08-03T14:54:00"> Sun 03 August 2014 </abbr>
+                                    <abbr class="published" title="2014-08-04T19:39:00"> Mon 04 August 2014 </abbr>
                                     <address class="vcard author">By 
                                     <a class="url fn" href="http://www.wengweitao.com/author/wwt.html"> wwt</a>
                                     </address>
                                 </footer><!-- /.post-info -->
                                 <div class="entry-content"> <blockquote>
-<p>对于理想情况下线性可分的问题，可以使用上文介绍的线性可分支持向量机（硬间隔最大化）完美解决。但是，实际情况中，训练数据往往是线性不可分的，即在样本中存在噪声或特异点。此时，可以使用本文中介绍的更一般的学习算法——线性支持向量机（软间隔最大化）。</p>
+<p>如果分类问题是非线性的，那么就要用到非线性支持向量机。非线性支持向量机主要特点就是利用核技巧。</p>
 </blockquote>
-<h2>线性支持向量机</h2>
-<p>怎样才能把<a href="http://www.wengweitao.com/zhi-chi-xiang-liang-ji-xian-xing-ke-fen-zhi-chi-xiang-liang-ji.html">上文中介绍的线性可分支持向量机</a>扩展到线性不可分的数据集中呢？这就需要改变硬间隔最大化，使其成为软间隔最大化。</p>
-<p>通常情况下，数据集中存在一些特异点（outlier），将这些特异点去除后，剩下大部分样本点组成的集合是线性可分的。那些线性不可分的样本点<span class="math">\((x_i, y_i)\)</span>意味着不能满足函数间隔大于等于1的约束条件（即<span class="math">\(y_i(w.x_i + b)-1 \geq 0\)</span>）。为了解决这个问题，可以为每个样本点引入一个松弛变量<span class="math">\(\xi_i \geq 0\)</span>，使函数间隔加上松弛变量后大于等于1.同时对每个松弛变量<span class="math">\(\xi_i\)</span>，支付一个代价<span class="math">\(\xi_i\)</span>。这样线性不可分的线性支持向量机的学习问题变成如下的凸二次规划问题：
-</p>
-<div class="math">$$min_{w,b,\xi ...</div> </div><!-- /.entry-content -->
+<h2>核技巧</h2>
+<h3>非线性分类问题</h3>
+<p>利用非线性模型才能很好地进行分类的问题，就是非线性分类问题。如果能用<span class="math">\(R^n\)</span>中的一个超平面将正负例正确分开，则称这个问题为非线性可分问题。如下的例子，无法用直线（线性模型）将正负实例正确分开，但可以用一条椭圆（非线性模型）将它们正确分开。
+![非线性可分例子][/imgs/nolinear.png]</p>
+<p>通常进行一个非线性变换，将非线性问题变换为线性问题，通过解变换后的线性问题的方法求解原来的非线性问题。例如，上图中将椭圆变换为右图中的直线，将非线性分类问题变换为线性分类问题。</p>
+<p>核技巧应用到支持向量机，其基本思想就是通过一个非线性变换将输入空间（欧氏空间<span class="math">\(R^n\)</span>或离散集合）对应于一个特征空间（希尔伯特空间<sup id="fnref:Hilbert"><a class="footnote-ref" href="#fn:Hilbert" rel="footnote">1</a></sup>H），使得在输入空间中的超平面模型对应于特征空间中的超平面模型（支持向量机）。这样，分类问题的学习任务通过在特征空间中求解线性支持向量机就可以完成。</p>
+<h3>核函数的定义</h3>
+<p>设<span class="math">\(\chi\)</span>是输入空间（欧氏空间<span class="math">\(R^n ...</span></p> </div><!-- /.entry-content -->
 
-                                <div class="medium primary btn"><a href="http://www.wengweitao.com/zhi-chi-xiang-liang-ji-xian-xing-zhi-chi-xiang-liang-ji.html" rel="bookmark" title="Permalink to 支持向量机——线性支持向量机">Read more <i class="icon-arrow-right"></i></a></div>
+                                <div class="medium primary btn"><a href="http://www.wengweitao.com/zhi-chi-xiang-liang-ji-fei-xian-xing-zhi-chi-xiang-liang-ji.html" rel="bookmark" title="Permalink to 支持向量机——非线性支持向量机">Read more <i class="icon-arrow-right"></i></a></div>
 
 
 
@@ -275,17 +278,17 @@ YAPF与其他的格式化工具不同，其算法能够把代码重新格式化�
 <!--
 <h4>标签</h4>
 <ul class="tagcloud">
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/vim.html">Vim</a></li>
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/wan.html">玩</a></li>
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/gong-ju.html">工具</a></li>
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/xiao-yuan.html">校园</a></li>
         <li class="tag-4"><a href="http://www.wengweitao.com/tag/ce-shi.html">测试</a></li>
-        <li class="tag-1"><a href="http://www.wengweitao.com/tag/python.html">Python</a></li>
         <li class="tag-3"><a href="http://www.wengweitao.com/tag/mian-shi-ti.html">面试题</a></li>
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/ji-chu-gai-nian.html">基础概念</a></li>
+        <li class="tag-4"><a href="http://www.wengweitao.com/tag/gong-ju.html">工具</a></li>
+        <li class="tag-4"><a href="http://www.wengweitao.com/tag/vim.html">Vim</a></li>
+        <li class="tag-4"><a href="http://www.wengweitao.com/tag/xiao-yuan.html">校园</a></li>
         <li class="tag-3"><a href="http://www.wengweitao.com/tag/jiao-cheng.html">教程</a></li>
-        <li class="tag-1"><a href="http://www.wengweitao.com/tag/du-shu-bi-ji.html">读书笔记</a></li>
+        <li class="tag-4"><a href="http://www.wengweitao.com/tag/ji-chu-gai-nian.html">基础概念</a></li>
+        <li class="tag-1"><a href="http://www.wengweitao.com/tag/python.html">Python</a></li>
+        <li class="tag-4"><a href="http://www.wengweitao.com/tag/wan.html">玩</a></li>
         <li class="tag-3"><a href="http://www.wengweitao.com/tag/ji-ben-gai-nian.html">基本概念</a></li>
+        <li class="tag-1"><a href="http://www.wengweitao.com/tag/du-shu-bi-ji.html">读书笔记</a></li>
 </ul>
 -->
 

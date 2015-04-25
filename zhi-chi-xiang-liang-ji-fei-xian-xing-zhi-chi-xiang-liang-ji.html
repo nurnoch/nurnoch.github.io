@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+
+        <title>支持向量机——非线性支持向量机</title>
+        <meta charset="utf-8" />
+        <link href="http://www.wengweitao.com/feeds\all.atom.xml" type="application/atom+xml" rel="alternate" title="wwt's blog Full Atom Feed" />
+        <link href="http://www.wengweitao.com/feeds/all.rss.xml" type="application/rss+xml" rel="alternate" title="wwt's blog Full RSS Feed" />
+        <link href="http://www.wengweitao.com/feeds/ji-qi-xue-xi.rss.xml" type="application/atom+xml" rel="alternate" title="wwt's blog Categories Atom Feed" />
+
+
+        <!-- Mobile viewport optimized: j.mp/bplateviewport -->
+        <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1">
+
+        <meta name="sogou_site_verification" content="ia8yXdZS0p"/>
+ 
+
+        <link rel="stylesheet" type="text/css" href="http://www.wengweitao.com/theme/gumby.css" />
+        <link rel="stylesheet" type="text/css" href="http://www.wengweitao.com/theme/style.css" />
+        <link rel="stylesheet" type="text/css" href="http://www.wengweitao.com/theme/pygment.css" />
+
+        <script src="http://www.wengweitao.com/theme/js/libs/modernizr-2.6.2.min.js"></script>
+
+
+
+
+</head>
+
+<body id="index" class="home">
+
+
+    <div class="container">
+
+        <div class="row">
+
+          <header id="banner" class="body">
+                  <h1><a href="http://www.wengweitao.com/">wwt's blog <strong></strong></a></h1>
+          </header><!-- /#banner -->
+
+            <div id="navigation" class="navbar row">
+              <a href="#" gumby-trigger="#navigation &gt; ul" class="toggle"><i class="icon-menu"></i></a>
+             
+              <ul class="columns">
+                <li><a href="http://www.wengweitao.com/">首页</a></li>
+
+                <li><a href="/categories.html">分类</a></li>
+                <li><a href="/tags.html">标签</a></li>
+                <li><a href="/archives.html">归档</a></li>
+                <li><a href="/pages/about-me.html">关于我</a></li>
+
+              </ul>
+            </div>
+
+<section id="content" class="body">
+
+   <div class="row">
+        <div class="eleven columns">
+
+
+            <header>
+              <h2 class="entry-title">
+                <a href="http://www.wengweitao.com/zhi-chi-xiang-liang-ji-fei-xian-xing-zhi-chi-xiang-liang-ji.html" rel="bookmark"
+                   title="Permalink to 支持向量机——非线性支持向量机">支持向量机——非线性支持向量机</a></h2>
+           
+            </header>
+            <footer class="post-info">
+              <abbr class="published" title="2014-08-04T19:39:00">
+                Mon 04 August 2014
+              </abbr>
+              <address class="vcard author">By 
+                <a class="url fn" href="http://www.wengweitao.com/author/wwt.html"> wwt</a>
+              </address>
+            </footer><!-- /.post-info -->
+            <div class="entry-content">
+              <blockquote>
+<p>如果分类问题是非线性的，那么就要用到非线性支持向量机。非线性支持向量机主要特点就是利用核技巧。</p>
+</blockquote>
+<h2>核技巧</h2>
+<h3>非线性分类问题</h3>
+<p>利用非线性模型才能很好地进行分类的问题，就是非线性分类问题。如果能用<span class="math">\(R^n\)</span>中的一个超平面将正负例正确分开，则称这个问题为非线性可分问题。如下的例子，无法用直线（线性模型）将正负实例正确分开，但可以用一条椭圆（非线性模型）将它们正确分开。
+![非线性可分例子][/imgs/nolinear.png]</p>
+<p>通常进行一个非线性变换，将非线性问题变换为线性问题，通过解变换后的线性问题的方法求解原来的非线性问题。例如，上图中将椭圆变换为右图中的直线，将非线性分类问题变换为线性分类问题。</p>
+<p>核技巧应用到支持向量机，其基本思想就是通过一个非线性变换将输入空间（欧氏空间<span class="math">\(R^n\)</span>或离散集合）对应于一个特征空间（希尔伯特空间<sup id="fnref:Hilbert"><a class="footnote-ref" href="#fn:Hilbert" rel="footnote">1</a></sup>H），使得在输入空间中的超平面模型对应于特征空间中的超平面模型（支持向量机）。这样，分类问题的学习任务通过在特征空间中求解线性支持向量机就可以完成。</p>
+<h3>核函数的定义</h3>
+<p>设<span class="math">\(\chi\)</span>是输入空间（欧氏空间<span class="math">\(R^n\)</span>的子集或离散集合），<span class="math">\(H\)</span>为特征空间（希尔伯特空间），如果存在一个从<span class="math">\(\chi\)</span>到<span class="math">\(H\)</span>的映射：
+</p>
+<div class="math">$$\phi(x): \chi \rightarrow H$$</div>
+<p>
+使得所有<span class="math">\(x,z \in \chi\)</span>，函数K(x,z)满足条件：
+</p>
+<div class="math">$$K(x,z)=\phi(x).\phi(z)$$</div>
+<p>
+则称<span class="math">\(K(x,z)\)</span>为<strong>核函数</strong>，<span class="math">\(\phi(x)\)</span>为映射函数。</p>
+<p>核技巧的想法是，在学习与预测中只定义核函数<span class="math">\(K(x,z)\)</span>，而不是显式地定义映射函数<span class="math">\(\phi\)</span>。通常，直接计算<span class="math">\(K(x,z)\)</span>比较容易，而通过<span class="math">\(\phi(x)\)</span>和<span class="math">\(\phi(z)\)</span>计算<span class="math">\(K(x,z)\)</span>不容易。对于给定的核<span class="math">\(K(x,z)\)</span>，特征空间和映射函数的取法并不唯一。</p>
+<h3>核技巧在SVM中的应用</h3>
+<p>我们注意到在<a href="http://www.wengweitao.com/zhi-chi-xiang-liang-ji-xian-xing-zhi-chi-xiang-liang-ji.html">线性支持向量机</a>的对偶问题中，无论是目标函数还是决策函数（分离超平面）都只涉及输入实例与实例之间的内积。
+</p>
+<div class="math">$$min_{\alpha}L(w, b,  \xi, \alpha, \mu)=\frac{1}{2} \sum_{i=1}^{N}\sum_{j=1}^{N}\alpha_i\alpha_jy_iy_j(x_ix_j)- \sum_{i=1}^{N}\alpha_i$$</div>
+<p>
+因此，上式的目标函数中的内积<span class="math">\(x_ix_j\)</span>可以用核函数<span class="math">\(K(x_i,x_j)=\phi(x).\phi(j)\)</span>来代替，这时对偶问题的目标函数就变为：
+</p>
+<div class="math">$$min_{\alpha}L(w, b,  \xi, \alpha, \mu)=\frac{1}{2} \sum_{i=1}^{N}\sum_{j=1}^{N}\alpha_i\alpha_jy_iy_jK(x_ix_j)- \sum_{i=1}^{N}\alpha_i$$</div>
+<p>
+ 同样，分类决策函数中的内积也可以用核函数代替：
+ </p>
+<div class="math">$$f(x)=sign(\sum_{i=1}^{N}\alpha_i^*y_iK(x_ix_j)+b^*)$$</div>
+<p>也就是说，在核函数<span class="math">\(K(x_i,x_j)\)</span>给定的条件下，可以利用解线性分类问题的方法求解非线性分类问题的支持向量机。学习是隐式地在特征空间进行得，不需要显示地定义特征空间和映射函数。这样的技巧就称为<strong>核技巧</strong>。它是巧妙的利用线性分类学习方法与核函数解决非线性问题的技术。</p>
+<p>在实际应用中，选择核函数往往依赖于领域知识直接选择核函数，核函数选择的有效性需要通过实验验证。</p>
+<h2>正定核</h2>
+<p><span class="math">\(K(x,z)\)</span>满足什么条件才能称为核函数呢？</p>
+<p>通常，所说的核函数就是<strong>正定核函数（positive definite kernel function）</strong>。</p>
+<p>依据函数<span class="math">\(K(x,z)\)</span>，构成一个希尔伯特空间，其步骤是：</p>
+<h3>（1）定义映射<span class="math">\(\phi\)</span>，构成向量空间S</h3>
+<p>先定义映射
+</p>
+<div class="math">$$\phi :x \rightarrow K(.,x)$$</div>
+<p>
+根据这一映射，定义线性组合
+</p>
+<div class="math">$$f(.)=\sum_{i=1}^{m}\alpha_iK(.,x_i)$$</div>
+<p>
+考虑由线性组合为元素的集合S。</p>
+<h3>（2）在S上定义内积，使其成为内积空间</h3>
+<p>在S上定义一个运算<span class="math">\(*\)</span>，证明运算<span class="math">\(*\)</span>是S的内积，赋予内积的向量空间为内积空间。因此，S是一个内积空间<sup id="fnref:内积空间"><a class="footnote-ref" href="#fn:内积空间" rel="footnote">2</a></sup>。</p>
+<h3>（3）将内积空间S完备化为希尔伯特空间</h3>
+<p>这一希尔伯特空间称为再生核希尔伯特空间，这是由于核K具有再生性，即满足
+</p>
+<div class="math">$$K(.,x).f=f(x)$$</div>
+<p>
+及
+</p>
+<div class="math">$$K(.,x).K(.,z)=K(x,z)$$</div>
+<p>
+称为再生核。</p>
+<h3>（4）正定核的充要条件</h3>
+<p>设<span class="math">\(K: \chi \times \chi \rightarrow R\)</span>是对称函数，则<span class="math">\(K(x,z)\)</span>为正定核的充要条件是对任意<span class="math">\(x_i \in \chi, i=1,2,...,m\)</span>，对<span class="math">\(K(x,z)\)</span>对应的Gram矩阵<sup id="fnref:gram"><a class="footnote-ref" href="#fn:gram" rel="footnote">3</a></sup>：
+</p>
+<div class="math">$$K=[K(x_i,x_j)]_{m \times m}$$</div>
+<p>
+是半正定矩阵<sup id="fnref:正定矩阵"><a class="footnote-ref" href="#fn:正定矩阵" rel="footnote">4</a></sup>。</p>
+<p>所以如果一个函数K是核函数，那么其对应的核矩阵是<strong>对称</strong>的<strong>半正定矩阵</strong>。</p>
+<p><strong>证明：</strong>
+必要性：
+由于<span class="math">\(K(x,z)\)</span>为<span class="math">\(\chi \times \chi\)</span>上的正定核，所以存在从<span class="math">\(\chi\)</span>到希尔伯特空间的映射<span class="math">\(\phi\)</span>，使得
+</p>
+<div class="math">$$K(x,z)=\phi(x)\phi(z)$$</div>
+<p>
+于是，对于任一<span class="math">\(x_1,x_2,...,x_m\)</span>，构造K(x,z)关于<span class="math">\(x_1,x_2,...,x_m\)</span>的Gram矩阵
+</p>
+<div class="math">$$[K_{ij}]_{m \times n}=[K(x_i,x_j)]_{m \times n}$$</div>
+<p>
+对于任意的向量z，有
+</p>
+<div class="math">$$z^TKz=\sum_i \sum_j z_iK_{ij}z_j = \sum_i \sum_j z_i \phi(x_i)^T\phi(x_j)z_j = ... = \sum_k(\sum_iz_i\phi_i(x_i))^2 \geq 0$$</div>
+<p>
+所以K(x,z)是半正定矩阵。</p>
+<p>充分性：
+K(x,z)对任意<span class="math">\(x_i \in \chi, i=1,2,...,m\)</span>，关于<span class="math">\(x_1,x_2,...,x_m\)</span>的Gram矩阵是半正定的。对于给定的K(x,z)可以构造从<span class="math">\(\chi\)</span>到某个希尔伯特空间的映射
+</p>
+<div class="math">$$\phi :x \rightarrow K(.,x)$$</div>
+<p>
+可得
+</p>
+<div class="math">$$K(.,x).f=f(x)$$</div>
+<p>
+及
+</p>
+<div class="math">$$K(.,x).K(.,z)=K(x,z)$$</div>
+<p>
+即得
+</p>
+<div class="math">$$K(x,z)=\phi(x)\phi(z)$$</div>
+<p>
+表面K(x,z)是<span class="math">\(\chi \times \chi\)</span>上的核函数。</p>
+<p><strong>核函数的另一定义：</strong></p>
+<p>设<span class="math">\(K(x,z)\)</span>是定义在<span class="math">\(\chi \times \chi\)</span> 上的对称函数，对任意<span class="math">\(x_i \in \chi, i=1,2,...,m\)</span>，<span class="math">\(K(x,z)\)</span>对应的Gram矩阵：
+</p>
+<div class="math">$$K=[K(x_i,x_j)]_{m \times m}$$</div>
+<p>
+是半正定矩阵，则称<span class="math">\(K(x,z)\)</span>是正定核。</p>
+<p>对于一个具体函数<span class="math">\(K(x,z)\)</span>检验它是否是正定核函数不容易，因为要求对任意的输入集<span class="math">\(x_i \in \chi, i=1,2,...,m\)</span>，验证<span class="math">\(K(x,z)\)</span>对应的Gram矩阵是否为半定的。在实际问题中往往使用已有的核函数。</p>
+<h3>常用核函数</h3>
+<p>（1）多项式核函数
+</p>
+<div class="math">$$K(x,z)=(x.z+1)^p$$</div>
+<p>
+分类决策函数成为：
+ </p>
+<div class="math">$$f(x)=sign(\sum_{i=1}^{N}\alpha_i^*y_i(x_i.z+1)^p+b^*)$$</div>
+<p>（2）高斯核函数
+</p>
+<div class="math">$$K(x,z)=exp(-\frac{||x-z||^2}{2\delta^2 })$$</div>
+<p>
+对应的支持向量机是高斯径向基函数（radial basiss function）分类器。
+分类决策函数成为：
+ </p>
+<div class="math">$$f(x)=sign(\sum_{i=1}^{N}\alpha_i^*y_iexp(-\frac{||x-z||^2}{2\delta^2 })+b^*)$$</div>
+<h3>非线性支持向量机分类机</h3>
+<p><strong>非线性支持向量机的学习算法</strong>：</p>
+<p>输入：训练数据集T</p>
+<p>输出：分类决策函数</p>
+<p>（1）选取适当的核函数<span class="math">\(K(x,z)\)</span>和适当的参数C，构造并求解约束最优化问题
+</p>
+<div class="math">$$min_{\alpha}\frac{1}{2} \sum_{i=1}^{N}\sum_{j=1}^{N}\alpha_i\alpha_jy_iy_jK(x_i,x_j)- \sum_{i=1}^{N}\alpha_i$$</div>
+<div class="math">$$s.t. 　\sum_{i=1}^{N}\alpha_iy_i = 0$$</div>
+<div class="math">$$0 \leq \alpha_i \leq C 　i=1,2,...,N$$</div>
+<p>
+求得最优解<span class="math">\(\alpha^* = (\alpha_1^* ... \alpha_n^*)^T\)</span></p>
+<p>（2）选择一个<span class="math">\(0 &lt; \alpha_j^* &lt; C\)</span>，计算
+</p>
+<div class="math">$$b^* = y_j - \sum_{i=1}^{N}\alpha_i^*y_iK(x_i,x_j)$$</div>
+<p>（3）构造分类决策函数：
+</p>
+<div class="math">$$f(x)=sign(\sum_{i=1}^{N}\alpha_i^*y_iK(x.x_i)+b^*)$$</div>
+<hr />
+<h2>Reference</h2>
+<p><a href="http://book.douban.com/subject/10590856/">统计学习方法</a>第七章</p>
+<div class="footnote">
+<hr />
+<ol>
+<li id="fn:Hilbert">
+<p><a href="http://zh.wikipedia.org/wiki/%E5%B8%8C%E5%B0%94%E4%BC%AF%E7%89%B9%E7%A9%BA%E9%97%B4">希尔伯特空间</a>又叫完备的内积空间，是有限维欧几里得空间的一个推广，使之不局限于实的情形和有限的维数，但又不失完备性。在一个复数向量空间H上的给定的内积&lt;.,.&gt;可以按照如下的方式导出一个范数（norm）
+<img alt="hilbert" src="http://upload.wikimedia.org/math/b/8/8/b88c416b87ffb50ed8de63d046ffd015.png" />
+此空间称为是一个希尔伯特空间&#160;<a class="footnote-backref" href="#fnref:Hilbert" rev="footnote" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+<li id="fn:内积空间">
+<p><a href="http://zh.wikipedia.org/wiki/%E5%86%85%E7%A7%AF%E7%A9%BA%E9%97%B4">内积空间</a>是增添了一个额外的结构的向量空间。这个额外的结构叫做内积或标量积。&#160;<a class="footnote-backref" href="#fnref:内积空间" rev="footnote" title="Jump back to footnote 2 in the text">&#8617;</a></p>
+</li>
+<li id="fn:gram">
+<p>是指内积空间中的一组向量之间的内积构成的矩阵
+<img alt="gram" src="http://science.scileaf.com/library/math/8/6/86f4eefe06b11fd7d0a4aa7e77e686bb.png" />&#160;<a class="footnote-backref" href="#fnref:gram" rev="footnote" title="Jump back to footnote 3 in the text">&#8617;</a></p>
+</li>
+<li id="fn:正定矩阵">
+<p>一个n×n的实对称矩阵M是正定的，当且仅当对于所有的非零实系数向量z，都有<span class="math">\(z^TMz &gt; 0\)</span>。
+M是半正定矩阵当且仅当对所有不为零<span class="math">\(的x \in \mathbb{R}^n\)</span>（或
+<span class="math">\(x \in \mathbb{C}^n\)</span>），都有：<span class="math">\(x^{*} M x \geq 0\)</span>
+若 M 为半正定阵，可以写作<span class="math">\(M \geq 0\)</span> 。如果 M 是正定阵，可以写作 <span class="math">\(M &gt; 0\)</span> 。&#160;<a class="footnote-backref" href="#fnref:正定矩阵" rev="footnote" title="Jump back to footnote 4 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
+<script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "false";
+
+    if (false) {
+        align = (screen.width < 768) ? "left" : align;
+        indent = (screen.width < 768) ? "0em" : indent;
+        linebreak = (screen.width < 768) ? 'true' : linebreak;
+    }
+    
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = '//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); ";
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+</script>
+            </div><!-- /.entry-content -->
+            <div class="comments">
+              <h3>Comments</h3>
+              <div id="disqus_thread"></div>
+              <script type="text/javascript">
+                var disqus_identifier = "zhi-chi-xiang-liang-ji-fei-xian-xing-zhi-chi-xiang-liang-ji.html";
+                (function() {
+                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                dsq.src = 'http://wengwt.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                })();
+              </script>
+            </div>
+
+
+        </div><!-- /.eleven.columns -->
+
+<div class="three columns">
+
+<!--
+<h4>Pages</h4>
+
+ <ul>
+      <li><a href="/categories.html">分类</a></li>
+      <li><a href="/tags.html">标签</a></li>
+      <li><a href="/archives.html">归档</a></li>
+      <li><a href="/pages/about-me.html">关于我</a></li>
+  </ul>
+-->
+
+<h4>分类</h4>
+<ul>
+		<li><a href="http://www.wengweitao.com/category/du-shu-bi-ji.html">读书笔记</a></li>
+		<li><a href="http://www.wengweitao.com/category/gong-ju.html">工具</a></li>
+		<li><a href="http://www.wengweitao.com/category/ji-qi-xue-xi.html">机器学习</a></li>
+		<li><a href="http://www.wengweitao.com/category/python.html">Python</a></li>
+		<li><a href="http://www.wengweitao.com/category/sheng-huo.html">生活</a></li>
+		<li><a href="http://www.wengweitao.com/category/suan-fa-yu-shu-ju-jie-gou.html">算法与数据结构</a></li>
+</ul>
+
+<!--
+<h4>标签</h4>
+<ul class="tagcloud">
+        <li class="tag-4"><a href="http://www.wengweitao.com/tag/ce-shi.html">测试</a></li>
+        <li class="tag-3"><a href="http://www.wengweitao.com/tag/mian-shi-ti.html">面试题</a></li>
+        <li class="tag-4"><a href="http://www.wengweitao.com/tag/gong-ju.html">工具</a></li>
+        <li class="tag-4"><a href="http://www.wengweitao.com/tag/vim.html">Vim</a></li>
+        <li class="tag-4"><a href="http://www.wengweitao.com/tag/xiao-yuan.html">校园</a></li>
+        <li class="tag-3"><a href="http://www.wengweitao.com/tag/jiao-cheng.html">教程</a></li>
+        <li class="tag-4"><a href="http://www.wengweitao.com/tag/ji-chu-gai-nian.html">基础概念</a></li>
+        <li class="tag-1"><a href="http://www.wengweitao.com/tag/python.html">Python</a></li>
+        <li class="tag-4"><a href="http://www.wengweitao.com/tag/wan.html">玩</a></li>
+        <li class="tag-3"><a href="http://www.wengweitao.com/tag/ji-ben-gai-nian.html">基本概念</a></li>
+        <li class="tag-1"><a href="http://www.wengweitao.com/tag/du-shu-bi-ji.html">读书笔记</a></li>
+</ul>
+-->
+
+
+<nav class="widget">
+  <h4>社交</h4>
+  <ul>
+    <li><a href="http://weibo.com/u/2678027854">新浪微博</a></li>
+    <li><a href="http://www.douban.com/people/wengwt/">豆瓣</a></li>
+    <li><a href="http://www.zhihu.com/people/vita-49">知乎</a></li>
+    <li><a href="https://github.com/nurnoch">Github</a></li>
+    <li><a href="https://www.v2ex.com/member/wwttc">V2EX</a></li>
+  </ul>
+</nav>
+
+<nav class="widget">
+  <h4>友情链接</h4>
+  <ul>
+    <li><a href="http://netlab.pkusz.edu.cn/">互联网信息工程研发中心</a></li>
+    <li><a href="http://www.houcj.net/">houcj's blog</a></li>
+    <li><a href="http://www.rudy-yuan.net/">rundy-yuan's blog</a></li>
+  </ul>
+</nav>
+
+
+</div> </div><!-- /.row -->
+
+
+</section>
+
+       </div><!-- /.row -->
+    </div><!-- /.container -->
+
+
+       <div class="container.nopad bg">
+
+    
+        <footer id="credits" class="row">
+          <div class="seven columns left-center">
+
+                   <address id="about" class="vcard body">
+                    Proudly powered by  <a href="http://getpelican.com/">Pelican</a> and Theme by Gum © 2015 wwt
+                    </address>
+          </div>
+
+
+          <div class="seven columns">
+            <div class="row">
+              <ul class="socbtns">
+
+
+
+
+
+              </ul>
+            </div>
+          </div>
+        </footer>
+
+    </div>
+
+
+<script type="text/javascript">
+    var disqus_shortname = 'wengwt';
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+  <script src="http://www.wengweitao.com/theme/js/libs/jquery-1.9.1.min.js"></script>
+  <script src="http://www.wengweitao.com/theme/js/libs/gumby.min.js"></script>
+  <script src="http://www.wengweitao.com/theme/js/plugins.js"></script>
+</body>
+</html>
