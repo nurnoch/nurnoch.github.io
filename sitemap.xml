@@ -5,28 +5,28 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://www.wengweitao.com/</loc>
-<lastmod>2015-04-25T10:54:38-00:00</lastmod>
+<lastmod>2015-04-25T16:21:02-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://www.wengweitao.com/archives.html</loc>
-<lastmod>2015-04-25T10:54:38-00:00</lastmod>
+<lastmod>2015-04-25T16:21:02-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://www.wengweitao.com/tags.html</loc>
-<lastmod>2015-04-25T10:54:38-00:00</lastmod>
+<lastmod>2015-04-25T16:21:02-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://www.wengweitao.com/categories.html</loc>
-<lastmod>2015-04-25T10:54:38-00:00</lastmod>
+<lastmod>2015-04-25T16:21:02-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -39,7 +39,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
-<loc>http://www.wengweitao.com/false-is-false-is-false-true.html</loc>
+<loc>http://www.wengweitao.com/false-is-false-is-false-de-jie-guo-shi-true.html</loc>
 <lastmod>2015-04-25T10:37:00-00:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
@@ -137,6 +137,13 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
+<loc>http://www.wengweitao.com/zhi-chi-xiang-liang-ji-xian-xing-zhi-chi-xiang-liang-ji.html</loc>
+<lastmod>2014-08-03T14:54:00-00:00</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+
+<url>
 <loc>http://www.wengweitao.com/zhi-chi-xiang-liang-ji-xian-xing-ke-fen-zhi-chi-xiang-liang-ji.html</loc>
 <lastmod>2014-08-02T20:32:00-00:00</lastmod>
 <changefreq>monthly</changefreq>
@@ -229,7 +236,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://www.wengweitao.com/category/ji-qi-xue-xi.html</loc>
-<lastmod>2014-08-02T20:32:00+08:06</lastmod>
+<lastmod>2014-08-03T14:54:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -285,7 +292,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://www.wengweitao.com/tag/du-shu-bi-ji.html</loc>
-<lastmod>2014-08-02T20:32:00+08:06</lastmod>
+<lastmod>2014-08-03T14:54:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>

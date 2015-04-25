@@ -2,7 +2,7 @@
 <html lang="zh">
 <head>
 
-        <title>拉格朗日对偶性（Lagrange Duality）</title>
+        <title>支持向量机——线性支持向量机</title>
         <meta charset="utf-8" />
         <link href="http://www.wengweitao.com/feeds\all.atom.xml" type="application/atom+xml" rel="alternate" title="wwt's blog Full Atom Feed" />
         <link href="http://www.wengweitao.com/feeds/all.rss.xml" type="application/rss+xml" rel="alternate" title="wwt's blog Full RSS Feed" />
@@ -59,13 +59,13 @@
 
             <header>
               <h2 class="entry-title">
-                <a href="http://www.wengweitao.com/la-ge-lang-ri-dui-ou-xing-lagrange-duality.html" rel="bookmark"
-                   title="Permalink to 拉格朗日对偶性（Lagrange Duality）">拉格朗日对偶性（Lagrange Duality）</a></h2>
+                <a href="http://www.wengweitao.com/zhi-chi-xiang-liang-ji-xian-xing-zhi-chi-xiang-liang-ji.html" rel="bookmark"
+                   title="Permalink to 支持向量机——线性支持向量机">支持向量机——线性支持向量机</a></h2>
            
             </header>
             <footer class="post-info">
-              <abbr class="published" title="2014-07-30T09:56:00">
-                Wed 30 July 2014
+              <abbr class="published" title="2014-08-03T14:54:00">
+                Sun 03 August 2014
               </abbr>
               <address class="vcard author">By 
                 <a class="url fn" href="http://www.wengweitao.com/author/wwt.html"> wwt</a>
@@ -73,89 +73,106 @@
             </footer><!-- /.post-info -->
             <div class="entry-content">
               <blockquote>
-<p>在求解约束优化问题的时候，常常利用拉格朗日对偶性（Lagrange Duality）将原始问题转化为对偶问题，通过求解对偶问题而得到原始问题的解。该方法用在许多统计学习方法中，如最大熵模型和SVM等。</p>
+<p>对于理想情况下线性可分的问题，可以使用上文介绍的线性可分支持向量机（硬间隔最大化）完美解决。但是，实际情况中，训练数据往往是线性不可分的，即在样本中存在噪声或特异点。此时，可以使用本文中介绍的更一般的学习算法——线性支持向量机（软间隔最大化）。</p>
 </blockquote>
-<h2>原始问题</h2>
-<h3>原始最优化问题</h3>
-<p>考虑最优化问题：</p>
-<blockquote>
+<h2>线性支持向量机</h2>
+<p>怎样才能把<a href="http://www.wengweitao.com/zhi-chi-xiang-liang-ji-xian-xing-ke-fen-zhi-chi-xiang-liang-ji.html">上文中介绍的线性可分支持向量机</a>扩展到线性不可分的数据集中呢？这就需要改变硬间隔最大化，使其成为软间隔最大化。</p>
+<p>通常情况下，数据集中存在一些特异点（outlier），将这些特异点去除后，剩下大部分样本点组成的集合是线性可分的。那些线性不可分的样本点<span class="math">\((x_i, y_i)\)</span>意味着不能满足函数间隔大于等于1的约束条件（即<span class="math">\(y_i(w.x_i + b)-1 \geq 0\)</span>）。为了解决这个问题，可以为每个样本点引入一个松弛变量<span class="math">\(\xi_i \geq 0\)</span>，使函数间隔加上松弛变量后大于等于1.同时对每个松弛变量<span class="math">\(\xi_i\)</span>，支付一个代价<span class="math">\(\xi_i\)</span>。这样线性不可分的线性支持向量机的学习问题变成如下的凸二次规划问题：
+</p>
+<div class="math">$$min_{w,b,\xi} \frac{1}{2}{||w||^2}+C\sum_{i=1}^{N}\xi_i$$</div>
+<div class="math">$$ s.t. 　(1)y_i(w.x_i+b) \geq 1 - \xi_i　　(2)\xi_i \geq 0 　i=1,2,...,N$$</div>
+<p>这样可以和训练数据集可分时一样来考虑训练数据集线性不可分时的线性可支持向量机学习问题。相应于硬间隔最大化，它称为<strong>软间隔最大化</strong>，并称这样的模型为<strong>线性支持向量机</strong>。</p>
+<h2>学习的对偶算法</h2>
+<p>（1）构建拉格朗日函数
+</p>
+<div class="math">$$L(w,b,\xi,\alpha,\mu)=\frac{1}{2}{||w||^2} +C\sum_{i=1}^{N}\xi_i- \sum_{i=1}^{N}\alpha_i(y_i(w.x_i+b)-1+\xi_i) - \sum_{i=1}^{N}\mu_i\xi_i$$</div>
 <p>
-<div class="math">$$min_x f(x)$$</div>
-<div class="math">$$s.t. c_i(x) \leq 0  \:\:\:\:\: i=1,2,...,k$$</div>
-<div class="math">$$h_j(x) = 0   \:\:\:\:\: j=1,2,...,l$$</div>
+对每一个约束引进拉格朗日乘子<span class="math">\(\alpha_i \geq 0, \mu_i \geq 0\)</span>。</p>
+<p>（2）根据拉格朗日对偶性，原始问题的对偶问题是极大极小问题:
 </p>
-</blockquote>
-<p>称此约束最优化问题为原始最优化问题或原始问题。</p>
-<h3>广义拉格朗日函数</h3>
-<p>为了解决原始问题，我们先引入<strong>广义拉格朗日（generalized Lagrangian）函数</strong>：
+<div class="math">$$原始问题：min_{w,b,\xi}max_{\alpha_i \geq 0, \mu_i \geq 0}L(w, b, \xi, \alpha, \mu)$$</div>
+<div class="math">$$对偶问题：max_{\alpha_i \geq 0, \mu_i \geq 0}min_{w,b,\xi}L(w, b,  \xi, \alpha, \mu)$$</div>
+<p>（3）求解对偶问题的解，需要先求<span class="math">\(L(w, b,  \xi, \alpha, \mu)\)</span>对<span class="math">\(w,b,\xi\)</span>的极小，再求对<span class="math">\(\alpha, \mu\)</span>的极大</p>
+<p>（4）先求<span class="math">\(min_{w,b,\xi}L(w, b,  \xi, \alpha, \mu)\)</span>
+将拉格朗日函数分别对<span class="math">\(w,b,\xi\)</span>求偏导数并令偏导数等于0. 将求得的结果代入拉格朗日函数中可以得到：
 </p>
-<div class="math">$$L(x, \alpha, \beta) = f(x) + \sum_{i=1}^{k}\alpha_i  c_i(x) + \sum_{j=1}^{l}\beta_j h_j(x)$$</div>
+<div class="math">$$min_{w,b,\xi}L(w, b,  \xi, \alpha, \mu)=-\frac{1}{2} \sum_{i=1}^{N}\sum_{j=1}^{N}\alpha_i\alpha_jy_iy_j(x_ix_j)+ \sum_{i=1}^{N}\alpha_i$$</div>
+<p>（5）求<span class="math">\(min_{w,b,\xi}L(w, b,  \xi, \alpha, \mu)\)</span>对<span class="math">\(\alpha\)</span>的极大，即是对偶问题
+</p>
+<div class="math">$$max_{\alpha}L(w, b,  \xi, \alpha, \mu)=-\frac{1}{2} \sum_{i=1}^{N}\sum_{j=1}^{N}\alpha_i\alpha_jy_iy_j(x_ix_j)+ \sum_{i=1}^{N}\alpha_i$$</div>
+<div class="math">$$s.t. 　\sum_{i=1}^{N}\alpha_iy_i = 0$$</div>
+<div class="math">$$　　C-\alpha_i-\mu_i=0$$</div>
+<div class="math">$$\alpha_i \geq 0 $$</div>
+<div class="math">$$\mu_i \geq 0$$</div>
+<div class="math">$$i=1,2,...,N$$</div>
+<p>转化下可以得到对偶问题：
+</p>
+<div class="math">$$min_{\alpha}L(w, b,  \xi, \alpha, \mu)=\frac{1}{2} \sum_{i=1}^{N}\sum_{j=1}^{N}\alpha_i\alpha_jy_iy_j(x_ix_j)- \sum_{i=1}^{N}\alpha_i$$</div>
+<div class="math">$$s.t. 　\sum_{i=1}^{N}\alpha_iy_i = 0$$</div>
+<div class="math">$$0 \leq \alpha_i \leq C 　i=1,2,...,N$$</div>
+<p>得到<strong>线性支持向量机的学习算法</strong>：</p>
+<p>输入：现在可分训练数据集T</p>
+<p>输出：分离超平面和分类决策函数</p>
+<p>（1）构造并求解约束最优化问题
+</p>
+<div class="math">$$min_{\alpha}L(w, b,  \xi, \alpha, \mu)=\frac{1}{2} \sum_{i=1}^{N}\sum_{j=1}^{N}\alpha_i\alpha_jy_iy_j(x_ix_j)- \sum_{i=1}^{N}\alpha_i$$</div>
+<div class="math">$$s.t. 　\sum_{i=1}^{N}\alpha_iy_i = 0$$</div>
+<div class="math">$$0 \leq \alpha_i \leq C 　i=1,2,...,N$$</div>
 <p>
-这里的<span class="math">\(\alpha_i\)</span>和<span class="math">\(\beta_j\)</span>称为<strong>拉格朗日乘子</strong>。</p>
-<h3>极小极大问题</h3>
-<p>现在考虑<span class="math">\(L(x, \alpha, \beta)\)</span>的最大值：
+求得最优解<span class="math">\(\alpha^* = (\alpha_1^* ... \alpha_n^*)\)</span></p>
+<p>（2）计算
 </p>
-<div class="math">$$\theta_p(x) = max_{\alpha, \beta: \alpha_i \geq 0}L(x, \alpha, \beta) $$</div>
+<div class="math">$$w^* = \sum_{i=1}^{N}\alpha_i^*y_ix_i$$</div>
 <p>
-上式中的下标p代表“primal（原始问题）”。如果上式中的x不满足原始问题的约束条件（即存在某些i使得<span class="math">\(c_i(x)&gt;0\)</span>或者<span class="math">\(h_i(x) \neq 0\)</span>），那么就有
+并选择一个<span class="math">\(0 &lt; \alpha_j^* &lt; C\)</span>，计算
 </p>
-<div class="math">$$\theta_p(x) =  f(x) + \sum_{i=1}^{k}\alpha_i  c_i(x) + \sum_{j=1}^{l}\beta_j h_j(x)= \infty$$</div>
+<div class="math">$$b^* = y_j - \sum_{i=1}^{N}\alpha_i^*y_i(x_ix_j)$$</div>
+<p>（3）求得分离超平面
+</p>
+<div class="math">$$w^*.x+b^*=0$$</div>
 <p>
-因为若<span class="math">\(c_i(x)&gt;0\)</span>，可取<span class="math">\(\alpha_i \rightarrow +\infty\)</span>，或者<span class="math">\(h_i(x) \neq 0\)</span>，可令<span class="math">\(\beta_j h_j(x) \rightarrow +\infty\)</span>，而将其余的<span class="math">\(\alpha_i ，\beta_j\)</span>都取0.</p>
-<p>相反的，若满足原始优化问题的约束条件，那么有<span class="math">\(\theta_p(x) = f(x)\)</span>。所以有
+分类决策函数：
 </p>
-<div class="math">$$\theta_p(x) = \left\{\begin{matrix}
-f(x)   \:\:\:\:\: x满足约束条件\\
-\infty  \:\:\:\:\: 其他
+<div class="math">$$f(x)=sign(w^*.x+b^*)$$</div>
+<p>其中，<span class="math">\(w^*与b^*\)</span>是由<a href="http://book.douban.com/subject/10590856/">KKT条件</a>得到的。w的解是唯一的，但是b的解不唯一。对于任一适合条件<span class="math">\(0 &lt; \alpha_j^* &lt; C\)</span>，都可以求出<span class="math">\(b^*\)</span>，所以实际计算时可以取在所有符合条件的样本点上的平均值。</p>
+<h2>支持向量</h2>
+<p>我们可以将<span class="math">\(\alpha_i^* &gt; 0\)</span>的样本点<span class="math">\((x_i, y_i)\)</span>的实例<span class="math">\(x_i\)</span>称为<strong>支持向量</strong>（软间隔的支持向量）。但是，这时的支持向量要比上文中介绍的复杂。</p>
+<p>实例<span class="math">\(x_i\)</span>到间隔边界的距离为<span class="math">\(\frac{\xi_i}{||w||}\)</span>：</p>
+<ul>
+<li>若 <span class="math">\(\alpha_i^* &lt; C\)</span>，则<span class="math">\(\xi_i = 0\)</span><sup id="fnref:关系"><a class="footnote-ref" href="#fn:关系" rel="footnote">1</a></sup>，支持向量<span class="math">\(x_i\)</span>恰好落在间隔边界上；</li>
+<li>若 <span class="math">\(\alpha_i^* = C\)</span>，<span class="math">\(0&lt; \xi_i &lt; 1\)</span>，支持向量<span class="math">\(x_i\)</span>落在间隔边界与超平面之间，分类正确；</li>
+<li>若 <span class="math">\(\alpha_i^* &gt; C\)</span>，<span class="math">\(\xi_i =1\)</span>，支持向量<span class="math">\(x_i\)</span>恰好在超平面上；</li>
+<li>若 <span class="math">\(\alpha_i^* &gt; C\)</span>，<span class="math">\(\xi_i &gt;1\)</span>，支持向量<span class="math">\(x_i\)</span>位于分离超平面误分一侧。</li>
+</ul>
+<h2>合页损失函数</h2>
+<p>线性支持向量机学习还有另外一种解释，就是最小化以下目标函数：
+</p>
+<div class="math">$$\sum_{i=1}^{N}[1-y_i(w.x_i+b)]_++\lambda ||w||^2$$</div>
+<p>
+目标函数中的第一项是经验损失或经验风险，函数
+</p>
+<div class="math">$$L(y(w.x+b))=[1-y_i(w.x_i+b)]_+$$</div>
+<p>
+称为合页损失函数（hinge loss function）。下标"+"表示以下取正值的函数
+</p>
+<div class="math">$$[z]_+=\left\{\begin{matrix}
+z, z &gt; 0\\ 
+0, z \leq 0
 \end{matrix}\right.$$</div>
 <p>
-因此，如果我们考虑极小化问题
-</p>
-<div class="math">$$min_x\theta_p(x) = min_xmax_{\alpha, \beta: \alpha_i \geq 0}L(x, \alpha, \beta) $$</div>
-<p>
-我们可以看到这与原始最优化问题是等价的，称为<strong>广义拉格朗日函数的极小极大问题</strong>。这样就把原始最优化问题转化为求解拉格朗日函数的极小极大问题。我们定义原始最优化问题的最优值为
-</p>
-<div class="math">$$p^* = min_x\theta_p(x)$$</div>
-<p>
-称为<strong>原始问题的值</strong>。</p>
-<h2>对偶问题</h2>
-<p>定义
-</p>
-<div class="math">$$\theta_D(x) = min_xL(x, \alpha, \beta) $$</div>
-<p>
-上式中的下标D代表“dual（对偶问题）”。与前面定义的原始问题不同的是，原始问题是通过参数<span class="math">\(\alpha, \beta\)</span>进行优化（极大化），而这里定义的问题是通过<span class="math">\(x\)</span>进行优化（极小化）。</p>
-<p>对<span class="math">\(\theta_D(x)\)</span>极大化，就可以得到<strong>对偶优化问题</strong></p>
-<blockquote>
-<p>
-<div class="math">$$max_{\alpha, \beta: \alpha_i \geq 0}\theta_D(\alpha, \beta) = max_{\alpha, \beta: \alpha_i \geq 0}min_xL(x, \alpha, \beta) $$</div>
-</p>
-</blockquote>
-<p>称为<strong>广义拉格朗日函数的极大极小问题</strong>。</p>
-<p>对偶问题与原始问题除了交换式子中max和min的顺序外，是一样的。同样，我也定义<strong>对偶优化问题的最优值</strong>
-</p>
-<div class="math">$$d^* = max_{\alpha, \beta: \alpha_i \geq 0}\theta_D(\alpha, \beta)$$</div>
-<p>
-称为<strong>对偶问题的值</strong>。</p>
-<h2>原始问题和对偶问题的关系</h2>
-<p>容易得到（max min 小于等于 min max）：
-</p>
-<div class="math">$$d^* = max_{\alpha, \beta: \alpha_i \geq 0}min_xL(x, \alpha, \beta) \leq min_xmax_{\alpha, \beta: \alpha_i \geq 0}L(x, \alpha, \beta)= p^*$$</div>
-<p>在某些条件下，原始问题和对偶问题的最优值相等即<span class="math">\(d^* = p^*\)</span>，这时可以<strong>用对偶问题替代原始问题</strong>。</p>
-<p><strong>定理1：</strong>考虑原始问题和对偶问题。假设<span class="math">\(f(x)\)</span>和<span class="math">\(c_i(x)\)</span>是凸函数（convex），<span class="math">\(h_j(x)\)</span>是仿射函数（affine，与线性函数类似只是允许增加一个截距b）；并且存在x，对所有的i有<span class="math">\(c_i(x) &lt; 0\)</span>. 则存在<span class="math">\(x^* , \alpha^* ,\beta^*\)</span>，使得在<span class="math">\(x^*\)</span>是原始问题的解，<span class="math">\(\alpha^* ,\beta^*\)</span>是对偶问题的解，并且</p>
-<div class="math">$$d^* = p^* = L(x^*, \alpha^*, \beta^*)$$</div>
-<p><strong>定理2：</strong>考虑原始问题和对偶问题。假设<span class="math">\(f(x)\)</span>和<span class="math">\(c_i(x)\)</span>是凸函数（convex），<span class="math">\(h_j(x)\)</span>是仿射函数（affine）；并且存在x，对所有的i有<span class="math">\(c_i(x) &lt; 0\)</span>. 则<span class="math">\(x^*\)</span>是原始问题的解，并且<span class="math">\(\alpha^*, \beta^*\)</span>是对偶问题的解的充分必要条件是<span class="math">\(x^* , \alpha^* ,\beta^*\)</span> 满足下面的<strong>Karush-Kuhn-Tucker(KKT)条件</strong>：
-</p>
-<div class="math">$$\bigtriangledown_x L(x^*, \alpha^*, \beta^*)=0$$</div>
-<div class="math">$$\bigtriangledown_\alpha L(x^*, \alpha^*, \beta^*)=0$$</div>
-<div class="math">$$\bigtriangledown_\beta L(x^*, \alpha^*, \beta^*)=0$$</div>
-<div class="math">$$\alpha^* c_i(x^*) = 0  \:\:\:\:\: i=1,2,...,k$$</div>
-<div class="math">$$c_i(x^*) \leq 0  \:\:\:\:\: i=1,2,...,k$$</div>
-<div class="math">$$\alpha^* \geq 0  \:\:\:\:\: i=1,2,...,k$$</div>
-<div class="math">$$h_j(x^*) = 0   \:\:\:\:\: j=1,2,...,l$$</div>
-<p>其中，上面的第4个式子，称为KKT的对偶互补条件，由此条件可得，若<span class="math">\(\alpha^*&gt;0\)</span>那么<span class="math">\(c_i(x^*) = 0\)</span>.</p>
+表示样本点被正确分类（z &gt; 0），损失是0；错误分类损失为<span class="math">\(1−y_i(w.x_i+b)\)</span>。</p>
+<p>合页损失函数的图形，以函数间隔<span class="math">\(y(w.x+b)\)</span>为横轴，纵轴是损失。由于函数形状像一个合页，故名合页损失函数。与感知机的损失函数相比，相当于右移1长度，所以合页损失函数对学习要求更高，不仅要分类正确，而且确信度足够高时损失才是0（大于1的部分）。</p>
 <hr />
 <h2>Reference</h2>
-<p><a href="http://book.douban.com/subject/10590856/">统计学习方法</a></p>
+<p><a href="http://book.douban.com/subject/10590856/">统计学习方法</a>第七章</p>
+<div class="footnote">
+<hr />
+<ol>
+<li id="fn:关系">
+<p><span class="math">\(C-\alpha_i-\mu_i=0\)</span>并且<span class="math">\(\mu_i^* \xi_i^*=0（从KTT条件可得）\)</span>&#160;<a class="footnote-backref" href="#fnref:关系" rev="footnote" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
 <script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
     var align = "center",
         indent = "0em",
@@ -199,7 +216,7 @@ f(x)   \:\:\:\:\: x满足约束条件\\
               <h3>Comments</h3>
               <div id="disqus_thread"></div>
               <script type="text/javascript">
-                var disqus_identifier = "la-ge-lang-ri-dui-ou-xing-lagrange-duality.html";
+                var disqus_identifier = "zhi-chi-xiang-liang-ji-xian-xing-zhi-chi-xiang-liang-ji.html";
                 (function() {
                 var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
                 dsq.src = 'http://wengwt.disqus.com/embed.js';

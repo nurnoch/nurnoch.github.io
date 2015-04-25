@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>wwt's blog</title><link href="http://www.wengweitao.com/" rel="alternate"></link><link href="http://www.wengweitao.com/feeds%5Cwwt.atom.xml" rel="self"></link><id>http://www.wengweitao.com/</id><updated>2015-04-25T10:37:00+08:00</updated><entry><title>False is False is False = True ?</title><link href="http://www.wengweitao.com/false-is-false-is-false-true.html" rel="alternate"></link><updated>2015-04-25T10:37:00+08:00</updated><author><name>wwt</name></author><id>tag:www.wengweitao.com,2015-04-25:false-is-false-is-false-true.html</id><summary type="html">&lt;p&gt;在&lt;a href="https://www.youtube.com/channel/UCgxzjK6GuOHVKR_08TT4hJQ"&gt;PyCon 2015&lt;/a&gt;中提到一个问题：&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>wwt's blog</title><link href="http://www.wengweitao.com/" rel="alternate"></link><link href="http://www.wengweitao.com/feeds%5Cwwt.atom.xml" rel="self"></link><id>http://www.wengweitao.com/</id><updated>2015-04-25T10:37:00+08:00</updated><entry><title>False is False is False 的结果是 True ?</title><link href="http://www.wengweitao.com/false-is-false-is-false-de-jie-guo-shi-true.html" rel="alternate"></link><updated>2015-04-25T10:37:00+08:00</updated><author><name>wwt</name></author><id>tag:www.wengweitao.com,2015-04-25:false-is-false-is-false-de-jie-guo-shi-true.html</id><summary type="html">&lt;p&gt;在&lt;a href="https://www.youtube.com/channel/UCgxzjK6GuOHVKR_08TT4hJQ"&gt;PyCon 2015&lt;/a&gt;中提到一个问题：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="bp"&gt;False&lt;/span&gt; &lt;span class="ow"&gt;is&lt;/span&gt; &lt;span class="bp"&gt;False&lt;/span&gt; &lt;span class="ow"&gt;is&lt;/span&gt; &lt;span class="bp"&gt;False&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
@@ -2550,7 +2550,145 @@ str.format()是Python最为推荐的字符串格式化方法，当然也是最Py
 &lt;blockquote&gt;
 &lt;p&gt;信息技术协会致力于为北大深研院的同学们营造一个学习和交流信息学科得环境和氛围，为大家提供有关信息领域的设计、应用、资讯等方面的信息。信息技术协会积极打造与深港信息类企业合作和联动的平台，帮助学生走出校园，观察产业发展动态；积极开展电脑维护活动，帮助同学们解决生活中遇到的技术困难。在以后，信息技术协会仍然会坚持协会宗旨，继续为大家服务。&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;转自：http://news.pkusz.edu.cn/article-143-4357.html&lt;/p&gt;</summary><category term="校园"></category></entry><entry><title>支持向量机——线性可分支持向量机</title><link href="http://www.wengweitao.com/zhi-chi-xiang-liang-ji-xian-xing-ke-fen-zhi-chi-xiang-liang-ji.html" rel="alternate"></link><updated>2014-08-02T20:32:00+08:00</updated><author><name>wwt</name></author><id>tag:www.wengweitao.com,2014-08-02:zhi-chi-xiang-liang-ji-xian-xing-ke-fen-zhi-chi-xiang-liang-ji.html</id><summary type="html">&lt;blockquote&gt;
+&lt;p&gt;转自：http://news.pkusz.edu.cn/article-143-4357.html&lt;/p&gt;</summary><category term="校园"></category></entry><entry><title>支持向量机——线性支持向量机</title><link href="http://www.wengweitao.com/zhi-chi-xiang-liang-ji-xian-xing-zhi-chi-xiang-liang-ji.html" rel="alternate"></link><updated>2014-08-03T14:54:00+08:00</updated><author><name>wwt</name></author><id>tag:www.wengweitao.com,2014-08-03:zhi-chi-xiang-liang-ji-xian-xing-zhi-chi-xiang-liang-ji.html</id><summary type="html">&lt;blockquote&gt;
+&lt;p&gt;对于理想情况下线性可分的问题，可以使用上文介绍的线性可分支持向量机（硬间隔最大化）完美解决。但是，实际情况中，训练数据往往是线性不可分的，即在样本中存在噪声或特异点。此时，可以使用本文中介绍的更一般的学习算法——线性支持向量机（软间隔最大化）。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2&gt;线性支持向量机&lt;/h2&gt;
+&lt;p&gt;怎样才能把&lt;a href="http://www.wengweitao.com/zhi-chi-xiang-liang-ji-xian-xing-ke-fen-zhi-chi-xiang-liang-ji.html"&gt;上文中介绍的线性可分支持向量机&lt;/a&gt;扩展到线性不可分的数据集中呢？这就需要改变硬间隔最大化，使其成为软间隔最大化。&lt;/p&gt;
+&lt;p&gt;通常情况下，数据集中存在一些特异点（outlier），将这些特异点去除后，剩下大部分样本点组成的集合是线性可分的。那些线性不可分的样本点&lt;span class="math"&gt;\((x_i, y_i)\)&lt;/span&gt;意味着不能满足函数间隔大于等于1的约束条件（即&lt;span class="math"&gt;\(y_i(w.x_i + b)-1 \geq 0\)&lt;/span&gt;）。为了解决这个问题，可以为每个样本点引入一个松弛变量&lt;span class="math"&gt;\(\xi_i \geq 0\)&lt;/span&gt;，使函数间隔加上松弛变量后大于等于1.同时对每个松弛变量&lt;span class="math"&gt;\(\xi_i\)&lt;/span&gt;，支付一个代价&lt;span class="math"&gt;\(\xi_i\)&lt;/span&gt;。这样线性不可分的线性支持向量机的学习问题变成如下的凸二次规划问题：
+&lt;/p&gt;
+&lt;div class="math"&gt;$$min_{w,b,\xi} \frac{1}{2}{||w||^2}+C\sum_{i=1}^{N}\xi_i$$&lt;/div&gt;
+&lt;div class="math"&gt;$$ s.t. 　(1)y_i(w.x_i+b) \geq 1 - \xi_i　　(2)\xi_i \geq 0 　i=1,2,...,N$$&lt;/div&gt;
+&lt;p&gt;这样可以和训练数据集可分时一样来考虑训练数据集线性不可分时的线性可支持向量机学习问题。相应于硬间隔最大化，它称为&lt;strong&gt;软间隔最大化&lt;/strong&gt;，并称这样的模型为&lt;strong&gt;线性支持向量机&lt;/strong&gt;。&lt;/p&gt;
+&lt;h2&gt;学习的对偶算法&lt;/h2&gt;
+&lt;p&gt;（1）构建拉格朗日函数
+&lt;/p&gt;
+&lt;div class="math"&gt;$$L(w,b,\xi,\alpha,\mu)=\frac{1}{2}{||w||^2} +C\sum_{i=1}^{N}\xi_i- \sum_{i=1}^{N}\alpha_i(y_i(w.x_i+b)-1+\xi_i) - \sum_{i=1}^{N}\mu_i\xi_i$$&lt;/div&gt;
+&lt;p&gt;
+对每一个约束引进拉格朗日乘子&lt;span class="math"&gt;\(\alpha_i \geq 0, \mu_i \geq 0\)&lt;/span&gt;。&lt;/p&gt;
+&lt;p&gt;（2）根据拉格朗日对偶性，原始问题的对偶问题是极大极小问题:
+&lt;/p&gt;
+&lt;div class="math"&gt;$$原始问题：min_{w,b,\xi}max_{\alpha_i \geq 0, \mu_i \geq 0}L(w, b, \xi, \alpha, \mu)$$&lt;/div&gt;
+&lt;div class="math"&gt;$$对偶问题：max_{\alpha_i \geq 0, \mu_i \geq 0}min_{w,b,\xi}L(w, b,  \xi, \alpha, \mu)$$&lt;/div&gt;
+&lt;p&gt;（3）求解对偶问题的解，需要先求&lt;span class="math"&gt;\(L(w, b,  \xi, \alpha, \mu)\)&lt;/span&gt;对&lt;span class="math"&gt;\(w,b,\xi\)&lt;/span&gt;的极小，再求对&lt;span class="math"&gt;\(\alpha, \mu\)&lt;/span&gt;的极大&lt;/p&gt;
+&lt;p&gt;（4）先求&lt;span class="math"&gt;\(min_{w,b,\xi}L(w, b,  \xi, \alpha, \mu)\)&lt;/span&gt;
+将拉格朗日函数分别对&lt;span class="math"&gt;\(w,b,\xi\)&lt;/span&gt;求偏导数并令偏导数等于0. 将求得的结果代入拉格朗日函数中可以得到：
+&lt;/p&gt;
+&lt;div class="math"&gt;$$min_{w,b,\xi}L(w, b,  \xi, \alpha, \mu)=-\frac{1}{2} \sum_{i=1}^{N}\sum_{j=1}^{N}\alpha_i\alpha_jy_iy_j(x_ix_j)+ \sum_{i=1}^{N}\alpha_i$$&lt;/div&gt;
+&lt;p&gt;（5）求&lt;span class="math"&gt;\(min_{w,b,\xi}L(w, b,  \xi, \alpha, \mu)\)&lt;/span&gt;对&lt;span class="math"&gt;\(\alpha\)&lt;/span&gt;的极大，即是对偶问题
+&lt;/p&gt;
+&lt;div class="math"&gt;$$max_{\alpha}L(w, b,  \xi, \alpha, \mu)=-\frac{1}{2} \sum_{i=1}^{N}\sum_{j=1}^{N}\alpha_i\alpha_jy_iy_j(x_ix_j)+ \sum_{i=1}^{N}\alpha_i$$&lt;/div&gt;
+&lt;div class="math"&gt;$$s.t. 　\sum_{i=1}^{N}\alpha_iy_i = 0$$&lt;/div&gt;
+&lt;div class="math"&gt;$$　　C-\alpha_i-\mu_i=0$$&lt;/div&gt;
+&lt;div class="math"&gt;$$\alpha_i \geq 0 $$&lt;/div&gt;
+&lt;div class="math"&gt;$$\mu_i \geq 0$$&lt;/div&gt;
+&lt;div class="math"&gt;$$i=1,2,...,N$$&lt;/div&gt;
+&lt;p&gt;转化下可以得到对偶问题：
+&lt;/p&gt;
+&lt;div class="math"&gt;$$min_{\alpha}L(w, b,  \xi, \alpha, \mu)=\frac{1}{2} \sum_{i=1}^{N}\sum_{j=1}^{N}\alpha_i\alpha_jy_iy_j(x_ix_j)- \sum_{i=1}^{N}\alpha_i$$&lt;/div&gt;
+&lt;div class="math"&gt;$$s.t. 　\sum_{i=1}^{N}\alpha_iy_i = 0$$&lt;/div&gt;
+&lt;div class="math"&gt;$$0 \leq \alpha_i \leq C 　i=1,2,...,N$$&lt;/div&gt;
+&lt;p&gt;得到&lt;strong&gt;线性支持向量机的学习算法&lt;/strong&gt;：&lt;/p&gt;
+&lt;p&gt;输入：现在可分训练数据集T&lt;/p&gt;
+&lt;p&gt;输出：分离超平面和分类决策函数&lt;/p&gt;
+&lt;p&gt;（1）构造并求解约束最优化问题
+&lt;/p&gt;
+&lt;div class="math"&gt;$$min_{\alpha}L(w, b,  \xi, \alpha, \mu)=\frac{1}{2} \sum_{i=1}^{N}\sum_{j=1}^{N}\alpha_i\alpha_jy_iy_j(x_ix_j)- \sum_{i=1}^{N}\alpha_i$$&lt;/div&gt;
+&lt;div class="math"&gt;$$s.t. 　\sum_{i=1}^{N}\alpha_iy_i = 0$$&lt;/div&gt;
+&lt;div class="math"&gt;$$0 \leq \alpha_i \leq C 　i=1,2,...,N$$&lt;/div&gt;
+&lt;p&gt;
+求得最优解&lt;span class="math"&gt;\(\alpha^* = (\alpha_1^* ... \alpha_n^*)\)&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;（2）计算
+&lt;/p&gt;
+&lt;div class="math"&gt;$$w^* = \sum_{i=1}^{N}\alpha_i^*y_ix_i$$&lt;/div&gt;
+&lt;p&gt;
+并选择一个&lt;span class="math"&gt;\(0 &amp;lt; \alpha_j^* &amp;lt; C\)&lt;/span&gt;，计算
+&lt;/p&gt;
+&lt;div class="math"&gt;$$b^* = y_j - \sum_{i=1}^{N}\alpha_i^*y_i(x_ix_j)$$&lt;/div&gt;
+&lt;p&gt;（3）求得分离超平面
+&lt;/p&gt;
+&lt;div class="math"&gt;$$w^*.x+b^*=0$$&lt;/div&gt;
+&lt;p&gt;
+分类决策函数：
+&lt;/p&gt;
+&lt;div class="math"&gt;$$f(x)=sign(w^*.x+b^*)$$&lt;/div&gt;
+&lt;p&gt;其中，&lt;span class="math"&gt;\(w^*与b^*\)&lt;/span&gt;是由&lt;a href="http://book.douban.com/subject/10590856/"&gt;KKT条件&lt;/a&gt;得到的。w的解是唯一的，但是b的解不唯一。对于任一适合条件&lt;span class="math"&gt;\(0 &amp;lt; \alpha_j^* &amp;lt; C\)&lt;/span&gt;，都可以求出&lt;span class="math"&gt;\(b^*\)&lt;/span&gt;，所以实际计算时可以取在所有符合条件的样本点上的平均值。&lt;/p&gt;
+&lt;h2&gt;支持向量&lt;/h2&gt;
+&lt;p&gt;我们可以将&lt;span class="math"&gt;\(\alpha_i^* &amp;gt; 0\)&lt;/span&gt;的样本点&lt;span class="math"&gt;\((x_i, y_i)\)&lt;/span&gt;的实例&lt;span class="math"&gt;\(x_i\)&lt;/span&gt;称为&lt;strong&gt;支持向量&lt;/strong&gt;（软间隔的支持向量）。但是，这时的支持向量要比上文中介绍的复杂。&lt;/p&gt;
+&lt;p&gt;实例&lt;span class="math"&gt;\(x_i\)&lt;/span&gt;到间隔边界的距离为&lt;span class="math"&gt;\(\frac{\xi_i}{||w||}\)&lt;/span&gt;：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;若 &lt;span class="math"&gt;\(\alpha_i^* &amp;lt; C\)&lt;/span&gt;，则&lt;span class="math"&gt;\(\xi_i = 0\)&lt;/span&gt;&lt;sup id="fnref:关系"&gt;&lt;a class="footnote-ref" href="#fn:关系" rel="footnote"&gt;1&lt;/a&gt;&lt;/sup&gt;，支持向量&lt;span class="math"&gt;\(x_i\)&lt;/span&gt;恰好落在间隔边界上；&lt;/li&gt;
+&lt;li&gt;若 &lt;span class="math"&gt;\(\alpha_i^* = C\)&lt;/span&gt;，&lt;span class="math"&gt;\(0&amp;lt; \xi_i &amp;lt; 1\)&lt;/span&gt;，支持向量&lt;span class="math"&gt;\(x_i\)&lt;/span&gt;落在间隔边界与超平面之间，分类正确；&lt;/li&gt;
+&lt;li&gt;若 &lt;span class="math"&gt;\(\alpha_i^* &amp;gt; C\)&lt;/span&gt;，&lt;span class="math"&gt;\(\xi_i =1\)&lt;/span&gt;，支持向量&lt;span class="math"&gt;\(x_i\)&lt;/span&gt;恰好在超平面上；&lt;/li&gt;
+&lt;li&gt;若 &lt;span class="math"&gt;\(\alpha_i^* &amp;gt; C\)&lt;/span&gt;，&lt;span class="math"&gt;\(\xi_i &amp;gt;1\)&lt;/span&gt;，支持向量&lt;span class="math"&gt;\(x_i\)&lt;/span&gt;位于分离超平面误分一侧。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;合页损失函数&lt;/h2&gt;
+&lt;p&gt;线性支持向量机学习还有另外一种解释，就是最小化以下目标函数：
+&lt;/p&gt;
+&lt;div class="math"&gt;$$\sum_{i=1}^{N}[1-y_i(w.x_i+b)]_++\lambda ||w||^2$$&lt;/div&gt;
+&lt;p&gt;
+目标函数中的第一项是经验损失或经验风险，函数
+&lt;/p&gt;
+&lt;div class="math"&gt;$$L(y(w.x+b))=[1-y_i(w.x_i+b)]_+$$&lt;/div&gt;
+&lt;p&gt;
+称为合页损失函数（hinge loss function）。下标"+"表示以下取正值的函数
+&lt;/p&gt;
+&lt;div class="math"&gt;$$[z]_+=\left\{\begin{matrix}
+z, z &amp;gt; 0\\ 
+0, z \leq 0
+\end{matrix}\right.$$&lt;/div&gt;
+&lt;p&gt;
+表示样本点被正确分类（z &amp;gt; 0），损失是0；错误分类损失为&lt;span class="math"&gt;\(1−y_i(w.x_i+b)\)&lt;/span&gt;。&lt;/p&gt;
+&lt;p&gt;合页损失函数的图形，以函数间隔&lt;span class="math"&gt;\(y(w.x+b)\)&lt;/span&gt;为横轴，纵轴是损失。由于函数形状像一个合页，故名合页损失函数。与感知机的损失函数相比，相当于右移1长度，所以合页损失函数对学习要求更高，不仅要分类正确，而且确信度足够高时损失才是0（大于1的部分）。&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h2&gt;Reference&lt;/h2&gt;
+&lt;p&gt;&lt;a href="http://book.douban.com/subject/10590856/"&gt;统计学习方法&lt;/a&gt;第七章&lt;/p&gt;
+&lt;div class="footnote"&gt;
+&lt;hr /&gt;
+&lt;ol&gt;
+&lt;li id="fn:关系"&gt;
+&lt;p&gt;&lt;span class="math"&gt;\(C-\alpha_i-\mu_i=0\)&lt;/span&gt;并且&lt;span class="math"&gt;\(\mu_i^* \xi_i^*=0（从KTT条件可得）\)&lt;/span&gt;&amp;#160;&lt;a class="footnote-backref" href="#fnref:关系" rev="footnote" title="Jump back to footnote 1 in the text"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;script type="text/javascript"&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "false";
+
+    if (false) {
+        align = (screen.width &lt; 768) ? "left" : align;
+        indent = (screen.width &lt; 768) ? "0em" : indent;
+        linebreak = (screen.width &lt; 768) ? 'true' : linebreak;
+    }
+    
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = '//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); ";
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+&lt;/script&gt;</summary><category term="读书笔记"></category></entry><entry><title>支持向量机——线性可分支持向量机</title><link href="http://www.wengweitao.com/zhi-chi-xiang-liang-ji-xian-xing-ke-fen-zhi-chi-xiang-liang-ji.html" rel="alternate"></link><updated>2014-08-02T20:32:00+08:00</updated><author><name>wwt</name></author><id>tag:www.wengweitao.com,2014-08-02:zhi-chi-xiang-liang-ji-xian-xing-ke-fen-zhi-chi-xiang-liang-ji.html</id><summary type="html">&lt;blockquote&gt;
 &lt;p&gt;支持向量机（support vector machine， SVM）是一种二类分类模型。它的基本模型是定义在特征空间上的间隔最大的线性分类器，间隔最大使之有别与感知机。支持向量机还包括核技巧，这使它成为实质上的非线性分类器。SVM的学习策略是间隔最大化，可形式化为一个求解凸二次规划的问题，也等价于正则化的合页损失函数的最小化问题。SVM的学习算法是求解凸二次规划的最优算法。SVM学习方法包含构建由简至烦的模型：
 - 线性可分支持向量机：当训练数据线性可分时，通过硬间隔最大化（hard margin maximization），学习一个线性分类器
 - 线性支持向量机：当训练数据近似线性可分时，通过软间隔最大化（soft margin maximization），学习一个线性分类器，也称为软间隔支持向量机
@@ -2649,7 +2787,7 @@ str.format()是Python最为推荐的字符串格式化方法，当然也是最Py
 &lt;div class="math"&gt;$$min_{w,b}L(w,b,\alpha)=-\frac{1}{2} \sum_{i=1}^{N}\sum_{j=1}^{N}\alpha_i\alpha_jy_iy_j(x_ix_j)+ \sum_{i=1}^{N}\alpha_i$$&lt;/div&gt;
 &lt;p&gt;（5）求&lt;span class="math"&gt;\(min_{w,b}L(w, b, \alpha)\)&lt;/span&gt;对&lt;span class="math"&gt;\(\alpha\)&lt;/span&gt;的极大，即是对偶问题
 &lt;/p&gt;
-&lt;div class="math"&gt;$$max_{w,b}L(w,b,\alpha)=-\frac{1}{2} \sum_{i=1}^{N}\sum_{j=1}^{N}\alpha_i\alpha_jy_iy_j(x_ix_j)+ \sum_{i=1}^{N}\alpha_i$$&lt;/div&gt;
+&lt;div class="math"&gt;$$max_{\alpha}L(w,b,\alpha)=-\frac{1}{2} \sum_{i=1}^{N}\sum_{j=1}^{N}\alpha_i\alpha_jy_iy_j(x_ix_j)+ \sum_{i=1}^{N}\alpha_i$$&lt;/div&gt;
 &lt;div class="math"&gt;$$s.t. \sum_{i=1}^{N}\alpha_iy_i = 0　\alpha_i \geq 0, i=1,2,...,N$$&lt;/div&gt;
 &lt;p&gt;可以将上面的目标函数由极大转换为求极小，得到&lt;strong&gt;线性可分支持向量机的学习算法&lt;/strong&gt;：&lt;/p&gt;
 &lt;p&gt;输入：现在可分训练数据集T&lt;/p&gt;
