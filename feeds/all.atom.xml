@@ -1,5 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>wwt's blog</title><link href="http://www.wengweitao.com/" rel="alternate"></link><link href="http://www.wengweitao.com/feeds%5Call.atom.xml" rel="self"></link><id>http://www.wengweitao.com/</id><updated>2015-04-16T20:12:00+08:00</updated><entry><title>Vim入门教程</title><link href="http://www.wengweitao.com/vimru-men-jiao-cheng.html" rel="alternate"></link><updated>2015-04-16T20:12:00+08:00</updated><author><name>wwt</name></author><id>tag:www.wengweitao.com,2015-04-16:vimru-men-jiao-cheng.html</id><summary type="html">&lt;blockquote&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>wwt's blog</title><link href="http://www.wengweitao.com/" rel="alternate"></link><link href="http://www.wengweitao.com/feeds%5Call.atom.xml" rel="self"></link><id>http://www.wengweitao.com/</id><updated>2015-04-25T10:37:00+08:00</updated><entry><title>False is False is False = True ?</title><link href="http://www.wengweitao.com/false-is-false-is-false-true.html" rel="alternate"></link><updated>2015-04-25T10:37:00+08:00</updated><author><name>wwt</name></author><id>tag:www.wengweitao.com,2015-04-25:false-is-false-is-false-true.html</id><summary type="html">&lt;p&gt;在&lt;a href="https://www.youtube.com/channel/UCgxzjK6GuOHVKR_08TT4hJQ"&gt;PyCon 2015&lt;/a&gt;中提到一个问题：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="bp"&gt;False&lt;/span&gt; &lt;span class="ow"&gt;is&lt;/span&gt; &lt;span class="bp"&gt;False&lt;/span&gt; &lt;span class="ow"&gt;is&lt;/span&gt; &lt;span class="bp"&gt;False&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;在Python中运行，以上命令得到的结果是：&lt;strong&gt;True&lt;/strong&gt;！
+而&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;False&lt;/span&gt; &lt;span class="ow"&gt;is&lt;/span&gt; &lt;span class="bp"&gt;False&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="ow"&gt;is&lt;/span&gt; &lt;span class="bp"&gt;False&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;在Python中运行，以上命令得到的结果是：&lt;strong&gt;False&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;对于很多Python的初学者肯定会对第一个的运行结果感到有点出乎意料。&lt;/p&gt;
+&lt;p&gt;在关于比较运算的Python官方文档中提到：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Formally, if a, b, c, ..., y, z are expressions and op1, op2, ..., opN are comparison operators, then a op1 b op2 c ... y opN z is equivalent to a op1 b and b op2 c and ... y opN z, except that each expression is evaluated at most once.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;所以&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="ow"&gt;is&lt;/span&gt; &lt;span class="n"&gt;b&lt;/span&gt; &lt;span class="ow"&gt;is&lt;/span&gt; &lt;span class="n"&gt;c&lt;/span&gt;
+
+&lt;span class="c"&gt;# 相当于&lt;/span&gt;
+
+&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="ow"&gt;is&lt;/span&gt; &lt;span class="n"&gt;b&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="ow"&gt;and&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;b&lt;/span&gt; &lt;span class="ow"&gt;is&lt;/span&gt; &lt;span class="n"&gt;c&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;这样上面的第一个例子的结果就容易解释了：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="bp"&gt;False&lt;/span&gt; &lt;span class="ow"&gt;is&lt;/span&gt; &lt;span class="bp"&gt;False&lt;/span&gt; &lt;span class="ow"&gt;is&lt;/span&gt; &lt;span class="bp"&gt;False&lt;/span&gt;
+
+&lt;span class="c"&gt;#相当于&lt;/span&gt;
+
+&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;False&lt;/span&gt; &lt;span class="ow"&gt;is&lt;/span&gt; &lt;span class="bp"&gt;False&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="ow"&gt;is&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;False&lt;/span&gt; &lt;span class="ow"&gt;is&lt;/span&gt; &lt;span class="bp"&gt;False&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;这也是为什么我们可以在Python中直接使用：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt; &lt;span class="mi"&gt;5&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;类似的这种表达式的原因（而在C/C++中是无法这么写的）。这种写法从某种程度上来说，更符合英语的写法，但是为了避免让人误解，最好还是在适当的地方使用圆括号括起来。&lt;/p&gt;</summary><category term="Python"></category></entry><entry><title>Vim入门教程</title><link href="http://www.wengweitao.com/vimru-men-jiao-cheng.html" rel="alternate"></link><updated>2015-04-16T20:12:00+08:00</updated><author><name>wwt</name></author><id>tag:www.wengweitao.com,2015-04-16:vimru-men-jiao-cheng.html</id><summary type="html">&lt;blockquote&gt;
 &lt;p&gt;Vim 在编辑器中是神一样的存在，熟练掌握Vim将极大提高编辑文本的效率。本文将介绍Vim最基本的操作和技巧。&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h2&gt;操作篇&lt;/h2&gt;
@@ -2634,7 +2674,7 @@ str.format()是Python最为推荐的字符串格式化方法，当然也是最Py
 分类决策函数：
 &lt;/p&gt;
 &lt;div class="math"&gt;$$f(x)=sign(w^*.x+b^*)$$&lt;/div&gt;
-&lt;p&gt;其中，&lt;span class="math"&gt;\(w^*与b^*\)&lt;/span&gt;有由&lt;a href="http://www.wengweitao.com/la-ge-lang-ri-dui-ou-xing-lagrange-duality.html"&gt;KKT条件&lt;/a&gt;得到的。&lt;span class="math"&gt;\(w^*与b^*\)&lt;/span&gt;只依赖于训练数据中对应于&lt;span class="math"&gt;\(\alpha_i &amp;gt; 0\)&lt;/span&gt;的样本点，而其他样本点对它们没有影响，因此，我们也可以将&lt;span class="math"&gt;\(\alpha_i &amp;gt; 0\)&lt;/span&gt;的样本点称为&lt;strong&gt;支持向量&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;其中，&lt;span class="math"&gt;\(w^*与b^*\)&lt;/span&gt;是由&lt;a href="http://www.wengweitao.com/la-ge-lang-ri-dui-ou-xing-lagrange-duality.html"&gt;KKT条件&lt;/a&gt;得到的。&lt;span class="math"&gt;\(w^*与b^*\)&lt;/span&gt;只依赖于训练数据中对应于&lt;span class="math"&gt;\(\alpha_i &amp;gt; 0\)&lt;/span&gt;的样本点，而其他样本点对它们没有影响，因此，我们也可以将&lt;span class="math"&gt;\(\alpha_i &amp;gt; 0\)&lt;/span&gt;的样本点称为&lt;strong&gt;支持向量&lt;/strong&gt;。&lt;/p&gt;
 &lt;hr /&gt;
 &lt;h2&gt;Reference&lt;/h2&gt;
 &lt;p&gt;&lt;a href="http://book.douban.com/subject/10590856/"&gt;统计学习方法&lt;/a&gt;第七章&lt;/p&gt;
@@ -3092,9 +3132,9 @@ f(x)   \:\:\:\:\: x满足约束条件\\
 &lt;/p&gt;
 &lt;div class="math"&gt;$$d^* = max_{\alpha, \beta: \alpha_i \geq 0}min_xL(x, \alpha, \beta) \leq min_xmax_{\alpha, \beta: \alpha_i \geq 0}L(x, \alpha, \beta)= p^*$$&lt;/div&gt;
 &lt;p&gt;在某些条件下，原始问题和对偶问题的最优值相等即&lt;span class="math"&gt;\(d^* = p^*\)&lt;/span&gt;，这时可以&lt;strong&gt;用对偶问题替代原始问题&lt;/strong&gt;。&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;定理1：&lt;/strong&gt;考虑原始问题和对偶问题。假设&lt;span class="math"&gt;\(f(x)\)&lt;/span&gt;和&lt;span class="math"&gt;\(c_i(x)\)&lt;/span&gt;是凸函数（convex），&lt;span class="math"&gt;\(h_j(x)\)&lt;/span&gt;是仿射函数（affine，与线性函数类似只是允许增加一个截距b）；并且存在x，对所有的i有&lt;span class="math"&gt;\(c_i(x) &amp;lt; 0\)&lt;/span&gt;. 则存在&lt;span class="math"&gt;\(x^* , \alpha^* ,\beta^* $，使得在\)&lt;/span&gt;x^&lt;em&gt; &lt;span class="math"&gt;\(是原始问题的解，\)&lt;/span&gt;\alpha^&lt;/em&gt; ,\beta^*$是对偶问题的解，并且&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;定理1：&lt;/strong&gt;考虑原始问题和对偶问题。假设&lt;span class="math"&gt;\(f(x)\)&lt;/span&gt;和&lt;span class="math"&gt;\(c_i(x)\)&lt;/span&gt;是凸函数（convex），&lt;span class="math"&gt;\(h_j(x)\)&lt;/span&gt;是仿射函数（affine，与线性函数类似只是允许增加一个截距b）；并且存在x，对所有的i有&lt;span class="math"&gt;\(c_i(x) &amp;lt; 0\)&lt;/span&gt;. 则存在&lt;span class="math"&gt;\(x^* , \alpha^* ,\beta^*\)&lt;/span&gt;，使得在&lt;span class="math"&gt;\(x^*\)&lt;/span&gt;是原始问题的解，&lt;span class="math"&gt;\(\alpha^* ,\beta^*\)&lt;/span&gt;是对偶问题的解，并且&lt;/p&gt;
 &lt;div class="math"&gt;$$d^* = p^* = L(x^*, \alpha^*, \beta^*)$$&lt;/div&gt;
-&lt;p&gt;&lt;strong&gt;定理2：&lt;/strong&gt;考虑原始问题和对偶问题。假设&lt;span class="math"&gt;\(f(x)\)&lt;/span&gt;和&lt;span class="math"&gt;\(c_i(x)\)&lt;/span&gt;是凸函数（convex），&lt;span class="math"&gt;\(h_j(x)\)&lt;/span&gt;是仿射函数（affine）；并且存在x，对所有的i有&lt;span class="math"&gt;\(c_i(x) &amp;lt; 0\)&lt;/span&gt;. 则&lt;span class="math"&gt;\(x^* $是原始问题的解，并且\)&lt;/span&gt;\alpha^&lt;em&gt; , \beta^&lt;/em&gt; &lt;span class="math"&gt;\(是对偶问题的解的充分必要条件是\)&lt;/span&gt;x^&lt;em&gt; , \alpha^&lt;/em&gt; ,\beta^* $ 满足下面的&lt;strong&gt;Karush-Kuhn-Tucker(KKT)条件&lt;/strong&gt;：
+&lt;p&gt;&lt;strong&gt;定理2：&lt;/strong&gt;考虑原始问题和对偶问题。假设&lt;span class="math"&gt;\(f(x)\)&lt;/span&gt;和&lt;span class="math"&gt;\(c_i(x)\)&lt;/span&gt;是凸函数（convex），&lt;span class="math"&gt;\(h_j(x)\)&lt;/span&gt;是仿射函数（affine）；并且存在x，对所有的i有&lt;span class="math"&gt;\(c_i(x) &amp;lt; 0\)&lt;/span&gt;. 则&lt;span class="math"&gt;\(x^*\)&lt;/span&gt;是原始问题的解，并且&lt;span class="math"&gt;\(\alpha^*, \beta^*\)&lt;/span&gt;是对偶问题的解的充分必要条件是&lt;span class="math"&gt;\(x^* , \alpha^* ,\beta^*\)&lt;/span&gt; 满足下面的&lt;strong&gt;Karush-Kuhn-Tucker(KKT)条件&lt;/strong&gt;：
 &lt;/p&gt;
 &lt;div class="math"&gt;$$\bigtriangledown_x L(x^*, \alpha^*, \beta^*)=0$$&lt;/div&gt;
 &lt;div class="math"&gt;$$\bigtriangledown_\alpha L(x^*, \alpha^*, \beta^*)=0$$&lt;/div&gt;
@@ -3103,7 +3143,7 @@ f(x)   \:\:\:\:\: x满足约束条件\\
 &lt;div class="math"&gt;$$c_i(x^*) \leq 0  \:\:\:\:\: i=1,2,...,k$$&lt;/div&gt;
 &lt;div class="math"&gt;$$\alpha^* \geq 0  \:\:\:\:\: i=1,2,...,k$$&lt;/div&gt;
 &lt;div class="math"&gt;$$h_j(x^*) = 0   \:\:\:\:\: j=1,2,...,l$$&lt;/div&gt;
-&lt;p&gt;其中，上面的第4个式子，称为KKT的对偶互补条件，由此条件可得，若&lt;span class="math"&gt;\(\alpha^*　&amp;gt; 0\)&lt;/span&gt;那么&lt;span class="math"&gt;\(c_i(x^*) = 0\)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;其中，上面的第4个式子，称为KKT的对偶互补条件，由此条件可得，若&lt;span class="math"&gt;\(\alpha^*&amp;gt;0\)&lt;/span&gt;那么&lt;span class="math"&gt;\(c_i(x^*) = 0\)&lt;/span&gt;.&lt;/p&gt;
 &lt;hr /&gt;
 &lt;h2&gt;Reference&lt;/h2&gt;
 &lt;p&gt;&lt;a href="http://book.douban.com/subject/10590856/"&gt;统计学习方法&lt;/a&gt;&lt;/p&gt;

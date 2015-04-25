@@ -1,5 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>wwt's blog</title><link href="http://www.wengweitao.com/" rel="alternate"></link><link href="http://www.wengweitao.com/feeds/python.rss.xml" rel="self"></link><id>http://www.wengweitao.com/</id><updated>2015-04-08T14:52:00+08:00</updated><entry><title>Python容器——Counter的使用</title><link href="http://www.wengweitao.com/pythonrong-qi-counterde-shi-yong.html" rel="alternate"></link><updated>2015-04-08T14:52:00+08:00</updated><author><name>wwt</name></author><id>tag:www.wengweitao.com,2015-04-08:pythonrong-qi-counterde-shi-yong.html</id><summary type="html">&lt;blockquote&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>wwt's blog</title><link href="http://www.wengweitao.com/" rel="alternate"></link><link href="http://www.wengweitao.com/feeds/python.rss.xml" rel="self"></link><id>http://www.wengweitao.com/</id><updated>2015-04-25T10:37:00+08:00</updated><entry><title>False is False is False = True ?</title><link href="http://www.wengweitao.com/false-is-false-is-false-true.html" rel="alternate"></link><updated>2015-04-25T10:37:00+08:00</updated><author><name>wwt</name></author><id>tag:www.wengweitao.com,2015-04-25:false-is-false-is-false-true.html</id><summary type="html">&lt;p&gt;在&lt;a href="https://www.youtube.com/channel/UCgxzjK6GuOHVKR_08TT4hJQ"&gt;PyCon 2015&lt;/a&gt;中提到一个问题：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="bp"&gt;False&lt;/span&gt; &lt;span class="ow"&gt;is&lt;/span&gt; &lt;span class="bp"&gt;False&lt;/span&gt; &lt;span class="ow"&gt;is&lt;/span&gt; &lt;span class="bp"&gt;False&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;在Python中运行，以上命令得到的结果是：&lt;strong&gt;True&lt;/strong&gt;！
+而&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;False&lt;/span&gt; &lt;span class="ow"&gt;is&lt;/span&gt; &lt;span class="bp"&gt;False&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="ow"&gt;is&lt;/span&gt; &lt;span class="bp"&gt;False&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;在Python中运行，以上命令得到的结果是：&lt;strong&gt;False&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;对于很多Python的初学者肯定会对第一个的运行结果感到有点出乎意料。&lt;/p&gt;
+&lt;p&gt;在关于比较运算的Python官方文档中提到：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Formally, if a, b, c, ..., y, z are expressions and op1, op2, ..., opN are comparison operators, then a op1 b op2 c ... y opN z is equivalent to a op1 b and b op2 c and ... y opN z, except that each expression is evaluated at most once.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;所以&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="ow"&gt;is&lt;/span&gt; &lt;span class="n"&gt;b&lt;/span&gt; &lt;span class="ow"&gt;is&lt;/span&gt; &lt;span class="n"&gt;c&lt;/span&gt;
+
+&lt;span class="c"&gt;# 相当于&lt;/span&gt;
+
+&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="ow"&gt;is&lt;/span&gt; &lt;span class="n"&gt;b&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="ow"&gt;and&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;b&lt;/span&gt; &lt;span class="ow"&gt;is&lt;/span&gt; &lt;span class="n"&gt;c&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;这样上面的第一个例子的结果就容易解释了：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="bp"&gt;False&lt;/span&gt; &lt;span class="ow"&gt;is&lt;/span&gt; &lt;span class="bp"&gt;False&lt;/span&gt; &lt;span class="ow"&gt;is&lt;/span&gt; &lt;span class="bp"&gt;False&lt;/span&gt;
+
+&lt;span class="c"&gt;#相当于&lt;/span&gt;
+
+&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;False&lt;/span&gt; &lt;span class="ow"&gt;is&lt;/span&gt; &lt;span class="bp"&gt;False&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="ow"&gt;is&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;False&lt;/span&gt; &lt;span class="ow"&gt;is&lt;/span&gt; &lt;span class="bp"&gt;False&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;这也是为什么我们可以在Python中直接使用：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt; &lt;span class="mi"&gt;5&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;类似的这种表达式的原因（而在C/C++中是无法这么写的）。这种写法从某种程度上来说，更符合英语的写法，但是为了避免让人误解，最好还是在适当的地方使用圆括号括起来。&lt;/p&gt;</summary><category term="Python"></category></entry><entry><title>Python容器——Counter的使用</title><link href="http://www.wengweitao.com/pythonrong-qi-counterde-shi-yong.html" rel="alternate"></link><updated>2015-04-08T14:52:00+08:00</updated><author><name>wwt</name></author><id>tag:www.wengweitao.com,2015-04-08:pythonrong-qi-counterde-shi-yong.html</id><summary type="html">&lt;blockquote&gt;
 &lt;p&gt;Counter是Python标准库提供的一个非常有用的容器，可以用来对序列中出现的各个元素，进行计数。这篇文章中，利用Counter来实现多元集合(MultiSets)、概率质量函数(PMFs)以及贝叶斯假设。&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;在Python代码中使用Counter，只需从collections包引入：&lt;/p&gt;

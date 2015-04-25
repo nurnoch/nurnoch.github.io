@@ -141,9 +141,9 @@ f(x)   \:\:\:\:\: x满足约束条件\\
 </p>
 <div class="math">$$d^* = max_{\alpha, \beta: \alpha_i \geq 0}min_xL(x, \alpha, \beta) \leq min_xmax_{\alpha, \beta: \alpha_i \geq 0}L(x, \alpha, \beta)= p^*$$</div>
 <p>在某些条件下，原始问题和对偶问题的最优值相等即<span class="math">\(d^* = p^*\)</span>，这时可以<strong>用对偶问题替代原始问题</strong>。</p>
-<p><strong>定理1：</strong>考虑原始问题和对偶问题。假设<span class="math">\(f(x)\)</span>和<span class="math">\(c_i(x)\)</span>是凸函数（convex），<span class="math">\(h_j(x)\)</span>是仿射函数（affine，与线性函数类似只是允许增加一个截距b）；并且存在x，对所有的i有<span class="math">\(c_i(x) &lt; 0\)</span>. 则存在<span class="math">\(x^* , \alpha^* ,\beta^* $，使得在\)</span>x^<em> <span class="math">\(是原始问题的解，\)</span>\alpha^</em> ,\beta^*$是对偶问题的解，并且</p>
+<p><strong>定理1：</strong>考虑原始问题和对偶问题。假设<span class="math">\(f(x)\)</span>和<span class="math">\(c_i(x)\)</span>是凸函数（convex），<span class="math">\(h_j(x)\)</span>是仿射函数（affine，与线性函数类似只是允许增加一个截距b）；并且存在x，对所有的i有<span class="math">\(c_i(x) &lt; 0\)</span>. 则存在<span class="math">\(x^* , \alpha^* ,\beta^*\)</span>，使得在<span class="math">\(x^*\)</span>是原始问题的解，<span class="math">\(\alpha^* ,\beta^*\)</span>是对偶问题的解，并且</p>
 <div class="math">$$d^* = p^* = L(x^*, \alpha^*, \beta^*)$$</div>
-<p><strong>定理2：</strong>考虑原始问题和对偶问题。假设<span class="math">\(f(x)\)</span>和<span class="math">\(c_i(x)\)</span>是凸函数（convex），<span class="math">\(h_j(x)\)</span>是仿射函数（affine）；并且存在x，对所有的i有<span class="math">\(c_i(x) &lt; 0\)</span>. 则<span class="math">\(x^* $是原始问题的解，并且\)</span>\alpha^<em> , \beta^</em> <span class="math">\(是对偶问题的解的充分必要条件是\)</span>x^<em> , \alpha^</em> ,\beta^* $ 满足下面的<strong>Karush-Kuhn-Tucker(KKT)条件</strong>：
+<p><strong>定理2：</strong>考虑原始问题和对偶问题。假设<span class="math">\(f(x)\)</span>和<span class="math">\(c_i(x)\)</span>是凸函数（convex），<span class="math">\(h_j(x)\)</span>是仿射函数（affine）；并且存在x，对所有的i有<span class="math">\(c_i(x) &lt; 0\)</span>. 则<span class="math">\(x^*\)</span>是原始问题的解，并且<span class="math">\(\alpha^*, \beta^*\)</span>是对偶问题的解的充分必要条件是<span class="math">\(x^* , \alpha^* ,\beta^*\)</span> 满足下面的<strong>Karush-Kuhn-Tucker(KKT)条件</strong>：
 </p>
 <div class="math">$$\bigtriangledown_x L(x^*, \alpha^*, \beta^*)=0$$</div>
 <div class="math">$$\bigtriangledown_\alpha L(x^*, \alpha^*, \beta^*)=0$$</div>
@@ -152,7 +152,7 @@ f(x)   \:\:\:\:\: x满足约束条件\\
 <div class="math">$$c_i(x^*) \leq 0  \:\:\:\:\: i=1,2,...,k$$</div>
 <div class="math">$$\alpha^* \geq 0  \:\:\:\:\: i=1,2,...,k$$</div>
 <div class="math">$$h_j(x^*) = 0   \:\:\:\:\: j=1,2,...,l$$</div>
-<p>其中，上面的第4个式子，称为KKT的对偶互补条件，由此条件可得，若<span class="math">\(\alpha^*　&gt; 0\)</span>那么<span class="math">\(c_i(x^*) = 0\)</span>.</p>
+<p>其中，上面的第4个式子，称为KKT的对偶互补条件，由此条件可得，若<span class="math">\(\alpha^*&gt;0\)</span>那么<span class="math">\(c_i(x^*) = 0\)</span>.</p>
 <hr />
 <h2>Reference</h2>
 <p><a href="http://book.douban.com/subject/10590856/">统计学习方法</a></p>
@@ -237,17 +237,17 @@ f(x)   \:\:\:\:\: x满足约束条件\\
 <!--
 <h4>标签</h4>
 <ul class="tagcloud">
-        <li class="tag-2"><a href="http://www.wengweitao.com/tag/ji-ben-gai-nian.html">基本概念</a></li>
-        <li class="tag-2"><a href="http://www.wengweitao.com/tag/mian-shi-ti.html">面试题</a></li>
-        <li class="tag-1"><a href="http://www.wengweitao.com/tag/python.html">Python</a></li>
         <li class="tag-4"><a href="http://www.wengweitao.com/tag/gong-ju.html">工具</a></li>
-        <li class="tag-2"><a href="http://www.wengweitao.com/tag/jiao-cheng.html">教程</a></li>
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/xiao-yuan.html">校园</a></li>
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/wan.html">玩</a></li>
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/ce-shi.html">测试</a></li>
         <li class="tag-1"><a href="http://www.wengweitao.com/tag/du-shu-bi-ji.html">读书笔记</a></li>
+        <li class="tag-1"><a href="http://www.wengweitao.com/tag/python.html">Python</a></li>
         <li class="tag-4"><a href="http://www.wengweitao.com/tag/vim.html">Vim</a></li>
+        <li class="tag-2"><a href="http://www.wengweitao.com/tag/jiao-cheng.html">教程</a></li>
+        <li class="tag-2"><a href="http://www.wengweitao.com/tag/ji-ben-gai-nian.html">基本概念</a></li>
+        <li class="tag-4"><a href="http://www.wengweitao.com/tag/xiao-yuan.html">校园</a></li>
+        <li class="tag-2"><a href="http://www.wengweitao.com/tag/mian-shi-ti.html">面试题</a></li>
         <li class="tag-4"><a href="http://www.wengweitao.com/tag/ji-chu-gai-nian.html">基础概念</a></li>
+        <li class="tag-4"><a href="http://www.wengweitao.com/tag/ce-shi.html">测试</a></li>
+        <li class="tag-4"><a href="http://www.wengweitao.com/tag/wan.html">玩</a></li>
 </ul>
 -->
 

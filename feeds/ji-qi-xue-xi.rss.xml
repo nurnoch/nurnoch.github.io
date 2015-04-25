@@ -123,7 +123,7 @@
 分类决策函数：
 &lt;/p&gt;
 &lt;div class="math"&gt;$$f(x)=sign(w^*.x+b^*)$$&lt;/div&gt;
-&lt;p&gt;其中，&lt;span class="math"&gt;\(w^*与b^*\)&lt;/span&gt;有由&lt;a href="http://www.wengweitao.com/la-ge-lang-ri-dui-ou-xing-lagrange-duality.html"&gt;KKT条件&lt;/a&gt;得到的。&lt;span class="math"&gt;\(w^*与b^*\)&lt;/span&gt;只依赖于训练数据中对应于&lt;span class="math"&gt;\(\alpha_i &amp;gt; 0\)&lt;/span&gt;的样本点，而其他样本点对它们没有影响，因此，我们也可以将&lt;span class="math"&gt;\(\alpha_i &amp;gt; 0\)&lt;/span&gt;的样本点称为&lt;strong&gt;支持向量&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;其中，&lt;span class="math"&gt;\(w^*与b^*\)&lt;/span&gt;是由&lt;a href="http://www.wengweitao.com/la-ge-lang-ri-dui-ou-xing-lagrange-duality.html"&gt;KKT条件&lt;/a&gt;得到的。&lt;span class="math"&gt;\(w^*与b^*\)&lt;/span&gt;只依赖于训练数据中对应于&lt;span class="math"&gt;\(\alpha_i &amp;gt; 0\)&lt;/span&gt;的样本点，而其他样本点对它们没有影响，因此，我们也可以将&lt;span class="math"&gt;\(\alpha_i &amp;gt; 0\)&lt;/span&gt;的样本点称为&lt;strong&gt;支持向量&lt;/strong&gt;。&lt;/p&gt;
 &lt;hr /&gt;
 &lt;h2&gt;Reference&lt;/h2&gt;
 &lt;p&gt;&lt;a href="http://book.douban.com/subject/10590856/"&gt;统计学习方法&lt;/a&gt;第七章&lt;/p&gt;
@@ -581,9 +581,9 @@ f(x)   \:\:\:\:\: x满足约束条件\\
 &lt;/p&gt;
 &lt;div class="math"&gt;$$d^* = max_{\alpha, \beta: \alpha_i \geq 0}min_xL(x, \alpha, \beta) \leq min_xmax_{\alpha, \beta: \alpha_i \geq 0}L(x, \alpha, \beta)= p^*$$&lt;/div&gt;
 &lt;p&gt;在某些条件下，原始问题和对偶问题的最优值相等即&lt;span class="math"&gt;\(d^* = p^*\)&lt;/span&gt;，这时可以&lt;strong&gt;用对偶问题替代原始问题&lt;/strong&gt;。&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;定理1：&lt;/strong&gt;考虑原始问题和对偶问题。假设&lt;span class="math"&gt;\(f(x)\)&lt;/span&gt;和&lt;span class="math"&gt;\(c_i(x)\)&lt;/span&gt;是凸函数（convex），&lt;span class="math"&gt;\(h_j(x)\)&lt;/span&gt;是仿射函数（affine，与线性函数类似只是允许增加一个截距b）；并且存在x，对所有的i有&lt;span class="math"&gt;\(c_i(x) &amp;lt; 0\)&lt;/span&gt;. 则存在&lt;span class="math"&gt;\(x^* , \alpha^* ,\beta^* $，使得在\)&lt;/span&gt;x^&lt;em&gt; &lt;span class="math"&gt;\(是原始问题的解，\)&lt;/span&gt;\alpha^&lt;/em&gt; ,\beta^*$是对偶问题的解，并且&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;定理1：&lt;/strong&gt;考虑原始问题和对偶问题。假设&lt;span class="math"&gt;\(f(x)\)&lt;/span&gt;和&lt;span class="math"&gt;\(c_i(x)\)&lt;/span&gt;是凸函数（convex），&lt;span class="math"&gt;\(h_j(x)\)&lt;/span&gt;是仿射函数（affine，与线性函数类似只是允许增加一个截距b）；并且存在x，对所有的i有&lt;span class="math"&gt;\(c_i(x) &amp;lt; 0\)&lt;/span&gt;. 则存在&lt;span class="math"&gt;\(x^* , \alpha^* ,\beta^*\)&lt;/span&gt;，使得在&lt;span class="math"&gt;\(x^*\)&lt;/span&gt;是原始问题的解，&lt;span class="math"&gt;\(\alpha^* ,\beta^*\)&lt;/span&gt;是对偶问题的解，并且&lt;/p&gt;
 &lt;div class="math"&gt;$$d^* = p^* = L(x^*, \alpha^*, \beta^*)$$&lt;/div&gt;
-&lt;p&gt;&lt;strong&gt;定理2：&lt;/strong&gt;考虑原始问题和对偶问题。假设&lt;span class="math"&gt;\(f(x)\)&lt;/span&gt;和&lt;span class="math"&gt;\(c_i(x)\)&lt;/span&gt;是凸函数（convex），&lt;span class="math"&gt;\(h_j(x)\)&lt;/span&gt;是仿射函数（affine）；并且存在x，对所有的i有&lt;span class="math"&gt;\(c_i(x) &amp;lt; 0\)&lt;/span&gt;. 则&lt;span class="math"&gt;\(x^* $是原始问题的解，并且\)&lt;/span&gt;\alpha^&lt;em&gt; , \beta^&lt;/em&gt; &lt;span class="math"&gt;\(是对偶问题的解的充分必要条件是\)&lt;/span&gt;x^&lt;em&gt; , \alpha^&lt;/em&gt; ,\beta^* $ 满足下面的&lt;strong&gt;Karush-Kuhn-Tucker(KKT)条件&lt;/strong&gt;：
+&lt;p&gt;&lt;strong&gt;定理2：&lt;/strong&gt;考虑原始问题和对偶问题。假设&lt;span class="math"&gt;\(f(x)\)&lt;/span&gt;和&lt;span class="math"&gt;\(c_i(x)\)&lt;/span&gt;是凸函数（convex），&lt;span class="math"&gt;\(h_j(x)\)&lt;/span&gt;是仿射函数（affine）；并且存在x，对所有的i有&lt;span class="math"&gt;\(c_i(x) &amp;lt; 0\)&lt;/span&gt;. 则&lt;span class="math"&gt;\(x^*\)&lt;/span&gt;是原始问题的解，并且&lt;span class="math"&gt;\(\alpha^*, \beta^*\)&lt;/span&gt;是对偶问题的解的充分必要条件是&lt;span class="math"&gt;\(x^* , \alpha^* ,\beta^*\)&lt;/span&gt; 满足下面的&lt;strong&gt;Karush-Kuhn-Tucker(KKT)条件&lt;/strong&gt;：
 &lt;/p&gt;
 &lt;div class="math"&gt;$$\bigtriangledown_x L(x^*, \alpha^*, \beta^*)=0$$&lt;/div&gt;
 &lt;div class="math"&gt;$$\bigtriangledown_\alpha L(x^*, \alpha^*, \beta^*)=0$$&lt;/div&gt;
@@ -592,7 +592,7 @@ f(x)   \:\:\:\:\: x满足约束条件\\
 &lt;div class="math"&gt;$$c_i(x^*) \leq 0  \:\:\:\:\: i=1,2,...,k$$&lt;/div&gt;
 &lt;div class="math"&gt;$$\alpha^* \geq 0  \:\:\:\:\: i=1,2,...,k$$&lt;/div&gt;
 &lt;div class="math"&gt;$$h_j(x^*) = 0   \:\:\:\:\: j=1,2,...,l$$&lt;/div&gt;
-&lt;p&gt;其中，上面的第4个式子，称为KKT的对偶互补条件，由此条件可得，若&lt;span class="math"&gt;\(\alpha^*　&amp;gt; 0\)&lt;/span&gt;那么&lt;span class="math"&gt;\(c_i(x^*) = 0\)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;其中，上面的第4个式子，称为KKT的对偶互补条件，由此条件可得，若&lt;span class="math"&gt;\(\alpha^*&amp;gt;0\)&lt;/span&gt;那么&lt;span class="math"&gt;\(c_i(x^*) = 0\)&lt;/span&gt;.&lt;/p&gt;
 &lt;hr /&gt;
 &lt;h2&gt;Reference&lt;/h2&gt;
 &lt;p&gt;&lt;a href="http://book.douban.com/subject/10590856/"&gt;统计学习方法&lt;/a&gt;&lt;/p&gt;
