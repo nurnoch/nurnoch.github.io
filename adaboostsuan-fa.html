@@ -2,7 +2,7 @@
 <html lang="zh">
 <head>
 
-        <title>梯度下降法</title>
+        <title>AdaBoost算法</title>
         <meta charset="utf-8" />
         <link href="http://www.wengweitao.com/feeds\all.atom.xml" type="application/atom+xml" rel="alternate" title="wwt's blog Full Atom Feed" />
         <link href="http://www.wengweitao.com/feeds/all.rss.xml" type="application/rss+xml" rel="alternate" title="wwt's blog Full RSS Feed" />
@@ -59,83 +59,130 @@
 
             <header>
               <h2 class="entry-title">
-                <a href="http://www.wengweitao.com/ti-du-xia-jiang-fa.html" rel="bookmark"
-                   title="Permalink to 梯度下降法">梯度下降法</a></h2>
+                <a href="http://www.wengweitao.com/adaboostsuan-fa.html" rel="bookmark"
+                   title="Permalink to AdaBoost算法">AdaBoost算法</a></h2>
            
             </header>
             <footer class="post-info">
-              <abbr class="published" title="2014-07-26T16:18:00">
-                Sat 26 July 2014
+              <abbr class="published" title="2014-08-06T19:56:00">
+                Wed 06 August 2014
               </abbr>
               <address class="vcard author">By 
                 <a class="url fn" href="http://www.wengweitao.com/author/wwt.html"> wwt</a>
               </address>
             </footer><!-- /.post-info -->
             <div class="entry-content">
-              <p><strong>梯度下降法（Gradient Descent）</strong>是一种常见的最优化算法，用于求解函数的最大值或者最小值。</p>
-<h2>梯度的概念</h2>
-<p>一个函数<span class="math">\(J(\theta)\)</span>对它的一个变量<span class="math">\(\theta\)</span>的梯度定义为：
-</p>
-<div class="math">$$\frac{\partial J(\theta))}{\partial \theta} = \lim_{\delta \theta\rightarrow 0}\frac{J(\theta + \delta \theta)-J(\theta ))}{\delta \theta}$$</div>
-<p>
-某一点上的梯度指向标量场增长最快的方向，梯度的长度就是最大的变化率。</p>
-<h2>梯度下降</h2>
-<p>在高数中，我们求解一个函数的最小值时，最常用的方法就是求出它的导数为0的那个点，进而判断这个点是否能够取最小值。但是，在实际很多情况，我们很难求解出使函数的导数为0的方程，这个时候就可以使用梯度下降。我们知道对于一个函数沿着梯度的那个方向是下降是最快的。例如为了选取一个<span class="math">\(\theta\)</span>使<span class="math">\(J(\theta)\)</span>最小，我们可以先随机选择<span class="math">\(\theta\)</span>一个初始值，然后不断的修改<span class="math">\(\theta\)</span>以减小<span class="math">\(J(\theta)\)</span>，直到<span class="math">\(\theta\)</span>的值不再改变。对于梯度下降法，可以表示为：
-</p>
-<div class="math">$$\theta_{j} = \theta_j - \alpha \frac{\partial J(\theta))}{\partial \theta_j} $$</div>
-<p>
-即不断地向梯度的那个方向（减小最快的方向）更新<span class="math">\(\theta\)</span>，最终使得<span class="math">\(J(\theta)\)</span>最小。其中<span class="math">\(\alpha\)</span>称为学习速率（learning rate），取值太小会导致迭代过慢，取值太大可能错过最值点。</p>
-<blockquote>
-<p>举一个具体的例子，假如你在一座山的山顶准备下山，往哪一个方向走下山最快呢？下山最快的方向是最陡的那个方向，每一步你都应该朝最陡的那个方向走，直到到达山底，学习速率就表示你每一步迈的步伐有多大。</p>
+              <blockquote>
+<p>提升（boosting）方法是一种常用的统计学习方法。在分类问题中，它通过改变训练样本的权重，学习多个分类器，并将这些分类器进行线性组合，提高分类的性能。</p>
 </blockquote>
-<h2>为什么从函数的梯度方向下降可以得到函数的最小值</h2>
-<p>梯度下降法，基于这样的观察：如果实值函数F(x)在点a 处可微且有定义，那么函数 F(x)在a点沿着梯度相反的方向<span class="math">\(-\bigtriangledown F(a)\)</span>下降最快。</p>
-<p>因而，如果
-</p>
-<div class="math">$$b=a-\alpha\bigtriangledown F(a)$$</div>
-<p>
-那么<span class="math">\(F(b) \leq F(a)\)</span>。</p>
-<p>考虑如下序列<span class="math">\(x_0,x_1,x_2,...\)</span>使得
-</p>
-<div class="math">$$x_{n+1}=x_n-\alpha\bigtriangledown F(x_n)$$</div>
-<p>
-因此可以得到：
-<span class="math">\(F(x_0) \geq F(x_1) \geq F(x_2) \geq ...\)</span>
-如果顺利的话序列最终可以收敛到期望的极值。</p>
-<p><img alt="梯度下降描述" src="http://upload.wikimedia.org/wikipedia/commons/thumb/7/79/Gradient_descent.png/350px-Gradient_descent.png" /></p>
-<p><strong>注意</strong>：梯度下降得到的结果可能是局部最优值。如果<span class="math">\(F(x)\)</span>是凸函数，则可以保证梯度下降得到的是全局最优值。</p>
-<h2>批梯度下降法</h2>
-<p>批梯度下降法（batch gradient descent）的算法描述如下：</p>
-<p>对每一个j重复以下过程直到收敛 {
-    </p>
-<div class="math">$$\theta_{j} = \theta_j - \alpha \sum_{i=1}^{m}\frac{\partial J(\theta , z))}{\partial \theta_j} $$</div>
-<p>
-}</p>
-<p>其中假设训练样本数有m个，每个样本用<span class="math">\(z_i\)</span>可以表示为<span class="math">\((x_i, y_i)\)</span>。可以看出，使用批梯度下降法每一次更新<span class="math">\(\theta_j\)</span>都需要遍历训练样本中的所有样本。</p>
-<h2>随机梯度下降法</h2>
-<p>除了批梯度下降法之外，还有一种算法称为——<strong>随机梯度下降法（stochastic gradient descent，SGD）</strong>。算法描述如下：</p>
-<blockquote>
-<p>Loop {
-for i=1 to m, {
-<div class="math">$$\theta_{j} = \theta_j - \alpha\frac{\partial J(\theta , z_i))}{\partial \theta_j} $$</div>
-}
-}</p>
-</blockquote>
-<p>每一次更新只使用了一个训练样本，但更新了m次。</p>
-<p>批梯度下降法每更新一步都需要遍历所有的样本数据，如果样本数m很大的话，就会非常的耗时；而对于随机梯度下降，每一遇到一个样本数据，就可以马上更新。通常情况下，使用随机梯度下降法的速度会比批梯度下降法快很多。因此，当样本数很大的时候，我们通常都选择使用随机梯度下降法。</p>
-<h2>关于梯度下降法中学习速率的取值问题</h2>
-<p>前面提到<span class="math">\(\alpha\)</span>称为学习速率（learning rate），取值太小会导致迭代过慢，取值太大可能错过最值点。所以对<span class="math">\(\alpha\)</span>还是非常重要的。最常见的对<span class="math">\(\alpha\)</span>的选择策略为：</p>
+<h2>提升方法AdaBoost算法</h2>
+<h3>提升方法的基本思路</h3>
+<p>提升方法基于这一思想：对于一个复杂的任务来说，将多个专家的判断进行适当的综合所得出的判断，要比其中任何一个专家的单独判断好。</p>
+<p>在概率近似正确（probably approximately correct， PAC）学习框架中，一个概念（或者类），如果存在一个多项式学习算法能够学习它，并且正确率很高，那么就称这个概念是<strong>强可学习的</strong>；如果存在一个多项式学习算法能够学习它，并且正确率仅比随机猜测略好，那么就称这个概念是<strong>弱可学习的</strong>。可以证明强可学习与弱可学习是等价的。</p>
+<p>这样一来，我们在学习中，如果发现了“弱学习算法”，那么能否将它提升（boost）为“强学习算法”。弱学习算法通常要比强学习算法容易得多，那么如何具体实施提升？关于提升的方法最具代表性的是AdaBoost算法。</p>
+<p>对于分类问题而言，一个粗糙的分类规则要比精确的分类规则容易的多。<strong>提升方法就是从弱学习算法出发，反复学习，得到一系列弱分类器，然后组合这些弱分类器构成一个强分类器。</strong>大多数提升方法都是改变训练数据的概率分布（训练数据的权值分布），针对不同的训练数据分布调用弱学习算法学习一系列弱分类器。</p>
+<p>这样，对提升方法来说，<strong>有两个问题</strong>：</p>
 <ol>
-<li>不变策略：<span class="math">\(\alpha_k=\alpha_0\)</span>.</li>
-<li>1/k策略：<span class="math">\(\alpha_k=\alpha_0\frac{\tau}{\tau + k}\)</span>.</li>
+<li>每一轮如何改变训练数据的权值或概率分布</li>
+<li>如何将弱分类器组合成一个强分类器。</li>
 </ol>
-<p>具体的取值方法，还是需要根据实际的数据进行实验得出。</p>
+<p>对于第一个问题，AdaBoost通过提高前一轮弱分类器错误分类样本的权值，而降低被正确分类样本的权值，这样那些没有被正确分类的数据，在后一轮就会受到弱分类器更大的关注。对于第二个问题，AdaBoost采取加权多数表决的方法，加大分类误差率小的弱分类器的权值，使其在表决中起较大的作用，减小分类误差率大的弱分类器的权值，使其在表决中起较小的作用。</p>
+<h3>AdaBoost算法</h3>
+<p>输入：训练数据集T；弱学习算法</p>
+<p>输出：最终分类器G(x)</p>
+<p>（1）初始化训练数据的权值分布
+</p>
+<div class="math">$$D_1=(w_{11},...,w_{1i},...,w_{1N}), 　w_{1i}=\frac{1}{N}, 　i=1,2,...,N$$</div>
+<p>
+其中N为样本数据的总数，D的下标为m代表的是第几轮，假设训练数据集具有均匀的权值分布。</p>
+<p>（2）在每一轮对m=1,2,...,M依次执行下列操作：</p>
+<p>（a）使用具有权值分布<span class="math">\(D_m\)</span>的训练数据集进行学习，得到基本分类器
+</p>
+<div class="math">$$G_m(x):\chi \rightarrow \{-1, +1\}$$</div>
+<p>（b）计算<span class="math">\(G_m(x)\)</span>在训练数据集上的分类误差率
+</p>
+<div class="math">$$e_m=P(G_m(x_i) \neq y_i)=\sum_{i=1}^{N}w_{mi}I(G_m(x_i) \neq y_i)$$</div>
+<p>（c）计算<span class="math">\(G_m(x)\)</span>的系数
+</p>
+<div class="math">$$\alpha_m=\frac{1}{2}log\frac{1-e_m}{e_m}$$</div>
+<p>
+这里的对数为自然对数。<span class="math">\(\alpha_m\)</span>随着<span class="math">\(e_m\)</span>的减小而增大。</p>
+<p>（d）更新训练数据集的权值分布
+</p>
+<div class="math">$$D_{m+1}=(w_{m+1,1},...,w_{m+1,i},...,w_{m+1,N}) $$</div>
+<div class="math">$$w_{m+1,i}=\frac{w_{mi}}{Z_m}exp(-\alpha_my_iG_m(x_i)), 　i=1,2,...,N$$</div>
+<p>
+即：
+</p>
+<div class="math">$$w_{mm+1,i}=\left\{\begin{matrix}
+\frac{w_{mi}}{Z_m}e^{-\alpha_m}, &amp; G_m(x_i)=y_i\\ 
+\frac{w_{mi}}{Z_m}e^{\alpha_m} &amp; G_m(x_i) \neq y_i
+\end{matrix}\right.$$</div>
+<p>
+可见被基本分类器误分类样本的权值得以扩大，被正确分类的权值缩小。</p>
+<p>这里<span class="math">\(Z_m\)</span>是规范化因子，使概率总和为1
+</p>
+<div class="math">$$Z_m=\sum_{i=1}^Nw_{mi}exp(-\alpha_my_iG_m(x_i))$$</div>
+<p>（3）构建基本分类器的线性组合
+</p>
+<div class="math">$$f(x)=\sum_{m=1}^M\alpha_mG_m(x)$$</div>
+<p>
+得到最终分类器
+</p>
+<div class="math">$$G(x)=sign(f(x))=sign(\sum_{m=1}^M\alpha_mG_m(x))$$</div>
 <hr />
-<h2>References</h2>
-<ol>
-<li>http://zh.wikipedia.org/wiki/%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D%E6%B3%95</li>
-<li>http://www.iro.umontreal.ca/~bengioy/ift6266/H12/html/gradient_en.html</li>
-</ol>
+<h2>AdaBoost算法的训练误差分析</h2>
+<p>AdaBoost算法最基本的性质是它能在学习过程中不断减小训练误差，即在训练数据集上的分类误差率。</p>
+<p><strong>AdaBoost的训练误差界：</strong></p>
+<p>AdaBoost算法最终分类器的训练误差界为
+</p>
+<div class="math">$$\frac{1}{N}\sum_{i=1}^{N}I(G(x_i) \neq y_i) \leq \frac{1}{N}\sum_iexp(-y_if(x_i))= \prod_mZ_m$$</div>
+<p>说明，可以再每轮选取适当的<span class="math">\(G_m\)</span>使得<span class="math">\(Z_m\)</span>最小，从而使得训练误差下降最快。对于二类分类问题，有如下结果。</p>
+<p><strong>二类分类问题AdaBoost的训练误差界：</strong>
+</p>
+<div class="math">$$\prod_{m=1}^{M}Z_m=\prod_{m=1}^{M}[2\sqrt{e_m(1-e_m)}]=\prod_{m=1}^{M}\sqrt{(1-4\gamma_m^2)} \leq exp(-2\sum_{m=1}^{M}\gamma_m^2)　其中\gamma_m=\frac{1}{2}-e_m$$</div>
+<p>如果存在<span class="math">\(\gamma &gt; 0\)</span>，对所有m有<span class="math">\(r_m \geq \gamma\)</span>，则
+</p>
+<div class="math">$$\frac{1}{N}\sum_{i=1}^{N}I(G(x_i) \neq y_i) \leq exp(-2M\gamma^2)$$</div>
+<p>这表明在此条件下<strong>AdaBoost的训练误差是以指数速率下降的</strong>。</p>
+<hr />
+<h2>AdaBoost算法的解释</h2>
+<p>AdaBoost算法另外一种解释是，AdaBoost算法是模型为加法模型、损失函数为指数函数、学习算法为前向分步算法时的二类分类学习方法。</p>
+<h3>前向分步算法</h3>
+<p>考虑加法模型（additive model）
+</p>
+<div class="math">$$f(x)=\sum_{m=1}^{M}\beta_mb(x;\gamma_m)$$</div>
+<p>
+其中<span class="math">\(b(x;\gamma_m)\)</span>是基函数，<span class="math">\(\gamma_m\)</span>是基函数的参数，<span class="math">\(\beta_m\)</span>是基函数的系数。</p>
+<p>在给定训练数据及损失函数L(y,f(x))的条件下，学习加法模型f(x)成为经典风险极小化即损失函数极小化问题：
+</p>
+<div class="math">$$min_{\beta_m, \gamma_m}\sum_{i=1}^{N}L(y_i,\sum_{m=1}^{M}\beta_mb(x_i;\gamma_m))$$</div>
+<p>
+前向分步算法（forward stagewise algorithm）求解这一优化问题的想法是：因为学习的是加法模型，如果能够从前向后，每一步只学习一个基函数及其系数，逐步逼近优化目标函数式，那么就可以简化优化的复杂度。具体的，每步只需优化如下损失函数：
+</p>
+<div class="math">$$min_{\beta, \gamma}\sum_{i=1}^{N}L(y_i,\beta b(x_i;\gamma))$$</div>
+<p><strong>前向分步算法：</strong></p>
+<p>输入：训练数据集T；损失函数L(y,f(x))；基函数集<span class="math">\({b(x;\gamma)}\)</span></p>
+<p>输出：加法模型f(x)</p>
+<p>（1）初始化<span class="math">\(f_0(x)=0\)</span></p>
+<p>（2）对m=1,2,...,M</p>
+<p>（a）极小化损失函数
+</p>
+<div class="math">$$(\beta_m, \gamma_m)=argmin_{\beta, \gamma}\sum_{i=1}^{N}L(y_i,f_{m-1}(x_i)+\beta b(x_i;\gamma))$$</div>
+<p>
+ 得到参数<span class="math">\(\beta_m, \gamma_m\)</span></p>
+<p>（b）更新
+</p>
+<div class="math">$$f_m(x)=f_{m-1}(x)+\beta b(x;\gamma_m)$$</div>
+<p>（3）得到加法模型
+</p>
+<div class="math">$$f(x)=f_M(x)=\sum_{m=1}^M\beta_mb(x;\gamma_m)$$</div>
+<p>这样优化问题就化为逐次求解各个<span class="math">\(\beta_m, \gamma_m\)</span>的优化问题。</p>
+<h3>前向分步算法与AdaBoost</h3>
+<p>AdaBoost算法是前向分步加法算法的特例。这时，模型是由基本分类器组成的加法模型，损失函数是指数函数。</p>
+<hr />
+<h2>Reference</h2>
+<p>[统计学习方法][2]第八章</p>
 <script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
     var align = "center",
         indent = "0em",
@@ -179,7 +226,7 @@ for i=1 to m, {
               <h3>Comments</h3>
               <div id="disqus_thread"></div>
               <script type="text/javascript">
-                var disqus_identifier = "ti-du-xia-jiang-fa.html";
+                var disqus_identifier = "adaboostsuan-fa.html";
                 (function() {
                 var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
                 dsq.src = 'http://wengwt.disqus.com/embed.js';

@@ -2550,7 +2550,155 @@ str.format()是Python最为推荐的字符串格式化方法，当然也是最Py
 &lt;blockquote&gt;
 &lt;p&gt;信息技术协会致力于为北大深研院的同学们营造一个学习和交流信息学科得环境和氛围，为大家提供有关信息领域的设计、应用、资讯等方面的信息。信息技术协会积极打造与深港信息类企业合作和联动的平台，帮助学生走出校园，观察产业发展动态；积极开展电脑维护活动，帮助同学们解决生活中遇到的技术困难。在以后，信息技术协会仍然会坚持协会宗旨，继续为大家服务。&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;转自：http://news.pkusz.edu.cn/article-143-4357.html&lt;/p&gt;</summary><category term="校园"></category></entry><entry><title>支持向量机——SMO（序列最小最优化算法）</title><link href="http://www.wengweitao.com/zhi-chi-xiang-liang-ji-smoxu-lie-zui-xiao-zui-you-hua-suan-fa.html" rel="alternate"></link><updated>2014-08-05T10:02:00+08:00</updated><author><name>wwt</name></author><id>tag:www.wengweitao.com,2014-08-05:zhi-chi-xiang-liang-ji-smoxu-lie-zui-xiao-zui-you-hua-suan-fa.html</id><summary type="html">&lt;blockquote&gt;
+&lt;p&gt;转自：http://news.pkusz.edu.cn/article-143-4357.html&lt;/p&gt;</summary><category term="校园"></category></entry><entry><title>AdaBoost算法</title><link href="http://www.wengweitao.com/adaboostsuan-fa.html" rel="alternate"></link><updated>2014-08-06T19:56:00+08:00</updated><author><name>wwt</name></author><id>tag:www.wengweitao.com,2014-08-06:adaboostsuan-fa.html</id><summary type="html">&lt;blockquote&gt;
+&lt;p&gt;提升（boosting）方法是一种常用的统计学习方法。在分类问题中，它通过改变训练样本的权重，学习多个分类器，并将这些分类器进行线性组合，提高分类的性能。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2&gt;提升方法AdaBoost算法&lt;/h2&gt;
+&lt;h3&gt;提升方法的基本思路&lt;/h3&gt;
+&lt;p&gt;提升方法基于这一思想：对于一个复杂的任务来说，将多个专家的判断进行适当的综合所得出的判断，要比其中任何一个专家的单独判断好。&lt;/p&gt;
+&lt;p&gt;在概率近似正确（probably approximately correct， PAC）学习框架中，一个概念（或者类），如果存在一个多项式学习算法能够学习它，并且正确率很高，那么就称这个概念是&lt;strong&gt;强可学习的&lt;/strong&gt;；如果存在一个多项式学习算法能够学习它，并且正确率仅比随机猜测略好，那么就称这个概念是&lt;strong&gt;弱可学习的&lt;/strong&gt;。可以证明强可学习与弱可学习是等价的。&lt;/p&gt;
+&lt;p&gt;这样一来，我们在学习中，如果发现了“弱学习算法”，那么能否将它提升（boost）为“强学习算法”。弱学习算法通常要比强学习算法容易得多，那么如何具体实施提升？关于提升的方法最具代表性的是AdaBoost算法。&lt;/p&gt;
+&lt;p&gt;对于分类问题而言，一个粗糙的分类规则要比精确的分类规则容易的多。&lt;strong&gt;提升方法就是从弱学习算法出发，反复学习，得到一系列弱分类器，然后组合这些弱分类器构成一个强分类器。&lt;/strong&gt;大多数提升方法都是改变训练数据的概率分布（训练数据的权值分布），针对不同的训练数据分布调用弱学习算法学习一系列弱分类器。&lt;/p&gt;
+&lt;p&gt;这样，对提升方法来说，&lt;strong&gt;有两个问题&lt;/strong&gt;：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;每一轮如何改变训练数据的权值或概率分布&lt;/li&gt;
+&lt;li&gt;如何将弱分类器组合成一个强分类器。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;对于第一个问题，AdaBoost通过提高前一轮弱分类器错误分类样本的权值，而降低被正确分类样本的权值，这样那些没有被正确分类的数据，在后一轮就会受到弱分类器更大的关注。对于第二个问题，AdaBoost采取加权多数表决的方法，加大分类误差率小的弱分类器的权值，使其在表决中起较大的作用，减小分类误差率大的弱分类器的权值，使其在表决中起较小的作用。&lt;/p&gt;
+&lt;h3&gt;AdaBoost算法&lt;/h3&gt;
+&lt;p&gt;输入：训练数据集T；弱学习算法&lt;/p&gt;
+&lt;p&gt;输出：最终分类器G(x)&lt;/p&gt;
+&lt;p&gt;（1）初始化训练数据的权值分布
+&lt;/p&gt;
+&lt;div class="math"&gt;$$D_1=(w_{11},...,w_{1i},...,w_{1N}), 　w_{1i}=\frac{1}{N}, 　i=1,2,...,N$$&lt;/div&gt;
+&lt;p&gt;
+其中N为样本数据的总数，D的下标为m代表的是第几轮，假设训练数据集具有均匀的权值分布。&lt;/p&gt;
+&lt;p&gt;（2）在每一轮对m=1,2,...,M依次执行下列操作：&lt;/p&gt;
+&lt;p&gt;（a）使用具有权值分布&lt;span class="math"&gt;\(D_m\)&lt;/span&gt;的训练数据集进行学习，得到基本分类器
+&lt;/p&gt;
+&lt;div class="math"&gt;$$G_m(x):\chi \rightarrow \{-1, +1\}$$&lt;/div&gt;
+&lt;p&gt;（b）计算&lt;span class="math"&gt;\(G_m(x)\)&lt;/span&gt;在训练数据集上的分类误差率
+&lt;/p&gt;
+&lt;div class="math"&gt;$$e_m=P(G_m(x_i) \neq y_i)=\sum_{i=1}^{N}w_{mi}I(G_m(x_i) \neq y_i)$$&lt;/div&gt;
+&lt;p&gt;（c）计算&lt;span class="math"&gt;\(G_m(x)\)&lt;/span&gt;的系数
+&lt;/p&gt;
+&lt;div class="math"&gt;$$\alpha_m=\frac{1}{2}log\frac{1-e_m}{e_m}$$&lt;/div&gt;
+&lt;p&gt;
+这里的对数为自然对数。&lt;span class="math"&gt;\(\alpha_m\)&lt;/span&gt;随着&lt;span class="math"&gt;\(e_m\)&lt;/span&gt;的减小而增大。&lt;/p&gt;
+&lt;p&gt;（d）更新训练数据集的权值分布
+&lt;/p&gt;
+&lt;div class="math"&gt;$$D_{m+1}=(w_{m+1,1},...,w_{m+1,i},...,w_{m+1,N}) $$&lt;/div&gt;
+&lt;div class="math"&gt;$$w_{m+1,i}=\frac{w_{mi}}{Z_m}exp(-\alpha_my_iG_m(x_i)), 　i=1,2,...,N$$&lt;/div&gt;
+&lt;p&gt;
+即：
+&lt;/p&gt;
+&lt;div class="math"&gt;$$w_{mm+1,i}=\left\{\begin{matrix}
+\frac{w_{mi}}{Z_m}e^{-\alpha_m}, &amp;amp; G_m(x_i)=y_i\\ 
+\frac{w_{mi}}{Z_m}e^{\alpha_m} &amp;amp; G_m(x_i) \neq y_i
+\end{matrix}\right.$$&lt;/div&gt;
+&lt;p&gt;
+可见被基本分类器误分类样本的权值得以扩大，被正确分类的权值缩小。&lt;/p&gt;
+&lt;p&gt;这里&lt;span class="math"&gt;\(Z_m\)&lt;/span&gt;是规范化因子，使概率总和为1
+&lt;/p&gt;
+&lt;div class="math"&gt;$$Z_m=\sum_{i=1}^Nw_{mi}exp(-\alpha_my_iG_m(x_i))$$&lt;/div&gt;
+&lt;p&gt;（3）构建基本分类器的线性组合
+&lt;/p&gt;
+&lt;div class="math"&gt;$$f(x)=\sum_{m=1}^M\alpha_mG_m(x)$$&lt;/div&gt;
+&lt;p&gt;
+得到最终分类器
+&lt;/p&gt;
+&lt;div class="math"&gt;$$G(x)=sign(f(x))=sign(\sum_{m=1}^M\alpha_mG_m(x))$$&lt;/div&gt;
+&lt;hr /&gt;
+&lt;h2&gt;AdaBoost算法的训练误差分析&lt;/h2&gt;
+&lt;p&gt;AdaBoost算法最基本的性质是它能在学习过程中不断减小训练误差，即在训练数据集上的分类误差率。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;AdaBoost的训练误差界：&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;AdaBoost算法最终分类器的训练误差界为
+&lt;/p&gt;
+&lt;div class="math"&gt;$$\frac{1}{N}\sum_{i=1}^{N}I(G(x_i) \neq y_i) \leq \frac{1}{N}\sum_iexp(-y_if(x_i))= \prod_mZ_m$$&lt;/div&gt;
+&lt;p&gt;说明，可以再每轮选取适当的&lt;span class="math"&gt;\(G_m\)&lt;/span&gt;使得&lt;span class="math"&gt;\(Z_m\)&lt;/span&gt;最小，从而使得训练误差下降最快。对于二类分类问题，有如下结果。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;二类分类问题AdaBoost的训练误差界：&lt;/strong&gt;
+&lt;/p&gt;
+&lt;div class="math"&gt;$$\prod_{m=1}^{M}Z_m=\prod_{m=1}^{M}[2\sqrt{e_m(1-e_m)}]=\prod_{m=1}^{M}\sqrt{(1-4\gamma_m^2)} \leq exp(-2\sum_{m=1}^{M}\gamma_m^2)　其中\gamma_m=\frac{1}{2}-e_m$$&lt;/div&gt;
+&lt;p&gt;如果存在&lt;span class="math"&gt;\(\gamma &amp;gt; 0\)&lt;/span&gt;，对所有m有&lt;span class="math"&gt;\(r_m \geq \gamma\)&lt;/span&gt;，则
+&lt;/p&gt;
+&lt;div class="math"&gt;$$\frac{1}{N}\sum_{i=1}^{N}I(G(x_i) \neq y_i) \leq exp(-2M\gamma^2)$$&lt;/div&gt;
+&lt;p&gt;这表明在此条件下&lt;strong&gt;AdaBoost的训练误差是以指数速率下降的&lt;/strong&gt;。&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h2&gt;AdaBoost算法的解释&lt;/h2&gt;
+&lt;p&gt;AdaBoost算法另外一种解释是，AdaBoost算法是模型为加法模型、损失函数为指数函数、学习算法为前向分步算法时的二类分类学习方法。&lt;/p&gt;
+&lt;h3&gt;前向分步算法&lt;/h3&gt;
+&lt;p&gt;考虑加法模型（additive model）
+&lt;/p&gt;
+&lt;div class="math"&gt;$$f(x)=\sum_{m=1}^{M}\beta_mb(x;\gamma_m)$$&lt;/div&gt;
+&lt;p&gt;
+其中&lt;span class="math"&gt;\(b(x;\gamma_m)\)&lt;/span&gt;是基函数，&lt;span class="math"&gt;\(\gamma_m\)&lt;/span&gt;是基函数的参数，&lt;span class="math"&gt;\(\beta_m\)&lt;/span&gt;是基函数的系数。&lt;/p&gt;
+&lt;p&gt;在给定训练数据及损失函数L(y,f(x))的条件下，学习加法模型f(x)成为经典风险极小化即损失函数极小化问题：
+&lt;/p&gt;
+&lt;div class="math"&gt;$$min_{\beta_m, \gamma_m}\sum_{i=1}^{N}L(y_i,\sum_{m=1}^{M}\beta_mb(x_i;\gamma_m))$$&lt;/div&gt;
+&lt;p&gt;
+前向分步算法（forward stagewise algorithm）求解这一优化问题的想法是：因为学习的是加法模型，如果能够从前向后，每一步只学习一个基函数及其系数，逐步逼近优化目标函数式，那么就可以简化优化的复杂度。具体的，每步只需优化如下损失函数：
+&lt;/p&gt;
+&lt;div class="math"&gt;$$min_{\beta, \gamma}\sum_{i=1}^{N}L(y_i,\beta b(x_i;\gamma))$$&lt;/div&gt;
+&lt;p&gt;&lt;strong&gt;前向分步算法：&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;输入：训练数据集T；损失函数L(y,f(x))；基函数集&lt;span class="math"&gt;\({b(x;\gamma)}\)&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;输出：加法模型f(x)&lt;/p&gt;
+&lt;p&gt;（1）初始化&lt;span class="math"&gt;\(f_0(x)=0\)&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;（2）对m=1,2,...,M&lt;/p&gt;
+&lt;p&gt;（a）极小化损失函数
+&lt;/p&gt;
+&lt;div class="math"&gt;$$(\beta_m, \gamma_m)=argmin_{\beta, \gamma}\sum_{i=1}^{N}L(y_i,f_{m-1}(x_i)+\beta b(x_i;\gamma))$$&lt;/div&gt;
+&lt;p&gt;
+ 得到参数&lt;span class="math"&gt;\(\beta_m, \gamma_m\)&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;（b）更新
+&lt;/p&gt;
+&lt;div class="math"&gt;$$f_m(x)=f_{m-1}(x)+\beta b(x;\gamma_m)$$&lt;/div&gt;
+&lt;p&gt;（3）得到加法模型
+&lt;/p&gt;
+&lt;div class="math"&gt;$$f(x)=f_M(x)=\sum_{m=1}^M\beta_mb(x;\gamma_m)$$&lt;/div&gt;
+&lt;p&gt;这样优化问题就化为逐次求解各个&lt;span class="math"&gt;\(\beta_m, \gamma_m\)&lt;/span&gt;的优化问题。&lt;/p&gt;
+&lt;h3&gt;前向分步算法与AdaBoost&lt;/h3&gt;
+&lt;p&gt;AdaBoost算法是前向分步加法算法的特例。这时，模型是由基本分类器组成的加法模型，损失函数是指数函数。&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h2&gt;Reference&lt;/h2&gt;
+&lt;p&gt;[统计学习方法][2]第八章&lt;/p&gt;
+&lt;script type="text/javascript"&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "false";
+
+    if (false) {
+        align = (screen.width &lt; 768) ? "left" : align;
+        indent = (screen.width &lt; 768) ? "0em" : indent;
+        linebreak = (screen.width &lt; 768) ? 'true' : linebreak;
+    }
+    
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = '//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); ";
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+&lt;/script&gt;</summary><category term="读书笔记"></category></entry><entry><title>支持向量机——SMO（序列最小最优化算法）</title><link href="http://www.wengweitao.com/zhi-chi-xiang-liang-ji-smoxu-lie-zui-xiao-zui-you-hua-suan-fa.html" rel="alternate"></link><updated>2014-08-05T10:02:00+08:00</updated><author><name>wwt</name></author><id>tag:www.wengweitao.com,2014-08-05:zhi-chi-xiang-liang-ji-smoxu-lie-zui-xiao-zui-you-hua-suan-fa.html</id><summary type="html">&lt;blockquote&gt;
 &lt;p&gt;SVM的学习算法可以归结为凸二次规划问题。这样的凸二次规划问题你具有全局最优解，并且许多最优化算法可以用来求解，但是当训练样本容量很大，这些算法往往变得非常低效，以致无法使用。所以本文介绍了如何高效地实现支持向量机学习。&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;我们将用序列最小最优化（sequential minimal optimization, SMO）算法，求解
@@ -2673,11 +2821,11 @@ L,　\alpha_2^{new, unc}　&amp;lt; L
 &lt;p&gt;
  其中，S是所有支持向量&lt;span class="math"&gt;\(x_j\)&lt;/span&gt;的集合。&lt;/p&gt;
 &lt;h2&gt;SMO算法&lt;/h2&gt;
-&lt;p&gt;输入：训练数据集T，精度$\varepsilon $&lt;/p&gt;
+&lt;p&gt;输入：训练数据集T，精度&lt;span class="math"&gt;\(\varepsilon\)&lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;输出：近似解&lt;span class="math"&gt;\(\widehat{\alpha}\)&lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;（1）取初值&lt;span class="math"&gt;\(\alpha^{(0)}=0\)&lt;/span&gt;，令k=0&lt;/p&gt;
 &lt;p&gt;（2）选取优化变量&lt;span class="math"&gt;\(\alpha_1^{(k)},\alpha_2^{(k)}\)&lt;/span&gt;，解析求解两个变量的最优化问题，求得最优解&lt;span class="math"&gt;\(\alpha_1^{(k+1)},\alpha_2^{(k+1)}\)&lt;/span&gt;，更新&lt;span class="math"&gt;\(\alpha\)&lt;/span&gt;为&lt;span class="math"&gt;\(\alpha^{(k+1)}\)&lt;/span&gt;；&lt;/p&gt;
-&lt;p&gt;（3）若在精度$\varepsilon $范围内满足停机条件
+&lt;p&gt;（3）若在精度&lt;span class="math"&gt;\(\varepsilon\)&lt;/span&gt;范围内满足停机条件
 &lt;/p&gt;
 &lt;div class="math"&gt;$$\sum_{i=1}^N\alpha_iy_i=0$$&lt;/div&gt;
 &lt;div class="math"&gt;$$0 \leq \alpha_i \leq C 　i=1,2,...,N$$&lt;/div&gt;
