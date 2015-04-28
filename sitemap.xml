@@ -5,28 +5,28 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://www.wengweitao.com/</loc>
-<lastmod>2015-04-28T21:44:12-00:00</lastmod>
+<lastmod>2015-04-28T23:21:22-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://www.wengweitao.com/archives.html</loc>
-<lastmod>2015-04-28T21:44:12-00:00</lastmod>
+<lastmod>2015-04-28T23:21:22-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://www.wengweitao.com/tags.html</loc>
-<lastmod>2015-04-28T21:44:12-00:00</lastmod>
+<lastmod>2015-04-28T23:21:22-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://www.wengweitao.com/categories.html</loc>
-<lastmod>2015-04-28T21:44:12-00:00</lastmod>
+<lastmod>2015-04-28T23:21:22-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -132,6 +132,13 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
 <loc>http://www.wengweitao.com/xin-xi-ji-zhu-xie-hui-di-yi-qi-dian-nao-ji-zhu-pei-xun-shun-li-ju-ban.html</loc>
 <lastmod>2014-10-18T20:12:00-00:00</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+
+<url>
+<loc>http://www.wengweitao.com/ti-sheng-shu.html</loc>
+<lastmod>2014-08-07T22:27:00-00:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
@@ -257,7 +264,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://www.wengweitao.com/category/ji-qi-xue-xi.html</loc>
-<lastmod>2014-08-06T19:56:00+08:06</lastmod>
+<lastmod>2014-08-07T22:27:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -313,7 +320,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://www.wengweitao.com/tag/du-shu-bi-ji.html</loc>
-<lastmod>2014-08-06T19:56:00+08:06</lastmod>
+<lastmod>2014-08-07T22:27:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>

@@ -2550,7 +2550,130 @@ str.format()是Python最为推荐的字符串格式化方法，当然也是最Py
 &lt;blockquote&gt;
 &lt;p&gt;信息技术协会致力于为北大深研院的同学们营造一个学习和交流信息学科得环境和氛围，为大家提供有关信息领域的设计、应用、资讯等方面的信息。信息技术协会积极打造与深港信息类企业合作和联动的平台，帮助学生走出校园，观察产业发展动态；积极开展电脑维护活动，帮助同学们解决生活中遇到的技术困难。在以后，信息技术协会仍然会坚持协会宗旨，继续为大家服务。&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;转自：http://news.pkusz.edu.cn/article-143-4357.html&lt;/p&gt;</summary><category term="校园"></category></entry><entry><title>AdaBoost算法</title><link href="http://www.wengweitao.com/adaboostsuan-fa.html" rel="alternate"></link><updated>2014-08-06T19:56:00+08:00</updated><author><name>wwt</name></author><id>tag:www.wengweitao.com,2014-08-06:adaboostsuan-fa.html</id><summary type="html">&lt;blockquote&gt;
+&lt;p&gt;转自：http://news.pkusz.edu.cn/article-143-4357.html&lt;/p&gt;</summary><category term="校园"></category></entry><entry><title>提升树</title><link href="http://www.wengweitao.com/ti-sheng-shu.html" rel="alternate"></link><updated>2014-08-07T22:27:00+08:00</updated><author><name>wwt</name></author><id>tag:www.wengweitao.com,2014-08-07:ti-sheng-shu.html</id><summary type="html">&lt;blockquote&gt;
+&lt;p&gt;提升树是以分类树或回归树为基本分类器的提升方法。提升树被认为是统计学习中性能最好的方法之一。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2&gt;提升树模型&lt;/h2&gt;
+&lt;p&gt;以决策树为基函数的提升方法称为提升树（boosting tree）。一个基本分类器x &amp;lt; v或者x &amp;gt; v，可以看作是由一个根结点直接连接两个叶节点的简单决策树，即所谓的决策树桩（decision stump）。提升树模型可以表示为决策树的加法模型：
+&lt;/p&gt;
+&lt;div class="math"&gt;$$f_M(x)=\sum_{m=1}^{M}T(x;\varTheta_m)$$&lt;/div&gt;
+&lt;p&gt;其中，&lt;span class="math"&gt;\(T(x;\varTheta_m)\)&lt;/span&gt;表示决策树；&lt;span class="math"&gt;\(\varTheta_m\)&lt;/span&gt;为决策树的参数；M为树的个数。&lt;/p&gt;
+&lt;h2&gt;提升树算法&lt;/h2&gt;
+&lt;p&gt;提升树算法采用前向分步算法。首先，确定原始提升树&lt;span class="math"&gt;\(f_0(x)=0\)&lt;/span&gt;，第m步的模型是
+&lt;/p&gt;
+&lt;div class="math"&gt;$$f_m(x)=f_{m-1}(x)+T(x;\varTheta_m)$$&lt;/div&gt;
+&lt;p&gt;
+其中，&lt;span class="math"&gt;\(f_{m-1}(x)\)&lt;/span&gt;为当前模型，通过经验风险最小化确定下一棵决策树的参数&lt;span class="math"&gt;\(\varTheta_m\)&lt;/span&gt;
+&lt;/p&gt;
+&lt;div class="math"&gt;$$\widehat{\varTheta_m}=argmin_{\varTheta_m}\sum_{i=1}^{N}L(y_i,f_{m-1}(x_i)+T(x_i;\varTheta_m))$$&lt;/div&gt;
+&lt;p&gt;针对不同问题的提升树算法，其主要区别是使用的损失函数不同。包括用平方误差损失函数的回归问题，用指数损失函数的分类问题你，以及用一般损失函数的一般决策问题。&lt;/p&gt;
+&lt;p&gt;对于&lt;strong&gt;回归问题的提升树&lt;/strong&gt;。已知一个训练数据集T，如果将输入空间&lt;span class="math"&gt;\(\chi\)&lt;/span&gt;划分为J个互不相交的区域&lt;span class="math"&gt;\(R_1, R_2,...,R_j\)&lt;/span&gt;，并且在每个区域上确定输出的常量&lt;span class="math"&gt;\(c_j\)&lt;/span&gt;，那么树可以表示为：
+&lt;/p&gt;
+&lt;div class="math"&gt;$$T(x;\varTheta)=\sum_{j=1}^{J}c_jI(x \in R_j)$$&lt;/div&gt;
+&lt;p&gt;
+J是回归树的复杂度即叶节点的个数。&lt;/p&gt;
+&lt;p&gt;回归问题提升树使用以下前向分步算法：
+&lt;/p&gt;
+&lt;div class="math"&gt;$$f_0(x)=0$$&lt;/div&gt;
+&lt;div class="math"&gt;$$f_m(x)=f_{m-1}(x)+T(x;\varTheta_m)$$&lt;/div&gt;
+&lt;div class="math"&gt;$$f_M(x)=\sum_{m=1}^{M}T(x;\varTheta_m)$$&lt;/div&gt;
+&lt;p&gt;在前向分步算法的第m步，给定当前模型&lt;span class="math"&gt;\(f_{m-1}(x)\)&lt;/span&gt;，需求解
+&lt;/p&gt;
+&lt;div class="math"&gt;$$\widehat{\varTheta_m}=argmin_{\varTheta_m}\sum_{i=1}^{N}L(y_i,f_{m-1}(x_i)+T(x_i;\varTheta_m))$$&lt;/div&gt;
+&lt;p&gt;
+得到&lt;span class="math"&gt;\(\widehat{\varTheta_m}\)&lt;/span&gt;，即第m棵树的参数。&lt;/p&gt;
+&lt;p&gt;当采用平方损失误差函数时：
+&lt;/p&gt;
+&lt;div class="math"&gt;$$L(y,f(x)) = (f(x) - y)^2$$&lt;/div&gt;
+&lt;p&gt;
+其损失变为：
+&lt;/p&gt;
+&lt;div class="math"&gt;$$L(y,f_{m-1}(x)+T(x;\varTheta_m)) = [y - f_{m-1}(x)-T(x;\varTheta_m)]^2 = [r - T(x;\varTheta_m)]^2$$&lt;/div&gt;
+&lt;p&gt;
+其中&lt;span class="math"&gt;\(r=y - f_{m-1}(x)\)&lt;/span&gt;，是当前模型拟合数据的&lt;strong&gt;残差（residual）&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;所以对于回归问题的提升树算法，只需简单地拟合当前模型的残差。这样的算法是相当简单的。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;回归问题的提升树算法：&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;输入：训练数据集T&lt;/p&gt;
+&lt;p&gt;输出：提升树&lt;span class="math"&gt;\(f_M(x)\)&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;（1）初始化&lt;span class="math"&gt;\(f_0(x)=0\)&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;（2）对m=1,2,...,M&lt;/p&gt;
+&lt;p&gt;（a）计算残差
+&lt;/p&gt;
+&lt;div class="math"&gt;$$r_{mi}=y_i - f_{m-1}(x_i),　i=1,2,...,N$$&lt;/div&gt;
+&lt;p&gt;（b）拟合残差&lt;span class="math"&gt;\(r_{mi}\)&lt;/span&gt;学习一棵回归树，得到&lt;span class="math"&gt;\(T(x;\varTheta_m)\)&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;（c）更新&lt;span class="math"&gt;\(f_m(x)=f_{m-1}(x)+T(x;\varTheta_m)\)&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;（3）得到回归问题提升树
+&lt;/p&gt;
+&lt;div class="math"&gt;$$f_M(x)=\sum_{m=1}^{M}T(x;\varTheta_m)$$&lt;/div&gt;
+&lt;h2&gt;梯度提升&lt;/h2&gt;
+&lt;p&gt;当损失函数是平方损失和指数损失函数时，每一步的优化使很简单的。但对一般的损失函数而言，往往每一步的优化就没有那么容易了。针对这一问题，提出了&lt;strong&gt;梯度提升（gradient boosting）&lt;/strong&gt;算法。这是利用最速下降法的近似算法，其关键是利用损失函数的负梯度在当前模型下的值：
+&lt;/p&gt;
+&lt;div class="math"&gt;$$-[\frac{\partial L(y,f(x_i)}{\partial f(x_i)}]_{f(x)=f_{m-1}(x)}$$&lt;/div&gt;
+&lt;p&gt;
+作为回归问题提升树算法中的残差近似值，拟合一棵回归树。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;梯度提升算法：&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;输入：训练数据集T；损失函数L(y,f(x))&lt;/p&gt;
+&lt;p&gt;输出：提升树&lt;span class="math"&gt;\(\widehat{f}(x)\)&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;（1）初始化
+&lt;/p&gt;
+&lt;div class="math"&gt;$$f_0(x)=argmin_c\sum_{i=1}^NL(y_i,c)$$&lt;/div&gt;
+&lt;p&gt;
+估计使损失函数极小化的常数值，它是只有一个根结点的树。&lt;/p&gt;
+&lt;p&gt;（2）对m=1,2,...,M&lt;/p&gt;
+&lt;p&gt;（a）对i=1,2,...,N，计算
+&lt;/p&gt;
+&lt;div class="math"&gt;$$r_{mi}=-[\frac{\partial L(y_i,f(x_i)}{\partial f(x_i)}]_{f(x)=f_{m-1}(x)}$$&lt;/div&gt;
+&lt;p&gt;（b）对&lt;span class="math"&gt;\(r_{mi}\)&lt;/span&gt;拟合一棵回归树，得到第m棵树的叶节点区域&lt;span class="math"&gt;\(R_{mj}\)&lt;/span&gt;, j=1,2,...,J，即估计回归树叶节点区域&lt;/p&gt;
+&lt;p&gt;（c）对j=1,2,...,J，计算
+&lt;/p&gt;
+&lt;div class="math"&gt;$$c_{mj}=argmin_c\sum_{x_i \in R_{mj}}L(y_i, f_{m-1}(x_i)+c)$$&lt;/div&gt;
+&lt;p&gt;
+估计叶节点区域的值，并且使损失函数最小化&lt;/p&gt;
+&lt;p&gt;（d）更新回归树&lt;span class="math"&gt;\(f_m(x)=f_{m-1}(x)+\sum_{j=1}^Jc_{mj}I(x \in R_{mj}）\)&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;（3）得到回归树最终的模型
+&lt;/p&gt;
+&lt;div class="math"&gt;$$\widehat{f}(x)=f_M(x)=\sum_{m=1}^M\sum_{j=1}^Jc_{mj}I(x \in R_{mj}）$$&lt;/div&gt;
+&lt;hr /&gt;
+&lt;h2&gt;Reference&lt;/h2&gt;
+&lt;p&gt;&lt;a href="http://book.douban.com/subject/10590856/"&gt;统计学习方法&lt;/a&gt;第八章&lt;/p&gt;
+&lt;script type="text/javascript"&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "false";
+
+    if (false) {
+        align = (screen.width &lt; 768) ? "left" : align;
+        indent = (screen.width &lt; 768) ? "0em" : indent;
+        linebreak = (screen.width &lt; 768) ? 'true' : linebreak;
+    }
+    
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = '//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); ";
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+&lt;/script&gt;</summary><category term="读书笔记"></category></entry><entry><title>AdaBoost算法</title><link href="http://www.wengweitao.com/adaboostsuan-fa.html" rel="alternate"></link><updated>2014-08-06T19:56:00+08:00</updated><author><name>wwt</name></author><id>tag:www.wengweitao.com,2014-08-06:adaboostsuan-fa.html</id><summary type="html">&lt;blockquote&gt;
 &lt;p&gt;提升（boosting）方法是一种常用的统计学习方法。在分类问题中，它通过改变训练样本的权重，学习多个分类器，并将这些分类器进行线性组合，提高分类的性能。&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h2&gt;提升方法AdaBoost算法&lt;/h2&gt;
@@ -2660,7 +2783,7 @@ str.format()是Python最为推荐的字符串格式化方法，当然也是最Py
 &lt;p&gt;AdaBoost算法是前向分步加法算法的特例。这时，模型是由基本分类器组成的加法模型，损失函数是指数函数。&lt;/p&gt;
 &lt;hr /&gt;
 &lt;h2&gt;Reference&lt;/h2&gt;
-&lt;p&gt;[统计学习方法][2]第八章&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://book.douban.com/subject/10590856/"&gt;统计学习方法&lt;/a&gt;第八章&lt;/p&gt;
 &lt;script type="text/javascript"&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
     var align = "center",
         indent = "0em",

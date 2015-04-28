@@ -60,6 +60,39 @@
         <div class="eleven columns">
                  <ol id="post-list">
                         <li><article class="hentry">
+                                <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/luo-ji-si-di-hui-gui-yu-zui-da-shang-mo-xing.html" rel="bookmark" title="Permalink to 逻辑斯谛回归与最大熵模型">逻辑斯谛回归与最大熵模型</a></h2> </header>
+                                <footer class="post-info">
+                                    <abbr class="published" title="2014-08-01T09:53:00"> Fri 01 August 2014 </abbr>
+                                    <address class="vcard author">By 
+                                    <a class="url fn" href="http://www.wengweitao.com/author/wwt.html"> wwt</a>
+                                    </address>
+                                </footer><!-- /.post-info -->
+                                <div class="entry-content"> <blockquote>
+<p>逻辑斯谛回归（logistic regression）是统计学习中的经典分类方法，可以用于二类分类也可以用于多类分类。最大熵模型由最大熵原理推导出来，最大熵原理是概率模型学习或估计的一个准则，最大熵原理认为在所有可能的概率模型的集合中，熵最大的模型是最好的模型，最大熵模型也可以用于二类分类和多类分类。逻辑斯谛回归模型与最大熵模型都属于对数线性模型<sup id="fnref:log"><a class="footnote-ref" href="#fn:log" rel="footnote">1</a></sup></p>
+</blockquote>
+<h2>逻辑斯谛回归模型</h2>
+<h3>逻辑斯谛分布</h3>
+<p>设X是连续随机变量，X服从逻辑斯谛分布是指X具有如下分布函数和密度函数：
+</p>
+<div class="math">$$F(X)=P(X \leq x)=\frac{1}{1+e^{-(x-u)/\gamma}}$$</div>
+<div class="math">$$f(x)=F'(x)=\frac{e^{-(x-u)/\gamma}}{\gamma(1+e^{-(x-u)/\gamma})^2}$$</div>
+<p>
+其中<span class="math">\(\mu\)</span>为位置参数，<span class="math">\(\gamma &gt; 0\)</span>为形状参数。
+<strong>分布函数的图形是一条S形曲线</strong>（sigmoid ...</p> </div><!-- /.entry-content -->
+
+                                <div class="medium primary btn"><a href="http://www.wengweitao.com/luo-ji-si-di-hui-gui-yu-zui-da-shang-mo-xing.html" rel="bookmark" title="Permalink to 逻辑斯谛回归与最大熵模型">Read more <i class="icon-arrow-right"></i></a></div>
+
+
+
+                                <div class="row tag-row">
+                                        <span>Tagged as : </span>
+                                            <a class="danger label" href="http://www.wengweitao.com/tag/du-shu-bi-ji.html">读书笔记</a>
+                                </div>
+
+
+
+                        </article></li>
+                        <li><article class="hentry">
                                 <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/niu-dun-fa.html" rel="bookmark" title="Permalink to 牛顿法">牛顿法</a></h2> </header>
                                 <footer class="post-info">
                                     <abbr class="published" title="2014-07-30T20:12:00"> Wed 30 July 2014 </abbr>
@@ -204,40 +237,6 @@
 
 
                         </article></li>
-                        <li><article class="hentry">
-                                <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/kjin-lin-fa.html" rel="bookmark" title="Permalink to k近邻法">k近邻法</a></h2> </header>
-                                <footer class="post-info">
-                                    <abbr class="published" title="2014-07-27T16:18:00"> Sun 27 July 2014 </abbr>
-                                    <address class="vcard author">By 
-                                    <a class="url fn" href="http://www.wengweitao.com/author/wwt.html"> wwt</a>
-                                    </address>
-                                </footer><!-- /.post-info -->
-                                <div class="entry-content"> <blockquote>
-<p>k近邻法（k-nearest neighbor, k-NN）是一种基于分类与回归的方法。分类时，对新的待分类的实例，根据其k个最近邻的训练实例的类别，通过多数表决等方式进行预测。因此，k近邻算法不具有显示的学习过程。k值的选择、距离度量及分类决策规则是k近邻法的3个基本要素。</p>
-</blockquote>
-<h2>k近邻算法</h2>
-<p>k近邻算法简单、直观：对新的待分类的实例，根据其k个最近邻的训练实例的类别，通过多数表决等方式进行预测。</p>
-<h2>k近邻模型</h2>
-<p>k近邻法的使用的模型实际上对应于对特征空间的划分。模型由三个要素——距离度量、k值的选择和分类决策规则决定。</p>
-<h3>模型</h3>
-<p>当训练集、距离度量、k值以及分类决策规程确定后，对于任何一个新的输入实例，它所属的类唯一确定。k近邻法的模型对应特征空间的一个划分，将特征空间划分为一些子空间，确定子空间里的每一个点所属的类。</p>
-<p>在特征空间中，对每个训练实例点<span class="math">\(x_i\)</span>，距离该点比其他点更近的所有点组成一个区域，叫做单元（cell）。最近邻将实例<span class="math">\(x_i\)</span>的类作为类<span class="math">\(y_i\)</span>作为其单元中所有点的类标记（class label）。</p>
-<h3>距离度量</h3>
-<p>特征空间中两个实例点的距离是两个实例点相似程度的反映。</p>
-<p>设特征空间是n维实数向量空间，对于 ...</p> </div><!-- /.entry-content -->
-
-                                <div class="medium primary btn"><a href="http://www.wengweitao.com/kjin-lin-fa.html" rel="bookmark" title="Permalink to k近邻法">Read more <i class="icon-arrow-right"></i></a></div>
-
-
-
-                                <div class="row tag-row">
-                                        <span>Tagged as : </span>
-                                            <a class="danger label" href="http://www.wengweitao.com/tag/du-shu-bi-ji.html">读书笔记</a>
-                                </div>
-
-
-
-                        </article></li>
                 </ol><!-- /#posts-list -->
 
         </div><!-- /.eleven.columns -->
@@ -268,17 +267,17 @@
 <!--
 <h4>标签</h4>
 <ul class="tagcloud">
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/vim.html">Vim</a></li>
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/ji-chu-gai-nian.html">基础概念</a></li>
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/ce-shi.html">测试</a></li>
+        <li class="tag-1"><a href="http://www.wengweitao.com/tag/du-shu-bi-ji.html">读书笔记</a></li>
         <li class="tag-3"><a href="http://www.wengweitao.com/tag/ji-ben-gai-nian.html">基本概念</a></li>
+        <li class="tag-3"><a href="http://www.wengweitao.com/tag/jiao-cheng.html">教程</a></li>
+        <li class="tag-4"><a href="http://www.wengweitao.com/tag/ji-chu-gai-nian.html">基础概念</a></li>
+        <li class="tag-4"><a href="http://www.wengweitao.com/tag/xiao-yuan.html">校园</a></li>
+        <li class="tag-4"><a href="http://www.wengweitao.com/tag/ce-shi.html">测试</a></li>
         <li class="tag-4"><a href="http://www.wengweitao.com/tag/gong-ju.html">工具</a></li>
         <li class="tag-1"><a href="http://www.wengweitao.com/tag/python.html">Python</a></li>
-        <li class="tag-3"><a href="http://www.wengweitao.com/tag/jiao-cheng.html">教程</a></li>
+        <li class="tag-4"><a href="http://www.wengweitao.com/tag/vim.html">Vim</a></li>
         <li class="tag-4"><a href="http://www.wengweitao.com/tag/wan.html">玩</a></li>
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/xiao-yuan.html">校园</a></li>
         <li class="tag-3"><a href="http://www.wengweitao.com/tag/mian-shi-ti.html">面试题</a></li>
-        <li class="tag-1"><a href="http://www.wengweitao.com/tag/du-shu-bi-ji.html">读书笔记</a></li>
 </ul>
 -->
 
