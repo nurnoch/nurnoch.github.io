@@ -81,6 +81,7 @@
 </p>
 <div class="math">$$min_{w,b,\xi} \frac{1}{2}{||w||^2}+C\sum_{i=1}^{N}\xi_i$$</div>
 <div class="math">$$ s.t. 　(1)y_i(w.x_i+b) \geq 1 - \xi_i　　(2)\xi_i \geq 0 　i=1,2,...,N$$</div>
+<p>这里，<span class="math">\(C&gt;0\)</span>称为惩罚参数，一般由应用问题决定，C值越大对误分类的惩罚越大。所以，这里的最小化目标包含两层含义：①间隔间隔尽量大 ②误分类个数尽量小。</p>
 <p>这样可以和训练数据集可分时一样来考虑训练数据集线性不可分时的线性可支持向量机学习问题。相应于硬间隔最大化，它称为<strong>软间隔最大化</strong>，并称这样的模型为<strong>线性支持向量机</strong>。</p>
 <h2>学习的对偶算法</h2>
 <p>（1）构建拉格朗日函数
@@ -134,7 +135,24 @@
 分类决策函数：
 </p>
 <div class="math">$$f(x)=sign(w^*.x+b^*)$$</div>
-<p>其中，<span class="math">\(w^*与b^*\)</span>是由<a href="http://book.douban.com/subject/10590856/">KKT条件</a>得到的。w的解是唯一的，但是b的解不唯一。对于任一适合条件<span class="math">\(0 &lt; \alpha_j^* &lt; C\)</span>，都可以求出<span class="math">\(b^*\)</span>，所以实际计算时可以取在所有符合条件的样本点上的平均值。</p>
+<p>其中，<span class="math">\(w^*与b^*\)</span>是由<a href="http://book.douban.com/subject/10590856/">KKT条件</a>得到的。即：</p>
+<p>原始问题是凸二次规划问题，解满足KKT条件，可得：
+</p>
+<div class="math">$$\bigtriangledown_w L(w^*, b^*, \xi^*, \alpha^*, \mu^*)=w^*-\sum_{i=1}^{N}\alpha_i^*y_ix_i=0$$</div>
+<div class="math">$$\bigtriangledown_b L(w^*, b^*, \xi^*, \alpha^*, \mu^*)=-\sum_{i=1}^{N}\alpha_i^*y_i=0$$</div>
+<div class="math">$$\bigtriangledown_\xi L(w^*, b^*, \xi^*, \alpha^*, \mu^*)=C-\alpha_i^*-\mu^*=0$$</div>
+<div class="math">$$\alpha^*(y_i(w_i^*.x_i + b^*)-1+\xi_i^*) = 0 
+$$</div>
+<p>u_i^<em>\xi_i^</em> = 0 </p>
+<div class="math">$$
+$$</div>
+<p>y_i(w_i^<em>.x_i + b^</em>)-1+\xi_i^<em> \geq 0<div class="math">$$
+$$</div>\xi_i^</em> \geq 0 </p>
+<div class="math">$$
+$$</div>
+<p>\alpha_i^<em> \geq 0 <div class="math">$$
+$$</div>\mu_i^</em> \geq 0 $$</p>
+<p>w的解是唯一的，但是b的解不唯一。对于任一适合条件<span class="math">\(0 &lt; \alpha_j^* &lt; C\)</span>，都可以求出<span class="math">\(b^*\)</span>，所以实际计算时可以取在所有符合条件的样本点上的平均值。</p>
 <h2>支持向量</h2>
 <p>我们可以将<span class="math">\(\alpha_i^* &gt; 0\)</span>的样本点<span class="math">\((x_i, y_i)\)</span>的实例<span class="math">\(x_i\)</span>称为<strong>支持向量</strong>（软间隔的支持向量）。但是，这时的支持向量要比上文中介绍的复杂。</p>
 <p>实例<span class="math">\(x_i\)</span>到间隔边界的距离为<span class="math">\(\frac{\xi_i}{||w||}\)</span>：</p>
@@ -254,17 +272,17 @@ z, z &gt; 0\\
 <!--
 <h4>标签</h4>
 <ul class="tagcloud">
-        <li class="tag-3"><a href="http://www.wengweitao.com/tag/ji-ben-gai-nian.html">基本概念</a></li>
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/vim.html">Vim</a></li>
         <li class="tag-1"><a href="http://www.wengweitao.com/tag/du-shu-bi-ji.html">读书笔记</a></li>
-        <li class="tag-1"><a href="http://www.wengweitao.com/tag/python.html">Python</a></li>
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/xiao-yuan.html">校园</a></li>
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/wan.html">玩</a></li>
-        <li class="tag-3"><a href="http://www.wengweitao.com/tag/jiao-cheng.html">教程</a></li>
-        <li class="tag-3"><a href="http://www.wengweitao.com/tag/mian-shi-ti.html">面试题</a></li>
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/ji-chu-gai-nian.html">基础概念</a></li>
         <li class="tag-4"><a href="http://www.wengweitao.com/tag/ce-shi.html">测试</a></li>
+        <li class="tag-4"><a href="http://www.wengweitao.com/tag/wan.html">玩</a></li>
+        <li class="tag-4"><a href="http://www.wengweitao.com/tag/xiao-yuan.html">校园</a></li>
+        <li class="tag-3"><a href="http://www.wengweitao.com/tag/ji-ben-gai-nian.html">基本概念</a></li>
         <li class="tag-4"><a href="http://www.wengweitao.com/tag/gong-ju.html">工具</a></li>
+        <li class="tag-4"><a href="http://www.wengweitao.com/tag/ji-chu-gai-nian.html">基础概念</a></li>
+        <li class="tag-4"><a href="http://www.wengweitao.com/tag/vim.html">Vim</a></li>
+        <li class="tag-3"><a href="http://www.wengweitao.com/tag/mian-shi-ti.html">面试题</a></li>
+        <li class="tag-1"><a href="http://www.wengweitao.com/tag/python.html">Python</a></li>
+        <li class="tag-3"><a href="http://www.wengweitao.com/tag/jiao-cheng.html">教程</a></li>
 </ul>
 -->
 

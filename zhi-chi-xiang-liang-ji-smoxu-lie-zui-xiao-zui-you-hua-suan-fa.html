@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+
+        <title>支持向量机——SMO（序列最小最优化算法）</title>
+        <meta charset="utf-8" />
+        <link href="http://www.wengweitao.com/feeds\all.atom.xml" type="application/atom+xml" rel="alternate" title="wwt's blog Full Atom Feed" />
+        <link href="http://www.wengweitao.com/feeds/all.rss.xml" type="application/rss+xml" rel="alternate" title="wwt's blog Full RSS Feed" />
+        <link href="http://www.wengweitao.com/feeds/ji-qi-xue-xi.rss.xml" type="application/atom+xml" rel="alternate" title="wwt's blog Categories Atom Feed" />
+
+
+        <!-- Mobile viewport optimized: j.mp/bplateviewport -->
+        <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1">
+
+        <meta name="sogou_site_verification" content="ia8yXdZS0p"/>
+ 
+
+        <link rel="stylesheet" type="text/css" href="http://www.wengweitao.com/theme/gumby.css" />
+        <link rel="stylesheet" type="text/css" href="http://www.wengweitao.com/theme/style.css" />
+        <link rel="stylesheet" type="text/css" href="http://www.wengweitao.com/theme/pygment.css" />
+
+        <script src="http://www.wengweitao.com/theme/js/libs/modernizr-2.6.2.min.js"></script>
+
+
+
+
+</head>
+
+<body id="index" class="home">
+
+
+    <div class="container">
+
+        <div class="row">
+
+          <header id="banner" class="body">
+                  <h1><a href="http://www.wengweitao.com/">wwt's blog <strong></strong></a></h1>
+          </header><!-- /#banner -->
+
+            <div id="navigation" class="navbar row">
+              <a href="#" gumby-trigger="#navigation &gt; ul" class="toggle"><i class="icon-menu"></i></a>
+             
+              <ul class="columns">
+                <li><a href="http://www.wengweitao.com/">首页</a></li>
+
+                <li><a href="/categories.html">分类</a></li>
+                <li><a href="/tags.html">标签</a></li>
+                <li><a href="/archives.html">归档</a></li>
+                <li><a href="/pages/about-me.html">关于我</a></li>
+
+              </ul>
+            </div>
+
+<section id="content" class="body">
+
+   <div class="row">
+        <div class="eleven columns">
+
+
+            <header>
+              <h2 class="entry-title">
+                <a href="http://www.wengweitao.com/zhi-chi-xiang-liang-ji-smoxu-lie-zui-xiao-zui-you-hua-suan-fa.html" rel="bookmark"
+                   title="Permalink to 支持向量机——SMO（序列最小最优化算法）">支持向量机——SMO（序列最小最优化算法）</a></h2>
+           
+            </header>
+            <footer class="post-info">
+              <abbr class="published" title="2014-08-05T10:02:00">
+                Tue 05 August 2014
+              </abbr>
+              <address class="vcard author">By 
+                <a class="url fn" href="http://www.wengweitao.com/author/wwt.html"> wwt</a>
+              </address>
+            </footer><!-- /.post-info -->
+            <div class="entry-content">
+              <blockquote>
+<p>SVM的学习算法可以归结为凸二次规划问题。这样的凸二次规划问题你具有全局最优解，并且许多最优化算法可以用来求解，但是当训练样本容量很大，这些算法往往变得非常低效，以致无法使用。所以本文介绍了如何高效地实现支持向量机学习。</p>
+</blockquote>
+<p>我们将用序列最小最优化（sequential minimal optimization, SMO）算法，求解
+</p>
+<div class="math">$$min_{\alpha}\frac{1}{2} \sum_{i=1}^{N}\sum_{j=1}^{N}\alpha_i\alpha_jy_iy_jK(x_i,x_j)- \sum_{i=1}^{N}\alpha_i$$</div>
+<div class="math">$$s.t. 　\sum_{i=1}^{N}\alpha_iy_i = 0$$</div>
+<div class="math">$$0 \leq \alpha_i \leq C 　i=1,2,...,N$$</div>
+<p>
+在这个问题中，变量是拉格朗日乘子，一个变量<span class="math">\(\alpha_i\)</span>对应一个样本点<span class="math">\((x_i,y_i)\)</span>；变量的总数等于样本容量N。</p>
+<p><strong>SMO算法是一种启发式算法，其基本思路是：</strong></p>
+<p>如果所有变量的解都满足此最优化问题的KKT条件，那么这个最优化问题的解就得到了（因为KKT条件是该最优化问题的充分必要条件）。否则选择两个变量，固定其他的变量，针对这两个问题构建一个二次规划问题。这个二次规划问题的解应该更接近二次规划问题的解（因为这会使得原始二次规划问题的目标函数值更小）。而且，这时子问题可以通过解析方法求解，这样就大大提高了整个算法的计算速度。</p>
+<p>每一次，子问题都有两个变量，一个是违反KKT条件最严重的那一个，另一个由约束条件自动确定。如此，SMO算法将原问题不断分解为子问题并对子问题求解，进而得到原问题的最终解。</p>
+<p>注意，每个子问题有两个变量，而不能是1个变量，因为当选择一个变量时，由于约束条件，其他变量的值就固定了该变量的值也就固定了。所以子问题中同时更新两个变量。</p>
+<p>SMO算法包括两个部分：</p>
+<p>（1）求解两个变量二次规划问题的解析方法</p>
+<p>（2）选择变量的启发式方法</p>
+<h2>两个变量二次规划问题的求解方法</h2>
+<p>不失一般性，假设选择的两个变量是<span class="math">\(\alpha_1, \alpha_2\)</span>，其他变量<span class="math">\(\alpha_i\)</span>固定。那么SMO的最优化问题的子问题可以写成
+</p>
+<div class="math">$$min_{\alpha1, \alpha_2}W(\alpha_1, \alpha_2)=\frac{1}{2}K_{11}\alpha_1^2+\frac{1}{2}K_{22}\alpha_2^2-(\alpha_1+\alpha_2)+y_1y_2K_{12}\alpha_1\alpha_2+ y_1\alpha_1\sum_{i=3}^{N}\alpha_iy_iK_{i1}+y_2\alpha_2\sum_{i=3}^{N}\alpha_iy_iK_{i2}$$</div>
+<div class="math">$$s.t. 　\alpha_1y_1 + \alpha_2y_2= -\sum_{i=3}^{N}\alpha_iy_i = \zeta $$</div>
+<div class="math">$$0 \leq \alpha_i \leq C 　i=1,2$$</div>
+<p>
+以上的目标函数式省略了不含<span class="math">\(\alpha_1,\alpha_2\)</span>的常数项。</p>
+<p>首先，我们分析下约束条件，然后求此约束条件下的极小。</p>
+<p>约束条件使得目标函数在一条平行于长度为C的正方形的对角线的线段上的最优值。这使得两个变量的最优化问题实质上是单变量的最优化问题，不妨考虑<span class="math">\(\alpha_2\)</span>的最优化问题。</p>
+<p>假设初始可行解为<span class="math">\(\alpha_1^{old},\alpha_2^{old}\)</span>，最优解为<span class="math">\(\alpha_1^{new},\alpha_2^{new}\)</span>。并假设在沿着约束方向未经剪辑<sup id="fnref:unclipped"><a class="footnote-ref" href="#fn:unclipped" rel="footnote">1</a></sup>时<span class="math">\(\alpha_2\)</span>的最优解为<span class="math">\(\alpha_2^{new, unc}\)</span>。</p>
+<p>由于<span class="math">\(\alpha_2^{new}\)</span>需要满足不等式约束，所以最优值<span class="math">\(\alpha_2^{new}\)</span>的取值范围必须满足条件：
+</p>
+<div class="math">$$L \leq \alpha_2^{new} \leq H$$</div>
+<p>
+其中L与H分别是<span class="math">\(\alpha_2^{new}\)</span>所在的对角线段端点的界，如下图所示。最优解必须在正方形内且在与对角线平行的线上。</p>
+<p><img alt="smo_alpha" src="./imgs/smo_alpha.png" /></p>
+<p>当<span class="math">\(y_1=y_2\)</span>时，它们可以表示为：
+</p>
+<div class="math">$$\alpha_1 + \alpha_2= k$$</div>
+<p>
+此时有：
+</p>
+<div class="math">$$L=max(0, \alpha_1^{old}+\alpha_2^{old}-C), H=min(C, \alpha_1^{old}+\alpha_2^{old})$$</div>
+<p>
+计算过程：</p>
+<p>如图所示，先考虑L的取值。当直线为①情况时，L为0；当直线为②情况时，此时<span class="math">\(\alpha_1'=C\)</span>，代入<span class="math">\(\alpha_1' + \alpha_2' = k\)</span> 得到<span class="math">\(\alpha_2'= L = k - \alpha_1' = k - C = \alpha_1 + \alpha_2 - C\)</span>。所以<span class="math">\(L=max(0, \alpha_1^{old}+\alpha_2^{old}-C)\)</span>。然后考虑H的取值。当直线为①情况时，此时<span class="math">\(\alpha_1'=0\)</span>，代入<span class="math">\(\alpha_1' + \alpha_2' = k\)</span> 得到<span class="math">\(\alpha_2'= H = k - \alpha_1' = k  = \alpha_1 + \alpha_2\)</span>；当直线为②情况时，H为C。所以<span class="math">\(H=min(C, \alpha_1^{old}+\alpha_2^{old})\)</span>。</p>
+<p>当<span class="math">\(y_1 \neq y_2\)</span>时，它们可以表示为：
+</p>
+<div class="math">$$\alpha_1 - \alpha_2= k$$</div>
+<p>
+此时有：
+</p>
+<div class="math">$$L=max(0, \alpha_2^{old}-\alpha_1^{old}-C), H=min(C, C+\alpha_2^{old}-\alpha_1^{old})$$</div>
+<p>为了方便，记
+</p>
+<div class="math">$$g(x)=\sum_{i=1}^{N}\alpha_iy_iKK(x_i,x)+b$$</div>
+<p>
+令
+</p>
+<div class="math">$$E_i=g(x_i)-y_i=(\sum_{i=1}^{N}\alpha_iy_iKK(x_i,x)+b)-y_i,　i=1,2$$</div>
+<p>
+<span class="math">\(E_i\)</span>是函数g(x)对输入<span class="math">\(x_i\)</span>的预测值与真实输出<span class="math">\(y_i\)</span>之差。</p>
+<p>下面，先求沿着约束方向  未经剪辑时<span class="math">\(\alpha_2\)</span>的最优解<span class="math">\(\alpha_2^{new, unc}\)</span>；然后再求剪辑后<span class="math">\(\alpha_2\)</span>的解<span class="math">\(\alpha_2^{new}\)</span>。可以证明<sup id="fnref:calculate"><a class="footnote-ref" href="#fn:calculate" rel="footnote">2</a></sup>：
+</p>
+<div class="math">$$\alpha_2^{new, unc}=\alpha_2^{old}+\frac{y_2(E_1 - E_2)}{\eta}$$</div>
+<div class="math">$$\alpha_2^{new}=\left\{\begin{matrix}
+H,　\alpha_2^{new, unc}&gt;H\\ 
+\alpha_2^{new, unc},　0 \leq \alpha_2^{new, unc}\leq H\\ 
+L,　\alpha_2^{new, unc}　&lt; L
+\end{matrix}\right.$$</div>
+<div class="math">$$\alpha_1^{new}=\alpha_1^{old}+y_1y_2(\alpha_2^{old}-\alpha_2^{new})$$</div>
+<p>
+其中，
+</p>
+<div class="math">$$\eta=K_{11}+K_{22}-2K_{12}=||\phi(x_1)-\phi(x_2)||$$</div>
+<p>
+<span class="math">\(\phi(x)\)</span>是输入空间到特征空间的映射。</p>
+<p>这样就得到了最优化问题的解<span class="math">\((\alpha_1^{new},\alpha_2^{new})\)</span>。</p>
+<h2>变量的选择方法</h2>
+<p>SMO算法在每个子问题中选择两个变量变化，其中至少一个变量是违反KKT条件的。</p>
+<p>（1）第一个变量的选择</p>
+<p>SMO称选择第1个变量的过程为外层循环。外层循环是在训练样本中选取违反KKT条件最严重的样本点，并将其对应的变量作为第1个变量。因此，需要检验训练样本点<span class="math">\((x_i,y_i)\)</span>是否满足KKT条件。具体的，在<a href="http://www.wengweitao.com/zhi-chi-xiang-liang-ji-xian-xing-zhi-chi-xiang-liang-ji.html">线性支持向量机学习算法</a>中根据KKT条件有：</p>
+<div class="math">$$\bigtriangledown_w L(w^*, b^*, \xi^*, \alpha^*, \mu^*)=w^*-\sum_{i=1}^{N}\alpha_i^*y_ix_i=0$$</div>
+<div class="math">$$\bigtriangledown_b L(w^*, b^*, \xi^*, \alpha^*, \mu^*)=-\sum_{i=1}^{N}\alpha_i^*y_i=0$$</div>
+<div class="math">$$\bigtriangledown_\xi L(w^*, b^*, \xi^*, \alpha^*, \mu^*)=C-\alpha_i^*-\mu^*=0$$</div>
+<div class="math">$$\alpha^*(y_i(w_i^*.x_i + b^*)-1+\xi_i^*) = 0 $$</div>
+<div class="math">$$u_i^*\xi_i^* = 0 $$</div>
+<div class="math">$$y_i(w_i^*.x_i + b^*)-1+\xi_i^* \geq 0$$</div>
+<div class="math">$$\xi_i^* \geq 0 $$</div>
+<div class="math">$$\alpha_i^* \geq 0 $$</div>
+<div class="math">$$\mu_i^* \geq 0 $$</div>
+<p>
+当<span class="math">\(\alpha_i=0\)</span>时，<span class="math">\(\mu_i=C\)</span>，那么松弛变量<span class="math">\(\xi_i=0\)</span>，得到<span class="math">\(y_ig(x_i) \geq 1\)</span>；</p>
+<p>当<span class="math">\(0 &lt; \alpha_i &lt; C\)</span>时，<span class="math">\(\mu_i &gt; 0\)</span>，那么松弛变量<span class="math">\(\xi_i=0\)</span>，得到<span class="math">\(y_ig(x_i) = 1\)</span>；</p>
+<p>当<span class="math">\(\alpha_i=C\)</span>时，<span class="math">\(\mu_i=0\)</span>，那么松弛变量<span class="math">\(\xi_i &gt; 0\)</span>，得到<span class="math">\(y_ig(x_i) = 1 - \xi_i\)</span>即<span class="math">\(y_ig(x_i) \leq 1\)</span></p>
+<p>在检验过程中，外层循环首先遍历所有满足条件<span class="math">\(0&lt;\alpha_i &lt; C\)</span>的样本点，即在间隔边界上的支持向量点，检验它们是否满足KKT条件。如果都满足KKT条件，那么 再遍历整个数据集，检验它们是否满足KKT条件。</p>
+<p>（2）第2个变量的选择</p>
+<p>SMO称选择第2个变量的过程为内层循环。假设在外层循环中已经找到第1个变量<span class="math">\(\alpha_1\)</span>，现在找第2个变量。第2个变量的选择标准是希望能使<span class="math">\(\alpha_2\)</span>有足够大的变化。</p>
+<p><span class="math">\(\alpha_2^{news}\)</span>是依赖于<span class="math">\(|E_1-E_2|\)</span>的。一种简单的做法是选择<span class="math">\(\alpha_2\)</span>，使其对应的<span class="math">\(|E_1-E_2|\)</span>最大，因为<span class="math">\(\alpha_1\)</span>已经确定，<span class="math">\(E_1\)</span>也确定了。为了节省时间，把所有的<span class="math">\(E_i\)</span>保存在一个列表中。</p>
+<p>如果上面的方法还是不能是目标函数由足够的下降，那么采用启发式规则继续选<span class="math">\(\alpha_2\)</span>。</p>
+<p>（3）计算阈值b和差值<span class="math">\(E_i\)</span>
+每次完成两个变量的优化后，都要重新计算E，于是就还得重新计算阈值b。</p>
+<p>当<span class="math">\(0&lt;\alpha_1^{new}&lt; C\)</span>时，由KKT条件<span class="math">\(y_ig(x_i) = 1\)</span>及<span class="math">\(y_i^2=1\)</span>，有
+</p>
+<div class="math">$$\sum_{i=1}^{N}\alpha_iy_iK_{i1}+b=y_1$$</div>
+<p>
+于是
+</p>
+<div class="math">$$b_1^{new}=y_1-\sum_{i=3}^N\alpha_iy_iK_{i1}-\alpha_1^{new}y_1K_{11}-\alpha_2^{new}y_2K_{21}$$</div>
+<div class="math">$$E_1=g(x_1)-y_1=\sum_{i=3}^N\alpha_iy_iK_{i1}+\alpha_1^{old}y_1K_{11}+\alpha_2^{old}y_2K_{21} + b^{old}-y_1$$</div>
+<p>
+于是可得
+</p>
+<div class="math">$$b_1^{new}=-E_1-(\alpha_1^{new}-\alpha_1^{old})y_1K_{11}-(\alpha_2^{new}-\alpha_2^{old})y_2K_{21} + b^{old}$$</div>
+<p>同样如果<span class="math">\(0&lt;\alpha_2^{new}&lt; C\)</span>时，可得
+</p>
+<div class="math">$$b_2^{new}=-E_2-(\alpha_1^{new}-\alpha_1^{old})y_1K_{12}-(\alpha_2^{new}-\alpha_2^{old})y_2K_{22} + b^{old}$$</div>
+<p>如果<span class="math">\(0&lt;\alpha_1^{new}&lt; C\)</span>且<span class="math">\(0&lt;\alpha_2^{new}&lt; C\)</span>时，<span class="math">\(b_1^{new}=b_2^{new}\)</span>；</p>
+<p>如果<span class="math">\(\alpha_1^{new},\alpha_2^{new}\)</span>是0或者C，那么<span class="math">\(b_1^{new}, b_2^{new}\)</span>以及它们之间的数都是符合KKT条件的阈值，这时选择它们的中点作为<span class="math">\(b^{new}\)</span>。</p>
+<p>每次完成两个变量的优化之后，更新对应的<span class="math">\(E_i\)</span>值，并将它们保存在列表中，<span class="math">\(E_i\)</span>值的更新要用到<span class="math">\(b^{new}\)</span>值，以及所有支持向量对应的<span class="math">\(\alpha_j\)</span>：
+</p>
+<div class="math">$$E_i^{new}=(\sum_{S}\alpha_jy_jKK(x_i,x_j)+b^{new})-y_i$$</div>
+<p>
+ 其中，S是所有支持向量<span class="math">\(x_j\)</span>的集合。</p>
+<h2>SMO算法</h2>
+<p>输入：训练数据集T，精度$\varepsilon $</p>
+<p>输出：近似解<span class="math">\(\widehat{\alpha}\)</span></p>
+<p>（1）取初值<span class="math">\(\alpha^{(0)}=0\)</span>，令k=0</p>
+<p>（2）选取优化变量<span class="math">\(\alpha_1^{(k)},\alpha_2^{(k)}\)</span>，解析求解两个变量的最优化问题，求得最优解<span class="math">\(\alpha_1^{(k+1)},\alpha_2^{(k+1)}\)</span>，更新<span class="math">\(\alpha\)</span>为<span class="math">\(\alpha^{(k+1)}\)</span>；</p>
+<p>（3）若在精度$\varepsilon $范围内满足停机条件
+</p>
+<div class="math">$$\sum_{i=1}^N\alpha_iy_i=0$$</div>
+<div class="math">$$0 \leq \alpha_i \leq C 　i=1,2,...,N$$</div>
+<div class="math">$$y_i.g(x_i)=\left\{\begin{matrix}
+\geq 1, &amp; {x_i|\alpha_1=0}\\ 
+=1, &amp; {x_i|0&lt;\alpha_i&lt;C}\\ 
+\leq 1, &amp; {x_i|\alpha_i=C}
+\end{matrix}\right.$$</div>
+<p>则转（4）；否则令k=k+1，转（2）</p>
+<p>（4）取<span class="math">\(\widehat{\alpha}=\alpha^{(k+1)}\)</span>。</p>
+<hr />
+<h2>Reference</h2>
+<p><a href="http://book.douban.com/subject/10590856/">统计学习方法</a>第七章</p>
+<div class="footnote">
+<hr />
+<ol>
+<li id="fn:unclipped">
+<p>未经剪辑是指未考虑<span class="math">\(0 \leq \alpha_i \leq C\)</span>的约束条件时的值&#160;<a class="footnote-backref" href="#fnref:unclipped" rev="footnote" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+<li id="fn:calculate">
+<p>求解过程如下：
+记
+<div class="math">$$v_i = \sum_{j=3}^{N}\alpha_jy_jK(x_i,x_j)= g(x_i)- \sum_{j=1}^{2}\alpha_jy_jK(x_i,x_j)-b,　　i=1,2$$</div>
+目标函数变为：
+<div class="math">$$W(\alpha_1, \alpha_2)=\frac{1}{2}K_{11}\alpha_1^2+\frac{1}{2}K_{22}\alpha_2^2-(\alpha_1+\alpha_2)+y_1y_2K_{12}\alpha_1\alpha_2+y_1\alpha_1v_1+y_2\alpha_2v_2$$</div>
+可以将<span class="math">\(\alpha_1\)</span>表示为:
+<div class="math">$$\alpha_1=(\zeta - y_2\alpha_2)y_1$$</div>
+代入目标函数，得到只含有<span class="math">\(\alpha_2\)</span>的式子，对<span class="math">\(\alpha_2\)</span>求导数，令其为0，并将<span class="math">\(\alpha_1^{old} y_1 + \alpha_2^{old}y_2=  \zeta\)</span>就可得到。 &#160;<a class="footnote-backref" href="#fnref:calculate" rev="footnote" title="Jump back to footnote 2 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
+<script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "false";
+
+    if (false) {
+        align = (screen.width < 768) ? "left" : align;
+        indent = (screen.width < 768) ? "0em" : indent;
+        linebreak = (screen.width < 768) ? 'true' : linebreak;
+    }
+    
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = '//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); ";
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+</script>
+            </div><!-- /.entry-content -->
+            <div class="comments">
+              <h3>Comments</h3>
+              <div id="disqus_thread"></div>
+              <script type="text/javascript">
+                var disqus_identifier = "zhi-chi-xiang-liang-ji-smoxu-lie-zui-xiao-zui-you-hua-suan-fa.html";
+                (function() {
+                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                dsq.src = 'http://wengwt.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                })();
+              </script>
+            </div>
+
+
+        </div><!-- /.eleven.columns -->
+
+<div class="three columns">
+
+<!--
+<h4>Pages</h4>
+
+ <ul>
+      <li><a href="/categories.html">分类</a></li>
+      <li><a href="/tags.html">标签</a></li>
+      <li><a href="/archives.html">归档</a></li>
+      <li><a href="/pages/about-me.html">关于我</a></li>
+  </ul>
+-->
+
+<h4>分类</h4>
+<ul>
+		<li><a href="http://www.wengweitao.com/category/du-shu-bi-ji.html">读书笔记</a></li>
+		<li><a href="http://www.wengweitao.com/category/gong-ju.html">工具</a></li>
+		<li><a href="http://www.wengweitao.com/category/ji-qi-xue-xi.html">机器学习</a></li>
+		<li><a href="http://www.wengweitao.com/category/python.html">Python</a></li>
+		<li><a href="http://www.wengweitao.com/category/sheng-huo.html">生活</a></li>
+		<li><a href="http://www.wengweitao.com/category/suan-fa-yu-shu-ju-jie-gou.html">算法与数据结构</a></li>
+</ul>
+
+<!--
+<h4>标签</h4>
+<ul class="tagcloud">
+        <li class="tag-1"><a href="http://www.wengweitao.com/tag/du-shu-bi-ji.html">读书笔记</a></li>
+        <li class="tag-4"><a href="http://www.wengweitao.com/tag/ce-shi.html">测试</a></li>
+        <li class="tag-4"><a href="http://www.wengweitao.com/tag/wan.html">玩</a></li>
+        <li class="tag-4"><a href="http://www.wengweitao.com/tag/xiao-yuan.html">校园</a></li>
+        <li class="tag-3"><a href="http://www.wengweitao.com/tag/ji-ben-gai-nian.html">基本概念</a></li>
+        <li class="tag-4"><a href="http://www.wengweitao.com/tag/gong-ju.html">工具</a></li>
+        <li class="tag-4"><a href="http://www.wengweitao.com/tag/ji-chu-gai-nian.html">基础概念</a></li>
+        <li class="tag-4"><a href="http://www.wengweitao.com/tag/vim.html">Vim</a></li>
+        <li class="tag-3"><a href="http://www.wengweitao.com/tag/mian-shi-ti.html">面试题</a></li>
+        <li class="tag-1"><a href="http://www.wengweitao.com/tag/python.html">Python</a></li>
+        <li class="tag-3"><a href="http://www.wengweitao.com/tag/jiao-cheng.html">教程</a></li>
+</ul>
+-->
+
+
+<nav class="widget">
+  <h4>社交</h4>
+  <ul>
+    <li><a href="http://weibo.com/u/2678027854">新浪微博</a></li>
+    <li><a href="http://www.douban.com/people/wengwt/">豆瓣</a></li>
+    <li><a href="http://www.zhihu.com/people/vita-49">知乎</a></li>
+    <li><a href="https://github.com/nurnoch">Github</a></li>
+    <li><a href="https://www.v2ex.com/member/wwttc">V2EX</a></li>
+  </ul>
+</nav>
+
+<nav class="widget">
+  <h4>友情链接</h4>
+  <ul>
+    <li><a href="http://netlab.pkusz.edu.cn/">互联网信息工程研发中心</a></li>
+    <li><a href="http://www.houcj.net/">houcj's blog</a></li>
+    <li><a href="http://www.rudy-yuan.net/">rundy-yuan's blog</a></li>
+  </ul>
+</nav>
+
+
+</div> </div><!-- /.row -->
+
+
+</section>
+
+       </div><!-- /.row -->
+    </div><!-- /.container -->
+
+
+       <div class="container.nopad bg">
+
+    
+        <footer id="credits" class="row">
+          <div class="seven columns left-center">
+
+                   <address id="about" class="vcard body">
+                    Proudly powered by  <a href="http://getpelican.com/">Pelican</a> and Theme by Gum © 2015 wwt
+                    </address>
+          </div>
+
+
+          <div class="seven columns">
+            <div class="row">
+              <ul class="socbtns">
+
+
+
+
+
+              </ul>
+            </div>
+          </div>
+        </footer>
+
+    </div>
+
+
+<script type="text/javascript">
+    var disqus_shortname = 'wengwt';
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+  <script src="http://www.wengweitao.com/theme/js/libs/jquery-1.9.1.min.js"></script>
+  <script src="http://www.wengweitao.com/theme/js/libs/gumby.min.js"></script>
+  <script src="http://www.wengweitao.com/theme/js/plugins.js"></script>
+</body>
+</html>
