@@ -217,29 +217,25 @@ YAPF与其他的格式化工具不同，其算法能够把代码重新格式化�
 
                         </article></li>
                         <li><article class="hentry">
-                                <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/ti-sheng-shu.html" rel="bookmark" title="Permalink to 提升树">提升树</a></h2> </header>
+                                <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/emsuan-fa.html" rel="bookmark" title="Permalink to EM算法">EM算法</a></h2> </header>
                                 <footer class="post-info">
-                                    <abbr class="published" title="2014-08-07T22:27:00"> Thu 07 August 2014 </abbr>
+                                    <abbr class="published" title="2014-08-10T19:09:00"> Sun 10 August 2014 </abbr>
                                     <address class="vcard author">By 
                                     <a class="url fn" href="http://www.wengweitao.com/author/wwt.html"> wwt</a>
                                     </address>
                                 </footer><!-- /.post-info -->
                                 <div class="entry-content"> <blockquote>
-<p>提升树是以分类树或回归树为基本分类器的提升方法。提升树被认为是统计学习中性能最好的方法之一。</p>
+<p>EM算法是一种迭代算法，用于含有隐变量（hidden variable）的概率模型参数的极大似然估计，或极大后验概率估计。EM算法的每次迭代分为两步：E步，求期望（Expectation）；M步，求极大（Maximization）。所以这一算法称为期望极大算法。</p>
 </blockquote>
-<h2>提升树模型</h2>
-<p>以决策树为基函数的提升方法称为提升树（boosting tree）。一个基本分类器x &lt; v或者x &gt; v，可以看作是由一个根结点直接连接两个叶节点的简单决策树，即所谓的决策树桩（decision stump）。提升树模型可以表示为决策树的加法模型：
-</p>
-<div class="math">$$f_M(x)=\sum_{m=1}^{M}T(x;\varTheta_m)$$</div>
-<p>其中，<span class="math">\(T(x;\varTheta_m)\)</span>表示决策树；<span class="math">\(\varTheta_m\)</span>为决策树的参数；M为树的个数。</p>
-<h2>提升树算法</h2>
-<p>提升树算法采用前向分步算法。首先，确定原始提升树<span class="math">\(f_0(x)=0\)</span>，第m步的模型是
-</p>
-<div class="math">$$f_m(x)=f_{m-1}(x)+T(x;\varTheta_m)$$</div>
-<p>
-其中，<span class="math">\(f_{m-1 ...</span></p> </div><!-- /.entry-content -->
+<h2>EM算法的引入</h2>
+<p>如果概率模型中仅含有观测变量（observable variable），那么给定数据，可以直接使用极大似然估计法或贝叶斯估计法估计模型参数。但是，如果概率模型中不仅含有观测变量还含有隐变量，那么就不能简单的使用那些估计方法。EM算法就是含有隐变量的概率模型参数的极大似然估计法，或极大后验概率估计法。</p>
+<h3>EM算法</h3>
+<p>输入：观测变量数据Y，隐变量数据Z，联合分布<span class="math">\(P(Y,Z|\theta)\)</span>，条件分布<span class="math">\(P(Z|Y,\theta)\)</span>;</p>
+<p>输出：模型参数<span class="math">\(\theta\)</span></p>
+<p>（1）选择参数的初值<span class="math">\(\theta^{(0)}\)</span>，开始迭代；</p>
+<p>（2）E步：记 ...</p> </div><!-- /.entry-content -->
 
-                                <div class="medium primary btn"><a href="http://www.wengweitao.com/ti-sheng-shu.html" rel="bookmark" title="Permalink to 提升树">Read more <i class="icon-arrow-right"></i></a></div>
+                                <div class="medium primary btn"><a href="http://www.wengweitao.com/emsuan-fa.html" rel="bookmark" title="Permalink to EM算法">Read more <i class="icon-arrow-right"></i></a></div>
 
 
 
@@ -281,17 +277,17 @@ YAPF与其他的格式化工具不同，其算法能够把代码重新格式化�
 <!--
 <h4>标签</h4>
 <ul class="tagcloud">
-        <li class="tag-1"><a href="http://www.wengweitao.com/tag/du-shu-bi-ji.html">读书笔记</a></li>
-        <li class="tag-3"><a href="http://www.wengweitao.com/tag/ji-ben-gai-nian.html">基本概念</a></li>
-        <li class="tag-3"><a href="http://www.wengweitao.com/tag/jiao-cheng.html">教程</a></li>
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/ji-chu-gai-nian.html">基础概念</a></li>
         <li class="tag-4"><a href="http://www.wengweitao.com/tag/xiao-yuan.html">校园</a></li>
         <li class="tag-4"><a href="http://www.wengweitao.com/tag/ce-shi.html">测试</a></li>
+        <li class="tag-4"><a href="http://www.wengweitao.com/tag/wan.html">玩</a></li>
+        <li class="tag-4"><a href="http://www.wengweitao.com/tag/vim.html">Vim</a></li>
+        <li class="tag-4"><a href="http://www.wengweitao.com/tag/ji-chu-gai-nian.html">基础概念</a></li>
+        <li class="tag-3"><a href="http://www.wengweitao.com/tag/ji-ben-gai-nian.html">基本概念</a></li>
         <li class="tag-4"><a href="http://www.wengweitao.com/tag/gong-ju.html">工具</a></li>
         <li class="tag-1"><a href="http://www.wengweitao.com/tag/python.html">Python</a></li>
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/vim.html">Vim</a></li>
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/wan.html">玩</a></li>
         <li class="tag-3"><a href="http://www.wengweitao.com/tag/mian-shi-ti.html">面试题</a></li>
+        <li class="tag-3"><a href="http://www.wengweitao.com/tag/jiao-cheng.html">教程</a></li>
+        <li class="tag-1"><a href="http://www.wengweitao.com/tag/du-shu-bi-ji.html">读书笔记</a></li>
 </ul>
 -->
 
@@ -321,7 +317,7 @@ YAPF与其他的格式化工具不同，其算法能够把代码重新格式化�
 
 <p class="paginator">
             <a href="http://www.wengweitao.com/author/wwt2.html"><i class="icon-arrow-left"></i></a>
-    Page 3 / 6
+    Page 3 / 7
         <a href="http://www.wengweitao.com/author/wwt4.html"><i class="icon-arrow-right"></i></a>
 </p>
 </section><!-- /#content -->

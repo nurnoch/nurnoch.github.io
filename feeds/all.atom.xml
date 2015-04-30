@@ -2550,7 +2550,232 @@ str.format()是Python最为推荐的字符串格式化方法，当然也是最Py
 &lt;blockquote&gt;
 &lt;p&gt;信息技术协会致力于为北大深研院的同学们营造一个学习和交流信息学科得环境和氛围，为大家提供有关信息领域的设计、应用、资讯等方面的信息。信息技术协会积极打造与深港信息类企业合作和联动的平台，帮助学生走出校园，观察产业发展动态；积极开展电脑维护活动，帮助同学们解决生活中遇到的技术困难。在以后，信息技术协会仍然会坚持协会宗旨，继续为大家服务。&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;转自：http://news.pkusz.edu.cn/article-143-4357.html&lt;/p&gt;</summary><category term="校园"></category></entry><entry><title>提升树</title><link href="http://www.wengweitao.com/ti-sheng-shu.html" rel="alternate"></link><updated>2014-08-07T22:27:00+08:00</updated><author><name>wwt</name></author><id>tag:www.wengweitao.com,2014-08-07:ti-sheng-shu.html</id><summary type="html">&lt;blockquote&gt;
+&lt;p&gt;转自：http://news.pkusz.edu.cn/article-143-4357.html&lt;/p&gt;</summary><category term="校园"></category></entry><entry><title>EM算法</title><link href="http://www.wengweitao.com/emsuan-fa.html" rel="alternate"></link><updated>2014-08-10T19:09:00+08:00</updated><author><name>wwt</name></author><id>tag:www.wengweitao.com,2014-08-10:emsuan-fa.html</id><summary type="html">&lt;blockquote&gt;
+&lt;p&gt;EM算法是一种迭代算法，用于含有隐变量（hidden variable）的概率模型参数的极大似然估计，或极大后验概率估计。EM算法的每次迭代分为两步：E步，求期望（Expectation）；M步，求极大（Maximization）。所以这一算法称为期望极大算法。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2&gt;EM算法的引入&lt;/h2&gt;
+&lt;p&gt;如果概率模型中仅含有观测变量（observable variable），那么给定数据，可以直接使用极大似然估计法或贝叶斯估计法估计模型参数。但是，如果概率模型中不仅含有观测变量还含有隐变量，那么就不能简单的使用那些估计方法。EM算法就是含有隐变量的概率模型参数的极大似然估计法，或极大后验概率估计法。&lt;/p&gt;
+&lt;h3&gt;EM算法&lt;/h3&gt;
+&lt;p&gt;输入：观测变量数据Y，隐变量数据Z，联合分布&lt;span class="math"&gt;\(P(Y,Z|\theta)\)&lt;/span&gt;，条件分布&lt;span class="math"&gt;\(P(Z|Y,\theta)\)&lt;/span&gt;;&lt;/p&gt;
+&lt;p&gt;输出：模型参数&lt;span class="math"&gt;\(\theta\)&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;（1）选择参数的初值&lt;span class="math"&gt;\(\theta^{(0)}\)&lt;/span&gt;，开始迭代；&lt;/p&gt;
+&lt;p&gt;（2）E步：记&lt;span class="math"&gt;\(\theta^{(i)}\)&lt;/span&gt;为第i次迭代参数&lt;span class="math"&gt;\(\theta\)&lt;/span&gt;的估计值，在第i+1次迭代的E步，计算
+&lt;/p&gt;
+&lt;div class="math"&gt;$$Q(\theta, \theta^{(i)})=E_Z[logP(Y,Z|\theta)|Y,\theta^{(i)}]=\sum_ZlogP(Y,Z|\theta)P(Z|Y,\theta^{(i)})$$&lt;/div&gt;
+&lt;p&gt;（3）M步：求使&lt;span class="math"&gt;\(Q(\theta, \theta^{(i)})\)&lt;/span&gt;极大化的&lt;span class="math"&gt;\(\theta\)&lt;/span&gt;，确定第i+1次迭代的参数估计值&lt;span class="math"&gt;\(\theta^{(i+1)}\)&lt;/span&gt;
+&lt;/p&gt;
+&lt;div class="math"&gt;$$\theta^{(i+1)}=argmax_\theta Q(\theta, \theta^{(i)})$$&lt;/div&gt;
+&lt;p&gt;（4）重复第（2）步与第（3）步，直到收敛&lt;/p&gt;
+&lt;p&gt;其中&lt;span class="math"&gt;\(Q(\theta, \theta^{(i)})\)&lt;/span&gt;是算法的核心，称为&lt;strong&gt;Q函数&lt;/strong&gt;。其中第一个&lt;span class="math"&gt;\(\theta\)&lt;/span&gt;表示要极大化的参数，第二个变元表示参数的当前估计值，每次迭代实际在求Q函数及其极大（M步中求极大，并完成一次迭代更新，可以证明每次迭代使似然函数增大或者达到局部极值）。&lt;/p&gt;
+&lt;p&gt;完全数据的对数似然函数&lt;span class="math"&gt;\(logP(Y,Z|\theta)\)&lt;/span&gt;关于在给定观测数据Y和当前参数&lt;span class="math"&gt;\(\theta^{(i)}\)&lt;/span&gt;下对未观测数据Z的条件概率分布&lt;span class="math"&gt;\(P(Y,Z|\theta^{(i)})\)&lt;/span&gt;的期望称为Q函数
+&lt;/p&gt;
+&lt;div class="math"&gt;$$Q(\theta, \theta^{(i)})=E_Z[logP(Y,Z|\theta)|Y,\theta^{(i)}]$$&lt;/div&gt;
+&lt;p&gt;步骤（1）中，初值可以任意选择，但是EM算法对初值是敏感的；&lt;/p&gt;
+&lt;p&gt;步骤（4）中，迭代的终止条件，一般是对较小的正数&lt;span class="math"&gt;\(\varepsilon_1, \varepsilon_2\)&lt;/span&gt;，若满足
+&lt;/p&gt;
+&lt;div class="math"&gt;$$||\theta^{(i+1)}-\theta^{(i)}||&amp;lt;\varepsilon_1$$&lt;/div&gt;
+&lt;p&gt;
+或
+&lt;/p&gt;
+&lt;div class="math"&gt;$$||Q(\theta^{(i+1)}, \theta^{(i)})-Q(\theta^{(i)}, \theta^{(i)})||&amp;lt;\varepsilon_2$$&lt;/div&gt;
+&lt;p&gt;
+则停止迭代。&lt;/p&gt;
+&lt;p&gt;举一个三硬币模型。假设有3枚硬币，分别记为A,B,C。每次都先抛A硬币，若为正面，则抛B硬币，反面则抛C硬币，此时的结果不能观测到，记此结果为Z；然后抛B或C硬币，若出现正面记为1，反面记为0，此时的结果作为观测变量记为Y。求此模型的参数，即三枚硬币正面分别出现的概率a,b和c。&lt;/p&gt;
+&lt;p&gt;Y表示观测随机变量的数据，Z表示隐随机变量的数据。Y和Z连在一起称为完全数据（complete data），观测数据Y又称为不完全数据。假设给定观测数据Y，其概率分布是&lt;span class="math"&gt;\(P(Y|\theta)\)&lt;/span&gt;，其中&lt;span class="math"&gt;\(\theta\)&lt;/span&gt;就是要求的模型参数。不完全数据Y的似然函数是&lt;span class="math"&gt;\(P(Y|\theta)\)&lt;/span&gt;，对数似然函数是&lt;span class="math"&gt;\(L(\theta)=logP(Y|\theta)\)&lt;/span&gt;；Y和Z的联合概率分布是&lt;span class="math"&gt;\(P(Y,Z|\theta)\)&lt;/span&gt;，那么完全数据的对数似然函数是&lt;span class="math"&gt;\(logP(Y，Z|\theta)\)&lt;/span&gt;。&lt;/p&gt;
+&lt;p&gt;EM算法通过迭代求&lt;span class="math"&gt;\(L(\theta)=logP(Y|\theta)\)&lt;/span&gt;的极大似然估计（**观测数据数据每次迭代包含两步：E步，求期望；M步，求极大化。&lt;/p&gt;
+&lt;h3&gt;EM算法的导出&lt;/h3&gt;
+&lt;p&gt;EM算法为什么能近似实现对观测数据的极大似然估计呢？下面通过近似求解观测数据的对数似然函数的极大化问题来导出EM算法。&lt;/p&gt;
+&lt;p&gt;面对一个含有隐变量的概率模型，目标是极大化观测数据（不完全数据）Y关于参数&lt;span class="math"&gt;\(\theta\)&lt;/span&gt;的对数似然函数，即极大化
+&lt;/p&gt;
+&lt;div class="math"&gt;$$L(\theta)=logP(Y|\theta)=log\sum_ZP(Y,Z)|\theta)=log(\sum_ZP(Y|Z,\theta)P(Z|\theta))$$&lt;/div&gt;
+&lt;p&gt;
+上面的式子含有未观测 并且含有和的对数，所以很难直接极大化。&lt;/p&gt;
+&lt;p&gt;假设第i次迭代后&lt;span class="math"&gt;\(\theta\)&lt;/span&gt;的估计值为&lt;span class="math"&gt;\(\theta^{(i)}\)&lt;/span&gt;，我们希望新的估计值&lt;span class="math"&gt;\(\theta\)&lt;/span&gt;能使&lt;span class="math"&gt;\(L(\theta)\)&lt;/span&gt;的值更大，并逐步达到极大值。考虑两者的差：
+&lt;/p&gt;
+&lt;div class="math"&gt;$$L(\theta)-L(\theta^{(i)})=log(\sum_ZP(Y|Z,\theta)P(Z|\theta))-logP(Y|\theta^{(i)})$$&lt;/div&gt;
+&lt;p&gt; 
+利用Jensen不等式&lt;sup id="fnref:Jesen"&gt;&lt;a class="footnote-ref" href="#fn:Jesen" rel="footnote"&gt;1&lt;/a&gt;&lt;/sup&gt;,可以得到其下界：
+&lt;/p&gt;
+&lt;div class="math"&gt;$$L(\theta)-L(\theta^{(i)}) \geq \sum_ZP(Z|Y,\theta^{(i)})log\frac{P(Y|Z,\theta)P(Z|\theta)}{P(Y|Z,\theta^{(i)})P(Y|\theta^{(i)})}$$&lt;/div&gt;
+&lt;p&gt;
+令
+&lt;/p&gt;
+&lt;div class="math"&gt;$$B(\theta,\theta^{(1)})=L(\theta^{(i)})+\sum_ZP(Z|Y,\theta^{(i)})log\frac{P(Y|Z,\theta)P(Z|\theta)}{P(Y|Z,\theta^{(i)})P(Y|\theta^{(i)})}$$&lt;/div&gt;
+&lt;p&gt;
+则&lt;span class="math"&gt;\(B(\theta,\theta^{(1)})\)&lt;/span&gt;是&lt;span class="math"&gt;\(L(\theta)\)&lt;/span&gt;的一个下界，而且&lt;span class="math"&gt;\(L(\theta^{(i)})=B(\theta^{(i)},\theta^{(i)})\)&lt;/span&gt;。所以，任意可以使&lt;span class="math"&gt;\(B(\theta,\theta^{(1)})\)&lt;/span&gt;增大的&lt;span class="math"&gt;\(\theta\)&lt;/span&gt;，也可以使&lt;span class="math"&gt;\(L(\theta)\)&lt;/span&gt;增大。选择&lt;span class="math"&gt;\(\theta^{(i+1)}\)&lt;/span&gt;使得
+&lt;/p&gt;
+&lt;div class="math"&gt;$$\theta^{(i+1)}=argmax_\theta B(\theta, \theta^{(i+1)})$$&lt;/div&gt;
+&lt;p&gt;
+然后可以得到：
+&lt;/p&gt;
+&lt;div class="math"&gt;$$\theta^{(i+1)}=argmax_\theta Q(\theta, \theta^{(i)})$$&lt;/div&gt;
+&lt;p&gt;
+等价于EM算法的一次迭代，即求Q函数及其极大化。EM算法是通过不断求解其下界的极大化逼近求解对数似然函数极大化的算法。&lt;/p&gt;
+&lt;p&gt;但是，EM算法不能保证找到全局最优值。&lt;/p&gt;
+&lt;h3&gt;EM算法在非监督学习中的应用&lt;/h3&gt;
+&lt;p&gt;有时训练数据只有输入而没有输出，从这样的数据学习模型称为非监督学习问题。EM算法可以用于非监督学习，生成模型由联合概率分布P(X,Y)（相当于P(Y)）表示，可以认为非监督学习训练数据是联合概率分布产生的数据。X为观测数据，Y为非观测数据。&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h2&gt;EM算法的收敛性&lt;/h2&gt;
+&lt;p&gt;EM算法提供一种近似计算含有隐含变量概率模型的极大似然估计的方法。EM算法的最大优点是简单性和普适性。EM算法得到的估计序列是否收敛？&lt;/p&gt;
+&lt;p&gt;设&lt;span class="math"&gt;\(P(Y|\theta)\)&lt;/span&gt;为观测数据的似然函数，&lt;span class="math"&gt;\(\theta^{(i)}(i=1,2,...)\)&lt;/span&gt;为EM算法得到的参数估计序列，&lt;span class="math"&gt;\(P(Y|\theta^{(i)})(i=1,2,...)\)&lt;/span&gt;为对应的似然函数序列，则&lt;span class="math"&gt;\(P(Y|\theta^{i})\)&lt;/span&gt;是单调递增的，即
+&lt;/p&gt;
+&lt;div class="math"&gt;$$P(Y|\theta^{(i+1)}) \geq P(Y|\theta^{(i)})$$&lt;/div&gt;
+&lt;p&gt;设&lt;span class="math"&gt;\(L(\theta)=logP(Y|\theta)\)&lt;/span&gt;为观测数据的对数似然函数，&lt;span class="math"&gt;\(\theta^{(i)}(i=1,2,...)\)&lt;/span&gt;为EM算法得到的参数估计序列，&lt;span class="math"&gt;\(L(\theta^{(i)})(i=1,2,...)\)&lt;/span&gt;为为对应的对数似然函数序列。&lt;/p&gt;
+&lt;p&gt;（1）如果&lt;span class="math"&gt;\(P(Y|\theta)\)&lt;/span&gt;有上界，则&lt;span class="math"&gt;\(L(\theta^{(i)})=logP(Y|\theta^{(i)})\)&lt;/span&gt;收敛到某一直&lt;span class="math"&gt;\(L^*\)&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;（2）&lt;span class="math"&gt;\(Q(\theta, \theta')与L(\theta)\)&lt;/span&gt;满足一定条件下，由EM算法得到的参数估计序列&lt;span class="math"&gt;\(\theta^{(i)}\)&lt;/span&gt;的收敛值&lt;span class="math"&gt;\(\theta^{*}\)&lt;/span&gt;是&lt;span class="math"&gt;\(L(\theta)\)&lt;/span&gt;的稳定点。&lt;/p&gt;
+&lt;p&gt;稳定点，不能保证收敛到极大值点。所以初值的选择变得非常重要，常用的办法是选取几个不同的初值进行迭代，然后对得到的各个初值加以比较，从中选择最好的。&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h2&gt;EM算法在高斯混合模型学习中的应用&lt;/h2&gt;
+&lt;p&gt;EM算法的一个重要应用是高斯混合模型的参数估计。&lt;/p&gt;
+&lt;h3&gt;高斯混合模型&lt;/h3&gt;
+&lt;p&gt;高斯混合模型是指具有如下形式的概率分布模型：
+&lt;/p&gt;
+&lt;div class="math"&gt;$$P(y|\theta)=\sum_{k=1}^{K}\alpha_k\phi(y|\theta_k)$$&lt;/div&gt;
+&lt;p&gt;
+其中&lt;span class="math"&gt;\(\alpha_k \geq 0\)&lt;/span&gt;是系数（&lt;span class="math"&gt;\(\sum_{k=1}^{K}\alpha_k = 1\)&lt;/span&gt;）；&lt;span class="math"&gt;\(\phi(y|\theta_k)\)&lt;/span&gt;是高斯分布密度，&lt;span class="math"&gt;\(\phi(y|\theta_k)=(\mu_k, \sigma_k^2)\)&lt;/span&gt;
+&lt;/p&gt;
+&lt;div class="math"&gt;$$\phi(y|\theta_k)=\frac{1}{\sqrt{2\pi}\sigma_k}exp(-\frac{(y-\mu_k)^2}{2\sigma_k^2})$$&lt;/div&gt;
+&lt;p&gt;
+称为第k个模型。&lt;/p&gt;
+&lt;h3&gt;高斯混合模型参数估计的EM算法&lt;/h3&gt;
+&lt;p&gt;我们用EM算法估计高斯混合模型的参数&lt;span class="math"&gt;\(\theta=(\alpha_1,\alpha_2,...,\alpha_k;\theta_1,\theta_2,...,\theta_k)\)&lt;/span&gt;。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;（1）明确隐变量，写出完全数据的对数似然函数&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;第k个模型&lt;span class="math"&gt;\(\phi(y|\theta_k)\)&lt;/span&gt;生成的观测数据&lt;span class="math"&gt;\(y_j\)&lt;/span&gt;是已知的；但是观测数据来自于哪个模型是未知的，定义隐变量&lt;span class="math"&gt;\(\gamma_{jk}\)&lt;/span&gt;：
+&lt;/p&gt;
+&lt;div class="math"&gt;$$\gamma_{jk}=\left\{\begin{matrix}
+1, &amp;amp; 第j个观测来自第k个分模型\\ 
+0, &amp;amp; 否则
+\end{matrix}\right.$$&lt;/div&gt;
+&lt;p&gt;
+这样完全数据就是：
+&lt;/p&gt;
+&lt;div class="math"&gt;$$(y_j,\gamma_{j1},\gamma_{j2},...,\gamma_{jK}), j=1,2,...,N$$&lt;/div&gt;
+&lt;p&gt;
+于是，可以写出完全数据的似然函数：
+&lt;/p&gt;
+&lt;div class="math"&gt;$$P(y,\gamma|\theta)=\prod_{j=1}^{N}P(y_j,\gamma_{j1},\gamma_{j2},...,\gamma_{jK}|\theta)=...=\prod_{k=1}^{K}\alpha_k^{n_k}\prod_{j=1}^{N}[\frac{1}{\sqrt{2\pi}\sigma_k}exp(-\frac{(y_j-\mu_k)^2}{2\sigma_k^2})]^{\gamma_{jk}}$$&lt;/div&gt;
+&lt;p&gt;
+其中，&lt;span class="math"&gt;\(n_k=\sum_{j=1}^{N}\gamma_{jk}\)&lt;/span&gt;。&lt;/p&gt;
+&lt;p&gt;那么，完全数据的对数似然函数就为：
+&lt;/p&gt;
+&lt;div class="math"&gt;$$logP(y,\gamma|\theta)=\sum_{k=1}^{K}n_klog\alpha_k+\sum_{j=1}^{N}\gamma_{jk}[log\frac{1}{\sqrt{2\pi}\sigma_k}-\frac{(y_j-\mu_k)^2}{2\sigma_k^2})]$$&lt;/div&gt;
+&lt;p&gt;（2）EM算法的E步：确定Q函数
+&lt;/p&gt;
+&lt;div class="math"&gt;$$Q(\theta, \theta^{(i)})=E[logP(y,\gamma|\theta)|y,\theta^{(i)}]$$&lt;/div&gt;
+&lt;p&gt;（3）确定EM算法的M步&lt;/p&gt;
+&lt;p&gt;求使&lt;span class="math"&gt;\(Q(\theta, \theta^{(i)})\)&lt;/span&gt;极大化的&lt;span class="math"&gt;\(\theta\)&lt;/span&gt;，确定第i+1次迭代的参数估计值&lt;span class="math"&gt;\(\theta^{(i+1)}\)&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;（4）重复直到收敛&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h2&gt;EM算法的推广&lt;/h2&gt;
+&lt;p&gt;EM算法还可以解释&lt;strong&gt;为F函数的极大-极大算法&lt;/strong&gt;，基于这个解释有若干变形与推广，如&lt;strong&gt;广义期望极大（GEM）算法&lt;/strong&gt;。&lt;/p&gt;
+&lt;h3&gt;F函数的极大-极大算法&lt;/h3&gt;
+&lt;p&gt;假设隐变量数据Z的概率分布为&lt;span class="math"&gt;\(\widetilde{P}(Z)\)&lt;/span&gt;，定义分布&lt;span class="math"&gt;\(\widetilde{P}\)&lt;/span&gt;与参数&lt;span class="math"&gt;\(\theta\)&lt;/span&gt;的函数&lt;span class="math"&gt;\(F(\widetilde{P}, \theta)\)&lt;/span&gt;：
+&lt;/p&gt;
+&lt;div class="math"&gt;$$F(\widetilde{P}, \theta)=E_{\widetilde{P}}[logP(Y,Z|\theta)]+H(\widetilde{P})$$&lt;/div&gt;
+&lt;p&gt;
+称为&lt;strong&gt;FF函数&lt;/strong&gt;。式中&lt;span class="math"&gt;\(H(\widetilde{P})\)&lt;/span&gt;是分布&lt;span class="math"&gt;\(\widetilde{P}(Z)\)&lt;/span&gt;的熵。&lt;span class="math"&gt;\(F(\widetilde{P}, \theta)\)&lt;/span&gt;具有如下的性质：&lt;/p&gt;
+&lt;p&gt;（1）对于固定的&lt;span class="math"&gt;\(\theta\)&lt;/span&gt;，存在唯一的分布布&lt;span class="math"&gt;\(\widetilde{P}(\theta)\)&lt;/span&gt;极大化&lt;span class="math"&gt;\(F(\widetilde{P}, \theta)\)&lt;/span&gt;，这时&lt;span class="math"&gt;\(\widetilde{P}(\theta)\)&lt;/span&gt;由下式给出：
+&lt;/p&gt;
+&lt;div class="math"&gt;$$\widetilde{P}_\theta(Z)=P(Z|Y,\theta)$$&lt;/div&gt;
+&lt;p&gt;
+并且&lt;span class="math"&gt;\(\widetilde{P}(\theta)\)&lt;/span&gt;随&lt;span class="math"&gt;\(\theta\)&lt;/span&gt;连续变化。&lt;/p&gt;
+&lt;p&gt;（2）若&lt;span class="math"&gt;\(\widetilde{P}_\theta(Z) = P(Z|Y,\theta)\)&lt;/span&gt;，则
+&lt;/p&gt;
+&lt;div class="math"&gt;$$F(\widetilde{P}, \theta)=logP(Y|\theta)$$&lt;/div&gt;
+&lt;p&gt;
+于是，可以得到EM算法用F函数的极大-极大的解释。&lt;/p&gt;
+&lt;p&gt;（3）如果&lt;span class="math"&gt;\(F(\widetilde{P}, \theta)\)&lt;/span&gt;在&lt;span class="math"&gt;\(\widetilde{P}^*\)&lt;/span&gt;和&lt;span class="math"&gt;\(\theta^*\)&lt;/span&gt;有局部极大值，那么&lt;span class="math"&gt;\(L(\theta)\)&lt;/span&gt;也在&lt;span class="math"&gt;\(\theta^*\)&lt;/span&gt;有局部极大值。 类似的，如果&lt;span class="math"&gt;\(F(\widetilde{P}, \theta)\)&lt;/span&gt;在&lt;span class="math"&gt;\(\widetilde{P}^*\)&lt;/span&gt;和&lt;span class="math"&gt;\(\theta^*\)&lt;/span&gt;有全局极大值，那么&lt;span class="math"&gt;\(L(\theta)\)&lt;/span&gt;也在&lt;span class="math"&gt;\(\theta^*\)&lt;/span&gt;有全局极大值。&lt;/p&gt;
+&lt;p&gt;（4）&lt;strong&gt;EM算法的一次迭代可由F函数的极大-极大算法实现。&lt;/strong&gt;
+&lt;span class="math"&gt;\(\theta^{(i)}\)&lt;/span&gt;为第i次迭代参数的估计，&lt;span class="math"&gt;\(\widetilde{P}^{(i)}\)&lt;/span&gt;为第i次迭代函数&lt;span class="math"&gt;\(\widetilde{P}\)&lt;/span&gt;的估计。在第i+1次迭代的两步为：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;对固定的&lt;span class="math"&gt;\(\theta^{(i)}\)&lt;/span&gt;，求&lt;span class="math"&gt;\(\widetilde{P}^{(i+1)}\)&lt;/span&gt;使&lt;span class="math"&gt;\(F(\widetilde{P}, \theta^{(i)})\)&lt;/span&gt;极大化；&lt;/li&gt;
+&lt;li&gt;对固定的&lt;span class="math"&gt;\(\widetilde{P}^{(i+1)}\)&lt;/span&gt;，求&lt;span class="math"&gt;\(\theta^{(i+1)}\)&lt;/span&gt;使&lt;span class="math"&gt;\(F(\widetilde{P}^{(i+1), \theta})\)&lt;/span&gt;极大化；&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;通过以上两步完成了EM算法的一次迭代。因此，EM算法与F函数的极大-极大算法得到的参数估计序列是一致的。&lt;/p&gt;
+&lt;p&gt;于是就有了EM算法的推广。&lt;/p&gt;
+&lt;h3&gt;GEM算法&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;GEM算法1：&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;输入：观测数据，F函数&lt;/p&gt;
+&lt;p&gt;输出：模型参数&lt;/p&gt;
+&lt;p&gt;（1） 初始化参数&lt;span class="math"&gt;\(\theta^{(0)}\)&lt;/span&gt;，开始迭代&lt;/p&gt;
+&lt;p&gt;（2）第i+1次迭代，第1步：记&lt;span class="math"&gt;\(\theta^{(i)}\)&lt;/span&gt;为参数&lt;span class="math"&gt;\(\theta\)&lt;/span&gt;的估计值，&lt;span class="math"&gt;\(\widetilde{P}^{(i)}\)&lt;/span&gt;为&lt;span class="math"&gt;\(\widetilde{P}\)&lt;/span&gt;的估计。求&lt;span class="math"&gt;\(\widetilde{P}^{(i+1)}\)&lt;/span&gt;使&lt;span class="math"&gt;\(F(\widetilde{P}, \theta^{(i)})\)&lt;/span&gt;极大化&lt;/p&gt;
+&lt;p&gt;（3）第2步：求&lt;span class="math"&gt;\(\theta^{(i+1)}\)&lt;/span&gt;使&lt;span class="math"&gt;\(F(\widetilde{P}^{(i+1), \theta})\)&lt;/span&gt;极大化&lt;/p&gt;
+&lt;p&gt;（4）重复（2）和（3），直到收敛。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;GEM算法2：&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;输入：观测数据，Q函数&lt;/p&gt;
+&lt;p&gt;输出：模型参数&lt;/p&gt;
+&lt;p&gt;（1）初始化参数&lt;span class="math"&gt;\(\theta^{(0)}\)&lt;/span&gt;，开始迭代&lt;/p&gt;
+&lt;p&gt;（2）第i+1次迭代，第1步：记&lt;span class="math"&gt;\(\theta^{(i)}\)&lt;/span&gt;为参数&lt;span class="math"&gt;\(\theta\)&lt;/span&gt;的估计值，计算
+&lt;/p&gt;
+&lt;div class="math"&gt;$$Q(\theta, \theta^{(i)})=E_Z[logP(Y,Z|\theta)|Y,\theta^{(i)}]=\sum_ZlogP(Y,Z|\theta)P(Z|y,\theta^{(i)})$$&lt;/div&gt;
+&lt;p&gt;（3）第2步：求&lt;span class="math"&gt;\(\theta^{(i+1)}\)&lt;/span&gt;使
+&lt;/p&gt;
+&lt;div class="math"&gt;$$Q(\theta^{(i+1)},\theta^{(i)}) \geq Q(\theta^{(i)}, \theta^{(i)})$$&lt;/div&gt;
+&lt;p&gt;（4）重复（2）和（3），直到收敛。&lt;/p&gt;
+&lt;p&gt;当参数&lt;span class="math"&gt;\(\theta\)&lt;/span&gt;的维数为d时，可以采用一种特殊的GEM法， 它将EM算法的M步分解为d次条件极大化， 每次只改变参数向量的一个分量，其余分量不改变。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;GEM算法3：&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;输入：观测数据，Q函数&lt;/p&gt;
+&lt;p&gt;输出：模型参数&lt;/p&gt;
+&lt;p&gt;（1）初始化参数&lt;span class="math"&gt;\(\theta^{(0)}\)&lt;/span&gt;，开始迭代&lt;/p&gt;
+&lt;p&gt;（2）第i+1次迭代，第1步：记&lt;span class="math"&gt;\(\theta^{(i)}=(\theta_1^{(i)},\theta_2^{(i)},...,\theta_d^{(i)})\)&lt;/span&gt;为参数&lt;span class="math"&gt;\(\theta\)&lt;/span&gt;的估计值，计算
+&lt;/p&gt;
+&lt;div class="math"&gt;$$Q(\theta, \theta^{(i)})=E_Z[logP(Y,Z|\theta)|Y,\theta^{(i)}]=\sum_ZlogP(Y,Z|\theta)P(Z|y,\theta^{(i)})$$&lt;/div&gt;
+&lt;p&gt;（3）第2步：进行d次条件极大化：&lt;/p&gt;
+&lt;p&gt;首先，在&lt;span class="math"&gt;\(\theta_2^{(i)},...,\theta_k^{(i)}\)&lt;/span&gt;保持不变的条件下求使&lt;span class="math"&gt;\(Q(\theta, \theta^{(i)})\)&lt;/span&gt;达到极大的&lt;span class="math"&gt;\(\theta_1^{(i+1)}\)&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;然后，在&lt;span class="math"&gt;\(\theta_1^{(i)},\theta_3^{(i)},...,\theta_k^{(i)}\)&lt;/span&gt;保持不变的条件下求使&lt;span class="math"&gt;\(Q(\theta, \theta^{(i)})\)&lt;/span&gt;达到极大的&lt;span class="math"&gt;\(\theta_2^{(i+1)}\)&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;如此继续，经过d次条件极大化，得到求&lt;span class="math"&gt;\(\theta^{(i+1)}\)&lt;/span&gt;使
+&lt;/p&gt;
+&lt;div class="math"&gt;$$Q(\theta^{(i+1)},\theta^{(i)}) \geq Q(\theta^{(i)}, \theta^{(i)})$$&lt;/div&gt;
+&lt;p&gt;（4）重复（2）和（3），直到收敛。&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h2&gt;Reference&lt;/h2&gt;
+&lt;p&gt;&lt;a href="http://book.douban.com/subject/10590856/"&gt;统计学习方法&lt;/a&gt;第七章&lt;/p&gt;
+&lt;div class="footnote"&gt;
+&lt;hr /&gt;
+&lt;ol&gt;
+&lt;li id="fn:Jesen"&gt;
+&lt;p&gt;&lt;span class="math"&gt;\(log\sum_j\lambda_jy_j \geq \sum_j\\lambda_jlogy_j\)&lt;/span&gt;，其中&lt;span class="math"&gt;\(\lambda_j \geq 0, \sum_j\lambda_j=1\)&lt;/span&gt;&amp;#160;&lt;a class="footnote-backref" href="#fnref:Jesen" rev="footnote" title="Jump back to footnote 1 in the text"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;script type="text/javascript"&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "false";
+
+    if (false) {
+        align = (screen.width &lt; 768) ? "left" : align;
+        indent = (screen.width &lt; 768) ? "0em" : indent;
+        linebreak = (screen.width &lt; 768) ? 'true' : linebreak;
+    }
+    
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = '//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); ";
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+&lt;/script&gt;</summary><category term="读书笔记"></category></entry><entry><title>提升树</title><link href="http://www.wengweitao.com/ti-sheng-shu.html" rel="alternate"></link><updated>2014-08-07T22:27:00+08:00</updated><author><name>wwt</name></author><id>tag:www.wengweitao.com,2014-08-07:ti-sheng-shu.html</id><summary type="html">&lt;blockquote&gt;
 &lt;p&gt;提升树是以分类树或回归树为基本分类器的提升方法。提升树被认为是统计学习中性能最好的方法之一。&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h2&gt;提升树模型&lt;/h2&gt;
