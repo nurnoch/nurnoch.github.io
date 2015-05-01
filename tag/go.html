@@ -2,7 +2,7 @@
 <html lang="zh">
 <head>
 
-        <title>wwt's blog - 玩</title>
+        <title>wwt's blog - Go</title>
         <meta charset="utf-8" />
         <link href="http://www.wengweitao.com/feeds\all.atom.xml" type="application/atom+xml" rel="alternate" title="wwt's blog Full Atom Feed" />
         <link href="http://www.wengweitao.com/feeds/all.rss.xml" type="application/rss+xml" rel="alternate" title="wwt's blog Full RSS Feed" />
@@ -60,51 +60,39 @@
         <div class="eleven columns">
                  <ol id="post-list">
                         <li><article class="hentry">
-                                <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/hu-lian-wang-shi-yan-shi-he-yuan-you-wan.html" rel="bookmark" title="Permalink to 互联网实验室河源游玩">互联网实验室河源游玩</a></h2> </header>
+                                <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/goyu-yan-ru-men-jiao-cheng-1.html" rel="bookmark" title="Permalink to Go语言入门教程（1）">Go语言入门教程（1）</a></h2> </header>
                                 <footer class="post-info">
-                                    <abbr class="published" title="2015-04-14T20:12:00"> Tue 14 April 2015 </abbr>
+                                    <abbr class="published" title="2015-04-30T22:30:00"> Thu 30 April 2015 </abbr>
                                     <address class="vcard author">By 
                                     <a class="url fn" href="http://www.wengweitao.com/author/wwt.html"> wwt</a>
                                     </address>
                                 </footer><!-- /.post-info -->
-                                <div class="entry-content"> <p>4月份，春暖花开，正是出游的好时间。实验室一年一度的集体出游（当然是老板全部报销啦~），就定在了4月11日和12日这两天，今年去的地方是——河源。实验室一群小伙伴度过了非常欢乐的一个周末。</p>
-<h3>河源</h3>
-<p>在去<a href="http://zh.wikipedia.org/wiki/%E6%B2%B3%E6%BA%90%E5%B8%82">河源</a>游玩之前，仅仅是听过有河源这个地方，其他的都是这次旅游完才了解到的。</p>
+                                <div class="entry-content"> <h2>什么是Go？</h2>
+<p>以下是<a href="https://golang.org/doc/">Go官方网站</a>对其解释：</p>
+<p>Go 编程语言是一个使得程序员更加有效率的开源项目。Go是有表达力、简洁、清晰和有效率的。它的并行机制使其很容易编写多核和网络应用，而新奇的类型系统允许构建有弹性的模块化程序。Go编译到机器码非常快速，同时具有便利的垃圾回收和强大的运行时反射。它是快速的、静态类型编译语言，但是感觉上是动态类型的，解释型语言。</p>
+<h2>Go的特性</h2>
 <ul>
-<li>河源在广东的东北部，从深圳坐大巴过去大概2个半小时。</li>
-<li>河源是一个地级市，河源市辖1个市辖区、5个县，但是地方感觉不太大。市区里面还分新城区和老城区，虽然是新城区不过高楼大厦仍然极少。</li>
-<li>大量客家人</li>
-<li>河源菜是东江菜的典型代表，而东江菜是粤菜的主要流派之一，其特点是偏重“肥、咸、熟”</li>
-<li>景点：<ul>
-<li>万绿湖</li>
-<li>镜花缘</li>
-<li>野趣沟</li>
+<li>清晰并且简洁</li>
+<li>并行。很容易让函数变成一个轻量的线程，这些线程被称为goroutines。</li>
+<li>Channel。goroutines直接的通信由channel完成。</li>
+<li>快速。编译和执行都很快。</li>
+<li>安全。类型转换遵循严格的规则并且需要显式的转换；有垃圾收集，无序free()。</li>
+<li>标准格式化。gofmt的输出是官方认可的格式</li>
+<li>类型后置。与类C语言不同，Go的类型在变量名之后</li>
+<li>UTF-8。任何地方都是UTF-8（用过Python的人应该体会到不是UTF-8的痛苦。。。）</li>
 </ul>
-</li>
-</ul>
-<h3>行程</h3>
-<p><strong>野趣沟风景区</strong></p>
-<p><img alt="野趣沟1" src="./imgs/河源1.JPG" /></p>
-<p><img alt="野趣沟2" src="./imgs/河源2.JPG" /></p>
-<p><img alt="野趣沟3" src="./imgs/河源5.JPG" /></p>
-<p>山上的风景还挺不错</p>
-<p><strong>镜花缘</strong>
-<img alt="镜花缘" src="./imgs/河源8.JPG" /></p>
-<p>镜花缘里面实验室大合影</p>
-<p><img alt="镜花缘2" src="./imgs/河源7.JPG" /></p>
-<p>通过镜子合影，有创意</p>
-<p><img alt="镜花缘3" src="./imgs/河源9.JPG" /></p>
-<p>女儿国表演</p>
-<p>此外，晚上我们还泡了温泉，一共60多个池子，牛奶的、艾草的、薰衣草的等等，非常舒服。</p>
-<h3>聚餐 ...</h3> </div><!-- /.entry-content -->
+<p>Go语言与Erlang比较类似，区别在于Erlang是函数式编程语言，而Go是命令式；Erlang运行在虚拟机上，而Go是编译后运行的。</p>
+<h2>安装Go</h2>
+<p>这里以Linux平台为例。</p>
+<p>下载<a href="https://golang.org/dl/">Go的压缩包</a>并解压到 /usr/local ...</p> </div><!-- /.entry-content -->
 
-                                <div class="medium primary btn"><a href="http://www.wengweitao.com/hu-lian-wang-shi-yan-shi-he-yuan-you-wan.html" rel="bookmark" title="Permalink to 互联网实验室河源游玩">Read more <i class="icon-arrow-right"></i></a></div>
+                                <div class="medium primary btn"><a href="http://www.wengweitao.com/goyu-yan-ru-men-jiao-cheng-1.html" rel="bookmark" title="Permalink to Go语言入门教程（1）">Read more <i class="icon-arrow-right"></i></a></div>
 
 
 
                                 <div class="row tag-row">
                                         <span>Tagged as : </span>
-                                            <a class="danger label" href="http://www.wengweitao.com/tag/wan.html">玩</a>
+                                            <a class="danger label" href="http://www.wengweitao.com/tag/go.html">Go</a>
                                 </div>
 
 

@@ -178,12 +178,12 @@
 &lt;p&gt;（4）重复（2）和（3），直到收敛。&lt;/p&gt;
 &lt;hr /&gt;
 &lt;h2&gt;Reference&lt;/h2&gt;
-&lt;p&gt;&lt;a href="http://book.douban.com/subject/10590856/"&gt;统计学习方法&lt;/a&gt;第七章&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://book.douban.com/subject/10590856/"&gt;统计学习方法&lt;/a&gt;第九章&lt;/p&gt;
 &lt;div class="footnote"&gt;
 &lt;hr /&gt;
 &lt;ol&gt;
 &lt;li id="fn:Jesen"&gt;
-&lt;p&gt;&lt;span class="math"&gt;\(log\sum_j\lambda_jy_j \geq \sum_j\\lambda_jlogy_j\)&lt;/span&gt;，其中&lt;span class="math"&gt;\(\lambda_j \geq 0, \sum_j\lambda_j=1\)&lt;/span&gt;&amp;#160;&lt;a class="footnote-backref" href="#fnref:Jesen" rev="footnote" title="Jump back to footnote 1 in the text"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span class="math"&gt;\(log\sum_j\lambda_jy_j \geq \sum_j\lambda_jlogy_j\)&lt;/span&gt;，其中&lt;span class="math"&gt;\(\lambda_j \geq 0, \sum_j\lambda_j=1\)&lt;/span&gt;&amp;#160;&lt;a class="footnote-backref" href="#fnref:Jesen" rev="footnote" title="Jump back to footnote 1 in the text"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
 &lt;/div&gt;

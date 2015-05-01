@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+
+        <title>Go语言入门教程（1）</title>
+        <meta charset="utf-8" />
+        <link href="http://www.wengweitao.com/feeds\all.atom.xml" type="application/atom+xml" rel="alternate" title="wwt's blog Full Atom Feed" />
+        <link href="http://www.wengweitao.com/feeds/all.rss.xml" type="application/rss+xml" rel="alternate" title="wwt's blog Full RSS Feed" />
+        <link href="http://www.wengweitao.com/feeds/bian-cheng-yu-yan.rss.xml" type="application/atom+xml" rel="alternate" title="wwt's blog Categories Atom Feed" />
+
+
+        <!-- Mobile viewport optimized: j.mp/bplateviewport -->
+        <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1">
+
+        <meta name="sogou_site_verification" content="ia8yXdZS0p"/>
+ 
+
+        <link rel="stylesheet" type="text/css" href="http://www.wengweitao.com/theme/gumby.css" />
+        <link rel="stylesheet" type="text/css" href="http://www.wengweitao.com/theme/style.css" />
+        <link rel="stylesheet" type="text/css" href="http://www.wengweitao.com/theme/pygment.css" />
+
+        <script src="http://www.wengweitao.com/theme/js/libs/modernizr-2.6.2.min.js"></script>
+
+
+
+
+</head>
+
+<body id="index" class="home">
+
+
+    <div class="container">
+
+        <div class="row">
+
+          <header id="banner" class="body">
+                  <h1><a href="http://www.wengweitao.com/">wwt's blog <strong></strong></a></h1>
+          </header><!-- /#banner -->
+
+            <div id="navigation" class="navbar row">
+              <a href="#" gumby-trigger="#navigation &gt; ul" class="toggle"><i class="icon-menu"></i></a>
+             
+              <ul class="columns">
+                <li><a href="http://www.wengweitao.com/">首页</a></li>
+
+                <li><a href="/categories.html">分类</a></li>
+                <li><a href="/tags.html">标签</a></li>
+                <li><a href="/archives.html">归档</a></li>
+                <li><a href="/pages/about-me.html">关于我</a></li>
+
+              </ul>
+            </div>
+
+<section id="content" class="body">
+
+   <div class="row">
+        <div class="eleven columns">
+
+
+            <header>
+              <h2 class="entry-title">
+                <a href="http://www.wengweitao.com/goyu-yan-ru-men-jiao-cheng-1.html" rel="bookmark"
+                   title="Permalink to Go语言入门教程（1）">Go语言入门教程（1）</a></h2>
+           
+            </header>
+            <footer class="post-info">
+              <abbr class="published" title="2015-04-30T22:30:00">
+                Thu 30 April 2015
+              </abbr>
+              <address class="vcard author">By 
+                <a class="url fn" href="http://www.wengweitao.com/author/wwt.html"> wwt</a>
+              </address>
+            </footer><!-- /.post-info -->
+            <div class="entry-content">
+              <h2>什么是Go？</h2>
+<p>以下是<a href="https://golang.org/doc/">Go官方网站</a>对其解释：</p>
+<p>Go 编程语言是一个使得程序员更加有效率的开源项目。Go是有表达力、简洁、清晰和有效率的。它的并行机制使其很容易编写多核和网络应用，而新奇的类型系统允许构建有弹性的模块化程序。Go编译到机器码非常快速，同时具有便利的垃圾回收和强大的运行时反射。它是快速的、静态类型编译语言，但是感觉上是动态类型的，解释型语言。</p>
+<h2>Go的特性</h2>
+<ul>
+<li>清晰并且简洁</li>
+<li>并行。很容易让函数变成一个轻量的线程，这些线程被称为goroutines。</li>
+<li>Channel。goroutines直接的通信由channel完成。</li>
+<li>快速。编译和执行都很快。</li>
+<li>安全。类型转换遵循严格的规则并且需要显式的转换；有垃圾收集，无序free()。</li>
+<li>标准格式化。gofmt的输出是官方认可的格式</li>
+<li>类型后置。与类C语言不同，Go的类型在变量名之后</li>
+<li>UTF-8。任何地方都是UTF-8（用过Python的人应该体会到不是UTF-8的痛苦。。。）</li>
+</ul>
+<p>Go语言与Erlang比较类似，区别在于Erlang是函数式编程语言，而Go是命令式；Erlang运行在虚拟机上，而Go是编译后运行的。</p>
+<h2>安装Go</h2>
+<p>这里以Linux平台为例。</p>
+<p>下载<a href="https://golang.org/dl/">Go的压缩包</a>并解压到 /usr/local 目录：</p>
+<div class="highlight"><pre><span class="n">tar</span> <span class="o">-</span><span class="n">C</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span> <span class="o">-</span><span class="n">xzf</span> <span class="n">go</span><span class="err">$</span><span class="n">VERSION</span><span class="p">.</span><span class="err">$</span><span class="n">OS</span><span class="o">-</span><span class="err">$</span><span class="n">ARCH</span><span class="p">.</span><span class="n">tar</span><span class="p">.</span><span class="n">gz</span>
+</pre></div>
+
+
+<p>将 /usr/local/go/bin 添加到PATH环境变量中，添加如下一行内容到 /etc/profile (系统范围)或者 $HOME/.profile(如果没有这个文件需要新建一个):</p>
+<div class="highlight"><pre><span class="n">export</span> <span class="n">PATH</span><span class="o">=</span><span class="err">$</span><span class="n">PATH</span><span class="o">:/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">go</span><span class="o">/</span><span class="n">bin</span>
+</pre></div>
+
+
+<p>在shell中输入：</p>
+<div class="highlight"><pre><span class="n">go</span> <span class="n">help</span>
+</pre></div>
+
+
+<p>如果出现go的帮助提示，则安装完成。</p>
+<h2>第一个Go程序：Hello World</h2>
+<p>编写hello.go：</p>
+<div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="s">&quot;fmt&quot;</span>  <span class="c1">//用于输出</span>
+
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;Hello, world\n&quot;</span><span class="p">)</span>                                                                                                                                                                         
+<span class="p">}</span>
+</pre></div>
+
+
+<p>（1）声明本文件的package名，所有go文件以package &lt; name &gt;开头，对于独立运行的执行文件必须是package main；</p>
+<p>（2）将fmt包引入main中，用于格式输出，不是main的其他包都被称为库。末尾//是注释，另外Go也支持/<em> ... </em>/注释</p>
+<p>（3）定义了main函数，Go程序在执行的时候，首先调用的函数是main.main()</p>
+<p>（4）调用fmt包的函数输出字符串到屏幕。</p>
+<h2>编译和运行</h2>
+<p>有两种方式运行：</p>
+<p>（1）解释执行</p>
+<div class="highlight"><pre><span class="n">go</span> <span class="n">run</span> <span class="n">hello</span><span class="p">.</span><span class="n">go</span>
+</pre></div>
+
+
+<p>（2）编译执行</p>
+<div class="highlight"><pre><span class="n">go</span> <span class="n">build</span> <span class="n">hello</span><span class="p">.</span><span class="n">go</span>
+</pre></div>
+
+
+<p>此时，会在当前目录生成hello的可执行文件，运行：</p>
+<div class="highlight"><pre><span class="p">.</span><span class="o">/</span><span class="n">hello</span>
+</pre></div>
+
+
+<h2>变量、类型和关键字</h2>
+<h3>变量声明</h3>
+<p>Go的变量声明使用关键字var，Go声明的时候把变量的类型写在变量名的后面。</p>
+<div class="highlight"><pre><span class="kd">var</span> <span class="nx">a</span> <span class="kt">int</span>  
+<span class="kd">var</span> <span class="nx">b</span> <span class="kt">bool</span>
+<span class="kd">var</span> <span class="nx">c</span> <span class="kt">string</span>
+<span class="nx">a</span> <span class="p">=</span> <span class="mi">15</span>
+<span class="nx">b</span> <span class="p">=</span> <span class="kc">false</span>
+<span class="nx">c</span> <span class="p">=</span> <span class="s">&quot;hello, world&quot;</span>
+
+<span class="kd">var</span> <span class="nx">x</span><span class="p">,</span> <span class="nx">y</span> <span class="kt">int</span>  <span class="c1">//相同的类型可以在同一行声明</span>
+</pre></div>
+
+
+<p>还有一种将声明和变量和在一起：</p>
+<div class="highlight"><pre><span class="nx">a</span> <span class="o">:=</span> <span class="mi">15</span>
+<span class="nx">b</span> <span class="o">:=</span> <span class="kc">false</span>
+<span class="nx">c</span> <span class="o">:=</span> <span class="s">&quot;hello, world&quot;</span>
+<span class="nx">a</span><span class="p">,</span> <span class="nx">b</span> <span class="o">:=</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span>  <span class="c1">//平行赋值</span>
+</pre></div>
+
+
+<p>这种情况下变量的类型是由值推导出来的。</p>
+<p>Go中存在一个特殊的变量名_。任何赋给它的值都会被丢弃。</p>
+<div class="highlight"><pre><span class="nx">_</span><span class="p">,</span> <span class="nx">b</span> <span class="p">=</span> <span class="mi">34</span><span class="p">,</span> <span class="mi">35</span>  <span class="c1">//将35赋值给b</span>
+</pre></div>
+
+
+<p>如果有多个var声明或者const和import，可以采用组的形式：</p>
+<div class="highlight"><pre><span class="kd">var</span> <span class="p">(</span>
+    <span class="nx">x</span> <span class="kt">int</span>
+    <span class="nx">y</span> <span class="kt">bool</span>
+<span class="p">)</span>
+</pre></div>
+
+
+<p>Go对声明了却未使用的变量会报错。</p>
+<div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">a</span> <span class="o">:=</span> <span class="mi">15</span>
+
+<span class="p">}</span>
+</pre></div>
+
+
+<h3>数字类型</h3>
+<div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">a</span> <span class="kt">int</span> <span class="c1">//通用整数类型</span>
+    <span class="kd">var</span> <span class="nx">b</span> <span class="kt">int32</span>   <span class="c1">//32位整数类型</span>
+    <span class="nx">a</span> <span class="p">=</span> <span class="mi">15</span>
+    <span class="nx">b</span> <span class="p">=</span> <span class="nx">a</span> <span class="o">+</span> <span class="nx">a</span> <span class="c1">//不能混合使用这些类型，非法！</span>
+    <span class="nx">b</span> <span class="p">=</span> <span class="nx">b</span> <span class="o">+</span> <span class="mi">5</span> <span class="c1">// ok                                                                                                                                                                                       </span>
+<span class="p">}</span>
+</pre></div>
+
+
+<h3>常量</h3>
+<p>常量使用const进行声明，它们在编译时被创建。</p>
+<div class="highlight"><pre><span class="kd">const</span> <span class="nx">i</span> <span class="kt">int</span> <span class="p">=</span> <span class="mi">1</span>
+
+<span class="kd">const</span> <span class="p">(</span>
+    <span class="nx">a</span> <span class="p">=</span> <span class="nx">itoa</span>   <span class="c1">// a = 0 </span>
+    <span class="nx">b</span> <span class="p">=</span> <span class="nx">itoa</span>   <span class="c1">// b = 1</span>
+<span class="p">)</span>
+</pre></div>
+
+
+<h3>字符串</h3>
+<p>双引号包裹的是字符串(string)，如果使用单引号那么就是字符。Go中字符串一旦赋值后，就不能再修改了：</p>
+<div class="highlight"><pre><span class="kd">var</span> <span class="nx">s</span> <span class="kt">string</span> <span class="p">=</span> <span class="s">&quot;hello&quot;</span>
+<span class="nx">s</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="p">=</span> <span class="sc">&#39;a&#39;</span>   <span class="c1">// error</span>
+</pre></div>
+
+
+<p>如果要修改，可以：</p>
+<div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="s">&quot;fmt&quot;</span>
+
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">s</span> <span class="o">:=</span> <span class="s">&quot;hello&quot;</span>
+    <span class="nx">c</span> <span class="o">:=</span> <span class="p">[]</span><span class="nb">rune</span><span class="p">(</span><span class="nx">s</span><span class="p">)</span>  <span class="c1">//将s转换为rune数组</span>
+    <span class="nx">c</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="p">=</span> <span class="sc">&#39;a&#39;</span>                                                                                                                                                                                            
+    <span class="nx">s2</span> <span class="o">:=</span> <span class="nb">string</span><span class="p">(</span><span class="nx">c</span><span class="p">)</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%s\n&quot;</span><span class="p">,</span><span class="nx">s2</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>上面的rune是int32的别名，用UTF-8进行编码，当需要遍历字符串中的字符时，为了获取实际的字符，需要使用rune类型。</p>
+<h3>错误</h3>
+<p>Go有一个为了错误而存在的内建类型：error。</p>
+<p>var e error定义了一个error类型的变量e。</p>
+<h2>控制结构</h2>
+<h3>if语句</h3>
+<p>if语句无需圆括号，而语句体必须有花括号</p>
+<div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="s">&quot;fmt&quot;</span>
+
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">x</span> <span class="o">:=</span> <span class="mi">1</span>
+    <span class="k">if</span> <span class="nx">x</span> <span class="p">&lt;</span> <span class="mi">0</span> <span class="p">{</span> <span class="c1">// 必须与if同一行</span>
+        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;Negative&quot;</span><span class="p">)</span>                                                                                                                                                                           
+    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="nx">x</span> <span class="o">==</span> <span class="mi">0</span> <span class="p">{</span>  <span class="c1">//必须同一行</span>
+        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;Zero&quot;</span><span class="p">)</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;Positive&quot;</span><span class="p">)</span>
+    <span class="p">}</span>   
+<span class="p">}</span>
+</pre></div>
+
+
+<h3>for语句</h3>
+<p>Go中没有while语句。对于for语句有3种形式。</p>
+<div class="highlight"><pre><span class="c1">// 第一种， init; condition; post</span>
+<span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="mi">10</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span> <span class="p">{</span>
+        <span class="nx">sum</span> <span class="o">+=</span> <span class="nx">i</span>
+    <span class="p">}</span>   
+<span class="c1">// 第二种，类似while，condition</span>
+    <span class="nx">i</span> <span class="o">:=</span> <span class="mi">1</span>
+    <span class="k">for</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="mi">10</span> <span class="p">{</span>
+        <span class="nx">sum</span> <span class="o">+=</span> <span class="nx">i</span>
+        <span class="nx">i</span><span class="o">++</span> 
+    <span class="p">}</span>   
+<span class="c1">// 第三种， 死循环</span>
+    <span class="nx">i</span> <span class="o">:=</span> <span class="mi">1</span>
+    <span class="k">for</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="nx">i</span> <span class="p">&gt;</span> <span class="mi">10</span> <span class="p">{</span>
+            <span class="k">break</span>
+        <span class="p">}</span>   
+        <span class="nx">sum</span> <span class="o">+=</span> <span class="nx">i</span>
+        <span class="nx">i</span><span class="o">++</span>                                                                                                                                                                                               
+    <span class="p">}</span>   
+</pre></div>
+
+
+<p>Go没有逗号表达式，如果想执行多个变量，应当使用平行赋值：</p>
+<div class="highlight"><pre><span class="c1">// Reverse a</span>
+<span class="k">for</span> <span class="nx">i</span><span class="p">,</span> <span class="nx">j</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="nx">a</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="nx">j</span><span class="p">;</span> <span class="nx">i</span><span class="p">,</span> <span class="nx">j</span> <span class="p">=</span> <span class="nx">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="nx">j</span> <span class="o">-</span> <span class="mi">1</span> <span class="p">{</span>
+    <span class="nx">a</span><span class="p">[</span><span class="nx">i</span><span class="p">],</span> <span class="nx">a</span><span class="p">[</span><span class="nx">j</span><span class="p">]</span> <span class="o">:=</span> <span class="nx">a</span><span class="p">[</span><span class="nx">j</span><span class="p">],</span> <span class="nx">a</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>关键字range可用于循环中：</p>
+<div class="highlight"><pre><span class="nx">list</span> <span class="o">:=</span> <span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">&quot;a&quot;</span><span class="p">,</span> <span class="s">&quot;b&quot;</span><span class="p">,</span> <span class="s">&quot;c&quot;</span><span class="p">}</span>  <span class="c1">// 创建一个字符串的slice</span>
+<span class="k">for</span> <span class="nx">k</span><span class="p">,</span> <span class="nx">v</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">list</span> <span class="p">{</span>   <span class="c1">// 每次返回int类型序号和值，如0和&quot;a&quot;</span>
+    <span class="c1">// doSomething()</span>
+<span class="p">}</span>   
+</pre></div>
+
+
+<h3>switch语句</h3>
+<p>Go的switch表示式不必是常量或整数，case可以有多个值，没有break，。</p>
+<div class="highlight"><pre><span class="k">switch</span> <span class="nx">i</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="mi">0</span><span class="p">:</span>  <span class="c1">//空的case体</span>
+    <span class="k">case</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="nx">f</span><span class="p">()</span>  <span class="c1">//当 i == 0 时， f 不会被调用</span>
+    <span class="k">case</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">:</span>  <span class="c1">//  , 相当于 or</span>
+        <span class="nx">g</span><span class="p">()</span>   
+    <span class="k">default</span><span class="p">:</span>
+        <span class="nx">h</span><span class="p">()</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<h2>内建函数</h2>
+<p>Go中预定义了不少函数，不用引进任何包就可以直接使用它们。</p>
+<ul>
+<li>close：关闭channel</li>
+<li>delete：在map中删除实例</li>
+<li>len和cap：返回字符串等的长度和容量</li>
+<li>new：各种类型的内存分配</li>
+<li>make：用于内建类型（map, slice和channel）的内存分配</li>
+<li>copy：复制slice</li>
+<li>append：追加slice</li>
+<li>panic和recover：异常处理</li>
+<li>print和println：打印函数，主要用于调试</li>
+<li>complex, real和imag：处理复数</li>
+</ul>
+<h2>array、slices和map</h2>
+<h3>array</h3>
+<p>array由[n]type定义，n表示数组的长度，type表示数组元素的类型。</p>
+<div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="s">&quot;fmt&quot;</span>
+
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">a</span> <span class="p">[</span><span class="mi">5</span><span class="p">]</span><span class="kt">int</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">a</span><span class="p">)</span>  <span class="c1">//默认初始化为0</span>
+
+    <span class="nx">a</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="p">=</span> <span class="mi">1</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">a</span><span class="p">)</span>  <span class="c1">//改变其中一个元素的值</span>
+
+    <span class="nx">b</span> <span class="o">:=</span> <span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="kt">int</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">}</span>  <span class="c1">//复合声明</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">b</span><span class="p">)</span>
+
+
+    <span class="nx">c</span> <span class="o">:=</span> <span class="p">[</span><span class="o">...</span><span class="p">]</span><span class="kt">int</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">}</span>  <span class="c1">//也可以简写</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">c</span><span class="p">)</span>
+
+    <span class="nx">d</span> <span class="o">:=</span> <span class="nx">a</span>  <span class="c1">// 将一个数组赋值给另一个数组，会复制所有的元素，而不是数组的指针</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">d</span><span class="p">)</span>
+
+    <span class="c1">// 多维数组</span>
+    <span class="nx">e</span> <span class="o">:=</span> <span class="p">[</span><span class="mi">3</span><span class="p">][</span><span class="mi">3</span><span class="p">]</span><span class="kt">int</span><span class="p">{</span> <span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="kt">int</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">},</span> <span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="kt">int</span><span class="p">{</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">},</span> <span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="kt">int</span><span class="p">{</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">}</span> <span class="p">}</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span>
+
+    <span class="nx">f</span> <span class="o">:=</span> <span class="p">[</span><span class="mi">3</span><span class="p">][</span><span class="mi">4</span><span class="p">]</span><span class="kt">int</span><span class="p">{</span> <span class="p">[</span><span class="o">...</span><span class="p">]</span><span class="kt">int</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">},[</span><span class="o">...</span><span class="p">]</span><span class="kt">int</span><span class="p">{</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">},</span> <span class="p">[</span><span class="o">...</span><span class="p">]</span><span class="kt">int</span><span class="p">{</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">}</span> <span class="p">}</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">f</span><span class="p">)</span>
+
+    <span class="c1">// 简写</span>
+    <span class="nx">g</span> <span class="o">:=</span> <span class="p">[</span><span class="mi">3</span><span class="p">][</span><span class="mi">5</span><span class="p">]</span><span class="kt">int</span><span class="p">{</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">},</span> <span class="p">{</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">},</span> <span class="p">{</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">}</span> <span class="p">}</span>                                                                                                                                                                 
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">g</span><span class="p">)</span>
+
+<span class="p">}</span>
+</pre></div>
+
+
+<p>运行结果：</p>
+<div class="highlight"><pre><span class="k">[0 0 0 0 0]</span>
+<span class="k">[0 1 0 0 0]</span>
+<span class="k">[1 2 3]</span>
+<span class="k">[1 2 3]</span>
+<span class="k">[0 1 0 0 0]</span>
+<span class="k">[[1 2] [3 4] [5 6]]</span>
+<span class="k">[[1 2] [3 4] [5 6]]</span>
+<span class="k">[[1 2] [3 4] [5 6]]</span>
+</pre></div>
+
+
+<h3>slice</h3>
+<ul>
+<li>slice与array相似，但是新元素加入的时候可以增加长度。</li>
+<li>slice是一个指向array的指针；</li>
+<li>slice是引用类型，赋值某个slice到了一个变量，两个引用会指向同一个array</li>
+</ul>
+<div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="s">&quot;fmt&quot;</span>
+
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">s1</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">([]</span><span class="kt">int</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>  <span class="c1">// 使用make创建一个保存有10个元素的slice</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">s1</span><span class="p">)</span>
+
+    <span class="nx">a1</span> <span class="o">:=</span> <span class="p">[</span><span class="o">...</span><span class="p">]</span><span class="kt">int</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">}</span>
+    <span class="nx">s2</span> <span class="o">:=</span> <span class="nx">a1</span><span class="p">[</span><span class="mi">2</span><span class="p">:</span><span class="mi">4</span><span class="p">]</span>  <span class="c1">//从array创建一个slice</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">s2</span><span class="p">)</span>
+    <span class="nx">s3</span> <span class="o">:=</span> <span class="nx">a1</span><span class="p">[:]</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">s3</span><span class="p">)</span>
+
+    <span class="kd">var</span> <span class="nx">array</span> <span class="p">[</span><span class="mi">100</span><span class="p">]</span><span class="kt">int</span>
+    <span class="nx">slice</span> <span class="o">:=</span> <span class="nx">array</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">99</span><span class="p">]</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="nx">array</span><span class="p">),</span> <span class="nb">cap</span><span class="p">(</span><span class="nx">array</span><span class="p">))</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="nx">slice</span><span class="p">),</span> <span class="nb">cap</span><span class="p">(</span><span class="nx">slice</span><span class="p">))</span>  <span class="c1">// capacity=100, len=99</span>
+
+    <span class="nx">slice</span><span class="p">[</span><span class="mi">98</span><span class="p">]</span> <span class="p">=</span> <span class="sc">&#39;a&#39;</span> 
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">array</span><span class="p">[</span><span class="mi">98</span><span class="p">])</span>
+
+    <span class="c1">// append</span>
+    <span class="nx">s4</span> <span class="o">:=</span> <span class="p">[]</span><span class="kt">int</span><span class="p">{</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">}</span>
+    <span class="nx">s5</span> <span class="o">:=</span> <span class="nb">append</span><span class="p">(</span><span class="nx">s4</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">s5</span><span class="p">)</span>
+    <span class="nx">s6</span> <span class="o">:=</span> <span class="nb">append</span><span class="p">(</span><span class="nx">s5</span><span class="p">,</span> <span class="nx">s4</span><span class="o">...</span><span class="p">)</span> <span class="c1">// 注意这3个点</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">s6</span><span class="p">)</span>
+
+    <span class="c1">// copy(dst, src)，返回复制元素的个数</span>
+    <span class="kd">var</span> <span class="nx">a</span> <span class="p">=</span> <span class="p">[</span><span class="o">...</span><span class="p">]</span><span class="kt">int</span><span class="p">{</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">}</span>
+    <span class="kd">var</span> <span class="nx">s</span> <span class="p">=</span> <span class="nb">make</span><span class="p">([]</span><span class="kt">int</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>  
+    <span class="nx">n1</span> <span class="o">:=</span> <span class="nb">copy</span><span class="p">(</span><span class="nx">s</span><span class="p">,</span> <span class="nx">a</span><span class="p">[</span><span class="mi">0</span><span class="p">:])</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">n1</span><span class="p">,</span> <span class="nx">s</span><span class="p">)</span>
+    <span class="nx">n2</span> <span class="o">:=</span> <span class="nb">copy</span><span class="p">(</span><span class="nx">s</span><span class="p">,</span> <span class="nx">s</span><span class="p">[</span><span class="mi">2</span><span class="p">:])</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">n2</span><span class="p">,</span> <span class="nx">s</span><span class="p">)</span>
+
+<span class="p">}</span>
+</pre></div>
+
+
+<p>运行结果：</p>
+<div class="highlight"><pre><span class="k">[0 0 0 0 0 0 0 0 0 0]</span>
+<span class="k">[3 4]</span>
+<span class="k">[1 2 3 4 5]</span>
+<span class="err">100</span> <span class="err">100</span>
+<span class="err">99</span> <span class="err">100</span>
+<span class="err">97</span>
+<span class="k">[0 0 2 3 4]</span>
+<span class="k">[0 0 2 3 4 0 0]</span>
+<span class="err">6</span> <span class="k">[0 1 2 3 4 5]</span>
+<span class="err">4</span> <span class="k">[2 3 4 5 4 5]</span>
+</pre></div>
+
+
+<h3>map</h3>
+<p>map类似于Python中的字典，定义方法是：map[&lt; from type &gt;]&lt; to type &gt;</p>
+<div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="s">&quot;fmt&quot;</span>
+
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">m</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">int</span><span class="p">)</span>  <span class="c1">//声明一个map</span>
+
+    <span class="nx">m</span><span class="p">[</span><span class="s">&quot;one&quot;</span><span class="p">]</span> <span class="p">=</span> <span class="mi">1</span>
+    <span class="nx">m</span><span class="p">[</span><span class="s">&quot;two&quot;</span><span class="p">]</span> <span class="p">=</span> <span class="mi">2</span>
+
+    <span class="cm">/* 也可以直接初始化一个map：</span>
+<span class="cm">    m := map[string]int{</span>
+<span class="cm">    &quot;one&quot;: 1,</span>
+<span class="cm">    &quot;two&quot;: 2,</span>
+<span class="cm">    }</span>
+<span class="cm">    */</span>
+
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%d\n&quot;</span><span class="p">,</span><span class="nx">m</span><span class="p">[</span><span class="s">&quot;one&quot;</span><span class="p">])</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">m</span><span class="p">)</span>  <span class="c1">// 每次输出顺序可能不同</span>
+
+    <span class="c1">// range每次返回一个键值对</span>
+    <span class="k">for</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">num</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">m</span> <span class="p">{</span>
+        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">num</span><span class="p">)</span>
+    <span class="p">}</span>
+
+    <span class="c1">// 检查元素是否存在</span>
+    <span class="kd">var</span> <span class="nx">value</span> <span class="kt">int</span>
+    <span class="kd">var</span> <span class="nx">present</span> <span class="kt">bool</span>
+    <span class="nx">value</span><span class="p">,</span> <span class="nx">present</span> <span class="p">=</span> <span class="nx">m</span><span class="p">[</span><span class="s">&quot;one&quot;</span><span class="p">]</span> <span class="c1">// 如果存在present为true</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">value</span><span class="p">,</span> <span class="nx">present</span><span class="p">)</span>
+    <span class="nx">v</span><span class="p">,</span> <span class="nx">ok</span> <span class="o">:=</span> <span class="nx">m</span><span class="p">[</span><span class="s">&quot;two&quot;</span><span class="p">]</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">v</span><span class="p">,</span><span class="nx">ok</span><span class="p">)</span>                                                                                                                                                                                     
+
+    <span class="c1">// 直接从map取值</span>
+    <span class="nx">v</span> <span class="p">=</span> <span class="nx">m</span><span class="p">[</span><span class="s">&quot;one&quot;</span><span class="p">]</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">v</span><span class="p">)</span>
+
+    <span class="c1">// 删除元素</span>
+    <span class="nb">delete</span><span class="p">(</span><span class="nx">m</span><span class="p">,</span> <span class="s">&quot;two&quot;</span><span class="p">)</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">m</span><span class="p">)</span>
+
+<span class="p">}</span>
+</pre></div>
+
+
+<p>运行结果：</p>
+<div class="highlight"><pre><span class="mi">1</span>
+<span class="n">map</span><span class="p">[</span><span class="n">one</span><span class="o">:</span><span class="mi">1</span> <span class="n">two</span><span class="o">:</span><span class="mi">2</span><span class="p">]</span>
+<span class="mi">1</span>
+<span class="mi">2</span>
+<span class="mi">1</span> <span class="nb">true</span>
+<span class="mi">2</span> <span class="nb">true</span>
+<span class="mi">1</span>
+<span class="n">map</span><span class="p">[</span><span class="n">one</span><span class="o">:</span><span class="mi">1</span><span class="p">]</span>
+</pre></div>
+
+
+<hr />
+<h2>Reference</h2>
+<ol>
+<li><a href="https://github.com/mikespook/Learning-Go-zh-cn">学习Go语言</a></li>
+<li><a href="http://coolshell.cn/articles/8460.html">Go语言简介</a></li>
+<li><a href="http://tour.go-zh.org/list">Go指南</a></li>
+</ol>
+            </div><!-- /.entry-content -->
+            <div class="comments">
+              <h3>Comments</h3>
+              <div id="disqus_thread"></div>
+              <script type="text/javascript">
+                var disqus_identifier = "goyu-yan-ru-men-jiao-cheng-1.html";
+                (function() {
+                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                dsq.src = 'http://wengwt.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                })();
+              </script>
+            </div>
+
+
+        </div><!-- /.eleven.columns -->
+
+<div class="three columns">
+
+<!--
+<h4>Pages</h4>
+
+ <ul>
+      <li><a href="/categories.html">分类</a></li>
+      <li><a href="/tags.html">标签</a></li>
+      <li><a href="/archives.html">归档</a></li>
+      <li><a href="/pages/about-me.html">关于我</a></li>
+  </ul>
+-->
+
+<h4>分类</h4>
+<ul>
+		<li><a href="http://www.wengweitao.com/category/bian-cheng-yu-yan.html">编程语言</a></li>
+		<li><a href="http://www.wengweitao.com/category/du-shu-bi-ji.html">读书笔记</a></li>
+		<li><a href="http://www.wengweitao.com/category/gong-ju.html">工具</a></li>
+		<li><a href="http://www.wengweitao.com/category/ji-qi-xue-xi.html">机器学习</a></li>
+		<li><a href="http://www.wengweitao.com/category/python.html">Python</a></li>
+		<li><a href="http://www.wengweitao.com/category/sheng-huo.html">生活</a></li>
+		<li><a href="http://www.wengweitao.com/category/suan-fa-yu-shu-ju-jie-gou.html">算法与数据结构</a></li>
+</ul>
+
+<!--
+<h4>标签</h4>
+<ul class="tagcloud">
+        <li class="tag-1"><a href="http://www.wengweitao.com/tag/du-shu-bi-ji.html">读书笔记</a></li>
+        <li class="tag-3"><a href="http://www.wengweitao.com/tag/jiao-cheng.html">教程</a></li>
+        <li class="tag-4"><a href="http://www.wengweitao.com/tag/ce-shi.html">测试</a></li>
+        <li class="tag-1"><a href="http://www.wengweitao.com/tag/python.html">Python</a></li>
+        <li class="tag-3"><a href="http://www.wengweitao.com/tag/ji-ben-gai-nian.html">基本概念</a></li>
+        <li class="tag-4"><a href="http://www.wengweitao.com/tag/xiao-yuan.html">校园</a></li>
+        <li class="tag-3"><a href="http://www.wengweitao.com/tag/mian-shi-ti.html">面试题</a></li>
+        <li class="tag-4"><a href="http://www.wengweitao.com/tag/gong-ju.html">工具</a></li>
+        <li class="tag-4"><a href="http://www.wengweitao.com/tag/vim.html">Vim</a></li>
+        <li class="tag-4"><a href="http://www.wengweitao.com/tag/ji-chu-gai-nian.html">基础概念</a></li>
+        <li class="tag-4"><a href="http://www.wengweitao.com/tag/wan.html">玩</a></li>
+        <li class="tag-4"><a href="http://www.wengweitao.com/tag/go.html">Go</a></li>
+</ul>
+-->
+
+
+<nav class="widget">
+  <h4>社交</h4>
+  <ul>
+    <li><a href="http://weibo.com/u/2678027854">新浪微博</a></li>
+    <li><a href="http://www.douban.com/people/wengwt/">豆瓣</a></li>
+    <li><a href="http://www.zhihu.com/people/vita-49">知乎</a></li>
+    <li><a href="https://github.com/nurnoch">Github</a></li>
+    <li><a href="https://www.v2ex.com/member/wwttc">V2EX</a></li>
+  </ul>
+</nav>
+
+<nav class="widget">
+  <h4>友情链接</h4>
+  <ul>
+    <li><a href="http://netlab.pkusz.edu.cn/">互联网信息工程研发中心</a></li>
+    <li><a href="http://www.houcj.net/">houcj's blog</a></li>
+    <li><a href="http://www.rudy-yuan.net/">rundy-yuan's blog</a></li>
+  </ul>
+</nav>
+
+
+</div> </div><!-- /.row -->
+
+
+</section>
+
+       </div><!-- /.row -->
+    </div><!-- /.container -->
+
+
+       <div class="container.nopad bg">
+
+    
+        <footer id="credits" class="row">
+          <div class="seven columns left-center">
+
+                   <address id="about" class="vcard body">
+                    Proudly powered by  <a href="http://getpelican.com/">Pelican</a> and Theme by Gum © 2015 wwt
+                    </address>
+          </div>
+
+
+          <div class="seven columns">
+            <div class="row">
+              <ul class="socbtns">
+
+
+
+
+
+              </ul>
+            </div>
+          </div>
+        </footer>
+
+    </div>
+
+
+<script type="text/javascript">
+    var disqus_shortname = 'wengwt';
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+  <script src="http://www.wengweitao.com/theme/js/libs/jquery-1.9.1.min.js"></script>
+  <script src="http://www.wengweitao.com/theme/js/libs/gumby.min.js"></script>
+  <script src="http://www.wengweitao.com/theme/js/plugins.js"></script>
+</body>
+</html>
