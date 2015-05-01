@@ -14,10 +14,12 @@
 
 &lt;p&gt;如果出现以上提示，说明这台服务器PPP可用；若出现"Permission denied"提示，则无法使用PPP，考虑更换一台服务器。&lt;/p&gt;
 &lt;h2&gt;2. 安装所需的软件包&lt;/h2&gt;
-&lt;p&gt;主要需要以下3个软件包：
-- PPP：点对点协议
-- PPTP：点对点通道协议
-- IPtables：设定IP包转发规则&lt;/p&gt;
+&lt;p&gt;主要需要以下3个软件包：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;PPP：点对点协议&lt;/li&gt;
+&lt;li&gt;PPTP：点对点通道协议&lt;/li&gt;
+&lt;li&gt;IPtables：设定IP包转发规则&lt;/li&gt;
+&lt;/ul&gt;
 &lt;p&gt;&lt;strong&gt;（1）安装PPP&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;直接使用yum安装即可&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;yum&lt;/span&gt; &lt;span class="n"&gt;install&lt;/span&gt; &lt;span class="n"&gt;ppp&lt;/span&gt;
@@ -32,8 +34,8 @@
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;&lt;strong&gt;（3）安装PPTP套件&lt;/strong&gt;
-如果你的系统直接yum那么可以直接通过yum进行安装，但是我的系统是Red Hat 4.4.6-4，yum中没有提供pptp套件的rpm包，只能自己先下载到本地。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;（3）安装PPTP套件&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;如果你的系统直接yum那么可以直接通过yum进行安装，但是我的系统是Red Hat 4.4.6-4，yum中没有提供pptp套件的rpm包，只能自己先下载到本地。&lt;/p&gt;
 &lt;p&gt;到&lt;a href="http://poptop.sourceforge.net/yum/stable/"&gt;这里&lt;/a&gt;下载适合你系统的rpm包。可以使用&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;cat&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;proc&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;version&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
@@ -47,8 +49,8 @@
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;&lt;strong&gt;（4）进行配置&lt;/strong&gt;
-使用Vim编辑 /etc/sysctl.conf 文件，将其中的一行内容修改为：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;（4）进行配置&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;使用Vim编辑 /etc/sysctl.conf 文件，将其中的一行内容修改为：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;net&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;ipv4&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;ip_forward&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
@@ -73,24 +75,25 @@
 
 
 &lt;p&gt;以上主要设置了VPN所使用的IP地址段、包转发规则等。VPN客户端将分配到的地址为：192.168.240.* 地址段，通过VPN服务器的eth0以太网接口转发对外的数据包（可以使用ifconfig查看本机对外通信的接口是否为eth0，若不是可自行更改）。&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;（5）设置VPN账号和密码&lt;/strong&gt;
-你任意添加VPN账户，使用Vim编辑文件 /etc/ppp/chap-secrets 一行一个账户，如：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;（5）设置VPN账号和密码&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;你任意添加VPN账户，使用Vim编辑文件 /etc/ppp/chap-secrets 一行一个账户，如：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;wwt&lt;/span&gt;  &lt;span class="n"&gt;pptpd&lt;/span&gt;  &lt;span class="mi"&gt;123456&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;分别表示账户名、VPN服务、密码、IP。&lt;/p&gt;
 &lt;p&gt;现在，就可以在PC或者iPhone上连接VPN上网了。&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;（6）客户端连接&lt;/strong&gt;
-以Windows8.1为例。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;（6）客户端连接&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;以Windows8.1为例。&lt;/p&gt;
 &lt;p&gt;①打开网络和共享中心，点击“设置新的连接或网络”&lt;/p&gt;
 &lt;p&gt;②选择“连接到工作区”，创建新的连接，一直下一步&lt;/p&gt;
 &lt;p&gt;③填入VPN服务器IP地址和名称（名称可以任意），点击“创建”&lt;/p&gt;
 &lt;p&gt;④点击桌面右下角网络网络连接的图标，选择创建的那个VPN连接，输入刚刚设置的用户名和密码即可。&lt;/p&gt;
 &lt;p&gt;⑤访问http://ip.cn 可以看到你的IP已经变成了VPN服务器的IP。&lt;/p&gt;
 &lt;p&gt;同样，在Mac OS X和iPhone上也可以非常容易的创建VPN连接。&lt;/p&gt;
-&lt;hr /&gt;
+&lt;blockquote&gt;
 &lt;p&gt;通过连接校园网内的VPN服务器上网，不仅不需要认证，而且当你不在学校的时候，还可以连接VPN下载文献论文，非常有用。&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;hr /&gt;
 &lt;h2&gt;References:&lt;/h2&gt;
 &lt;ol&gt;

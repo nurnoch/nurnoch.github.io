@@ -87,10 +87,12 @@
 
 <p>如果出现以上提示，说明这台服务器PPP可用；若出现"Permission denied"提示，则无法使用PPP，考虑更换一台服务器。</p>
 <h2>2. 安装所需的软件包</h2>
-<p>主要需要以下3个软件包：
-- PPP：点对点协议
-- PPTP：点对点通道协议
-- IPtables：设定IP包转发规则</p>
+<p>主要需要以下3个软件包：</p>
+<ul>
+<li>PPP：点对点协议</li>
+<li>PPTP：点对点通道协议</li>
+<li>IPtables：设定IP包转发规则</li>
+</ul>
 <p><strong>（1）安装PPP</strong></p>
 <p>直接使用yum安装即可</p>
 <div class="highlight"><pre><span class="n">yum</span> <span class="n">install</span> <span class="n">ppp</span>
@@ -105,8 +107,8 @@
 </pre></div>
 
 
-<p><strong>（3）安装PPTP套件</strong>
-如果你的系统直接yum那么可以直接通过yum进行安装，但是我的系统是Red Hat 4.4.6-4，yum中没有提供pptp套件的rpm包，只能自己先下载到本地。</p>
+<p><strong>（3）安装PPTP套件</strong></p>
+<p>如果你的系统直接yum那么可以直接通过yum进行安装，但是我的系统是Red Hat 4.4.6-4，yum中没有提供pptp套件的rpm包，只能自己先下载到本地。</p>
 <p>到<a href="http://poptop.sourceforge.net/yum/stable/">这里</a>下载适合你系统的rpm包。可以使用</p>
 <div class="highlight"><pre><span class="n">cat</span> <span class="o">/</span><span class="n">proc</span><span class="o">/</span><span class="n">version</span>
 </pre></div>
@@ -120,8 +122,8 @@
 </pre></div>
 
 
-<p><strong>（4）进行配置</strong>
-使用Vim编辑 /etc/sysctl.conf 文件，将其中的一行内容修改为：</p>
+<p><strong>（4）进行配置</strong></p>
+<p>使用Vim编辑 /etc/sysctl.conf 文件，将其中的一行内容修改为：</p>
 <div class="highlight"><pre><span class="n">net</span><span class="p">.</span><span class="n">ipv4</span><span class="p">.</span><span class="n">ip_forward</span> <span class="o">=</span> <span class="mi">1</span>
 </pre></div>
 
@@ -146,24 +148,25 @@
 
 
 <p>以上主要设置了VPN所使用的IP地址段、包转发规则等。VPN客户端将分配到的地址为：192.168.240.* 地址段，通过VPN服务器的eth0以太网接口转发对外的数据包（可以使用ifconfig查看本机对外通信的接口是否为eth0，若不是可自行更改）。</p>
-<p><strong>（5）设置VPN账号和密码</strong>
-你任意添加VPN账户，使用Vim编辑文件 /etc/ppp/chap-secrets 一行一个账户，如：</p>
+<p><strong>（5）设置VPN账号和密码</strong></p>
+<p>你任意添加VPN账户，使用Vim编辑文件 /etc/ppp/chap-secrets 一行一个账户，如：</p>
 <div class="highlight"><pre><span class="n">wwt</span>  <span class="n">pptpd</span>  <span class="mi">123456</span> <span class="o">*</span>
 </pre></div>
 
 
 <p>分别表示账户名、VPN服务、密码、IP。</p>
 <p>现在，就可以在PC或者iPhone上连接VPN上网了。</p>
-<p><strong>（6）客户端连接</strong>
-以Windows8.1为例。</p>
+<p><strong>（6）客户端连接</strong></p>
+<p>以Windows8.1为例。</p>
 <p>①打开网络和共享中心，点击“设置新的连接或网络”</p>
 <p>②选择“连接到工作区”，创建新的连接，一直下一步</p>
 <p>③填入VPN服务器IP地址和名称（名称可以任意），点击“创建”</p>
 <p>④点击桌面右下角网络网络连接的图标，选择创建的那个VPN连接，输入刚刚设置的用户名和密码即可。</p>
 <p>⑤访问http://ip.cn 可以看到你的IP已经变成了VPN服务器的IP。</p>
 <p>同样，在Mac OS X和iPhone上也可以非常容易的创建VPN连接。</p>
-<hr />
+<blockquote>
 <p>通过连接校园网内的VPN服务器上网，不仅不需要认证，而且当你不在学校的时候，还可以连接VPN下载文献论文，非常有用。</p>
+</blockquote>
 <hr />
 <h2>References:</h2>
 <ol>
@@ -214,18 +217,18 @@
 <!--
 <h4>标签</h4>
 <ul class="tagcloud">
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/go.html">Go</a></li>
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/xiao-yuan.html">校园</a></li>
-        <li class="tag-1"><a href="http://www.wengweitao.com/tag/python.html">Python</a></li>
-        <li class="tag-3"><a href="http://www.wengweitao.com/tag/mian-shi-ti.html">面试题</a></li>
-        <li class="tag-3"><a href="http://www.wengweitao.com/tag/ji-ben-gai-nian.html">基本概念</a></li>
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/ce-shi.html">测试</a></li>
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/gong-ju.html">工具</a></li>
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/wan.html">玩</a></li>
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/ji-chu-gai-nian.html">基础概念</a></li>
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/vim.html">Vim</a></li>
         <li class="tag-2"><a href="http://www.wengweitao.com/tag/jiao-cheng.html">教程</a></li>
+        <li class="tag-3"><a href="http://www.wengweitao.com/tag/mian-shi-ti.html">面试题</a></li>
+        <li class="tag-4"><a href="http://www.wengweitao.com/tag/vim.html">Vim</a></li>
+        <li class="tag-4"><a href="http://www.wengweitao.com/tag/ji-chu-gai-nian.html">基础概念</a></li>
+        <li class="tag-4"><a href="http://www.wengweitao.com/tag/xiao-yuan.html">校园</a></li>
         <li class="tag-1"><a href="http://www.wengweitao.com/tag/du-shu-bi-ji.html">读书笔记</a></li>
+        <li class="tag-4"><a href="http://www.wengweitao.com/tag/gong-ju.html">工具</a></li>
+        <li class="tag-1"><a href="http://www.wengweitao.com/tag/python.html">Python</a></li>
+        <li class="tag-4"><a href="http://www.wengweitao.com/tag/go.html">Go</a></li>
+        <li class="tag-3"><a href="http://www.wengweitao.com/tag/ji-ben-gai-nian.html">基本概念</a></li>
+        <li class="tag-4"><a href="http://www.wengweitao.com/tag/wan.html">玩</a></li>
+        <li class="tag-4"><a href="http://www.wengweitao.com/tag/ce-shi.html">测试</a></li>
 </ul>
 -->
 
