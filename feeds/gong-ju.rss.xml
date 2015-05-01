@@ -1,5 +1,101 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>wwt's blog</title><link href="http://www.wengweitao.com/" rel="alternate"></link><link href="http://www.wengweitao.com/feeds/gong-ju.rss.xml" rel="self"></link><id>http://www.wengweitao.com/</id><updated>2015-04-16T20:12:00+08:00</updated><entry><title>Vim入门教程</title><link href="http://www.wengweitao.com/vimru-men-jiao-cheng.html" rel="alternate"></link><updated>2015-04-16T20:12:00+08:00</updated><author><name>wwt</name></author><id>tag:www.wengweitao.com,2015-04-16:vimru-men-jiao-cheng.html</id><summary type="html">&lt;blockquote&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>wwt's blog</title><link href="http://www.wengweitao.com/" rel="alternate"></link><link href="http://www.wengweitao.com/feeds/gong-ju.rss.xml" rel="self"></link><id>http://www.wengweitao.com/</id><updated>2015-05-01T21:21:00+08:00</updated><entry><title>Linux上搭建VPN服务器</title><link href="http://www.wengweitao.com/linuxshang-da-jian-vpnfu-wu-qi.html" rel="alternate"></link><updated>2015-05-01T21:21:00+08:00</updated><author><name>wwt</name></author><id>tag:www.wengweitao.com,2015-05-01:linuxshang-da-jian-vpnfu-wu-qi.html</id><summary type="html">&lt;p&gt;今天是五一劳动节，也就是五月份的第一天，不巧的是校园上网账号欠费了，导致无法通过认证上网。于是，就琢磨着如何不通过认证直接上网。我手上管理着实验室几十台服务器，这些服务器都无需认证可直接访问外网，很自然的就想到以下两种方法：&lt;/p&gt;
+&lt;p&gt;（1）在服务器上设置代理服务器，然后在自己的PC和iPhone上设置代理上网&lt;/p&gt;
+&lt;p&gt;（2）在服务器上搭建一个VPN PPTP服务器，在PC和iPhone上新建一个VPN连接上网。&lt;/p&gt;
+&lt;h2&gt;根据校园网的环境和平时的使用情况，最终决定采用VPN的方式。接下来，我以Red Hat系统为例，详细说明搭建的过程。&lt;/h2&gt;
+&lt;h2&gt;1. 判断PPP是否可用&lt;/h2&gt;
+&lt;p&gt;首先，我们需要检查服务器是否支持搭建PPTP，在shell中输入：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;cat&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;dev&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;ppp&lt;/span&gt;
+
+&lt;span class="nl"&gt;cat:&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;dev&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;ppp&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="err"&gt;没有那个设备或地址&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;如果出现以上提示，说明这台服务器PPP可用；若出现"Permission denied"提示，则无法使用PPP，考虑更换一台服务器。&lt;/p&gt;
+&lt;h2&gt;2. 安装所需的软件包&lt;/h2&gt;
+&lt;p&gt;主要需要以下3个软件包：
+- PPP：点对点协议
+- PPTP：点对点通道协议
+- IPtables：设定IP包转发规则&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;（1）安装PPP&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;直接使用yum安装即可&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;yum&lt;/span&gt; &lt;span class="n"&gt;install&lt;/span&gt; &lt;span class="n"&gt;ppp&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;strong&gt;（2）安装IPtables&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;通常Linux系统上都自带安装好了iptables，如果没有可以使用yum进行安装：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;yum&lt;/span&gt; &lt;span class="n"&gt;install&lt;/span&gt; &lt;span class="n"&gt;iptables&lt;/span&gt;
+&lt;span class="n"&gt;cp&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;rpf&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;etc&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;sysconfig&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;iptables&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;etc&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;sysconfig&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;iptables&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;pptpsave&lt;/span&gt;
+&lt;span class="n"&gt;cd&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;usr&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;src&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;strong&gt;（3）安装PPTP套件&lt;/strong&gt;
+如果你的系统直接yum那么可以直接通过yum进行安装，但是我的系统是Red Hat 4.4.6-4，yum中没有提供pptp套件的rpm包，只能自己先下载到本地。&lt;/p&gt;
+&lt;p&gt;到&lt;a href="http://poptop.sourceforge.net/yum/stable/"&gt;这里&lt;/a&gt;下载适合你系统的rpm包。可以使用&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;cat&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;proc&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;version&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;查看Linux系统信息。&lt;/p&gt;
+&lt;p&gt;注意：一定要正确选择适合自己系统的rpm包，如果下载错误将无法完成安装。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;wget&lt;/span&gt; &lt;span class="n"&gt;http&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="c1"&gt;//poptop.sourceforge.net/yum/stable/rhel6/x86_64/pptpd-1.4.0-1.el6.x86_64.rpm&lt;/span&gt;
+
+&lt;span class="n"&gt;rpm&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;ivh&lt;/span&gt; &lt;span class="n"&gt;pptpd&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mf"&gt;1.4.0&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mf"&gt;1.&lt;/span&gt;&lt;span class="n"&gt;el6&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;x86_64&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;rpm&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;strong&gt;（4）进行配置&lt;/strong&gt;
+使用Vim编辑 /etc/sysctl.conf 文件，将其中的一行内容修改为：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;net&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;ipv4&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;ip_forward&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;复制以下所有命令，粘贴在shell中：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;sysctl&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;p&lt;/span&gt;
+&lt;span class="n"&gt;echo&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;localip 192.168.240.1&amp;quot;&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;etc&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;pptpd&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;conf&lt;/span&gt;
+&lt;span class="n"&gt;echo&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;remoteip 192.168.240.101-200&amp;quot;&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;etc&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;pptpd&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;conf&lt;/span&gt;
+&lt;span class="n"&gt;echo&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;ms-dns 8.8.8.8&amp;quot;&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;etc&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;ppp&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;options&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;pptpd&lt;/span&gt;
+&lt;span class="n"&gt;echo&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;ms-dns 8.8.4.4&amp;quot;&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;etc&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;ppp&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;options&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;pptpd&lt;/span&gt;
+&lt;span class="n"&gt;iptables&lt;/span&gt; &lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="n"&gt;flush&lt;/span&gt; &lt;span class="n"&gt;POSTROUTING&lt;/span&gt; &lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="n"&gt;table&lt;/span&gt; &lt;span class="n"&gt;nat&lt;/span&gt;
+&lt;span class="n"&gt;iptables&lt;/span&gt; &lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="n"&gt;flush&lt;/span&gt; &lt;span class="n"&gt;FORWARD&lt;/span&gt;
+&lt;span class="n"&gt;iptables&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;A&lt;/span&gt; &lt;span class="n"&gt;INPUT&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;p&lt;/span&gt; &lt;span class="n"&gt;tcp&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;m&lt;/span&gt; &lt;span class="n"&gt;tcp&lt;/span&gt; &lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="n"&gt;dport&lt;/span&gt; &lt;span class="mi"&gt;1723&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;j&lt;/span&gt; &lt;span class="n"&gt;ACCEPT&lt;/span&gt;
+&lt;span class="n"&gt;iptables&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;A&lt;/span&gt; &lt;span class="n"&gt;INPUT&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;p&lt;/span&gt; &lt;span class="n"&gt;gre&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;j&lt;/span&gt; &lt;span class="n"&gt;ACCEPT&lt;/span&gt;
+&lt;span class="n"&gt;iptables&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;t&lt;/span&gt; &lt;span class="n"&gt;nat&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;A&lt;/span&gt; &lt;span class="n"&gt;POSTROUTING&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;s&lt;/span&gt; &lt;span class="mf"&gt;192.168.240.0&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="mi"&gt;24&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;o&lt;/span&gt; &lt;span class="n"&gt;eth0&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;j&lt;/span&gt; &lt;span class="n"&gt;MASQUERADE&lt;/span&gt;
+&lt;span class="n"&gt;service&lt;/span&gt; &lt;span class="n"&gt;iptables&lt;/span&gt; &lt;span class="n"&gt;save&lt;/span&gt;
+&lt;span class="n"&gt;service&lt;/span&gt; &lt;span class="n"&gt;pptpd&lt;/span&gt; &lt;span class="n"&gt;restart&lt;/span&gt;
+&lt;span class="n"&gt;service&lt;/span&gt; &lt;span class="n"&gt;iptables&lt;/span&gt; &lt;span class="n"&gt;restart&lt;/span&gt;
+&lt;span class="n"&gt;chkconfig&lt;/span&gt; &lt;span class="n"&gt;pptpd&lt;/span&gt; &lt;span class="n"&gt;on&lt;/span&gt;
+&lt;span class="n"&gt;chkconfig&lt;/span&gt; &lt;span class="n"&gt;iptables&lt;/span&gt; &lt;span class="n"&gt;on&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;以上主要设置了VPN所使用的IP地址段、包转发规则等。VPN客户端将分配到的地址为：192.168.240.* 地址段，通过VPN服务器的eth0以太网接口转发对外的数据包（可以使用ifconfig查看本机对外通信的接口是否为eth0，若不是可自行更改）。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;（5）设置VPN账号和密码&lt;/strong&gt;
+你任意添加VPN账户，使用Vim编辑文件 /etc/ppp/chap-secrets 一行一个账户，如：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;wwt&lt;/span&gt;  &lt;span class="n"&gt;pptpd&lt;/span&gt;  &lt;span class="mi"&gt;123456&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;分别表示账户名、VPN服务、密码、IP。&lt;/p&gt;
+&lt;p&gt;现在，就可以在PC或者iPhone上连接VPN上网了。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;（6）客户端连接&lt;/strong&gt;
+以Windows8.1为例。&lt;/p&gt;
+&lt;p&gt;①打开网络和共享中心，点击“设置新的连接或网络”&lt;/p&gt;
+&lt;p&gt;②选择“连接到工作区”，创建新的连接，一直下一步&lt;/p&gt;
+&lt;p&gt;③填入VPN服务器IP地址和名称（名称可以任意），点击“创建”&lt;/p&gt;
+&lt;p&gt;④点击桌面右下角网络网络连接的图标，选择创建的那个VPN连接，输入刚刚设置的用户名和密码即可。&lt;/p&gt;
+&lt;p&gt;⑤访问http://ip.cn 可以看到你的IP已经变成了VPN服务器的IP。&lt;/p&gt;
+&lt;p&gt;同样，在Mac OS X和iPhone上也可以非常容易的创建VPN连接。&lt;/p&gt;
+&lt;hr /&gt;
+&lt;p&gt;通过连接校园网内的VPN服务器上网，不仅不需要认证，而且当你不在学校的时候，还可以连接VPN下载文献论文，非常有用。&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h2&gt;References:&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href="http://www.vixual.net/blog/archives/32"&gt;CentOS 5/6 快速安裝 VPN Server (PPTP)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://www.cnblogs.com/sixiweb/archive/2012/11/20/2778732.html"&gt;Linux下搭建VPN服务器（CentOS、pptp）&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;</summary><category term="教程"></category></entry><entry><title>Vim入门教程</title><link href="http://www.wengweitao.com/vimru-men-jiao-cheng.html" rel="alternate"></link><updated>2015-04-16T20:12:00+08:00</updated><author><name>wwt</name></author><id>tag:www.wengweitao.com,2015-04-16:vimru-men-jiao-cheng.html</id><summary type="html">&lt;blockquote&gt;
 &lt;p&gt;Vim 在编辑器中是神一样的存在，熟练掌握Vim将极大提高编辑文本的效率。本文将介绍Vim最基本的操作和技巧。&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h2&gt;操作篇&lt;/h2&gt;
