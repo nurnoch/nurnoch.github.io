@@ -4802,7 +4802,8 @@ w就可以学到逻辑斯谛回归模型。&lt;/p&gt;
 &lt;p&gt;考虑无约束最优化问题
 &lt;/p&gt;
 &lt;div class="math"&gt;$$minf(x)$$&lt;/div&gt;
-&lt;p&gt;其中&lt;span class="math"&gt;\(x^* $为目标函数的极小点。求出f(x)的极小点 $x^*\)&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;其中&lt;span class="math"&gt;\(x^*\)&lt;/span&gt;为目标函数的极小点。求出f(x)的极小点 &lt;span class="math"&gt;\(x^*\)&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;首先，我们先了解下泰勒级数与海森矩阵。&lt;/p&gt;
 &lt;h3&gt;基本概念&lt;/h3&gt;
 &lt;h4&gt;泰勒级数&lt;/h4&gt;
 &lt;p&gt;若函数f（x）在点的某一临域内具有直到（n+1）阶导数，则在该邻域内f（x）的n阶泰勒公式为
@@ -4812,6 +4813,24 @@ w就可以学到逻辑斯谛回归模型。&lt;/p&gt;
 &lt;p&gt;海森矩阵（Hessian matrix）是一个自变量为向量的实值函数的二阶偏导数组成的方块矩阵。可以表示为：
 &lt;img alt="海森矩阵" src="http://upload.wikimedia.org/math/d/c/e/dce355e43fb1539863302f482da7e6f6.png" /&gt;&lt;/p&gt;
 &lt;h3&gt;牛顿法算法&lt;/h3&gt;
+&lt;p&gt;在中学的数学课本上，我们已经接触过牛顿法，它是一种近似求解方程的方法。&lt;/p&gt;
+&lt;p&gt;我们先看下求解一元方程的牛顿法。假设要求f(x)=0的根，方法使用f(x)的泰勒级数的前面几项来寻找方程f(x)=0的根。&lt;/p&gt;
+&lt;p&gt;（1）选择一个接近函数f(x)根的点&lt;span class="math"&gt;\(x_0\)&lt;/span&gt;，计算&lt;span class="math"&gt;\(x_0\)&lt;/span&gt;在该点的值&lt;span class="math"&gt;\(f(x_0)\)&lt;/span&gt;与切线斜率&lt;span class="math"&gt;\(f'(x_0)\)&lt;/span&gt;；&lt;/p&gt;
+&lt;p&gt;（2）计算经过点&lt;span class="math"&gt;\((x_0, f(x_0))\)&lt;/span&gt;且斜率为&lt;span class="math"&gt;\(f'(x_0)\)&lt;/span&gt;的直线与x轴的交点，即方程&lt;span class="math"&gt;\(y=f'(x_0)(x - x_0) - f(x_0)\)&lt;/span&gt;与x轴的交点，也就是求如下方程的解：
+&lt;/p&gt;
+&lt;div class="math"&gt;$$f(x_0) = f'(x_0)(x_0 - x)$$&lt;/div&gt;
+&lt;p&gt;（3）将所求的点的x坐标记为&lt;span class="math"&gt;\(x_1\)&lt;/span&gt;，通常&lt;span class="math"&gt;\(x_1\)&lt;/span&gt;会比&lt;span class="math"&gt;\(x_0\)&lt;/span&gt;更接近方程的根。我们利用&lt;span class="math"&gt;\(x_1\)&lt;/span&gt;继续迭代：
+&lt;/p&gt;
+&lt;div class="math"&gt;$$x_{n+1} = x_n - \frac{f(x_n)}{f'(x_n)}$$&lt;/div&gt;
+&lt;p&gt;（4）每次迭代，都将更接近最终的根。&lt;/p&gt;
+&lt;p&gt;举一个例子，求&lt;span class="math"&gt;\(f(x) = x^2 - x - 2\)&lt;/span&gt;的根，对两边求导的&lt;span class="math"&gt;\(f'(x) = 2x - 1\)&lt;/span&gt;，假设&lt;span class="math"&gt;\(x_0 = 3\)&lt;/span&gt;。
+&lt;/p&gt;
+&lt;div class="math"&gt;$$x_1 = x_0 + \frac{f(x_0)}{f'(x_0)} = 2.2$$&lt;/div&gt;
+&lt;div class="math"&gt;$$x_2 = x_1 + \frac{f(x_1)}{f'(x_1)} = 2.011764705882353$$&lt;/div&gt;
+&lt;div class="math"&gt;$$x_3 = x_2 + \frac{f(x_2)}{f'(x_2)} = 2.00004577706569$$&lt;/div&gt;
+&lt;p&gt;
+可以看到&lt;span class="math"&gt;\(x_3\)&lt;/span&gt;已经非常接近函数的一个根2了。&lt;/p&gt;
+&lt;p&gt;回到，我们在本文开头，提出的目标，求解的过程与上面的例子类似，所不同的是，这里的x是一个向量，而且求的是函数f(x)导数f'(x)的根。&lt;/p&gt;
 &lt;p&gt;函数f(x)有极值的必要条件是在极值点处一阶导数为0，即梯度向量为0.特别是当&lt;span class="math"&gt;\(H(x^{(k)})\)&lt;/span&gt;是正定矩阵时，函数f(x)的极值为极小值。
 &lt;/p&gt;
 &lt;div class="math"&gt;$$\bigtriangledown f(x)=0$$&lt;/div&gt;
@@ -4855,7 +4874,7 @@ w就可以学到逻辑斯谛回归模型。&lt;/p&gt;
 &lt;/p&gt;
 &lt;div class="math"&gt;$$g_{k+1} - g_k = H_k(x^{(k+1)}-x^{(k)})$$&lt;/div&gt;
 &lt;p&gt;
-记$y_k=g_{k+1} - g_k, \delta_k = x^{(k+1)}-x^{(k)} $，则
+记&lt;span class="math"&gt;\(y_k=g_{k+1} - g_k, \delta_k = x^{(k+1)}-x^{(k)}\)&lt;/span&gt;，则
 &lt;/p&gt;
 &lt;div class="math"&gt;$$y_k = H_k\delta_k$$&lt;/div&gt;
 &lt;p&gt;
