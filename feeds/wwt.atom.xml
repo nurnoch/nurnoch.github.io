@@ -408,7 +408,7 @@ unbind %
         "}); ";
     (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
 }
-&lt;/script&gt;</summary><category term="算法分析"></category></entry><entry><title>Linux上搭建VPN服务器</title><link href="http://www.wengweitao.com/linuxshang-da-jian-vpnfu-wu-qi.html" rel="alternate"></link><updated>2015-05-01T21:21:00+08:00</updated><author><name>wwt</name></author><id>tag:www.wengweitao.com,2015-05-01:linuxshang-da-jian-vpnfu-wu-qi.html</id><summary type="html">&lt;p&gt;今天是五一劳动节，也就是五月份的第一天，不巧的是校园上网账号欠费了，导致无法通过认证上网。于是，就琢磨着如何不通过认证直接上网。我手上管理着实验室几十台服务器，这些服务器都无需认证可直接访问外网，很自然的就想到以下两种方法：&lt;/p&gt;
+&lt;/script&gt;</summary><category term="算法分析"></category></entry><entry><title>Linux上搭建VPN服务器</title><link href="http://www.wengweitao.com/linuxshang-da-jian-vpnfu-wu-qi.html" rel="alternate"></link><updated>2015-05-01T21:21:00+08:00</updated><author><name>wwt</name></author><id>tag:www.wengweitao.com,2015-05-01:linuxshang-da-jian-vpnfu-wu-qi.html</id><summary type="html">&lt;p&gt;今天是五一劳动节，也就是五月份的第一天，不巧的是校园上网账号欠费了，导致无法通过认证上网。于是，就琢磨着如何不通过认证直接上网。实验室有几台服务器，这些服务器都无需认证可直接访问外网，很自然的就想到以下两种方法：&lt;/p&gt;
 &lt;p&gt;（1）在服务器上设置代理服务器，然后在自己的PC和iPhone上设置代理上网&lt;/p&gt;
 &lt;p&gt;（2）在服务器上搭建一个VPN PPTP服务器，在PC和iPhone上新建一个VPN连接上网。&lt;/p&gt;
 &lt;p&gt;根据校园网的环境和平时的使用情况，最终决定采用VPN的方式。接下来，我以Red Hat系统为例，详细说明搭建的过程。&lt;/p&gt;
