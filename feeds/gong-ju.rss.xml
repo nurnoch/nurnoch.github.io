@@ -1,5 +1,104 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>wwt's blog</title><link href="http://www.wengweitao.com/" rel="alternate"></link><link href="http://www.wengweitao.com/feeds/gong-ju.rss.xml" rel="self"></link><id>http://www.wengweitao.com/</id><updated>2015-05-01T21:21:00+08:00</updated><entry><title>Linux上搭建VPN服务器</title><link href="http://www.wengweitao.com/linuxshang-da-jian-vpnfu-wu-qi.html" rel="alternate"></link><updated>2015-05-01T21:21:00+08:00</updated><author><name>wwt</name></author><id>tag:www.wengweitao.com,2015-05-01:linuxshang-da-jian-vpnfu-wu-qi.html</id><summary type="html">&lt;p&gt;今天是五一劳动节，也就是五月份的第一天，不巧的是校园上网账号欠费了，导致无法通过认证上网。于是，就琢磨着如何不通过认证直接上网。我手上管理着实验室几十台服务器，这些服务器都无需认证可直接访问外网，很自然的就想到以下两种方法：&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>wwt's blog</title><link href="http://www.wengweitao.com/" rel="alternate"></link><link href="http://www.wengweitao.com/feeds/gong-ju.rss.xml" rel="self"></link><id>http://www.wengweitao.com/</id><updated>2015-05-11T09:12:00+08:00</updated><entry><title>终端窗口管理神器——tmux</title><link href="http://www.wengweitao.com/zhong-duan-chuang-kou-guan-li-shen-qi-tmux.html" rel="alternate"></link><updated>2015-05-11T09:12:00+08:00</updated><author><name>wwt</name></author><id>tag:www.wengweitao.com,2015-05-11:zhong-duan-chuang-kou-guan-li-shen-qi-tmux.html</id><summary type="html">&lt;h2&gt;什么是tmux&lt;/h2&gt;
+&lt;p&gt;tmux是一个终端的复用器（terminal multiplexer），可以简单理解为一个终端的窗口管理程序。相比系统自带的 screen 功能要强大许多。其使用场景和特性包括：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;当你使用SSH连接到服务器的时候，由于网络掉线导致连接中断（这是经常发生的。。。）。当你重新连接后，所有的工作现场丢失了。你还得重新打开之前的各种窗口，进入各种很深的目录，非常麻烦。而如果使用tmux，即时掉线之后，重新连接也能直接回到之前的工作环境，极大提高工作的效率。&lt;/li&gt;
+&lt;li&gt;可以完全通过键盘操控&lt;/li&gt;
+&lt;li&gt;支持自定义的按键绑定模式，例如设置成vim按键绑定模式&lt;/li&gt;
+&lt;li&gt;可以在一个SSH连接下打开多个会话、窗口，也可以对窗口进行各种分割，效果如下图所示。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img alt="tmux示例" src="http://tmux.sourceforge.net/tmux4.png" /&gt;&lt;/p&gt;
+&lt;h2&gt;tmux的基本概念&lt;/h2&gt;
+&lt;p&gt;首先，需要先安装tmux：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;sudo yum install tmux
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;安装好后，直接输入 &lt;strong&gt;tmux&lt;/strong&gt; 即可运行 tmux. &lt;/p&gt;
+&lt;p&gt;tmux 包括以下3个基本概念：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;session：&lt;/strong&gt;会话，是一组窗口的集合，通常同一个任务可以放入一个session。可以同时打开多个session，每个session可以有自己的名字方便任务的切换。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;window：&lt;/strong&gt;窗口，一个会话包含多个窗口，类似于一个tab，各个window也可以有自己的编号。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;panel：&lt;/strong&gt;面板，一个窗口包含多个面板，就是窗口中不同的小块窗口。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img alt="session" src="http://cenalulu.github.io/images/linux/tmux/concept.jpg" /&gt;
+&lt;em&gt;&lt;a href="http://cenalulu.github.io/images/linux/tmux/concept.jpg"&gt;图片来源&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;session会在tmux窗口的左下角显示，window会以tab形式显示在其后，并且会以当前活动的程序自动命名。以上图为例，这是第3个session，一共有3个window，分别是vim, bash, ssh。而panel就是用格子分割开的各个区块。&lt;/p&gt;
+&lt;h2&gt;tmux的基本用法&lt;/h2&gt;
+&lt;p&gt;tmux 指令必须包含一个前缀（就是一组按键），你必须先按下前缀以后，系统才知道你后面的命令是tmux指令。系统默认的前缀指令是 &lt;strong&gt;ctrl + b&lt;/strong&gt;，例如你要新建一个窗口就先按下：&lt;strong&gt;ctrl + b&lt;/strong&gt;，然后再按：&lt;strong&gt;c&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;下面是几组常用的tmux指令（所有的前缀用prefix代替）：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;prefix + ? ： 帮助，可以查看所有的tmux指令，使用q退出&lt;/li&gt;
+&lt;li&gt;prefix + s： 列出所有session编号,并进行选择切换&lt;/li&gt;
+&lt;li&gt;prefix + d： 离开当前session&lt;/li&gt;
+&lt;li&gt;prefix + $： 重命名当前session&lt;/li&gt;
+&lt;li&gt;prefix  + c：新建一个窗口&lt;/li&gt;
+&lt;li&gt;prefix  + &amp;amp;： 关闭当前窗口&lt;/li&gt;
+&lt;li&gt;prefix + n： 切换到下一个窗口&lt;/li&gt;
+&lt;li&gt;prefix + w：列出所有窗口编号,并进行选择切换&lt;/li&gt;
+&lt;li&gt;prefix + 窗口号： 切换到某个窗口&lt;/li&gt;
+&lt;li&gt;prefix + "： 垂直拆分出一个panel&lt;/li&gt;
+&lt;li&gt;prefix + %： 水平拆分出一个panel&lt;/li&gt;
+&lt;li&gt;prefix + o： 切换到下一个panel&lt;/li&gt;
+&lt;li&gt;prefix + !： 关闭所有的panel&lt;/li&gt;
+&lt;li&gt;prefix + x： 关闭当前panel&lt;/li&gt;
+&lt;li&gt;prefix + z： 暂时将当前的panel放到最大&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;更多的tmux指令，可以参考&lt;a href="http://www.openbsd.org/cgi-bin/man.cgi/OpenBSD-current/man1/tmux.1?query=tmux&amp;amp;sec=1"&gt;这里&lt;/a&gt;。&lt;/p&gt;
+&lt;h2&gt;对tmux进行个性化配置&lt;/h2&gt;
+&lt;p&gt;默认的配置，可以比较不习惯，可以编辑 $HOME/.tmux.conf 文件，对tmux进行配置。&lt;/p&gt;
+&lt;p&gt;1.将前缀更改为 &lt;strong&gt;ctrl + a&lt;/strong&gt;：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nb"&gt;set&lt;/span&gt; -g prefix ^a
+unbind ^b
+&lt;span class="nb"&gt;bind &lt;/span&gt;a send-prefix
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;保存后，为了使配置生效：
+先按 &lt;strong&gt;ctrl+b&lt;/strong&gt;，然后输入&lt;strong&gt;：&lt;/strong&gt;，进入命令行模式， 在命令行模式下输入：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nb"&gt;source&lt;/span&gt;-file ~/.tmux.conf
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;现在就把前缀改为了ctrl + a了。&lt;/p&gt;
+&lt;p&gt;2.水平或垂直分割窗口&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;unbind &lt;span class="s1"&gt;&amp;#39;&amp;quot;&amp;#39;&lt;/span&gt;
+&lt;span class="nb"&gt;bind&lt;/span&gt; - splitw -v &lt;span class="c"&gt;# 分割成上下两个窗口&lt;/span&gt;
+unbind %
+&lt;span class="nb"&gt;bind&lt;/span&gt; | splitw -h &lt;span class="c"&gt;# 分割成左右两个窗口&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;3.切换窗格设置为和Vim一样&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c"&gt;# navigate panes with hjkl&lt;/span&gt;
+&lt;span class="nb"&gt;bind &lt;/span&gt;h &lt;span class="k"&gt;select&lt;/span&gt;-pane -L
+&lt;span class="nb"&gt;bind &lt;/span&gt;j &lt;span class="k"&gt;select&lt;/span&gt;-pane -D
+&lt;span class="nb"&gt;bind &lt;/span&gt;k &lt;span class="k"&gt;select&lt;/span&gt;-pane -U
+&lt;span class="nb"&gt;bind &lt;/span&gt;l &lt;span class="k"&gt;select&lt;/span&gt;-pane -R
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;4.panel大小调整&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nb"&gt;bind&lt;/span&gt; ^k resizep -U 10 &lt;span class="c"&gt;# 跟选择窗格的设置相同，只是多加 Ctrl（Ctrl-k）&lt;/span&gt;
+&lt;span class="nb"&gt;bind&lt;/span&gt; ^j resizep -D 10 &lt;span class="c"&gt;# 同上&lt;/span&gt;
+&lt;span class="nb"&gt;bind&lt;/span&gt; ^h resizep -L 10 &lt;span class="c"&gt;# ...&lt;/span&gt;
+&lt;span class="nb"&gt;bind&lt;/span&gt; ^l resizep -R 10 &lt;span class="c"&gt;# ...&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;5.交换两个窗格&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nb"&gt;bind&lt;/span&gt; ^u swapp -U &lt;span class="c"&gt;# 与上窗格交换 Ctrl-u&lt;/span&gt;
+&lt;span class="nb"&gt;bind&lt;/span&gt; ^d swapp -D &lt;span class="c"&gt;# 与下窗格交换 Ctrl-d&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;这里就不一一列举，所有的配置。大家可以根据自己的习惯和喜好进行更改。以下是几个配置供大家参考：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;https://github.com/gpakosz/.tmux&lt;/li&gt;
+&lt;li&gt;https://github.com/tony/tmux-config&lt;/li&gt;
+&lt;li&gt;https://gist.github.com/spicycode/1229612&lt;/li&gt;
+&lt;li&gt;http://zanshin.net/2013/09/05/my-tmux-configuration/&lt;/li&gt;
+&lt;/ol&gt;</summary><category term="tmux"></category></entry><entry><title>Linux上搭建VPN服务器</title><link href="http://www.wengweitao.com/linuxshang-da-jian-vpnfu-wu-qi.html" rel="alternate"></link><updated>2015-05-01T21:21:00+08:00</updated><author><name>wwt</name></author><id>tag:www.wengweitao.com,2015-05-01:linuxshang-da-jian-vpnfu-wu-qi.html</id><summary type="html">&lt;p&gt;今天是五一劳动节，也就是五月份的第一天，不巧的是校园上网账号欠费了，导致无法通过认证上网。于是，就琢磨着如何不通过认证直接上网。我手上管理着实验室几十台服务器，这些服务器都无需认证可直接访问外网，很自然的就想到以下两种方法：&lt;/p&gt;
 &lt;p&gt;（1）在服务器上设置代理服务器，然后在自己的PC和iPhone上设置代理上网&lt;/p&gt;
 &lt;p&gt;（2）在服务器上搭建一个VPN PPTP服务器，在PC和iPhone上新建一个VPN连接上网。&lt;/p&gt;
 &lt;p&gt;根据校园网的环境和平时的使用情况，最终决定采用VPN的方式。接下来，我以Red Hat系统为例，详细说明搭建的过程。&lt;/p&gt;

@@ -61,6 +61,47 @@
         <div class="eleven columns">
                  <ol id="post-list">
                         <li><article class="hentry">
+                                <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/qiu-zi-fu-de-suo-you-zu-he-he-suo-you-pai-lie.html" rel="bookmark" title="Permalink to 求字符的所有组合和所有排列">求字符的所有组合和所有排列</a></h2> </header>
+                                <footer class="post-info">
+                                    <abbr class="published" title="2015-04-10T14:41:00"> Fri 10 April 2015 </abbr>
+                                    <address class="vcard author">By 
+                                    <a class="url fn" href="http://www.wengweitao.com/author/wwt.html"> wwt</a>
+                                    </address>
+                                </footer><!-- /.post-info -->
+                                <div class="entry-content"> <blockquote>
+<p>昨天看到一道关于求解字符串的排列的问题。如何求出几个字符的所有排列，发现对这种类似的题型还不是很熟练，因此本文对字符的全排列和全组合的问题作下总结，加深自己的理解和记忆，同时也希望能够帮助大家更好的学习和理解该类问题。</p>
+</blockquote>
+<h2>字符串的排列</h2>
+<p><strong>题目描述</strong>：
+输入一个字符串,按字典序打印出该字符串中字符的所有排列。例如输入字符串abc,则打印出由字符a,b,c所能排列出来的所有字符串abc,acb,bac,bca,cab和cba。</p>
+<p><strong>题目分析</strong>：
+考虑把这个复杂的问题分解成为小的问题。整个字符串的排列，可以看成两个部分：</p>
+<ol>
+<li>首先，求所有可能出现在第一个位置的字符</li>
+<li>然后，固定第一个字符，求后面所有字符的排列。这个时候仍然把后面的所有字符分成两个部分：后面的第一个字符，以及这个字符之后的所有字符。</li>
+</ol>
+<p>分析到这里，可以看出这是非常典型的递归。接下来，就可以写出代码。</p>
+<p><strong>代码实现</strong>:</p>
+<div class="highlight"><pre><span class="kt">void</span> <span class="nf">Permutation</span><span class="p">(</span><span class="kt">char</span><span class="o">*</span> <span class="n">str</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">str</span> <span class="o">==</span> <span class="nb">NULL</span><span class="p">)</span>
+        <span class="k">return</span><span class="p">;</span>
+    <span class="n">PermutationCore</span><span class="p">(</span><span class="n">str</span><span class="p">,</span> <span class="n">str</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="kt">void</span> <span class="nf">PermutationCore</span><span class="p">(</span><span class="kt">char</span><span class="o">*</span> <span class="n">str ...</span></pre></div> </div><!-- /.entry-content -->
+
+                                <div class="medium primary btn"><a href="http://www.wengweitao.com/qiu-zi-fu-de-suo-you-zu-he-he-suo-you-pai-lie.html" rel="bookmark" title="Permalink to 求字符的所有组合和所有排列">Read more <i class="icon-arrow-right"></i></a></div>
+
+
+
+                                <div class="row tag-row">
+                                        <span>Tagged as : </span>
+                                            <a class="danger label" href="http://www.wengweitao.com/tag/mian-shi-ti.html">面试题</a>
+                                </div>
+
+
+
+                        </article></li>
+                        <li><article class="hentry">
                                 <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/bian-xie-gao-zhi-liang-pythondai-ma-3-ku.html" rel="bookmark" title="Permalink to 编写高质量Python代码（3）——库">编写高质量Python代码（3）——库</a></h2> </header>
                                 <footer class="post-info">
                                     <abbr class="published" title="2015-04-08T22:58:00"> Wed 08 April 2015 </abbr>
@@ -245,46 +286,6 @@ YAPF与其他的格式化工具不同，其算法能够把代码重新格式化�
 
 
                         </article></li>
-                        <li><article class="hentry">
-                                <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/bian-xie-gao-zhi-liang-pythondai-ma-1.html" rel="bookmark" title="Permalink to 编写高质量Python代码（1）">编写高质量Python代码（1）</a></h2> </header>
-                                <footer class="post-info">
-                                    <abbr class="published" title="2015-04-06T18:42:00"> Mon 06 April 2015 </abbr>
-                                    <address class="vcard author">By 
-                                    <a class="url fn" href="http://www.wengweitao.com/author/wwt.html"> wwt</a>
-                                    </address>
-                                </footer><!-- /.post-info -->
-                                <div class="entry-content"> <blockquote>
-<p>去年参加了珠海的PyCon大会，幸运地抽中了三本书，其中一本是《编写高质量代码：改善Python程序的91个建议》。本书从多个方面给出了编写高质量Python代码的91个建议，我把每一章的建议都先总结下来，分享给大家。</p>
-</blockquote>
-<h3>建议1： 理解Pythonic概念</h3>
-<h4>（1）Pythonic的定义</h4>
-<p>遵循Pythonic的代码看起来像伪代码：</p>
-<div class="highlight"><pre><span class="k">def</span> <span class="nf">quicksort</span><span class="p">(</span><span class="n">array</span><span class="p">):</span>
-    <span class="n">less</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="n">greater</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">array</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">array</span>
-    <span class="n">pivot</span> <span class="o">=</span> <span class="n">array</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
-    <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">array</span><span class="p">:</span>
-        <span class="k">if</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="n">pivot</span><span class="p">:</span>
-            <span class="n">greater</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="n">less</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">quicksort</span><span class="p">(</span><span class="n">less</span><span class="p">)</span> <span class="o">+</span> <span class="p">[</span><span class="n">pivot</span><span class="p">]</span> <span class="o">+</span> <span class="n">quicksort</span><span class="p">(</span><span class="n">greater</span><span class="p">)</span>
-<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&#39;__main__ ...</span></pre></div> </div><!-- /.entry-content -->
-
-                                <div class="medium primary btn"><a href="http://www.wengweitao.com/bian-xie-gao-zhi-liang-pythondai-ma-1.html" rel="bookmark" title="Permalink to 编写高质量Python代码（1）">Read more <i class="icon-arrow-right"></i></a></div>
-
-
-
-                                <div class="row tag-row">
-                                        <span>Tagged as : </span>
-                                            <a class="danger label" href="http://www.wengweitao.com/tag/python.html">Python</a>
-                                </div>
-
-
-
-                        </article></li>
                 </ol><!-- /#posts-list -->
 
         </div><!-- /.eleven.columns -->
@@ -316,19 +317,20 @@ YAPF与其他的格式化工具不同，其算法能够把代码重新格式化�
 <!--
 <h4>标签</h4>
 <ul class="tagcloud">
+        <li class="tag-4"><a href="http://www.wengweitao.com/tag/tmux.html">tmux</a></li>
         <li class="tag-3"><a href="http://www.wengweitao.com/tag/ji-ben-gai-nian.html">基本概念</a></li>
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/ce-shi.html">测试</a></li>
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/go.html">Go</a></li>
+        <li class="tag-4"><a href="http://www.wengweitao.com/tag/suan-fa-fen-xi.html">算法分析</a></li>
         <li class="tag-4"><a href="http://www.wengweitao.com/tag/ji-chu-gai-nian.html">基础概念</a></li>
         <li class="tag-4"><a href="http://www.wengweitao.com/tag/wan.html">玩</a></li>
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/vim.html">Vim</a></li>
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/xiao-yuan.html">校园</a></li>
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/gong-ju.html">工具</a></li>
-        <li class="tag-2"><a href="http://www.wengweitao.com/tag/jiao-cheng.html">教程</a></li>
-        <li class="tag-1"><a href="http://www.wengweitao.com/tag/du-shu-bi-ji.html">读书笔记</a></li>
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/suan-fa-fen-xi.html">算法分析</a></li>
-        <li class="tag-3"><a href="http://www.wengweitao.com/tag/mian-shi-ti.html">面试题</a></li>
         <li class="tag-1"><a href="http://www.wengweitao.com/tag/python.html">Python</a></li>
+        <li class="tag-4"><a href="http://www.wengweitao.com/tag/ce-shi.html">测试</a></li>
+        <li class="tag-4"><a href="http://www.wengweitao.com/tag/xiao-yuan.html">校园</a></li>
+        <li class="tag-4"><a href="http://www.wengweitao.com/tag/go.html">Go</a></li>
+        <li class="tag-3"><a href="http://www.wengweitao.com/tag/mian-shi-ti.html">面试题</a></li>
+        <li class="tag-1"><a href="http://www.wengweitao.com/tag/du-shu-bi-ji.html">读书笔记</a></li>
+        <li class="tag-2"><a href="http://www.wengweitao.com/tag/jiao-cheng.html">教程</a></li>
+        <li class="tag-4"><a href="http://www.wengweitao.com/tag/gong-ju.html">工具</a></li>
+        <li class="tag-4"><a href="http://www.wengweitao.com/tag/vim.html">Vim</a></li>
 </ul>
 -->
 

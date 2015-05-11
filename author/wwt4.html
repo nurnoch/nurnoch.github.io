@@ -61,6 +61,46 @@
         <div class="eleven columns">
                  <ol id="post-list">
                         <li><article class="hentry">
+                                <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/bian-xie-gao-zhi-liang-pythondai-ma-1.html" rel="bookmark" title="Permalink to 编写高质量Python代码（1）">编写高质量Python代码（1）</a></h2> </header>
+                                <footer class="post-info">
+                                    <abbr class="published" title="2015-04-06T18:42:00"> Mon 06 April 2015 </abbr>
+                                    <address class="vcard author">By 
+                                    <a class="url fn" href="http://www.wengweitao.com/author/wwt.html"> wwt</a>
+                                    </address>
+                                </footer><!-- /.post-info -->
+                                <div class="entry-content"> <blockquote>
+<p>去年参加了珠海的PyCon大会，幸运地抽中了三本书，其中一本是《编写高质量代码：改善Python程序的91个建议》。本书从多个方面给出了编写高质量Python代码的91个建议，我把每一章的建议都先总结下来，分享给大家。</p>
+</blockquote>
+<h3>建议1： 理解Pythonic概念</h3>
+<h4>（1）Pythonic的定义</h4>
+<p>遵循Pythonic的代码看起来像伪代码：</p>
+<div class="highlight"><pre><span class="k">def</span> <span class="nf">quicksort</span><span class="p">(</span><span class="n">array</span><span class="p">):</span>
+    <span class="n">less</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">greater</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">array</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">array</span>
+    <span class="n">pivot</span> <span class="o">=</span> <span class="n">array</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">array</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="n">pivot</span><span class="p">:</span>
+            <span class="n">greater</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">less</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">quicksort</span><span class="p">(</span><span class="n">less</span><span class="p">)</span> <span class="o">+</span> <span class="p">[</span><span class="n">pivot</span><span class="p">]</span> <span class="o">+</span> <span class="n">quicksort</span><span class="p">(</span><span class="n">greater</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&#39;__main__ ...</span></pre></div> </div><!-- /.entry-content -->
+
+                                <div class="medium primary btn"><a href="http://www.wengweitao.com/bian-xie-gao-zhi-liang-pythondai-ma-1.html" rel="bookmark" title="Permalink to 编写高质量Python代码（1）">Read more <i class="icon-arrow-right"></i></a></div>
+
+
+
+                                <div class="row tag-row">
+                                        <span>Tagged as : </span>
+                                            <a class="danger label" href="http://www.wengweitao.com/tag/python.html">Python</a>
+                                </div>
+
+
+
+                        </article></li>
+                        <li><article class="hentry">
                                 <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/fei-bo-na-qi-shu-lie-ji-qi-xiang-guan-wen-ti.html" rel="bookmark" title="Permalink to 斐波那契数列及其相关问题">斐波那契数列及其相关问题</a></h2> </header>
                                 <footer class="post-info">
                                     <abbr class="published" title="2015-04-05T00:00:00"> Sun 05 April 2015 </abbr>
@@ -200,36 +240,6 @@
 
 
                         </article></li>
-                        <li><article class="hentry">
-                                <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/adaboostsuan-fa.html" rel="bookmark" title="Permalink to AdaBoost算法">AdaBoost算法</a></h2> </header>
-                                <footer class="post-info">
-                                    <abbr class="published" title="2014-08-06T19:56:00"> Wed 06 August 2014 </abbr>
-                                    <address class="vcard author">By 
-                                    <a class="url fn" href="http://www.wengweitao.com/author/wwt.html"> wwt</a>
-                                    </address>
-                                </footer><!-- /.post-info -->
-                                <div class="entry-content"> <blockquote>
-<p>提升（boosting）方法是一种常用的统计学习方法。在分类问题中，它通过改变训练样本的权重，学习多个分类器，并将这些分类器进行线性组合，提高分类的性能。</p>
-</blockquote>
-<h2>提升方法AdaBoost算法</h2>
-<h3>提升方法的基本思路</h3>
-<p>提升方法基于这一思想：对于一个复杂的任务来说，将多个专家的判断进行适当的综合所得出的判断，要比其中任何一个专家的单独判断好。</p>
-<p>在概率近似正确（probably approximately correct， PAC）学习框架中，一个概念（或者类），如果存在一个多项式学习算法能够学习它，并且正确率很高，那么就称这个概念是<strong>强可学习的</strong>；如果存在一个多项式学习算法能够学习它，并且正确率仅比随机猜测略好，那么就称这个概念是<strong>弱可学习的</strong>。可以证明强可学习与弱可学习是等价的。</p>
-<p>这样一来，我们在学习中，如果发现了“弱学习算法”，那么能否将它提升（boost）为“强学习算法”。弱学习算法通常要比强学习算法容易得多，那么如何具体实施提升？关于提升的方法最具代表性的是AdaBoost算法。</p>
-<p>对于分类问题而言，一个粗糙的分类规则要比精确的分类规则容易的多。<strong>提升方法就是从弱学习算法出发，反复学习，得到一系列弱分类器，然后组合这些弱分类器构成一个强分类器。</strong>大多数提升方法都是改变训练数据的概率分布（训练数据的权值分布 ...</p> </div><!-- /.entry-content -->
-
-                                <div class="medium primary btn"><a href="http://www.wengweitao.com/adaboostsuan-fa.html" rel="bookmark" title="Permalink to AdaBoost算法">Read more <i class="icon-arrow-right"></i></a></div>
-
-
-
-                                <div class="row tag-row">
-                                        <span>Tagged as : </span>
-                                            <a class="danger label" href="http://www.wengweitao.com/tag/du-shu-bi-ji.html">读书笔记</a>
-                                </div>
-
-
-
-                        </article></li>
                 </ol><!-- /#posts-list -->
 
         </div><!-- /.eleven.columns -->
@@ -261,19 +271,20 @@
 <!--
 <h4>标签</h4>
 <ul class="tagcloud">
+        <li class="tag-4"><a href="http://www.wengweitao.com/tag/tmux.html">tmux</a></li>
         <li class="tag-3"><a href="http://www.wengweitao.com/tag/ji-ben-gai-nian.html">基本概念</a></li>
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/ce-shi.html">测试</a></li>
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/go.html">Go</a></li>
+        <li class="tag-4"><a href="http://www.wengweitao.com/tag/suan-fa-fen-xi.html">算法分析</a></li>
         <li class="tag-4"><a href="http://www.wengweitao.com/tag/ji-chu-gai-nian.html">基础概念</a></li>
         <li class="tag-4"><a href="http://www.wengweitao.com/tag/wan.html">玩</a></li>
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/vim.html">Vim</a></li>
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/xiao-yuan.html">校园</a></li>
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/gong-ju.html">工具</a></li>
-        <li class="tag-2"><a href="http://www.wengweitao.com/tag/jiao-cheng.html">教程</a></li>
-        <li class="tag-1"><a href="http://www.wengweitao.com/tag/du-shu-bi-ji.html">读书笔记</a></li>
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/suan-fa-fen-xi.html">算法分析</a></li>
-        <li class="tag-3"><a href="http://www.wengweitao.com/tag/mian-shi-ti.html">面试题</a></li>
         <li class="tag-1"><a href="http://www.wengweitao.com/tag/python.html">Python</a></li>
+        <li class="tag-4"><a href="http://www.wengweitao.com/tag/ce-shi.html">测试</a></li>
+        <li class="tag-4"><a href="http://www.wengweitao.com/tag/xiao-yuan.html">校园</a></li>
+        <li class="tag-4"><a href="http://www.wengweitao.com/tag/go.html">Go</a></li>
+        <li class="tag-3"><a href="http://www.wengweitao.com/tag/mian-shi-ti.html">面试题</a></li>
+        <li class="tag-1"><a href="http://www.wengweitao.com/tag/du-shu-bi-ji.html">读书笔记</a></li>
+        <li class="tag-2"><a href="http://www.wengweitao.com/tag/jiao-cheng.html">教程</a></li>
+        <li class="tag-4"><a href="http://www.wengweitao.com/tag/gong-ju.html">工具</a></li>
+        <li class="tag-4"><a href="http://www.wengweitao.com/tag/vim.html">Vim</a></li>
 </ul>
 -->
 
