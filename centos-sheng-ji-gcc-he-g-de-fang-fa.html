@@ -2,10 +2,11 @@
 <html lang="zh">
 <head>
 
-        <title>wwt's blog - tmux</title>
+        <title>CentOS 升级 gcc 和 g++ 的方法</title>
         <meta charset="utf-8" />
         <link href="http://www.wengweitao.com/feeds\all.atom.xml" type="application/atom+xml" rel="alternate" title="wwt's blog Full Atom Feed" />
         <link href="http://www.wengweitao.com/feeds/all.rss.xml" type="application/rss+xml" rel="alternate" title="wwt's blog Full RSS Feed" />
+        <link href="http://www.wengweitao.com/feeds/gong-ju.rss.xml" type="application/atom+xml" rel="alternate" title="wwt's blog Categories Atom Feed" />
 
 
         <!-- Mobile viewport optimized: j.mp/bplateviewport -->
@@ -51,60 +52,85 @@
               </ul>
             </div>
 
-<section id="content">
-
-
+<section id="content" class="body">
 
    <div class="row">
-
-
         <div class="eleven columns">
-                 <ol id="post-list">
-                        <li><article class="hentry">
-                                <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/zhong-duan-chuang-kou-guan-li-shen-qi-tmux.html" rel="bookmark" title="Permalink to 终端窗口管理神器——tmux">终端窗口管理神器——tmux</a></h2> </header>
-                                <footer class="post-info">
-                                    <abbr class="published" title="2015-05-11T09:12:00"> Mon 11 May 2015 </abbr>
-                                    <address class="vcard author">By 
-                                    <a class="url fn" href="http://www.wengweitao.com/author/wwt.html"> wwt</a>
-                                    </address>
-                                </footer><!-- /.post-info -->
-                                <div class="entry-content"> <h2>什么是tmux</h2>
-<p>tmux是一个终端的复用器（terminal multiplexer），可以简单理解为一个终端的窗口管理程序。相比系统自带的 screen 功能要强大许多。其使用场景和特性包括：</p>
-<ul>
-<li>当你使用SSH连接到服务器的时候，由于网络掉线导致连接中断（这是经常发生的。。。）。当你重新连接后，所有的工作现场丢失了。你还得重新打开之前的各种窗口，进入各种很深的目录，非常麻烦。而如果使用tmux，即时掉线之后，重新连接也能直接回到之前的工作环境，极大提高工作的效率。</li>
-<li>可以完全通过键盘操控</li>
-<li>支持自定义的按键绑定模式，例如设置成vim按键绑定模式</li>
-<li>可以在一个SSH连接下打开多个会话、窗口，也可以对窗口进行各种分割，效果如下图所示。</li>
-</ul>
-<p><img alt="tmux示例" src="http://tmux.sourceforge.net/tmux4.png" /></p>
-<h2>tmux的基本概念</h2>
-<p>首先，需要先安装tmux：</p>
-<div class="highlight"><pre>sudo yum install tmux
+
+
+            <header>
+              <h2 class="entry-title">
+                <a href="http://www.wengweitao.com/centos-sheng-ji-gcc-he-g-de-fang-fa.html" rel="bookmark"
+                   title="Permalink to CentOS 升级 gcc 和 g++ 的方法">CentOS 升级 gcc 和 g++ 的方法</a></h2>
+           
+            </header>
+            <footer class="post-info">
+              <abbr class="published" title="2015-05-12T19:02:00">
+                Tue 12 May 2015
+              </abbr>
+              <address class="vcard author">By 
+                <a class="url fn" href="http://www.wengweitao.com/author/wwt.html"> wwt</a>
+              </address>
+            </footer><!-- /.post-info -->
+            <div class="entry-content">
+              <p>CentOS 系统自带的 gcc 或者 g++ 的版本是：g++ (GCC) 4.4.6. GCC 版本太旧，导致了很多使用上的不便，如：无法使用g++ -std=c++11 命令来编译 C++11、无法使用Vim的很多插件（YouCompleteMe等）。因此，有必要对它进行升级。</p>
+<p>对 GCC 升级无法直接使用：</p>
+<div class="highlight"><pre>yum update gcc
 </pre></div>
 
 
-<p>安装好后，直接输入 <strong>tmux</strong> 即可运行 tmux. </p>
-<p>tmux 包括以下3个基本概念：</p>
-<ul>
-<li><strong>session：</strong>会话，是一组窗口的集合，通常同一个任务可以放入一个session。可以同时打开多个session，每个session可以有自己的名字方便任务的切换。</li>
-<li><strong>window：</strong>窗口 ...</li></ul> </div><!-- /.entry-content -->
+<p>以下是升级的详细过程。</p>
+<h2>1.使用 redhat developer toolset 1.1 的repo，安装GCC</h2>
+<div class="highlight"><pre><span class="nb">cd</span> /etc/yum.repos.d
 
-                                <div class="medium primary btn"><a href="http://www.wengweitao.com/zhong-duan-chuang-kou-guan-li-shen-qi-tmux.html" rel="bookmark" title="Permalink to 终端窗口管理神器——tmux">Read more <i class="icon-arrow-right"></i></a></div>
+wget http://people.centos.org/tru/devtools-1.1/devtools-1.1.repo 
 
-
-
-                                <div class="row tag-row">
-                                        <span>Tagged as : </span>
-                                            <a class="danger label" href="http://www.wengweitao.com/tag/tmux.html">tmux</a>
-                                </div>
+yum --enablerepo<span class="o">=</span>testing-1.1-devtools-6 install devtoolset-1.1-gcc devtoolset-1.1-gcc-c++
+</pre></div>
 
 
+<h3>2. 替换系统中原来的GCC</h3>
+<p>通过通过第一步会把 GCC 安装到以下目录：</p>
+<div class="highlight"><pre>/opt/centos/devtoolset-1.1/root/usr/bin/
+</pre></div>
 
-                        </article></li>
-                </ol><!-- /#posts-list -->
+
+<p>接下来需要修改系统的配置，使默认的 gcc 和 g++ 命令使用的是新安装的版本。</p>
+<div class="highlight"><pre>ln -s /opt/centos/devtoolset-1.1/root/usr/bin/* /usr/local/bin/
+<span class="nb">hash</span> -r
+</pre></div>
+
+
+<p>现在查看 g++ 的版本号：</p>
+<div class="highlight"><pre>g++ --version
+g++ <span class="o">(</span>GCC<span class="o">)</span> 4.7.2 20121015 <span class="o">(</span>Red Hat 4.7.2-5<span class="o">)</span>
+Copyright <span class="o">(</span>C<span class="o">)</span> 2012 Free Software Foundation, Inc.
+This is free software; see the <span class="nb">source </span><span class="k">for </span>copying conditions.  There is NO
+warranty; not even <span class="k">for </span>MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+</pre></div>
+
+
+<p>已经从4.4.6升级到4.7.2了。</p>
+<hr />
+<h2>Reference</h2>
+<p>http://superuser.com/questions/381160/how-to-install-gcc-4-7-x-4-8-x-on-centos/542091#542091</p>
+            </div><!-- /.entry-content -->
+            <div class="comments">
+              <h3>Comments</h3>
+              <div id="disqus_thread"></div>
+              <script type="text/javascript">
+                var disqus_identifier = "centos-sheng-ji-gcc-he-g-de-fang-fa.html";
+                (function() {
+                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                dsq.src = 'http://wengwt.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                })();
+              </script>
+            </div>
+
 
         </div><!-- /.eleven.columns -->
-        
+
 <div class="three columns">
 
 <!--
@@ -174,10 +200,8 @@
 
 </div> </div><!-- /.row -->
 
-<p class="paginator">
-    Page 1 / 1
-</p>
-</section><!-- /#content -->
+
+</section>
 
        </div><!-- /.row -->
     </div><!-- /.container -->

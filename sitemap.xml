@@ -5,28 +5,28 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://www.wengweitao.com/</loc>
-<lastmod>2015-05-11T20:12:08-00:00</lastmod>
+<lastmod>2015-05-12T19:15:25-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://www.wengweitao.com/archives.html</loc>
-<lastmod>2015-05-11T20:12:08-00:00</lastmod>
+<lastmod>2015-05-12T19:15:25-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://www.wengweitao.com/tags.html</loc>
-<lastmod>2015-05-11T20:12:08-00:00</lastmod>
+<lastmod>2015-05-12T19:15:25-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://www.wengweitao.com/categories.html</loc>
-<lastmod>2015-05-11T20:12:08-00:00</lastmod>
+<lastmod>2015-05-12T19:15:25-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -36,6 +36,13 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <lastmod>2013-04-18T00:00:00-00:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.3</priority>
+</url>
+
+<url>
+<loc>http://www.wengweitao.com/centos-sheng-ji-gcc-he-g-de-fang-fa.html</loc>
+<lastmod>2015-05-12T19:02:00-00:00</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
 </url>
 
 <url>
@@ -299,7 +306,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://www.wengweitao.com/category/gong-ju.html</loc>
-<lastmod>2015-05-11T09:12:00+08:06</lastmod>
+<lastmod>2015-05-12T19:02:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -417,6 +424,13 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
+<loc>http://www.wengweitao.com/tag/jiao-cheng-linux.html</loc>
+<lastmod>2015-05-12T19:02:00+08:06</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
 <loc>http://www.wengweitao.com/tag/jiao-cheng.html</loc>
 <lastmod>2015-05-01T21:21:00+08:06</lastmod>
 <changefreq>daily</changefreq>
@@ -432,7 +446,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://www.wengweitao.com/author/wwt.html</loc>
-<lastmod>2015-05-11T09:12:00+08:06</lastmod>
+<lastmod>2015-05-12T19:02:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>

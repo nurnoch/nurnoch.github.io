@@ -61,6 +61,41 @@
         <div class="eleven columns">
                  <ol id="post-list">
                         <li><article class="hentry">
+                                <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/ti-sheng-shu.html" rel="bookmark" title="Permalink to 提升树">提升树</a></h2> </header>
+                                <footer class="post-info">
+                                    <abbr class="published" title="2014-08-07T22:27:00"> Thu 07 August 2014 </abbr>
+                                    <address class="vcard author">By 
+                                    <a class="url fn" href="http://www.wengweitao.com/author/wwt.html"> wwt</a>
+                                    </address>
+                                </footer><!-- /.post-info -->
+                                <div class="entry-content"> <blockquote>
+<p>提升树是以分类树或回归树为基本分类器的提升方法。提升树被认为是统计学习中性能最好的方法之一。</p>
+</blockquote>
+<h2>提升树模型</h2>
+<p>以决策树为基函数的提升方法称为提升树（boosting tree）。一个基本分类器x &lt; v或者x &gt; v，可以看作是由一个根结点直接连接两个叶节点的简单决策树，即所谓的决策树桩（decision stump）。提升树模型可以表示为决策树的加法模型：
+</p>
+<div class="math">$$f_M(x)=\sum_{m=1}^{M}T(x;\varTheta_m)$$</div>
+<p>其中，<span class="math">\(T(x;\varTheta_m)\)</span>表示决策树；<span class="math">\(\varTheta_m\)</span>为决策树的参数；M为树的个数。</p>
+<h2>提升树算法</h2>
+<p>提升树算法采用前向分步算法。首先，确定原始提升树<span class="math">\(f_0(x)=0\)</span>，第m步的模型是
+</p>
+<div class="math">$$f_m(x)=f_{m-1}(x)+T(x;\varTheta_m)$$</div>
+<p>
+其中，<span class="math">\(f_{m-1 ...</span></p> </div><!-- /.entry-content -->
+
+                                <div class="medium primary btn"><a href="http://www.wengweitao.com/ti-sheng-shu.html" rel="bookmark" title="Permalink to 提升树">Read more <i class="icon-arrow-right"></i></a></div>
+
+
+
+                                <div class="row tag-row">
+                                        <span>Tagged as : </span>
+                                            <a class="danger label" href="http://www.wengweitao.com/tag/du-shu-bi-ji.html">读书笔记</a>
+                                </div>
+
+
+
+                        </article></li>
+                        <li><article class="hentry">
                                 <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/adaboostsuan-fa.html" rel="bookmark" title="Permalink to AdaBoost算法">AdaBoost算法</a></h2> </header>
                                 <footer class="post-info">
                                     <abbr class="published" title="2014-08-06T19:56:00"> Wed 06 August 2014 </abbr>
@@ -180,37 +215,6 @@
 
 
                         </article></li>
-                        <li><article class="hentry">
-                                <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/zhi-chi-xiang-liang-ji-xian-xing-ke-fen-zhi-chi-xiang-liang-ji.html" rel="bookmark" title="Permalink to 支持向量机——线性可分支持向量机">支持向量机——线性可分支持向量机</a></h2> </header>
-                                <footer class="post-info">
-                                    <abbr class="published" title="2014-08-02T20:32:00"> Sat 02 August 2014 </abbr>
-                                    <address class="vcard author">By 
-                                    <a class="url fn" href="http://www.wengweitao.com/author/wwt.html"> wwt</a>
-                                    </address>
-                                </footer><!-- /.post-info -->
-                                <div class="entry-content"> <blockquote>
-<p>支持向量机（support vector machine， SVM）是一种二类分类模型。它的基本模型是定义在特征空间上的间隔最大的线性分类器，间隔最大使之有别与感知机。支持向量机还包括核技巧，这使它成为实质上的非线性分类器。SVM的学习策略是间隔最大化，可形式化为一个求解凸二次规划的问题，也等价于正则化的合页损失函数的最小化问题。SVM的学习算法是求解凸二次规划的最优算法。SVM学习方法包含构建由简至烦的模型：
-- 线性可分支持向量机：当训练数据线性可分时，通过硬间隔最大化（hard margin maximization），学习一个线性分类器
-- 线性支持向量机：当训练数据近似线性可分时，通过软间隔最大化（soft margin maximization），学习一个线性分类器，也称为软间隔支持向量机
-- 非线性支持向量机：当训练数据线性不可分时，通过使用核技巧（kernel trick）即软间隔最大化，学习非线性支持向量机。
-核函数（kernel function）表示将输入从输入空间映射到特征空间得到的特征向量之间的内积。通过使用核函数可以学习非线性支持向量机，等价于隐式地在高维的特征空间中学习线性支持向量机。这样的方法称为核技巧。核方法是比支持向量机更为一般的机器学习方法。</p>
-</blockquote>
-<h2>线性可分支持向量机与硬间隔最大化</h2>
-<h3>线性可分支持向量机</h3>
-<p>支持向量机中，输入都由输入空间转换到特征空间将输入映射为特征向量，支持向量机的学习是在特征空间中进行的 ...</p> </div><!-- /.entry-content -->
-
-                                <div class="medium primary btn"><a href="http://www.wengweitao.com/zhi-chi-xiang-liang-ji-xian-xing-ke-fen-zhi-chi-xiang-liang-ji.html" rel="bookmark" title="Permalink to 支持向量机——线性可分支持向量机">Read more <i class="icon-arrow-right"></i></a></div>
-
-
-
-                                <div class="row tag-row">
-                                        <span>Tagged as : </span>
-                                            <a class="danger label" href="http://www.wengweitao.com/tag/du-shu-bi-ji.html">读书笔记</a>
-                                </div>
-
-
-
-                        </article></li>
                 </ol><!-- /#posts-list -->
 
         </div><!-- /.eleven.columns -->
@@ -242,20 +246,21 @@
 <!--
 <h4>标签</h4>
 <ul class="tagcloud">
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/ji-chu-gai-nian.html">基础概念</a></li>
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/go.html">Go</a></li>
-        <li class="tag-2"><a href="http://www.wengweitao.com/tag/jiao-cheng.html">教程</a></li>
-        <li class="tag-1"><a href="http://www.wengweitao.com/tag/du-shu-bi-ji.html">读书笔记</a></li>
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/vim.html">Vim</a></li>
-        <li class="tag-3"><a href="http://www.wengweitao.com/tag/ji-ben-gai-nian.html">基本概念</a></li>
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/suan-fa-fen-xi.html">算法分析</a></li>
-        <li class="tag-1"><a href="http://www.wengweitao.com/tag/python.html">Python</a></li>
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/ce-shi.html">测试</a></li>
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/xiao-yuan.html">校园</a></li>
         <li class="tag-3"><a href="http://www.wengweitao.com/tag/mian-shi-ti.html">面试题</a></li>
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/tmux.html">tmux</a></li>
+        <li class="tag-1"><a href="http://www.wengweitao.com/tag/du-shu-bi-ji.html">读书笔记</a></li>
+        <li class="tag-4"><a href="http://www.wengweitao.com/tag/xiao-yuan.html">校园</a></li>
+        <li class="tag-1"><a href="http://www.wengweitao.com/tag/python.html">Python</a></li>
+        <li class="tag-2"><a href="http://www.wengweitao.com/tag/jiao-cheng.html">教程</a></li>
+        <li class="tag-4"><a href="http://www.wengweitao.com/tag/suan-fa-fen-xi.html">算法分析</a></li>
         <li class="tag-4"><a href="http://www.wengweitao.com/tag/gong-ju.html">工具</a></li>
+        <li class="tag-4"><a href="http://www.wengweitao.com/tag/ce-shi.html">测试</a></li>
+        <li class="tag-4"><a href="http://www.wengweitao.com/tag/tmux.html">tmux</a></li>
         <li class="tag-4"><a href="http://www.wengweitao.com/tag/wan.html">玩</a></li>
+        <li class="tag-4"><a href="http://www.wengweitao.com/tag/ji-chu-gai-nian.html">基础概念</a></li>
+        <li class="tag-4"><a href="http://www.wengweitao.com/tag/jiao-cheng-linux.html">教程、Linux</a></li>
+        <li class="tag-3"><a href="http://www.wengweitao.com/tag/ji-ben-gai-nian.html">基本概念</a></li>
+        <li class="tag-4"><a href="http://www.wengweitao.com/tag/go.html">Go</a></li>
+        <li class="tag-4"><a href="http://www.wengweitao.com/tag/vim.html">Vim</a></li>
 </ul>
 -->
 
@@ -285,7 +290,7 @@
 
 <p class="paginator">
             <a href="http://www.wengweitao.com/author/wwt4.html"><i class="icon-arrow-left"></i></a>
-    Page 5 / 7
+    Page 5 / 8
         <a href="http://www.wengweitao.com/author/wwt6.html"><i class="icon-arrow-right"></i></a>
 </p>
 </section><!-- /#content -->

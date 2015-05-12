@@ -1,5 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>wwt's blog</title><link>http://www.wengweitao.com/</link><description></description><atom:link href="http://www.wengweitao.com/feeds/all.rss.xml" rel="self"></atom:link><lastBuildDate>Mon, 11 May 2015 09:12:00 +0800</lastBuildDate><item><title>终端窗口管理神器——tmux</title><link>http://www.wengweitao.com/zhong-duan-chuang-kou-guan-li-shen-qi-tmux.html</link><description>&lt;h2&gt;什么是tmux&lt;/h2&gt;
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>wwt's blog</title><link>http://www.wengweitao.com/</link><description></description><atom:link href="http://www.wengweitao.com/feeds/all.rss.xml" rel="self"></atom:link><lastBuildDate>Tue, 12 May 2015 19:02:00 +0800</lastBuildDate><item><title>CentOS 升级 gcc 和 g++ 的方法</title><link>http://www.wengweitao.com/centos-sheng-ji-gcc-he-g-de-fang-fa.html</link><description>&lt;p&gt;CentOS 系统自带的 gcc 或者 g++ 的版本是：g++ (GCC) 4.4.6. GCC 版本太旧，导致了很多使用上的不便，如：无法使用g++ -std=c++11 命令来编译 C++11、无法使用Vim的很多插件（YouCompleteMe等）。因此，有必要对它进行升级。&lt;/p&gt;
+&lt;p&gt;对 GCC 升级无法直接使用：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;yum update gcc
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;以下是升级的详细过程。&lt;/p&gt;
+&lt;h2&gt;1.使用 redhat developer toolset 1.1 的repo，安装GCC&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nb"&gt;cd&lt;/span&gt; /etc/yum.repos.d
+
+wget http://people.centos.org/tru/devtools-1.1/devtools-1.1.repo 
+
+yum --enablerepo&lt;span class="o"&gt;=&lt;/span&gt;testing-1.1-devtools-6 install devtoolset-1.1-gcc devtoolset-1.1-gcc-c++
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;2. 替换系统中原来的GCC&lt;/h3&gt;
+&lt;p&gt;通过通过第一步会把 GCC 安装到以下目录：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;/opt/centos/devtoolset-1.1/root/usr/bin/
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;接下来需要修改系统的配置，使默认的 gcc 和 g++ 命令使用的是新安装的版本。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;ln -s /opt/centos/devtoolset-1.1/root/usr/bin/* /usr/local/bin/
+&lt;span class="nb"&gt;hash&lt;/span&gt; -r
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;现在查看 g++ 的版本号：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;g++ --version
+g++ &lt;span class="o"&gt;(&lt;/span&gt;GCC&lt;span class="o"&gt;)&lt;/span&gt; 4.7.2 20121015 &lt;span class="o"&gt;(&lt;/span&gt;Red Hat 4.7.2-5&lt;span class="o"&gt;)&lt;/span&gt;
+Copyright &lt;span class="o"&gt;(&lt;/span&gt;C&lt;span class="o"&gt;)&lt;/span&gt; 2012 Free Software Foundation, Inc.
+This is free software; see the &lt;span class="nb"&gt;source &lt;/span&gt;&lt;span class="k"&gt;for &lt;/span&gt;copying conditions.  There is NO
+warranty; not even &lt;span class="k"&gt;for &lt;/span&gt;MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;已经从4.4.6升级到4.7.2了。&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h2&gt;Reference&lt;/h2&gt;
+&lt;p&gt;http://superuser.com/questions/381160/how-to-install-gcc-4-7-x-4-8-x-on-centos/542091#542091&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">wwt</dc:creator><pubDate>Tue, 12 May 2015 19:02:00 +0800</pubDate><guid>tag:www.wengweitao.com,2015-05-12:centos-sheng-ji-gcc-he-g-de-fang-fa.html</guid><category>教程、Linux</category></item><item><title>终端窗口管理神器——tmux</title><link>http://www.wengweitao.com/zhong-duan-chuang-kou-guan-li-shen-qi-tmux.html</link><description>&lt;h2&gt;什么是tmux&lt;/h2&gt;
 &lt;p&gt;tmux是一个终端的复用器（terminal multiplexer），可以简单理解为一个终端的窗口管理程序。相比系统自带的 screen 功能要强大许多。其使用场景和特性包括：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;当你使用SSH连接到服务器的时候，由于网络掉线导致连接中断（这是经常发生的。。。）。当你重新连接后，所有的工作现场丢失了。你还得重新打开之前的各种窗口，进入各种很深的目录，非常麻烦。而如果使用tmux，即时掉线之后，重新连接也能直接回到之前的工作环境，极大提高工作的效率。&lt;/li&gt;
