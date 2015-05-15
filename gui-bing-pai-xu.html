@@ -136,6 +136,7 @@
 
 <p>若 <span class="math">\(p \geq r\)</span>那么数组中只有一个元素，此时已经有序；若<span class="math">\(p &lt; q\)</span>那么就将数组分为两个子数组A[p..q]和A[q+1..r]两个子数组。归并排序随着算法自底向上推进，待合并的已排序的各序列的长度不断增加，直到两个长度为n/2的子序列被合并最终形成长度为n的有序序列。</p>
 <h2>归并排序算法复杂度分析</h2>
+<h3>时间复杂度</h3>
 <p>当一个算法包含对其自身的递归调用，我们往往可以用递归方程或递归式来描述其运行时间。对于分治算法，假设我们把原问题分解为a个子问题，每个子问题的规模是原来的1/b，所以我们需要aT(n/b)的时间来求解a个子问题。如果将问题分解为子问题需要的时间为D(n)，合并子问题的解成原问题所需要的时间为C(n)，那么可以得到递推式：
 </p>
 <div class="math">$$T(n)=\left\{\begin{matrix}
@@ -149,7 +150,8 @@ aT(n/b) + D(n) + C(n) &amp; 其他
 2T(n/2) + \Theta(n)  &amp; 若n &gt; 1
 \end{matrix}\right.$$</div>
 <p>由主定理可以求得归并排序的时间复杂度为O(nlogn)。</p>
-<hr />
+<h3>空间复杂度</h3>
+<p>由归并排序的代码可以看出，归并排序每一次递归调用都要用到一个长度等于带排序列长度的辅助数组空间。虽然总的递归次数是O(logn)，但每次递归调用都释放掉之前所占的辅助空间，所以归并排序的空间复杂度是O(n)。</p>
 <hr />
 <h2>Reference</h2>
 <p><a href="http://book.douban.com/subject/1885170/">算法导论</a></p>
@@ -243,22 +245,22 @@ aT(n/b) + D(n) + C(n) &amp; 其他
 <!--
 <h4>标签</h4>
 <ul class="tagcloud">
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/gong-ju.html">工具</a></li>
-        <li class="tag-1"><a href="http://www.wengweitao.com/tag/du-shu-bi-ji.html">读书笔记</a></li>
         <li class="tag-4"><a href="http://www.wengweitao.com/tag/ce-shi.html">测试</a></li>
+        <li class="tag-4"><a href="http://www.wengweitao.com/tag/wan.html">玩</a></li>
+        <li class="tag-1"><a href="http://www.wengweitao.com/tag/du-shu-bi-ji.html">读书笔记</a></li>
+        <li class="tag-4"><a href="http://www.wengweitao.com/tag/jiao-cheng-linux.html">教程、Linux</a></li>
         <li class="tag-4"><a href="http://www.wengweitao.com/tag/ji-chu-gai-nian.html">基础概念</a></li>
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/tmux.html">tmux</a></li>
+        <li class="tag-2"><a href="http://www.wengweitao.com/tag/jiao-cheng.html">教程</a></li>
+        <li class="tag-2"><a href="http://www.wengweitao.com/tag/pai-xu-suan-fa-ji-chu.html">排序 算法 基础</a></li>
+        <li class="tag-3"><a href="http://www.wengweitao.com/tag/ji-ben-gai-nian.html">基本概念</a></li>
+        <li class="tag-4"><a href="http://www.wengweitao.com/tag/suan-fa-fen-xi.html">算法分析</a></li>
         <li class="tag-1"><a href="http://www.wengweitao.com/tag/python.html">Python</a></li>
         <li class="tag-4"><a href="http://www.wengweitao.com/tag/vim.html">Vim</a></li>
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/suan-fa-fen-xi.html">算法分析</a></li>
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/jiao-cheng-linux.html">教程、Linux</a></li>
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/go.html">Go</a></li>
-        <li class="tag-2"><a href="http://www.wengweitao.com/tag/jiao-cheng.html">教程</a></li>
-        <li class="tag-3"><a href="http://www.wengweitao.com/tag/ji-ben-gai-nian.html">基本概念</a></li>
-        <li class="tag-2"><a href="http://www.wengweitao.com/tag/pai-xu-suan-fa-ji-chu.html">排序 算法 基础</a></li>
         <li class="tag-4"><a href="http://www.wengweitao.com/tag/xiao-yuan.html">校园</a></li>
         <li class="tag-3"><a href="http://www.wengweitao.com/tag/mian-shi-ti.html">面试题</a></li>
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/wan.html">玩</a></li>
+        <li class="tag-4"><a href="http://www.wengweitao.com/tag/tmux.html">tmux</a></li>
+        <li class="tag-4"><a href="http://www.wengweitao.com/tag/gong-ju.html">工具</a></li>
+        <li class="tag-4"><a href="http://www.wengweitao.com/tag/go.html">Go</a></li>
 </ul>
 -->
 
