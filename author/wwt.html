@@ -61,6 +61,71 @@
         <div class="eleven columns">
                  <ol id="post-list">
                         <li><article class="hentry">
+                                <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/gui-bing-pai-xu.html" rel="bookmark" title="Permalink to 归并排序">归并排序</a></h2> </header>
+                                <footer class="post-info">
+                                    <abbr class="published" title="2015-05-15T19:45:00"> Fri 15 May 2015 </abbr>
+                                    <address class="vcard author">By 
+                                    <a class="url fn" href="http://www.wengweitao.com/author/wwt.html"> wwt</a>
+                                    </address>
+                                </footer><!-- /.post-info -->
+                                <div class="entry-content"> <p>本文介绍利用分治法思想的一种排序算法——<strong>归并排序</strong>。直观上其操作如下：</p>
+<ul>
+<li><strong>分解</strong>：分解待排序的n个元素的序列成2个具有n/2个元素的子序列</li>
+<li><strong>解决</strong>：使用归并排序递归地排序两个子序列</li>
+<li><strong>合并</strong>：合并两个已排序的子序列并产生已排序的答案</li>
+</ul>
+<p>当待排序的序列的长度为1时，递归“开始回升”，在这种情况下，我们不需要做任何工作，因为只有一个元素的序列已经是有序的了。</p>
+<h2>合并操作</h2>
+<p>归并排序算法的关键操作是“合并”步骤中将两个已排序的子序列进行合并。我们通过函数MERGE(A, p, q, r)来完成合并，其中A是一个数组，p、q和r是数组下标，该过程假设A[p..q]和A[q+1..r]都已有序。</p>
+<div class="highlight"><pre><span class="c1">// 对A[p..q] 和 A[q+1..r]两个有序子序列进行合并</span>
+<span class="kt">void</span> <span class="nf">merge</span><span class="p">(</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int ...</span></pre></div> </div><!-- /.entry-content -->
+
+                                <div class="medium primary btn"><a href="http://www.wengweitao.com/gui-bing-pai-xu.html" rel="bookmark" title="Permalink to 归并排序">Read more <i class="icon-arrow-right"></i></a></div>
+
+
+
+                                <div class="row tag-row">
+                                        <span>Tagged as : </span>
+                                            <a class="danger label" href="http://www.wengweitao.com/tag/pai-xu-suan-fa-ji-chu.html">排序 算法 基础</a>
+                                </div>
+
+
+
+                        </article></li>
+                        <li><article class="hentry">
+                                <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/cha-ru-pai-xu.html" rel="bookmark" title="Permalink to 插入排序">插入排序</a></h2> </header>
+                                <footer class="post-info">
+                                    <abbr class="published" title="2015-05-15T18:34:00"> Fri 15 May 2015 </abbr>
+                                    <address class="vcard author">By 
+                                    <a class="url fn" href="http://www.wengweitao.com/author/wwt.html"> wwt</a>
+                                    </address>
+                                </footer><!-- /.post-info -->
+                                <div class="entry-content"> <p>本文介绍一种非常简单的排序算法——<strong>插入排序</strong>。对于少量元素的排序，它是一个有效的算法。插入排序可以形象的类比为手中扑克牌的排序。开始时，左手为空并且桌子上的扑克牌的牌面朝下。然后我们每次从桌子上拿一张扑克牌，插入左手中正确的位置，我们从右向左将它与手中的每张牌进行比较，任何时候左手上的牌总是有序的。</p>
+<p>对数组A[1..n]进行插入排序步骤：</p>
+<ol>
+<li>初始时只含有一个元素A<a href="http://book.douban.com/subject/1885170/">1</a>，所以是有序的</li>
+<li>依次将A[2]~A[n]依次插入到前面已经排好序的子序列中</li>
+<li>n - 1次即可得到一个有序的表</li>
+</ol>
+<div class="highlight"><pre><span class="kt">void</span> <span class="nf">insertionSort</span><span class="p">(</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">A</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="n">A</span><span class="p">.</span><span class="n">size</span><span class="p">();</span>
+    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="o">++</span><span class="n">j</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kt">int</span> <span class="n">key</span> <span class="o">=</span> <span class="n">A</span><span class="p">[</span><span class="n">j</span><span class="p">];</span>
+        <span class="c1">// Insert A[j] into the ...</span></pre></div> </div><!-- /.entry-content -->
+
+                                <div class="medium primary btn"><a href="http://www.wengweitao.com/cha-ru-pai-xu.html" rel="bookmark" title="Permalink to 插入排序">Read more <i class="icon-arrow-right"></i></a></div>
+
+
+
+                                <div class="row tag-row">
+                                        <span>Tagged as : </span>
+                                            <a class="danger label" href="http://www.wengweitao.com/tag/pai-xu-suan-fa-ji-chu.html">排序 算法 基础</a>
+                                </div>
+
+
+
+                        </article></li>
+                        <li><article class="hentry">
                                 <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/dui-pai-xu.html" rel="bookmark" title="Permalink to 堆排序">堆排序</a></h2> </header>
                                 <footer class="post-info">
                                     <abbr class="published" title="2015-05-14T22:23:00"> Thu 14 May 2015 </abbr>
@@ -165,79 +230,6 @@ wget http://people ...</pre></div> </div><!-- /.entry-content -->
 
 
                         </article></li>
-                        <li><article class="hentry">
-                                <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/xuan-ze-wen-ti-ji-fu-za-du-fen-xi.html" rel="bookmark" title="Permalink to 选择问题及复杂度分析">选择问题及复杂度分析</a></h2> </header>
-                                <footer class="post-info">
-                                    <abbr class="published" title="2015-05-06T11:10:00"> Wed 06 May 2015 </abbr>
-                                    <address class="vcard author">By 
-                                    <a class="url fn" href="http://www.wengweitao.com/author/wwt.html"> wwt</a>
-                                    </address>
-                                </footer><!-- /.post-info -->
-                                <div class="entry-content"> <p>选择问题是在实际应用中经常碰到的问题，最常见的选择问题有：选最大、选最小、选中位数、选第二大等。</p>
-<p>可以描述为从n个元素的集合L中选出第k小的元素，其中<span class="math">\(1 \leq k \leq n\)</span>。这里的第k小表示：将L中的元素按照升序排列，排在第k个位置的元素。如k=1时，选出的就是最小元素。</p>
-<p>本文将对选择问题进行总结并对它们的复杂度进行分析。</p>
-<h2>选最大最小问题</h2>
-<h3>选最大算法</h3>
-<p>选最大问题，最容易想到的方法就是顺序比较算法，从第一个元素开始依次往后比较n个元素，用一个变量max保存当前的最大值，算法实现如下：</p>
-<div class="highlight"><pre><span class="kt">int</span> <span class="nf">findMax</span><span class="p">(</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">L</span><span class="p">,</span> <span class="kt">int</span> <span class="n">n</span><span class="p">)</span> <span class="p">{</span>
-    <span class="kt">int</span> <span class="n">max</span> <span class="o">=</span> <span class="n">L</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>  
-    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">if</span><span class="p">(</span><span class="n">L</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">max</span><span class="p">)</span>
-            <span class="n">max ...</span></pre></div> </div><!-- /.entry-content -->
-
-                                <div class="medium primary btn"><a href="http://www.wengweitao.com/xuan-ze-wen-ti-ji-fu-za-du-fen-xi.html" rel="bookmark" title="Permalink to 选择问题及复杂度分析">Read more <i class="icon-arrow-right"></i></a></div>
-
-
-
-                                <div class="row tag-row">
-                                        <span>Tagged as : </span>
-                                            <a class="danger label" href="http://www.wengweitao.com/tag/suan-fa-fen-xi.html">算法分析</a>
-                                </div>
-
-
-
-                        </article></li>
-                        <li><article class="hentry">
-                                <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/linuxshang-da-jian-vpnfu-wu-qi.html" rel="bookmark" title="Permalink to Linux上搭建VPN服务器">Linux上搭建VPN服务器</a></h2> </header>
-                                <footer class="post-info">
-                                    <abbr class="published" title="2015-05-01T21:21:00"> Fri 01 May 2015 </abbr>
-                                    <address class="vcard author">By 
-                                    <a class="url fn" href="http://www.wengweitao.com/author/wwt.html"> wwt</a>
-                                    </address>
-                                </footer><!-- /.post-info -->
-                                <div class="entry-content"> <p>今天是五一劳动节，也就是五月份的第一天，不巧的是校园上网账号欠费了，导致无法通过认证上网。于是，就琢磨着如何不通过认证直接上网。实验室有几台服务器，这些服务器都无需认证可直接访问外网，很自然的就想到以下两种方法：</p>
-<p>（1）在服务器上设置代理服务器，然后在自己的PC和iPhone上设置代理上网</p>
-<p>（2）在服务器上搭建一个VPN PPTP服务器，在PC和iPhone上新建一个VPN连接上网。</p>
-<p>根据校园网的环境和平时的使用情况，最终决定采用VPN的方式。接下来，我以Red Hat系统为例，详细说明搭建的过程。</p>
-<hr />
-<h2>1. 判断PPP是否可用</h2>
-<p>首先，我们需要检查服务器是否支持搭建PPTP，在shell中输入：</p>
-<div class="highlight"><pre><span class="n">cat</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">ppp</span>
-
-<span class="nl">cat:</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">ppp</span><span class="o">:</span> <span class="err">没有那个设备或地址</span>
-</pre></div>
-
-
-<p>如果出现以上提示，说明这台服务器PPP可用；若出现"Permission denied"提示，则无法使用PPP，考虑更换一台服务器。</p>
-<h2>2. 安装所需的软件包</h2>
-<p>主要需要以下3个软件包：</p>
-<ul>
-<li>PPP：点对点协议</li>
-<li>PPTP：点对点通道协议</li>
-<li>IPtables ...</li></ul> </div><!-- /.entry-content -->
-
-                                <div class="medium primary btn"><a href="http://www.wengweitao.com/linuxshang-da-jian-vpnfu-wu-qi.html" rel="bookmark" title="Permalink to Linux上搭建VPN服务器">Read more <i class="icon-arrow-right"></i></a></div>
-
-
-
-                                <div class="row tag-row">
-                                        <span>Tagged as : </span>
-                                            <a class="danger label" href="http://www.wengweitao.com/tag/jiao-cheng.html">教程</a>
-                                </div>
-
-
-
-                        </article></li>
                 </ol><!-- /#posts-list -->
 
         </div><!-- /.eleven.columns -->
@@ -269,21 +261,21 @@ wget http://people ...</pre></div> </div><!-- /.entry-content -->
 <!--
 <h4>标签</h4>
 <ul class="tagcloud">
+        <li class="tag-4"><a href="http://www.wengweitao.com/tag/gong-ju.html">工具</a></li>
+        <li class="tag-1"><a href="http://www.wengweitao.com/tag/du-shu-bi-ji.html">读书笔记</a></li>
+        <li class="tag-4"><a href="http://www.wengweitao.com/tag/ce-shi.html">测试</a></li>
+        <li class="tag-4"><a href="http://www.wengweitao.com/tag/ji-chu-gai-nian.html">基础概念</a></li>
+        <li class="tag-4"><a href="http://www.wengweitao.com/tag/tmux.html">tmux</a></li>
+        <li class="tag-1"><a href="http://www.wengweitao.com/tag/python.html">Python</a></li>
         <li class="tag-4"><a href="http://www.wengweitao.com/tag/vim.html">Vim</a></li>
         <li class="tag-4"><a href="http://www.wengweitao.com/tag/suan-fa-fen-xi.html">算法分析</a></li>
-        <li class="tag-1"><a href="http://www.wengweitao.com/tag/du-shu-bi-ji.html">读书笔记</a></li>
-        <li class="tag-1"><a href="http://www.wengweitao.com/tag/python.html">Python</a></li>
-        <li class="tag-3"><a href="http://www.wengweitao.com/tag/mian-shi-ti.html">面试题</a></li>
-        <li class="tag-3"><a href="http://www.wengweitao.com/tag/ji-ben-gai-nian.html">基本概念</a></li>
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/go.html">Go</a></li>
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/ji-chu-gai-nian.html">基础概念</a></li>
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/xiao-yuan.html">校园</a></li>
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/gong-ju.html">工具</a></li>
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/ce-shi.html">测试</a></li>
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/pai-xu-suan-fa-ji-chu.html">排序 算法 基础</a></li>
         <li class="tag-4"><a href="http://www.wengweitao.com/tag/jiao-cheng-linux.html">教程、Linux</a></li>
+        <li class="tag-4"><a href="http://www.wengweitao.com/tag/go.html">Go</a></li>
         <li class="tag-2"><a href="http://www.wengweitao.com/tag/jiao-cheng.html">教程</a></li>
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/tmux.html">tmux</a></li>
+        <li class="tag-3"><a href="http://www.wengweitao.com/tag/ji-ben-gai-nian.html">基本概念</a></li>
+        <li class="tag-2"><a href="http://www.wengweitao.com/tag/pai-xu-suan-fa-ji-chu.html">排序 算法 基础</a></li>
+        <li class="tag-4"><a href="http://www.wengweitao.com/tag/xiao-yuan.html">校园</a></li>
+        <li class="tag-3"><a href="http://www.wengweitao.com/tag/mian-shi-ti.html">面试题</a></li>
         <li class="tag-4"><a href="http://www.wengweitao.com/tag/wan.html">玩</a></li>
 </ul>
 -->
