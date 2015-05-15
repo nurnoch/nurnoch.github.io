@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+
+        <title>堆排序</title>
+        <meta charset="utf-8" />
+        <link href="http://www.wengweitao.com/feeds\all.atom.xml" type="application/atom+xml" rel="alternate" title="wwt's blog Full Atom Feed" />
+        <link href="http://www.wengweitao.com/feeds/all.rss.xml" type="application/rss+xml" rel="alternate" title="wwt's blog Full RSS Feed" />
+        <link href="http://www.wengweitao.com/feeds/shu-ju-jie-gou-yu-suan-fa.rss.xml" type="application/atom+xml" rel="alternate" title="wwt's blog Categories Atom Feed" />
+
+
+        <!-- Mobile viewport optimized: j.mp/bplateviewport -->
+        <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1">
+        <meta name="google-site-verification" content="pEViDEEJCicDD__DfnOAQ7xKtjtxJhVDoGDAOahOWy0" />
+
+        <meta name="sogou_site_verification" content="ia8yXdZS0p"/>
+ 
+
+        <link rel="stylesheet" type="text/css" href="http://www.wengweitao.com/theme/gumby.css" />
+        <link rel="stylesheet" type="text/css" href="http://www.wengweitao.com/theme/style.css" />
+        <link rel="stylesheet" type="text/css" href="http://www.wengweitao.com/theme/pygment.css" />
+
+        <script src="http://www.wengweitao.com/theme/js/libs/modernizr-2.6.2.min.js"></script>
+
+
+
+
+</head>
+
+<body id="index" class="home">
+
+
+    <div class="container">
+
+        <div class="row">
+
+          <header id="banner" class="body">
+                  <h1><a href="http://www.wengweitao.com/">wwt's blog <strong></strong></a></h1>
+          </header><!-- /#banner -->
+
+            <div id="navigation" class="navbar row">
+              <a href="#" gumby-trigger="#navigation &gt; ul" class="toggle"><i class="icon-menu"></i></a>
+             
+              <ul class="columns">
+                <li><a href="http://www.wengweitao.com/">首页</a></li>
+
+                <li><a href="/categories.html">分类</a></li>
+                <li><a href="/tags.html">标签</a></li>
+                <li><a href="/archives.html">归档</a></li>
+                <li><a href="/pages/about-me.html">关于我</a></li>
+
+              </ul>
+            </div>
+
+<section id="content" class="body">
+
+   <div class="row">
+        <div class="eleven columns">
+
+
+            <header>
+              <h2 class="entry-title">
+                <a href="http://www.wengweitao.com/dui-pai-xu.html" rel="bookmark"
+                   title="Permalink to 堆排序">堆排序</a></h2>
+           
+            </header>
+            <footer class="post-info">
+              <abbr class="published" title="2015-05-14T22:23:00">
+                Thu 14 May 2015
+              </abbr>
+              <address class="vcard author">By 
+                <a class="url fn" href="http://www.wengweitao.com/author/wwt.html"> wwt</a>
+              </address>
+            </footer><!-- /.post-info -->
+            <div class="entry-content">
+              <p>本文将介绍一种排序算法，称为<strong>堆排序（heapsort）</strong>。堆排序最坏情况下运行时间为O(nlogn)，并且具有空间原址性：任何时候只需要常数个额外的元素空间存储临时数据。堆排序中使用了堆这个数据结构进行管理，堆这种数据结构也可以用来构造一种 有效的优先级队列。</p>
+<h2>堆</h2>
+<p><strong>堆</strong>（二叉堆）是一个数组，可以看成一个近似的完全二叉树，树中每一个结点对应数组中的一个元素，除了最底层外，该树是完全满的，而且是从左至右填充。二叉堆有两种形式：最大堆和最小堆。在最大堆中，除了根结点之外的所有结点的值小于等于其父节点的值，因此，堆中最大的元素存放在根结点中，并且在任一子树中，该子树所包含的所有结点的值都不大于该子树根结点的值。最小堆的组织方式正好相反。</p>
+<p>在堆排序算法中，我们使用最大堆，而最小堆通常用于构造优先级队列。</p>
+<p>如果把堆看成一棵树，那么堆的高度就是O(logn)。我们会发现在堆上进行的很多基本操作的运行时间至多与树的高度成正比，即时间复杂度为O(nlogn)。</p>
+<p>表示堆的数组A包括的基本属性：</p>
+<ul>
+<li>A.length() ： 返回数组元素的个数</li>
+<li>A.heap-size()：返回有多少个堆元素存放在该数组中（通常小于等于length）</li>
+</ul>
+<p>对于数组A[1..A.length]，树的根结点为A<a href="http://book.douban.com/subject/1885170/">1</a>，给定一个结点的下标i，我们可以很容易得到其父节点、左孩子和右孩子结点的下标：</p>
+<ul>
+<li>父节点： i/2</li>
+<li>左孩子： 2 * i</li>
+<li>右孩子： 2 * i + 1</li>
+</ul>
+<p>堆结构上的一些基本操作：</p>
+<ul>
+<li>MAX-HEAPIFY：用于维护最大堆的性质，时间复杂度为O(logn)。</li>
+<li>BUILD-MAX-HEAP：用于把无序的输入数据数组构造为一个最大堆，时间复杂度为O(n)。</li>
+<li>HEAPSORT：对一个数组进行原址排序，时间复杂度为O(nlogn)。</li>
+<li>MAX-HEAP-INSERT、HEAP-EXTRACT-MAX、HEAP-INCREASE-KEY和HEAP-MAXIMUM：利用这些操作可以实现一个优先队列，时间复杂度为O(nlogn)。</li>
+</ul>
+<h2>维护堆的性质</h2>
+<p>MAX-HEAPIFY 是用于维护最大堆性质的一个重要的过程。它的输入为一个数组A和一个下标i，并且假定此时根结点为LEFT(i)和RIGHT(i)的二叉树都是最大堆，通过让A[i]的值在最大堆中逐级下降，从而使得以下标i为根结点的二叉树满足最大堆的性质。</p>
+<div class="highlight"><pre><span class="kt">void</span> <span class="nf">maxHeapify</span><span class="p">(</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">A</span><span class="p">,</span> <span class="kt">int</span> <span class="n">i</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">l</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>  <span class="c1">// 根结点的下标为0</span>
+    <span class="kt">int</span> <span class="n">r</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">2</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">largest</span><span class="p">;</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">l</span> <span class="o">&lt;</span> <span class="n">heap_size</span> <span class="o">&amp;&amp;</span> <span class="n">A</span><span class="p">[</span><span class="n">l</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+        <span class="n">largest</span> <span class="o">=</span> <span class="n">l</span><span class="p">;</span>
+    <span class="k">else</span>
+        <span class="n">largest</span> <span class="o">=</span> <span class="n">i</span><span class="p">;</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">r</span> <span class="o">&lt;</span> <span class="n">heap_size</span> <span class="o">&amp;&amp;</span> <span class="n">A</span><span class="p">[</span><span class="n">r</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">A</span><span class="p">[</span><span class="n">largest</span><span class="p">])</span>
+        <span class="n">largest</span> <span class="o">=</span> <span class="n">r</span><span class="p">;</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">largest</span> <span class="o">!=</span> <span class="n">i</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">swap</span><span class="p">(</span><span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">A</span><span class="p">[</span><span class="n">largest</span><span class="p">]);</span>
+        <span class="n">maxHeapify</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">largest</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>MAX-HEAPIFY 的时间代价包括：</p>
+<ul>
+<li>调整A[i]与A[LEFT(i)]和A[RIGHT(i)]的时间代价<span class="math">\(\Theta(1)\)</span></li>
+<li>以i为根结点的子树上运行MAX-HEAPIFY的时间代价</li>
+</ul>
+<p>因为每个孩子的子树的大小至多为2n/3，即其中一边的子树的最后一层全满，另外一边的子树全空的情况。假设结点i为根结点的树高为h，且左子树最后一层全满，右子树最后一层全空，那么结点i的左子树的结点数目l为<span class="math">\(2^{h-1}-1\)</span>，右子树的结点数目r为<span class="math">\(2^{h-2}-1\)</span>，树的结点总数为n = l + r + 1，那么<span class="math">\(\frac{l}{n}=\frac{2^{h-1}-1}{2^{h-2}-1} \leq \frac{2}{3}\)</span>。所以，我们可以用以下递归式刻画MAX-HEAPIFY的运行时间：
+</p>
+<div class="math">$$T(n) \leq T(2n/3) + \Theta(1)$$</div>
+<p>
+根据主定理，上面递归式的解为T(n)=O(logn)。</p>
+<p><strong>因此，MAX-HEAPIFY的时间复杂度为O(h)，其中h为树的高度。</strong></p>
+<h2>建堆</h2>
+<p>当用数组表示存储n个元素的堆时，叶结点的下标为n/2+1,...,n，而下标小于等于n/2的都是分支结点（下标从1开始）。对于每一个叶结点可以把它们看出只有一个元素的堆，因此建堆的过程就是对树中每一个分支结点调用MAX-HEAPIFY。</p>
+<div class="highlight"><pre><span class="kt">void</span> <span class="nf">buildMaxHeap</span><span class="p">(</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">A</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">heap_size</span> <span class="o">=</span> <span class="n">heap_length</span><span class="p">;</span>
+    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">heap_length</span><span class="o">/</span><span class="mi">2</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">;</span> <span class="o">--</span><span class="n">i</span><span class="p">)</span>
+        <span class="n">maxHeapify</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">i</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>每次调用MAX-HEAPIFY的时间复杂度为O(logn)，需要O(n)次调用，所以总的时间复杂度为O(nlogn)，但这不是渐近紧确的。我们可以进一步得到一个更紧确的界。因为不同结点运行MAX-HEAPIFY的时间复杂度与其高度相关，而且大部分结点的高度都比较小。可以得到，建堆BUILD-MAX-HEAP的时间复杂度为O(n)。</p>
+<p><strong>因此，我们可以在线性时间内把一个无序数组构造成为一个最大堆。</strong></p>
+<h2>堆排序算法</h2>
+<p>现在，我们可以完成堆排序算法：</p>
+<ol>
+<li>利用BUILD-MAX-HEAP将输入数组A[1..n]建成一个最大堆，其中n = A.length</li>
+<li>将数组最大元素所在的A<a href="http://book.douban.com/subject/1885170/">1</a>位置的值与A[n]位置的值进行交换，然后从堆中去掉结点n</li>
+<li>在新的根结点1可能会违背最大堆的性质，因此需要利用MAX-HEAPIFY进行调整</li>
+<li>不断重复2,3步，直到堆中只剩下一个元素，此时排序完成。</li>
+</ol>
+<p><strong>堆排序的完整代码：</strong></p>
+<div class="highlight"><pre><span class="kt">void</span> <span class="nf">swap</span><span class="p">(</span><span class="kt">int</span> <span class="o">&amp;</span><span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="o">&amp;</span><span class="n">b</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">temp</span> <span class="o">=</span> <span class="n">a</span><span class="p">;</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="n">b</span><span class="p">;</span>
+    <span class="n">b</span> <span class="o">=</span> <span class="n">temp</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="n">heap_size</span><span class="p">,</span> <span class="n">heap_length</span><span class="p">;</span>
+
+<span class="kt">void</span> <span class="nf">maxHeapify</span><span class="p">(</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">A</span><span class="p">,</span> <span class="kt">int</span> <span class="n">i</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">l</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">r</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">2</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">largest</span><span class="p">;</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">l</span> <span class="o">&lt;</span> <span class="n">heap_size</span> <span class="o">&amp;&amp;</span> <span class="n">A</span><span class="p">[</span><span class="n">l</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+        <span class="n">largest</span> <span class="o">=</span> <span class="n">l</span><span class="p">;</span>
+    <span class="k">else</span>
+        <span class="n">largest</span> <span class="o">=</span> <span class="n">i</span><span class="p">;</span>                                                                                                                                                                                      
+    <span class="k">if</span><span class="p">(</span><span class="n">r</span> <span class="o">&lt;</span> <span class="n">heap_size</span> <span class="o">&amp;&amp;</span> <span class="n">A</span><span class="p">[</span><span class="n">r</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">A</span><span class="p">[</span><span class="n">largest</span><span class="p">])</span>
+        <span class="n">largest</span> <span class="o">=</span> <span class="n">r</span><span class="p">;</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">largest</span> <span class="o">!=</span> <span class="n">i</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">swap</span><span class="p">(</span><span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">A</span><span class="p">[</span><span class="n">largest</span><span class="p">]);</span>
+        <span class="n">maxHeapify</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">largest</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">buildMaxHeap</span><span class="p">(</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">A</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">heap_size</span> <span class="o">=</span> <span class="n">heap_length</span><span class="p">;</span>
+    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">heap_length</span><span class="o">/</span><span class="mi">2</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">;</span> <span class="o">--</span><span class="n">i</span><span class="p">)</span>
+        <span class="n">maxHeapify</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">i</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">heapSort</span><span class="p">(</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">A</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">buildMaxHeap</span><span class="p">(</span><span class="n">A</span><span class="p">);</span>
+    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">heap_length</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&gt;=</span> <span class="mi">1</span><span class="p">;</span> <span class="o">--</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">swap</span><span class="p">(</span><span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">A</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
+        <span class="o">--</span><span class="n">heap_size</span><span class="p">;</span>
+        <span class="n">maxHeapify</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>可以看出，堆排序的时间复杂度为O(nlogn)。</p>
+<h2>优先队列</h2>
+<p>堆除了能够运用在排序中，还常用用于实现一个高效的优先队列。和堆一样，优先队列也分为：最大优先队列和最小优先队列。</p>
+<p>最大优先队列可以用于在共享计算机系统的作业调度，每次选取一个优先级最高的作业进行调度。而最小优先队列可以用于基于事件驱动的模拟器，每个时间都有一个时间作为关键字，事件必须按照时间的顺序进行模拟，每次选取一个“优先级”最低的事件作为下一个要模拟的事件。</p>
+<p>这里，我们关注于使用最大堆实现最大优先队列。</p>
+<div class="highlight"><pre><span class="kt">int</span> <span class="nf">heapMaximum</span><span class="p">(</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">A</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">A</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">heapExtracMax</span><span class="p">(</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">A</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">heap_size</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>  <span class="c1">// heap underflow</span>
+    <span class="kt">int</span> <span class="n">max</span> <span class="o">=</span> <span class="n">A</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+    <span class="n">swap</span><span class="p">(</span><span class="n">A</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">A</span><span class="p">[</span><span class="n">heap_size</span><span class="o">-</span><span class="mi">1</span><span class="p">]);</span>
+    <span class="o">--</span><span class="n">heap_size</span><span class="p">;</span>
+    <span class="n">maxHeapify</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="mi">0</span><span class="p">);</span>
+    <span class="k">return</span> <span class="n">max</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">heapIncreaseKey</span><span class="p">(</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">A</span><span class="p">,</span> <span class="kt">int</span> <span class="n">i</span><span class="p">,</span> <span class="kt">int</span> <span class="n">key</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">key</span> <span class="o">&lt;</span> <span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+        <span class="k">return</span><span class="p">;</span>  <span class="c1">// new key should not be smaller than current key</span>
+    <span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">key</span><span class="p">;</span>
+    <span class="k">while</span><span class="p">(</span><span class="n">i</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="o">/</span><span class="mi">2</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="p">{</span>
+        <span class="n">swap</span><span class="p">(</span><span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="o">/</span><span class="mi">2</span><span class="p">],</span> <span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+        <span class="n">i</span> <span class="o">=</span> <span class="n">i</span><span class="o">/</span><span class="mi">2</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">maxHeapInsert</span><span class="p">(</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">A</span><span class="p">,</span> <span class="kt">int</span> <span class="n">key</span><span class="p">)</span> <span class="p">{</span>
+    <span class="o">++</span><span class="n">heap_size</span><span class="p">;</span>
+    <span class="n">A</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">INT_MIN</span><span class="p">);</span>
+    <span class="n">heapIncreaseKey</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">heap_size</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">key</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>一个最大优先级队列支持以下次操作：</p>
+<ul>
+<li>heapMaximum：返回优先级队列中优先级最高的元素；</li>
+<li>heapExtracMax：取出并返回具有最大优先级的元素；</li>
+<li>heapIncreaseKey：将结点i的优先级增加到key；</li>
+<li>maxHeapInsert： 往优先级队列中增加一个元素x；</li>
+</ul>
+<p>在一个包含n个元素的堆中，所有优先队列的操作都可以在O(logn)时间内完成。</p>
+<hr />
+<h2>Reference</h2>
+<p><a href="http://book.douban.com/subject/1885170/">算法导论</a></p>
+<script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "false";
+
+    if (false) {
+        align = (screen.width < 768) ? "left" : align;
+        indent = (screen.width < 768) ? "0em" : indent;
+        linebreak = (screen.width < 768) ? 'true' : linebreak;
+    }
+    
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = '//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); ";
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+</script>
+            </div><!-- /.entry-content -->
+            <div class="comments">
+              <h3>Comments</h3>
+              <div id="disqus_thread"></div>
+              <script type="text/javascript">
+                var disqus_identifier = "dui-pai-xu.html";
+                (function() {
+                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                dsq.src = 'http://wengwt.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                })();
+              </script>
+            </div>
+
+
+        </div><!-- /.eleven.columns -->
+
+<div class="three columns">
+
+<!--
+<h4>Pages</h4>
+
+ <ul>
+      <li><a href="/categories.html">分类</a></li>
+      <li><a href="/tags.html">标签</a></li>
+      <li><a href="/archives.html">归档</a></li>
+      <li><a href="/pages/about-me.html">关于我</a></li>
+  </ul>
+-->
+
+<h4>分类</h4>
+<ul>
+		<li><a href="http://www.wengweitao.com/category/bian-cheng-yu-yan.html">编程语言</a></li>
+		<li><a href="http://www.wengweitao.com/category/du-shu-bi-ji.html">读书笔记</a></li>
+		<li><a href="http://www.wengweitao.com/category/gong-ju.html">工具</a></li>
+		<li><a href="http://www.wengweitao.com/category/ji-qi-xue-xi.html">机器学习</a></li>
+		<li><a href="http://www.wengweitao.com/category/python.html">Python</a></li>
+		<li><a href="http://www.wengweitao.com/category/sheng-huo.html">生活</a></li>
+		<li><a href="http://www.wengweitao.com/category/shu-ju-jie-gou-yu-suan-fa.html">数据结构与算法</a></li>
+		<li><a href="http://www.wengweitao.com/category/suan-fa-yu-shu-ju-jie-gou.html">算法与数据结构</a></li>
+</ul>
+
+<!--
+<h4>标签</h4>
+<ul class="tagcloud">
+        <li class="tag-4"><a href="http://www.wengweitao.com/tag/vim.html">Vim</a></li>
+        <li class="tag-1"><a href="http://www.wengweitao.com/tag/du-shu-bi-ji.html">读书笔记</a></li>
+        <li class="tag-4"><a href="http://www.wengweitao.com/tag/xiao-yuan.html">校园</a></li>
+        <li class="tag-4"><a href="http://www.wengweitao.com/tag/jiao-cheng-linux.html">教程、Linux</a></li>
+        <li class="tag-4"><a href="http://www.wengweitao.com/tag/go.html">Go</a></li>
+        <li class="tag-3"><a href="http://www.wengweitao.com/tag/ji-ben-gai-nian.html">基本概念</a></li>
+        <li class="tag-4"><a href="http://www.wengweitao.com/tag/gong-ju.html">工具</a></li>
+        <li class="tag-4"><a href="http://www.wengweitao.com/tag/ji-chu-gai-nian.html">基础概念</a></li>
+        <li class="tag-1"><a href="http://www.wengweitao.com/tag/python.html">Python</a></li>
+        <li class="tag-4"><a href="http://www.wengweitao.com/tag/tmux.html">tmux</a></li>
+        <li class="tag-3"><a href="http://www.wengweitao.com/tag/mian-shi-ti.html">面试题</a></li>
+        <li class="tag-2"><a href="http://www.wengweitao.com/tag/jiao-cheng.html">教程</a></li>
+        <li class="tag-4"><a href="http://www.wengweitao.com/tag/wan.html">玩</a></li>
+        <li class="tag-4"><a href="http://www.wengweitao.com/tag/pai-xu-suan-fa-ji-chu.html">排序 算法 基础</a></li>
+        <li class="tag-4"><a href="http://www.wengweitao.com/tag/ce-shi.html">测试</a></li>
+        <li class="tag-4"><a href="http://www.wengweitao.com/tag/suan-fa-fen-xi.html">算法分析</a></li>
+</ul>
+-->
+
+
+<nav class="widget">
+  <h4>社交</h4>
+  <ul>
+    <li><a href="http://weibo.com/u/2678027854">新浪微博</a></li>
+    <li><a href="http://www.douban.com/people/wengwt/">豆瓣</a></li>
+    <li><a href="http://www.zhihu.com/people/vita-49">知乎</a></li>
+    <li><a href="https://github.com/nurnoch">Github</a></li>
+    <li><a href="https://www.v2ex.com/member/wwttc">V2EX</a></li>
+  </ul>
+</nav>
+
+<nav class="widget">
+  <h4>友情链接</h4>
+  <ul>
+    <li><a href="http://netlab.pkusz.edu.cn/">互联网信息工程研发中心</a></li>
+    <li><a href="http://www.houcj.net/">houcj's blog</a></li>
+    <li><a href="http://www.rudy-yuan.net/">rundy-yuan's blog</a></li>
+  </ul>
+</nav>
+
+
+</div> </div><!-- /.row -->
+
+
+</section>
+
+       </div><!-- /.row -->
+    </div><!-- /.container -->
+
+
+       <div class="container.nopad bg">
+
+    
+        <footer id="credits" class="row">
+          <div class="seven columns left-center">
+
+                   <address id="about" class="vcard body">
+                    Proudly powered by  <a href="http://getpelican.com/">Pelican</a> and Theme by Gum © 2015 wwt
+                    </address>
+          </div>
+
+
+          <div class="seven columns">
+            <div class="row">
+              <ul class="socbtns">
+
+
+
+
+
+              </ul>
+            </div>
+          </div>
+        </footer>
+
+    </div>
+
+
+<script type="text/javascript">
+    var disqus_shortname = 'wengwt';
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+  <script src="http://www.wengweitao.com/theme/js/libs/jquery-1.9.1.min.js"></script>
+  <script src="http://www.wengweitao.com/theme/js/libs/gumby.min.js"></script>
+  <script src="http://www.wengweitao.com/theme/js/plugins.js"></script>
+</body>
+</html>

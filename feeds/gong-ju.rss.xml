@@ -6,7 +6,7 @@
 
 
 &lt;p&gt;以下是升级的详细过程。&lt;/p&gt;
-&lt;h2&gt;1.使用 redhat developer toolset 1.1 的repo，安装GCC&lt;/h2&gt;
+&lt;h3&gt;1.使用 redhat developer toolset 1.1 的repo，安装GCC&lt;/h3&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nb"&gt;cd&lt;/span&gt; /etc/yum.repos.d
 
 wget http://people.centos.org/tru/devtools-1.1/devtools-1.1.repo 

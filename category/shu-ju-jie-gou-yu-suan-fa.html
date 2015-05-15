@@ -2,10 +2,11 @@
 <html lang="zh">
 <head>
 
-        <title>wwt's blog - Python</title>
+        <title>wwt's blog</title>
         <meta charset="utf-8" />
         <link href="http://www.wengweitao.com/feeds\all.atom.xml" type="application/atom+xml" rel="alternate" title="wwt's blog Full Atom Feed" />
         <link href="http://www.wengweitao.com/feeds/all.rss.xml" type="application/rss+xml" rel="alternate" title="wwt's blog Full RSS Feed" />
+        <link href="http://www.wengweitao.com/feeds/shu-ju-jie-gou-yu-suan-fa.rss.xml" type="application/atom+xml" rel="alternate" title="wwt's blog Categories Atom Feed" />
 
 
         <!-- Mobile viewport optimized: j.mp/bplateviewport -->
@@ -52,7 +53,7 @@
             </div>
 
 <section id="content">
-
+<h2>Articles in the 数据结构与算法 category</h2>
 
 
    <div class="row">
@@ -61,83 +62,32 @@
         <div class="eleven columns">
                  <ol id="post-list">
                         <li><article class="hentry">
-                                <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/pythondai-ma-ge-shi-hua-gong-ju-yapf.html" rel="bookmark" title="Permalink to Python代码格式化工具——YAPF">Python代码格式化工具——YAPF</a></h2> </header>
+                                <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/dui-pai-xu.html" rel="bookmark" title="Permalink to 堆排序">堆排序</a></h2> </header>
                                 <footer class="post-info">
-                                    <abbr class="published" title="2015-04-07T15:10:00"> Tue 07 April 2015 </abbr>
+                                    <abbr class="published" title="2015-05-14T22:23:00"> Thu 14 May 2015 </abbr>
                                     <address class="vcard author">By 
                                     <a class="url fn" href="http://www.wengweitao.com/author/wwt.html"> wwt</a>
                                     </address>
                                 </footer><!-- /.post-info -->
-                                <div class="entry-content"> <blockquote>
-<p><a href="https://github.com/google/yapf">YAPF</a>是Google开源的一个工具，可以用来格式化Python代码，使Python代码拥有一致的编程风格，减轻了团队或者个人进行代码风格维护的单调的工作。</p>
-</blockquote>
-<h3>介绍</h3>
-<p>之前已经有一些类似的Python代码风格格式化工具如：<a href="https://github.com/hhatto/autopep8">autopep8</a>和<a href="https://github.com/spulec/pep8ify">pep8ify</a>等。这些工具基于<a href="http://clang.llvm.org/docs/ClangFormat.html">clang-format</a>,能够很好的解决大多数pep8报告的格式问题。然而，有些代码虽然遵从了PEP8的编程风格指南，但这并不意味着这些代码看起来就足够好，对于这种问题之前的那些Python代码格式化工具就无能为力了。
-YAPF与其他的格式化工具不同，其算法能够把代码重新格式化为符合编程风格的最佳格式，无论原始的代码是否违法了某种指定的编程风格指南。YAPF的最终目标就是通过YAPF格式化后的代码能够与程序员完全遵从编程风格写的代码一样的好。</p>
-<h3>YAPF的使用</h3>
-<h4>1.安装</h4>
-<p>可以直接通过pip进行安装：</p>
-<div class="highlight"><pre><span class="n">pip</span> <span class="n">install</span> <span class="n">yapf</span>
-</pre></div>
+                                <div class="entry-content"> <p>本文将介绍一种排序算法，称为<strong>堆排序（heapsort）</strong>。堆排序最坏情况下运行时间为O(nlogn)，并且具有空间原址性：任何时候只需要常数个额外的元素空间存储临时数据。堆排序中使用了堆这个数据结构进行管理，堆这种数据结构也可以用来构造一种 有效的优先级队列。</p>
+<h2>堆</h2>
+<p><strong>堆</strong>（二叉堆）是一个数组，可以看成一个近似的完全二叉树，树中每一个结点对应数组中的一个元素，除了最底层外，该树是完全满的，而且是从左至右填充。二叉堆有两种形式：最大堆和最小堆。在最大堆中，除了根结点之外的所有结点的值小于等于其父节点的值，因此，堆中最大的元素存放在根结点中，并且在任一子树中，该子树所包含的所有结点的值都不大于该子树根结点的值。最小堆的组织方式正好相反。</p>
+<p>在堆排序算法中，我们使用最大堆，而最小堆通常用于构造优先级队列。</p>
+<p>如果把堆看成一棵树，那么堆的高度就是O(logn)。我们会发现在堆上进行的很多基本操作的运行时间至多与树的高度成正比，即时间复杂度为O(nlogn)。</p>
+<p>表示堆的数组A包括的基本属性：</p>
+<ul>
+<li>A.length() ： 返回数组元素的个数</li>
+<li>A.heap-size()：返回有多少个堆元素存放在该数组中（通常小于等于length）</li>
+</ul>
+<p>对于数组A[1..A.length ...</p> </div><!-- /.entry-content -->
 
-
-<h4>2.使用。</h4>
-<p>安装完成之后，就可以直接在命令行中使用了。
-以下是yapf的命令行参数：</p>
-<div class="highlight"><pre><span class="n">usage</span><span class="o">:</span> <span class="n">yapf</span> <span class="o">[-</span><span class="n">h</span><span class="o">]</span> <span class="o">[--</span><span class="n">style</span> <span class="n">STYLE</span><span class="o">]</span> <span class="o">[-</span><span class="n">d</span> <span class="o">|</span> <span class="o">-</span><span class="n">i</span><span class="o">]</span> <span class="o">[-</span><span class="n">l</span> <span class="n">START</span><span class="o">-</span><span class="n">END</span> <span class="o">|</span> <span class="o">-</span><span class="n">r</span><span class="o">]</span> <span class="o">...</span>
-
-<span class="n">Formatter</span> <span class="k">for</span> <span class="n">Python</span> <span class="n">code</span><span class="o">.</span>
-
-<span class="n">positional ...</span></pre></div> </div><!-- /.entry-content -->
-
-                                <div class="medium primary btn"><a href="http://www.wengweitao.com/pythondai-ma-ge-shi-hua-gong-ju-yapf.html" rel="bookmark" title="Permalink to Python代码格式化工具——YAPF">Read more <i class="icon-arrow-right"></i></a></div>
+                                <div class="medium primary btn"><a href="http://www.wengweitao.com/dui-pai-xu.html" rel="bookmark" title="Permalink to 堆排序">Read more <i class="icon-arrow-right"></i></a></div>
 
 
 
                                 <div class="row tag-row">
                                         <span>Tagged as : </span>
-                                            <a class="danger label" href="http://www.wengweitao.com/tag/python.html">Python</a>
-                                            <a class="danger label" href="http://www.wengweitao.com/tag/gong-ju.html">工具</a>
-                                </div>
-
-
-
-                        </article></li>
-                        <li><article class="hentry">
-                                <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/bian-xie-gao-zhi-liang-pythondai-ma-1.html" rel="bookmark" title="Permalink to 编写高质量Python代码（1）">编写高质量Python代码（1）</a></h2> </header>
-                                <footer class="post-info">
-                                    <abbr class="published" title="2015-04-06T18:42:00"> Mon 06 April 2015 </abbr>
-                                    <address class="vcard author">By 
-                                    <a class="url fn" href="http://www.wengweitao.com/author/wwt.html"> wwt</a>
-                                    </address>
-                                </footer><!-- /.post-info -->
-                                <div class="entry-content"> <blockquote>
-<p>去年参加了珠海的PyCon大会，幸运地抽中了三本书，其中一本是《编写高质量代码：改善Python程序的91个建议》。本书从多个方面给出了编写高质量Python代码的91个建议，我把每一章的建议都先总结下来，分享给大家。</p>
-</blockquote>
-<h3>建议1： 理解Pythonic概念</h3>
-<h4>（1）Pythonic的定义</h4>
-<p>遵循Pythonic的代码看起来像伪代码：</p>
-<div class="highlight"><pre><span class="k">def</span> <span class="nf">quicksort</span><span class="p">(</span><span class="n">array</span><span class="p">):</span>
-    <span class="n">less</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="n">greater</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">array</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">array</span>
-    <span class="n">pivot</span> <span class="o">=</span> <span class="n">array</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
-    <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">array</span><span class="p">:</span>
-        <span class="k">if</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="n">pivot</span><span class="p">:</span>
-            <span class="n">greater</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="n">less</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">quicksort</span><span class="p">(</span><span class="n">less</span><span class="p">)</span> <span class="o">+</span> <span class="p">[</span><span class="n">pivot</span><span class="p">]</span> <span class="o">+</span> <span class="n">quicksort</span><span class="p">(</span><span class="n">greater</span><span class="p">)</span>
-<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&#39;__main__ ...</span></pre></div> </div><!-- /.entry-content -->
-
-                                <div class="medium primary btn"><a href="http://www.wengweitao.com/bian-xie-gao-zhi-liang-pythondai-ma-1.html" rel="bookmark" title="Permalink to 编写高质量Python代码（1）">Read more <i class="icon-arrow-right"></i></a></div>
-
-
-
-                                <div class="row tag-row">
-                                        <span>Tagged as : </span>
-                                            <a class="danger label" href="http://www.wengweitao.com/tag/python.html">Python</a>
+                                            <a class="danger label" href="http://www.wengweitao.com/tag/pai-xu-suan-fa-ji-chu.html">排序 算法 基础</a>
                                 </div>
 
 
@@ -219,8 +169,7 @@ YAPF与其他的格式化工具不同，其算法能够把代码重新格式化�
 </div> </div><!-- /.row -->
 
 <p class="paginator">
-            <a href="http://www.wengweitao.com/tag/python.html"><i class="icon-arrow-left"></i></a>
-    Page 2 / 2
+    Page 1 / 1
 </p>
 </section><!-- /#content -->
 
