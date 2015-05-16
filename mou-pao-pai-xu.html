@@ -2,11 +2,11 @@
 <html lang="zh">
 <head>
 
-        <title>使Pelican支持LaTex数学公式</title>
+        <title>冒泡排序</title>
         <meta charset="utf-8" />
         <link href="http://www.wengweitao.com/feeds\all.atom.xml" type="application/atom+xml" rel="alternate" title="wwt's blog Full Atom Feed" />
         <link href="http://www.wengweitao.com/feeds/all.rss.xml" type="application/rss+xml" rel="alternate" title="wwt's blog Full RSS Feed" />
-        <link href="http://www.wengweitao.com/feeds/gong-ju.rss.xml" type="application/atom+xml" rel="alternate" title="wwt's blog Categories Atom Feed" />
+        <link href="http://www.wengweitao.com/feeds/suan-fa-yu-shu-ju-jie-gou.rss.xml" type="application/atom+xml" rel="alternate" title="wwt's blog Categories Atom Feed" />
 
 
         <!-- Mobile viewport optimized: j.mp/bplateviewport -->
@@ -60,69 +60,45 @@
 
             <header>
               <h2 class="entry-title">
-                <a href="http://www.wengweitao.com/shi-pelicanzhi-chi-latexshu-xue-gong-shi.html" rel="bookmark"
-                   title="Permalink to 使Pelican支持LaTex数学公式">使Pelican支持LaTex数学公式</a></h2>
+                <a href="http://www.wengweitao.com/mou-pao-pai-xu.html" rel="bookmark"
+                   title="Permalink to 冒泡排序">冒泡排序</a></h2>
            
             </header>
             <footer class="post-info">
-              <abbr class="published" title="2015-04-10T19:35:00">
-                Fri 10 April 2015
+              <abbr class="published" title="2015-05-13T16:13:00">
+                Wed 13 May 2015
               </abbr>
               <address class="vcard author">By 
                 <a class="url fn" href="http://www.wengweitao.com/author/wwt.html"> wwt</a>
               </address>
             </footer><!-- /.post-info -->
             <div class="entry-content">
-              <p>作为一个技术博客，在写文章的时候，肯定需要经常输入各种公式符号。在之前写一篇文章的时候，发现Pelican默认是不支持编辑数学公式的。之前用过一些在线的markdonw编辑器，都是通过<a href="https://github.com/mathjax/mathjax">MathJax</a>来支持在markdown中书写数学公式，而且用起来非常的方便，语法基本和LaTex一样。于是，就找到了一种简单的使Pelican支持LaTex语法的数学公式，在这里分享给大家。</p>
-<h2>如何使Pelican支持渲染数学公式</h2>
-<p>最简单的方法就是使用Pelican的一个插件——<a href="https://github.com/barrysteyn/pelican_plugin-render_math">pelican_plugin-render_math</a>。
-这个插件可以通过使用MathJax使pelican拥有渲染数学公式的能力，并且同时支持Markdown 和reStructuredText，用起来也非常的方便！</p>
-<h2>安装</h2>
-<p>在Pelican的安装目录中找到Pelican的配置文件pelicanconf.py，在文件中增加：</p>
-<div class="highlight"><pre><span class="n">PLUGIN_PATH</span> <span class="o">=</span> <span class="s">u&quot;pelican-plugins&quot;</span>
-
-<span class="n">PLUGINS</span> <span class="o">=</span> <span class="p">[</span> <span class="s">&quot;render_math&quot;</span><span class="p">]</span>
+              <p>冒泡排序算法比较简单，假设待排序列的长度为n，其思想是：</p>
+<p>从后往前（或者从前往后）两两比较相邻元素的值，若为逆序（即前一个大于后一个），则交换它们，直到序列比较完，我们称进行了一趟冒泡排序，结果将最小的元素交换到待排序列的第一个位置。下一趟冒泡排序，第一个元素不再参与比较，待排序列的个数减少1，每趟冒泡排序的结果把子序列中最小元素放到了最终的位置。关键字如同气泡一般逐渐往上漂浮至水面，这就是冒泡排序名字的由来。最多n-1趟就能把所有元素排好序。</p>
+<p>代码实现如下：</p>
+<div class="highlight"><pre><span class="kt">void</span> <span class="nf">bubbleSort</span><span class="p">(</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">A</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="n">A</span><span class="p">.</span><span class="n">size</span><span class="p">();</span>
+    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kt">bool</span> <span class="n">flag</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>  <span class="c1">// 表示本趟冒泡是否发生了交换的标志</span>
+        <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span> <span class="n">j</span> <span class="o">&gt;</span> <span class="n">i</span><span class="p">;</span> <span class="o">--</span><span class="n">j</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">if</span><span class="p">(</span><span class="n">A</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">A</span><span class="p">[</span><span class="n">j</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span> <span class="p">{</span>
+                <span class="n">swap</span><span class="p">(</span><span class="n">A</span><span class="p">[</span><span class="n">j</span><span class="p">],</span> <span class="n">A</span><span class="p">[</span><span class="n">j</span><span class="o">-</span><span class="mi">1</span><span class="p">]);</span>
+                <span class="n">flag</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+            <span class="p">}</span>   
+        <span class="p">}</span>   
+        <span class="k">if</span><span class="p">(</span><span class="n">flag</span> <span class="o">==</span> <span class="nb">false</span><span class="p">)</span>
+            <span class="k">return</span><span class="p">;</span> <span class="c1">//本趟冒泡没有发生元素的交换，说明此时序列已经有序了</span>
+    <span class="p">}</span>   
+<span class="p">}</span>
 </pre></div>
 
 
-<p>为了使插件生效，必须保证插件render_path所在的目录是可以访问的。通常，这个插件同其他插件都一起放在pelican-plugins目录中。</p>
-<p>没错，只要这一步你的pelican网站就可以通过mathjax渲染数学公式了！不需要更改任何模板文件。</p>
-<p>Just use and enjoy!</p>
-<h2>开始使用</h2>
-<p>对于内联的公式，将公式用\<span class="math">\(...\\)</span>包含起来，对于需要单独另起一行显示的公式使用\<span class="math">\(\\)</span>...\<span class="math">\(\\)</span>包含起来。例如：<span class="math">\(1 + 1 = 2\)</span> 和
-</p>
-<div class="math">$$1 + 1 = 2$$</div>
-<h3>书写一个质能守恒公式</h3>
-<div class="highlight"><pre><span class="sb">$$</span><span class="nb">E </span><span class="o">=</span><span class="nb"> mc^</span><span class="m">2</span><span class="s">$$</span>
-</pre></div>
-
-
-<div class="math">$$E=mc^2$$</div>
-<h3>希腊字母</h3>
-<div class="highlight"><pre><span class="s">$</span><span class="nv">\alpha</span><span class="nb">, </span><span class="nv">\beta</span><span class="nb">, ..., </span><span class="nv">\omega</span><span class="s">$</span>
-<span class="s">$</span><span class="nv">\Gamma</span><span class="nb">, </span><span class="nv">\Delta</span><span class="nb">, …, </span><span class="nv">\Omega</span><span class="s">$</span>
-</pre></div>
-
-
-<p>小写希腊字母：<span class="math">\(\alpha, \beta, ..., \omega\)</span>
-大写希腊字母：<span class="math">\(\Gamma, \Delta, …, \Omega\)</span></p>
-<h3>上标和下标</h3>
-<div class="highlight"><pre><span class="s">$</span><span class="nb">x_i^</span><span class="m">2</span><span class="s">$</span>
-</pre></div>
-
-
-<p>上标和下标分别为^ 和 _. 例如：<span class="math">\(x_i^2\)</span>.</p>
-<h3>求和与积分</h3>
-<div class="highlight"><pre><span class="sb">$$</span><span class="nv">\sum</span><span class="nb">_{k</span><span class="o">=</span><span class="m">1</span><span class="nb">}^{n}</span><span class="nv">\frac</span><span class="nb">{</span><span class="m">1</span><span class="nb">}{k}</span><span class="s">$$</span> 
-<span class="sb">$$</span><span class="nv">\sum</span><span class="nb">_{k</span><span class="o">=</span><span class="m">1</span><span class="nb">}^n</span><span class="nv">\frac</span><span class="nb">{</span><span class="m">1</span><span class="nb">}{k}</span><span class="s">$$</span> 
-<span class="sb">$$</span><span class="nv">\int</span><span class="nb">_a^b f</span><span class="o">(</span><span class="nb">x</span><span class="o">)</span><span class="nb">dx</span><span class="s">$$</span>
-</pre></div>
-
-
-<div class="math">$$\sum_{k=1}^{n}\frac{1}{k}$$</div>
-<div class="math">$$\sum_{k=1}^n\frac{1}{k}$$</div>
-<div class="math">$$\int_a^b f(x)dx$$</div>
-<p>如果你使用过LaTex那么用起来就非常熟悉了，语法基本和LaTex一样。可以访问 <a href="http://meta.math.stackexchange.com/questions/5020/mathjax-basic-tutorial-and-quick-reference">MathJax</a> 参考更多使用方法。</p>
+<p>冒泡排序最坏和平均时间复杂度均为<span class="math">\(O(n^2)\)</span>。
+空间复杂度为O(1)。
+并且，冒泡排序是稳定的排序方法。</p>
+<hr />
+<h2>Reference</h2>
+<p><a href="http://book.douban.com/subject/1885170/">算法导论</a></p>
 <script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
     var align = "center",
         indent = "0em",
@@ -166,7 +142,7 @@
               <h3>Comments</h3>
               <div id="disqus_thread"></div>
               <script type="text/javascript">
-                var disqus_identifier = "shi-pelicanzhi-chi-latexshu-xue-gong-shi.html";
+                var disqus_identifier = "mou-pao-pai-xu.html";
                 (function() {
                 var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
                 dsq.src = 'http://wengwt.disqus.com/embed.js';
