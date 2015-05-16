@@ -2,7 +2,7 @@
 <html lang="zh">
 <head>
 
-        <title>wwt's blog - 校园</title>
+        <title>wwt's blog - Articles by wwt</title>
         <meta charset="utf-8" />
         <link href="http://www.wengweitao.com/feeds\all.atom.xml" type="application/atom+xml" rel="alternate" title="wwt's blog Full Atom Feed" />
         <link href="http://www.wengweitao.com/feeds/all.rss.xml" type="application/rss+xml" rel="alternate" title="wwt's blog Full RSS Feed" />
@@ -52,7 +52,7 @@
             </div>
 
 <section id="content">
-
+<h2>Articles by wwt</h2>
 
 
    <div class="row">
@@ -61,34 +61,95 @@
         <div class="eleven columns">
                  <ol id="post-list">
                         <li><article class="hentry">
-                                <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/xin-xi-ji-zhu-xie-hui-di-yi-qi-dian-nao-ji-zhu-pei-xun-shun-li-ju-ban.html" rel="bookmark" title="Permalink to 信息技术协会第一期电脑技术培训顺利举办">信息技术协会第一期电脑技术培训顺利举办</a></h2> </header>
+                                <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/ti-du-xia-jiang-fa.html" rel="bookmark" title="Permalink to 梯度下降法">梯度下降法</a></h2> </header>
                                 <footer class="post-info">
-                                    <abbr class="published" title="2014-10-18T20:12:00"> Sat 18 October 2014 </abbr>
+                                    <abbr class="published" title="2014-07-26T16:18:00"> Sat 26 July 2014 </abbr>
                                     <address class="vcard author">By 
                                     <a class="url fn" href="http://www.wengweitao.com/author/wwt.html"> wwt</a>
                                     </address>
                                 </footer><!-- /.post-info -->
-                                <div class="entry-content"> <blockquote>
-<p>新的学年开始了，一直想着信协能够举办几个新的有意思的活动，想了好久觉得既有意义，又能吸引其他专业的同学参加的，那么技术培训是个不错的选择。于是，就和协会的小伙伴们商量，准备定期举办同学们最感兴趣的系列技术专题培训。第一期便是Photoshop培训。</p>
-</blockquote>
-<p>2014年10月17日晚七点，南燕信息技术协会举办了第一期电脑培训活动--Photoshop基础入门与应用的培训讲座。活动受到了同学们的广泛欢迎和好评。 </p>
-<p>本次培训讲座邀请2013级计算机应用技术的高龙飞同学担任主讲人。他深入浅出地介绍了Photoshop中常用的工具并通过实例操作向同学们清晰地展示各种操作方法。在讲解各种基础知识和工具之后，又通过PS常用的三个实例讲述了PS的使用技巧。同学们跟随主讲人的演示学习操作。两个小时的讲座很快就进入了尾声，同学们依然兴致盎然。</p>
-<p><img alt="培训现场" src="http://www.pkusz.edu.cn/uploadfile/2014/1020/20141020050506774.jpg" /></p>
-<p>培训结束后，信息协会会长翁蔚涛对本次讲座作了简单的总结，并强调希望同学们在讲座后能多多练习，“纸上得来终觉浅，绝知此事要躬行”，并向同学们有奖征集协会的新海报设计，鼓励大家学以致用。简单总结过后，进入到抽奖环节，来自汇丰的陈敬钰同学获得了由协会送出的精美礼品。</p>
-<p>最后，协会成员和部分到场同学合影留念，第一期电脑培训活动圆满结束。接下来信息技术协会还会举办一系列培训，包括Matlab编程、网页制作等，希望同学们能够继续踊跃参加。</p>
-<p><img alt="合影" src="http://www.pkusz.edu.cn/uploadfile/2014/1020/20141020050520418.jpg" /></p>
-<blockquote>
-<p>信息技术协会致力于为北大深研院的同学们营造一个学习和交流信息学科得环境和氛围，为大家提供有关信息领域的设计、应用、资讯等方面的信息。信息技术协会积极打造与深港信息类企业合作和联动的平台，帮助学生走出校园，观察产业发展动态；积极开展电脑维护活动，帮助同学们解决生活中遇到的技术困难。在以后，信息技术协会仍然会坚持协会宗旨，继续为大家服务。</p>
-</blockquote>
-<p>转自：http ...</p> </div><!-- /.entry-content -->
+                                <div class="entry-content"> <p><strong>梯度下降法（Gradient Descent）</strong>是一种常见的最优化算法，用于求解函数的最大值或者最小值。</p>
+<h2>梯度的概念</h2>
+<p>一个函数<span class="math">\(J(\theta)\)</span>对它的一个变量<span class="math">\(\theta\)</span>的梯度定义为：
+</p>
+<div class="math">$$\frac{\partial J(\theta))}{\partial \theta} = \lim_{\delta \theta\rightarrow 0}\frac{J(\theta + \delta \theta)-J(\theta ))}{\delta \theta}$$</div>
+<p>
+某一点上的梯度指向标量场增长最快的方向，梯度的长度就是最大的变化率。</p>
+<h2>梯度下降</h2>
+<p>在高数中，我们求解一个函数的最小值时，最常用的方法就是求出它的导数为0的那个点，进而判断这个点是否能够取最小值。但是，在实际很多情况，我们很难求解出使函数的导数为0的方程，这个时候就可以使用梯度下降。我们知道对于一个函数沿着梯度的那个方向是下降是最快的。例如为了选取一个<span class="math">\(\theta\)</span>使<span class="math">\(J(\theta)\)</span>最小 ...</p> </div><!-- /.entry-content -->
 
-                                <div class="medium primary btn"><a href="http://www.wengweitao.com/xin-xi-ji-zhu-xie-hui-di-yi-qi-dian-nao-ji-zhu-pei-xun-shun-li-ju-ban.html" rel="bookmark" title="Permalink to 信息技术协会第一期电脑技术培训顺利举办">Read more <i class="icon-arrow-right"></i></a></div>
+                                <div class="medium primary btn"><a href="http://www.wengweitao.com/ti-du-xia-jiang-fa.html" rel="bookmark" title="Permalink to 梯度下降法">Read more <i class="icon-arrow-right"></i></a></div>
 
 
 
                                 <div class="row tag-row">
                                         <span>Tagged as : </span>
-                                            <a class="danger label" href="http://www.wengweitao.com/tag/xiao-yuan.html">校园</a>
+                                            <a class="danger label" href="http://www.wengweitao.com/tag/ji-ben-gai-nian.html">基本概念</a>
+                                </div>
+
+
+
+                        </article></li>
+                        <li><article class="hentry">
+                                <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/tong-ji-xue-xi-fang-fa-gai-lun.html" rel="bookmark" title="Permalink to 统计学习方法概论">统计学习方法概论</a></h2> </header>
+                                <footer class="post-info">
+                                    <abbr class="published" title="2014-07-25T20:12:00"> Fri 25 July 2014 </abbr>
+                                    <address class="vcard author">By 
+                                    <a class="url fn" href="http://www.wengweitao.com/author/wwt.html"> wwt</a>
+                                    </address>
+                                </footer><!-- /.post-info -->
+                                <div class="entry-content"> <blockquote>
+<p>本文主要介绍统计学习方法的一些基本概念。首先叙述统计学习的定义、研究对象与方法；然后叙述什么是监督学习；接着提出统计学习方法的三要素：模型、测量和算法；然后又介绍了模型选择的方法，包括：正则化与交叉验证；也介绍了学习方法的泛化能力；接着介绍了监督学习中的两种模型：生成模型和判别模型；最后介绍了监督学习方法的应用：分类问题、标注问题与回归问题。</p>
+</blockquote>
+<h2>统计学习</h2>
+<h3>统计学习的特点</h3>
+<p><strong>统计学习（statistical learning）</strong>是关于计算机基于数据构建概率统计模型并运用模型对数据进行预测与分析的一门学科。</p>
+<ul>
+<li>研究对象：数据</li>
+<li>目的：对数据进行预测和分析</li>
+<li>以方法为中心，统计学习方法构建模型并运用模型进行预测与分析</li>
+<li>是概率论、统计学等多个学科的交叉</li>
+</ul>
+<h3>统计学习的对象</h3>
+<p>统计学习的对象是数据（data），并且假设同类数据具有一定的统计规律性，这是统计学习的前提。只有具有一定的统计规律性才能使用概率论的方法进行描述。</p>
+<h3>统计学习的目的</h3>
+<p>考虑学习什么样的模型和如何学习模型，以使模型能够对数据进行准确的预测与分析，同时也要尽可能考虑学习的效率。</p>
+<h3>统计学习的方法</h3>
+<p>统计学习由：</p>
+<ul>
+<li>监督学习（supervised learning）</li>
+<li>非监督学习（unsupervised learning）</li>
+<li>半监督学习（semi-supervised ...</li></ul> </div><!-- /.entry-content -->
+
+                                <div class="medium primary btn"><a href="http://www.wengweitao.com/tong-ji-xue-xi-fang-fa-gai-lun.html" rel="bookmark" title="Permalink to 统计学习方法概论">Read more <i class="icon-arrow-right"></i></a></div>
+
+
+
+                                <div class="row tag-row">
+                                        <span>Tagged as : </span>
+                                            <a class="danger label" href="http://www.wengweitao.com/tag/du-shu-bi-ji.html">读书笔记</a>
+                                </div>
+
+
+
+                        </article></li>
+                        <li><article class="hentry">
+                                <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/hello-world.html" rel="bookmark" title="Permalink to Hello, world">Hello, world</a></h2> </header>
+                                <footer class="post-info">
+                                    <abbr class="published" title="2014-07-20T00:00:00"> Sun 20 July 2014 </abbr>
+                                    <address class="vcard author">By 
+                                    <a class="url fn" href="http://www.wengweitao.com/author/wwt.html"> wwt</a>
+                                    </address>
+                                </footer><!-- /.post-info -->
+                                <div class="entry-content"> <p>Hello, world!</p> </div><!-- /.entry-content -->
+
+                                <div class="medium primary btn"><a href="http://www.wengweitao.com/hello-world.html" rel="bookmark" title="Permalink to Hello, world">Read more <i class="icon-arrow-right"></i></a></div>
+
+
+
+                                <div class="row tag-row">
+                                        <span>Tagged as : </span>
+                                            <a class="danger label" href="http://www.wengweitao.com/tag/ce-shi.html">测试</a>
                                 </div>
 
 
@@ -169,7 +230,8 @@
 </div> </div><!-- /.row -->
 
 <p class="paginator">
-    Page 1 / 1
+            <a href="http://www.wengweitao.com/author/wwt8.html"><i class="icon-arrow-left"></i></a>
+    Page 9 / 9
 </p>
 </section><!-- /#content -->
 

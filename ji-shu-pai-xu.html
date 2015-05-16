@@ -2,11 +2,11 @@
 <html lang="zh">
 <head>
 
-        <title>互联网实验室河源游玩</title>
+        <title>计数排序</title>
         <meta charset="utf-8" />
         <link href="http://www.wengweitao.com/feeds\all.atom.xml" type="application/atom+xml" rel="alternate" title="wwt's blog Full Atom Feed" />
         <link href="http://www.wengweitao.com/feeds/all.rss.xml" type="application/rss+xml" rel="alternate" title="wwt's blog Full RSS Feed" />
-        <link href="http://www.wengweitao.com/feeds/sheng-huo.rss.xml" type="application/atom+xml" rel="alternate" title="wwt's blog Categories Atom Feed" />
+        <link href="http://www.wengweitao.com/feeds/suan-fa-yu-shu-ju-jie-gou.rss.xml" type="application/atom+xml" rel="alternate" title="wwt's blog Categories Atom Feed" />
 
 
         <!-- Mobile viewport optimized: j.mp/bplateviewport -->
@@ -60,59 +60,67 @@
 
             <header>
               <h2 class="entry-title">
-                <a href="http://www.wengweitao.com/hu-lian-wang-shi-yan-shi-he-yuan-you-wan.html" rel="bookmark"
-                   title="Permalink to 互联网实验室河源游玩">互联网实验室河源游玩</a></h2>
+                <a href="http://www.wengweitao.com/ji-shu-pai-xu.html" rel="bookmark"
+                   title="Permalink to 计数排序">计数排序</a></h2>
            
             </header>
             <footer class="post-info">
-              <abbr class="published" title="2015-04-14T20:12:00">
-                Tue 14 April 2015
+              <abbr class="published" title="2015-05-17T11:21:00">
+                Sun 17 May 2015
               </abbr>
               <address class="vcard author">By 
                 <a class="url fn" href="http://www.wengweitao.com/author/wwt.html"> wwt</a>
               </address>
             </footer><!-- /.post-info -->
             <div class="entry-content">
-              <p>4月份，春暖花开，正是出游的好时间。实验室一年一度的集体出游（当然是老板全部报销啦~），就定在了4月11日和12日这两天，今年去的地方是——河源。实验室一群小伙伴度过了非常欢乐的一个周末。</p>
-<h3>河源</h3>
-<p>在去<a href="http://zh.wikipedia.org/wiki/%E6%B2%B3%E6%BA%90%E5%B8%82">河源</a>游玩之前，仅仅是听过有河源这个地方，其他的都是这次旅游完才了解到的。</p>
+              <p>之前介绍的都是基于比较的排序算法，对于包含n个元素的输入序列来说，任何比较排序在最坏情况下都要经过O(nlogn)次比较。本文将介绍第一种非比较排序算法——<strong>计数排序</strong>。</p>
+<h2>计数排序的基本思想</h2>
+<p>计数排序假设n个输入元素中的每一个都是在0到k区间内的一个整数，其中k为某个整数。当k=O(n)时，计数排序的运算时间为O(n)。</p>
+<p>基本思想：</p>
 <ul>
-<li>河源在广东的东北部，从深圳坐大巴过去大概2个半小时。</li>
-<li>河源是一个地级市，河源市辖1个市辖区、5个县，但是地方感觉不太大。市区里面还分新城区和老城区，虽然是新城区不过高楼大厦仍然极少。</li>
-<li>大量客家人</li>
-<li>河源菜是东江菜的典型代表，而东江菜是粤菜的主要流派之一，其特点是偏重“肥、咸、熟”</li>
-<li>景点：<ul>
-<li>万绿湖</li>
-<li>镜花缘</li>
-<li>野趣沟</li>
+<li>对于每一个输入元素x，确定小于x的输入元素的个数</li>
+<li>根据这一信息将x放到它在输出数组中的位置上</li>
 </ul>
-</li>
+<h2>计数排序的代码实现</h2>
+<p>在计数排序算法的代码中，假设输入是一个数组A[1...n]，A.length = n。我们还需要两个数组：B[1..n]存放排序的输出，C[0..k]提供临时存储空间。</p>
+<div class="highlight"><pre><span class="c1">// B: output of the sorted array</span>
+<span class="c1">// k: every element in A: 0 &lt;= A[i] &lt;= k</span>
+<span class="kt">void</span> <span class="nf">countingSort</span><span class="p">(</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">A</span><span class="p">,</span> <span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">B</span><span class="p">,</span> <span class="kt">int</span> <span class="n">k</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">C</span><span class="p">(</span><span class="n">k</span><span class="o">+</span><span class="mi">1</span><span class="p">);</span>  <span class="c1">// let C[0..k] be a new array for counting</span>
+    <span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="n">A</span><span class="p">.</span><span class="n">size</span><span class="p">();</span>
+    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span>
+        <span class="o">++</span><span class="n">C</span><span class="p">[</span><span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">]];</span>  <span class="c1">// C[i] contains the number of elements equal to i</span>
+    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">k</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span>
+        <span class="n">C</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+=</span> <span class="n">C</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">];</span>  <span class="c1">// C[i] contains the number of elements less than or equal to i</span>
+    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">;</span> <span class="o">--</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">B</span><span class="p">[</span><span class="n">C</span><span class="p">[</span><span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+        <span class="o">--</span><span class="n">C</span><span class="p">[</span><span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">]];</span>
+    <span class="p">}</span>   
+<span class="p">}</span>
+</pre></div>
+
+
+<ul>
+<li>建立一个初始元素都为0的数组C，用来存储0~k范围内数字出现的个数；</li>
+<li>统计出每个元素出现的次数保存在数组C中；</li>
+<li>依次统计出C[i]表示数组中小于等于i的元素出现的个数；</li>
+<li>从带排序列A的最后一个元素开始，将A[i]放到正确的位置（从后往前保证了排序的稳定性）。即前面又几个元素小于等于它，它就放在第几个位置。</li>
 </ul>
-<h3>行程</h3>
-<p><strong>野趣沟风景区</strong></p>
-<p><img alt="野趣沟1" src="./imgs/河源1.JPG" /></p>
-<p><img alt="野趣沟2" src="./imgs/河源2.JPG" /></p>
-<p><img alt="野趣沟3" src="./imgs/河源5.JPG" /></p>
-<p>山上的风景还挺不错</p>
-<p><strong>镜花缘</strong>
-<img alt="镜花缘" src="./imgs/河源8.JPG" /></p>
-<p>镜花缘里面实验室大合影</p>
-<p><img alt="镜花缘2" src="./imgs/河源7.JPG" /></p>
-<p>通过镜子合影，有创意</p>
-<p><img alt="镜花缘3" src="./imgs/河源9.JPG" /></p>
-<p>女儿国表演</p>
-<p>此外，晚上我们还泡了温泉，一共60多个池子，牛奶的、艾草的、薰衣草的等等，非常舒服。</p>
-<h3>聚餐</h3>
-<p>回到深圳，还剩了不少经费，就实验室集体聚餐一次。除了研三忙着写毕业论文的师兄师姐，大家基本都到了。</p>
-<p><img alt="聚餐" src="./imgs/聚餐1.jpg" /></p>
+<h2>计数排序的复杂度</h2>
+<p>由计数排序的代码实现可以看出，计数排序总的时间代价为O(k+n)。在实际工作中，当k=O(n)时，我们一般会采用计数排序，这时的运行时间为O(n)。</p>
+<p>计数排序需要两个额外的数组用来对元素进行计数和保存排序的输出结果，所以空间复杂度为O(k+n)。</p>
+<h2>计数排序是稳定的</h2>
+<p>计数排序的一个重要性质是它是稳定的：具有相同值的元素在输出数组中的相对次序与它们在输入数组中的相对次序是相同的。也就是说，对两个相同的数来说，在输入数组中先出现的数，在输出数组中也位于前面。</p>
+<p>计数排序的稳定性很重要的一个原因是：计数排序经常会被用于基数排序算法的一个子过程。我们将在下一篇文章中介绍，为了使基数排序能够正确运行，计数排序必须是稳定的。</p>
 <hr />
-<p>这次河源之行大家还是非常欢乐。平时大家一直在实验室待着，天天对着电脑和论文，难得有这么好的机会，实验室12级，13级，14级的小伙伴们能够聚在一起出去游玩，彼此之间的感情也更加好了。今后，应该多组织大家出去。</p>
+<h2>Reference</h2>
+<p><a href="http://book.douban.com/subject/1885170/">算法导论</a></p>
             </div><!-- /.entry-content -->
             <div class="comments">
               <h3>Comments</h3>
               <div id="disqus_thread"></div>
               <script type="text/javascript">
-                var disqus_identifier = "hu-lian-wang-shi-yan-shi-he-yuan-you-wan.html";
+                var disqus_identifier = "ji-shu-pai-xu.html";
                 (function() {
                 var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
                 dsq.src = 'http://wengwt.disqus.com/embed.js';

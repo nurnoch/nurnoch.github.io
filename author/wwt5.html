@@ -61,6 +61,134 @@
         <div class="eleven columns">
                  <ol id="post-list">
                         <li><article class="hentry">
+                                <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/pythonrong-qi-counterde-shi-yong.html" rel="bookmark" title="Permalink to Python容器——Counter的使用">Python容器——Counter的使用</a></h2> </header>
+                                <footer class="post-info">
+                                    <abbr class="published" title="2015-04-08T14:52:00"> Wed 08 April 2015 </abbr>
+                                    <address class="vcard author">By 
+                                    <a class="url fn" href="http://www.wengweitao.com/author/wwt.html"> wwt</a>
+                                    </address>
+                                </footer><!-- /.post-info -->
+                                <div class="entry-content"> <blockquote>
+<p>Counter是Python标准库提供的一个非常有用的容器，可以用来对序列中出现的各个元素，进行计数。这篇文章中，利用Counter来实现多元集合(MultiSets)、概率质量函数(PMFs)以及贝叶斯假设。</p>
+</blockquote>
+<p>在Python代码中使用Counter，只需从collections包引入：</p>
+<div class="highlight"><pre><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">Counter</span>
+</pre></div>
+
+
+<h3>1.判断两个字符串是否由相同的字母集合调换顺序而成的（anagram）</h3>
+<div class="highlight"><pre><span class="k">def</span> <span class="nf">is_anagram</span><span class="p">(</span><span class="n">word1</span><span class="p">,</span> <span class="n">word2</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Checks whether the words are anagrams.</span>
+
+<span class="sd">    word1: string</span>
+<span class="sd">    word2: string</span>
+
+<span class="sd">    returns: boolean</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">return</span> <span class="n">Counter</span><span class="p">(</span><span class="n">word1</span><span class="p">)</span> <span class="o">==</span> <span class="n">Counter</span><span class="p">(</span><span class="n">word2</span><span class="p">)</span>
+</pre></div>
+
+
+<p>Counter如果传入的参数是字符串，就会统计字符串中每个字符出现的次数，如果两个字符串由相同的字母集合颠倒顺序而成，则它们Counter的结果应该是一样的。</p>
+<h3>2.多元集合(MultiSets)</h3>
+<p>multiset是相同元素可以出现多次的集合，Counter可以非常自然地用来表示multiset。并且可以将Counter扩展，使之拥有set的一些操作如is_subset ...</p> </div><!-- /.entry-content -->
+
+                                <div class="medium primary btn"><a href="http://www.wengweitao.com/pythonrong-qi-counterde-shi-yong.html" rel="bookmark" title="Permalink to Python容器——Counter的使用">Read more <i class="icon-arrow-right"></i></a></div>
+
+
+
+                                <div class="row tag-row">
+                                        <span>Tagged as : </span>
+                                            <a class="danger label" href="http://www.wengweitao.com/tag/python.html">Python</a>
+                                </div>
+
+
+
+                        </article></li>
+                        <li><article class="hentry">
+                                <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/bian-xie-gao-zhi-liang-pythondai-ma-2.html" rel="bookmark" title="Permalink to 编写高质量Python代码（2）">编写高质量Python代码（2）</a></h2> </header>
+                                <footer class="post-info">
+                                    <abbr class="published" title="2015-04-07T22:39:00"> Tue 07 April 2015 </abbr>
+                                    <address class="vcard author">By 
+                                    <a class="url fn" href="http://www.wengweitao.com/author/wwt.html"> wwt</a>
+                                    </address>
+                                </footer><!-- /.post-info -->
+                                <div class="entry-content"> <blockquote>
+<p>这篇文章基础语法出发讲述Python的使用技巧和注意事项</p>
+</blockquote>
+<h3>建议8： 利用assert语句来发现问题</h3>
+<p>assert语句主要为调试程序服务，能够快速方便地检查程序的异常或者发现不恰当的输入等，防止意想不到的情况出现。
+基本语法如下：</p>
+<div class="highlight"><pre><span class="k">assert</span> <span class="n">expression1</span> <span class="p">[</span><span class="s">&quot;,&quot;</span> <span class="n">expression2</span><span class="p">]</span> 
+<span class="c">#assert x == y, &quot;not equals&quot;</span>
+</pre></div>
+
+
+<p>其中计算expressi1的值若为False则会引发一个AssertionError，expression是可选的，用来传递具体的异常信息。</p>
+<p>另外，需要注意的是断言是对程序的性能有一定的影响，禁用断言的方法是运行时加上 -O标志。</p>
+<h3>建议9： 交换值时不推荐使用中间变量</h3>
+<div class="highlight"><pre><span class="n">In</span> <span class="p">[</span><span class="mi">1</span><span class="p">]:</span> <span class="kn">from</span> <span class="nn">timeit</span> <span class="kn">import</span> <span class="n">Timer</span>
+<span class="n">In</span> <span class="p">[</span><span class="mi">2</span><span class="p">]:</span> <span class="n">Timer</span><span class="p">(</span><span class="s">&#39;temp = x; x = y; y = temp&#39;</span><span class="p">,</span> <span class="s">&#39;x = 2; y = 3&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">timeit</span><span class="p">()</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">2</span><span class="p">]:</span> <span class="mf">0.054762504979284254</span>
+<span class="n">In</span> <span class="p">[</span><span class="mi">3 ...</span></pre></div> </div><!-- /.entry-content -->
+
+                                <div class="medium primary btn"><a href="http://www.wengweitao.com/bian-xie-gao-zhi-liang-pythondai-ma-2.html" rel="bookmark" title="Permalink to 编写高质量Python代码（2）">Read more <i class="icon-arrow-right"></i></a></div>
+
+
+
+                                <div class="row tag-row">
+                                        <span>Tagged as : </span>
+                                            <a class="danger label" href="http://www.wengweitao.com/tag/python.html">Python</a>
+                                </div>
+
+
+
+                        </article></li>
+                        <li><article class="hentry">
+                                <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/pythondai-ma-ge-shi-hua-gong-ju-yapf.html" rel="bookmark" title="Permalink to Python代码格式化工具——YAPF">Python代码格式化工具——YAPF</a></h2> </header>
+                                <footer class="post-info">
+                                    <abbr class="published" title="2015-04-07T15:10:00"> Tue 07 April 2015 </abbr>
+                                    <address class="vcard author">By 
+                                    <a class="url fn" href="http://www.wengweitao.com/author/wwt.html"> wwt</a>
+                                    </address>
+                                </footer><!-- /.post-info -->
+                                <div class="entry-content"> <blockquote>
+<p><a href="https://github.com/google/yapf">YAPF</a>是Google开源的一个工具，可以用来格式化Python代码，使Python代码拥有一致的编程风格，减轻了团队或者个人进行代码风格维护的单调的工作。</p>
+</blockquote>
+<h3>介绍</h3>
+<p>之前已经有一些类似的Python代码风格格式化工具如：<a href="https://github.com/hhatto/autopep8">autopep8</a>和<a href="https://github.com/spulec/pep8ify">pep8ify</a>等。这些工具基于<a href="http://clang.llvm.org/docs/ClangFormat.html">clang-format</a>,能够很好的解决大多数pep8报告的格式问题。然而，有些代码虽然遵从了PEP8的编程风格指南，但这并不意味着这些代码看起来就足够好，对于这种问题之前的那些Python代码格式化工具就无能为力了。
+YAPF与其他的格式化工具不同，其算法能够把代码重新格式化为符合编程风格的最佳格式，无论原始的代码是否违法了某种指定的编程风格指南。YAPF的最终目标就是通过YAPF格式化后的代码能够与程序员完全遵从编程风格写的代码一样的好。</p>
+<h3>YAPF的使用</h3>
+<h4>1.安装</h4>
+<p>可以直接通过pip进行安装：</p>
+<div class="highlight"><pre><span class="n">pip</span> <span class="n">install</span> <span class="n">yapf</span>
+</pre></div>
+
+
+<h4>2.使用。</h4>
+<p>安装完成之后，就可以直接在命令行中使用了。
+以下是yapf的命令行参数：</p>
+<div class="highlight"><pre><span class="n">usage</span><span class="o">:</span> <span class="n">yapf</span> <span class="o">[-</span><span class="n">h</span><span class="o">]</span> <span class="o">[--</span><span class="n">style</span> <span class="n">STYLE</span><span class="o">]</span> <span class="o">[-</span><span class="n">d</span> <span class="o">|</span> <span class="o">-</span><span class="n">i</span><span class="o">]</span> <span class="o">[-</span><span class="n">l</span> <span class="n">START</span><span class="o">-</span><span class="n">END</span> <span class="o">|</span> <span class="o">-</span><span class="n">r</span><span class="o">]</span> <span class="o">...</span>
+
+<span class="n">Formatter</span> <span class="k">for</span> <span class="n">Python</span> <span class="n">code</span><span class="o">.</span>
+
+<span class="n">positional ...</span></pre></div> </div><!-- /.entry-content -->
+
+                                <div class="medium primary btn"><a href="http://www.wengweitao.com/pythondai-ma-ge-shi-hua-gong-ju-yapf.html" rel="bookmark" title="Permalink to Python代码格式化工具——YAPF">Read more <i class="icon-arrow-right"></i></a></div>
+
+
+
+                                <div class="row tag-row">
+                                        <span>Tagged as : </span>
+                                            <a class="danger label" href="http://www.wengweitao.com/tag/python.html">Python</a>
+                                            <a class="danger label" href="http://www.wengweitao.com/tag/gong-ju.html">工具</a>
+                                </div>
+
+
+
+                        </article></li>
+                        <li><article class="hentry">
                                 <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/bian-xie-gao-zhi-liang-pythondai-ma-1.html" rel="bookmark" title="Permalink to 编写高质量Python代码（1）">编写高质量Python代码（1）</a></h2> </header>
                                 <footer class="post-info">
                                     <abbr class="published" title="2015-04-06T18:42:00"> Mon 06 April 2015 </abbr>
@@ -140,106 +268,6 @@
 
 
                         </article></li>
-                        <li><article class="hentry">
-                                <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/xin-xi-ji-zhu-xie-hui-di-yi-qi-dian-nao-ji-zhu-pei-xun-shun-li-ju-ban.html" rel="bookmark" title="Permalink to 信息技术协会第一期电脑技术培训顺利举办">信息技术协会第一期电脑技术培训顺利举办</a></h2> </header>
-                                <footer class="post-info">
-                                    <abbr class="published" title="2014-10-18T20:12:00"> Sat 18 October 2014 </abbr>
-                                    <address class="vcard author">By 
-                                    <a class="url fn" href="http://www.wengweitao.com/author/wwt.html"> wwt</a>
-                                    </address>
-                                </footer><!-- /.post-info -->
-                                <div class="entry-content"> <blockquote>
-<p>新的学年开始了，一直想着信协能够举办几个新的有意思的活动，想了好久觉得既有意义，又能吸引其他专业的同学参加的，那么技术培训是个不错的选择。于是，就和协会的小伙伴们商量，准备定期举办同学们最感兴趣的系列技术专题培训。第一期便是Photoshop培训。</p>
-</blockquote>
-<p>2014年10月17日晚七点，南燕信息技术协会举办了第一期电脑培训活动--Photoshop基础入门与应用的培训讲座。活动受到了同学们的广泛欢迎和好评。 </p>
-<p>本次培训讲座邀请2013级计算机应用技术的高龙飞同学担任主讲人。他深入浅出地介绍了Photoshop中常用的工具并通过实例操作向同学们清晰地展示各种操作方法。在讲解各种基础知识和工具之后，又通过PS常用的三个实例讲述了PS的使用技巧。同学们跟随主讲人的演示学习操作。两个小时的讲座很快就进入了尾声，同学们依然兴致盎然。</p>
-<p><img alt="培训现场" src="http://www.pkusz.edu.cn/uploadfile/2014/1020/20141020050506774.jpg" /></p>
-<p>培训结束后，信息协会会长翁蔚涛对本次讲座作了简单的总结，并强调希望同学们在讲座后能多多练习，“纸上得来终觉浅，绝知此事要躬行”，并向同学们有奖征集协会的新海报设计，鼓励大家学以致用。简单总结过后，进入到抽奖环节，来自汇丰的陈敬钰同学获得了由协会送出的精美礼品。</p>
-<p>最后，协会成员和部分到场同学合影留念，第一期电脑培训活动圆满结束。接下来信息技术协会还会举办一系列培训，包括Matlab编程、网页制作等，希望同学们能够继续踊跃参加。</p>
-<p><img alt="合影" src="http://www.pkusz.edu.cn/uploadfile/2014/1020/20141020050520418.jpg" /></p>
-<blockquote>
-<p>信息技术协会致力于为北大深研院的同学们营造一个学习和交流信息学科得环境和氛围，为大家提供有关信息领域的设计、应用、资讯等方面的信息。信息技术协会积极打造与深港信息类企业合作和联动的平台，帮助学生走出校园，观察产业发展动态；积极开展电脑维护活动，帮助同学们解决生活中遇到的技术困难。在以后，信息技术协会仍然会坚持协会宗旨，继续为大家服务。</p>
-</blockquote>
-<p>转自：http ...</p> </div><!-- /.entry-content -->
-
-                                <div class="medium primary btn"><a href="http://www.wengweitao.com/xin-xi-ji-zhu-xie-hui-di-yi-qi-dian-nao-ji-zhu-pei-xun-shun-li-ju-ban.html" rel="bookmark" title="Permalink to 信息技术协会第一期电脑技术培训顺利举办">Read more <i class="icon-arrow-right"></i></a></div>
-
-
-
-                                <div class="row tag-row">
-                                        <span>Tagged as : </span>
-                                            <a class="danger label" href="http://www.wengweitao.com/tag/xiao-yuan.html">校园</a>
-                                </div>
-
-
-
-                        </article></li>
-                        <li><article class="hentry">
-                                <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/emsuan-fa.html" rel="bookmark" title="Permalink to EM算法">EM算法</a></h2> </header>
-                                <footer class="post-info">
-                                    <abbr class="published" title="2014-08-10T19:09:00"> Sun 10 August 2014 </abbr>
-                                    <address class="vcard author">By 
-                                    <a class="url fn" href="http://www.wengweitao.com/author/wwt.html"> wwt</a>
-                                    </address>
-                                </footer><!-- /.post-info -->
-                                <div class="entry-content"> <blockquote>
-<p>EM算法是一种迭代算法，用于含有隐变量（hidden variable）的概率模型参数的极大似然估计，或极大后验概率估计。EM算法的每次迭代分为两步：E步，求期望（Expectation）；M步，求极大（Maximization）。所以这一算法称为期望极大算法。</p>
-</blockquote>
-<h2>EM算法的引入</h2>
-<p>如果概率模型中仅含有观测变量（observable variable），那么给定数据，可以直接使用极大似然估计法或贝叶斯估计法估计模型参数。但是，如果概率模型中不仅含有观测变量还含有隐变量，那么就不能简单的使用那些估计方法。EM算法就是含有隐变量的概率模型参数的极大似然估计法，或极大后验概率估计法。</p>
-<h3>EM算法</h3>
-<p>输入：观测变量数据Y，隐变量数据Z，联合分布<span class="math">\(P(Y,Z|\theta)\)</span>，条件分布<span class="math">\(P(Z|Y,\theta)\)</span>;</p>
-<p>输出：模型参数<span class="math">\(\theta\)</span></p>
-<p>（1）选择参数的初值<span class="math">\(\theta^{(0)}\)</span>，开始迭代；</p>
-<p>（2）E步：记 ...</p> </div><!-- /.entry-content -->
-
-                                <div class="medium primary btn"><a href="http://www.wengweitao.com/emsuan-fa.html" rel="bookmark" title="Permalink to EM算法">Read more <i class="icon-arrow-right"></i></a></div>
-
-
-
-                                <div class="row tag-row">
-                                        <span>Tagged as : </span>
-                                            <a class="danger label" href="http://www.wengweitao.com/tag/du-shu-bi-ji.html">读书笔记</a>
-                                </div>
-
-
-
-                        </article></li>
-                        <li><article class="hentry">
-                                <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/ti-sheng-shu.html" rel="bookmark" title="Permalink to 提升树">提升树</a></h2> </header>
-                                <footer class="post-info">
-                                    <abbr class="published" title="2014-08-07T22:27:00"> Thu 07 August 2014 </abbr>
-                                    <address class="vcard author">By 
-                                    <a class="url fn" href="http://www.wengweitao.com/author/wwt.html"> wwt</a>
-                                    </address>
-                                </footer><!-- /.post-info -->
-                                <div class="entry-content"> <blockquote>
-<p>提升树是以分类树或回归树为基本分类器的提升方法。提升树被认为是统计学习中性能最好的方法之一。</p>
-</blockquote>
-<h2>提升树模型</h2>
-<p>以决策树为基函数的提升方法称为提升树（boosting tree）。一个基本分类器x &lt; v或者x &gt; v，可以看作是由一个根结点直接连接两个叶节点的简单决策树，即所谓的决策树桩（decision stump）。提升树模型可以表示为决策树的加法模型：
-</p>
-<div class="math">$$f_M(x)=\sum_{m=1}^{M}T(x;\varTheta_m)$$</div>
-<p>其中，<span class="math">\(T(x;\varTheta_m)\)</span>表示决策树；<span class="math">\(\varTheta_m\)</span>为决策树的参数；M为树的个数。</p>
-<h2>提升树算法</h2>
-<p>提升树算法采用前向分步算法。首先，确定原始提升树<span class="math">\(f_0(x)=0\)</span>，第m步的模型是
-</p>
-<div class="math">$$f_m(x)=f_{m-1}(x)+T(x;\varTheta_m)$$</div>
-<p>
-其中，<span class="math">\(f_{m-1 ...</span></p> </div><!-- /.entry-content -->
-
-                                <div class="medium primary btn"><a href="http://www.wengweitao.com/ti-sheng-shu.html" rel="bookmark" title="Permalink to 提升树">Read more <i class="icon-arrow-right"></i></a></div>
-
-
-
-                                <div class="row tag-row">
-                                        <span>Tagged as : </span>
-                                            <a class="danger label" href="http://www.wengweitao.com/tag/du-shu-bi-ji.html">读书笔记</a>
-                                </div>
-
-
-
-                        </article></li>
                 </ol><!-- /#posts-list -->
 
         </div><!-- /.eleven.columns -->
@@ -271,22 +299,22 @@
 <!--
 <h4>标签</h4>
 <ul class="tagcloud">
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/ce-shi.html">测试</a></li>
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/wan.html">玩</a></li>
-        <li class="tag-1"><a href="http://www.wengweitao.com/tag/du-shu-bi-ji.html">读书笔记</a></li>
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/jiao-cheng-linux.html">教程、Linux</a></li>
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/ji-chu-gai-nian.html">基础概念</a></li>
-        <li class="tag-2"><a href="http://www.wengweitao.com/tag/jiao-cheng.html">教程</a></li>
-        <li class="tag-2"><a href="http://www.wengweitao.com/tag/pai-xu-suan-fa-ji-chu.html">排序 算法 基础</a></li>
-        <li class="tag-3"><a href="http://www.wengweitao.com/tag/ji-ben-gai-nian.html">基本概念</a></li>
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/suan-fa-fen-xi.html">算法分析</a></li>
-        <li class="tag-1"><a href="http://www.wengweitao.com/tag/python.html">Python</a></li>
         <li class="tag-4"><a href="http://www.wengweitao.com/tag/vim.html">Vim</a></li>
         <li class="tag-4"><a href="http://www.wengweitao.com/tag/xiao-yuan.html">校园</a></li>
-        <li class="tag-3"><a href="http://www.wengweitao.com/tag/mian-shi-ti.html">面试题</a></li>
+        <li class="tag-4"><a href="http://www.wengweitao.com/tag/ji-chu-gai-nian.html">基础概念</a></li>
+        <li class="tag-4"><a href="http://www.wengweitao.com/tag/suan-fa-fen-xi.html">算法分析</a></li>
         <li class="tag-4"><a href="http://www.wengweitao.com/tag/tmux.html">tmux</a></li>
+        <li class="tag-1"><a href="http://www.wengweitao.com/tag/python.html">Python</a></li>
         <li class="tag-4"><a href="http://www.wengweitao.com/tag/gong-ju.html">工具</a></li>
+        <li class="tag-4"><a href="http://www.wengweitao.com/tag/jiao-cheng-linux.html">教程、Linux</a></li>
+        <li class="tag-3"><a href="http://www.wengweitao.com/tag/mian-shi-ti.html">面试题</a></li>
         <li class="tag-4"><a href="http://www.wengweitao.com/tag/go.html">Go</a></li>
+        <li class="tag-1"><a href="http://www.wengweitao.com/tag/pai-xu-suan-fa-ji-chu.html">排序 算法 基础</a></li>
+        <li class="tag-1"><a href="http://www.wengweitao.com/tag/du-shu-bi-ji.html">读书笔记</a></li>
+        <li class="tag-3"><a href="http://www.wengweitao.com/tag/ji-ben-gai-nian.html">基本概念</a></li>
+        <li class="tag-4"><a href="http://www.wengweitao.com/tag/wan.html">玩</a></li>
+        <li class="tag-4"><a href="http://www.wengweitao.com/tag/ce-shi.html">测试</a></li>
+        <li class="tag-2"><a href="http://www.wengweitao.com/tag/jiao-cheng.html">教程</a></li>
 </ul>
 -->
 
@@ -316,7 +344,7 @@
 
 <p class="paginator">
             <a href="http://www.wengweitao.com/author/wwt4.html"><i class="icon-arrow-left"></i></a>
-    Page 5 / 8
+    Page 5 / 9
         <a href="http://www.wengweitao.com/author/wwt6.html"><i class="icon-arrow-right"></i></a>
 </p>
 </section><!-- /#content -->

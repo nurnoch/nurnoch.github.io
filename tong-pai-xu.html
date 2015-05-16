@@ -2,11 +2,11 @@
 <html lang="zh">
 <head>
 
-        <title>拉格朗日对偶性（Lagrange Duality）</title>
+        <title>桶排序</title>
         <meta charset="utf-8" />
         <link href="http://www.wengweitao.com/feeds\all.atom.xml" type="application/atom+xml" rel="alternate" title="wwt's blog Full Atom Feed" />
         <link href="http://www.wengweitao.com/feeds/all.rss.xml" type="application/rss+xml" rel="alternate" title="wwt's blog Full RSS Feed" />
-        <link href="http://www.wengweitao.com/feeds/ji-qi-xue-xi.rss.xml" type="application/atom+xml" rel="alternate" title="wwt's blog Categories Atom Feed" />
+        <link href="http://www.wengweitao.com/feeds/suan-fa-yu-shu-ju-jie-gou.rss.xml" type="application/atom+xml" rel="alternate" title="wwt's blog Categories Atom Feed" />
 
 
         <!-- Mobile viewport optimized: j.mp/bplateviewport -->
@@ -60,103 +60,78 @@
 
             <header>
               <h2 class="entry-title">
-                <a href="http://www.wengweitao.com/la-ge-lang-ri-dui-ou-xing-lagrange-duality.html" rel="bookmark"
-                   title="Permalink to 拉格朗日对偶性（Lagrange Duality）">拉格朗日对偶性（Lagrange Duality）</a></h2>
+                <a href="http://www.wengweitao.com/tong-pai-xu.html" rel="bookmark"
+                   title="Permalink to 桶排序">桶排序</a></h2>
            
             </header>
             <footer class="post-info">
-              <abbr class="published" title="2014-07-30T09:56:00">
-                Wed 30 July 2014
+              <abbr class="published" title="2015-05-18T16:13:00">
+                Mon 18 May 2015
               </abbr>
               <address class="vcard author">By 
                 <a class="url fn" href="http://www.wengweitao.com/author/wwt.html"> wwt</a>
               </address>
             </footer><!-- /.post-info -->
             <div class="entry-content">
-              <blockquote>
-<p>在求解约束优化问题的时候，常常利用拉格朗日对偶性（Lagrange Duality）将原始问题转化为对偶问题，通过求解对偶问题而得到原始问题的解。该方法用在许多统计学习方法中，如最大熵模型和SVM等。</p>
-</blockquote>
-<h2>原始问题</h2>
-<h3>原始最优化问题</h3>
-<p>考虑最优化问题：</p>
-<blockquote>
-<p>
-<div class="math">$$min_x f(x)$$</div>
-<div class="math">$$s.t. c_i(x) \leq 0  \:\:\:\:\: i=1,2,...,k$$</div>
-<div class="math">$$h_j(x) = 0   \:\:\:\:\: j=1,2,...,l$$</div>
+              <p>本文继续介绍一种非比较排序算法——<strong>桶排序（bucket sort）</strong>。通排序假设输入数据服从均匀分布，平均情况下它的时间复杂度为O(n)。与计数排序类似，因为对输入数据作了某种假设，桶排序的速度也很快。具体的，计数排序假设输入数据都属于一个小区间的整数，而桶排序则假设输入数据是由一个随机过程产生，该过程将元素均匀、独立地分布在[0,1)区间上。</p>
+<h2>桶排序的基本思想</h2>
+<ol>
+<li>桶排序将[0,1)区间划分成大小相同的n个子区间，称为桶</li>
+<li>将n个输入分别放入各个桶中</li>
+<li>对桶中的数进行排序</li>
+<li>遍历每个桶，按照次序把各个桶中的元素列出来</li>
+</ol>
+<h2>桶排序的代码实现</h2>
+<p>在桶排序的代码中，我们假设输入是一个包含n个元素的数组A，且每个元素A[i]满足<span class="math">\(0 \leq A[i] &lt; 1\)</span>。此外，算法还需要一个临时数组B[0..n-1]来存放链表（即桶），并假设存在一种用于维护这些链表的机制。</p>
+<div class="highlight"><pre><span class="kt">void</span> <span class="nf">insertionSort</span><span class="p">(</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">A</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="n">A</span><span class="p">.</span><span class="n">size</span><span class="p">();</span>
+    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kt">double</span> <span class="n">key</span> <span class="o">=</span> <span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+        <span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span>
+        <span class="k">while</span><span class="p">(</span><span class="n">A</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">key</span> <span class="o">&amp;&amp;</span> <span class="n">j</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">A</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">A</span><span class="p">[</span><span class="n">j</span><span class="o">-</span><span class="mi">1</span><span class="p">];</span>
+            <span class="o">--</span><span class="n">j</span><span class="p">;</span>
+        <span class="p">}</span>   
+        <span class="n">A</span><span class="p">[</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">key</span><span class="p">;</span>
+    <span class="p">}</span>   
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">bucketSort</span><span class="p">(</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">A</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="n">A</span><span class="p">.</span><span class="n">size</span><span class="p">();</span>
+    <span class="n">vector</span><span class="o">&lt;</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;&gt;</span> <span class="n">B</span><span class="p">(</span><span class="n">n</span><span class="p">);</span>
+
+    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kt">int</span> <span class="n">cur_index</span> <span class="o">=</span> <span class="p">(</span><span class="kt">int</span><span class="p">)(</span><span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">*</span><span class="n">n</span><span class="p">);</span>
+        <span class="n">B</span><span class="p">[</span><span class="n">cur_index</span><span class="p">].</span><span class="n">push_back</span><span class="p">(</span><span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+        <span class="c1">//cout &lt;&lt; cur_index &lt;&lt; &#39; &#39; &lt;&lt; A[i]&lt;&lt; endl;</span>
+    <span class="p">}</span>   
+    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span>
+        <span class="n">insertionSort</span><span class="p">(</span><span class="n">B</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+    <span class="kt">int</span> <span class="n">index</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="n">B</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">size</span><span class="p">();</span>
+        <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="o">++</span><span class="n">j</span><span class="p">)</span>
+            <span class="n">A</span><span class="p">[</span><span class="n">index</span><span class="o">++</span><span class="p">]</span> <span class="o">=</span> <span class="n">B</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">];</span>
+    <span class="p">}</span>         
+<span class="p">}</span>
+</pre></div>
+
+
+<ul>
+<li>待排序列A中的每个元素都分布在区间[0,1)之间；</li>
+<li>利用 (int)(A[i] * 10 ) 得出将A[i]分配到哪个链表（桶）中；</li>
+<li>这里将桶的个数设置为n（可以设置为其他有限数量的桶）；</li>
+<li>利用插入排序对，每个链表的内部进行排序；</li>
+<li>最后将各个桶对应的链表都联结起来，就是最终的排序序列。</li>
+</ul>
+<h2>桶排序的复杂度</h2>
+<p>从以上的代码可以看出，在最坏情况下，除了桶内使用插入排序外，其余步骤的时间代价都是O(n)。可以证明，桶排序在平均情况下的运行时间为：
 </p>
-</blockquote>
-<p>称此约束最优化问题为原始最优化问题或原始问题。</p>
-<h3>广义拉格朗日函数</h3>
-<p>为了解决原始问题，我们先引入<strong>广义拉格朗日（generalized Lagrangian）函数</strong>：
-</p>
-<div class="math">$$L(x, \alpha, \beta) = f(x) + \sum_{i=1}^{k}\alpha_i  c_i(x) + \sum_{j=1}^{l}\beta_j h_j(x)$$</div>
-<p>
-这里的<span class="math">\(\alpha_i\)</span>和<span class="math">\(\beta_j\)</span>称为<strong>拉格朗日乘子</strong>。</p>
-<h3>极小极大问题</h3>
-<p>现在考虑<span class="math">\(L(x, \alpha, \beta)\)</span>的最大值：
-</p>
-<div class="math">$$\theta_p(x) = max_{\alpha, \beta: \alpha_i \geq 0}L(x, \alpha, \beta) $$</div>
-<p>
-上式中的下标p代表“primal（原始问题）”。如果上式中的x不满足原始问题的约束条件（即存在某些i使得<span class="math">\(c_i(x)&gt;0\)</span>或者<span class="math">\(h_i(x) \neq 0\)</span>），那么就有
-</p>
-<div class="math">$$\theta_p(x) =  f(x) + \sum_{i=1}^{k}\alpha_i  c_i(x) + \sum_{j=1}^{l}\beta_j h_j(x)= \infty$$</div>
-<p>
-因为若<span class="math">\(c_i(x)&gt;0\)</span>，可取<span class="math">\(\alpha_i \rightarrow +\infty\)</span>，或者<span class="math">\(h_i(x) \neq 0\)</span>，可令<span class="math">\(\beta_j h_j(x) \rightarrow +\infty\)</span>，而将其余的<span class="math">\(\alpha_i ，\beta_j\)</span>都取0.</p>
-<p>相反的，若满足原始优化问题的约束条件，那么有<span class="math">\(\theta_p(x) = f(x)\)</span>。所以有
-</p>
-<div class="math">$$\theta_p(x) = \left\{\begin{matrix}
-f(x)   \:\:\:\:\: x满足约束条件\\
-\infty  \:\:\:\:\: 其他
-\end{matrix}\right.$$</div>
-<p>
-因此，如果我们考虑极小化问题
-</p>
-<div class="math">$$min_x\theta_p(x) = min_xmax_{\alpha, \beta: \alpha_i \geq 0}L(x, \alpha, \beta) $$</div>
-<p>
-我们可以看到这与原始最优化问题是等价的，称为<strong>广义拉格朗日函数的极小极大问题</strong>。这样就把原始最优化问题转化为求解拉格朗日函数的极小极大问题。我们定义原始最优化问题的最优值为
-</p>
-<div class="math">$$p^* = min_x\theta_p(x)$$</div>
-<p>
-称为<strong>原始问题的值</strong>。</p>
-<h2>对偶问题</h2>
-<p>定义
-</p>
-<div class="math">$$\theta_D(x) = min_xL(x, \alpha, \beta) $$</div>
-<p>
-上式中的下标D代表“dual（对偶问题）”。与前面定义的原始问题不同的是，原始问题是通过参数<span class="math">\(\alpha, \beta\)</span>进行优化（极大化），而这里定义的问题是通过<span class="math">\(x\)</span>进行优化（极小化）。</p>
-<p>对<span class="math">\(\theta_D(x)\)</span>极大化，就可以得到<strong>对偶优化问题</strong></p>
-<blockquote>
-<p>
-<div class="math">$$max_{\alpha, \beta: \alpha_i \geq 0}\theta_D(\alpha, \beta) = max_{\alpha, \beta: \alpha_i \geq 0}min_xL(x, \alpha, \beta) $$</div>
-</p>
-</blockquote>
-<p>称为<strong>广义拉格朗日函数的极大极小问题</strong>。</p>
-<p>对偶问题与原始问题除了交换式子中max和min的顺序外，是一样的。同样，我也定义<strong>对偶优化问题的最优值</strong>
-</p>
-<div class="math">$$d^* = max_{\alpha, \beta: \alpha_i \geq 0}\theta_D(\alpha, \beta)$$</div>
-<p>
-称为<strong>对偶问题的值</strong>。</p>
-<h2>原始问题和对偶问题的关系</h2>
-<p>容易得到（max min 小于等于 min max）：
-</p>
-<div class="math">$$d^* = max_{\alpha, \beta: \alpha_i \geq 0}min_xL(x, \alpha, \beta) \leq min_xmax_{\alpha, \beta: \alpha_i \geq 0}L(x, \alpha, \beta)= p^*$$</div>
-<p>在某些条件下，原始问题和对偶问题的最优值相等即<span class="math">\(d^* = p^*\)</span>，这时可以<strong>用对偶问题替代原始问题</strong>。</p>
-<p><strong>定理1：</strong>考虑原始问题和对偶问题。假设<span class="math">\(f(x)\)</span>和<span class="math">\(c_i(x)\)</span>是凸函数（convex），<span class="math">\(h_j(x)\)</span>是仿射函数（affine，与线性函数类似只是允许增加一个截距b）；并且存在x，对所有的i有<span class="math">\(c_i(x) &lt; 0\)</span>. 则存在<span class="math">\(x^* , \alpha^* ,\beta^*\)</span>，使得在<span class="math">\(x^*\)</span>是原始问题的解，<span class="math">\(\alpha^* ,\beta^*\)</span>是对偶问题的解，并且</p>
-<div class="math">$$d^* = p^* = L(x^*, \alpha^*, \beta^*)$$</div>
-<p><strong>定理2：</strong>考虑原始问题和对偶问题。假设<span class="math">\(f(x)\)</span>和<span class="math">\(c_i(x)\)</span>是凸函数（convex），<span class="math">\(h_j(x)\)</span>是仿射函数（affine）；并且存在x，对所有的i有<span class="math">\(c_i(x) &lt; 0\)</span>. 则<span class="math">\(x^*\)</span>是原始问题的解，并且<span class="math">\(\alpha^*, \beta^*\)</span>是对偶问题的解的充分必要条件是<span class="math">\(x^* , \alpha^* ,\beta^*\)</span> 满足下面的<strong>Karush-Kuhn-Tucker(KKT)条件</strong>：
-</p>
-<div class="math">$$\bigtriangledown_x L(x^*, \alpha^*, \beta^*)=0$$</div>
-<div class="math">$$\bigtriangledown_\alpha L(x^*, \alpha^*, \beta^*)=0$$</div>
-<div class="math">$$\bigtriangledown_\beta L(x^*, \alpha^*, \beta^*)=0$$</div>
-<div class="math">$$\alpha^* c_i(x^*) = 0  \:\:\:\:\: i=1,2,...,k$$</div>
-<div class="math">$$c_i(x^*) \leq 0  \:\:\:\:\: i=1,2,...,k$$</div>
-<div class="math">$$\alpha^* \geq 0  \:\:\:\:\: i=1,2,...,k$$</div>
-<div class="math">$$h_j(x^*) = 0   \:\:\:\:\: j=1,2,...,l$$</div>
-<p>其中，上面的第4个式子，称为KKT的对偶互补条件，由此条件可得，若<span class="math">\(\alpha^*&gt;0\)</span>那么<span class="math">\(c_i(x^*) = 0\)</span>.</p>
+<div class="math">$$O(n) + n.O(2-\frac{1}{n}) = O(n)$$</div>
+<p>桶排序需要m个桶，并且还需要存储n个待排的元素，所以桶排序的空间复杂度为O(m + n)。</p>
 <hr />
 <h2>Reference</h2>
-<p><a href="http://book.douban.com/subject/10590856/">统计学习方法</a></p>
+<p><a href="http://book.douban.com/subject/1885170/">算法导论</a></p>
 <script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
     var align = "center",
         indent = "0em",
@@ -200,7 +175,7 @@ f(x)   \:\:\:\:\: x满足约束条件\\
               <h3>Comments</h3>
               <div id="disqus_thread"></div>
               <script type="text/javascript">
-                var disqus_identifier = "la-ge-lang-ri-dui-ou-xing-lagrange-duality.html";
+                var disqus_identifier = "tong-pai-xu.html";
                 (function() {
                 var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
                 dsq.src = 'http://wengwt.disqus.com/embed.js';

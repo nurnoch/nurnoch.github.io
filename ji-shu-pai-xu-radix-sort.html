@@ -2,7 +2,7 @@
 <html lang="zh">
 <head>
 
-        <title>插入排序</title>
+        <title>基数排序（radix sort）</title>
         <meta charset="utf-8" />
         <link href="http://www.wengweitao.com/feeds\all.atom.xml" type="application/atom+xml" rel="alternate" title="wwt's blog Full Atom Feed" />
         <link href="http://www.wengweitao.com/feeds/all.rss.xml" type="application/rss+xml" rel="alternate" title="wwt's blog Full RSS Feed" />
@@ -60,43 +60,73 @@
 
             <header>
               <h2 class="entry-title">
-                <a href="http://www.wengweitao.com/cha-ru-pai-xu.html" rel="bookmark"
-                   title="Permalink to 插入排序">插入排序</a></h2>
+                <a href="http://www.wengweitao.com/ji-shu-pai-xu-radix-sort.html" rel="bookmark"
+                   title="Permalink to 基数排序（radix sort）">基数排序（radix sort）</a></h2>
            
             </header>
             <footer class="post-info">
-              <abbr class="published" title="2015-05-15T18:34:00">
-                Fri 15 May 2015
+              <abbr class="published" title="2015-05-17T14:12:00">
+                Sun 17 May 2015
               </abbr>
               <address class="vcard author">By 
                 <a class="url fn" href="http://www.wengweitao.com/author/wwt.html"> wwt</a>
               </address>
             </footer><!-- /.post-info -->
             <div class="entry-content">
-              <p>本文介绍一种非常简单的排序算法——<strong>插入排序</strong>。对于少量元素的排序，它是一个有效的算法。插入排序可以形象的类比为手中扑克牌的排序。开始时，左手为空并且桌子上的扑克牌的牌面朝下。然后我们每次从桌子上拿一张扑克牌，插入左手中正确的位置，我们从右向左将它与手中的每张牌进行比较，任何时候左手上的牌总是有序的。</p>
-<p>对数组A[1..n]进行插入排序步骤：</p>
-<ol>
-<li>初始时只含有一个元素A<a href="http://book.douban.com/subject/1885170/">1</a>，所以是有序的</li>
-<li>依次将A[2]~A[n]依次插入到前面已经排好序的子序列中</li>
-<li>n - 1次即可得到一个有序的表</li>
-</ol>
-<div class="highlight"><pre><span class="kt">void</span> <span class="nf">insertionSort</span><span class="p">(</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">A</span><span class="p">)</span> <span class="p">{</span>
+              <p>本文继续介绍另外一种非比较排序算法——<strong>基数排序（radix sort）</strong>，最早用在卡片排序机上。基数排序的原理是将整数按位切割成不同的数字，然后按每个位数分别比较。对于十进制的数字，每列只会用到10个位置，一个d位数将占用d列。</p>
+<p>基数排序<strong>先按最低有效位进行排序</strong>，然后按次低有效位进行排序，直到对所有的d位数字都进行了排序。为了确保基数排序的正确性，<strong>一位数的排序算法必须是稳定的</strong>。</p>
+<p>我们有时会用基数排序来对具有多关键字域的记录进行排序。例如，我们希望用3个关键字（年、月、日）来对日期进行排序。我们可以使用基于特殊比较函数的排序算法，先比较年，如果相同再比较月，如果还相同再比较日。我们也可以采用基数排序，用一种稳定排序算法对这些信息进行三次排序：先日，再月，最后年。</p>
+<h2>基数排序的实现</h2>
+<p>基数排序的代码实现：</p>
+<div class="highlight"><pre><span class="k">const</span> <span class="kt">int</span> <span class="n">k</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>  <span class="c1">// 每个位的数值大小为从0~9</span>
+<span class="kt">int</span> <span class="n">base</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+
+<span class="kt">void</span> <span class="nf">countingSort</span><span class="p">(</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">A</span><span class="p">,</span> <span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">B</span><span class="p">,</span> <span class="kt">int</span> <span class="n">j</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">C</span><span class="p">(</span><span class="n">k</span><span class="o">+</span><span class="mi">1</span><span class="p">);</span>
     <span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="n">A</span><span class="p">.</span><span class="n">size</span><span class="p">();</span>
-    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="o">++</span><span class="n">j</span><span class="p">)</span> <span class="p">{</span>
-        <span class="kt">int</span> <span class="n">key</span> <span class="o">=</span> <span class="n">A</span><span class="p">[</span><span class="n">j</span><span class="p">];</span>
-        <span class="c1">// Insert A[j] into the sorted sequence A[1..j-1]</span>
-        <span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">j</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span>
-        <span class="k">while</span><span class="p">(</span><span class="n">i</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="n">key</span> <span class="o">&lt;</span> <span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="p">{</span>
-            <span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
-            <span class="o">--</span><span class="n">i</span><span class="p">;</span>
-        <span class="p">}</span>   
-        <span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">key</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">cur_base</span> <span class="o">=</span> <span class="n">pow</span><span class="p">(</span><span class="n">base</span><span class="p">,</span> <span class="n">j</span><span class="p">);</span>
+    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span>  <span class="c1">// 每个元素的当前排序位数所对应的值进行统计</span>
+        <span class="kt">int</span> <span class="n">cur_num</span> <span class="o">=</span> <span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">/</span> <span class="n">cur_base</span> <span class="o">%</span> <span class="mi">10</span><span class="p">;</span>
+        <span class="o">++</span><span class="n">C</span><span class="p">[</span><span class="n">cur_num</span><span class="p">];</span>
+    <span class="p">}</span>
+    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">k</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">C</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+=</span> <span class="n">C</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">];</span>
+    <span class="p">}</span>
+    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">;</span> <span class="o">--</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kt">int</span> <span class="n">cur_num</span> <span class="o">=</span> <span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">/</span> <span class="n">cur_base</span> <span class="o">%</span> <span class="mi">10</span><span class="p">;</span>
+        <span class="n">B</span><span class="p">[</span><span class="n">C</span><span class="p">[</span><span class="n">cur_num</span><span class="p">]</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+        <span class="o">--</span><span class="n">C</span><span class="p">[</span><span class="n">cur_num</span><span class="p">];</span>                                                                                                                                                                                     
+    <span class="p">}</span>   
+    <span class="c1">// 将B中的元素复制到A中</span>
+    <span class="n">A</span> <span class="o">=</span> <span class="n">B</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">radixSort</span><span class="p">(</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">A</span><span class="p">,</span> <span class="kt">int</span> <span class="n">d</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">const</span> <span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="n">A</span><span class="p">.</span><span class="n">size</span><span class="p">();</span>  <span class="c1">// 数组A的个数</span>
+    <span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">B</span><span class="p">(</span><span class="n">n</span><span class="p">);</span>
+    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">d</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">countingSort</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">i</span><span class="p">);</span> 
     <span class="p">}</span>   
 <span class="p">}</span>
 </pre></div>
 
 
-<p>可以看出插入排序是原址排序的算法空间复杂度为O(1)，时间复杂度为<span class="math">\(O(n^2)\)</span>。最好的情况下，数组中所有的元素都是有序的，每一步只需要一次比较，不需要移动，最好情况的时间复杂度为O(n)。</p>
+<ul>
+<li>A是待排序的数组；d是A中待排序元素的位数；k是10表示0~9个数字</li>
+<li>对每一位的排序，调用计数排序（计数排序是稳定的）</li>
+<li>需要将原始的计数排序进行修改，使之只对1位数进行排序</li>
+<li>cur_num = A[i] / cur_base % 10 得到A[i]元素对应的第j位的数值</li>
+<li>对每一位的排序结束后，需要把已排序的数组复制给A</li>
+</ul>
+<h2>基数排序的复杂度</h2>
+<p>给定n个d位数，其中每一个数位有k个可能的取值。如果RADIX-SORT使用的稳定排序方法耗时O(n+k)，那么它就可以在O(d(n+k))时间内将这些数排好序。当d为常数且k=O(n)时，级数排序具有线性的时间代价。</p>
+<p>另外，可以证明：给定一个b位数和任何正整数<span class="math">\(r \leq b\)</span>，如果RADIX-SORT使用的稳定排序算法对数据取值区间是0到k的输入进行排序耗时O(n+k)，那么它就可以在<span class="math">\(O(
+\frac{b}{r}(n+2^r)\)</span>)时间内将这些数排好序。</p>
+<p>因为调用了计数排序，所以空间复杂度与计数排序一样都是O(k+n)。</p>
+<h2>基数排序与快速排序的比较</h2>
+<p>基数排序是否比基于比较的排序算法（如快速排序）更好呢？虽然基数排序的运行时间O(n)，看上去要比快速排序的期望运行时间O(nlogn)更好一些。但是这两个表达式中隐含的常数因子是不同的。虽然基数排序执行循环的轮数会比快速排序要少，但每一轮它所耗费的时间要长得多。</p>
+<p>此外，利用计数排序的基数排序不是原址排序，当主存容量比较有限时，我们可能会更倾向于像快速排序那样的原址排序算法。</p>
+<p>选择哪一个排序算法依赖于具体实现和底层硬件的特性（如快速排序通常比基数排序更有效地利用硬件的缓存）以及输入数据的特征。</p>
 <hr />
 <h2>Reference</h2>
 <p><a href="http://book.douban.com/subject/1885170/">算法导论</a></p>
@@ -143,7 +173,7 @@
               <h3>Comments</h3>
               <div id="disqus_thread"></div>
               <script type="text/javascript">
-                var disqus_identifier = "cha-ru-pai-xu.html";
+                var disqus_identifier = "ji-shu-pai-xu-radix-sort.html";
                 (function() {
                 var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
                 dsq.src = 'http://wengwt.disqus.com/embed.js';
