@@ -2,11 +2,10 @@
 <html lang="zh">
 <head>
 
-        <title>CentOS 升级 gcc 和 g++ 的方法</title>
+        <title>wwt's blog - 排序 算法 基础 总结</title>
         <meta charset="utf-8" />
         <link href="http://www.wengweitao.com/feeds\all.atom.xml" type="application/atom+xml" rel="alternate" title="wwt's blog Full Atom Feed" />
         <link href="http://www.wengweitao.com/feeds/all.rss.xml" type="application/rss+xml" rel="alternate" title="wwt's blog Full RSS Feed" />
-        <link href="http://www.wengweitao.com/feeds/gong-ju.rss.xml" type="application/atom+xml" rel="alternate" title="wwt's blog Categories Atom Feed" />
 
 
         <!-- Mobile viewport optimized: j.mp/bplateviewport -->
@@ -52,85 +51,60 @@
               </ul>
             </div>
 
-<section id="content" class="body">
+<section id="content">
+
+
 
    <div class="row">
+
+
         <div class="eleven columns">
+                 <ol id="post-list">
+                        <li><article class="hentry">
+                                <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/pai-xu-suan-fa-zong-jie.html" rel="bookmark" title="Permalink to 排序算法总结">排序算法总结</a></h2> </header>
+                                <footer class="post-info">
+                                    <abbr class="published" title="2015-05-20T20:35:00"> Wed 20 May 2015 </abbr>
+                                    <address class="vcard author">By 
+                                    <a class="url fn" href="http://www.wengweitao.com/author/wwt.html"> wwt</a>
+                                    </address>
+                                </footer><!-- /.post-info -->
+                                <div class="entry-content"> <p>在前面的几篇文章中，分别介绍了几种最常见的算法：</p>
+<ol>
+<li><a href="http://www.wengweitao.com/cha-ru-pai-xu.html">直接插入排序</a></li>
+<li><a href="http://www.wengweitao.com/mou-pao-pai-xu.html">冒泡排序</a></li>
+<li><a href="http://www.wengweitao.com/gui-bing-pai-xu.html">归并排序</a></li>
+<li><a href="http://www.wengweitao.com/dui-pai-xu.html">堆排序</a></li>
+<li><a href="http://www.wengweitao.com/kuai-su-pai-xu.html">快速排序</a></li>
+<li><a href="http://www.wengweitao.com/ji-shhtml">计数排序</a></li>
+<li><a href="http://www.wengweitao.com/ji-shu-pai-xu-radix-sort.html">基数排序</a></li>
+<li><a href="http://www.wengweitao.com/tong-pai-xuww.wengweitao.com/ji-shu-pai-xu-radix-sort.html">桶排序</a></li>
+</ol>
+<p>本文将对这8种排序进行总结。</p>
+<h2>比较排序与非比较排序算法</h2>
+<p><strong>比较排序算法：</strong></p>
+<p>插入排序、冒泡排序、归并排序、堆排序和快速排序都是比较排序算法。它们都是通过对元素进行比较操作来确定输入数组的有序次序。使用决策树模型，可以证明任意比较排序算法排序n个元素的最坏运行时间的下界为<span class="math">\(\Omega(nlogn)\)</span>。归并排序和堆排序的最坏运行时间都为O(nlogn)都是渐近最优的比较算法。快速排序平均运行时间也为O(nlogn)，而且在实际应用中速度通常都比较快，是排序大数组最常用的算法。</p>
+<p><strong>非比较排序算法：</strong>：
+计数排序、基数排序和桶排序都是非比较排序算法。通过比较操作之外的方法来获得序列的有序次序的信息，就有可能打破<span class="math">\(\Omega(nlogn)\)</span>的时间下界。</p>
+<h2>从时间复杂度上看</h2>
+<p>直接插入排序、冒泡排序的平均情况下的时间复杂度都是<span class="math">\(O(n^2)\)</span>，并且实现也比较简单。但是，插入排序和冒泡排序在最好情况下，时间复杂度可以达到O(n)。</p>
+<p>归并排序、堆排序和快速排序的平均情况下的时间复杂度都是O ...</p> </div><!-- /.entry-content -->
+
+                                <div class="medium primary btn"><a href="http://www.wengweitao.com/pai-xu-suan-fa-zong-jie.html" rel="bookmark" title="Permalink to 排序算法总结">Read more <i class="icon-arrow-right"></i></a></div>
 
 
-            <header>
-              <h2 class="entry-title">
-                <a href="http://www.wengweitao.com/centos-sheng-ji-gcc-he-g-de-fang-fa.html" rel="bookmark"
-                   title="Permalink to CentOS 升级 gcc 和 g++ 的方法">CentOS 升级 gcc 和 g++ 的方法</a></h2>
-           
-            </header>
-            <footer class="post-info">
-              <abbr class="published" title="2015-05-12T19:02:00">
-                Tue 12 May 2015
-              </abbr>
-              <address class="vcard author">By 
-                <a class="url fn" href="http://www.wengweitao.com/author/wwt.html"> wwt</a>
-              </address>
-            </footer><!-- /.post-info -->
-            <div class="entry-content">
-              <p>CentOS 系统自带的 gcc 或者 g++ 的版本是：g++ (GCC) 4.4.6. GCC 版本太旧，导致了很多使用上的不便，如：无法使用g++ -std=c++11 命令来编译 C++11、无法使用Vim的很多插件（YouCompleteMe等）。因此，有必要对它进行升级。</p>
-<p>对 GCC 升级无法直接使用：</p>
-<div class="highlight"><pre>yum update gcc
-</pre></div>
+
+                                <div class="row tag-row">
+                                        <span>Tagged as : </span>
+                                            <a class="danger label" href="http://www.wengweitao.com/tag/pai-xu-suan-fa-ji-chu-zong-jie.html">排序 算法 基础 总结</a>
+                                </div>
 
 
-<p>以下是升级的详细过程。</p>
-<h3>1.使用 redhat developer toolset 1.1 的repo，安装GCC</h3>
-<div class="highlight"><pre><span class="nb">cd</span> /etc/yum.repos.d
 
-wget http://people.centos.org/tru/devtools-1.1/devtools-1.1.repo 
-
-yum --enablerepo<span class="o">=</span>testing-1.1-devtools-6 install devtoolset-1.1-gcc devtoolset-1.1-gcc-c++
-</pre></div>
-
-
-<h3>2. 替换系统中原来的GCC</h3>
-<p>通过通过第一步会把 GCC 安装到以下目录：</p>
-<div class="highlight"><pre>/opt/centos/devtoolset-1.1/root/usr/bin/
-</pre></div>
-
-
-<p>接下来需要修改系统的配置，使默认的 gcc 和 g++ 命令使用的是新安装的版本。</p>
-<div class="highlight"><pre>ln -s /opt/centos/devtoolset-1.1/root/usr/bin/* /usr/local/bin/
-<span class="nb">hash</span> -r
-</pre></div>
-
-
-<p>现在查看 g++ 的版本号：</p>
-<div class="highlight"><pre>g++ --version
-g++ <span class="o">(</span>GCC<span class="o">)</span> 4.7.2 20121015 <span class="o">(</span>Red Hat 4.7.2-5<span class="o">)</span>
-Copyright <span class="o">(</span>C<span class="o">)</span> 2012 Free Software Foundation, Inc.
-This is free software; see the <span class="nb">source </span><span class="k">for </span>copying conditions.  There is NO
-warranty; not even <span class="k">for </span>MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
-</pre></div>
-
-
-<p>已经从4.4.6升级到4.7.2了。</p>
-<hr />
-<h2>Reference</h2>
-<p>http://superuser.com/questions/381160/how-to-install-gcc-4-7-x-4-8-x-on-centos/542091#542091</p>
-            </div><!-- /.entry-content -->
-            <div class="comments">
-              <h3>Comments</h3>
-              <div id="disqus_thread"></div>
-              <script type="text/javascript">
-                var disqus_identifier = "centos-sheng-ji-gcc-he-g-de-fang-fa.html";
-                (function() {
-                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-                dsq.src = 'http://wengwt.disqus.com/embed.js';
-                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-                })();
-              </script>
-            </div>
-
+                        </article></li>
+                </ol><!-- /#posts-list -->
 
         </div><!-- /.eleven.columns -->
-
+        
 <div class="three columns">
 
 <!--
@@ -202,8 +176,10 @@ warranty; not even <span class="k">for </span>MERCHANTABILITY or FITNESS FOR A P
 
 </div> </div><!-- /.row -->
 
-
-</section>
+<p class="paginator">
+    Page 1 / 1
+</p>
+</section><!-- /#content -->
 
        </div><!-- /.row -->
     </div><!-- /.container -->

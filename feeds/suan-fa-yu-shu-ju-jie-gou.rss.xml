@@ -1,5 +1,132 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>wwt's blog</title><link href="http://www.wengweitao.com/" rel="alternate"></link><link href="http://www.wengweitao.com/feeds/suan-fa-yu-shu-ju-jie-gou.rss.xml" rel="self"></link><id>http://www.wengweitao.com/</id><updated>2015-05-18T16:13:00+08:00</updated><entry><title>桶排序</title><link href="http://www.wengweitao.com/tong-pai-xu.html" rel="alternate"></link><updated>2015-05-18T16:13:00+08:00</updated><author><name>wwt</name></author><id>tag:www.wengweitao.com,2015-05-18:tong-pai-xu.html</id><summary type="html">&lt;p&gt;本文继续介绍一种非比较排序算法——&lt;strong&gt;桶排序（bucket sort）&lt;/strong&gt;。通排序假设输入数据服从均匀分布，平均情况下它的时间复杂度为O(n)。与计数排序类似，因为对输入数据作了某种假设，桶排序的速度也很快。具体的，计数排序假设输入数据都属于一个小区间的整数，而桶排序则假设输入数据是由一个随机过程产生，该过程将元素均匀、独立地分布在[0,1)区间上。&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>wwt's blog</title><link href="http://www.wengweitao.com/" rel="alternate"></link><link href="http://www.wengweitao.com/feeds/suan-fa-yu-shu-ju-jie-gou.rss.xml" rel="self"></link><id>http://www.wengweitao.com/</id><updated>2015-05-20T20:35:00+08:00</updated><entry><title>排序算法总结</title><link href="http://www.wengweitao.com/pai-xu-suan-fa-zong-jie.html" rel="alternate"></link><updated>2015-05-20T20:35:00+08:00</updated><author><name>wwt</name></author><id>tag:www.wengweitao.com,2015-05-20:pai-xu-suan-fa-zong-jie.html</id><summary type="html">&lt;p&gt;在前面的几篇文章中，分别介绍了几种最常见的算法：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href="http://www.wengweitao.com/cha-ru-pai-xu.html"&gt;直接插入排序&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://www.wengweitao.com/mou-pao-pai-xu.html"&gt;冒泡排序&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://www.wengweitao.com/gui-bing-pai-xu.html"&gt;归并排序&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://www.wengweitao.com/dui-pai-xu.html"&gt;堆排序&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://www.wengweitao.com/kuai-su-pai-xu.html"&gt;快速排序&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://www.wengweitao.com/ji-shhtml"&gt;计数排序&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://www.wengweitao.com/ji-shu-pai-xu-radix-sort.html"&gt;基数排序&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://www.wengweitao.com/tong-pai-xuww.wengweitao.com/ji-shu-pai-xu-radix-sort.html"&gt;桶排序&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;本文将对这8种排序进行总结。&lt;/p&gt;
+&lt;h2&gt;比较排序与非比较排序算法&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;比较排序算法：&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;插入排序、冒泡排序、归并排序、堆排序和快速排序都是比较排序算法。它们都是通过对元素进行比较操作来确定输入数组的有序次序。使用决策树模型，可以证明任意比较排序算法排序n个元素的最坏运行时间的下界为&lt;span class="math"&gt;\(\Omega(nlogn)\)&lt;/span&gt;。归并排序和堆排序的最坏运行时间都为O(nlogn)都是渐近最优的比较算法。快速排序平均运行时间也为O(nlogn)，而且在实际应用中速度通常都比较快，是排序大数组最常用的算法。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;非比较排序算法：&lt;/strong&gt;：
+计数排序、基数排序和桶排序都是非比较排序算法。通过比较操作之外的方法来获得序列的有序次序的信息，就有可能打破&lt;span class="math"&gt;\(\Omega(nlogn)\)&lt;/span&gt;的时间下界。&lt;/p&gt;
+&lt;h2&gt;从时间复杂度上看&lt;/h2&gt;
+&lt;p&gt;直接插入排序、冒泡排序的平均情况下的时间复杂度都是&lt;span class="math"&gt;\(O(n^2)\)&lt;/span&gt;，并且实现也比较简单。但是，插入排序和冒泡排序在最好情况下，时间复杂度可以达到O(n)。&lt;/p&gt;
+&lt;p&gt;归并排序、堆排序和快速排序的平均情况下的时间复杂度都是O(nlogn)。归并排序基于分治的思想，由于其分割的子序列与初始序列的排列无关，它最好、最坏和平均时间复杂度均为O(nlogn)。堆排序利用堆的数据结构，可以在线性时间内完成建堆，每次调整堆只需要O(logn)，并且能够在O(nlogn)时间内完成排序。快速排序也是基于分治的思想，虽然最坏情况下的运行时间会达到&lt;span class="math"&gt;\(O(n^2)\)&lt;/span&gt;，但快速排序平均性能可以达到O(nlogn)，在实际应用中通常优于其他排序算法。&lt;/p&gt;
+&lt;p&gt;计数排序、基数排序和桶排序在输入服从一定条件下可以达到O(n)的时间复杂度。计数排序算法假定输入元素的值的范围为0~k之间，可以在O(k+n)的时间内将n个数排好序。基数排序扩展了计数排序的使用范围，对n个整数进行排序，每个元素有d位，并且每个数字的可能取值为0~k，那么基数排序可以在O(d(n+k))的时间内完成排序工作。桶排序算法，假设输入数据在[0,1)内服从均匀分布，平均情况运行时间为O(n)。&lt;/p&gt;
+&lt;h2&gt;从空间复杂度上看&lt;/h2&gt;
+&lt;p&gt;插入排序、冒泡排序和堆排序都仅需要常数个辅助空间，即时间复杂度为O(1)。&lt;/p&gt;
+&lt;p&gt;快速排序虽然是原址排序，但是使用了递归调用。需要一个小的辅助栈，用来保存信息，最坏情况下，快速排序递归调用的次数是n-1，其空间复杂度为O(n)，在平均情况下快速排序的空间复杂度为O(logn)。&lt;/p&gt;
+&lt;p&gt;归并排序每一次递归调用都要用到一个长度等于带排序列长度的辅助数组空间，所以空间复杂度为O(n)。&lt;/p&gt;
+&lt;p&gt;计数排序和基数排序需要两个额外的数组用来对元素进行计数和保存排序的输出结果，所以空间复杂度为O(k+n)，其中k为每个元素最大的取值范围，n为元素的个数。&lt;/p&gt;
+&lt;p&gt;桶排序需要m个桶，并且还需要存储n个待排的元素，所以桶排序的空间复杂度为O(m + n)。&lt;/p&gt;
+&lt;h2&gt;从稳定性上看&lt;/h2&gt;
+&lt;p&gt;插入排序、冒泡排序、归并排序、计数排序、基数排序和桶排序都是稳定的排序方法，而快速排序和堆排序都是不稳定的排序方法。&lt;/p&gt;
+&lt;p&gt;下面用一个表格总结排序算法的性质。&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;排序算法&lt;/th&gt;
+&lt;th&gt;时间复杂度（最好、平均、最坏）&lt;/th&gt;
+&lt;th&gt;空间复杂度&lt;/th&gt;
+&lt;th align="left"&gt;是否稳定&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;插入排序&lt;/td&gt;
+&lt;td&gt;&lt;span class="math"&gt;\(O(n)\)&lt;/span&gt;、&lt;span class="math"&gt;\(O(n^2)\)&lt;/span&gt;、&lt;span class="math"&gt;\(O(n^2)\)&lt;/span&gt;&lt;/td&gt;
+&lt;td&gt;O(1)&lt;/td&gt;
+&lt;td align="left"&gt;是&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;冒泡排序&lt;/td&gt;
+&lt;td&gt;&lt;span class="math"&gt;\(O(n)\)&lt;/span&gt;、&lt;span class="math"&gt;\(O(n^2)\)&lt;/span&gt;、&lt;span class="math"&gt;\(O(n^2)\)&lt;/span&gt;&lt;/td&gt;
+&lt;td&gt;O(1)&lt;/td&gt;
+&lt;td align="left"&gt;是&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;归并排序&lt;/td&gt;
+&lt;td&gt;&lt;span class="math"&gt;\(O(nlogn)\)&lt;/span&gt;、&lt;span class="math"&gt;\(O(nlogn)\)&lt;/span&gt;、&lt;span class="math"&gt;\(O(nlogn)\)&lt;/span&gt;&lt;/td&gt;
+&lt;td&gt;O(n)&lt;/td&gt;
+&lt;td align="left"&gt;是&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;堆排序&lt;/td&gt;
+&lt;td&gt;&lt;span class="math"&gt;\(O(nlogn)\)&lt;/span&gt;、&lt;span class="math"&gt;\(O(nlogn)\)&lt;/span&gt;、&lt;span class="math"&gt;\(O(nlogn)\)&lt;/span&gt;&lt;/td&gt;
+&lt;td&gt;O(1)&lt;/td&gt;
+&lt;td align="left"&gt;否&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;快速排序&lt;/td&gt;
+&lt;td&gt;&lt;span class="math"&gt;\(O(nlogn)\)&lt;/span&gt;、&lt;span class="math"&gt;\(O(nlogn)\)&lt;/span&gt;、&lt;span class="math"&gt;\(O(n^2)\)&lt;/span&gt;&lt;/td&gt;
+&lt;td&gt;O(logn)&lt;/td&gt;
+&lt;td align="left"&gt;否&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;计数排序&lt;/td&gt;
+&lt;td&gt;&lt;span class="math"&gt;\(O(n+k)\)&lt;/span&gt;、&lt;span class="math"&gt;\(O(n+k)\)&lt;/span&gt;、&lt;span class="math"&gt;\(O(n+k)\)&lt;/span&gt;&lt;/td&gt;
+&lt;td&gt;O(k+n)&lt;/td&gt;
+&lt;td align="left"&gt;是&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;基数排序&lt;/td&gt;
+&lt;td&gt;&lt;span class="math"&gt;\(O(d(n+k))\)&lt;/span&gt;、&lt;span class="math"&gt;\(O(d(n+k))\)&lt;/span&gt;、&lt;span class="math"&gt;\(O(d(n+k))\)&lt;/span&gt;&lt;/td&gt;
+&lt;td&gt;O(k+n)&lt;/td&gt;
+&lt;td align="left"&gt;是&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;桶排序&lt;/td&gt;
+&lt;td&gt;&lt;span class="math"&gt;\(O(n)\)&lt;/span&gt;、&lt;span class="math"&gt;\(O(n)\)&lt;/span&gt;、&lt;span class="math"&gt;\(O(n^2)\)&lt;/span&gt;&lt;/td&gt;
+&lt;td&gt;O(m + n)&lt;/td&gt;
+&lt;td align="left"&gt;是&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;script type="text/javascript"&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "false";
+
+    if (false) {
+        align = (screen.width &lt; 768) ? "left" : align;
+        indent = (screen.width &lt; 768) ? "0em" : indent;
+        linebreak = (screen.width &lt; 768) ? 'true' : linebreak;
+    }
+    
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = '//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); ";
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+&lt;/script&gt;</summary><category term="排序 算法 基础 总结"></category></entry><entry><title>桶排序</title><link href="http://www.wengweitao.com/tong-pai-xu.html" rel="alternate"></link><updated>2015-05-18T16:13:00+08:00</updated><author><name>wwt</name></author><id>tag:www.wengweitao.com,2015-05-18:tong-pai-xu.html</id><summary type="html">&lt;p&gt;本文继续介绍一种非比较排序算法——&lt;strong&gt;桶排序（bucket sort）&lt;/strong&gt;。通排序假设输入数据服从均匀分布，平均情况下它的时间复杂度为O(n)。与计数排序类似，因为对输入数据作了某种假设，桶排序的速度也很快。具体的，计数排序假设输入数据都属于一个小区间的整数，而桶排序则假设输入数据是由一个随机过程产生，该过程将元素均匀、独立地分布在[0,1)区间上。&lt;/p&gt;
 &lt;h2&gt;桶排序的基本思想&lt;/h2&gt;
 &lt;ol&gt;
 &lt;li&gt;桶排序将[0,1)区间划分成大小相同的n个子区间，称为桶&lt;/li&gt;

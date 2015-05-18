@@ -2,11 +2,11 @@
 <html lang="zh">
 <head>
 
-        <title>拉格朗日对偶性（Lagrange Duality）</title>
+        <title>排序算法总结</title>
         <meta charset="utf-8" />
         <link href="http://www.wengweitao.com/feeds\all.atom.xml" type="application/atom+xml" rel="alternate" title="wwt's blog Full Atom Feed" />
         <link href="http://www.wengweitao.com/feeds/all.rss.xml" type="application/rss+xml" rel="alternate" title="wwt's blog Full RSS Feed" />
-        <link href="http://www.wengweitao.com/feeds/ji-qi-xue-xi.rss.xml" type="application/atom+xml" rel="alternate" title="wwt's blog Categories Atom Feed" />
+        <link href="http://www.wengweitao.com/feeds/suan-fa-yu-shu-ju-jie-gou.rss.xml" type="application/atom+xml" rel="alternate" title="wwt's blog Categories Atom Feed" />
 
 
         <!-- Mobile viewport optimized: j.mp/bplateviewport -->
@@ -60,103 +60,109 @@
 
             <header>
               <h2 class="entry-title">
-                <a href="http://www.wengweitao.com/la-ge-lang-ri-dui-ou-xing-lagrange-duality.html" rel="bookmark"
-                   title="Permalink to 拉格朗日对偶性（Lagrange Duality）">拉格朗日对偶性（Lagrange Duality）</a></h2>
+                <a href="http://www.wengweitao.com/pai-xu-suan-fa-zong-jie.html" rel="bookmark"
+                   title="Permalink to 排序算法总结">排序算法总结</a></h2>
            
             </header>
             <footer class="post-info">
-              <abbr class="published" title="2014-07-30T09:56:00">
-                Wed 30 July 2014
+              <abbr class="published" title="2015-05-20T20:35:00">
+                Wed 20 May 2015
               </abbr>
               <address class="vcard author">By 
                 <a class="url fn" href="http://www.wengweitao.com/author/wwt.html"> wwt</a>
               </address>
             </footer><!-- /.post-info -->
             <div class="entry-content">
-              <blockquote>
-<p>在求解约束优化问题的时候，常常利用拉格朗日对偶性（Lagrange Duality）将原始问题转化为对偶问题，通过求解对偶问题而得到原始问题的解。该方法用在许多统计学习方法中，如最大熵模型和SVM等。</p>
-</blockquote>
-<h2>原始问题</h2>
-<h3>原始最优化问题</h3>
-<p>考虑最优化问题：</p>
-<blockquote>
-<p>
-<div class="math">$$min_x f(x)$$</div>
-<div class="math">$$s.t. c_i(x) \leq 0  \:\:\:\:\: i=1,2,...,k$$</div>
-<div class="math">$$h_j(x) = 0   \:\:\:\:\: j=1,2,...,l$$</div>
-</p>
-</blockquote>
-<p>称此约束最优化问题为原始最优化问题或原始问题。</p>
-<h3>广义拉格朗日函数</h3>
-<p>为了解决原始问题，我们先引入<strong>广义拉格朗日（generalized Lagrangian）函数</strong>：
-</p>
-<div class="math">$$L(x, \alpha, \beta) = f(x) + \sum_{i=1}^{k}\alpha_i  c_i(x) + \sum_{j=1}^{l}\beta_j h_j(x)$$</div>
-<p>
-这里的<span class="math">\(\alpha_i\)</span>和<span class="math">\(\beta_j\)</span>称为<strong>拉格朗日乘子</strong>。</p>
-<h3>极小极大问题</h3>
-<p>现在考虑<span class="math">\(L(x, \alpha, \beta)\)</span>的最大值：
-</p>
-<div class="math">$$\theta_p(x) = max_{\alpha, \beta: \alpha_i \geq 0}L(x, \alpha, \beta) $$</div>
-<p>
-上式中的下标p代表“primal（原始问题）”。如果上式中的x不满足原始问题的约束条件（即存在某些i使得<span class="math">\(c_i(x)&gt;0\)</span>或者<span class="math">\(h_i(x) \neq 0\)</span>），那么就有
-</p>
-<div class="math">$$\theta_p(x) =  f(x) + \sum_{i=1}^{k}\alpha_i  c_i(x) + \sum_{j=1}^{l}\beta_j h_j(x)= \infty$$</div>
-<p>
-因为若<span class="math">\(c_i(x)&gt;0\)</span>，可取<span class="math">\(\alpha_i \rightarrow +\infty\)</span>，或者<span class="math">\(h_i(x) \neq 0\)</span>，可令<span class="math">\(\beta_j h_j(x) \rightarrow +\infty\)</span>，而将其余的<span class="math">\(\alpha_i ，\beta_j\)</span>都取0.</p>
-<p>相反的，若满足原始优化问题的约束条件，那么有<span class="math">\(\theta_p(x) = f(x)\)</span>。所以有
-</p>
-<div class="math">$$\theta_p(x) = \left\{\begin{matrix}
-f(x)   \:\:\:\:\: x满足约束条件\\
-\infty  \:\:\:\:\: 其他
-\end{matrix}\right.$$</div>
-<p>
-因此，如果我们考虑极小化问题
-</p>
-<div class="math">$$min_x\theta_p(x) = min_xmax_{\alpha, \beta: \alpha_i \geq 0}L(x, \alpha, \beta) $$</div>
-<p>
-我们可以看到这与原始最优化问题是等价的，称为<strong>广义拉格朗日函数的极小极大问题</strong>。这样就把原始最优化问题转化为求解拉格朗日函数的极小极大问题。我们定义原始最优化问题的最优值为
-</p>
-<div class="math">$$p^* = min_x\theta_p(x)$$</div>
-<p>
-称为<strong>原始问题的值</strong>。</p>
-<h2>对偶问题</h2>
-<p>定义
-</p>
-<div class="math">$$\theta_D(x) = min_xL(x, \alpha, \beta) $$</div>
-<p>
-上式中的下标D代表“dual（对偶问题）”。与前面定义的原始问题不同的是，原始问题是通过参数<span class="math">\(\alpha, \beta\)</span>进行优化（极大化），而这里定义的问题是通过<span class="math">\(x\)</span>进行优化（极小化）。</p>
-<p>对<span class="math">\(\theta_D(x)\)</span>极大化，就可以得到<strong>对偶优化问题</strong></p>
-<blockquote>
-<p>
-<div class="math">$$max_{\alpha, \beta: \alpha_i \geq 0}\theta_D(\alpha, \beta) = max_{\alpha, \beta: \alpha_i \geq 0}min_xL(x, \alpha, \beta) $$</div>
-</p>
-</blockquote>
-<p>称为<strong>广义拉格朗日函数的极大极小问题</strong>。</p>
-<p>对偶问题与原始问题除了交换式子中max和min的顺序外，是一样的。同样，我也定义<strong>对偶优化问题的最优值</strong>
-</p>
-<div class="math">$$d^* = max_{\alpha, \beta: \alpha_i \geq 0}\theta_D(\alpha, \beta)$$</div>
-<p>
-称为<strong>对偶问题的值</strong>。</p>
-<h2>原始问题和对偶问题的关系</h2>
-<p>容易得到（max min 小于等于 min max）：
-</p>
-<div class="math">$$d^* = max_{\alpha, \beta: \alpha_i \geq 0}min_xL(x, \alpha, \beta) \leq min_xmax_{\alpha, \beta: \alpha_i \geq 0}L(x, \alpha, \beta)= p^*$$</div>
-<p>在某些条件下，原始问题和对偶问题的最优值相等即<span class="math">\(d^* = p^*\)</span>，这时可以<strong>用对偶问题替代原始问题</strong>。</p>
-<p><strong>定理1：</strong>考虑原始问题和对偶问题。假设<span class="math">\(f(x)\)</span>和<span class="math">\(c_i(x)\)</span>是凸函数（convex），<span class="math">\(h_j(x)\)</span>是仿射函数（affine，与线性函数类似只是允许增加一个截距b）；并且存在x，对所有的i有<span class="math">\(c_i(x) &lt; 0\)</span>. 则存在<span class="math">\(x^* , \alpha^* ,\beta^*\)</span>，使得在<span class="math">\(x^*\)</span>是原始问题的解，<span class="math">\(\alpha^* ,\beta^*\)</span>是对偶问题的解，并且</p>
-<div class="math">$$d^* = p^* = L(x^*, \alpha^*, \beta^*)$$</div>
-<p><strong>定理2：</strong>考虑原始问题和对偶问题。假设<span class="math">\(f(x)\)</span>和<span class="math">\(c_i(x)\)</span>是凸函数（convex），<span class="math">\(h_j(x)\)</span>是仿射函数（affine）；并且存在x，对所有的i有<span class="math">\(c_i(x) &lt; 0\)</span>. 则<span class="math">\(x^*\)</span>是原始问题的解，并且<span class="math">\(\alpha^*, \beta^*\)</span>是对偶问题的解的充分必要条件是<span class="math">\(x^* , \alpha^* ,\beta^*\)</span> 满足下面的<strong>Karush-Kuhn-Tucker(KKT)条件</strong>：
-</p>
-<div class="math">$$\bigtriangledown_x L(x^*, \alpha^*, \beta^*)=0$$</div>
-<div class="math">$$\bigtriangledown_\alpha L(x^*, \alpha^*, \beta^*)=0$$</div>
-<div class="math">$$\bigtriangledown_\beta L(x^*, \alpha^*, \beta^*)=0$$</div>
-<div class="math">$$\alpha^* c_i(x^*) = 0  \:\:\:\:\: i=1,2,...,k$$</div>
-<div class="math">$$c_i(x^*) \leq 0  \:\:\:\:\: i=1,2,...,k$$</div>
-<div class="math">$$\alpha^* \geq 0  \:\:\:\:\: i=1,2,...,k$$</div>
-<div class="math">$$h_j(x^*) = 0   \:\:\:\:\: j=1,2,...,l$$</div>
-<p>其中，上面的第4个式子，称为KKT的对偶互补条件，由此条件可得，若<span class="math">\(\alpha^*&gt;0\)</span>那么<span class="math">\(c_i(x^*) = 0\)</span>.</p>
-<hr />
-<h2>Reference</h2>
-<p><a href="http://book.douban.com/subject/10590856/">统计学习方法</a></p>
+              <p>在前面的几篇文章中，分别介绍了几种最常见的算法：</p>
+<ol>
+<li><a href="http://www.wengweitao.com/cha-ru-pai-xu.html">直接插入排序</a></li>
+<li><a href="http://www.wengweitao.com/mou-pao-pai-xu.html">冒泡排序</a></li>
+<li><a href="http://www.wengweitao.com/gui-bing-pai-xu.html">归并排序</a></li>
+<li><a href="http://www.wengweitao.com/dui-pai-xu.html">堆排序</a></li>
+<li><a href="http://www.wengweitao.com/kuai-su-pai-xu.html">快速排序</a></li>
+<li><a href="http://www.wengweitao.com/ji-shhtml">计数排序</a></li>
+<li><a href="http://www.wengweitao.com/ji-shu-pai-xu-radix-sort.html">基数排序</a></li>
+<li><a href="http://www.wengweitao.com/tong-pai-xuww.wengweitao.com/ji-shu-pai-xu-radix-sort.html">桶排序</a></li>
+</ol>
+<p>本文将对这8种排序进行总结。</p>
+<h2>比较排序与非比较排序算法</h2>
+<p><strong>比较排序算法：</strong></p>
+<p>插入排序、冒泡排序、归并排序、堆排序和快速排序都是比较排序算法。它们都是通过对元素进行比较操作来确定输入数组的有序次序。使用决策树模型，可以证明任意比较排序算法排序n个元素的最坏运行时间的下界为<span class="math">\(\Omega(nlogn)\)</span>。归并排序和堆排序的最坏运行时间都为O(nlogn)都是渐近最优的比较算法。快速排序平均运行时间也为O(nlogn)，而且在实际应用中速度通常都比较快，是排序大数组最常用的算法。</p>
+<p><strong>非比较排序算法：</strong>：
+计数排序、基数排序和桶排序都是非比较排序算法。通过比较操作之外的方法来获得序列的有序次序的信息，就有可能打破<span class="math">\(\Omega(nlogn)\)</span>的时间下界。</p>
+<h2>从时间复杂度上看</h2>
+<p>直接插入排序、冒泡排序的平均情况下的时间复杂度都是<span class="math">\(O(n^2)\)</span>，并且实现也比较简单。但是，插入排序和冒泡排序在最好情况下，时间复杂度可以达到O(n)。</p>
+<p>归并排序、堆排序和快速排序的平均情况下的时间复杂度都是O(nlogn)。归并排序基于分治的思想，由于其分割的子序列与初始序列的排列无关，它最好、最坏和平均时间复杂度均为O(nlogn)。堆排序利用堆的数据结构，可以在线性时间内完成建堆，每次调整堆只需要O(logn)，并且能够在O(nlogn)时间内完成排序。快速排序也是基于分治的思想，虽然最坏情况下的运行时间会达到<span class="math">\(O(n^2)\)</span>，但快速排序平均性能可以达到O(nlogn)，在实际应用中通常优于其他排序算法。</p>
+<p>计数排序、基数排序和桶排序在输入服从一定条件下可以达到O(n)的时间复杂度。计数排序算法假定输入元素的值的范围为0~k之间，可以在O(k+n)的时间内将n个数排好序。基数排序扩展了计数排序的使用范围，对n个整数进行排序，每个元素有d位，并且每个数字的可能取值为0~k，那么基数排序可以在O(d(n+k))的时间内完成排序工作。桶排序算法，假设输入数据在[0,1)内服从均匀分布，平均情况运行时间为O(n)。</p>
+<h2>从空间复杂度上看</h2>
+<p>插入排序、冒泡排序和堆排序都仅需要常数个辅助空间，即时间复杂度为O(1)。</p>
+<p>快速排序虽然是原址排序，但是使用了递归调用。需要一个小的辅助栈，用来保存信息，最坏情况下，快速排序递归调用的次数是n-1，其空间复杂度为O(n)，在平均情况下快速排序的空间复杂度为O(logn)。</p>
+<p>归并排序每一次递归调用都要用到一个长度等于带排序列长度的辅助数组空间，所以空间复杂度为O(n)。</p>
+<p>计数排序和基数排序需要两个额外的数组用来对元素进行计数和保存排序的输出结果，所以空间复杂度为O(k+n)，其中k为每个元素最大的取值范围，n为元素的个数。</p>
+<p>桶排序需要m个桶，并且还需要存储n个待排的元素，所以桶排序的空间复杂度为O(m + n)。</p>
+<h2>从稳定性上看</h2>
+<p>插入排序、冒泡排序、归并排序、计数排序、基数排序和桶排序都是稳定的排序方法，而快速排序和堆排序都是不稳定的排序方法。</p>
+<p>下面用一个表格总结排序算法的性质。</p>
+<table>
+<thead>
+<tr>
+<th>排序算法</th>
+<th>时间复杂度（最好、平均、最坏）</th>
+<th>空间复杂度</th>
+<th align="left">是否稳定</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>插入排序</td>
+<td><span class="math">\(O(n)\)</span>、<span class="math">\(O(n^2)\)</span>、<span class="math">\(O(n^2)\)</span></td>
+<td>O(1)</td>
+<td align="left">是</td>
+</tr>
+<tr>
+<td>冒泡排序</td>
+<td><span class="math">\(O(n)\)</span>、<span class="math">\(O(n^2)\)</span>、<span class="math">\(O(n^2)\)</span></td>
+<td>O(1)</td>
+<td align="left">是</td>
+</tr>
+<tr>
+<td>归并排序</td>
+<td><span class="math">\(O(nlogn)\)</span>、<span class="math">\(O(nlogn)\)</span>、<span class="math">\(O(nlogn)\)</span></td>
+<td>O(n)</td>
+<td align="left">是</td>
+</tr>
+<tr>
+<td>堆排序</td>
+<td><span class="math">\(O(nlogn)\)</span>、<span class="math">\(O(nlogn)\)</span>、<span class="math">\(O(nlogn)\)</span></td>
+<td>O(1)</td>
+<td align="left">否</td>
+</tr>
+<tr>
+<td>快速排序</td>
+<td><span class="math">\(O(nlogn)\)</span>、<span class="math">\(O(nlogn)\)</span>、<span class="math">\(O(n^2)\)</span></td>
+<td>O(logn)</td>
+<td align="left">否</td>
+</tr>
+<tr>
+<td>计数排序</td>
+<td><span class="math">\(O(n+k)\)</span>、<span class="math">\(O(n+k)\)</span>、<span class="math">\(O(n+k)\)</span></td>
+<td>O(k+n)</td>
+<td align="left">是</td>
+</tr>
+<tr>
+<td>基数排序</td>
+<td><span class="math">\(O(d(n+k))\)</span>、<span class="math">\(O(d(n+k))\)</span>、<span class="math">\(O(d(n+k))\)</span></td>
+<td>O(k+n)</td>
+<td align="left">是</td>
+</tr>
+<tr>
+<td>桶排序</td>
+<td><span class="math">\(O(n)\)</span>、<span class="math">\(O(n)\)</span>、<span class="math">\(O(n^2)\)</span></td>
+<td>O(m + n)</td>
+<td align="left">是</td>
+</tr>
+</tbody>
+</table>
 <script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
     var align = "center",
         indent = "0em",
@@ -200,7 +206,7 @@ f(x)   \:\:\:\:\: x满足约束条件\\
               <h3>Comments</h3>
               <div id="disqus_thread"></div>
               <script type="text/javascript">
-                var disqus_identifier = "la-ge-lang-ri-dui-ou-xing-lagrange-duality.html";
+                var disqus_identifier = "pai-xu-suan-fa-zong-jie.html";
                 (function() {
                 var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
                 dsq.src = 'http://wengwt.disqus.com/embed.js';
