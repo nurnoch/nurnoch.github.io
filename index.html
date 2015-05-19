@@ -61,9 +61,41 @@
         <div class="eleven columns">
                  <ol id="post-list">
                         <li><article class="hentry">
+                                <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/lintcode-single-number-i-ii-iii-luo-dan-de-shu.html" rel="bookmark" title="Permalink to LintCode Single Number I II III 落单的数">LintCode  Single Number I II III 落单的数</a></h2> </header>
+                                <footer class="post-info">
+                                    <abbr class="published" title="2015-05-20T21:15:00"> Wed 20 May 2015 </abbr>
+                                    <address class="vcard author">By 
+                                    <a class="url fn" href="http://www.wengweitao.com/author/wwt.html"> wwt</a>
+                                    </address>
+                                </footer><!-- /.post-info -->
+                                <div class="entry-content"> <h2><a href="http://www.lintcode.com/zh-cn/problem/single-number/">Single Number I</a></h2>
+<h3>题目描述：</h3>
+<p>给出2*n + 1 个的数字，除其中一个数字之外其他每个数字均出现两次，找到这个数字。</p>
+<p><strong>样例</strong>
+给出 [1,2,2,1,3,4,3]，返回 4</p>
+<p><strong>挑战</strong>
+一次遍历，常数级的额外空间复杂度</p>
+<h3>题目分析：</h3>
+<p>这道题利用了异或位运算的一个性质，即：一个数与自身异或的结果为0。我们只需遍历数组中的每一个元素，并将其进行异或。因为，异或满足交换律，所以最终的异或结果将仅仅包含只出现一次的那个数。</p>
+<p>如：1 ^ 2 ^ 2 ^ 1 ^3 ^ 4 ^ 3 = 1 ^ 1 ^ 2 ^ 2 ^ 3 ^ 3 ^ 4 = 4</p>
+<h3>参考代码 ...</h3> </div><!-- /.entry-content -->
+
+                                <div class="medium primary btn"><a href="http://www.wengweitao.com/lintcode-single-number-i-ii-iii-luo-dan-de-shu.html" rel="bookmark" title="Permalink to LintCode Single Number I II III 落单的数">Read more <i class="icon-arrow-right"></i></a></div>
+
+
+
+                                <div class="row tag-row">
+                                        <span>Tagged as : </span>
+                                            <a class="danger label" href="http://www.wengweitao.com/tag/mian-shi-ti.html">面试题</a>
+                                </div>
+
+
+
+                        </article></li>
+                        <li><article class="hentry">
                                 <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/pai-xu-suan-fa-zong-jie.html" rel="bookmark" title="Permalink to 排序算法总结">排序算法总结</a></h2> </header>
                                 <footer class="post-info">
-                                    <abbr class="published" title="2015-05-20T20:35:00"> Wed 20 May 2015 </abbr>
+                                    <abbr class="published" title="2015-05-19T20:35:00"> Tue 19 May 2015 </abbr>
                                     <address class="vcard author">By 
                                     <a class="url fn" href="http://www.wengweitao.com/author/wwt.html"> wwt</a>
                                     </address>
@@ -196,33 +228,6 @@
 
 
                         </article></li>
-                        <li><article class="hentry">
-                                <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/kuai-su-pai-xu.html" rel="bookmark" title="Permalink to 快速排序">快速排序</a></h2> </header>
-                                <footer class="post-info">
-                                    <abbr class="published" title="2015-05-16T10:22:00"> Sat 16 May 2015 </abbr>
-                                    <address class="vcard author">By 
-                                    <a class="url fn" href="http://www.wengweitao.com/author/wwt.html"> wwt</a>
-                                    </address>
-                                </footer><!-- /.post-info -->
-                                <div class="entry-content"> <p>本文介绍的是实际排序应用中最常用的一种排序算法——<strong>快速排序</strong>。快速排序虽然在最坏情况下时间复杂度为<span class="math">\(O(n^2)\)</span>，但是它的平均性能非常好，它的期望运行时间是O(nlogn)，而且O(nlogn)所隐含的常数因子非常小。另外，它还能够进行原址排序。</p>
-<h2>快速排序描述</h2>
-<p>与归并排序一样，快速排序也使用了分治的思想。下面是对一个数组A[p..r]进行快速排序的三步分治过程：</p>
-<ul>
-<li>分解：数组A[p..r]被划分成两个子数组A[p..q-1]和A[q+1..r]，使得A[p..q-1]中的每一个元素都小于等于A[q]，A[q+1..r]中的每个元素都大于等于A[q]；</li>
-<li>解决：通过递归调用快速排序，对两个子数组A[p..q-1]和A[q ...</li></ul> </div><!-- /.entry-content -->
-
-                                <div class="medium primary btn"><a href="http://www.wengweitao.com/kuai-su-pai-xu.html" rel="bookmark" title="Permalink to 快速排序">Read more <i class="icon-arrow-right"></i></a></div>
-
-
-
-                                <div class="row tag-row">
-                                        <span>Tagged as : </span>
-                                            <a class="danger label" href="http://www.wengweitao.com/tag/pai-xu-suan-fa-ji-chu.html">排序 算法 基础</a>
-                                </div>
-
-
-
-                        </article></li>
                 </ol><!-- /#posts-list -->
 
         </div><!-- /.eleven.columns -->
@@ -254,23 +259,23 @@
 <!--
 <h4>标签</h4>
 <ul class="tagcloud">
-        <li class="tag-2"><a href="http://www.wengweitao.com/tag/jiao-cheng.html">教程</a></li>
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/jiao-cheng-linux.html">教程、Linux</a></li>
         <li class="tag-4"><a href="http://www.wengweitao.com/tag/xiao-yuan.html">校园</a></li>
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/pai-xu-suan-fa-ji-chu-zong-jie.html">排序 算法 基础 总结</a></li>
-        <li class="tag-1"><a href="http://www.wengweitao.com/tag/du-shu-bi-ji.html">读书笔记</a></li>
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/gong-ju.html">工具</a></li>
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/suan-fa-fen-xi.html">算法分析</a></li>
-        <li class="tag-3"><a href="http://www.wengweitao.com/tag/mian-shi-ti.html">面试题</a></li>
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/go.html">Go</a></li>
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/ji-chu-gai-nian.html">基础概念</a></li>
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/vim.html">Vim</a></li>
-        <li class="tag-3"><a href="http://www.wengweitao.com/tag/ji-ben-gai-nian.html">基本概念</a></li>
         <li class="tag-1"><a href="http://www.wengweitao.com/tag/pai-xu-suan-fa-ji-chu.html">排序 算法 基础</a></li>
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/ce-shi.html">测试</a></li>
+        <li class="tag-4"><a href="http://www.wengweitao.com/tag/gong-ju.html">工具</a></li>
+        <li class="tag-4"><a href="http://www.wengweitao.com/tag/go.html">Go</a></li>
         <li class="tag-4"><a href="http://www.wengweitao.com/tag/tmux.html">tmux</a></li>
+        <li class="tag-4"><a href="http://www.wengweitao.com/tag/suan-fa-fen-xi.html">算法分析</a></li>
         <li class="tag-4"><a href="http://www.wengweitao.com/tag/wan.html">玩</a></li>
+        <li class="tag-3"><a href="http://www.wengweitao.com/tag/ji-ben-gai-nian.html">基本概念</a></li>
+        <li class="tag-4"><a href="http://www.wengweitao.com/tag/pai-xu-suan-fa-ji-chu-zong-jie.html">排序 算法 基础 总结</a></li>
+        <li class="tag-4"><a href="http://www.wengweitao.com/tag/vim.html">Vim</a></li>
+        <li class="tag-4"><a href="http://www.wengweitao.com/tag/jiao-cheng-linux.html">教程、Linux</a></li>
+        <li class="tag-1"><a href="http://www.wengweitao.com/tag/du-shu-bi-ji.html">读书笔记</a></li>
+        <li class="tag-4"><a href="http://www.wengweitao.com/tag/ji-chu-gai-nian.html">基础概念</a></li>
         <li class="tag-1"><a href="http://www.wengweitao.com/tag/python.html">Python</a></li>
+        <li class="tag-2"><a href="http://www.wengweitao.com/tag/jiao-cheng.html">教程</a></li>
+        <li class="tag-2"><a href="http://www.wengweitao.com/tag/mian-shi-ti.html">面试题</a></li>
+        <li class="tag-4"><a href="http://www.wengweitao.com/tag/ce-shi.html">测试</a></li>
 </ul>
 -->
 
@@ -299,7 +304,7 @@
 </div> </div><!-- /.row -->
 
 <p class="paginator">
-    Page 1 / 9
+    Page 1 / 10
         <a href="http://www.wengweitao.com/index2.html"><i class="icon-arrow-right"></i></a>
 </p>
 </section><!-- /#content -->

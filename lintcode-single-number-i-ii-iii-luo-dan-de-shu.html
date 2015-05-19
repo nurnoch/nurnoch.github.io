@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+
+        <title>LintCode Single Number I II III 落单的数</title>
+        <meta charset="utf-8" />
+        <link href="http://www.wengweitao.com/feeds\all.atom.xml" type="application/atom+xml" rel="alternate" title="wwt's blog Full Atom Feed" />
+        <link href="http://www.wengweitao.com/feeds/all.rss.xml" type="application/rss+xml" rel="alternate" title="wwt's blog Full RSS Feed" />
+        <link href="http://www.wengweitao.com/feeds/suan-fa-yu-shu-ju-jie-gou.rss.xml" type="application/atom+xml" rel="alternate" title="wwt's blog Categories Atom Feed" />
+
+
+        <!-- Mobile viewport optimized: j.mp/bplateviewport -->
+        <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1">
+        <meta name="google-site-verification" content="pEViDEEJCicDD__DfnOAQ7xKtjtxJhVDoGDAOahOWy0" />
+
+        <meta name="sogou_site_verification" content="ia8yXdZS0p"/>
+ 
+
+        <link rel="stylesheet" type="text/css" href="http://www.wengweitao.com/theme/gumby.css" />
+        <link rel="stylesheet" type="text/css" href="http://www.wengweitao.com/theme/style.css" />
+        <link rel="stylesheet" type="text/css" href="http://www.wengweitao.com/theme/pygment.css" />
+
+        <script src="http://www.wengweitao.com/theme/js/libs/modernizr-2.6.2.min.js"></script>
+
+
+
+
+</head>
+
+<body id="index" class="home">
+
+
+    <div class="container">
+
+        <div class="row">
+
+          <header id="banner" class="body">
+                  <h1><a href="http://www.wengweitao.com/">wwt's blog <strong></strong></a></h1>
+          </header><!-- /#banner -->
+
+            <div id="navigation" class="navbar row">
+              <a href="#" gumby-trigger="#navigation &gt; ul" class="toggle"><i class="icon-menu"></i></a>
+             
+              <ul class="columns">
+                <li><a href="http://www.wengweitao.com/">首页</a></li>
+
+                <li><a href="/categories.html">分类</a></li>
+                <li><a href="/tags.html">标签</a></li>
+                <li><a href="/archives.html">归档</a></li>
+                <li><a href="/pages/about-me.html">关于我</a></li>
+
+              </ul>
+            </div>
+
+<section id="content" class="body">
+
+   <div class="row">
+        <div class="eleven columns">
+
+
+            <header>
+              <h2 class="entry-title">
+                <a href="http://www.wengweitao.com/lintcode-single-number-i-ii-iii-luo-dan-de-shu.html" rel="bookmark"
+                   title="Permalink to LintCode Single Number I II III 落单的数">LintCode  Single Number I II III 落单的数</a></h2>
+           
+            </header>
+            <footer class="post-info">
+              <abbr class="published" title="2015-05-20T21:15:00">
+                Wed 20 May 2015
+              </abbr>
+              <address class="vcard author">By 
+                <a class="url fn" href="http://www.wengweitao.com/author/wwt.html"> wwt</a>
+              </address>
+            </footer><!-- /.post-info -->
+            <div class="entry-content">
+              <h2><a href="http://www.lintcode.com/zh-cn/problem/single-number/">Single Number I</a></h2>
+<h3>题目描述：</h3>
+<p>给出2*n + 1 个的数字，除其中一个数字之外其他每个数字均出现两次，找到这个数字。</p>
+<p><strong>样例</strong>
+给出 [1,2,2,1,3,4,3]，返回 4</p>
+<p><strong>挑战</strong>
+一次遍历，常数级的额外空间复杂度</p>
+<h3>题目分析：</h3>
+<p>这道题利用了异或位运算的一个性质，即：一个数与自身异或的结果为0。我们只需遍历数组中的每一个元素，并将其进行异或。因为，异或满足交换律，所以最终的异或结果将仅仅包含只出现一次的那个数。</p>
+<p>如：1 ^ 2 ^ 2 ^ 1 ^3 ^ 4 ^ 3 = 1 ^ 1 ^ 2 ^ 2 ^ 3 ^ 3 ^ 4 = 4</p>
+<h3>参考代码：</h3>
+<div class="highlight"><pre><span class="k">class</span> <span class="nc">Solution</span> <span class="p">{</span>
+<span class="nl">public:</span>
+    <span class="cm">/**</span>
+<span class="cm">     * @param A: Array of integers.</span>
+<span class="cm">     * return: The single number.</span>
+<span class="cm">     */</span>
+    <span class="kt">int</span> <span class="n">singleNumber</span><span class="p">(</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">A</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="n">A</span><span class="p">.</span><span class="n">size</span><span class="p">();</span>
+        <span class="kt">int</span> <span class="n">num</span> <span class="o">=</span> <span class="n">A</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+        <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span>
+            <span class="n">num</span> <span class="o">^=</span> <span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+        <span class="k">return</span> <span class="n">num</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">};</span>
+</pre></div>
+
+
+<p>时间复杂度为O(n)，空间复杂度为O(1)。</p>
+<hr />
+<h2><a href="http://www.lintcode.com/zh-cn/problem/single-number-ii/">Single Number II</a></h2>
+<h3>题目描述：</h3>
+<p>给出3*n + 1 个的数字，除其中一个数字之外其他每个数字均出现三次，找到这个数字。</p>
+<p>样例
+给出 [1,1,2,3,3,3,2,2,4,1] ，返回 4</p>
+<p>挑战
+一次遍历，常数级的额外空间复杂度</p>
+<h3>题目分析：</h3>
+<p>与Single Number I 类似，所不同的是这道题除了一个数字之外都出现3次，仍然考虑使用位操作，尝试消除掉出现3次的数字。</p>
+<p>若一个数字出现3次，则该数字的二进制表示中每个位置的数值为1的出现次数为3次，如：5的二进制表示为101，若5出现3次，则其二进制表示中的第一个位置和第二个位置出现1的次数和均为3。那么对该位1出现的次数对3取余，最终的结果所对应的就是所要求的Sing Number。</p>
+<p><strong>思路1：</strong></p>
+<p>对int的32bit的各个位中1出现的次数，对数组中所有元素的逐个进行统计，然后对每个bit对3取余，最终的结果就是只出现一次的数字。</p>
+<p><strong>思路2：</strong>
+利用掩码的思想。</p>
+<h3>参考代码：</h3>
+<p><strong>思路1对应代码</strong></p>
+<div class="highlight"><pre><span class="k">class</span> <span class="nc">Solution</span> <span class="p">{</span>
+<span class="nl">public:</span>
+    <span class="cm">/**</span>
+<span class="cm">     * @param A : An integer array</span>
+<span class="cm">     * @return : An integer </span>
+<span class="cm">     */</span>
+    <span class="kt">bool</span> <span class="n">isBit1</span><span class="p">(</span><span class="kt">int</span> <span class="n">num</span><span class="p">,</span> <span class="kt">int</span> <span class="n">index</span><span class="p">)</span>  <span class="p">{</span>
+        <span class="n">num</span> <span class="o">=</span> <span class="n">num</span> <span class="o">&gt;&gt;</span> <span class="n">index</span><span class="p">;</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">num</span> <span class="o">&amp;</span> <span class="mi">1</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="kt">int</span> <span class="n">singleNumberII</span><span class="p">(</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">A</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="n">A</span><span class="p">.</span><span class="n">size</span><span class="p">();</span>
+        <span class="kt">int</span> <span class="n">result</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">32</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span>
+            <span class="kt">int</span> <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+            <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="o">++</span><span class="n">j</span><span class="p">)</span> <span class="p">{</span>
+                <span class="k">if</span><span class="p">(</span><span class="n">isBit1</span><span class="p">(</span><span class="n">A</span><span class="p">[</span><span class="n">j</span><span class="p">],</span> <span class="n">i</span><span class="p">))</span>
+                    <span class="o">++</span><span class="n">count</span><span class="p">;</span>
+            <span class="p">}</span>
+            <span class="n">result</span> <span class="o">|=</span> <span class="p">(</span><span class="n">count</span> <span class="o">%</span> <span class="mi">3</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="n">i</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="n">result</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">};</span>
+</pre></div>
+
+
+<ul>
+<li>依次统计出32bit上每个位1出现的次数，分别保存在count变量中；</li>
+<li>从低位到高位，每次得到最终结果的一个位</li>
+<li>虽然有两层的循环，但是外层循环是常量，所以时间复杂度还是O(n)，空间复杂度为O(1)。</li>
+</ul>
+<p><strong>思路2对应代码</strong></p>
+<div class="highlight"><pre><span class="k">class</span> <span class="nc">Solution</span> <span class="p">{</span>
+<span class="nl">public:</span>
+    <span class="cm">/**</span>
+<span class="cm">     * @param A : An integer array</span>
+<span class="cm">     * @return : An integer </span>
+<span class="cm">     */</span>
+    <span class="kt">int</span> <span class="n">singleNumberII</span><span class="p">(</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">A</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="n">A</span><span class="p">.</span><span class="n">size</span><span class="p">();</span>
+        <span class="kt">int</span> <span class="n">once</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> 
+        <span class="kt">int</span> <span class="n">twice</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> 
+        <span class="kt">int</span> <span class="n">third</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+        <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">twice</span> <span class="o">|=</span> <span class="n">once</span> <span class="o">&amp;</span> <span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>  
+            <span class="n">once</span> <span class="o">^=</span> <span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>  
+            <span class="n">third</span> <span class="o">=</span> <span class="n">once</span> <span class="o">&amp;</span> <span class="n">twice</span><span class="p">;</span> 
+            <span class="n">once</span> <span class="o">&amp;=</span> <span class="o">~</span><span class="n">third</span><span class="p">;</span> 
+            <span class="n">twice</span> <span class="o">&amp;=</span> <span class="o">~</span><span class="n">third</span><span class="p">;</span>  
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="n">once</span><span class="p">;</span>  
+    <span class="p">}</span>
+<span class="p">};</span>
+</pre></div>
+
+
+<ul>
+<li>变量once作为一个掩码，若once的二进制表示中的一个位置为1，表示目前使该位为1的数只出现一次</li>
+<li>变量twice作为一个掩码，若twice的二进制表示中的一个位置为1，表示目前使该位置为1的数出现了2次</li>
+<li>变量third作为一个掩码，若third的二进制表示中的一个位置为1，表示目前使该位置为1的数出现了3次</li>
+<li>若之前出现一次（表示为once中对应的位为1），A[i]中又出现（表示为A[i]中对应的位置为1），那么twice中对应的位就为1；</li>
+<li>若之前的once中出现，而A[i]中又出现，那么就不是出现一次，将对应的位取0</li>
+<li>once中出现一次，twice出现两次，也就是出现了3次</li>
+<li>需要将once和twice中出现3次的位都置为0</li>
+</ul>
+<p>以上的代码涉及到比较多的位运算，可能不大好理解。举个具体的例子：</p>
+<p>once： 100101 使第1、3、6个bit为1的数出现3次</p>
+<p>twice： 010101  使第1、3、5个bit为1的数出现了2次</p>
+<p>third： 000101  根据once和twice可以得到third，第1和3个bit为1的数出现了3次。</p>
+<p>以上算法的时间复杂度为O(n)，空间复杂度为O(1)。</p>
+<hr />
+<h2><a href="http://www.lintcode.com/zh-cn/problem/single-number-iii/">Single Number III</a></h2>
+<h3>题目描述：</h3>
+<p>给出2*n + 2个的数字，除其中两个数字之外其他每个数字均出现两次，找到这两个数字。</p>
+<p>样例
+给出 [1,2,2,3,4,4,5,3]，返回 1和5</p>
+<p>挑战
+O(n)时间复杂度，O(1)的额外空间复杂度</p>
+<h3>题目分析：</h3>
+<p>与以上两题不同的是，这道题有两个数只出现一次。基本的思路还是利用位运算，除去出现次数为2次的数。</p>
+<p>如果对所有元素进行异或操作，最后剩余的结果是出现次数为1次的两个数的异或结果，此时无法直接得到这两个数具体的值。但是，因为这两个数一定是不同的，所以最终异或的值至少有一个位为1。我们可以找出异或结果中第一个值为1的位，然后根据该位的值是否为1，将数组中的每一个数，分成两个部分。这样每个部分，就可以采用Sing number I中的方法得到只出现一次的数。</p>
+<h3>参考代码：</h3>
+<div class="highlight"><pre><span class="k">class</span> <span class="nc">Solution</span> <span class="p">{</span>
+<span class="nl">public:</span>
+    <span class="cm">/**</span>
+<span class="cm">     * @param A : An integer array</span>
+<span class="cm">     * @return : Two integers</span>
+<span class="cm">     */</span>
+    <span class="kt">int</span> <span class="n">findFirstBit1</span><span class="p">(</span><span class="kt">int</span> <span class="n">num</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kt">int</span> <span class="n">index</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="k">while</span><span class="p">((</span><span class="n">num</span> <span class="o">&amp;</span> <span class="mi">1</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+            <span class="o">++</span><span class="n">index</span><span class="p">;</span>
+            <span class="n">num</span> <span class="o">&gt;&gt;=</span> <span class="mi">1</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="n">index</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="kt">bool</span> <span class="n">isBit1</span><span class="p">(</span><span class="kt">int</span> <span class="n">num</span><span class="p">,</span> <span class="kt">int</span> <span class="n">index</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">num</span> <span class="o">=</span> <span class="n">num</span> <span class="o">&gt;&gt;</span> <span class="n">index</span><span class="p">;</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">num</span> <span class="o">&amp;</span> <span class="mi">1</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">singleNumberIII</span><span class="p">(</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">A</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="n">A</span><span class="p">.</span><span class="n">size</span><span class="p">();</span>
+        <span class="kt">int</span> <span class="n">result</span> <span class="o">=</span> <span class="n">A</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+        <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">result</span> <span class="o">^=</span> <span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+        <span class="p">}</span>
+
+        <span class="kt">int</span> <span class="n">indexOfBit1</span> <span class="o">=</span> <span class="n">findFirstBit1</span><span class="p">(</span><span class="n">result</span><span class="p">);</span>
+
+        <span class="kt">int</span> <span class="n">num1</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">num2</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">if</span><span class="p">(</span><span class="n">isBit1</span><span class="p">(</span><span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">indexOfBit1</span><span class="p">))</span> <span class="p">{</span>
+                <span class="n">num1</span> <span class="o">^=</span> <span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+            <span class="p">}</span>
+            <span class="k">else</span>
+                <span class="n">num2</span> <span class="o">^=</span> <span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+        <span class="p">}</span>
+        <span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">res</span><span class="p">;</span>
+        <span class="n">res</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">num1</span><span class="p">);</span>
+        <span class="n">res</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">num2</span><span class="p">);</span>
+        <span class="k">return</span> <span class="n">res</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">};</span>
+</pre></div>
+
+
+<p>时间复杂度为O(n)，空间复杂度为O(1)。</p>
+            </div><!-- /.entry-content -->
+            <div class="comments">
+              <h3>Comments</h3>
+              <div id="disqus_thread"></div>
+              <script type="text/javascript">
+                var disqus_identifier = "lintcode-single-number-i-ii-iii-luo-dan-de-shu.html";
+                (function() {
+                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                dsq.src = 'http://wengwt.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                })();
+              </script>
+            </div>
+
+
+        </div><!-- /.eleven.columns -->
+
+<div class="three columns">
+
+<!--
+<h4>Pages</h4>
+
+ <ul>
+      <li><a href="/categories.html">分类</a></li>
+      <li><a href="/tags.html">标签</a></li>
+      <li><a href="/archives.html">归档</a></li>
+      <li><a href="/pages/about-me.html">关于我</a></li>
+  </ul>
+-->
+
+<h4>分类</h4>
+<ul>
+		<li><a href="http://www.wengweitao.com/category/bian-cheng-yu-yan.html">编程语言</a></li>
+		<li><a href="http://www.wengweitao.com/category/du-shu-bi-ji.html">读书笔记</a></li>
+		<li><a href="http://www.wengweitao.com/category/gong-ju.html">工具</a></li>
+		<li><a href="http://www.wengweitao.com/category/ji-qi-xue-xi.html">机器学习</a></li>
+		<li><a href="http://www.wengweitao.com/category/python.html">Python</a></li>
+		<li><a href="http://www.wengweitao.com/category/sheng-huo.html">生活</a></li>
+		<li><a href="http://www.wengweitao.com/category/suan-fa-yu-shu-ju-jie-gou.html">算法与数据结构</a></li>
+</ul>
+
+<!--
+<h4>标签</h4>
+<ul class="tagcloud">
+        <li class="tag-4"><a href="http://www.wengweitao.com/tag/xiao-yuan.html">校园</a></li>
+        <li class="tag-1"><a href="http://www.wengweitao.com/tag/pai-xu-suan-fa-ji-chu.html">排序 算法 基础</a></li>
+        <li class="tag-4"><a href="http://www.wengweitao.com/tag/gong-ju.html">工具</a></li>
+        <li class="tag-4"><a href="http://www.wengweitao.com/tag/go.html">Go</a></li>
+        <li class="tag-4"><a href="http://www.wengweitao.com/tag/tmux.html">tmux</a></li>
+        <li class="tag-4"><a href="http://www.wengweitao.com/tag/suan-fa-fen-xi.html">算法分析</a></li>
+        <li class="tag-4"><a href="http://www.wengweitao.com/tag/wan.html">玩</a></li>
+        <li class="tag-3"><a href="http://www.wengweitao.com/tag/ji-ben-gai-nian.html">基本概念</a></li>
+        <li class="tag-4"><a href="http://www.wengweitao.com/tag/pai-xu-suan-fa-ji-chu-zong-jie.html">排序 算法 基础 总结</a></li>
+        <li class="tag-4"><a href="http://www.wengweitao.com/tag/vim.html">Vim</a></li>
+        <li class="tag-4"><a href="http://www.wengweitao.com/tag/jiao-cheng-linux.html">教程、Linux</a></li>
+        <li class="tag-1"><a href="http://www.wengweitao.com/tag/du-shu-bi-ji.html">读书笔记</a></li>
+        <li class="tag-4"><a href="http://www.wengweitao.com/tag/ji-chu-gai-nian.html">基础概念</a></li>
+        <li class="tag-1"><a href="http://www.wengweitao.com/tag/python.html">Python</a></li>
+        <li class="tag-2"><a href="http://www.wengweitao.com/tag/jiao-cheng.html">教程</a></li>
+        <li class="tag-2"><a href="http://www.wengweitao.com/tag/mian-shi-ti.html">面试题</a></li>
+        <li class="tag-4"><a href="http://www.wengweitao.com/tag/ce-shi.html">测试</a></li>
+</ul>
+-->
+
+
+<nav class="widget">
+  <h4>社交</h4>
+  <ul>
+    <li><a href="http://weibo.com/u/2678027854">新浪微博</a></li>
+    <li><a href="http://www.douban.com/people/wengwt/">豆瓣</a></li>
+    <li><a href="http://www.zhihu.com/people/vita-49">知乎</a></li>
+    <li><a href="https://github.com/nurnoch">Github</a></li>
+    <li><a href="https://www.v2ex.com/member/wwttc">V2EX</a></li>
+  </ul>
+</nav>
+
+<nav class="widget">
+  <h4>友情链接</h4>
+  <ul>
+    <li><a href="http://netlab.pkusz.edu.cn/">互联网信息工程研发中心</a></li>
+    <li><a href="http://www.houcj.net/">houcj's blog</a></li>
+    <li><a href="http://www.rudy-yuan.net/">rundy-yuan's blog</a></li>
+  </ul>
+</nav>
+
+
+</div> </div><!-- /.row -->
+
+
+</section>
+
+       </div><!-- /.row -->
+    </div><!-- /.container -->
+
+
+       <div class="container.nopad bg">
+
+    
+        <footer id="credits" class="row">
+          <div class="seven columns left-center">
+
+                   <address id="about" class="vcard body">
+                    Proudly powered by  <a href="http://getpelican.com/">Pelican</a> and Theme by Gum © 2015 wwt
+                    </address>
+          </div>
+
+
+          <div class="seven columns">
+            <div class="row">
+              <ul class="socbtns">
+
+
+
+
+
+              </ul>
+            </div>
+          </div>
+        </footer>
+
+    </div>
+
+
+<script type="text/javascript">
+    var disqus_shortname = 'wengwt';
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+  <script src="http://www.wengweitao.com/theme/js/libs/jquery-1.9.1.min.js"></script>
+  <script src="http://www.wengweitao.com/theme/js/libs/gumby.min.js"></script>
+  <script src="http://www.wengweitao.com/theme/js/plugins.js"></script>
+</body>
+</html>
