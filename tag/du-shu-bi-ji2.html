@@ -61,6 +61,38 @@
         <div class="eleven columns">
                  <ol id="post-list">
                         <li><article class="hentry">
+                                <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/zhi-chi-xiang-liang-ji-fei-xian-xing-zhi-chi-xiang-liang-ji.html" rel="bookmark" title="Permalink to 支持向量机——非线性支持向量机">支持向量机——非线性支持向量机</a></h2> </header>
+                                <footer class="post-info">
+                                    <abbr class="published" title="2014-08-04T19:39:00"> Mon 04 August 2014 </abbr>
+                                    <address class="vcard author">By 
+                                    <a class="url fn" href="http://www.wengweitao.com/author/wwt.html"> wwt</a>
+                                    </address>
+                                </footer><!-- /.post-info -->
+                                <div class="entry-content"> <blockquote>
+<p>如果分类问题是非线性的，那么就要用到非线性支持向量机。非线性支持向量机主要特点就是利用核技巧。</p>
+</blockquote>
+<h2>核技巧</h2>
+<h3>非线性分类问题</h3>
+<p>利用非线性模型才能很好地进行分类的问题，就是非线性分类问题。如果能用<span class="math">\(R^n\)</span>中的一个超平面将正负例正确分开，则称这个问题为非线性可分问题。如下的例子，无法用直线（线性模型）将正负实例正确分开，但可以用一条椭圆（非线性模型）将它们正确分开。</p>
+<p><img alt="非线性可分例子" src="./imgs/nolinear.png" /></p>
+<p>通常进行一个非线性变换，将非线性问题变换为线性问题，通过解变换后的线性问题的方法求解原来的非线性问题。例如，上图中将椭圆变换为右图中的直线，将非线性分类问题变换为线性分类问题。</p>
+<p>核技巧应用到支持向量机，其基本思想就是通过一个非线性变换将输入空间（欧氏空间<span class="math">\(R^n\)</span>或离散集合）对应于一个特征空间（希尔伯特空间<sup id="fnref:Hilbert"><a class="footnote-ref" href="#fn:Hilbert" rel="footnote">1</a></sup>H），使得在输入空间中的超平面模型对应于特征空间中的超平面模型（支持向量机）。这样，分类问题的学习任务通过在特征空间中求解线性支持向量机就可以完成。</p>
+<h3>核函数的定义</h3>
+<p>设<span class="math">\(\chi\)</span>是输入空间（欧氏空间<span class="math">\(R^n\)</span>的子集或离散集合），<span class="math">\(H\)</span>为特征空间（希尔伯特空间 ...</p> </div><!-- /.entry-content -->
+
+                                <div class="medium primary btn"><a href="http://www.wengweitao.com/zhi-chi-xiang-liang-ji-fei-xian-xing-zhi-chi-xiang-liang-ji.html" rel="bookmark" title="Permalink to 支持向量机——非线性支持向量机">Read more <i class="icon-arrow-right"></i></a></div>
+
+
+
+                                <div class="row tag-row">
+                                        <span>Tagged as : </span>
+                                            <a class="danger label" href="http://www.wengweitao.com/tag/du-shu-bi-ji.html">读书笔记</a>
+                                </div>
+
+
+
+                        </article></li>
+                        <li><article class="hentry">
                                 <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/zhi-chi-xiang-liang-ji-xian-xing-zhi-chi-xiang-liang-ji.html" rel="bookmark" title="Permalink to 支持向量机——线性支持向量机">支持向量机——线性支持向量机</a></h2> </header>
                                 <footer class="post-info">
                                     <abbr class="published" title="2014-08-03T14:54:00"> Sun 03 August 2014 </abbr>
@@ -188,43 +220,6 @@
 
 
                         </article></li>
-                        <li><article class="hentry">
-                                <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/po-su-bei-xie-si-fa.html" rel="bookmark" title="Permalink to 朴素贝叶斯法">朴素贝叶斯法</a></h2> </header>
-                                <footer class="post-info">
-                                    <abbr class="published" title="2014-07-28T14:06:00"> Mon 28 July 2014 </abbr>
-                                    <address class="vcard author">By 
-                                    <a class="url fn" href="http://www.wengweitao.com/author/wwt.html"> wwt</a>
-                                    </address>
-                                </footer><!-- /.post-info -->
-                                <div class="entry-content"> <blockquote>
-<p>朴素贝叶斯法（naive Bayes）是基于贝叶斯定理与特征条件独立假设的分类方法。对于给定的训练数据集，利用特征条件独立假设学习输入/输出的联合概率分布；然后基于此模型，对给定的输入x，利用贝叶斯定理求出后验概率最大的输出y。</p>
-</blockquote>
-<h2>朴素贝叶斯法的学习与分类</h2>
-<h3>基本方法</h3>
-<p>朴素贝叶斯法通过训练数据集学习联合概率分布P(X,Y).x为输入特征向量，y为输出的类标记。
-先求先验概率
-</p>
-<div class="math">$$P(Y=c_k), k = 1,2,...,K$$</div>
-<p>
-然后求条件概率分布
-</p>
-<div class="math">$$P(X=x|Y=c_k)$$</div>
-<p>
-于是学习到联合概率分布P(X,Y)。</p>
-<p>条件概率分布<span class="math">\(P(X=x|Y=c_k)\)</span>有指级数量的次数，其估计实际是不可行的。假设<span class="math">\(x^{(j)}\)</span>的可能有<span class="math">\(S_j\)</span>个，j=1 ...</p> </div><!-- /.entry-content -->
-
-                                <div class="medium primary btn"><a href="http://www.wengweitao.com/po-su-bei-xie-si-fa.html" rel="bookmark" title="Permalink to 朴素贝叶斯法">Read more <i class="icon-arrow-right"></i></a></div>
-
-
-
-                                <div class="row tag-row">
-                                        <span>Tagged as : </span>
-                                            <a class="danger label" href="http://www.wengweitao.com/tag/du-shu-bi-ji.html">读书笔记</a>
-                                </div>
-
-
-
-                        </article></li>
                 </ol><!-- /#posts-list -->
 
         </div><!-- /.eleven.columns -->
@@ -256,23 +251,23 @@
 <!--
 <h4>标签</h4>
 <ul class="tagcloud">
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/xiao-yuan.html">校园</a></li>
-        <li class="tag-1"><a href="http://www.wengweitao.com/tag/pai-xu-suan-fa-ji-chu.html">排序 算法 基础</a></li>
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/gong-ju.html">工具</a></li>
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/go.html">Go</a></li>
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/tmux.html">tmux</a></li>
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/suan-fa-fen-xi.html">算法分析</a></li>
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/wan.html">玩</a></li>
         <li class="tag-3"><a href="http://www.wengweitao.com/tag/ji-ben-gai-nian.html">基本概念</a></li>
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/pai-xu-suan-fa-ji-chu-zong-jie.html">排序 算法 基础 总结</a></li>
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/vim.html">Vim</a></li>
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/jiao-cheng-linux.html">教程、Linux</a></li>
-        <li class="tag-1"><a href="http://www.wengweitao.com/tag/du-shu-bi-ji.html">读书笔记</a></li>
         <li class="tag-4"><a href="http://www.wengweitao.com/tag/ji-chu-gai-nian.html">基础概念</a></li>
+        <li class="tag-4"><a href="http://www.wengweitao.com/tag/suan-fa-fen-xi.html">算法分析</a></li>
+        <li class="tag-4"><a href="http://www.wengweitao.com/tag/gong-ju.html">工具</a></li>
+        <li class="tag-4"><a href="http://www.wengweitao.com/tag/pai-xu-suan-fa-ji-chu-zong-jie.html">排序 算法 基础 总结</a></li>
+        <li class="tag-4"><a href="http://www.wengweitao.com/tag/go.html">Go</a></li>
+        <li class="tag-4"><a href="http://www.wengweitao.com/tag/ce-shi.html">测试</a></li>
+        <li class="tag-1"><a href="http://www.wengweitao.com/tag/pai-xu-suan-fa-ji-chu.html">排序 算法 基础</a></li>
+        <li class="tag-4"><a href="http://www.wengweitao.com/tag/vim.html">Vim</a></li>
+        <li class="tag-1"><a href="http://www.wengweitao.com/tag/du-shu-bi-ji.html">读书笔记</a></li>
+        <li class="tag-4"><a href="http://www.wengweitao.com/tag/wan.html">玩</a></li>
+        <li class="tag-4"><a href="http://www.wengweitao.com/tag/tmux.html">tmux</a></li>
+        <li class="tag-4"><a href="http://www.wengweitao.com/tag/xiao-yuan.html">校园</a></li>
+        <li class="tag-4"><a href="http://www.wengweitao.com/tag/jiao-cheng-linux.html">教程、Linux</a></li>
+        <li class="tag-2"><a href="http://www.wengweitao.com/tag/mian-shi-ti.html">面试题</a></li>
         <li class="tag-1"><a href="http://www.wengweitao.com/tag/python.html">Python</a></li>
         <li class="tag-2"><a href="http://www.wengweitao.com/tag/jiao-cheng.html">教程</a></li>
-        <li class="tag-2"><a href="http://www.wengweitao.com/tag/mian-shi-ti.html">面试题</a></li>
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/ce-shi.html">测试</a></li>
 </ul>
 -->
 
@@ -294,6 +289,7 @@
     <li><a href="http://netlab.pkusz.edu.cn/">互联网信息工程研发中心</a></li>
     <li><a href="http://www.houcj.net/">houcj's blog</a></li>
     <li><a href="http://www.rudy-yuan.net/">rundy-yuan's blog</a></li>
+    <li><a href="http://zwyang.me/blog/">zwyanswer's blog</a></li>
   </ul>
 </nav>
 
