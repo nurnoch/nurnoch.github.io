@@ -2,7 +2,7 @@
 <html lang="zh">
 <head>
 
-        <title>wwt's blog - 基础概念</title>
+        <title>wwt's blog - 二叉树</title>
         <meta charset="utf-8" />
         <link href="http://www.wengweitao.com/feeds\all.atom.xml" type="application/atom+xml" rel="alternate" title="wwt's blog Full Atom Feed" />
         <link href="http://www.wengweitao.com/feeds/all.rss.xml" type="application/rss+xml" rel="alternate" title="wwt's blog Full RSS Feed" />
@@ -61,39 +61,48 @@
         <div class="eleven columns">
                  <ol id="post-list">
                         <li><article class="hentry">
-                                <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/la-ge-lang-ri-dui-ou-xing-lagrange-duality.html" rel="bookmark" title="Permalink to 拉格朗日对偶性（Lagrange Duality）">拉格朗日对偶性（Lagrange Duality）</a></h2> </header>
+                                <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/er-cha-shu-de-san-chong-bian-li-fang-shi-di-gui-fei-di-gui-he-morrisbian-li.html" rel="bookmark" title="Permalink to 二叉树的三种遍历方式（递归、非递归和Morris遍历）">二叉树的三种遍历方式（递归、非递归和Morris遍历）</a></h2> </header>
                                 <footer class="post-info">
-                                    <abbr class="published" title="2014-07-30T09:56:00"> Wed 30 July 2014 </abbr>
+                                    <abbr class="published" title="2015-05-27T21:41:00"> Wed 27 May 2015 </abbr>
                                     <address class="vcard author">By 
                                     <a class="url fn" href="http://www.wengweitao.com/author/wwt.html"> wwt</a>
                                     </address>
                                 </footer><!-- /.post-info -->
-                                <div class="entry-content"> <blockquote>
-<p>在求解约束优化问题的时候，常常利用拉格朗日对偶性（Lagrange Duality）将原始问题转化为对偶问题，通过求解对偶问题而得到原始问题的解。该方法用在许多统计学习方法中，如最大熵模型和SVM等。</p>
-</blockquote>
-<h2>原始问题</h2>
-<h3>原始最优化问题</h3>
-<p>考虑最优化问题：</p>
-<blockquote>
-<p>
-<div class="math">$$min_x f(x)$$</div>
-<div class="math">$$s.t. c_i(x) \leq 0  \:\:\:\:\: i=1,2,...,k$$</div>
-<div class="math">$$h_j(x) = 0   \:\:\:\:\: j=1,2,...,l$$</div>
-</p>
-</blockquote>
-<p>称此约束最优化问题为原始最优化问题或原始问题。</p>
-<h3>广义拉格朗日函数</h3>
-<p>为了解决原始问题，我们先引入<strong>广义拉格朗日（generalized Lagrangian）函数</strong>：
-</p>
-<div class="math">$$L(x, \alpha, \beta) = f(x) + \sum_{i=1}^{k}\alpha_i ...</div> </div><!-- /.entry-content -->
+                                <div class="entry-content"> <p>二叉树遍历是二叉树的最基本的操作，其实现方式主要由三种：</p>
+<ol>
+<li>递归遍历</li>
+<li>非递归遍历</li>
+<li>Morris遍历</li>
+</ol>
+<p>递归遍历的实现非常容易，非递归实现需要用到栈。而Morris算法可能很多人都不太熟悉，其强大之处在于只需要使用O(1)的空间就能实现对二叉树O(n)时间的遍历。</p>
+<h2>二叉树结点的定义</h2>
+<p>每个二叉树结点包括一个值以及左孩子和右孩子结点，其定义如下：</p>
+<div class="highlight"><pre><span class="k">class</span> <span class="nc">TreeNode</span> <span class="p">{</span>
+    <span class="nl">public:</span>
+        <span class="kt">int</span> <span class="n">val</span><span class="p">;</span>
+        <span class="n">TreeNode</span> <span class="o">*</span><span class="n">left</span><span class="p">,</span> <span class="o">*</span><span class="n">right</span><span class="p">;</span>
+        <span class="n">TreeNode</span><span class="p">(</span><span class="kt">int</span> <span class="n">val</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">this</span><span class="o">-&gt;</span><span class="n">val</span> <span class="o">=</span> <span class="n">val</span><span class="p">;</span>
+            <span class="k">this</span><span class="o">-&gt;</span><span class="n">left</span> <span class="o">=</span> <span class="k">this</span><span class="o">-&gt;</span><span class="n">right</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
+        <span class="p">}</span>   
+<span class="p">};</span>
+</pre></div>
 
-                                <div class="medium primary btn"><a href="http://www.wengweitao.com/la-ge-lang-ri-dui-ou-xing-lagrange-duality.html" rel="bookmark" title="Permalink to 拉格朗日对偶性（Lagrange Duality）">Read more <i class="icon-arrow-right"></i></a></div>
+
+<h2>二叉树的遍历</h2>
+<p>二叉树的遍历，就是按照某条搜索路径访问树中的每一个结点，使得每个结点均被访问一次，而且仅被访问一次。常见的遍历次序有：</p>
+<ol>
+<li>先序遍历：先访问根结点，再访问左子树，最后访问右子树</li>
+<li>中序遍历：先访问左子树，再访问根结点，最后访问右子树</li>
+<li>后序遍历 ...</li></ol> </div><!-- /.entry-content -->
+
+                                <div class="medium primary btn"><a href="http://www.wengweitao.com/er-cha-shu-de-san-chong-bian-li-fang-shi-di-gui-fei-di-gui-he-morrisbian-li.html" rel="bookmark" title="Permalink to 二叉树的三种遍历方式（递归、非递归和Morris遍历）">Read more <i class="icon-arrow-right"></i></a></div>
 
 
 
                                 <div class="row tag-row">
                                         <span>Tagged as : </span>
-                                            <a class="danger label" href="http://www.wengweitao.com/tag/ji-chu-gai-nian.html">基础概念</a>
+                                            <a class="danger label" href="http://www.wengweitao.com/tag/er-cha-shu.html">二叉树</a>
                                 </div>
 
 

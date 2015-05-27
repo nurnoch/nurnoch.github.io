@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+
+        <title>二叉树的三种遍历方式（递归、非递归和Morris遍历）</title>
+        <meta charset="utf-8" />
+        <link href="http://www.wengweitao.com/feeds\all.atom.xml" type="application/atom+xml" rel="alternate" title="wwt's blog Full Atom Feed" />
+        <link href="http://www.wengweitao.com/feeds/all.rss.xml" type="application/rss+xml" rel="alternate" title="wwt's blog Full RSS Feed" />
+        <link href="http://www.wengweitao.com/feeds/suan-fa-yu-shu-ju-jie-gou.rss.xml" type="application/atom+xml" rel="alternate" title="wwt's blog Categories Atom Feed" />
+
+
+        <!-- Mobile viewport optimized: j.mp/bplateviewport -->
+        <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1">
+        <meta name="google-site-verification" content="pEViDEEJCicDD__DfnOAQ7xKtjtxJhVDoGDAOahOWy0" />
+
+        <meta name="sogou_site_verification" content="ia8yXdZS0p"/>
+ 
+
+        <link rel="stylesheet" type="text/css" href="http://www.wengweitao.com/theme/gumby.css" />
+        <link rel="stylesheet" type="text/css" href="http://www.wengweitao.com/theme/style.css" />
+        <link rel="stylesheet" type="text/css" href="http://www.wengweitao.com/theme/pygment.css" />
+
+        <script src="http://www.wengweitao.com/theme/js/libs/modernizr-2.6.2.min.js"></script>
+
+
+
+
+</head>
+
+<body id="index" class="home">
+
+
+    <div class="container">
+
+        <div class="row">
+
+          <header id="banner" class="body">
+                  <h1><a href="http://www.wengweitao.com/">wwt's blog <strong></strong></a></h1>
+          </header><!-- /#banner -->
+
+            <div id="navigation" class="navbar row">
+              <a href="#" gumby-trigger="#navigation &gt; ul" class="toggle"><i class="icon-menu"></i></a>
+             
+              <ul class="columns">
+                <li><a href="http://www.wengweitao.com/">首页</a></li>
+
+                <li><a href="/categories.html">分类</a></li>
+                <li><a href="/tags.html">标签</a></li>
+                <li><a href="/archives.html">归档</a></li>
+                <li><a href="/pages/about-me.html">关于我</a></li>
+
+              </ul>
+            </div>
+
+<section id="content" class="body">
+
+   <div class="row">
+        <div class="eleven columns">
+
+
+            <header>
+              <h2 class="entry-title">
+                <a href="http://www.wengweitao.com/er-cha-shu-de-san-chong-bian-li-fang-shi-di-gui-fei-di-gui-he-morrisbian-li.html" rel="bookmark"
+                   title="Permalink to 二叉树的三种遍历方式（递归、非递归和Morris遍历）">二叉树的三种遍历方式（递归、非递归和Morris遍历）</a></h2>
+           
+            </header>
+            <footer class="post-info">
+              <abbr class="published" title="2015-05-27T21:41:00">
+                Wed 27 May 2015
+              </abbr>
+              <address class="vcard author">By 
+                <a class="url fn" href="http://www.wengweitao.com/author/wwt.html"> wwt</a>
+              </address>
+            </footer><!-- /.post-info -->
+            <div class="entry-content">
+              <p>二叉树遍历是二叉树的最基本的操作，其实现方式主要由三种：</p>
+<ol>
+<li>递归遍历</li>
+<li>非递归遍历</li>
+<li>Morris遍历</li>
+</ol>
+<p>递归遍历的实现非常容易，非递归实现需要用到栈。而Morris算法可能很多人都不太熟悉，其强大之处在于只需要使用O(1)的空间就能实现对二叉树O(n)时间的遍历。</p>
+<h2>二叉树结点的定义</h2>
+<p>每个二叉树结点包括一个值以及左孩子和右孩子结点，其定义如下：</p>
+<div class="highlight"><pre><span class="k">class</span> <span class="nc">TreeNode</span> <span class="p">{</span>
+    <span class="nl">public:</span>
+        <span class="kt">int</span> <span class="n">val</span><span class="p">;</span>
+        <span class="n">TreeNode</span> <span class="o">*</span><span class="n">left</span><span class="p">,</span> <span class="o">*</span><span class="n">right</span><span class="p">;</span>
+        <span class="n">TreeNode</span><span class="p">(</span><span class="kt">int</span> <span class="n">val</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">this</span><span class="o">-&gt;</span><span class="n">val</span> <span class="o">=</span> <span class="n">val</span><span class="p">;</span>
+            <span class="k">this</span><span class="o">-&gt;</span><span class="n">left</span> <span class="o">=</span> <span class="k">this</span><span class="o">-&gt;</span><span class="n">right</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
+        <span class="p">}</span>   
+<span class="p">};</span>
+</pre></div>
+
+
+<h2>二叉树的遍历</h2>
+<p>二叉树的遍历，就是按照某条搜索路径访问树中的每一个结点，使得每个结点均被访问一次，而且仅被访问一次。常见的遍历次序有：</p>
+<ol>
+<li>先序遍历：先访问根结点，再访问左子树，最后访问右子树</li>
+<li>中序遍历：先访问左子树，再访问根结点，最后访问右子树</li>
+<li>后序遍历：先访问左子树，再访问右子树，最后访问根结点</li>
+</ol>
+<p>下面介绍，二叉树3种遍历方式的实现。</p>
+<h2>递归遍历</h2>
+<p>递归实现非常简单，按照遍历的次序，对当前结点分别调用左子树和右子树即可。</p>
+<h3>前序遍历</h3>
+<div class="highlight"><pre><span class="kt">void</span> <span class="nf">preOrder</span><span class="p">(</span><span class="n">TreeNode</span> <span class="o">*</span><span class="n">root</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">root</span> <span class="o">==</span> <span class="nb">NULL</span><span class="p">)</span>
+        <span class="k">return</span><span class="p">;</span>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">root</span><span class="o">-&gt;</span><span class="n">val</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+    <span class="n">preOrder</span><span class="p">(</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">left</span><span class="p">);</span>
+    <span class="n">preOrder</span><span class="p">(</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">right</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<h3>中序遍历</h3>
+<div class="highlight"><pre><span class="kt">void</span> <span class="nf">inOrder</span><span class="p">(</span><span class="n">TreeNode</span> <span class="o">*</span><span class="n">root</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">root</span> <span class="o">==</span> <span class="nb">NULL</span><span class="p">)</span>
+        <span class="k">return</span><span class="p">;</span>
+    <span class="n">inOrder</span><span class="p">(</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">left</span><span class="p">);</span>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">root</span><span class="o">-&gt;</span><span class="n">val</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+    <span class="n">inOrder</span><span class="p">(</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">right</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<h3>后序遍历</h3>
+<div class="highlight"><pre><span class="kt">void</span> <span class="nf">postOrder</span><span class="p">(</span><span class="n">TreeNode</span> <span class="o">*</span><span class="n">root</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">root</span> <span class="o">==</span> <span class="nb">NULL</span><span class="p">)</span>
+        <span class="k">return</span><span class="p">;</span>
+    <span class="n">postOrder</span><span class="p">(</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">left</span><span class="p">);</span>
+    <span class="n">postOrder</span><span class="p">(</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">right</span><span class="p">);</span>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">root</span><span class="o">-&gt;</span><span class="n">val</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<h3>复杂度分析</h3>
+<p>二叉树遍历的递归实现，每个结点只需遍历一次，故时间复杂度为O(n)。而使用了递归，最差情况下递归调用的深度为O(n)，所以空间复杂度为O(n)。</p>
+<h2>非递归遍历</h2>
+<p>二叉树遍历的非递归实现，可以借助栈。</p>
+<h3>前序遍历</h3>
+<ol>
+<li>将根结点入栈；</li>
+<li>每次从栈顶弹出一个结点，访问该结点；</li>
+<li>把当前结点的右孩子入栈；</li>
+<li>把当前结点的左孩子入栈。</li>
+</ol>
+<p>按照以上顺序入栈，这样出栈顺序就与先序遍历一样：先根结点，再左子树，最后右子树。</p>
+<div class="highlight"><pre><span class="kt">void</span> <span class="nf">preOrder2</span><span class="p">(</span><span class="n">TreeNode</span> <span class="o">*</span><span class="n">root</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">root</span> <span class="o">==</span> <span class="nb">NULL</span><span class="p">)</span>
+        <span class="k">return</span><span class="p">;</span>
+
+    <span class="n">stack</span><span class="o">&lt;</span><span class="n">TreeNode</span> <span class="o">*&gt;</span> <span class="n">stk</span><span class="p">;</span>
+    <span class="n">stk</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">root</span><span class="p">);</span>                                                                                                                                                                            
+    <span class="k">while</span><span class="p">(</span><span class="o">!</span><span class="n">stk</span><span class="p">.</span><span class="n">empty</span><span class="p">())</span> <span class="p">{</span>
+        <span class="n">TreeNode</span> <span class="o">*</span><span class="n">pNode</span> <span class="o">=</span> <span class="n">stk</span><span class="p">.</span><span class="n">top</span><span class="p">();</span>
+        <span class="n">stk</span><span class="p">.</span><span class="n">pop</span><span class="p">();</span>
+        <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">pNode</span><span class="o">-&gt;</span><span class="n">val</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">pNode</span><span class="o">-&gt;</span><span class="n">right</span> <span class="o">!=</span> <span class="nb">NULL</span><span class="p">)</span>
+            <span class="n">stk</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">pNode</span><span class="o">-&gt;</span><span class="n">right</span><span class="p">);</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">pNode</span><span class="o">-&gt;</span><span class="n">left</span> <span class="o">!=</span> <span class="nb">NULL</span><span class="p">)</span>
+            <span class="n">stk</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">pNode</span><span class="o">-&gt;</span><span class="n">left</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<h3>中序遍历</h3>
+<ol>
+<li>初始化一个二叉树结点pNode指向根结点；</li>
+<li>若pNode非空，那么就把pNode入栈，并把pNode变为其左孩子；（直到最左边的结点）</li>
+<li>若pNode为空，弹出栈顶的结点，并访问该结点，将pNode指向其右孩子（访问最左边的结点，并遍历其右子树）</li>
+</ol>
+<div class="highlight"><pre><span class="kt">void</span> <span class="nf">inOrder2</span><span class="p">(</span><span class="n">TreeNode</span> <span class="o">*</span><span class="n">root</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">root</span> <span class="o">==</span> <span class="nb">NULL</span><span class="p">)</span>
+        <span class="k">return</span><span class="p">;</span>
+
+    <span class="n">stack</span><span class="o">&lt;</span><span class="n">TreeNode</span> <span class="o">*&gt;</span> <span class="n">stk</span><span class="p">;</span>
+    <span class="n">TreeNode</span> <span class="o">*</span><span class="n">pNode</span> <span class="o">=</span> <span class="n">root</span><span class="p">;</span>
+    <span class="k">while</span><span class="p">(</span><span class="n">pNode</span> <span class="o">!=</span> <span class="nb">NULL</span> <span class="o">||</span> <span class="o">!</span><span class="n">stk</span><span class="p">.</span><span class="n">empty</span><span class="p">())</span> <span class="p">{</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">pNode</span> <span class="o">!=</span> <span class="nb">NULL</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">stk</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">pNode</span><span class="p">);</span>
+            <span class="n">pNode</span> <span class="o">=</span> <span class="n">pNode</span><span class="o">-&gt;</span><span class="n">left</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="k">else</span> <span class="p">{</span>
+            <span class="n">pNode</span> <span class="o">=</span> <span class="n">stk</span><span class="p">.</span><span class="n">top</span><span class="p">();</span>
+            <span class="n">stk</span><span class="p">.</span><span class="n">pop</span><span class="p">();</span>
+            <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">pNode</span><span class="o">-&gt;</span><span class="n">val</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+            <span class="n">pNode</span> <span class="o">=</span> <span class="n">pNode</span><span class="o">-&gt;</span><span class="n">right</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<h3>后序遍历</h3>
+<ol>
+<li>设置两个栈stk, stk2；</li>
+<li>将根结点压入第一个栈stk；</li>
+<li>弹出stk栈顶的结点，并把该结点压入第二个栈stk2；</li>
+<li>将当前结点的左孩子和右孩子先后分别入栈stk；</li>
+<li>当所有元素都压入stk2后，依次弹出stk2的栈顶结点，并访问之。</li>
+</ol>
+<p>第一个栈的入栈顺序是：根结点，左孩子和右孩子；于是，压入第二个栈的顺序是：根结点，右孩子和左孩子。因此，弹出的顺序就是：左孩子，右孩子和根结点。</p>
+<div class="highlight"><pre><span class="kt">void</span> <span class="nf">postOrder2</span><span class="p">(</span><span class="n">TreeNode</span> <span class="o">*</span><span class="n">root</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">root</span> <span class="o">==</span> <span class="nb">NULL</span><span class="p">)</span>
+        <span class="k">return</span><span class="p">;</span>
+
+    <span class="n">stack</span><span class="o">&lt;</span><span class="n">TreeNode</span> <span class="o">*&gt;</span> <span class="n">stk</span><span class="p">,</span> <span class="n">stk2</span><span class="p">;</span>
+    <span class="n">stk</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">root</span><span class="p">);</span>
+    <span class="k">while</span><span class="p">(</span><span class="o">!</span><span class="n">stk</span><span class="p">.</span><span class="n">empty</span><span class="p">())</span> <span class="p">{</span>
+        <span class="n">TreeNode</span> <span class="o">*</span><span class="n">pNode</span> <span class="o">=</span> <span class="n">stk</span><span class="p">.</span><span class="n">top</span><span class="p">();</span>
+        <span class="n">stk</span><span class="p">.</span><span class="n">pop</span><span class="p">();</span>
+        <span class="n">stk2</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">pNode</span><span class="p">);</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">pNode</span><span class="o">-&gt;</span><span class="n">left</span> <span class="o">!=</span> <span class="nb">NULL</span><span class="p">)</span>
+            <span class="n">stk</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">pNode</span><span class="o">-&gt;</span><span class="n">left</span><span class="p">);</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">pNode</span><span class="o">-&gt;</span><span class="n">right</span> <span class="o">!=</span> <span class="nb">NULL</span><span class="p">)</span>
+            <span class="n">stk</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">pNode</span><span class="o">-&gt;</span><span class="n">right</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">while</span><span class="p">(</span><span class="o">!</span><span class="n">stk2</span><span class="p">.</span><span class="n">empty</span><span class="p">())</span> <span class="p">{</span>
+        <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">stk2</span><span class="p">.</span><span class="n">top</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">val</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+        <span class="n">stk2</span><span class="p">.</span><span class="n">pop</span><span class="p">();</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>另外，二叉树的后序遍历的非递归实现，也可以只使用一个栈来实现。</p>
+<div class="highlight"><pre><span class="kt">void</span> <span class="nf">postOrder2</span><span class="p">(</span><span class="n">TreeNode</span> <span class="o">*</span><span class="n">root</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">root</span> <span class="o">==</span> <span class="nb">NULL</span><span class="p">)</span>
+        <span class="k">return</span><span class="p">;</span>
+
+    <span class="n">stack</span><span class="o">&lt;</span><span class="n">TreeNode</span> <span class="o">*&gt;</span> <span class="n">stk</span><span class="p">;</span>
+    <span class="n">stk</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">root</span><span class="p">);</span>
+    <span class="n">TreeNode</span> <span class="o">*</span><span class="n">prev</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
+    <span class="k">while</span><span class="p">(</span><span class="o">!</span><span class="n">stk</span><span class="p">.</span><span class="n">empty</span><span class="p">())</span> <span class="p">{</span>
+        <span class="n">TreeNode</span> <span class="o">*</span><span class="n">pNode</span> <span class="o">=</span> <span class="n">stk</span><span class="p">.</span><span class="n">top</span><span class="p">();</span>
+        <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">prev</span> <span class="o">||</span> <span class="n">prev</span><span class="o">-&gt;</span><span class="n">left</span> <span class="o">==</span> <span class="n">pNode</span> <span class="o">||</span> <span class="n">prev</span><span class="o">-&gt;</span><span class="n">right</span> <span class="o">==</span> <span class="n">pNode</span><span class="p">)</span> <span class="p">{</span>  <span class="c1">// traverse down</span>
+            <span class="k">if</span><span class="p">(</span><span class="n">pNode</span><span class="o">-&gt;</span><span class="n">left</span><span class="p">)</span>
+                <span class="n">stk</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">pNode</span><span class="o">-&gt;</span><span class="n">left</span><span class="p">);</span>
+            <span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="n">pNode</span><span class="o">-&gt;</span><span class="n">right</span><span class="p">)</span>
+                <span class="n">stk</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">pNode</span><span class="o">-&gt;</span><span class="n">right</span><span class="p">);</span>
+
+         <span class="cm">/* else {</span>
+<span class="cm">                cout &lt;&lt; pNode-&gt;val &lt;&lt; endl;</span>
+<span class="cm">                stk.pop();</span>
+<span class="cm">            }</span>
+<span class="cm">        */</span>
+
+        <span class="p">}</span>
+        <span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="n">pNode</span><span class="o">-&gt;</span><span class="n">left</span> <span class="o">==</span> <span class="n">prev</span><span class="p">)</span> <span class="p">{</span>  <span class="c1">// traverse up from left</span>
+            <span class="k">if</span><span class="p">(</span><span class="n">pNode</span><span class="o">-&gt;</span><span class="n">right</span><span class="p">)</span>
+                <span class="n">stk</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">pNode</span><span class="o">-&gt;</span><span class="n">right</span><span class="p">);</span>
+        <span class="p">}</span>
+
+    <span class="cm">/* else if(pNode-&gt;right == prev) { // traverse up from right</span>
+<span class="cm">                cout &lt;&lt; pNode-&gt;val &lt;&lt; endl;</span>
+<span class="cm">                stk.pop();</span>
+<span class="cm">        }</span>
+<span class="cm">    */</span>
+
+        <span class="k">else</span> <span class="p">{</span>
+            <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">pNode</span><span class="o">-&gt;</span><span class="n">val</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+            <span class="n">stk</span><span class="p">.</span><span class="n">pop</span><span class="p">();</span>
+        <span class="p">}</span>
+        <span class="n">prev</span> <span class="o">=</span> <span class="n">pNode</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<h3>复杂度分析</h3>
+<p>二叉树遍历的非递归实现，每个结点只需遍历一次，故时间复杂度为O(n)。而使用了栈，空间复杂度为二叉树的高度，故空间复杂度为O(n)。</p>
+<h2>Morris遍历</h2>
+<p>Morris遍历算法最神奇的地方就是，只需要常数的空间即可在O(n)时间内完成二叉树的遍历。O(1)空间进行遍历困难之处在于在遍历的子结点的时候如何重新返回其父节点？在Morris遍历算法中，通过修改叶子结点的左右空指针来指向其前驱或者后继结点来实现的。</p>
+<h3>中序遍历</h3>
+<ol>
+<li>如果当前结点pNode的左孩子为空，那么输出该结点，并把该结点的右孩子作为当前结点；</li>
+<li>如果当前结点pNode的左孩子非空，那么就找出该结点在中序遍历中的前驱结点pPre<ul>
+<li>当第一次访问该前驱结点pPre时，其右孩子必定为空，那么就将其右孩子设置为当前结点，以便根据这个指针返回到当前结点pNode中，并将当前结点pNode设置为其左孩子；</li>
+<li>当该前驱结点pPre的右孩子为当前结点，那么就输出当前结点，并把前驱结点的右孩子设置为空（恢复树的结构），将当前结点更新为当前结点的右孩子</li>
+</ul>
+</li>
+<li>重复以上两步，直到当前结点为空。</li>
+</ol>
+<div class="highlight"><pre><span class="kt">void</span> <span class="nf">inOrder3</span><span class="p">(</span><span class="n">TreeNode</span> <span class="o">*</span><span class="n">root</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">root</span> <span class="o">==</span> <span class="nb">NULL</span><span class="p">)</span>
+        <span class="k">return</span><span class="p">;</span>
+
+    <span class="n">TreeNode</span> <span class="o">*</span><span class="n">pNode</span> <span class="o">=</span> <span class="n">root</span><span class="p">;</span>
+    <span class="k">while</span><span class="p">(</span><span class="n">pNode</span> <span class="o">!=</span> <span class="nb">NULL</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">pNode</span><span class="o">-&gt;</span><span class="n">left</span> <span class="o">==</span> <span class="nb">NULL</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">pNode</span><span class="o">-&gt;</span><span class="n">val</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+            <span class="n">pNode</span> <span class="o">=</span> <span class="n">pNode</span><span class="o">-&gt;</span><span class="n">right</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="k">else</span> <span class="p">{</span>
+            <span class="n">TreeNode</span> <span class="o">*</span><span class="n">pPre</span> <span class="o">=</span> <span class="n">pNode</span><span class="o">-&gt;</span><span class="n">left</span><span class="p">;</span>
+            <span class="k">while</span><span class="p">(</span><span class="n">pPre</span><span class="o">-&gt;</span><span class="n">right</span> <span class="o">!=</span> <span class="nb">NULL</span> <span class="o">&amp;&amp;</span> <span class="n">pPre</span><span class="o">-&gt;</span><span class="n">right</span> <span class="o">!=</span> <span class="n">pNode</span><span class="p">)</span> <span class="p">{</span>
+                <span class="n">pPre</span> <span class="o">=</span> <span class="n">pPre</span><span class="o">-&gt;</span><span class="n">right</span><span class="p">;</span>
+            <span class="p">}</span>
+
+            <span class="k">if</span><span class="p">(</span><span class="n">pPre</span><span class="o">-&gt;</span><span class="n">right</span> <span class="o">==</span> <span class="nb">NULL</span><span class="p">)</span> <span class="p">{</span>
+                <span class="n">pPre</span><span class="o">-&gt;</span><span class="n">right</span> <span class="o">=</span> <span class="n">pNode</span><span class="p">;</span>
+                <span class="n">pNode</span> <span class="o">=</span> <span class="n">pNode</span><span class="o">-&gt;</span><span class="n">left</span><span class="p">;</span>
+            <span class="p">}</span>
+            <span class="k">else</span> <span class="p">{</span>
+                <span class="n">pPre</span><span class="o">-&gt;</span><span class="n">right</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
+                <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">pNode</span><span class="o">-&gt;</span><span class="n">val</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+                <span class="n">pNode</span> <span class="o">=</span> <span class="n">pNode</span><span class="o">-&gt;</span><span class="n">right</span><span class="p">;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>因为只使用了两个辅助指针，所以空间复杂度为O(1)。对于时间复杂度，每次遍历都需要找到其前驱的结点，而寻找前驱结点与树的高度相关，那么直觉上总的时间复杂度为O(nlogn)。其实，并不是每个结点都需要寻找其前驱结点，只有左子树非空的结点才需要寻找其前驱，所有结点寻找前驱走过的路的总和至多为一棵树的结点个数。因此，整个过程每条边最多走两次，一次使定位到该结点，另一次是寻找某个结点的前驱，所以时间复杂度为O(n)。</p>
+<p>如以下一棵二叉树。首先，访问的是根结点F，其左孩子非空，所以需要先找到它的前驱结点（寻找路径为B-&gt;D-&gt;E），将E的右指针指向F，然后当前结点为B。依然需要找到B的前驱结点A，将A的右指针指向B，并将当前结点设置为A。下一步，输出A，并把当前结点设置为A的右孩子B。之后，会访问到B的前驱结点A指向B，那么令A的右指针为空，继续遍历B的右孩子。依次类推。
+<img alt="一棵二叉树" src="http://blog.codinghonor.com/images/2014/threaded_binary_tree.jpg" /></p>
+<h3>前序遍历</h3>
+<p>与中序遍历类似，区别仅仅是输出的顺序不同。</p>
+<div class="highlight"><pre><span class="kt">void</span> <span class="nf">preOrder3</span><span class="p">(</span><span class="n">TreeNode</span> <span class="o">*</span><span class="n">root</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">root</span> <span class="o">==</span> <span class="nb">NULL</span><span class="p">)</span>
+        <span class="k">return</span><span class="p">;</span>
+    <span class="n">TreeNode</span> <span class="o">*</span><span class="n">pNode</span> <span class="o">=</span> <span class="n">root</span><span class="p">;</span>
+    <span class="k">while</span><span class="p">(</span><span class="n">pNode</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">pNode</span><span class="o">-&gt;</span><span class="n">left</span> <span class="o">==</span> <span class="nb">NULL</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">pNode</span><span class="o">-&gt;</span><span class="n">val</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+            <span class="n">pNode</span> <span class="o">=</span> <span class="n">pNode</span><span class="o">-&gt;</span><span class="n">right</span><span class="p">;</span>
+        <span class="p">}</span>   
+        <span class="k">else</span> <span class="p">{</span>
+            <span class="n">TreeNode</span> <span class="o">*</span><span class="n">pPre</span> <span class="o">=</span> <span class="n">pNode</span><span class="o">-&gt;</span><span class="n">left</span><span class="p">;</span>
+            <span class="k">while</span><span class="p">(</span><span class="n">pPre</span><span class="o">-&gt;</span><span class="n">right</span> <span class="o">!=</span> <span class="nb">NULL</span> <span class="o">&amp;&amp;</span> <span class="n">pPre</span><span class="o">-&gt;</span><span class="n">right</span> <span class="o">!=</span> <span class="n">pNode</span><span class="p">)</span>
+                <span class="n">pPre</span> <span class="o">=</span> <span class="n">pPre</span><span class="o">-&gt;</span><span class="n">right</span><span class="p">;</span>
+
+            <span class="k">if</span><span class="p">(</span><span class="n">pPre</span><span class="o">-&gt;</span><span class="n">right</span> <span class="o">==</span> <span class="nb">NULL</span><span class="p">)</span> <span class="p">{</span>
+                <span class="n">pPre</span><span class="o">-&gt;</span><span class="n">right</span> <span class="o">=</span> <span class="n">pNode</span><span class="p">;</span>
+                <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">pNode</span><span class="o">-&gt;</span><span class="n">val</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+                <span class="n">pNode</span> <span class="o">=</span> <span class="n">pNode</span><span class="o">-&gt;</span><span class="n">left</span><span class="p">;</span>
+            <span class="p">}</span>   
+            <span class="k">else</span> <span class="p">{</span>
+                <span class="n">pPre</span><span class="o">-&gt;</span><span class="n">right</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
+                <span class="n">pNode</span> <span class="o">=</span> <span class="n">pNode</span><span class="o">-&gt;</span><span class="n">right</span><span class="p">;</span>
+            <span class="p">}</span>   
+        <span class="p">}</span>   
+    <span class="p">}</span>   
+<span class="p">}</span>
+</pre></div>
+
+
+<h3>后序遍历</h3>
+<ol>
+<li>先建立一个临时结点dummy，并令其左孩子为根结点root，将当前结点设置为dummy；</li>
+<li>如果当前结点的左孩子为空，则将其右孩子作为当前结点；</li>
+<li>如果当前结点的左孩子不为空，则找到其在中序遍历中的前驱结点<ul>
+<li>如果前驱结点的右孩子为空，将它的右孩子设置为当前结点，将当前结点更新为当前结点的左孩子；</li>
+<li>如果前驱结点的右孩子为当前结点，倒序输出从当前结点的左孩子到该前驱结点这条路径上所有的结点。将前驱结点的右孩子设置为空，将当前结点更新为当前结点的右孩子。</li>
+</ul>
+</li>
+<li>重复以上过程，直到当前结点为空。</li>
+</ol>
+<div class="highlight"><pre><span class="kt">void</span> <span class="nf">reverse</span><span class="p">(</span><span class="n">TreeNode</span> <span class="o">*</span><span class="n">p1</span><span class="p">,</span> <span class="n">TreeNode</span> <span class="o">*</span><span class="n">p2</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">p1</span> <span class="o">==</span> <span class="n">p2</span><span class="p">)</span> 
+        <span class="k">return</span><span class="p">;</span>
+    <span class="n">TreeNode</span> <span class="o">*</span><span class="n">x</span> <span class="o">=</span> <span class="n">p1</span><span class="p">;</span> 
+    <span class="n">TreeNode</span> <span class="o">*</span><span class="n">y</span> <span class="o">=</span> <span class="n">p1</span><span class="o">-&gt;</span><span class="n">right</span><span class="p">;</span>
+    <span class="k">while</span><span class="p">(</span><span class="nb">true</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">TreeNode</span> <span class="o">*</span><span class="n">temp</span> <span class="o">=</span> <span class="n">y</span><span class="o">-&gt;</span><span class="n">right</span><span class="p">;</span>
+        <span class="n">y</span><span class="o">-&gt;</span><span class="n">right</span> <span class="o">=</span> <span class="n">x</span><span class="p">;</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">y</span><span class="p">;</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="n">temp</span><span class="p">;</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">x</span> <span class="o">==</span> <span class="n">p2</span><span class="p">)</span> 
+            <span class="k">break</span><span class="p">;</span>
+    <span class="p">}</span>   
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">printReverse</span><span class="p">(</span><span class="n">TreeNode</span> <span class="o">*</span><span class="n">p1</span><span class="p">,</span> <span class="n">TreeNode</span> <span class="o">*</span><span class="n">p2</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">reverse</span><span class="p">(</span><span class="n">p1</span><span class="p">,</span> <span class="n">p2</span><span class="p">);</span>
+
+    <span class="n">TreeNode</span> <span class="o">*</span><span class="n">pNode</span> <span class="o">=</span> <span class="n">p2</span><span class="p">;</span> 
+    <span class="k">while</span><span class="p">(</span><span class="nb">true</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">pNode</span><span class="o">-&gt;</span><span class="n">val</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">pNode</span> <span class="o">==</span> <span class="n">p1</span><span class="p">)</span> 
+            <span class="k">break</span><span class="p">;</span>
+        <span class="n">pNode</span> <span class="o">=</span> <span class="n">pNode</span><span class="o">-&gt;</span><span class="n">right</span><span class="p">;</span>
+    <span class="p">}</span>   
+
+    <span class="n">reverse</span><span class="p">(</span><span class="n">p2</span><span class="p">,</span> <span class="n">p1</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">postOrder3</span><span class="p">(</span><span class="n">TreeNode</span> <span class="o">*</span><span class="n">root</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">root</span> <span class="o">==</span> <span class="nb">NULL</span><span class="p">)</span>
+        <span class="k">return</span><span class="p">;</span>
+
+    <span class="n">TreeNode</span> <span class="o">*</span><span class="n">dummy</span> <span class="o">=</span> <span class="k">new</span> <span class="n">TreeNode</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">);</span>
+    <span class="n">dummy</span><span class="o">-&gt;</span><span class="n">left</span> <span class="o">=</span> <span class="n">root</span><span class="p">;</span>
+    <span class="n">TreeNode</span> <span class="o">*</span><span class="n">pNode</span> <span class="o">=</span> <span class="n">dummy</span><span class="p">;</span>
+    <span class="k">while</span><span class="p">(</span><span class="n">pNode</span> <span class="o">!=</span> <span class="nb">NULL</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">pNode</span><span class="o">-&gt;</span><span class="n">left</span> <span class="o">==</span> <span class="nb">NULL</span><span class="p">)</span>
+            <span class="n">pNode</span> <span class="o">=</span> <span class="n">pNode</span><span class="o">-&gt;</span><span class="n">right</span><span class="p">;</span>
+        <span class="k">else</span> <span class="p">{</span>
+            <span class="n">TreeNode</span> <span class="o">*</span><span class="n">pPrev</span> <span class="o">=</span> <span class="n">pNode</span><span class="o">-&gt;</span><span class="n">left</span><span class="p">;</span>
+            <span class="k">while</span><span class="p">(</span><span class="n">pPrev</span><span class="o">-&gt;</span><span class="n">right</span> <span class="o">!=</span> <span class="nb">NULL</span> <span class="o">&amp;&amp;</span> <span class="n">pPrev</span><span class="o">-&gt;</span><span class="n">right</span> <span class="o">!=</span> <span class="n">pNode</span><span class="p">)</span>
+                <span class="n">pPrev</span> <span class="o">=</span> <span class="n">pPrev</span><span class="o">-&gt;</span><span class="n">right</span><span class="p">;</span>
+
+            <span class="k">if</span><span class="p">(</span><span class="n">pPrev</span><span class="o">-&gt;</span><span class="n">right</span> <span class="o">==</span> <span class="nb">NULL</span><span class="p">)</span> <span class="p">{</span>
+                <span class="n">pPrev</span><span class="o">-&gt;</span><span class="n">right</span> <span class="o">=</span> <span class="n">pNode</span><span class="p">;</span>
+                <span class="n">pNode</span> <span class="o">=</span> <span class="n">pNode</span><span class="o">-&gt;</span><span class="n">left</span><span class="p">;</span>
+            <span class="p">}</span>
+            <span class="k">else</span> <span class="p">{</span>
+                <span class="n">printReverse</span><span class="p">(</span><span class="n">pNode</span><span class="o">-&gt;</span><span class="n">left</span><span class="p">,</span> <span class="n">pPrev</span><span class="p">);</span>
+                <span class="n">pPrev</span><span class="o">-&gt;</span><span class="n">right</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
+                <span class="n">pNode</span> <span class="o">=</span> <span class="n">pNode</span><span class="o">-&gt;</span><span class="n">right</span><span class="p">;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<hr />
+<h3>References</h3>
+<p>http://noalgo.info/832.html</p>
+<p>http://www.cnblogs.com/AnnieKim/archive/2013/06/15/morristraversal.html</p>
+            </div><!-- /.entry-content -->
+            <div class="comments">
+              <h3>Comments</h3>
+              <div id="disqus_thread"></div>
+              <script type="text/javascript">
+                var disqus_identifier = "er-cha-shu-de-san-chong-bian-li-fang-shi-di-gui-fei-di-gui-he-morrisbian-li.html";
+                (function() {
+                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                dsq.src = 'http://wengwt.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                })();
+              </script>
+            </div>
+
+
+        </div><!-- /.eleven.columns -->
+
+<div class="three columns">
+
+<!--
+<h4>Pages</h4>
+
+ <ul>
+      <li><a href="/categories.html">分类</a></li>
+      <li><a href="/tags.html">标签</a></li>
+      <li><a href="/archives.html">归档</a></li>
+      <li><a href="/pages/about-me.html">关于我</a></li>
+  </ul>
+-->
+
+<h4>分类</h4>
+<ul>
+		<li><a href="http://www.wengweitao.com/category/bian-cheng-yu-yan.html">编程语言</a></li>
+		<li><a href="http://www.wengweitao.com/category/du-shu-bi-ji.html">读书笔记</a></li>
+		<li><a href="http://www.wengweitao.com/category/gong-ju.html">工具</a></li>
+		<li><a href="http://www.wengweitao.com/category/ji-qi-xue-xi.html">机器学习</a></li>
+		<li><a href="http://www.wengweitao.com/category/python.html">Python</a></li>
+		<li><a href="http://www.wengweitao.com/category/sheng-huo.html">生活</a></li>
+		<li><a href="http://www.wengweitao.com/category/suan-fa-yu-shu-ju-jie-gou.html">算法与数据结构</a></li>
+</ul>
+
+<!--
+<h4>标签</h4>
+<ul class="tagcloud">
+        <li class="tag-4"><a href="http://www.wengweitao.com/tag/jiao-cheng-linux.html">教程、Linux</a></li>
+        <li class="tag-4"><a href="http://www.wengweitao.com/tag/go.html">Go</a></li>
+        <li class="tag-1"><a href="http://www.wengweitao.com/tag/pai-xu-suan-fa-ji-chu.html">排序 算法 基础</a></li>
+        <li class="tag-4"><a href="http://www.wengweitao.com/tag/tmux.html">tmux</a></li>
+        <li class="tag-4"><a href="http://www.wengweitao.com/tag/gong-ju.html">工具</a></li>
+        <li class="tag-4"><a href="http://www.wengweitao.com/tag/wan.html">玩</a></li>
+        <li class="tag-1"><a href="http://www.wengweitao.com/tag/du-shu-bi-ji.html">读书笔记</a></li>
+        <li class="tag-3"><a href="http://www.wengweitao.com/tag/ji-ben-gai-nian.html">基本概念</a></li>
+        <li class="tag-4"><a href="http://www.wengweitao.com/tag/ji-chu-gai-nian.html">基础概念</a></li>
+        <li class="tag-4"><a href="http://www.wengweitao.com/tag/vim.html">Vim</a></li>
+        <li class="tag-4"><a href="http://www.wengweitao.com/tag/pai-xu-suan-fa-ji-chu-zong-jie.html">排序 算法 基础 总结</a></li>
+        <li class="tag-4"><a href="http://www.wengweitao.com/tag/suan-fa-fen-xi.html">算法分析</a></li>
+        <li class="tag-2"><a href="http://www.wengweitao.com/tag/mian-shi-ti.html">面试题</a></li>
+        <li class="tag-4"><a href="http://www.wengweitao.com/tag/xiao-yuan.html">校园</a></li>
+        <li class="tag-4"><a href="http://www.wengweitao.com/tag/er-cha-shu.html">二叉树</a></li>
+        <li class="tag-2"><a href="http://www.wengweitao.com/tag/jiao-cheng.html">教程</a></li>
+        <li class="tag-1"><a href="http://www.wengweitao.com/tag/python.html">Python</a></li>
+        <li class="tag-4"><a href="http://www.wengweitao.com/tag/ce-shi.html">测试</a></li>
+</ul>
+-->
+
+
+<nav class="widget">
+  <h4>社交</h4>
+  <ul>
+    <li><a href="http://weibo.com/u/2678027854">新浪微博</a></li>
+    <li><a href="http://www.douban.com/people/wengwt/">豆瓣</a></li>
+    <li><a href="http://www.zhihu.com/people/vita-49">知乎</a></li>
+    <li><a href="https://github.com/nurnoch">Github</a></li>
+    <li><a href="https://www.v2ex.com/member/wwttc">V2EX</a></li>
+  </ul>
+</nav>
+
+<nav class="widget">
+  <h4>友情链接</h4>
+  <ul>
+    <li><a href="http://netlab.pkusz.edu.cn/">互联网信息工程研发中心</a></li>
+    <li><a href="http://www.houcj.net/">houcj's blog</a></li>
+    <li><a href="http://www.rudy-yuan.net/">rundy-yuan's blog</a></li>
+    <li><a href="http://zwyang.me/blog/">zwyanswer's blog</a></li>
+  </ul>
+</nav>
+
+
+</div> </div><!-- /.row -->
+
+
+</section>
+
+       </div><!-- /.row -->
+    </div><!-- /.container -->
+
+
+       <div class="container.nopad bg">
+
+    
+        <footer id="credits" class="row">
+          <div class="seven columns left-center">
+
+                   <address id="about" class="vcard body">
+                    Proudly powered by  <a href="http://getpelican.com/">Pelican</a> and Theme by Gum © 2015 wwt
+                    </address>
+          </div>
+
+
+          <div class="seven columns">
+            <div class="row">
+              <ul class="socbtns">
+
+
+
+
+
+              </ul>
+            </div>
+          </div>
+        </footer>
+
+    </div>
+
+
+<script type="text/javascript">
+    var disqus_shortname = 'wengwt';
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+  <script src="http://www.wengweitao.com/theme/js/libs/jquery-1.9.1.min.js"></script>
+  <script src="http://www.wengweitao.com/theme/js/libs/gumby.min.js"></script>
+  <script src="http://www.wengweitao.com/theme/js/plugins.js"></script>
+</body>
+</html>
