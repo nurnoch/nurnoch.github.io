@@ -148,11 +148,9 @@
 &lt;p&gt;将标识作为hash表的键，值为一个数组保存了对应单词在strs中的下标。如果值中保存的下标个数大于等于2，那么就存在变位词，输出之。&lt;/p&gt;
 &lt;hr /&gt;
 &lt;h2&gt;References&lt;/h2&gt;
-&lt;p&gt;&lt;a href="http://book.douban.com/subject/3227098/"&gt;编程珠玑&lt;/a&gt;
-[关于《编程珠玑》中一个找出一个不存在的数的问题的探讨][2]
-[珠玑之椟:二分思想与分治法、排序思想][3]&lt;/p&gt;
-&lt;p&gt;[2]http://blog.csdn.net/burningsheep/article/details/7814591
-  [3]http://www.cnblogs.com/wuyuegb2312/p/3139926.html#title12&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://book.douban.com/subject/3227098/"&gt;编程珠玑&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://blog.csdn.net/burningsheep/article/details/7814591/"&gt;关于《编程珠玑》中一个找出一个不存在的数的问题的探讨&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://www.cnblogs.com/wuyuegb2312/p/3139926.html#title12/"&gt;珠玑之椟:二分思想与分治法、排序思想&lt;/a&gt;&lt;/p&gt;
 &lt;script type="text/javascript"&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
     var align = "center",
         indent = "0em",
