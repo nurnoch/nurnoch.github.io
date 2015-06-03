@@ -61,6 +61,41 @@
         <div class="eleven columns">
                  <ol id="post-list">
                         <li><article class="hentry">
+                                <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/suan-fa-zhong-de-ling-ji-yi-dong.html" rel="bookmark" title="Permalink to 算法中的灵机一动">算法中的灵机一动</a></h2> </header>
+                                <footer class="post-info">
+                                    <abbr class="published" title="2015-06-03T20:37:00"> Wed 03 June 2015 </abbr>
+                                    <address class="vcard author">By 
+                                    <a class="url fn" href="http://www.wengweitao.com/author/wwt.html"> wwt</a>
+                                    </address>
+                                </footer><!-- /.post-info -->
+                                <div class="entry-content"> <p>研究算法能给程序员带来许多好处，减少开发的时间，同时使执行速度更快。有些看起来很困难的问题，可能也存在着一个简单的、意想不到的答案。这些就是灵机一动的算法，需要在大量的研究之后才能出现。本文围绕三个小问题，来说明算法的灵机一动。</p>
+<h2>无处不在的二分搜索</h2>
+<h3>问题描述</h3>
+<p>给定一个最多包含40亿个随机排列的32位整数的<strong>顺序</strong>文件，找出一个不在文件中的32位整数。</p>
+<ul>
+<li>在具有足够的内存情况下，如何解决该问题？</li>
+<li>如果有几个外部的临时文件可以用，但是仅有几百字节的内存，该如何解决该问题？</li>
+</ul>
+<h3>程序设计</h3>
+<h4>内存足够的情况</h4>
+<p>如果内存足够，就可以考虑位图的技术。使用一个大小为<span class="math">\(2^{32}/8\)</span>字节（512MB）形成的位图来表示出现的整数。然后，可以判断位图集合中的每一个数是否为-1，若为-1（-1的二进制表示全为1），表示该元素表示的数均出现在序列中，若不为-1，则未出现的整数在其中。</p>
+<h4>内存有限的情况</h4>
+<p>如果仅有几百个字节内存和几个稀疏顺序文件的情况下如何找到缺失的整数？</p>
+<p>考虑二分搜索算法。第一趟需要读入40亿个数，并判断每一个数32bit中的第一位（最高位开始）是1还是0，将第一位是0的写入一个文件，第一位是1的写入另一个文件。这样就按照第一位是1还是0，将所有40亿个数分成了两段 ...</p> </div><!-- /.entry-content -->
+
+                                <div class="medium primary btn"><a href="http://www.wengweitao.com/suan-fa-zhong-de-ling-ji-yi-dong.html" rel="bookmark" title="Permalink to 算法中的灵机一动">Read more <i class="icon-arrow-right"></i></a></div>
+
+
+
+                                <div class="row tag-row">
+                                        <span>Tagged as : </span>
+                                            <a class="danger label" href="http://www.wengweitao.com/tag/du-shu-bi-ji.html">读书笔记</a>
+                                </div>
+
+
+
+                        </article></li>
+                        <li><article class="hentry">
                                 <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/er-cha-shu-de-san-chong-bian-li-fang-shi-di-gui-fei-di-gui-he-morrisbian-li.html" rel="bookmark" title="Permalink to 二叉树的三种遍历方式（递归、非递归和Morris遍历）">二叉树的三种遍历方式（递归、非递归和Morris遍历）</a></h2> </header>
                                 <footer class="post-info">
                                     <abbr class="published" title="2015-05-27T21:41:00"> Wed 27 May 2015 </abbr>
@@ -221,47 +256,6 @@
 
 
                         </article></li>
-                        <li><article class="hentry">
-                                <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/pai-xu-suan-fa-zong-jie.html" rel="bookmark" title="Permalink to 排序算法总结">排序算法总结</a></h2> </header>
-                                <footer class="post-info">
-                                    <abbr class="published" title="2015-05-19T20:35:00"> Tue 19 May 2015 </abbr>
-                                    <address class="vcard author">By 
-                                    <a class="url fn" href="http://www.wengweitao.com/author/wwt.html"> wwt</a>
-                                    </address>
-                                </footer><!-- /.post-info -->
-                                <div class="entry-content"> <p>在前面的几篇文章中，分别介绍了几种最常见的算法：</p>
-<ol>
-<li><a href="http://www.wengweitao.com/cha-ru-pai-xu.html">直接插入排序</a></li>
-<li><a href="http://www.wengweitao.com/mou-pao-pai-xu.html">冒泡排序</a></li>
-<li><a href="http://www.wengweitao.com/gui-bing-pai-xu.html">归并排序</a></li>
-<li><a href="http://www.wengweitao.com/dui-pai-xu.html">堆排序</a></li>
-<li><a href="http://www.wengweitao.com/kuai-su-pai-xu.html">快速排序</a></li>
-<li><a href="http://www.wengweitao.com/ji-shhtml">计数排序</a></li>
-<li><a href="http://www.wengweitao.com/ji-shu-pai-xu-radix-sort.html">基数排序</a></li>
-<li><a href="http://www.wengweitao.com/tong-pai-xuww.wengweitao.com/ji-shu-pai-xu-radix-sort.html">桶排序</a></li>
-</ol>
-<p>本文将对这8种排序进行总结。</p>
-<h2>比较排序与非比较排序算法</h2>
-<p><strong>比较排序算法：</strong></p>
-<p>插入排序、冒泡排序、归并排序、堆排序和快速排序都是比较排序算法。它们都是通过对元素进行比较操作来确定输入数组的有序次序。使用决策树模型，可以证明任意比较排序算法排序n个元素的最坏运行时间的下界为<span class="math">\(\Omega(nlogn)\)</span>。归并排序和堆排序的最坏运行时间都为O(nlogn)都是渐近最优的比较算法。快速排序平均运行时间也为O(nlogn)，而且在实际应用中速度通常都比较快，是排序大数组最常用的算法。</p>
-<p><strong>非比较排序算法：</strong>：
-计数排序、基数排序和桶排序都是非比较排序算法。通过比较操作之外的方法来获得序列的有序次序的信息，就有可能打破<span class="math">\(\Omega(nlogn)\)</span>的时间下界。</p>
-<h2>从时间复杂度上看</h2>
-<p>直接插入排序、冒泡排序的平均情况下的时间复杂度都是<span class="math">\(O(n^2)\)</span>，并且实现也比较简单。但是，插入排序和冒泡排序在最好情况下，时间复杂度可以达到O(n)。</p>
-<p>归并排序、堆排序和快速排序的平均情况下的时间复杂度都是O ...</p> </div><!-- /.entry-content -->
-
-                                <div class="medium primary btn"><a href="http://www.wengweitao.com/pai-xu-suan-fa-zong-jie.html" rel="bookmark" title="Permalink to 排序算法总结">Read more <i class="icon-arrow-right"></i></a></div>
-
-
-
-                                <div class="row tag-row">
-                                        <span>Tagged as : </span>
-                                            <a class="danger label" href="http://www.wengweitao.com/tag/pai-xu-suan-fa-ji-chu-zong-jie.html">排序 算法 基础 总结</a>
-                                </div>
-
-
-
-                        </article></li>
                 </ol><!-- /#posts-list -->
 
         </div><!-- /.eleven.columns -->
@@ -293,24 +287,24 @@
 <!--
 <h4>标签</h4>
 <ul class="tagcloud">
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/suan-fa-fen-xi.html">算法分析</a></li>
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/ce-shi.html">测试</a></li>
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/vim.html">Vim</a></li>
-        <li class="tag-3"><a href="http://www.wengweitao.com/tag/ji-ben-gai-nian.html">基本概念</a></li>
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/jiao-cheng-linux.html">教程、Linux</a></li>
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/tmux.html">tmux</a></li>
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/pai-xu-suan-fa-ji-chu-zong-jie.html">排序 算法 基础 总结</a></li>
+        <li class="tag-4"><a href="http://www.wengweitao.com/tag/go.html">Go</a></li>
         <li class="tag-4"><a href="http://www.wengweitao.com/tag/wan.html">玩</a></li>
-        <li class="tag-1"><a href="http://www.wengweitao.com/tag/python.html">Python</a></li>
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/xiao-yuan.html">校园</a></li>
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/er-cha-shu.html">二叉树</a></li>
         <li class="tag-1"><a href="http://www.wengweitao.com/tag/du-shu-bi-ji.html">读书笔记</a></li>
+        <li class="tag-4"><a href="http://www.wengweitao.com/tag/suan-fa-fen-xi.html">算法分析</a></li>
+        <li class="tag-4"><a href="http://www.wengweitao.com/tag/tmux.html">tmux</a></li>
+        <li class="tag-4"><a href="http://www.wengweitao.com/tag/jiao-cheng-linux.html">教程、Linux</a></li>
+        <li class="tag-1"><a href="http://www.wengweitao.com/tag/python.html">Python</a></li>
+        <li class="tag-3"><a href="http://www.wengweitao.com/tag/ji-ben-gai-nian.html">基本概念</a></li>
+        <li class="tag-4"><a href="http://www.wengweitao.com/tag/ce-shi.html">测试</a></li>
+        <li class="tag-2"><a href="http://www.wengweitao.com/tag/jiao-cheng.html">教程</a></li>
+        <li class="tag-4"><a href="http://www.wengweitao.com/tag/ji-chu-gai-nian.html">基础概念</a></li>
+        <li class="tag-4"><a href="http://www.wengweitao.com/tag/er-cha-shu.html">二叉树</a></li>
+        <li class="tag-4"><a href="http://www.wengweitao.com/tag/pai-xu-suan-fa-ji-chu-zong-jie.html">排序 算法 基础 总结</a></li>
         <li class="tag-1"><a href="http://www.wengweitao.com/tag/pai-xu-suan-fa-ji-chu.html">排序 算法 基础</a></li>
+        <li class="tag-4"><a href="http://www.wengweitao.com/tag/xiao-yuan.html">校园</a></li>
         <li class="tag-2"><a href="http://www.wengweitao.com/tag/mian-shi-ti.html">面试题</a></li>
         <li class="tag-4"><a href="http://www.wengweitao.com/tag/gong-ju.html">工具</a></li>
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/go.html">Go</a></li>
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/ji-chu-gai-nian.html">基础概念</a></li>
-        <li class="tag-2"><a href="http://www.wengweitao.com/tag/jiao-cheng.html">教程</a></li>
+        <li class="tag-4"><a href="http://www.wengweitao.com/tag/vim.html">Vim</a></li>
 </ul>
 -->
 
