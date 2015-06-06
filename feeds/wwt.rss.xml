@@ -1,5 +1,94 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>wwt's blog</title><link>http://www.wengweitao.com/</link><description></description><atom:link href="http://www.wengweitao.com/feeds%5Cwwt.rss.xml" rel="self"></atom:link><lastBuildDate>Wed, 03 Jun 2015 20:37:00 +0800</lastBuildDate><item><title>算法中的灵机一动</title><link>http://www.wengweitao.com/suan-fa-zhong-de-ling-ji-yi-dong.html</link><description>&lt;p&gt;研究算法能给程序员带来许多好处，减少开发的时间，同时使执行速度更快。有些看起来很困难的问题，可能也存在着一个简单的、意想不到的答案。这些就是灵机一动的算法，需要在大量的研究之后才能出现。本文围绕三个小问题，来说明算法的灵机一动。&lt;/p&gt;
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>wwt's blog</title><link>http://www.wengweitao.com/</link><description></description><atom:link href="http://www.wengweitao.com/feeds%5Cwwt.rss.xml" rel="self"></atom:link><lastBuildDate>Sat, 06 Jun 2015 11:19:00 +0800</lastBuildDate><item><title>[leetcode] Count Complete Tree Nodes</title><link>http://www.wengweitao.com/leetcode-count-complete-tree-nodes.html</link><description>&lt;h3&gt;题目&lt;/h3&gt;
+&lt;p&gt;&lt;a href="https://leetcode.com/problems/count-complete-tree-nodes/"&gt;Count Complete Tree Nodes&lt;/a&gt;
+Given a complete binary tree, count the number of nodes.&lt;/p&gt;
+&lt;h3&gt;分析&lt;/h3&gt;
+&lt;p&gt;给定一个完全二叉树，求出该树的结点数目。&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://en.wikipedia.org/wiki/Binary_tree#Types_of_binary_trees"&gt;完全二叉树&lt;/a&gt;的定义为：高度为h，有n个结点的二叉树，当前仅当其每一个结点都与高度为h的满二叉树中编号为1~n的结点一一对应时，称为完全二叉树。即叶节点只可能出现在层次最大的两层上，最大层上的叶节点从左到右依次排列如果有度为1的结点，那只可能有1个。&lt;/p&gt;
+&lt;p&gt;本题利用递归实现：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;如果当前结点的左右子树的高度相同，那么是一棵满二叉树，利用公式&lt;span class="math"&gt;\(n = 2^h -1\)&lt;/span&gt;计算出结点个数&lt;/li&gt;
+&lt;li&gt;如果当前结点的左右子树高度不相同，那么递归求解其左子树的结点数left和右子树的结点数righ。返回left + right + 1即为结点总数。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;参考代码&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="cm"&gt;/**&lt;/span&gt;
+&lt;span class="cm"&gt; * Definition for a binary tree node.&lt;/span&gt;
+&lt;span class="cm"&gt; * struct TreeNode {&lt;/span&gt;
+&lt;span class="cm"&gt; *     int val;&lt;/span&gt;
+&lt;span class="cm"&gt; *     TreeNode *left;&lt;/span&gt;
+&lt;span class="cm"&gt; *     TreeNode *right;&lt;/span&gt;
+&lt;span class="cm"&gt; *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}&lt;/span&gt;
+&lt;span class="cm"&gt; * };&lt;/span&gt;
+&lt;span class="cm"&gt; */&lt;/span&gt;
+&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;Solution&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+&lt;span class="nl"&gt;public:&lt;/span&gt;
+    &lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="n"&gt;countNodes&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;TreeNode&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="n"&gt;root&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+        &lt;span class="k"&gt;if&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;root&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="nb"&gt;NULL&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+            &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+
+        &lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="n"&gt;leftHeight&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+        &lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="n"&gt;rightHeight&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+
+        &lt;span class="n"&gt;TreeNode&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;pLeft&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;root&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+        &lt;span class="k"&gt;while&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;pLeft&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+            &lt;span class="o"&gt;++&lt;/span&gt;&lt;span class="n"&gt;leftHeight&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+            &lt;span class="n"&gt;pLeft&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;pLeft&lt;/span&gt;&lt;span class="o"&gt;-&amp;gt;&lt;/span&gt;&lt;span class="n"&gt;left&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+        &lt;span class="p"&gt;}&lt;/span&gt;
+
+        &lt;span class="n"&gt;TreeNode&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;pRight&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;root&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+        &lt;span class="k"&gt;while&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;pRight&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+            &lt;span class="o"&gt;++&lt;/span&gt;&lt;span class="n"&gt;rightHeight&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+            &lt;span class="n"&gt;pRight&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;pRight&lt;/span&gt;&lt;span class="o"&gt;-&amp;gt;&lt;/span&gt;&lt;span class="n"&gt;right&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+        &lt;span class="p"&gt;}&lt;/span&gt;
+
+        &lt;span class="k"&gt;if&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;leftHeight&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="n"&gt;rightHeight&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+            &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;pow&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;leftHeight&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;countNodes&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;root&lt;/span&gt;&lt;span class="o"&gt;-&amp;gt;&lt;/span&gt;&lt;span class="n"&gt;left&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="n"&gt;countNodes&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;root&lt;/span&gt;&lt;span class="o"&gt;-&amp;gt;&lt;/span&gt;&lt;span class="n"&gt;right&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+
+    &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="p"&gt;};&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;script type="text/javascript"&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "false";
+
+    if (false) {
+        align = (screen.width &lt; 768) ? "left" : align;
+        indent = (screen.width &lt; 768) ? "0em" : indent;
+        linebreak = (screen.width &lt; 768) ? 'true' : linebreak;
+    }
+    
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = '//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); ";
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+&lt;/script&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">wwt</dc:creator><pubDate>Sat, 06 Jun 2015 11:19:00 +0800</pubDate><guid>tag:www.wengweitao.com,2015-06-06:leetcode-count-complete-tree-nodes.html</guid><category>leetcode</category><category>面试题</category></item><item><title>算法中的灵机一动</title><link>http://www.wengweitao.com/suan-fa-zhong-de-ling-ji-yi-dong.html</link><description>&lt;p&gt;研究算法能给程序员带来许多好处，减少开发的时间，同时使执行速度更快。有些看起来很困难的问题，可能也存在着一个简单的、意想不到的答案。这些就是灵机一动的算法，需要在大量的研究之后才能出现。本文围绕三个小问题，来说明算法的灵机一动。&lt;/p&gt;
 &lt;h2&gt;无处不在的二分搜索&lt;/h2&gt;
 &lt;h3&gt;问题描述&lt;/h3&gt;
 &lt;p&gt;给定一个最多包含40亿个随机排列的32位整数的&lt;strong&gt;顺序&lt;/strong&gt;文件，找出一个不在文件中的32位整数。&lt;/p&gt;
