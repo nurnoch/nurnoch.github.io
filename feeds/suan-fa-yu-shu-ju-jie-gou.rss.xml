@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom"><title>wwt's blog</title><link href="http://www.wengweitao.com/" rel="alternate"></link><link href="http://www.wengweitao.com/feeds/suan-fa-yu-shu-ju-jie-gou.rss.xml" rel="self"></link><id>http://www.wengweitao.com/</id><updated>2015-06-06T11:19:00+08:00</updated><entry><title>[leetcode] Count Complete Tree Nodes</title><link href="http://www.wengweitao.com/leetcode-count-complete-tree-nodes.html" rel="alternate"></link><updated>2015-06-06T11:19:00+08:00</updated><author><name>wwt</name></author><id>tag:www.wengweitao.com,2015-06-06:leetcode-count-complete-tree-nodes.html</id><summary type="html">&lt;h3&gt;题目&lt;/h3&gt;
-&lt;p&gt;&lt;a href="https://leetcode.com/problems/count-complete-tree-nodes/"&gt;Count Complete Tree Nodes&lt;/a&gt;
-Given a complete binary tree, count the number of nodes.&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://leetcode.com/problems/count-complete-tree-nodes/"&gt;Count Complete Tree Nodes&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Given a complete binary tree, count the number of nodes.&lt;/p&gt;
 &lt;h3&gt;分析&lt;/h3&gt;
-&lt;p&gt;给定一个完全二叉树，求出该树的结点数目。&lt;/p&gt;
-&lt;p&gt;&lt;a href="http://en.wikipedia.org/wiki/Binary_tree#Types_of_binary_trees"&gt;完全二叉树&lt;/a&gt;的定义为：高度为h，有n个结点的二叉树，当前仅当其每一个结点都与高度为h的满二叉树中编号为1~n的结点一一对应时，称为完全二叉树。即叶节点只可能出现在层次最大的两层上，最大层上的叶节点从左到右依次排列如果有度为1的结点，那只可能有1个。&lt;/p&gt;
+&lt;p&gt;给定一棵完全二叉树，求出该树的结点数目。&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://en.wikipedia.org/wiki/Binary_tree#Types_of_binary_trees"&gt;完全二叉树&lt;/a&gt;的定义为：&lt;/p&gt;
+&lt;p&gt;高度为h，有n个结点的二叉树，当前仅当其每一个结点都与高度为h的满二叉树中编号为1~n的结点一一对应时，称为完全二叉树。即叶节点只可能出现在层次最大的两层上，最大层上的叶节点从左到右依次排列。&lt;/p&gt;
 &lt;p&gt;本题利用递归实现：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;如果当前结点的左右子树的高度相同，那么是一棵满二叉树，利用公式&lt;span class="math"&gt;\(n = 2^h -1\)&lt;/span&gt;计算出结点个数&lt;/li&gt;
