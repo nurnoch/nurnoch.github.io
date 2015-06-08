@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>wwt's blog</title><link>http://www.wengweitao.com/</link><description></description><atom:link href="http://www.wengweitao.com/feeds/all.rss.xml" rel="self"></atom:link><lastBuildDate>Mon, 08 Jun 2015 11:23:00 +0800</lastBuildDate><item><title>[leetcode] Rectangle Area</title><link>http://www.wengweitao.com/leetcode-rectangle-area.html</link><description>&lt;hr /&gt;
 &lt;h3&gt;题目&lt;/h3&gt;
-&lt;p&gt;&lt;a href="https://leetcode.com/problems/rectangle-area/"&gt;Rectangle Area&lt;/a&gt;
-Find the total area covered by two rectilinear rectangles in a 2D plane.&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://leetcode.com/problems/rectangle-area/"&gt;Rectangle Area&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Find the total area covered by two rectilinear rectangles in a 2D plane.&lt;/p&gt;
 &lt;p&gt;Each rectangle is defined by its bottom left corner and top right corner as shown in the figure.&lt;/p&gt;
-&lt;p&gt;![rectangle area][2]&lt;/p&gt;
+&lt;p&gt;&lt;img alt="rectangle area" src="https://leetcode.com/static/images/problemset/rectangle_area.png" /&gt;&lt;/p&gt;
 &lt;p&gt;Assume that the total area is never beyond the maximum possible value of int.&lt;/p&gt;
 &lt;h3&gt;分析&lt;/h3&gt;
 &lt;p&gt;分别给定两个矩形的左下角坐标和右上角的坐标，求出两个矩形所占的面积。&lt;/p&gt;
