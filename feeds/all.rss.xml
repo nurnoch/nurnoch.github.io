@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>wwt's blog</title><link>http://www.wengweitao.com/</link><description></description><atom:link href="http://www.wengweitao.com/feeds/all.rss.xml" rel="self"></atom:link><lastBuildDate>Wed, 10 Jun 2015 10:12:00 +0800</lastBuildDate><item><title>[leetcode] Basic Calculator</title><link>http://www.wengweitao.com/leetcode-basic-calculator.html</link><description>&lt;h3&gt;题目&lt;/h3&gt;
-&lt;p&gt;&lt;a href="https://leetcode.com/problems/basic-calculator/"&gt;Basic Calculator&lt;/a&gt;
-Implement a basic calculator to evaluate a simple expression string.&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://leetcode.com/problems/basic-calculator/"&gt;Basic Calculator&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Implement a basic calculator to evaluate a simple expression string.&lt;/p&gt;
 &lt;p&gt;The expression string may contain open ( and closing parentheses ), the plus + or minus sign -, non-negative integers and empty spaces .&lt;/p&gt;
 &lt;p&gt;You may assume that the given expression is always valid.&lt;/p&gt;
 &lt;p&gt;Some examples:

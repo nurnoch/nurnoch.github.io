@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom"><title>wwt's blog</title><link href="http://www.wengweitao.com/" rel="alternate"></link><link href="http://www.wengweitao.com/feeds%5Cwwt.atom.xml" rel="self"></link><id>http://www.wengweitao.com/</id><updated>2015-06-10T10:12:00+08:00</updated><entry><title>[leetcode] Basic Calculator</title><link href="http://www.wengweitao.com/leetcode-basic-calculator.html" rel="alternate"></link><updated>2015-06-10T10:12:00+08:00</updated><author><name>wwt</name></author><id>tag:www.wengweitao.com,2015-06-10:leetcode-basic-calculator.html</id><summary type="html">&lt;h3&gt;题目&lt;/h3&gt;
-&lt;p&gt;&lt;a href="https://leetcode.com/problems/basic-calculator/"&gt;Basic Calculator&lt;/a&gt;
-Implement a basic calculator to evaluate a simple expression string.&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://leetcode.com/problems/basic-calculator/"&gt;Basic Calculator&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Implement a basic calculator to evaluate a simple expression string.&lt;/p&gt;
 &lt;p&gt;The expression string may contain open ( and closing parentheses ), the plus + or minus sign -, non-negative integers and empty spaces .&lt;/p&gt;
 &lt;p&gt;You may assume that the given expression is always valid.&lt;/p&gt;
 &lt;p&gt;Some examples:
