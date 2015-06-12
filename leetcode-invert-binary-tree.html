@@ -2,7 +2,7 @@
 <html lang="zh">
 <head>
 
-        <title>[leetcode] Rectangle Area</title>
+        <title>[leetcode] Invert Binary Tree</title>
         <meta charset="utf-8" />
         <link href="http://www.wengweitao.com/feeds\all.atom.xml" type="application/atom+xml" rel="alternate" title="wwt's blog Full Atom Feed" />
         <link href="http://www.wengweitao.com/feeds/all.rss.xml" type="application/rss+xml" rel="alternate" title="wwt's blog Full RSS Feed" />
@@ -60,13 +60,13 @@
 
             <header>
               <h2 class="entry-title">
-                <a href="http://www.wengweitao.com/leetcode-rectangle-area.html" rel="bookmark"
-                   title="Permalink to [leetcode] Rectangle Area">[leetcode] Rectangle Area</a></h2>
+                <a href="http://www.wengweitao.com/leetcode-invert-binary-tree.html" rel="bookmark"
+                   title="Permalink to [leetcode] Invert Binary Tree">[leetcode] Invert Binary Tree</a></h2>
            
             </header>
             <footer class="post-info">
-              <abbr class="published" title="2015-06-08T11:23:00">
-                Mon 08 June 2015
+              <abbr class="published" title="2015-06-12T15:54:00">
+                Fri 12 June 2015
               </abbr>
               <address class="vcard author">By 
                 <a class="url fn" href="http://www.wengweitao.com/author/wwt.html"> wwt</a>
@@ -74,58 +74,91 @@
             </footer><!-- /.post-info -->
             <div class="entry-content">
               <h3>题目</h3>
-<p><a href="https://leetcode.com/problems/rectangle-area/">Rectangle Area</a></p>
-<p>Find the total area covered by two rectilinear rectangles in a 2D plane.</p>
-<p>Each rectangle is defined by its bottom left corner and top right corner as shown in the figure.</p>
-<p><img alt="rectangle area" src="https://leetcode.com/static/images/problemset/rectangle_area.png" /></p>
-<p>Assume that the total area is never beyond the maximum possible value of int.</p>
+<p><a href="https://leetcode.com/problems/invert-binary-tree/">Invert Binary Tree </a></p>
+<p><img alt="例子" src="http://i1.tietuku.com/88c1805f904cd57d.png" /></p>
 <h3>分析</h3>
-<p>分别给定两个矩形的左下角坐标和右上角的坐标，求出两个矩形所占的面积。</p>
-<ol>
-<li>分别计算出两个矩形的面积s1和s2</li>
-<li>两个矩形之和为s，由于两个矩形可能有重叠区域，所以s可能包含了重复的面积</li>
-<li>找到两个矩形重复区域的长和宽</li>
-<li>如果有重复区域，那么就用s减去重复面积</li>
-</ol>
+<p>这道题就是这几天网上大家热议的 Homebrew 的作者 <a href="https://twitter.com/mxcl/status/608682016205344768">Max Howell</a> 面试 Google 挂掉的一题。</p>
+<blockquote>
+<p>Google: 90% of our engineers use the software you wrote (Homebrew), but you can’t invert a binary tree on a whiteboard so fuck off.</p>
+</blockquote>
+<p>作为写出了 Homebrew 的大牛，这种程序写不出来确实不太应该。</p>
+<p>本题，只要将每个结点的左右孩子进行翻转即可。既可以递归实现，也可以借助队列实现非递归的版本。</p>
 <h3>参考代码</h3>
-<div class="highlight"><pre><span class="k">class</span> <span class="nc">Solution</span> <span class="p">{</span>
+<p>递归版本：</p>
+<div class="highlight"><pre><span class="cm">/**</span>
+<span class="cm"> * Definition for a binary tree node.</span>
+<span class="cm"> * struct TreeNode {</span>
+<span class="cm"> *     int val;</span>
+<span class="cm"> *     TreeNode *left;</span>
+<span class="cm"> *     TreeNode *right;</span>
+<span class="cm"> *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}</span>
+<span class="cm"> * };</span>
+<span class="cm"> */</span>
+<span class="k">class</span> <span class="nc">Solution</span> <span class="p">{</span>
 <span class="nl">public:</span>
-    <span class="kt">int</span> <span class="n">computeArea</span><span class="p">(</span><span class="kt">int</span> <span class="n">A</span><span class="p">,</span> <span class="kt">int</span> <span class="n">B</span><span class="p">,</span> <span class="kt">int</span> <span class="n">C</span><span class="p">,</span> <span class="kt">int</span> <span class="n">D</span><span class="p">,</span> <span class="kt">int</span> <span class="n">E</span><span class="p">,</span> <span class="kt">int</span> <span class="n">F</span><span class="p">,</span> <span class="kt">int</span> <span class="n">G</span><span class="p">,</span> <span class="kt">int</span> <span class="n">H</span><span class="p">)</span> <span class="p">{</span>
-        <span class="c1">// calculate areas of two separate rects</span>
-        <span class="kt">int</span> <span class="n">s1</span> <span class="o">=</span> <span class="n">abs</span><span class="p">(</span><span class="n">C</span> <span class="o">-</span> <span class="n">A</span><span class="p">)</span> <span class="o">*</span> <span class="n">abs</span><span class="p">(</span><span class="n">D</span> <span class="o">-</span> <span class="n">B</span><span class="p">);</span>
-        <span class="kt">int</span> <span class="n">s2</span> <span class="o">=</span> <span class="n">abs</span><span class="p">(</span><span class="n">G</span> <span class="o">-</span> <span class="n">E</span><span class="p">)</span> <span class="o">*</span> <span class="n">abs</span><span class="p">(</span><span class="n">H</span> <span class="o">-</span> <span class="n">F</span><span class="p">);</span>
+    <span class="n">TreeNode</span><span class="o">*</span> <span class="n">invertTree</span><span class="p">(</span><span class="n">TreeNode</span><span class="o">*</span> <span class="n">root</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">root</span> <span class="o">==</span> <span class="nb">NULL</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">root</span><span class="p">;</span>
 
-        <span class="kt">int</span> <span class="n">s</span> <span class="o">=</span> <span class="n">s1</span> <span class="o">+</span> <span class="n">s2</span><span class="p">;</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">left</span> <span class="o">==</span> <span class="nb">NULL</span> <span class="o">&amp;&amp;</span> <span class="n">root</span><span class="o">-&gt;</span><span class="n">right</span> <span class="o">==</span> <span class="nb">NULL</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">root</span><span class="p">;</span>
 
-        <span class="c1">// intersect of two rects</span>
-        <span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="n">min</span><span class="p">(</span><span class="n">C</span><span class="p">,</span> <span class="n">G</span><span class="p">)</span> <span class="o">-</span> <span class="n">max</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">E</span><span class="p">);</span>
-        <span class="kt">int</span> <span class="n">y</span> <span class="o">=</span> <span class="n">min</span><span class="p">(</span><span class="n">D</span><span class="p">,</span> <span class="n">H</span><span class="p">)</span> <span class="o">-</span> <span class="n">max</span><span class="p">(</span><span class="n">B</span><span class="p">,</span> <span class="n">F</span><span class="p">);</span>
+        <span class="n">TreeNode</span><span class="o">*</span> <span class="n">temp</span> <span class="o">=</span> <span class="n">root</span><span class="o">-&gt;</span><span class="n">left</span><span class="p">;</span>
+        <span class="n">root</span><span class="o">-&gt;</span><span class="n">left</span> <span class="o">=</span> <span class="n">root</span><span class="o">-&gt;</span><span class="n">right</span><span class="p">;</span>
+        <span class="n">root</span><span class="o">-&gt;</span><span class="n">right</span> <span class="o">=</span> <span class="n">temp</span><span class="p">;</span>
 
+        <span class="k">if</span><span class="p">(</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">left</span> <span class="o">!=</span> <span class="nb">NULL</span><span class="p">)</span>    
+            <span class="n">invertTree</span><span class="p">(</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">left</span><span class="p">);</span>
 
+        <span class="k">if</span><span class="p">(</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">right</span> <span class="o">!=</span> <span class="nb">NULL</span><span class="p">)</span>
+            <span class="n">invertTree</span><span class="p">(</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">right</span><span class="p">);</span>
 
-        <span class="k">if</span><span class="p">(</span><span class="n">x</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="n">y</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>
-            <span class="k">return</span> <span class="n">s</span> <span class="o">-</span> <span class="n">x</span> <span class="o">*</span> <span class="n">y</span><span class="p">;</span>
-
-        <span class="k">return</span> <span class="n">s</span><span class="p">;</span>
+        <span class="k">return</span> <span class="n">root</span><span class="p">;</span>
     <span class="p">}</span>
 <span class="p">};</span>
 </pre></div>
 
 
-<p>给出的test cases有点问题：</p>
-<div class="highlight"><pre><span class="nl">Input:</span>  <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span>
-<span class="nl">Output:</span> <span class="mi">15</span>
-<span class="nl">Expected:</span>   <span class="mi">17</span>
+<p>非递归版本：</p>
+<div class="highlight"><pre><span class="cm">/**</span>
+<span class="cm"> * Definition for a binary tree node.</span>
+<span class="cm"> * struct TreeNode {</span>
+<span class="cm"> *     int val;</span>
+<span class="cm"> *     TreeNode *left;</span>
+<span class="cm"> *     TreeNode *right;</span>
+<span class="cm"> *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}</span>
+<span class="cm"> * };</span>
+<span class="cm"> */</span>
+<span class="k">class</span> <span class="nc">Solution</span> <span class="p">{</span>
+<span class="nl">public:</span>
+    <span class="n">TreeNode</span><span class="o">*</span> <span class="n">invertTree</span><span class="p">(</span><span class="n">TreeNode</span><span class="o">*</span> <span class="n">root</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">root</span> <span class="o">==</span> <span class="nb">NULL</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">root</span><span class="p">;</span>
+        <span class="n">queue</span><span class="o">&lt;</span><span class="n">TreeNode</span> <span class="o">*&gt;</span> <span class="n">q</span><span class="p">;</span>
+        <span class="n">q</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">root</span><span class="p">);</span>
+        <span class="k">while</span><span class="p">(</span><span class="o">!</span><span class="n">q</span><span class="p">.</span><span class="n">empty</span><span class="p">())</span> <span class="p">{</span>
+            <span class="n">TreeNode</span><span class="o">*</span> <span class="n">node</span> <span class="o">=</span> <span class="n">q</span><span class="p">.</span><span class="n">front</span><span class="p">();</span>
+            <span class="k">if</span><span class="p">(</span><span class="n">node</span><span class="o">-&gt;</span><span class="n">left</span> <span class="o">!=</span> <span class="nb">NULL</span> <span class="o">||</span> <span class="n">node</span><span class="o">-&gt;</span><span class="n">right</span> <span class="o">!=</span> <span class="nb">NULL</span><span class="p">)</span> <span class="p">{</span>
+                <span class="n">TreeNode</span><span class="o">*</span> <span class="n">temp</span> <span class="o">=</span> <span class="n">node</span><span class="o">-&gt;</span><span class="n">left</span><span class="p">;</span>
+                <span class="n">node</span><span class="o">-&gt;</span><span class="n">left</span> <span class="o">=</span> <span class="n">node</span><span class="o">-&gt;</span><span class="n">right</span><span class="p">;</span>
+                <span class="n">node</span><span class="o">-&gt;</span><span class="n">right</span> <span class="o">=</span> <span class="n">temp</span><span class="p">;</span>
+            <span class="p">}</span>
+            <span class="k">if</span><span class="p">(</span><span class="n">node</span><span class="o">-&gt;</span><span class="n">left</span> <span class="o">!=</span> <span class="nb">NULL</span><span class="p">)</span>
+                <span class="n">q</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">node</span><span class="o">-&gt;</span><span class="n">left</span><span class="p">);</span>
+            <span class="k">if</span><span class="p">(</span><span class="n">node</span><span class="o">-&gt;</span><span class="n">right</span> <span class="o">!=</span> <span class="nb">NULL</span><span class="p">)</span>
+                <span class="n">q</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">node</span><span class="o">-&gt;</span><span class="n">right</span><span class="p">);</span>
+            <span class="n">q</span><span class="p">.</span><span class="n">pop</span><span class="p">();</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="n">root</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">};</span>
 </pre></div>
-
-
-<p>以上的test case，(GH)在(EF)的左上角，不符合题目的规定（应该在右上角的）。所以计算s1和s2的时候，要加上abs取绝对值，这样就AC了。</p>
             </div><!-- /.entry-content -->
             <div class="comments">
               <h3>Comments</h3>
               <div id="disqus_thread"></div>
               <script type="text/javascript">
-                var disqus_identifier = "leetcode-rectangle-area.html";
+                var disqus_identifier = "leetcode-invert-binary-tree.html";
                 (function() {
                 var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
                 dsq.src = 'http://wengwt.disqus.com/embed.js';
