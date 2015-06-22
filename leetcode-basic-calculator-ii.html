@@ -2,7 +2,7 @@
 <html lang="zh">
 <head>
 
-        <title>[leetcode] Rectangle Area</title>
+        <title>[leetcode] Basic Calculator II</title>
         <meta charset="utf-8" />
         <link href="http://www.wengweitao.com/feeds\all.atom.xml" type="application/atom+xml" rel="alternate" title="wwt's blog Full Atom Feed" />
         <link href="http://www.wengweitao.com/feeds/all.rss.xml" type="application/rss+xml" rel="alternate" title="wwt's blog Full RSS Feed" />
@@ -60,73 +60,105 @@
 
             <header>
               <h2 class="entry-title">
-                <a href="http://www.wengweitao.com/leetcode-rectangle-area.html" rel="bookmark"
-                   title="Permalink to [leetcode] Rectangle Area">[leetcode] Rectangle Area</a></h2>
+                <a href="http://www.wengweitao.com/leetcode-basic-calculator-ii.html" rel="bookmark"
+                   title="Permalink to [leetcode] Basic Calculator II">[leetcode] Basic Calculator II</a></h2>
            
 
             </header>
             <footer class="post-info">
-              <abbr class="published" title="2015-06-08T11:23:00">
-                Mon 08 June 2015
+              <abbr class="published" title="2015-06-22T14:11:00">
+                Mon 22 June 2015
               </abbr>
               <address class="vcard author">By 
                 <a class="url fn" href="http://www.wengweitao.com/author/wwt.html"> wwt</a>
               </address>
             </footer><!-- /.post-info -->
             <div class="entry-content">
-              <h3>题目</h3>
-<p><a href="https://leetcode.com/problems/rectangle-area/">Rectangle Area</a></p>
-<p>Find the total area covered by two rectilinear rectangles in a 2D plane.</p>
-<p>Each rectangle is defined by its bottom left corner and top right corner as shown in the figure.</p>
-<p><img alt="rectangle area" src="https://leetcode.com/static/images/problemset/rectangle_area.png" /></p>
-<p>Assume that the total area is never beyond the maximum possible value of int.</p>
+              <hr />
+<h3>题目</h3>
+<p><a href="https://leetcode.com/problems/basic-calculator-ii/">Basic Calculator II </a></p>
+<p>Implement a basic calculator to evaluate a simple expression string.</p>
+<p>The expression string contains only non-negative integers, +, -, *, and / operators. The integer division should truncate toward zero.</p>
+<p>You may assume that the given expression is always valid.</p>
+<p>Some examples:</p>
+<blockquote>
+<p>"3+2*2" = 7
+" 3/2 " = 1
+" 3+5 / 2 " = 5</p>
+</blockquote>
 <h3>分析</h3>
-<p>分别给定两个矩形的左下角坐标和右上角的坐标，求出两个矩形所占的面积。</p>
-<ol>
-<li>分别计算出两个矩形的面积s1和s2</li>
-<li>两个矩形之和为s，由于两个矩形可能有重叠区域，所以s可能包含了重复的面积</li>
-<li>找到两个矩形重复区域的长和宽</li>
-<li>如果有重复区域，那么就用s减去重复面积</li>
-</ol>
+<p>实现一个基本的计算器，对输入的字符串表达式进行计算。字符串表达式中操作数都是非负整数，并且只包含加减乘除4种运算符。</p>
+<p>如表达式：<code>1+2-3*4/2+1</code>。对于加减运算，与<a href="http://www.wengweitao.com/leetcode-basic-calculator.html">Basic Calculator</a>类似，可以直接将每个加减运算符前面的数字加入最终的结果中，而对于乘除，需要先计算出乘法或者除法子表达式的值。我们设置一个变量<code>op</code>表示当前的操作符，其中：</p>
+<ul>
+<li>0：'+'或'-'</li>
+<li>1：'*'</li>
+<li>2：'/'</li>
+</ul>
+<p>使用变量<code>lastNum</code>表示当前操作符前面的数字。</p>
+<ul>
+<li>如果<code>op = 1</code>，那么计算就对运算符'*'前后两个数进行相乘，所得结果仍然保存在<code>lastNum</code>中。</li>
+<li>如果<code>op = 2</code>，那么计算就对运算符'/'前后两个数进行相除，所得结果仍然保存在<code>lastNum</code>中。</li>
+<li>如果<code>op = 0</code>，为加减运算。</li>
+</ul>
 <h3>参考代码</h3>
 <div class="highlight"><pre><span class="k">class</span> <span class="nc">Solution</span> <span class="p">{</span>
 <span class="nl">public:</span>
-    <span class="kt">int</span> <span class="n">computeArea</span><span class="p">(</span><span class="kt">int</span> <span class="n">A</span><span class="p">,</span> <span class="kt">int</span> <span class="n">B</span><span class="p">,</span> <span class="kt">int</span> <span class="n">C</span><span class="p">,</span> <span class="kt">int</span> <span class="n">D</span><span class="p">,</span> <span class="kt">int</span> <span class="n">E</span><span class="p">,</span> <span class="kt">int</span> <span class="n">F</span><span class="p">,</span> <span class="kt">int</span> <span class="n">G</span><span class="p">,</span> <span class="kt">int</span> <span class="n">H</span><span class="p">)</span> <span class="p">{</span>
-        <span class="c1">// calculate areas of two separate rects</span>
-        <span class="kt">int</span> <span class="n">s1</span> <span class="o">=</span> <span class="n">abs</span><span class="p">(</span><span class="n">C</span> <span class="o">-</span> <span class="n">A</span><span class="p">)</span> <span class="o">*</span> <span class="n">abs</span><span class="p">(</span><span class="n">D</span> <span class="o">-</span> <span class="n">B</span><span class="p">);</span>
-        <span class="kt">int</span> <span class="n">s2</span> <span class="o">=</span> <span class="n">abs</span><span class="p">(</span><span class="n">G</span> <span class="o">-</span> <span class="n">E</span><span class="p">)</span> <span class="o">*</span> <span class="n">abs</span><span class="p">(</span><span class="n">H</span> <span class="o">-</span> <span class="n">F</span><span class="p">);</span>
+    <span class="kt">int</span> <span class="n">calculate</span><span class="p">(</span><span class="n">string</span> <span class="n">s</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="n">s</span><span class="p">.</span><span class="n">length</span><span class="p">();</span>
+        <span class="kt">int</span> <span class="n">num</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="kt">int</span> <span class="n">lastNum</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="kt">int</span> <span class="n">result</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="kt">int</span> <span class="n">sign</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+        <span class="kt">int</span> <span class="n">op</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">if</span><span class="p">(</span><span class="n">s</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="sc">&#39; &#39;</span><span class="p">)</span>
+                <span class="k">continue</span><span class="p">;</span>
 
-        <span class="kt">int</span> <span class="n">s</span> <span class="o">=</span> <span class="n">s1</span> <span class="o">+</span> <span class="n">s2</span><span class="p">;</span>
+            <span class="k">else</span> <span class="nf">if</span><span class="p">(</span><span class="n">s</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="sc">&#39;0&#39;</span> <span class="o">&amp;&amp;</span> <span class="n">s</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="sc">&#39;9&#39;</span><span class="p">)</span> <span class="p">{</span>
+                <span class="n">num</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+                <span class="k">while</span><span class="p">(</span><span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span> <span class="o">&amp;&amp;</span> <span class="n">s</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="sc">&#39;0&#39;</span> <span class="o">&amp;&amp;</span> <span class="n">s</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="sc">&#39;9&#39;</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="n">num</span> <span class="o">=</span> <span class="n">num</span> <span class="o">*</span> <span class="mi">10</span> <span class="o">+</span> <span class="p">(</span><span class="n">s</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-</span> <span class="sc">&#39;0&#39;</span><span class="p">);</span>
+                    <span class="o">++</span><span class="n">i</span><span class="p">;</span>
+                <span class="p">}</span>
+                <span class="o">--</span><span class="n">i</span><span class="p">;</span>
+                <span class="k">if</span><span class="p">(</span><span class="n">op</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+                    <span class="n">lastNum</span> <span class="o">=</span> <span class="n">num</span><span class="p">;</span>
+                <span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="n">op</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span>
+                    <span class="n">lastNum</span> <span class="o">*=</span> <span class="n">num</span><span class="p">;</span>
+                <span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="n">op</span> <span class="o">==</span> <span class="mi">2</span><span class="p">)</span>
+                    <span class="n">lastNum</span> <span class="o">/=</span> <span class="n">num</span><span class="p">;</span>
+            <span class="p">}</span>
 
-        <span class="c1">// intersect of two rects</span>
-        <span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="n">min</span><span class="p">(</span><span class="n">C</span><span class="p">,</span> <span class="n">G</span><span class="p">)</span> <span class="o">-</span> <span class="n">max</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">E</span><span class="p">);</span>
-        <span class="kt">int</span> <span class="n">y</span> <span class="o">=</span> <span class="n">min</span><span class="p">(</span><span class="n">D</span><span class="p">,</span> <span class="n">H</span><span class="p">)</span> <span class="o">-</span> <span class="n">max</span><span class="p">(</span><span class="n">B</span><span class="p">,</span> <span class="n">F</span><span class="p">);</span>
+            <span class="k">else</span> <span class="nf">if</span><span class="p">(</span><span class="n">s</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="sc">&#39;+&#39;</span><span class="p">)</span> <span class="p">{</span>
+                <span class="n">result</span> <span class="o">+=</span> <span class="n">sign</span> <span class="o">*</span> <span class="n">lastNum</span><span class="p">;</span>
+                <span class="n">sign</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+                <span class="n">op</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+            <span class="p">}</span>
 
+            <span class="k">else</span> <span class="nf">if</span><span class="p">(</span><span class="n">s</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="sc">&#39;-&#39;</span><span class="p">)</span> <span class="p">{</span>
+                <span class="n">result</span> <span class="o">+=</span> <span class="n">sign</span> <span class="o">*</span> <span class="n">lastNum</span><span class="p">;</span>
+                <span class="n">sign</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+                <span class="n">op</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+            <span class="p">}</span>
 
+            <span class="k">else</span> <span class="nf">if</span><span class="p">(</span><span class="n">s</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="sc">&#39;*&#39;</span><span class="p">)</span> <span class="p">{</span>
+                <span class="n">op</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+            <span class="p">}</span>
 
-        <span class="k">if</span><span class="p">(</span><span class="n">x</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="n">y</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>
-            <span class="k">return</span> <span class="n">s</span> <span class="o">-</span> <span class="n">x</span> <span class="o">*</span> <span class="n">y</span><span class="p">;</span>
-
-        <span class="k">return</span> <span class="n">s</span><span class="p">;</span>
+            <span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="n">s</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="sc">&#39;/&#39;</span><span class="p">)</span>
+                <span class="n">op</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="n">result</span> <span class="o">+=</span> <span class="n">sign</span> <span class="o">*</span> <span class="n">lastNum</span><span class="p">;</span>
+        <span class="k">return</span> <span class="n">result</span><span class="p">;</span>
     <span class="p">}</span>
 <span class="p">};</span>
 </pre></div>
-
-
-<p>给出的test cases有点问题：</p>
-<div class="highlight"><pre><span class="nl">Input:</span>  <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span>
-<span class="nl">Output:</span> <span class="mi">15</span>
-<span class="nl">Expected:</span>   <span class="mi">17</span>
-</pre></div>
-
-
-<p>以上的test case，(GH)在(EF)的左上角，不符合题目的规定（应该在右上角的）。所以计算s1和s2的时候，要加上abs取绝对值，这样就AC了。</p>
             </div><!-- /.entry-content -->
             <div class="comments">
               <h3>Comments</h3>
               <div id="disqus_thread"></div>
               <script type="text/javascript">
-                var disqus_identifier = "leetcode-rectangle-area.html";
+                var disqus_identifier = "leetcode-basic-calculator-ii.html";
                 (function() {
                 var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
                 dsq.src = 'http://wengwt.disqus.com/embed.js';
