@@ -12,6 +12,7 @@
 &lt;li&gt;相当于每次都抵消3个数字(nums[i], num1, num2)，而主元素大于n/3，所以若主元素存在则必定在最后剩下的num1和num2中。&lt;/li&gt;
 &lt;li&gt;且主元素的个数最多为2个&lt;/li&gt;
 &lt;/ul&gt;
+&lt;h3&gt;参考代码&lt;/h3&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;Solution&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
 &lt;span class="nl"&gt;public:&lt;/span&gt;
     &lt;span class="kt"&gt;bool&lt;/span&gt; &lt;span class="n"&gt;isMoreThanThird&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="n"&gt;num&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;vector&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="kt"&gt;int&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&amp;amp;&lt;/span&gt; &lt;span class="n"&gt;nums&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
