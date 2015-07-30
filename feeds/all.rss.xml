@@ -1,5 +1,102 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>wwt's blog</title><link>http://www.wengweitao.com/</link><description></description><atom:link href="http://www.wengweitao.com/feeds/all.rss.xml" rel="self"></atom:link><lastBuildDate>Mon, 27 Jul 2015 18:49:00 +0800</lastBuildDate><item><title>Python Socket网络编程</title><link>http://www.wengweitao.com/python-socketwang-luo-bian-cheng.html</link><description>&lt;p&gt;在网络通信中socket几乎无处不在，它可以看成是应用层与TCP/IP协议簇通信的中间软件抽象层，是两个应用程序彼此进行通信的接口，并且把复杂的TCP/IP协议细节隐藏在接口之后。Python提供了socket模块，可以非常方便的进行socket编程。&lt;/p&gt;
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>wwt's blog</title><link>http://www.wengweitao.com/</link><description></description><atom:link href="http://www.wengweitao.com/feeds/all.rss.xml" rel="self"></atom:link><lastBuildDate>Thu, 30 Jul 2015 22:42:00 +0800</lastBuildDate><item><title>数据库事务</title><link>http://www.wengweitao.com/shu-ju-ku-shi-wu.html</link><description>&lt;p&gt;最近几天面试蚂蚁金服，一共两次面试，两次都被问到了&lt;strong&gt;数据库事务&lt;/strong&gt;的相关知识。由于此前并没有系统学过数据库，平时也主要都是在使用数据库，而没有深入了解过数据库一些基本概念，所以对于这些问题，虽然意思理解，但总不能非常准确的表达出来。这篇文章，就总结下数据库事务的一些基本概念。&lt;/p&gt;
+&lt;h2&gt;什么是数据库事务？&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;数据库事务&lt;/strong&gt;（简称：事务 Transaction）是数据库管理系统执行过程中的一个逻辑单位，由一个有限的数据库操作序列构成。数据库事务作为一个逻辑单位，要么全部执行，要么全部不执行。&lt;/p&gt;
+&lt;p&gt;那么事务有什么作用呢？举一个例子，假设我们用支付宝进行转账，A用户要向B用户转100元，通常需要以下几个步骤：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;读取A的账户余额，然后扣去100元，写入；&lt;/li&gt;
+&lt;li&gt;读取B的账户余额，然后加上100元，写入；&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;以上的一系列操作，就组成了一个事务。也就是说，这2步操作，要么都成功执行，要么失败都不执行（如果失败需要撤销之前的执行步骤），不能说A转了100元给B，而B的账户余额没有增加。&lt;/p&gt;
+&lt;p&gt;所以，通过将一组相关操作组合为一个要么全部成功要么全部失败的逻辑单元，可以避免当操作的中间环节出现问题时，产生数据不一致的问题，简化了错误恢复并使应用程序更加可靠。&lt;/p&gt;
+&lt;h2&gt;ACID特性&lt;/h2&gt;
+&lt;p&gt;并非任意的对数据库的操作序列都是数据库事务。一个逻辑单元称为数据库事务需要满足以下四个特性，被称之为&lt;strong&gt;ACID特性&lt;/strong&gt;。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;A：原子性（Atomicity）&lt;/strong&gt;&lt;ul&gt;
+&lt;li&gt;事务作为一个整体被执行，包含在其中的对数据库的操作要么全部被执行，要么都不执行[^Atom]。&lt;/li&gt;
+&lt;li&gt;事务的原子性也体现在事务对数据的读取上，例如一个事务对同一数据项的多次读取的结果一定是相同的。&lt;/li&gt;
+&lt;li&gt;例子：A向B转账100元，要么转账成功，A余额减少而B余额增加，不能只是其中一个改变。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;C：一致性（Consistency）&lt;/strong&gt;&lt;ul&gt;
+&lt;li&gt;事务应确保数据库的状态从一个一致状态转变为另一个一致状态。一致状态的含义是数据库中的数据应满足完整性约束。&lt;/li&gt;
+&lt;li&gt;在事务开始之前和事务结束以后，数据库的完整性没有被破坏。这表示写入的资料&lt;em&gt;必须完全符合所有的预设规则&lt;/em&gt;.&lt;/li&gt;
+&lt;li&gt;这种规则可以由数据库的内部规则保证，如数据类型必须正确、数值必须在指定范围内；这种规则也可以由应用的规则决定，如转账的金额必须为正数、余额必须大于等于转账的金额以及转账之后两人。&lt;/li&gt;
+&lt;li&gt;例子：A向B转账100元，不论是否转账成功，他们二人余额总额仍然不变。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;I：隔离性（Isolation）&lt;/strong&gt;&lt;ul&gt;
+&lt;li&gt;多个事务并发执行时，一个事务的执行不应影响其他事务的执行。&lt;/li&gt;
+&lt;li&gt;数据库可能会同时执行多个事务，每个事务可能同时对多个表项进行修改和查询，那么隔离性需要保证一个事务在它的修改全部完成之前，对其他事务是不可见（即其他事务查询的结果还是另外一个事务修改之前的结果）。&lt;/li&gt;
+&lt;li&gt;例子：A向B转账100元，那么不能让其他正在执行的事务看到中间状态，即A余额少了100元，而B余额没有增加100元的状态。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;D：持久性（Durability）&lt;/strong&gt;&lt;ul&gt;
+&lt;li&gt;已被提交的事务对数据库的修改应该永久保存在数据库中，即使系统出现了异常。&lt;/li&gt;
+&lt;li&gt;事务完成后（被提交成功），它对数据库的改变应该是永久性的，即使此时数据库系统破溃了，那么重启后也应该保证能够恢复。&lt;/li&gt;
+&lt;li&gt;例子：A向B转账100元，之后突然支付宝系统崩溃了，那么恢复之后，A向B转账100元，仍然是保持下来的。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;数据的一致性是数据库事务的最终目标，其他特性是实现这一目标的特性和要求。&lt;/p&gt;
+&lt;h2&gt;数据库事务隔离&lt;/h2&gt;
+&lt;p&gt;同进程间通过加锁进行同步类似，数据库管理系统（DBMS）采用数据库锁来保证事务的隔离性。当多个事务需要执行操作时，只有锁的持有者才能对数据进行操作，直到这个事务执行完毕，交出锁之后，其他的事务才能对数据进行操作。&lt;/p&gt;
+&lt;p&gt;但是这样就带了一个性能的问题，即一个事务在操作数据的时候，其他事务就得等待，并发性减弱了。所以处于性能考虑，数据库允许定义不同的隔离级别，以降低隔离性提高并发性。SQL 标准中定义了4个隔离级别：&lt;/p&gt;
+&lt;h3&gt;1.未提交读（READ UNCOMMITTED）&lt;/h3&gt;
+&lt;p&gt;未提交读是最低的隔离级别，事务可以读取其他事务未提交的数据，所以会产生很多问题，很少使用。&lt;/p&gt;
+&lt;h3&gt;2.提交读（READ COMMITTED）&lt;/h3&gt;
+&lt;p&gt;一个事务只能读取已经提交的事务的数据，也就是有一个事务从开始到提交其所做的修改对其他事务是不可见的，但是一旦提交了修改，对其他事务就可见了。这样会导致一个事务对同一项前后读取两次的结果可能不同，第一次读取时另一个事务的修改还没有提交，而第二次读取时另一个事务的修改提交了。&lt;/p&gt;
+&lt;h3&gt;3.可重复读（REPEATABLE READ）&lt;/h3&gt;
+&lt;p&gt;可以保证在同一个事务中，前后对同一项读取得到的结果是一样的。但是，如果此时有其他事务对某行数据插入了新的数据，还是会被这个事务所看到，仍然出现了不一致（即对同一项的数据的修改不会影响当前事务，但是其他事务新插入的数据会影响到当前事务）。&lt;/p&gt;
+&lt;h3&gt;4.可串行化（SERIALIZABLE）&lt;/h3&gt;
+&lt;p&gt;这是最高的隔离级别， 串行也就是说，事务是一个接一个的运行，这样下一个事务当然就不会被其他事务所影响了（同时只有一个事务在执行）。这种级别的隔离，当然可以保证数据一致性的提高，但是性能就降低了许多，因此也不常用。&lt;/p&gt;
+&lt;p&gt;以上的各个级别的隔离程度由低到高。&lt;/p&gt;
+&lt;h2&gt;数据读问题&lt;/h2&gt;
+&lt;p&gt;多个事务并发执行时，隔离级别的设置可能会碰到以下数据读问题：&lt;/p&gt;
+&lt;h3&gt;脏读（Dirty Reads）&lt;/h3&gt;
+&lt;p&gt;A事务读取了B事务更改了但是还没有提交的数据，并在这个数据上进行了操作，如果之后事务B进行了回滚，那么A事务就读取到了不存在的数据（也就是脏数据）。&lt;/p&gt;
+&lt;p&gt;例子：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;事务A开始事务，查询账户余额为1000元，然后取出500元，此时余额为500元；&lt;/li&gt;
+&lt;li&gt;事务B开始事务，读取此时的转换余额为500元；&lt;/li&gt;
+&lt;li&gt;事务A撤销取出500元的操作（回滚），余额此时恢复为1000元（未提交）；&lt;/li&gt;
+&lt;li&gt;事务B转入100元到账户，此时账户余额为600元；&lt;/li&gt;
+&lt;li&gt;事务B提交事务。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3&gt;不可重复读（Non-repeatable Reads）&lt;/h3&gt;
+&lt;p&gt;一个事务对同一数据项的多次读取可能得到不同的结果。A事务读取了B事务已经提交的更改数据（更改或删除）和在B事务未提交时读的数据不一致。&lt;/p&gt;
+&lt;p&gt;例子：
+1. 事务A开始，读取账户余额为1000元；
+2. 事务B开始，读取账户余额为1000元；
+3. 事务A取出500元，此时账户余额为500元；
+4. 事务A提交事务；
+5. 事务B读取账户余额为500元；
+6. 此时与上一次读取的结果不同。&lt;/p&gt;
+&lt;h3&gt;幻读（Phantom Reads）&lt;/h3&gt;
+&lt;p&gt;A事务读取到了B事务新插入的数据，导致前后读取不一致。            &lt;/p&gt;
+&lt;p&gt;例子：
+1. 事务A开始，统计此时的总余额为1000元；
+2. 事务B开始，&lt;em&gt;新增&lt;/em&gt;一个账户，存入100元；
+3. 事务B提交事务；
+4. 事务A，统计此时的总余额为1100元；
+5. 事务A出现了幻读。&lt;/p&gt;
+&lt;p&gt;幻读与不可重复读的区别是：幻读读取到的是&lt;em&gt;新加入&lt;/em&gt;的数据；而不可重复读读取到的是已经提交过的&lt;em&gt;更改数据&lt;/em&gt;（更改或删除）。为了防止幻读，就要避免读取到新增数据，需要添加表级锁；而为了防止不可重复读，要避免读取到更改的数据，需要添加行级锁。&lt;/p&gt;
+&lt;h2&gt;隔离级别与数据读问题的关系&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;未提交读：由于可以看到其他事务未提交的数据，所以会造成脏读（读取到了未提交的数据导致两次读取不一致）、不可重复读（读取修改的数据导致两次读取不一致）和幻读（读取了新增的数据导致两次读取不一致）。&lt;/li&gt;
+&lt;li&gt;提交读：一个事务只能读取已经提交的事务的数据，所以不会有脏读，仍然存在不可重复读和幻读。&lt;/li&gt;
+&lt;li&gt;可重复读：可以保证在同一个事务中，前后对同一项读取得到的结果是一样的，所以只会出现幻读。&lt;/li&gt;
+&lt;li&gt;可串行化：数据不会出现读写不一致。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr /&gt;
+&lt;h2&gt;References&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href="https://zh.wikipedia.org/wiki/%E6%95%B0%E6%8D%AE%E5%BA%93%E4%BA%8B%E5%8A%A1"&gt;https://zh.wikipedia.org/wiki/%E6%95%B0%E6%8D%AE%E5%BA%93%E4%BA%8B%E5%8A%A1&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://books.google.co.jp/books/about/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F%E6%95%99%E7%A8%8B.html?id=nIJWAAAACAAJ&amp;amp;redir_esc=y"&gt;https://books.google.co.jp/books/about/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F%E6%95%99%E7%A8%8B.html?id=nIJWAAAACAAJ&amp;amp;redir_esc=y&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://anjianshi.net/post/yan-jiu-bi-ji/db_isolation"&gt;http://anjianshi.net/post/yan-jiu-bi-ji/db_isolation&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://nsdifficult.com/blog/20150714/dbTransaction/"&gt;http://nsdifficult.com/blog/20150714/dbTransaction/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://blog.sina.com.cn/s/blog_3fc85e260100msz3.html"&gt;http://blog.sina.com.cn/s/blog_3fc85e260100msz3.html&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">wwt</dc:creator><pubDate>Thu, 30 Jul 2015 22:42:00 +0800</pubDate><guid>tag:www.wengweitao.com,2015-07-30:shu-ju-ku-shi-wu.html</guid><category>数据库</category></item><item><title>Python Socket网络编程</title><link>http://www.wengweitao.com/python-socketwang-luo-bian-cheng.html</link><description>&lt;p&gt;在网络通信中socket几乎无处不在，它可以看成是应用层与TCP/IP协议簇通信的中间软件抽象层，是两个应用程序彼此进行通信的接口，并且把复杂的TCP/IP协议细节隐藏在接口之后。Python提供了socket模块，可以非常方便的进行socket编程。&lt;/p&gt;
 &lt;h2&gt;创建一个server socket&lt;/h2&gt;
 &lt;p&gt;使用&lt;code&gt;socket&lt;/code&gt;方法创建一个新的socket，通常提供两个参数，第一个参数是address family, 第二个是socket type。&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c"&gt;#create an INET, STREAMing socket&lt;/span&gt;
