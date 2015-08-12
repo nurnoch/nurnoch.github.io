@@ -1,5 +1,86 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>wwt's blog</title><link href="http://www.wengweitao.com/" rel="alternate"></link><link href="http://www.wengweitao.com/feeds/ji-qi-xue-xi.rss.xml" rel="self"></link><id>http://www.wengweitao.com/</id><updated>2014-08-10T19:09:00+08:00</updated><entry><title>EM算法</title><link href="http://www.wengweitao.com/emsuan-fa.html" rel="alternate"></link><updated>2014-08-10T19:09:00+08:00</updated><author><name>wwt</name></author><id>tag:www.wengweitao.com,2014-08-10:emsuan-fa.html</id><summary type="html">&lt;blockquote&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>wwt's blog</title><link href="http://www.wengweitao.com/" rel="alternate"></link><link href="http://www.wengweitao.com/feeds/ji-qi-xue-xi.rss.xml" rel="self"></link><id>http://www.wengweitao.com/</id><updated>2015-08-05T22:42:00+08:00</updated><entry><title>生成学习算法与判别学习算法</title><link href="http://www.wengweitao.com/sheng-cheng-xue-xi-suan-fa-yu-pan-bie-xue-xi-suan-fa.html" rel="alternate"></link><updated>2015-08-05T22:42:00+08:00</updated><author><name>wwt</name></author><id>tag:www.wengweitao.com,2015-08-05:sheng-cheng-xue-xi-suan-fa-yu-pan-bie-xue-xi-suan-fa.html</id><summary type="html">&lt;p&gt;机器学习中有两类学习算法：&lt;strong&gt;生成学习算法&lt;/strong&gt;（Generative learning algorithm）和&lt;strong&gt;判别学习算法&lt;/strong&gt;（Discriminative learning algorithm），它们所学到的模型分别成为生成模型和判别模型。那么这两种学习算法的区别是什么呢？&lt;/p&gt;
+&lt;p&gt;举一个具体的例子，假设我们现在要对两种动物进行分类，给定一个动物要么是大象（y=1），要么是狗（y=0）。&lt;/p&gt;
+&lt;p&gt;对于生成学习算法，我们需要利用训练数据分别构建一个描述大象的模型和一个描述狗的模型，然后给定一个新的动物作为输入，我们分别将该动物与大象模型和狗模型进行匹配，然后根据匹配的结果更像哪一个进行分类。用数学公式可以描述为：&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;- 大象的模型：$P(x&lt;/th&gt;
+&lt;th&gt;y=1)$表示了大象的特征分布；&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;- 生成模型：给定一个新的输入x，根据贝叶斯公式：&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;$$P(y&lt;/td&gt;
+&lt;td P_x_y_="P(x,y)"&gt;x)=\frac&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;其中$P(x)=P(x&lt;/td&gt;
+&lt;td&gt;y=0)P(y=0)+P(x&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;当我们需要对新的输入进行分类的时候，只需要求$argmax_yP(y&lt;/td&gt;
+&lt;td&gt;x)$.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;对于判别学习算法，我们直接利用训练数据学习决策函数&lt;span class="math"&gt;\(f(x)\)&lt;/span&gt;或者条件概率分布&lt;span class="math"&gt;\(P(y|x)\)&lt;/span&gt;作为预测的模型。例如，对于线性分类器，我们直接学习到一条直线作为决策边界（decision boundary），这条直线将大象和狗分开，当有新的输入的时候，根据新的输入落在决策边界的哪一端进行分类。&lt;/p&gt;
+&lt;h3&gt;总结&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;判别学习算法直接学习&lt;span class="math"&gt;\(P(y|x)\)&lt;/span&gt;，而生成学习算法先学习&lt;span class="math"&gt;\(P(x|y)\)&lt;/span&gt;和&lt;span class="math"&gt;\(P(y)\)&lt;/span&gt;然后利用贝叶斯公式，求出&lt;span class="math"&gt;\(P(y|x)\)&lt;/span&gt;。&lt;/li&gt;
+&lt;li&gt;判别学习方法的特点：直接面对预测，学习准确率往往更高。&lt;/li&gt;
+&lt;li&gt;生成学习方法的特点：可以还原出联合概率分布&lt;span class="math"&gt;\(P(x,y)\)&lt;/span&gt;；收敛速度更快；可以用于含有隐变量的情况（而判别学习方法不行）。&lt;/li&gt;
+&lt;li&gt;典型的判别模型：逻辑回归、感知机、k近邻法、决策树、SVM等。&lt;/li&gt;
+&lt;li&gt;典型的生成模型：高斯判别分析（GDA）、朴素贝叶斯法和隐马尔可夫模型等。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr /&gt;
+&lt;h2&gt;References&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;Andrew Ng Machine Learning Course&lt;/li&gt;
+&lt;li&gt;统计学习方法&lt;/li&gt;
+&lt;/ol&gt;
+&lt;script type="text/javascript"&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "false";
+
+    if (false) {
+        align = (screen.width &lt; 768) ? "left" : align;
+        indent = (screen.width &lt; 768) ? "0em" : indent;
+        linebreak = (screen.width &lt; 768) ? 'true' : linebreak;
+    }
+    
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = '//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); ";
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+&lt;/script&gt;</summary><category term="机器学习"></category><category term="基础"></category></entry><entry><title>EM算法</title><link href="http://www.wengweitao.com/emsuan-fa.html" rel="alternate"></link><updated>2014-08-10T19:09:00+08:00</updated><author><name>wwt</name></author><id>tag:www.wengweitao.com,2014-08-10:emsuan-fa.html</id><summary type="html">&lt;blockquote&gt;
 &lt;p&gt;EM算法是一种迭代算法，用于含有隐变量（hidden variable）的概率模型参数的极大似然估计，或极大后验概率估计。EM算法的每次迭代分为两步：E步，求期望（Expectation）；M步，求极大（Maximization）。所以这一算法称为期望极大算法。&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h2&gt;EM算法的引入&lt;/h2&gt;
