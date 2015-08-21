@@ -4,7 +4,7 @@
 
         <title>wwt's blog</title>
         <meta charset="utf-8" />
-        <link href="http://www.wengweitao.com/feeds\all.atom.xml" type="application/atom+xml" rel="alternate" title="wwt's blog Full Atom Feed" />
+        <link href="http://www.wengweitao.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="wwt's blog Full Atom Feed" />
         <link href="http://www.wengweitao.com/feeds/all.rss.xml" type="application/rss+xml" rel="alternate" title="wwt's blog Full RSS Feed" />
 
 
@@ -61,9 +61,57 @@
         <div class="eleven columns">
                  <ol id="post-list">
                         <li><article class="hentry">
+                                <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/zen-yang-gei-yi-ge-ci-pan-wen-jian-pai-xu.html" rel="bookmark" title="Permalink to 怎样给一个磁盘文件排序？">怎样给一个磁盘文件排序？</a></h2> </header>
+                                <footer class="post-info">
+                                    <abbr class="published" title="2015-05-23T12:32:00+08:00"> Sat 23 May 2015 </abbr>
+                                    <address class="vcard author">By 
+                                    <a class="url fn" href="http://www.wengweitao.com/author/wwt.html"> wwt</a>
+                                    </address>
+                                </footer><!-- /.post-info -->
+                                <div class="entry-content"> <h3>问题描述：</h3>
+<p><strong>输入：</strong></p>
+<p>一个最多包含n个正整数的文件，每个数都小于n，其中n=10^7（即每个数都是7位的正整数）。输入的文件中没有任何重复的数，并且没有其他数据与该整数关联。</p>
+<p><strong>输出：</strong></p>
+<p>按升序排列的输入整数的列表。</p>
+<p><strong>约束：</strong></p>
+<p>最多大约有1MB的内存空间可用，有充足的磁盘空间，运行的理想时间是10秒左右。</p>
+<h3>程序设计</h3>
+<h4>思路1：</h4>
+<p>如果每个号码使用一个32bit的int类型表示的话，那么在可用的1MB的存储空间中大约可以存入：
+</p>
+<div class="math">$$10^6 / 4 = 25000个数字。$$</div>
+<p>
+因此，可以利用多路归并的思想。</p>
+<ol>
+<li>将一千万个数字分成40份，每次将一份大小为25000个的正整数读入内存，利用快速排序对其进行排序。</li>
+<li>然后使用多路归并将各个已排好序的部分中的数据再次整体排好序后存入输出文件。</li>
+</ol>
+<p>这种方法需要多次读入或者写出文件多次。</p>
+<h4>思路2：</h4>
+<p>使用位图或者位向量来表示集合。例如，如下字符串可以表示集合{1,3,4,5}:</p>
+<div class="highlight"><pre>0 1 0 1 1 1
+</pre></div>
+
+
+<p>代表集合中数值的位都置为1，其他所有位都置为0.</p>
+<p>1MB的内存空间大约可以存储800万个位，每个7位十进制数最多不超过1000万个整数。我们使用一个具有1000万个位的字符串来表示这个文件 ...</p> </div><!-- /.entry-content -->
+
+                                <div class="medium primary btn"><a href="http://www.wengweitao.com/zen-yang-gei-yi-ge-ci-pan-wen-jian-pai-xu.html" rel="bookmark" title="Permalink to 怎样给一个磁盘文件排序？">Read more <i class="icon-arrow-right"></i></a></div>
+
+
+
+                                <div class="row tag-row">
+                                        <span>Tagged as : </span>
+                                            <a class="danger label" href="http://www.wengweitao.com/tag/du-shu-bi-ji.html">读书笔记</a>
+                                </div>
+
+
+
+                        </article></li>
+                        <li><article class="hentry">
                                 <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/lintcode-single-number-i-ii-iii-luo-dan-de-shu.html" rel="bookmark" title="Permalink to LintCode Single Number I II III 落单的数">LintCode  Single Number I II III 落单的数</a></h2> </header>
                                 <footer class="post-info">
-                                    <abbr class="published" title="2015-05-20T21:15:00"> Wed 20 May 2015 </abbr>
+                                    <abbr class="published" title="2015-05-20T21:15:00+08:00"> Wed 20 May 2015 </abbr>
                                     <address class="vcard author">By 
                                     <a class="url fn" href="http://www.wengweitao.com/author/wwt.html"> wwt</a>
                                     </address>
@@ -95,7 +143,7 @@
                         <li><article class="hentry">
                                 <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/pai-xu-suan-fa-zong-jie.html" rel="bookmark" title="Permalink to 排序算法总结">排序算法总结</a></h2> </header>
                                 <footer class="post-info">
-                                    <abbr class="published" title="2015-05-19T20:35:00"> Tue 19 May 2015 </abbr>
+                                    <abbr class="published" title="2015-05-19T20:35:00+08:00"> Tue 19 May 2015 </abbr>
                                     <address class="vcard author">By 
                                     <a class="url fn" href="http://www.wengweitao.com/author/wwt.html"> wwt</a>
                                     </address>
@@ -136,7 +184,7 @@
                         <li><article class="hentry">
                                 <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/tong-pai-xu.html" rel="bookmark" title="Permalink to 桶排序">桶排序</a></h2> </header>
                                 <footer class="post-info">
-                                    <abbr class="published" title="2015-05-18T16:13:00"> Mon 18 May 2015 </abbr>
+                                    <abbr class="published" title="2015-05-18T16:13:00+08:00"> Mon 18 May 2015 </abbr>
                                     <address class="vcard author">By 
                                     <a class="url fn" href="http://www.wengweitao.com/author/wwt.html"> wwt</a>
                                     </address>
@@ -168,7 +216,7 @@
                         <li><article class="hentry">
                                 <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/ji-shu-pai-xu-radix-sort.html" rel="bookmark" title="Permalink to 基数排序（radix sort）">基数排序（radix sort）</a></h2> </header>
                                 <footer class="post-info">
-                                    <abbr class="published" title="2015-05-17T14:12:00"> Sun 17 May 2015 </abbr>
+                                    <abbr class="published" title="2015-05-17T14:12:00+08:00"> Sun 17 May 2015 </abbr>
                                     <address class="vcard author">By 
                                     <a class="url fn" href="http://www.wengweitao.com/author/wwt.html"> wwt</a>
                                     </address>
@@ -184,39 +232,6 @@
 <span class="kt">void</span> <span class="nf">countingSort</span><span class="p">(</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">A</span><span class="p">,</span> <span class="n">vector</span><span class="o">&lt;</span><span class="kt">int ...</span></pre></div> </div><!-- /.entry-content -->
 
                                 <div class="medium primary btn"><a href="http://www.wengweitao.com/ji-shu-pai-xu-radix-sort.html" rel="bookmark" title="Permalink to 基数排序（radix sort）">Read more <i class="icon-arrow-right"></i></a></div>
-
-
-
-                                <div class="row tag-row">
-                                        <span>Tagged as : </span>
-                                            <a class="danger label" href="http://www.wengweitao.com/tag/pai-xu-suan-fa-ji-chu.html">排序 算法 基础</a>
-                                </div>
-
-
-
-                        </article></li>
-                        <li><article class="hentry">
-                                <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/ji-shu-pai-xu.html" rel="bookmark" title="Permalink to 计数排序">计数排序</a></h2> </header>
-                                <footer class="post-info">
-                                    <abbr class="published" title="2015-05-17T11:21:00"> Sun 17 May 2015 </abbr>
-                                    <address class="vcard author">By 
-                                    <a class="url fn" href="http://www.wengweitao.com/author/wwt.html"> wwt</a>
-                                    </address>
-                                </footer><!-- /.post-info -->
-                                <div class="entry-content"> <p>之前介绍的都是基于比较的排序算法，对于包含n个元素的输入序列来说，任何比较排序在最坏情况下都要经过O(nlogn)次比较。本文将介绍第一种非比较排序算法——<strong>计数排序</strong>。</p>
-<h2>计数排序的基本思想</h2>
-<p>计数排序假设n个输入元素中的每一个都是在0到k区间内的一个整数，其中k为某个整数。当k=O(n)时，计数排序的运算时间为O(n)。</p>
-<p>基本思想：</p>
-<ul>
-<li>对于每一个输入元素x，确定小于x的输入元素的个数</li>
-<li>根据这一信息将x放到它在输出数组中的位置上</li>
-</ul>
-<h2>计数排序的代码实现</h2>
-<p>在计数排序算法的代码中，假设输入是一个数组A[1...n]，A.length = n。我们还需要两个数组：B[1..n]存放排序的输出，C[0..k]提供临时存储空间。</p>
-<div class="highlight"><pre><span class="c1">// B: output of the sorted array</span>
-<span class="c1">// k: every element in A: 0 &lt;= A ...</span></pre></div> </div><!-- /.entry-content -->
-
-                                <div class="medium primary btn"><a href="http://www.wengweitao.com/ji-shu-pai-xu.html" rel="bookmark" title="Permalink to 计数排序">Read more <i class="icon-arrow-right"></i></a></div>
 
 
 
@@ -275,29 +290,6 @@
 <!--
 <h4>标签</h4>
 <ul class="tagcloud">
-        <li class="tag-1"><a href="http://www.wengweitao.com/tag/python.html">Python</a></li>
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/tmux.html">tmux</a></li>
-        <li class="tag-1"><a href="http://www.wengweitao.com/tag/du-shu-bi-ji.html">读书笔记</a></li>
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/ji-qi-xue-xi.html">机器学习</a></li>
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/shu-ju-ku.html">数据库</a></li>
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/er-cha-shu.html">二叉树</a></li>
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/pai-xu-suan-fa-ji-chu-zong-jie.html">排序 算法 基础 总结</a></li>
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/wan.html">玩</a></li>
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/gong-ju.html">工具</a></li>
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/jiao-cheng-linux.html">教程、Linux</a></li>
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/go.html">Go</a></li>
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/xiao-yuan.html">校园</a></li>
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/vim.html">Vim</a></li>
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/suan-fa-fen-xi.html">算法分析</a></li>
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/ji-chu.html">基础</a></li>
-        <li class="tag-1"><a href="http://www.wengweitao.com/tag/leetcode.html">leetcode</a></li>
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/ji-chu-gai-nian.html">基础概念</a></li>
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/ce-shi.html">测试</a></li>
-        <li class="tag-1"><a href="http://www.wengweitao.com/tag/pai-xu-suan-fa-ji-chu.html">排序 算法 基础</a></li>
-        <li class="tag-3"><a href="http://www.wengweitao.com/tag/ji-ben-gai-nian.html">基本概念</a></li>
-        <li class="tag-2"><a href="http://www.wengweitao.com/tag/jiao-cheng.html">教程</a></li>
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/bian-cheng-zhu-ji.html">编程珠玑</a></li>
-        <li class="tag-1"><a href="http://www.wengweitao.com/tag/mian-shi-ti.html">面试题</a></li>
 </ul>
 -->
 

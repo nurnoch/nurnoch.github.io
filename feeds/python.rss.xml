@@ -708,29 +708,29 @@ YAPF与其他的格式化工具不同，其算法能够把代码重新格式化�
 &lt;h3&gt;YAPF的使用&lt;/h3&gt;
 &lt;h4&gt;1.安装&lt;/h4&gt;
 &lt;p&gt;可以直接通过pip进行安装：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;pip&lt;/span&gt; &lt;span class="n"&gt;install&lt;/span&gt; &lt;span class="n"&gt;yapf&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;pip install yapf
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;h4&gt;2.使用。&lt;/h4&gt;
 &lt;p&gt;安装完成之后，就可以直接在命令行中使用了。
 以下是yapf的命令行参数：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;usage&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;yapf&lt;/span&gt; &lt;span class="o"&gt;[-&lt;/span&gt;&lt;span class="n"&gt;h&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="o"&gt;[--&lt;/span&gt;&lt;span class="n"&gt;style&lt;/span&gt; &lt;span class="n"&gt;STYLE&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="o"&gt;[-&lt;/span&gt;&lt;span class="n"&gt;d&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="o"&gt;[-&lt;/span&gt;&lt;span class="n"&gt;l&lt;/span&gt; &lt;span class="n"&gt;START&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;END&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;r&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="o"&gt;...&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;usage: yapf &lt;span class="o"&gt;[&lt;/span&gt;-h&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt;--style STYLE&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt;-d &lt;span class="p"&gt;|&lt;/span&gt; -i&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt;-l START-END &lt;span class="p"&gt;|&lt;/span&gt; -r&lt;span class="o"&gt;]&lt;/span&gt; ...
 
-&lt;span class="n"&gt;Formatter&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;Python&lt;/span&gt; &lt;span class="n"&gt;code&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;
+Formatter &lt;span class="k"&gt;for&lt;/span&gt; Python code.
 
-&lt;span class="n"&gt;positional&lt;/span&gt; &lt;span class="k"&gt;arguments&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
-  &lt;span class="n"&gt;files&lt;/span&gt;
+positional arguments:
+  files
 
-&lt;span class="n"&gt;optional&lt;/span&gt; &lt;span class="k"&gt;arguments&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
-  &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;h&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="n"&gt;help&lt;/span&gt;            &lt;span class="err"&gt;显示帮助信息&lt;/span&gt;
-  &lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="n"&gt;style&lt;/span&gt; &lt;span class="n"&gt;STYLE&lt;/span&gt;         &lt;span class="err"&gt;指定需要格式化的编程风格，如&lt;/span&gt;&lt;span class="n"&gt;pep8&lt;/span&gt;&lt;span class="err"&gt;或者&lt;/span&gt;&lt;span class="n"&gt;google&lt;/span&gt;&lt;span class="err"&gt;等&lt;/span&gt;
-                        &lt;span class="err"&gt;也可以是自定义的设置文件。默认是&lt;/span&gt;&lt;span class="n"&gt;pep8&lt;/span&gt;
-  &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;d&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="n"&gt;diff&lt;/span&gt;            &lt;span class="err"&gt;比较格式化后的文件和原文件的区别&lt;/span&gt;
-  &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="k"&gt;in&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;place&lt;/span&gt;        &lt;span class="err"&gt;直接把格式化的文件更改在源文件上&lt;/span&gt;
-  &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;l&lt;/span&gt; &lt;span class="n"&gt;START&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;END&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="n"&gt;lines&lt;/span&gt; &lt;span class="n"&gt;START&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;END&lt;/span&gt;
-                        &lt;span class="err"&gt;指定格式化的行的范围&lt;/span&gt;
-  &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;r&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="n"&gt;recursive&lt;/span&gt;       &lt;span class="err"&gt;在目录中递归运行&lt;/span&gt;
+optional arguments:
+  -h, --help            显示帮助信息
+  --style STYLE         指定需要格式化的编程风格，如pep8或者google等
+                        也可以是自定义的设置文件。默认是pep8
+  -d, --diff            比较格式化后的文件和原文件的区别
+  -i, --in-place        直接把格式化的文件更改在源文件上
+  -l START-END, --lines START-END
+                        指定格式化的行的范围
+  -r, --recursive       在目录中递归运行
 &lt;/pre&gt;&lt;/div&gt;
 
 

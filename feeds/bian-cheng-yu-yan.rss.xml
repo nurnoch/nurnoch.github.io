@@ -17,17 +17,17 @@
 &lt;h2&gt;安装Go&lt;/h2&gt;
 &lt;p&gt;这里以Linux平台为例。&lt;/p&gt;
 &lt;p&gt;下载&lt;a href="https://golang.org/dl/"&gt;Go的压缩包&lt;/a&gt;并解压到 /usr/local 目录：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;tar&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;C&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;usr&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;local&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;xzf&lt;/span&gt; &lt;span class="n"&gt;go&lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="n"&gt;VERSION&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="n"&gt;OS&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="n"&gt;ARCH&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;tar&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;gz&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;tar -C /usr/local -xzf go&lt;span class="nv"&gt;$VERSION&lt;/span&gt;.&lt;span class="nv"&gt;$OS&lt;/span&gt;-&lt;span class="nv"&gt;$ARCH&lt;/span&gt;.tar.gz
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;将 /usr/local/go/bin 添加到PATH环境变量中，添加如下一行内容到 /etc/profile (系统范围)或者 $HOME/.profile(如果没有这个文件需要新建一个):&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;export&lt;/span&gt; &lt;span class="n"&gt;PATH&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="n"&gt;PATH&lt;/span&gt;&lt;span class="o"&gt;:/&lt;/span&gt;&lt;span class="n"&gt;usr&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;local&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;go&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;bin&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nb"&gt;export &lt;/span&gt;&lt;span class="nv"&gt;PATH&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="nv"&gt;$PATH&lt;/span&gt;:/usr/local/go/bin
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;在shell中输入：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;go&lt;/span&gt; &lt;span class="n"&gt;help&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;go &lt;span class="nb"&gt;help&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -51,17 +51,17 @@
 &lt;h2&gt;编译和运行&lt;/h2&gt;
 &lt;p&gt;有两种方式运行：&lt;/p&gt;
 &lt;p&gt;（1）解释执行&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;go&lt;/span&gt; &lt;span class="n"&gt;run&lt;/span&gt; &lt;span class="n"&gt;hello&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;go&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;go run hello.go
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;（2）编译执行&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;go&lt;/span&gt; &lt;span class="n"&gt;build&lt;/span&gt; &lt;span class="n"&gt;hello&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;go&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;go build hello.go
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;此时，会在当前目录生成hello的可执行文件，运行：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;hello&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;./hello
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -409,14 +409,14 @@
 
 
 &lt;p&gt;运行结果：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="mi"&gt;1&lt;/span&gt;
-&lt;span class="n"&gt;map&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;one&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="n"&gt;two&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
-&lt;span class="mi"&gt;1&lt;/span&gt;
-&lt;span class="mi"&gt;2&lt;/span&gt;
-&lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="nb"&gt;true&lt;/span&gt;
-&lt;span class="mi"&gt;2&lt;/span&gt; &lt;span class="nb"&gt;true&lt;/span&gt;
-&lt;span class="mi"&gt;1&lt;/span&gt;
-&lt;span class="n"&gt;map&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;one&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;1
+map[one:1 two:2]
+1
+2
+1 true
+2 true
+1
+map[one:1]
 &lt;/pre&gt;&lt;/div&gt;
 
 

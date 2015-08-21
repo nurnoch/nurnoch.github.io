@@ -4,7 +4,7 @@
 
         <title>wwt's blog - Articles by wwt</title>
         <meta charset="utf-8" />
-        <link href="http://www.wengweitao.com/feeds\all.atom.xml" type="application/atom+xml" rel="alternate" title="wwt's blog Full Atom Feed" />
+        <link href="http://www.wengweitao.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="wwt's blog Full Atom Feed" />
         <link href="http://www.wengweitao.com/feeds/all.rss.xml" type="application/rss+xml" rel="alternate" title="wwt's blog Full RSS Feed" />
 
 
@@ -61,9 +61,39 @@
         <div class="eleven columns">
                  <ol id="post-list">
                         <li><article class="hentry">
+                                <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/mou-pao-pai-xu.html" rel="bookmark" title="Permalink to 冒泡排序">冒泡排序</a></h2> </header>
+                                <footer class="post-info">
+                                    <abbr class="published" title="2015-05-13T16:13:00+08:00"> Wed 13 May 2015 </abbr>
+                                    <address class="vcard author">By 
+                                    <a class="url fn" href="http://www.wengweitao.com/author/wwt.html"> wwt</a>
+                                    </address>
+                                </footer><!-- /.post-info -->
+                                <div class="entry-content"> <p>冒泡排序算法比较简单，假设待排序列的长度为n，其思想是：</p>
+<p>从后往前（或者从前往后）两两比较相邻元素的值，若为逆序（即前一个大于后一个），则交换它们，直到序列比较完，我们称进行了一趟冒泡排序，结果将最小的元素交换到待排序列的第一个位置。下一趟冒泡排序，第一个元素不再参与比较，待排序列的个数减少1，每趟冒泡排序的结果把子序列中最小元素放到了最终的位置。关键字如同气泡一般逐渐往上漂浮至水面，这就是冒泡排序名字的由来。最多n-1趟就能把所有元素排好序。</p>
+<p>代码实现如下：</p>
+<div class="highlight"><pre><span class="kt">void</span> <span class="nf">bubbleSort</span><span class="p">(</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">A</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="n">A</span><span class="p">.</span><span class="n">size</span><span class="p">();</span>
+    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kt">bool</span> <span class="n">flag</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>  <span class="c1">// 表示本趟冒泡是否发生了交换的标志</span>
+        <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span> <span class="n">j</span> <span class="o">&gt;</span> <span class="n">i</span><span class="p">;</span> <span class="o">--</span><span class="n">j</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">if ...</span></pre></div> </div><!-- /.entry-content -->
+
+                                <div class="medium primary btn"><a href="http://www.wengweitao.com/mou-pao-pai-xu.html" rel="bookmark" title="Permalink to 冒泡排序">Read more <i class="icon-arrow-right"></i></a></div>
+
+
+
+                                <div class="row tag-row">
+                                        <span>Tagged as : </span>
+                                            <a class="danger label" href="http://www.wengweitao.com/tag/pai-xu-suan-fa-ji-chu.html">排序 算法 基础</a>
+                                </div>
+
+
+
+                        </article></li>
+                        <li><article class="hentry">
                                 <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/centos-sheng-ji-gcc-he-g-de-fang-fa.html" rel="bookmark" title="Permalink to CentOS 升级 gcc 和 g++ 的方法">CentOS 升级 gcc 和 g++ 的方法</a></h2> </header>
                                 <footer class="post-info">
-                                    <abbr class="published" title="2015-05-12T19:02:00"> Tue 12 May 2015 </abbr>
+                                    <abbr class="published" title="2015-05-12T19:02:00+08:00"> Tue 12 May 2015 </abbr>
                                     <address class="vcard author">By 
                                     <a class="url fn" href="http://www.wengweitao.com/author/wwt.html"> wwt</a>
                                     </address>
@@ -95,7 +125,7 @@ wget http://people ...</pre></div> </div><!-- /.entry-content -->
                         <li><article class="hentry">
                                 <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/zhong-duan-chuang-kou-guan-li-shen-qi-tmux.html" rel="bookmark" title="Permalink to 终端窗口管理神器——tmux">终端窗口管理神器——tmux</a></h2> </header>
                                 <footer class="post-info">
-                                    <abbr class="published" title="2015-05-11T09:12:00"> Mon 11 May 2015 </abbr>
+                                    <abbr class="published" title="2015-05-11T09:12:00+08:00"> Mon 11 May 2015 </abbr>
                                     <address class="vcard author">By 
                                     <a class="url fn" href="http://www.wengweitao.com/author/wwt.html"> wwt</a>
                                     </address>
@@ -136,7 +166,7 @@ wget http://people ...</pre></div> </div><!-- /.entry-content -->
                         <li><article class="hentry">
                                 <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/xuan-ze-wen-ti-ji-fu-za-du-fen-xi.html" rel="bookmark" title="Permalink to 选择问题及复杂度分析">选择问题及复杂度分析</a></h2> </header>
                                 <footer class="post-info">
-                                    <abbr class="published" title="2015-05-06T11:10:00"> Wed 06 May 2015 </abbr>
+                                    <abbr class="published" title="2015-05-06T11:10:00+08:00"> Wed 06 May 2015 </abbr>
                                     <address class="vcard author">By 
                                     <a class="url fn" href="http://www.wengweitao.com/author/wwt.html"> wwt</a>
                                     </address>
@@ -168,7 +198,7 @@ wget http://people ...</pre></div> </div><!-- /.entry-content -->
                         <li><article class="hentry">
                                 <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/linuxshang-da-jian-vpnfu-wu-qi.html" rel="bookmark" title="Permalink to Linux上搭建VPN服务器">Linux上搭建VPN服务器</a></h2> </header>
                                 <footer class="post-info">
-                                    <abbr class="published" title="2015-05-01T21:21:00"> Fri 01 May 2015 </abbr>
+                                    <abbr class="published" title="2015-05-01T21:21:00+08:00"> Fri 01 May 2015 </abbr>
                                     <address class="vcard author">By 
                                     <a class="url fn" href="http://www.wengweitao.com/author/wwt.html"> wwt</a>
                                     </address>
@@ -180,9 +210,9 @@ wget http://people ...</pre></div> </div><!-- /.entry-content -->
 <hr />
 <h2>1. 判断PPP是否可用</h2>
 <p>首先，我们需要检查服务器是否支持搭建PPTP，在shell中输入：</p>
-<div class="highlight"><pre><span class="n">cat</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">ppp</span>
+<div class="highlight"><pre>cat /dev/ppp
 
-<span class="nl">cat:</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">ppp</span><span class="o">:</span> <span class="err">没有那个设备或地址</span>
+cat: /dev/ppp: 没有那个设备或地址
 </pre></div>
 
 
@@ -201,45 +231,6 @@ wget http://people ...</pre></div> </div><!-- /.entry-content -->
                                 <div class="row tag-row">
                                         <span>Tagged as : </span>
                                             <a class="danger label" href="http://www.wengweitao.com/tag/jiao-cheng.html">教程</a>
-                                </div>
-
-
-
-                        </article></li>
-                        <li><article class="hentry">
-                                <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/goyu-yan-ru-men-jiao-cheng-1.html" rel="bookmark" title="Permalink to Go语言入门教程（1）">Go语言入门教程（1）</a></h2> </header>
-                                <footer class="post-info">
-                                    <abbr class="published" title="2015-04-30T22:30:00"> Thu 30 April 2015 </abbr>
-                                    <address class="vcard author">By 
-                                    <a class="url fn" href="http://www.wengweitao.com/author/wwt.html"> wwt</a>
-                                    </address>
-                                </footer><!-- /.post-info -->
-                                <div class="entry-content"> <h2>什么是Go？</h2>
-<p>以下是<a href="https://golang.org/doc/">Go官方网站</a>对其解释：</p>
-<p>Go 编程语言是一个使得程序员更加有效率的开源项目。Go是有表达力、简洁、清晰和有效率的。它的并行机制使其很容易编写多核和网络应用，而新奇的类型系统允许构建有弹性的模块化程序。Go编译到机器码非常快速，同时具有便利的垃圾回收和强大的运行时反射。它是快速的、静态类型编译语言，但是感觉上是动态类型的，解释型语言。</p>
-<h2>Go的特性</h2>
-<ul>
-<li>清晰并且简洁</li>
-<li>并行。很容易让函数变成一个轻量的线程，这些线程被称为goroutines。</li>
-<li>Channel。goroutines直接的通信由channel完成。</li>
-<li>快速。编译和执行都很快。</li>
-<li>安全。类型转换遵循严格的规则并且需要显式的转换；有垃圾收集，无序free()。</li>
-<li>标准格式化。gofmt的输出是官方认可的格式</li>
-<li>类型后置。与类C语言不同，Go的类型在变量名之后</li>
-<li>UTF-8。任何地方都是UTF-8（用过Python的人应该体会到不是UTF-8的痛苦。。。）</li>
-</ul>
-<p>Go语言与Erlang比较类似，区别在于Erlang是函数式编程语言，而Go是命令式；Erlang运行在虚拟机上，而Go是编译后运行的。</p>
-<h2>安装Go</h2>
-<p>这里以Linux平台为例。</p>
-<p>下载<a href="https://golang.org/dl/">Go的压缩包</a>并解压到 /usr/local ...</p> </div><!-- /.entry-content -->
-
-                                <div class="medium primary btn"><a href="http://www.wengweitao.com/goyu-yan-ru-men-jiao-cheng-1.html" rel="bookmark" title="Permalink to Go语言入门教程（1）">Read more <i class="icon-arrow-right"></i></a></div>
-
-
-
-                                <div class="row tag-row">
-                                        <span>Tagged as : </span>
-                                            <a class="danger label" href="http://www.wengweitao.com/tag/go.html">Go</a>
                                 </div>
 
 
@@ -292,29 +283,6 @@ wget http://people ...</pre></div> </div><!-- /.entry-content -->
 <!--
 <h4>标签</h4>
 <ul class="tagcloud">
-        <li class="tag-1"><a href="http://www.wengweitao.com/tag/python.html">Python</a></li>
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/tmux.html">tmux</a></li>
-        <li class="tag-1"><a href="http://www.wengweitao.com/tag/du-shu-bi-ji.html">读书笔记</a></li>
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/ji-qi-xue-xi.html">机器学习</a></li>
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/shu-ju-ku.html">数据库</a></li>
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/er-cha-shu.html">二叉树</a></li>
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/pai-xu-suan-fa-ji-chu-zong-jie.html">排序 算法 基础 总结</a></li>
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/wan.html">玩</a></li>
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/gong-ju.html">工具</a></li>
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/jiao-cheng-linux.html">教程、Linux</a></li>
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/go.html">Go</a></li>
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/xiao-yuan.html">校园</a></li>
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/vim.html">Vim</a></li>
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/suan-fa-fen-xi.html">算法分析</a></li>
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/ji-chu.html">基础</a></li>
-        <li class="tag-1"><a href="http://www.wengweitao.com/tag/leetcode.html">leetcode</a></li>
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/ji-chu-gai-nian.html">基础概念</a></li>
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/ce-shi.html">测试</a></li>
-        <li class="tag-1"><a href="http://www.wengweitao.com/tag/pai-xu-suan-fa-ji-chu.html">排序 算法 基础</a></li>
-        <li class="tag-3"><a href="http://www.wengweitao.com/tag/ji-ben-gai-nian.html">基本概念</a></li>
-        <li class="tag-2"><a href="http://www.wengweitao.com/tag/jiao-cheng.html">教程</a></li>
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/bian-cheng-zhu-ji.html">编程珠玑</a></li>
-        <li class="tag-1"><a href="http://www.wengweitao.com/tag/mian-shi-ti.html">面试题</a></li>
 </ul>
 -->
 

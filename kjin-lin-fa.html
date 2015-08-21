@@ -4,7 +4,7 @@
 
         <title>k近邻法</title>
         <meta charset="utf-8" />
-        <link href="http://www.wengweitao.com/feeds\all.atom.xml" type="application/atom+xml" rel="alternate" title="wwt's blog Full Atom Feed" />
+        <link href="http://www.wengweitao.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="wwt's blog Full Atom Feed" />
         <link href="http://www.wengweitao.com/feeds/all.rss.xml" type="application/rss+xml" rel="alternate" title="wwt's blog Full RSS Feed" />
         <link href="http://www.wengweitao.com/feeds/ji-qi-xue-xi.rss.xml" type="application/atom+xml" rel="alternate" title="wwt's blog Categories Atom Feed" />
 
@@ -66,7 +66,7 @@
 
             </header>
             <footer class="post-info">
-              <abbr class="published" title="2014-07-27T16:18:00">
+              <abbr class="published" title="2014-07-27T16:18:00+08:00">
                 Sun 27 July 2014
               </abbr>
               <address class="vcard author">By 
@@ -121,9 +121,9 @@
 <p>（1）在kd树中找到包含目标点x的叶结点</p>
 <p>（2）以此叶节点为“当前最近点”</p>
 <p>（3）递归向上回退</p>
-<div class="highlight"><pre><span class="err">（</span><span class="n">a</span><span class="err">）如果该结点保存的实例点比当前最几点距离目标点更近，则以该实例点为“当前”最近点</span>
+<div class="highlight"><pre>（a）如果该结点保存的实例点比当前最几点距离目标点更近，则以该实例点为“当前”最近点
 
-<span class="err">（</span><span class="n">b</span><span class="err">）当前最近点一定存在于该结点一个子结点对应的区域。检查该子结点的父结点的另一子结点对应的区域是否有更近的点。即以目标点为球心，以目标点与当前最近点间的距离为半径的球体是否与另一子结点对应的区域相交。如果相交，可能在另一个子结点对应的区域中存在更近的点。移动到另一个子结点，接着递归地进行最邻近搜索。如果不相交，则向上回退。</span>
+（b）当前最近点一定存在于该结点一个子结点对应的区域。检查该子结点的父结点的另一子结点对应的区域是否有更近的点。即以目标点为球心，以目标点与当前最近点间的距离为半径的球体是否与另一子结点对应的区域相交。如果相交，可能在另一个子结点对应的区域中存在更近的点。移动到另一个子结点，接着递归地进行最邻近搜索。如果不相交，则向上回退。
 </pre></div>
 
 
@@ -230,29 +230,6 @@
 <!--
 <h4>标签</h4>
 <ul class="tagcloud">
-        <li class="tag-1"><a href="http://www.wengweitao.com/tag/python.html">Python</a></li>
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/tmux.html">tmux</a></li>
-        <li class="tag-1"><a href="http://www.wengweitao.com/tag/du-shu-bi-ji.html">读书笔记</a></li>
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/ji-qi-xue-xi.html">机器学习</a></li>
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/shu-ju-ku.html">数据库</a></li>
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/er-cha-shu.html">二叉树</a></li>
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/pai-xu-suan-fa-ji-chu-zong-jie.html">排序 算法 基础 总结</a></li>
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/wan.html">玩</a></li>
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/gong-ju.html">工具</a></li>
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/jiao-cheng-linux.html">教程、Linux</a></li>
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/go.html">Go</a></li>
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/xiao-yuan.html">校园</a></li>
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/vim.html">Vim</a></li>
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/suan-fa-fen-xi.html">算法分析</a></li>
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/ji-chu.html">基础</a></li>
-        <li class="tag-1"><a href="http://www.wengweitao.com/tag/leetcode.html">leetcode</a></li>
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/ji-chu-gai-nian.html">基础概念</a></li>
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/ce-shi.html">测试</a></li>
-        <li class="tag-1"><a href="http://www.wengweitao.com/tag/pai-xu-suan-fa-ji-chu.html">排序 算法 基础</a></li>
-        <li class="tag-3"><a href="http://www.wengweitao.com/tag/ji-ben-gai-nian.html">基本概念</a></li>
-        <li class="tag-2"><a href="http://www.wengweitao.com/tag/jiao-cheng.html">教程</a></li>
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/bian-cheng-zhu-ji.html">编程珠玑</a></li>
-        <li class="tag-1"><a href="http://www.wengweitao.com/tag/mian-shi-ti.html">面试题</a></li>
 </ul>
 -->
 

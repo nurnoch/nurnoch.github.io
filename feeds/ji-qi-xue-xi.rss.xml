@@ -1,5 +1,98 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>wwt's blog</title><link href="http://www.wengweitao.com/" rel="alternate"></link><link href="http://www.wengweitao.com/feeds/ji-qi-xue-xi.rss.xml" rel="self"></link><id>http://www.wengweitao.com/</id><updated>2015-08-05T22:42:00+08:00</updated><entry><title>生成学习算法与判别学习算法</title><link href="http://www.wengweitao.com/sheng-cheng-xue-xi-suan-fa-yu-pan-bie-xue-xi-suan-fa.html" rel="alternate"></link><updated>2015-08-05T22:42:00+08:00</updated><author><name>wwt</name></author><id>tag:www.wengweitao.com,2015-08-05:sheng-cheng-xue-xi-suan-fa-yu-pan-bie-xue-xi-suan-fa.html</id><summary type="html">&lt;p&gt;机器学习中有两类学习算法：&lt;strong&gt;生成学习算法&lt;/strong&gt;（Generative learning algorithm）和&lt;strong&gt;判别学习算法&lt;/strong&gt;（Discriminative learning algorithm），它们所学到的模型分别成为生成模型和判别模型。那么这两种学习算法的区别是什么呢？&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>wwt's blog</title><link href="http://www.wengweitao.com/" rel="alternate"></link><link href="http://www.wengweitao.com/feeds/ji-qi-xue-xi.rss.xml" rel="self"></link><id>http://www.wengweitao.com/</id><updated>2015-08-21T19:22:00+08:00</updated><entry><title>Kaggle入门指南</title><link href="http://www.wengweitao.com/kaggleru-men-zhi-nan.html" rel="alternate"></link><updated>2015-08-21T19:22:00+08:00</updated><author><name>wwt</name></author><id>tag:www.wengweitao.com,2015-08-21:kaggleru-men-zhi-nan.html</id><summary type="html">&lt;p&gt;&lt;a href="https://www.kaggle.com"&gt;Kaggle&lt;/a&gt;是一个非常著名的数据建模和分析的竞赛平台，对于数据挖掘的爱好者来说是一个非常好的学习平台。我们可以通过Kaggle提供的数据集，通过实战提高自己的数据挖掘和分析能力。这篇文章就介绍如何参与一个Kaggle的竞赛，希望能够让更多的数据挖掘爱好者能够熟悉Kaggle竞赛的基本流程，加入到Kaggle中。&lt;/p&gt;
+&lt;p&gt;我们就以一个简单的竞赛任务——&lt;a href="https://www.kaggle.com/c/digit-recognizer"&gt;手写数字识别&lt;/a&gt;为例，进行介绍。&lt;/p&gt;
+&lt;h2&gt;查看竞赛任务描述&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://www.kaggle.com/c/digit-recognizer"&gt;Classify handwritten digits using the famous MNIST data&lt;/a&gt;的任务就是训练一个模型，然后输入一个手写数字作为输入，能够判断出它是哪一个数字。&lt;/p&gt;
+&lt;h2&gt;分析数据集&lt;/h2&gt;
+&lt;p&gt;手写字体识别这个比赛，提供了两个数据文件：&lt;code&gt;train.csv&lt;/code&gt;和&lt;code&gt;test.csv&lt;/code&gt;。这两个文件一个是训练数据集，另外一个是测试数据集。我们需要通过训练数据集生成一个分类器，然后在测试集上进行测试，并且将最终的结果提交给Kaggle。&lt;/p&gt;
+&lt;p&gt;两个数据文件的内容是0~9数字的手写图像。我们可以先将数据集下载到本地查看数据格式。训练数据集（train.csv）一共有785列，其中第一列为该样本（图像）的标签（label），而其余784列是这个图像的像素值（手写数字的图像为28 * 28）。如下所示。&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;label&lt;/th&gt;
+&lt;th&gt;pixel0&lt;/th&gt;
+&lt;th&gt;pixel1&lt;/th&gt;
+&lt;th&gt;...&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;1&lt;/td&gt;
+&lt;td&gt;0&lt;/td&gt;
+&lt;td&gt;0&lt;/td&gt;
+&lt;td&gt;...&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;0&lt;/td&gt;
+&lt;td&gt;0&lt;/td&gt;
+&lt;td&gt;0&lt;/td&gt;
+&lt;td&gt;...&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;对于测试数据集（test.csv）一共有784列，除了没有lable之外，每个列的含义与训练数据集相同。&lt;/p&gt;
+&lt;p&gt;测试数据集一共有28000个待分类的手写数字，我们提交分类结果的时候应该按照一行一个结果的格式提交（具体要求的结果格式可以参照页面给的样例），并且需要有一个header表示每列的内容如：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;ImageId,Label
+1,3
+2,5
+3,1
+剩余的27997个分类结果
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;分类的结果必须是&lt;code&gt;csv&lt;/code&gt;的格式。
+最终，通过分类的准确率来衡量你的模型的好坏。&lt;/p&gt;
+&lt;h2&gt;开始比赛吧&lt;/h2&gt;
+&lt;h3&gt;1. 编程环境配置&lt;/h3&gt;
+&lt;p&gt;这里我们使用Python作为编程语言，此外我们还需要安装以下几个非常强大有用的Python科学计算和机器学习的库：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;numpy：提供了大量数组和矩阵计算的函数&lt;/li&gt;
+&lt;li&gt;scipy：Python科学工程计算工具&lt;/li&gt;
+&lt;li&gt;scikit-learn：Python最流行的机器学习库&lt;/li&gt;
+&lt;li&gt;pandas：提供了很多操作数据集的函数&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;以上的的库都可以通过pip方便的安装。&lt;/p&gt;
+&lt;h3&gt;2. 模型训练&lt;/h3&gt;
+&lt;p&gt;对于手写数字识别的问题，很多模型都可以解决，例如：logistic归回、SVM以及随机森林等。这里我们选用随机森林作为分类器，随机森林虽然稍微有点复杂，但是通常效果还不错，而且利用scikit-learn可以非常方便的实现。
+很多人可能对随机森林不太熟悉，这里我还是简单的介绍一下。随机森林（random forest）就是以随机的方式生成一个森林，这个森林是由很多棵决策树构成的。当有一个新的输入的时候，就让每棵决策树去分类，然后查看哪个类被选择的最多，这个输入就属于哪个类。
+下面我们就利用scikit-learn来实现随机森林：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c"&gt;#coding=utf-8&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;sklearn.ensemble&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;RandomForestClassifier&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;numpy&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;genfromtxt&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;savetxt&lt;/span&gt;
+
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;main&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
+    &lt;span class="c"&gt;# 创建训练集&lt;/span&gt;
+    &lt;span class="n"&gt;dataset&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;genfromtxt&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;open&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;train.csv&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;r&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="n"&gt;delimiter&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;,&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;dtype&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;f8&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;:]&lt;/span&gt;
+    &lt;span class="n"&gt;target&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;dataset&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="c"&gt;# 第一列为label&lt;/span&gt;
+    &lt;span class="n"&gt;train&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;:]&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;dataset&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+
+    &lt;span class="c"&gt;# 创建测试集&lt;/span&gt;
+    &lt;span class="n"&gt;test&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;genfromtxt&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;open&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;test.csv&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;r&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="n"&gt;delimiter&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;,&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;dtype&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;f8&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;:]&lt;/span&gt;
+
+    &lt;span class="c"&gt;# 创建并且训练一个随机森林模型&lt;/span&gt;
+    &lt;span class="n"&gt;rf&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;RandomForestClassifier&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;n_estimators&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;100&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;rf&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;fit&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;train&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;target&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;predicted_results&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[[&lt;/span&gt;&lt;span class="n"&gt;index&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;index&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="nb"&gt;enumerate&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;rf&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;predict&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;test&lt;/span&gt;&lt;span class="p"&gt;))]&lt;/span&gt;
+
+    &lt;span class="c"&gt;# 利用随机森林对测试集进行预测，并将结果保存到输出文件中&lt;/span&gt;
+    &lt;span class="n"&gt;savetxt&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;result.csv&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;predicted_results&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;delimiter&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;,&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;fmt&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;&lt;/span&gt;&lt;span class="si"&gt;%d&lt;/span&gt;&lt;span class="s"&gt;,&lt;/span&gt;&lt;span class="si"&gt;%d&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; 
+            &lt;span class="n"&gt;header&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;ImageId,Label&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;comments&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;__name__&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;__main__&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+    &lt;span class="n"&gt;main&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;首先，分别从两个文件创建训练集和数据集；然后，利用训练集训练一个随机森林模型，直接调用&lt;code&gt;sklearn.ensemble.RandomForestClassifier&lt;/code&gt;传入的参数&lt;code&gt;100&lt;/code&gt;表示森林有100棵树；最后输出结果的格式为(ImageId,Label)，写出到文件&lt;code&gt;result.csv&lt;/code&gt;中。&lt;/p&gt;
+&lt;h3&gt;3. 提交结果&lt;/h3&gt;
+&lt;p&gt;既然已经得到了预测的结果，那么就将结果上传到Kaggle。如果上传格式不对，就无法提交成功，所以要确保按照指定的要求提交。我们将&lt;code&gt;result.csv&lt;/code&gt;文件提交，经过判定就得出了模型的准确率和排名，如下所示，排名为395，分数（准确率）为0.96457。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;395 new nurnoch 0.96457 1   Fri, 21 Aug 2015 11:10:40
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;几行的代码就可以取得0.96的准确率还是挺不错的。&lt;/p&gt;
+&lt;p&gt;以上就是参加Kaggle竞赛的一个简单入门教程。
+Have fun!&lt;/p&gt;</summary><category term="机器学习"></category><category term="教程"></category></entry><entry><title>生成学习算法与判别学习算法</title><link href="http://www.wengweitao.com/sheng-cheng-xue-xi-suan-fa-yu-pan-bie-xue-xi-suan-fa.html" rel="alternate"></link><updated>2015-08-05T22:42:00+08:00</updated><author><name>wwt</name></author><id>tag:www.wengweitao.com,2015-08-05:sheng-cheng-xue-xi-suan-fa-yu-pan-bie-xue-xi-suan-fa.html</id><summary type="html">&lt;p&gt;机器学习中有两类学习算法：&lt;strong&gt;生成学习算法&lt;/strong&gt;（Generative learning algorithm）和&lt;strong&gt;判别学习算法&lt;/strong&gt;（Discriminative learning algorithm），它们所学到的模型分别成为生成模型和判别模型。那么这两种学习算法的区别是什么呢？&lt;/p&gt;
 &lt;p&gt;举一个具体的例子，假设我们现在要对两种动物进行分类，给定一个动物要么是大象（y=1），要么是狗（y=0）。&lt;/p&gt;
 &lt;p&gt;对于生成学习算法，我们需要利用训练数据分别构建一个描述大象的模型和一个描述狗的模型，然后给定一个新的动物作为输入，我们分别将该动物与大象模型和狗模型进行匹配，然后根据匹配的结果更像哪一个进行分类。用数学公式可以描述为：&lt;/p&gt;
 &lt;p&gt;大象的模型：P(x|y=1)表示了大象的特征分布；&lt;/p&gt;
@@ -2131,9 +2224,9 @@ f(x)   \:\:\:\:\: x满足约束条件\\
 &lt;p&gt;（1）在kd树中找到包含目标点x的叶结点&lt;/p&gt;
 &lt;p&gt;（2）以此叶节点为“当前最近点”&lt;/p&gt;
 &lt;p&gt;（3）递归向上回退&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;（&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="err"&gt;）如果该结点保存的实例点比当前最几点距离目标点更近，则以该实例点为“当前”最近点&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;（a）如果该结点保存的实例点比当前最几点距离目标点更近，则以该实例点为“当前”最近点
 
-&lt;span class="err"&gt;（&lt;/span&gt;&lt;span class="n"&gt;b&lt;/span&gt;&lt;span class="err"&gt;）当前最近点一定存在于该结点一个子结点对应的区域。检查该子结点的父结点的另一子结点对应的区域是否有更近的点。即以目标点为球心，以目标点与当前最近点间的距离为半径的球体是否与另一子结点对应的区域相交。如果相交，可能在另一个子结点对应的区域中存在更近的点。移动到另一个子结点，接着递归地进行最邻近搜索。如果不相交，则向上回退。&lt;/span&gt;
+（b）当前最近点一定存在于该结点一个子结点对应的区域。检查该子结点的父结点的另一子结点对应的区域是否有更近的点。即以目标点为球心，以目标点与当前最近点间的距离为半径的球体是否与另一子结点对应的区域相交。如果相交，可能在另一个子结点对应的区域中存在更近的点。移动到另一个子结点，接着递归地进行最邻近搜索。如果不相交，则向上回退。
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -2604,10 +2697,15 @@ J(f)为模型的复杂度，模型f越复杂，复杂度J(f)就越大；反之�
 &lt;li&gt;当存在隐变量时，仍然可以用生成学习方法学习，此时判别方法就不能用&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;&lt;strong&gt;判别方法的特点：&lt;/strong&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;直接学习的是P(Y|X)或决策函数f(X)，直接面对预测，学习的效率更高&lt;/li&gt;
-&lt;li&gt;由于是直接学习P(Y|X)或决策函数f(X)，可以对数据进行各种程度上的抽象、定义特征并使用特征，因此可以简化学习问题。&lt;/li&gt;
-&lt;/ul&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;- 直接学习的是P(Y&lt;/th&gt;
+&lt;th&gt;X)或决策函数f(X)，直接面对预测，学习的效率更高&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;&lt;/tbody&gt;
+&lt;/table&gt;
 &lt;hr /&gt;
 &lt;h2&gt;分类问题&lt;/h2&gt;
 &lt;p&gt;当&lt;strong&gt;输出变量Y取有限个离散值&lt;/strong&gt;时，预测问题便成为分类问题。&lt;/p&gt;

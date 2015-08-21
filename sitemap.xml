@@ -5,462 +5,469 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://www.wengweitao.com/</loc>
-<lastmod>2015-08-12T09:44:50-00:00</lastmod>
+<lastmod>2015-08-21T21:32:06-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://www.wengweitao.com/archives.html</loc>
-<lastmod>2015-08-12T09:44:50-00:00</lastmod>
+<lastmod>2015-08-21T21:32:06-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://www.wengweitao.com/tags.html</loc>
-<lastmod>2015-08-12T09:44:50-00:00</lastmod>
+<lastmod>2015-08-21T21:32:06-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://www.wengweitao.com/categories.html</loc>
-<lastmod>2015-08-12T09:44:50-00:00</lastmod>
+<lastmod>2015-08-21T21:32:06-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://www.wengweitao.com/pages/about-me.html</loc>
-<lastmod>2013-04-18T00:00:00-00:00</lastmod>
+<lastmod>2013-04-18T00:00:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.3</priority>
 </url>
 
 <url>
+<loc>http://www.wengweitao.com/kaggleru-men-zhi-nan.html</loc>
+<lastmod>2015-08-21T19:22:00+08:00</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+
+<url>
 <loc>http://www.wengweitao.com/sheng-cheng-xue-xi-suan-fa-yu-pan-bie-xue-xi-suan-fa.html</loc>
-<lastmod>2015-08-05T22:42:00-00:00</lastmod>
+<lastmod>2015-08-05T22:42:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
 <loc>http://www.wengweitao.com/shu-ju-ku-shi-wu.html</loc>
-<lastmod>2015-07-30T22:42:00-00:00</lastmod>
+<lastmod>2015-07-30T22:42:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
 <loc>http://www.wengweitao.com/python-socketwang-luo-bian-cheng.html</loc>
-<lastmod>2015-07-27T18:49:00-00:00</lastmod>
+<lastmod>2015-07-27T18:49:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
 <loc>http://www.wengweitao.com/leetcode-majority-element-ii.html</loc>
-<lastmod>2015-06-29T10:42:00-00:00</lastmod>
+<lastmod>2015-06-29T10:42:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
 <loc>http://www.wengweitao.com/leetcode-basic-calculator-ii.html</loc>
-<lastmod>2015-06-22T14:11:00-00:00</lastmod>
+<lastmod>2015-06-22T14:11:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
 <loc>http://www.wengweitao.com/leetcode-invert-binary-tree.html</loc>
-<lastmod>2015-06-12T15:54:00-00:00</lastmod>
+<lastmod>2015-06-12T15:54:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
 <loc>http://www.wengweitao.com/leetcode-implement-stack-using-queues.html</loc>
-<lastmod>2015-06-11T16:02:00-00:00</lastmod>
+<lastmod>2015-06-11T16:02:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
 <loc>http://www.wengweitao.com/leetcode-basic-calculator.html</loc>
-<lastmod>2015-06-10T10:12:00-00:00</lastmod>
+<lastmod>2015-06-10T10:12:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
 <loc>http://www.wengweitao.com/lian-xu-zi-shu-zu-de-zui-da-he.html</loc>
-<lastmod>2015-06-09T21:46:00-00:00</lastmod>
+<lastmod>2015-06-09T21:46:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
 <loc>http://www.wengweitao.com/leetcode-rectangle-area.html</loc>
-<lastmod>2015-06-08T11:23:00-00:00</lastmod>
+<lastmod>2015-06-08T11:23:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
 <loc>http://www.wengweitao.com/leetcode-count-complete-tree-nodes.html</loc>
-<lastmod>2015-06-06T11:19:00-00:00</lastmod>
+<lastmod>2015-06-06T11:19:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
 <loc>http://www.wengweitao.com/suan-fa-zhong-de-ling-ji-yi-dong.html</loc>
-<lastmod>2015-06-03T20:37:00-00:00</lastmod>
+<lastmod>2015-06-03T20:37:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
 <loc>http://www.wengweitao.com/er-cha-shu-de-san-chong-bian-li-fang-shi-di-gui-fei-di-gui-he-morrisbian-li.html</loc>
-<lastmod>2015-05-27T21:41:00-00:00</lastmod>
+<lastmod>2015-05-27T21:41:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
 <loc>http://www.wengweitao.com/corskua-yu-zi-yuan-gong-xiang-cross-origin-resource-sharing.html</loc>
-<lastmod>2015-05-24T16:49:00-00:00</lastmod>
+<lastmod>2015-05-24T16:49:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
 <loc>http://www.wengweitao.com/zen-yang-gei-yi-ge-ci-pan-wen-jian-pai-xu.html</loc>
-<lastmod>2015-05-23T12:32:00-00:00</lastmod>
+<lastmod>2015-05-23T12:32:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
 <loc>http://www.wengweitao.com/lintcode-single-number-i-ii-iii-luo-dan-de-shu.html</loc>
-<lastmod>2015-05-20T21:15:00-00:00</lastmod>
+<lastmod>2015-05-20T21:15:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
 <loc>http://www.wengweitao.com/pai-xu-suan-fa-zong-jie.html</loc>
-<lastmod>2015-05-19T20:35:00-00:00</lastmod>
+<lastmod>2015-05-19T20:35:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
 <loc>http://www.wengweitao.com/tong-pai-xu.html</loc>
-<lastmod>2015-05-18T16:13:00-00:00</lastmod>
+<lastmod>2015-05-18T16:13:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
 <loc>http://www.wengweitao.com/ji-shu-pai-xu-radix-sort.html</loc>
-<lastmod>2015-05-17T14:12:00-00:00</lastmod>
+<lastmod>2015-05-17T14:12:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
 <loc>http://www.wengweitao.com/ji-shu-pai-xu.html</loc>
-<lastmod>2015-05-17T11:21:00-00:00</lastmod>
+<lastmod>2015-05-17T11:21:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
 <loc>http://www.wengweitao.com/kuai-su-pai-xu.html</loc>
-<lastmod>2015-05-16T10:22:00-00:00</lastmod>
+<lastmod>2015-05-16T10:22:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
 <loc>http://www.wengweitao.com/gui-bing-pai-xu.html</loc>
-<lastmod>2015-05-15T19:45:00-00:00</lastmod>
+<lastmod>2015-05-15T19:45:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
 <loc>http://www.wengweitao.com/dui-pai-xu.html</loc>
-<lastmod>2015-05-14T22:23:00-00:00</lastmod>
+<lastmod>2015-05-14T22:23:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
 <loc>http://www.wengweitao.com/cha-ru-pai-xu.html</loc>
-<lastmod>2015-05-13T18:34:00-00:00</lastmod>
+<lastmod>2015-05-13T18:34:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
 <loc>http://www.wengweitao.com/mou-pao-pai-xu.html</loc>
-<lastmod>2015-05-13T16:13:00-00:00</lastmod>
+<lastmod>2015-05-13T16:13:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
 <loc>http://www.wengweitao.com/centos-sheng-ji-gcc-he-g-de-fang-fa.html</loc>
-<lastmod>2015-05-12T19:02:00-00:00</lastmod>
+<lastmod>2015-05-12T19:02:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
 <loc>http://www.wengweitao.com/zhong-duan-chuang-kou-guan-li-shen-qi-tmux.html</loc>
-<lastmod>2015-05-11T09:12:00-00:00</lastmod>
+<lastmod>2015-05-11T09:12:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
 <loc>http://www.wengweitao.com/xuan-ze-wen-ti-ji-fu-za-du-fen-xi.html</loc>
-<lastmod>2015-05-06T11:10:00-00:00</lastmod>
+<lastmod>2015-05-06T11:10:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
 <loc>http://www.wengweitao.com/linuxshang-da-jian-vpnfu-wu-qi.html</loc>
-<lastmod>2015-05-01T21:21:00-00:00</lastmod>
+<lastmod>2015-05-01T21:21:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
 <loc>http://www.wengweitao.com/goyu-yan-ru-men-jiao-cheng-1.html</loc>
-<lastmod>2015-04-30T22:30:00-00:00</lastmod>
+<lastmod>2015-04-30T22:30:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
 <loc>http://www.wengweitao.com/false-is-false-is-false-de-jie-guo-shi-true.html</loc>
-<lastmod>2015-04-25T10:37:00-00:00</lastmod>
+<lastmod>2015-04-25T10:37:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
 <loc>http://www.wengweitao.com/vimru-men-jiao-cheng.html</loc>
-<lastmod>2015-04-16T20:12:00-00:00</lastmod>
+<lastmod>2015-04-16T20:12:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
 <loc>http://www.wengweitao.com/shi-yong-pelican-github-pagesda-jian-ge-ren-bo-ke.html</loc>
-<lastmod>2015-04-16T13:46:00-00:00</lastmod>
+<lastmod>2015-04-16T13:46:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
 <loc>http://www.wengweitao.com/hu-lian-wang-shi-yan-shi-he-yuan-you-wan.html</loc>
-<lastmod>2015-04-14T20:12:00-00:00</lastmod>
+<lastmod>2015-04-14T20:12:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
 <loc>http://www.wengweitao.com/bian-xie-gao-zhi-liang-pythondai-ma-4-she-ji-mo-shi.html</loc>
-<lastmod>2015-04-13T23:31:00-00:00</lastmod>
+<lastmod>2015-04-13T23:31:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
 <loc>http://www.wengweitao.com/shi-pelicanzhi-chi-latexshu-xue-gong-shi.html</loc>
-<lastmod>2015-04-10T19:35:00-00:00</lastmod>
+<lastmod>2015-04-10T19:35:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
 <loc>http://www.wengweitao.com/qiu-zi-fu-de-suo-you-zu-he-he-suo-you-pai-lie.html</loc>
-<lastmod>2015-04-10T14:41:00-00:00</lastmod>
+<lastmod>2015-04-10T14:41:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
 <loc>http://www.wengweitao.com/bian-xie-gao-zhi-liang-pythondai-ma-3-ku.html</loc>
-<lastmod>2015-04-08T22:58:00-00:00</lastmod>
+<lastmod>2015-04-08T22:58:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
 <loc>http://www.wengweitao.com/pythonrong-qi-counterde-shi-yong.html</loc>
-<lastmod>2015-04-08T14:52:00-00:00</lastmod>
+<lastmod>2015-04-08T14:52:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
 <loc>http://www.wengweitao.com/bian-xie-gao-zhi-liang-pythondai-ma-2.html</loc>
-<lastmod>2015-04-07T22:39:00-00:00</lastmod>
+<lastmod>2015-04-07T22:39:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
 <loc>http://www.wengweitao.com/pythondai-ma-ge-shi-hua-gong-ju-yapf.html</loc>
-<lastmod>2015-04-07T15:10:00-00:00</lastmod>
+<lastmod>2015-04-07T15:10:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
 <loc>http://www.wengweitao.com/bian-xie-gao-zhi-liang-pythondai-ma-1.html</loc>
-<lastmod>2015-04-06T18:42:00-00:00</lastmod>
+<lastmod>2015-04-06T18:42:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
 <loc>http://www.wengweitao.com/fei-bo-na-qi-shu-lie-ji-qi-xiang-guan-wen-ti.html</loc>
-<lastmod>2015-04-05T00:00:00-00:00</lastmod>
+<lastmod>2015-04-05T00:00:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
 <loc>http://www.wengweitao.com/xin-xi-ji-zhu-xie-hui-di-yi-qi-dian-nao-ji-zhu-pei-xun-shun-li-ju-ban.html</loc>
-<lastmod>2014-10-18T20:12:00-00:00</lastmod>
+<lastmod>2014-10-18T20:12:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
 <loc>http://www.wengweitao.com/emsuan-fa.html</loc>
-<lastmod>2014-08-10T19:09:00-00:00</lastmod>
+<lastmod>2014-08-10T19:09:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
 <loc>http://www.wengweitao.com/ti-sheng-shu.html</loc>
-<lastmod>2014-08-07T22:27:00-00:00</lastmod>
+<lastmod>2014-08-07T22:27:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
 <loc>http://www.wengweitao.com/adaboostsuan-fa.html</loc>
-<lastmod>2014-08-06T19:56:00-00:00</lastmod>
+<lastmod>2014-08-06T19:56:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
 <loc>http://www.wengweitao.com/zhi-chi-xiang-liang-ji-smoxu-lie-zui-xiao-zui-you-hua-suan-fa.html</loc>
-<lastmod>2014-08-05T10:02:00-00:00</lastmod>
+<lastmod>2014-08-05T10:02:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
 <loc>http://www.wengweitao.com/zhi-chi-xiang-liang-ji-fei-xian-xing-zhi-chi-xiang-liang-ji.html</loc>
-<lastmod>2014-08-04T19:39:00-00:00</lastmod>
+<lastmod>2014-08-04T19:39:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
 <loc>http://www.wengweitao.com/zhi-chi-xiang-liang-ji-xian-xing-zhi-chi-xiang-liang-ji.html</loc>
-<lastmod>2014-08-03T14:54:00-00:00</lastmod>
+<lastmod>2014-08-03T14:54:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
 <loc>http://www.wengweitao.com/zhi-chi-xiang-liang-ji-xian-xing-ke-fen-zhi-chi-xiang-liang-ji.html</loc>
-<lastmod>2014-08-02T20:32:00-00:00</lastmod>
+<lastmod>2014-08-02T20:32:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
 <loc>http://www.wengweitao.com/luo-ji-si-di-hui-gui-yu-zui-da-shang-mo-xing.html</loc>
-<lastmod>2014-08-01T09:53:00-00:00</lastmod>
+<lastmod>2014-08-01T09:53:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
 <loc>http://www.wengweitao.com/niu-dun-fa.html</loc>
-<lastmod>2014-07-30T20:12:00-00:00</lastmod>
+<lastmod>2014-07-30T20:12:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
 <loc>http://www.wengweitao.com/la-ge-lang-ri-dui-ou-xing-lagrange-duality.html</loc>
-<lastmod>2014-07-30T09:56:00-00:00</lastmod>
+<lastmod>2014-07-30T09:56:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
 <loc>http://www.wengweitao.com/jue-ce-shu.html</loc>
-<lastmod>2014-07-29T10:00:00-00:00</lastmod>
+<lastmod>2014-07-29T10:00:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
 <loc>http://www.wengweitao.com/po-su-bei-xie-si-fa.html</loc>
-<lastmod>2014-07-28T14:06:00-00:00</lastmod>
+<lastmod>2014-07-28T14:06:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
 <loc>http://www.wengweitao.com/kjin-lin-fa.html</loc>
-<lastmod>2014-07-27T16:18:00-00:00</lastmod>
+<lastmod>2014-07-27T16:18:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
 <loc>http://www.wengweitao.com/gan-zhi-ji.html</loc>
-<lastmod>2014-07-26T20:12:00-00:00</lastmod>
+<lastmod>2014-07-26T20:12:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
 <loc>http://www.wengweitao.com/ti-du-xia-jiang-fa.html</loc>
-<lastmod>2014-07-26T16:18:00-00:00</lastmod>
+<lastmod>2014-07-26T16:18:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
 <loc>http://www.wengweitao.com/tong-ji-xue-xi-fang-fa-gai-lun.html</loc>
-<lastmod>2014-07-25T20:12:00-00:00</lastmod>
+<lastmod>2014-07-25T20:12:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
 <loc>http://www.wengweitao.com/hello-world.html</loc>
-<lastmod>2014-07-20T00:00:00-00:00</lastmod>
+<lastmod>2014-07-20T00:00:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
@@ -495,7 +502,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://www.wengweitao.com/category/ji-qi-xue-xi.html</loc>
-<lastmod>2015-08-05T22:42:00+08:06</lastmod>
+<lastmod>2015-08-21T19:22:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -557,22 +564,8 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
-<loc>http://www.wengweitao.com/tag/er-cha-shu.html</loc>
-<lastmod>2015-05-27T21:41:00+08:06</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>http://www.wengweitao.com/tag/ji-chu-gai-nian.html</loc>
-<lastmod>2014-07-30T09:56:00+08:06</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>http://www.wengweitao.com/tag/go.html</loc>
-<lastmod>2015-04-30T22:30:00+08:06</lastmod>
+<loc>http://www.wengweitao.com/tag/vim.html</loc>
+<lastmod>2015-04-16T20:12:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -585,8 +578,15 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
+<loc>http://www.wengweitao.com/tag/go.html</loc>
+<lastmod>2015-04-30T22:30:00+08:06</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
 <loc>http://www.wengweitao.com/tag/jiao-cheng.html</loc>
-<lastmod>2015-07-27T18:49:00+08:06</lastmod>
+<lastmod>2015-08-21T19:22:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -599,8 +599,8 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
-<loc>http://www.wengweitao.com/tag/shu-ju-ku.html</loc>
-<lastmod>2015-07-30T22:42:00+08:06</lastmod>
+<loc>http://www.wengweitao.com/tag/python.html</loc>
+<lastmod>2015-07-27T18:49:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -634,8 +634,8 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
-<loc>http://www.wengweitao.com/tag/python.html</loc>
-<lastmod>2015-07-27T18:49:00+08:06</lastmod>
+<loc>http://www.wengweitao.com/tag/shu-ju-ku.html</loc>
+<lastmod>2015-07-30T22:42:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -648,8 +648,15 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
-<loc>http://www.wengweitao.com/tag/vim.html</loc>
-<lastmod>2015-04-16T20:12:00+08:06</lastmod>
+<loc>http://www.wengweitao.com/tag/er-cha-shu.html</loc>
+<lastmod>2015-05-27T21:41:00+08:06</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>http://www.wengweitao.com/tag/ji-chu-gai-nian.html</loc>
+<lastmod>2014-07-30T09:56:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -663,7 +670,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://www.wengweitao.com/tag/ji-qi-xue-xi.html</loc>
-<lastmod>2015-08-05T22:42:00+08:06</lastmod>
+<lastmod>2015-08-21T19:22:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -684,7 +691,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://www.wengweitao.com/author/wwt.html</loc>
-<lastmod>2015-08-05T22:42:00+08:06</lastmod>
+<lastmod>2015-08-21T19:22:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>

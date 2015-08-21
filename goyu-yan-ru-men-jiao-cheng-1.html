@@ -4,7 +4,7 @@
 
         <title>Go语言入门教程（1）</title>
         <meta charset="utf-8" />
-        <link href="http://www.wengweitao.com/feeds\all.atom.xml" type="application/atom+xml" rel="alternate" title="wwt's blog Full Atom Feed" />
+        <link href="http://www.wengweitao.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="wwt's blog Full Atom Feed" />
         <link href="http://www.wengweitao.com/feeds/all.rss.xml" type="application/rss+xml" rel="alternate" title="wwt's blog Full RSS Feed" />
         <link href="http://www.wengweitao.com/feeds/bian-cheng-yu-yan.rss.xml" type="application/atom+xml" rel="alternate" title="wwt's blog Categories Atom Feed" />
 
@@ -66,7 +66,7 @@
 
             </header>
             <footer class="post-info">
-              <abbr class="published" title="2015-04-30T22:30:00">
+              <abbr class="published" title="2015-04-30T22:30:00+08:00">
                 Thu 30 April 2015
               </abbr>
               <address class="vcard author">By 
@@ -92,17 +92,17 @@
 <h2>安装Go</h2>
 <p>这里以Linux平台为例。</p>
 <p>下载<a href="https://golang.org/dl/">Go的压缩包</a>并解压到 /usr/local 目录：</p>
-<div class="highlight"><pre><span class="n">tar</span> <span class="o">-</span><span class="n">C</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span> <span class="o">-</span><span class="n">xzf</span> <span class="n">go</span><span class="err">$</span><span class="n">VERSION</span><span class="p">.</span><span class="err">$</span><span class="n">OS</span><span class="o">-</span><span class="err">$</span><span class="n">ARCH</span><span class="p">.</span><span class="n">tar</span><span class="p">.</span><span class="n">gz</span>
+<div class="highlight"><pre>tar -C /usr/local -xzf go<span class="nv">$VERSION</span>.<span class="nv">$OS</span>-<span class="nv">$ARCH</span>.tar.gz
 </pre></div>
 
 
 <p>将 /usr/local/go/bin 添加到PATH环境变量中，添加如下一行内容到 /etc/profile (系统范围)或者 $HOME/.profile(如果没有这个文件需要新建一个):</p>
-<div class="highlight"><pre><span class="n">export</span> <span class="n">PATH</span><span class="o">=</span><span class="err">$</span><span class="n">PATH</span><span class="o">:/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">go</span><span class="o">/</span><span class="n">bin</span>
+<div class="highlight"><pre><span class="nb">export </span><span class="nv">PATH</span><span class="o">=</span><span class="nv">$PATH</span>:/usr/local/go/bin
 </pre></div>
 
 
 <p>在shell中输入：</p>
-<div class="highlight"><pre><span class="n">go</span> <span class="n">help</span>
+<div class="highlight"><pre>go <span class="nb">help</span>
 </pre></div>
 
 
@@ -126,17 +126,17 @@
 <h2>编译和运行</h2>
 <p>有两种方式运行：</p>
 <p>（1）解释执行</p>
-<div class="highlight"><pre><span class="n">go</span> <span class="n">run</span> <span class="n">hello</span><span class="p">.</span><span class="n">go</span>
+<div class="highlight"><pre>go run hello.go
 </pre></div>
 
 
 <p>（2）编译执行</p>
-<div class="highlight"><pre><span class="n">go</span> <span class="n">build</span> <span class="n">hello</span><span class="p">.</span><span class="n">go</span>
+<div class="highlight"><pre>go build hello.go
 </pre></div>
 
 
 <p>此时，会在当前目录生成hello的可执行文件，运行：</p>
-<div class="highlight"><pre><span class="p">.</span><span class="o">/</span><span class="n">hello</span>
+<div class="highlight"><pre>./hello
 </pre></div>
 
 
@@ -484,14 +484,14 @@
 
 
 <p>运行结果：</p>
-<div class="highlight"><pre><span class="mi">1</span>
-<span class="n">map</span><span class="p">[</span><span class="n">one</span><span class="o">:</span><span class="mi">1</span> <span class="n">two</span><span class="o">:</span><span class="mi">2</span><span class="p">]</span>
-<span class="mi">1</span>
-<span class="mi">2</span>
-<span class="mi">1</span> <span class="nb">true</span>
-<span class="mi">2</span> <span class="nb">true</span>
-<span class="mi">1</span>
-<span class="n">map</span><span class="p">[</span><span class="n">one</span><span class="o">:</span><span class="mi">1</span><span class="p">]</span>
+<div class="highlight"><pre>1
+map[one:1 two:2]
+1
+2
+1 true
+2 true
+1
+map[one:1]
 </pre></div>
 
 
@@ -562,29 +562,6 @@
 <!--
 <h4>标签</h4>
 <ul class="tagcloud">
-        <li class="tag-1"><a href="http://www.wengweitao.com/tag/python.html">Python</a></li>
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/tmux.html">tmux</a></li>
-        <li class="tag-1"><a href="http://www.wengweitao.com/tag/du-shu-bi-ji.html">读书笔记</a></li>
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/ji-qi-xue-xi.html">机器学习</a></li>
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/shu-ju-ku.html">数据库</a></li>
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/er-cha-shu.html">二叉树</a></li>
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/pai-xu-suan-fa-ji-chu-zong-jie.html">排序 算法 基础 总结</a></li>
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/wan.html">玩</a></li>
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/gong-ju.html">工具</a></li>
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/jiao-cheng-linux.html">教程、Linux</a></li>
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/go.html">Go</a></li>
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/xiao-yuan.html">校园</a></li>
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/vim.html">Vim</a></li>
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/suan-fa-fen-xi.html">算法分析</a></li>
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/ji-chu.html">基础</a></li>
-        <li class="tag-1"><a href="http://www.wengweitao.com/tag/leetcode.html">leetcode</a></li>
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/ji-chu-gai-nian.html">基础概念</a></li>
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/ce-shi.html">测试</a></li>
-        <li class="tag-1"><a href="http://www.wengweitao.com/tag/pai-xu-suan-fa-ji-chu.html">排序 算法 基础</a></li>
-        <li class="tag-3"><a href="http://www.wengweitao.com/tag/ji-ben-gai-nian.html">基本概念</a></li>
-        <li class="tag-2"><a href="http://www.wengweitao.com/tag/jiao-cheng.html">教程</a></li>
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/bian-cheng-zhu-ji.html">编程珠玑</a></li>
-        <li class="tag-1"><a href="http://www.wengweitao.com/tag/mian-shi-ti.html">面试题</a></li>
 </ul>
 -->
 

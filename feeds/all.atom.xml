@@ -1,5 +1,98 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>wwt's blog</title><link href="http://www.wengweitao.com/" rel="alternate"></link><link href="http://www.wengweitao.com/feeds%5Call.atom.xml" rel="self"></link><id>http://www.wengweitao.com/</id><updated>2015-08-05T22:42:00+08:00</updated><entry><title>生成学习算法与判别学习算法</title><link href="http://www.wengweitao.com/sheng-cheng-xue-xi-suan-fa-yu-pan-bie-xue-xi-suan-fa.html" rel="alternate"></link><updated>2015-08-05T22:42:00+08:00</updated><author><name>wwt</name></author><id>tag:www.wengweitao.com,2015-08-05:sheng-cheng-xue-xi-suan-fa-yu-pan-bie-xue-xi-suan-fa.html</id><summary type="html">&lt;p&gt;机器学习中有两类学习算法：&lt;strong&gt;生成学习算法&lt;/strong&gt;（Generative learning algorithm）和&lt;strong&gt;判别学习算法&lt;/strong&gt;（Discriminative learning algorithm），它们所学到的模型分别成为生成模型和判别模型。那么这两种学习算法的区别是什么呢？&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>wwt's blog</title><link href="http://www.wengweitao.com/" rel="alternate"></link><link href="http://www.wengweitao.com/feeds/all.atom.xml" rel="self"></link><id>http://www.wengweitao.com/</id><updated>2015-08-21T19:22:00+08:00</updated><entry><title>Kaggle入门指南</title><link href="http://www.wengweitao.com/kaggleru-men-zhi-nan.html" rel="alternate"></link><updated>2015-08-21T19:22:00+08:00</updated><author><name>wwt</name></author><id>tag:www.wengweitao.com,2015-08-21:kaggleru-men-zhi-nan.html</id><summary type="html">&lt;p&gt;&lt;a href="https://www.kaggle.com"&gt;Kaggle&lt;/a&gt;是一个非常著名的数据建模和分析的竞赛平台，对于数据挖掘的爱好者来说是一个非常好的学习平台。我们可以通过Kaggle提供的数据集，通过实战提高自己的数据挖掘和分析能力。这篇文章就介绍如何参与一个Kaggle的竞赛，希望能够让更多的数据挖掘爱好者能够熟悉Kaggle竞赛的基本流程，加入到Kaggle中。&lt;/p&gt;
+&lt;p&gt;我们就以一个简单的竞赛任务——&lt;a href="https://www.kaggle.com/c/digit-recognizer"&gt;手写数字识别&lt;/a&gt;为例，进行介绍。&lt;/p&gt;
+&lt;h2&gt;查看竞赛任务描述&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://www.kaggle.com/c/digit-recognizer"&gt;Classify handwritten digits using the famous MNIST data&lt;/a&gt;的任务就是训练一个模型，然后输入一个手写数字作为输入，能够判断出它是哪一个数字。&lt;/p&gt;
+&lt;h2&gt;分析数据集&lt;/h2&gt;
+&lt;p&gt;手写字体识别这个比赛，提供了两个数据文件：&lt;code&gt;train.csv&lt;/code&gt;和&lt;code&gt;test.csv&lt;/code&gt;。这两个文件一个是训练数据集，另外一个是测试数据集。我们需要通过训练数据集生成一个分类器，然后在测试集上进行测试，并且将最终的结果提交给Kaggle。&lt;/p&gt;
+&lt;p&gt;两个数据文件的内容是0~9数字的手写图像。我们可以先将数据集下载到本地查看数据格式。训练数据集（train.csv）一共有785列，其中第一列为该样本（图像）的标签（label），而其余784列是这个图像的像素值（手写数字的图像为28 * 28）。如下所示。&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;label&lt;/th&gt;
+&lt;th&gt;pixel0&lt;/th&gt;
+&lt;th&gt;pixel1&lt;/th&gt;
+&lt;th&gt;...&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;1&lt;/td&gt;
+&lt;td&gt;0&lt;/td&gt;
+&lt;td&gt;0&lt;/td&gt;
+&lt;td&gt;...&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;0&lt;/td&gt;
+&lt;td&gt;0&lt;/td&gt;
+&lt;td&gt;0&lt;/td&gt;
+&lt;td&gt;...&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;对于测试数据集（test.csv）一共有784列，除了没有lable之外，每个列的含义与训练数据集相同。&lt;/p&gt;
+&lt;p&gt;测试数据集一共有28000个待分类的手写数字，我们提交分类结果的时候应该按照一行一个结果的格式提交（具体要求的结果格式可以参照页面给的样例），并且需要有一个header表示每列的内容如：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;ImageId,Label
+1,3
+2,5
+3,1
+剩余的27997个分类结果
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;分类的结果必须是&lt;code&gt;csv&lt;/code&gt;的格式。
+最终，通过分类的准确率来衡量你的模型的好坏。&lt;/p&gt;
+&lt;h2&gt;开始比赛吧&lt;/h2&gt;
+&lt;h3&gt;1. 编程环境配置&lt;/h3&gt;
+&lt;p&gt;这里我们使用Python作为编程语言，此外我们还需要安装以下几个非常强大有用的Python科学计算和机器学习的库：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;numpy：提供了大量数组和矩阵计算的函数&lt;/li&gt;
+&lt;li&gt;scipy：Python科学工程计算工具&lt;/li&gt;
+&lt;li&gt;scikit-learn：Python最流行的机器学习库&lt;/li&gt;
+&lt;li&gt;pandas：提供了很多操作数据集的函数&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;以上的的库都可以通过pip方便的安装。&lt;/p&gt;
+&lt;h3&gt;2. 模型训练&lt;/h3&gt;
+&lt;p&gt;对于手写数字识别的问题，很多模型都可以解决，例如：logistic归回、SVM以及随机森林等。这里我们选用随机森林作为分类器，随机森林虽然稍微有点复杂，但是通常效果还不错，而且利用scikit-learn可以非常方便的实现。
+很多人可能对随机森林不太熟悉，这里我还是简单的介绍一下。随机森林（random forest）就是以随机的方式生成一个森林，这个森林是由很多棵决策树构成的。当有一个新的输入的时候，就让每棵决策树去分类，然后查看哪个类被选择的最多，这个输入就属于哪个类。
+下面我们就利用scikit-learn来实现随机森林：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c"&gt;#coding=utf-8&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;sklearn.ensemble&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;RandomForestClassifier&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;numpy&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;genfromtxt&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;savetxt&lt;/span&gt;
+
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;main&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
+    &lt;span class="c"&gt;# 创建训练集&lt;/span&gt;
+    &lt;span class="n"&gt;dataset&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;genfromtxt&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;open&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;train.csv&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;r&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="n"&gt;delimiter&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;,&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;dtype&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;f8&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;:]&lt;/span&gt;
+    &lt;span class="n"&gt;target&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;dataset&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="c"&gt;# 第一列为label&lt;/span&gt;
+    &lt;span class="n"&gt;train&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;:]&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;dataset&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+
+    &lt;span class="c"&gt;# 创建测试集&lt;/span&gt;
+    &lt;span class="n"&gt;test&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;genfromtxt&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;open&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;test.csv&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;r&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="n"&gt;delimiter&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;,&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;dtype&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;f8&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;:]&lt;/span&gt;
+
+    &lt;span class="c"&gt;# 创建并且训练一个随机森林模型&lt;/span&gt;
+    &lt;span class="n"&gt;rf&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;RandomForestClassifier&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;n_estimators&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;100&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;rf&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;fit&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;train&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;target&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;predicted_results&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[[&lt;/span&gt;&lt;span class="n"&gt;index&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;index&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="nb"&gt;enumerate&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;rf&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;predict&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;test&lt;/span&gt;&lt;span class="p"&gt;))]&lt;/span&gt;
+
+    &lt;span class="c"&gt;# 利用随机森林对测试集进行预测，并将结果保存到输出文件中&lt;/span&gt;
+    &lt;span class="n"&gt;savetxt&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;result.csv&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;predicted_results&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;delimiter&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;,&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;fmt&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;&lt;/span&gt;&lt;span class="si"&gt;%d&lt;/span&gt;&lt;span class="s"&gt;,&lt;/span&gt;&lt;span class="si"&gt;%d&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; 
+            &lt;span class="n"&gt;header&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;ImageId,Label&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;comments&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;__name__&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;__main__&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+    &lt;span class="n"&gt;main&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;首先，分别从两个文件创建训练集和数据集；然后，利用训练集训练一个随机森林模型，直接调用&lt;code&gt;sklearn.ensemble.RandomForestClassifier&lt;/code&gt;传入的参数&lt;code&gt;100&lt;/code&gt;表示森林有100棵树；最后输出结果的格式为(ImageId,Label)，写出到文件&lt;code&gt;result.csv&lt;/code&gt;中。&lt;/p&gt;
+&lt;h3&gt;3. 提交结果&lt;/h3&gt;
+&lt;p&gt;既然已经得到了预测的结果，那么就将结果上传到Kaggle。如果上传格式不对，就无法提交成功，所以要确保按照指定的要求提交。我们将&lt;code&gt;result.csv&lt;/code&gt;文件提交，经过判定就得出了模型的准确率和排名，如下所示，排名为395，分数（准确率）为0.96457。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;395 new nurnoch 0.96457 1   Fri, 21 Aug 2015 11:10:40
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;几行的代码就可以取得0.96的准确率还是挺不错的。&lt;/p&gt;
+&lt;p&gt;以上就是参加Kaggle竞赛的一个简单入门教程。
+Have fun!&lt;/p&gt;</summary><category term="机器学习"></category><category term="教程"></category></entry><entry><title>生成学习算法与判别学习算法</title><link href="http://www.wengweitao.com/sheng-cheng-xue-xi-suan-fa-yu-pan-bie-xue-xi-suan-fa.html" rel="alternate"></link><updated>2015-08-05T22:42:00+08:00</updated><author><name>wwt</name></author><id>tag:www.wengweitao.com,2015-08-05:sheng-cheng-xue-xi-suan-fa-yu-pan-bie-xue-xi-suan-fa.html</id><summary type="html">&lt;p&gt;机器学习中有两类学习算法：&lt;strong&gt;生成学习算法&lt;/strong&gt;（Generative learning algorithm）和&lt;strong&gt;判别学习算法&lt;/strong&gt;（Discriminative learning algorithm），它们所学到的模型分别成为生成模型和判别模型。那么这两种学习算法的区别是什么呢？&lt;/p&gt;
 &lt;p&gt;举一个具体的例子，假设我们现在要对两种动物进行分类，给定一个动物要么是大象（y=1），要么是狗（y=0）。&lt;/p&gt;
 &lt;p&gt;对于生成学习算法，我们需要利用训练数据分别构建一个描述大象的模型和一个描述狗的模型，然后给定一个新的动物作为输入，我们分别将该动物与大象模型和狗模型进行匹配，然后根据匹配的结果更像哪一个进行分类。用数学公式可以描述为：&lt;/p&gt;
 &lt;p&gt;大象的模型：P(x|y=1)表示了大象的特征分布；&lt;/p&gt;
@@ -516,8 +609,7 @@ server端等待至少一个socket就绪：&lt;/p&gt;
 &lt;li&gt;&lt;a href="https://docs.python.org/2/howto/sockets.html"&gt;socket programming&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://docs.python.org/2/library/select.html"&gt;select docs&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="http://pymotw.com/2/select/#module-selects://docs.python.org/2/library/select.html"&gt;select – Wait for I/O Efficiently&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;</summary><category term="Python"></category><category term="教程"></category></entry><entry><title>[leetcode] Majority Element II</title><link href="http://www.wengweitao.com/leetcode-majority-element-ii.html" rel="alternate"></link><updated>2015-06-29T10:42:00+08:00</updated><author><name>wwt</name></author><id>tag:www.wengweitao.com,2015-06-29:leetcode-majority-element-ii.html</id><summary type="html">&lt;hr /&gt;
-&lt;h3&gt;题目&lt;/h3&gt;
+&lt;/ol&gt;</summary><category term="Python"></category><category term="教程"></category></entry><entry><title>[leetcode] Majority Element II</title><link href="http://www.wengweitao.com/leetcode-majority-element-ii.html" rel="alternate"></link><updated>2015-06-29T10:42:00+08:00</updated><author><name>wwt</name></author><id>tag:www.wengweitao.com,2015-06-29:leetcode-majority-element-ii.html</id><summary type="html">&lt;h3&gt;题目&lt;/h3&gt;
 &lt;p&gt;&lt;a href="https://leetcode.com/problems/majority-element-ii/"&gt;Majority Element II&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Given an integer array of size n, find all elements that appear more than ⌊ n/3 ⌋ times. The algorithm should run in linear time and in O(1) space.&lt;/p&gt;
 &lt;h3&gt;分析&lt;/h3&gt;
@@ -531,7 +623,7 @@ server端等待至少一个socket就绪：&lt;/p&gt;
 &lt;/ul&gt;
 &lt;h3&gt;参考代码&lt;/h3&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;Solution&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-&lt;span class="nl"&gt;public:&lt;/span&gt;
+&lt;span class="k"&gt;public&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
     &lt;span class="kt"&gt;bool&lt;/span&gt; &lt;span class="n"&gt;isMoreThanThird&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="n"&gt;num&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;vector&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="kt"&gt;int&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&amp;amp;&lt;/span&gt; &lt;span class="n"&gt;nums&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
         &lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="n"&gt;n&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;nums&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;size&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;
         &lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="n"&gt;count&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
@@ -603,7 +695,7 @@ server端等待至少一个socket就绪：&lt;/p&gt;
 &lt;/ul&gt;
 &lt;h3&gt;参考代码&lt;/h3&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;Solution&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-&lt;span class="nl"&gt;public:&lt;/span&gt;
+&lt;span class="k"&gt;public&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
     &lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="n"&gt;calculate&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;string&lt;/span&gt; &lt;span class="n"&gt;s&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
         &lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="n"&gt;n&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;s&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;length&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;
         &lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="n"&gt;num&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
@@ -675,7 +767,7 @@ server端等待至少一个socket就绪：&lt;/p&gt;
 &lt;span class="cm"&gt; * };&lt;/span&gt;
 &lt;span class="cm"&gt; */&lt;/span&gt;
 &lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;Solution&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-&lt;span class="nl"&gt;public:&lt;/span&gt;
+&lt;span class="k"&gt;public&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
     &lt;span class="n"&gt;TreeNode&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="n"&gt;invertTree&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;TreeNode&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="n"&gt;root&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
         &lt;span class="k"&gt;if&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;root&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="nb"&gt;NULL&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
             &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;root&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
@@ -710,7 +802,7 @@ server端等待至少一个socket就绪：&lt;/p&gt;
 &lt;span class="cm"&gt; * };&lt;/span&gt;
 &lt;span class="cm"&gt; */&lt;/span&gt;
 &lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;Solution&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-&lt;span class="nl"&gt;public:&lt;/span&gt;
+&lt;span class="k"&gt;public&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
     &lt;span class="n"&gt;TreeNode&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="n"&gt;invertTree&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;TreeNode&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="n"&gt;root&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
         &lt;span class="k"&gt;if&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;root&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="nb"&gt;NULL&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
             &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;root&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
@@ -767,14 +859,14 @@ Depending on your language, queue may not be supported natively. You may simulat
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;Stack&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
     &lt;span class="n"&gt;queue&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="kt"&gt;int&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;q1&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
     &lt;span class="n"&gt;queue&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="kt"&gt;int&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;q2&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-&lt;span class="nl"&gt;public:&lt;/span&gt;
+&lt;span class="k"&gt;public&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
     &lt;span class="c1"&gt;// Push element x onto stack.&lt;/span&gt;
-    &lt;span class="kt"&gt;void&lt;/span&gt; &lt;span class="nf"&gt;push&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="kt"&gt;void&lt;/span&gt; &lt;span class="n"&gt;push&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
         &lt;span class="n"&gt;q1&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;push&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
     &lt;span class="p"&gt;}&lt;/span&gt;
 
     &lt;span class="c1"&gt;// Removes the element on top of the stack.&lt;/span&gt;
-    &lt;span class="kt"&gt;void&lt;/span&gt; &lt;span class="nf"&gt;pop&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kt"&gt;void&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="kt"&gt;void&lt;/span&gt; &lt;span class="n"&gt;pop&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kt"&gt;void&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
         &lt;span class="k"&gt;if&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;!&lt;/span&gt;&lt;span class="n"&gt;q1&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;empty&lt;/span&gt;&lt;span class="p"&gt;())&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
             &lt;span class="n"&gt;top&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;
             &lt;span class="n"&gt;q1&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;pop&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;
@@ -786,7 +878,7 @@ Depending on your language, queue may not be supported natively. You may simulat
     &lt;span class="p"&gt;}&lt;/span&gt;
 
     &lt;span class="c1"&gt;// Get the top element.&lt;/span&gt;
-    &lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="nf"&gt;top&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kt"&gt;void&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="n"&gt;top&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kt"&gt;void&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
         &lt;span class="k"&gt;if&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;!&lt;/span&gt;&lt;span class="n"&gt;q1&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;empty&lt;/span&gt;&lt;span class="p"&gt;())&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
             &lt;span class="k"&gt;while&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;q1&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;size&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
                 &lt;span class="n"&gt;q2&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;push&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;q1&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;front&lt;/span&gt;&lt;span class="p"&gt;());&lt;/span&gt;
@@ -804,7 +896,7 @@ Depending on your language, queue may not be supported natively. You may simulat
     &lt;span class="p"&gt;}&lt;/span&gt;
 
     &lt;span class="c1"&gt;// Return whether the stack is empty.&lt;/span&gt;
-    &lt;span class="kt"&gt;bool&lt;/span&gt; &lt;span class="nf"&gt;empty&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kt"&gt;void&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="kt"&gt;bool&lt;/span&gt; &lt;span class="n"&gt;empty&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kt"&gt;void&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
         &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;q1&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;empty&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="o"&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class="n"&gt;q2&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;empty&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;
     &lt;span class="p"&gt;}&lt;/span&gt;
 &lt;span class="p"&gt;};&lt;/span&gt;
@@ -817,21 +909,21 @@ Depending on your language, queue may not be supported natively. You may simulat
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;Queue&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
     &lt;span class="n"&gt;stack&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="kt"&gt;int&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;s1&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
     &lt;span class="n"&gt;stack&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="kt"&gt;int&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;s2&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-&lt;span class="nl"&gt;public:&lt;/span&gt;
+&lt;span class="k"&gt;public&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
     &lt;span class="c1"&gt;// Push element x on tail of the queue.&lt;/span&gt;
-    &lt;span class="kt"&gt;void&lt;/span&gt; &lt;span class="nf"&gt;push&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="kt"&gt;void&lt;/span&gt; &lt;span class="n"&gt;push&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
         &lt;span class="n"&gt;s1&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;push&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
     &lt;span class="p"&gt;}&lt;/span&gt;
 
     &lt;span class="c1"&gt;// Removes the element on head of the queue.&lt;/span&gt;
-    &lt;span class="kt"&gt;void&lt;/span&gt; &lt;span class="nf"&gt;pop&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kt"&gt;void&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="kt"&gt;void&lt;/span&gt; &lt;span class="n"&gt;pop&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kt"&gt;void&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
         &lt;span class="k"&gt;if&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;s2&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;empty&lt;/span&gt;&lt;span class="p"&gt;())&lt;/span&gt;
             &lt;span class="n"&gt;front&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;
         &lt;span class="n"&gt;s2&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;pop&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;
     &lt;span class="p"&gt;}&lt;/span&gt;
 
     &lt;span class="c1"&gt;// Get the head element.&lt;/span&gt;
-    &lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="nf"&gt;front&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kt"&gt;void&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="n"&gt;front&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kt"&gt;void&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
         &lt;span class="k"&gt;if&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;s2&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;empty&lt;/span&gt;&lt;span class="p"&gt;())&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
             &lt;span class="k"&gt;while&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;!&lt;/span&gt;&lt;span class="n"&gt;s1&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;empty&lt;/span&gt;&lt;span class="p"&gt;())&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
                 &lt;span class="n"&gt;s2&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;push&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;s1&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;top&lt;/span&gt;&lt;span class="p"&gt;());&lt;/span&gt;
@@ -842,7 +934,7 @@ Depending on your language, queue may not be supported natively. You may simulat
     &lt;span class="p"&gt;}&lt;/span&gt;
 
     &lt;span class="c1"&gt;// Return whether the queue is empty.&lt;/span&gt;
-    &lt;span class="kt"&gt;bool&lt;/span&gt; &lt;span class="nf"&gt;empty&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kt"&gt;void&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="kt"&gt;bool&lt;/span&gt; &lt;span class="n"&gt;empty&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kt"&gt;void&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
         &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;s1&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;empty&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="o"&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class="n"&gt;s2&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;empty&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;
     &lt;span class="p"&gt;}&lt;/span&gt;
 &lt;span class="p"&gt;};&lt;/span&gt;
@@ -875,7 +967,7 @@ Note: Do not use the eval built-in library function.&lt;/p&gt;
 &lt;/ol&gt;
 &lt;h3&gt;参考代码&lt;/h3&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;Solution&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-&lt;span class="nl"&gt;public:&lt;/span&gt;
+&lt;span class="k"&gt;public&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
     &lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="n"&gt;calculate&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;string&lt;/span&gt; &lt;span class="n"&gt;s&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
         &lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="n"&gt;n&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;s&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;length&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;
         &lt;span class="k"&gt;if&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
@@ -1091,12 +1183,12 @@ the contiguous subarray [4,−1,2,1] has the largest sum = 6.&lt;/p&gt;
         &lt;span class="n"&gt;start&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;clock&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;
 
         &lt;span class="k"&gt;switch&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;algnum&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-            &lt;span class="k"&gt;case&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;: &lt;span class="n"&gt;sum&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;maxSubArray1&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;nums&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt; &lt;span class="k"&gt;break&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-            &lt;span class="k"&gt;case&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;: &lt;span class="n"&gt;sum&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;maxSubArray2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;nums&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt; &lt;span class="k"&gt;break&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-            &lt;span class="k"&gt;case&lt;/span&gt; &lt;span class="mi"&gt;22&lt;/span&gt;: &lt;span class="n"&gt;sum&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;maxSubArray2b&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;nums&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt; &lt;span class="k"&gt;break&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-            &lt;span class="k"&gt;case&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt;: &lt;span class="n"&gt;sum&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;maxSubArray3&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;nums&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt; &lt;span class="k"&gt;break&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-            &lt;span class="k"&gt;case&lt;/span&gt; &lt;span class="mi"&gt;4&lt;/span&gt;: &lt;span class="n"&gt;sum&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;maxSubArray4&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;nums&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt; &lt;span class="k"&gt;break&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-            &lt;span class="nl"&gt;default:&lt;/span&gt; &lt;span class="k"&gt;break&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+            &lt;span class="k"&gt;case&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;sum&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;maxSubArray1&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;nums&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt; &lt;span class="k"&gt;break&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+            &lt;span class="k"&gt;case&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;sum&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;maxSubArray2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;nums&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt; &lt;span class="k"&gt;break&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+            &lt;span class="k"&gt;case&lt;/span&gt; &lt;span class="mi"&gt;22&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;sum&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;maxSubArray2b&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;nums&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt; &lt;span class="k"&gt;break&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+            &lt;span class="k"&gt;case&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;sum&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;maxSubArray3&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;nums&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt; &lt;span class="k"&gt;break&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+            &lt;span class="k"&gt;case&lt;/span&gt; &lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;sum&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;maxSubArray4&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;nums&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt; &lt;span class="k"&gt;break&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+            &lt;span class="k"&gt;default&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="k"&gt;break&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
         &lt;span class="p"&gt;}&lt;/span&gt;
 
         &lt;span class="n"&gt;clicks&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;clock&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="n"&gt;start&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
@@ -1247,7 +1339,7 @@ the contiguous subarray [4,−1,2,1] has the largest sum = 6.&lt;/p&gt;
 &lt;/ol&gt;
 &lt;h3&gt;参考代码&lt;/h3&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;Solution&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-&lt;span class="nl"&gt;public:&lt;/span&gt;
+&lt;span class="k"&gt;public&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
     &lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="n"&gt;computeArea&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="n"&gt;A&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="n"&gt;B&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="n"&gt;C&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="n"&gt;D&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="n"&gt;E&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="n"&gt;F&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="n"&gt;G&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="n"&gt;H&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
         &lt;span class="c1"&gt;// calculate areas of two separate rects&lt;/span&gt;
         &lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="n"&gt;s1&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;abs&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;C&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="n"&gt;A&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="n"&gt;abs&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;D&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="n"&gt;B&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
@@ -1271,9 +1363,9 @@ the contiguous subarray [4,−1,2,1] has the largest sum = 6.&lt;/p&gt;
 
 
 &lt;p&gt;给出的test cases有点问题：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nl"&gt;Input:&lt;/span&gt;  &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;4&lt;/span&gt;
-&lt;span class="nl"&gt;Output:&lt;/span&gt; &lt;span class="mi"&gt;15&lt;/span&gt;
-&lt;span class="nl"&gt;Expected:&lt;/span&gt;   &lt;span class="mi"&gt;17&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;Input:  -2, -2, 2, 2, -3, 3, -4, 4
+Output: 15
+Expected:   17
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -1300,7 +1392,7 @@ the contiguous subarray [4,−1,2,1] has the largest sum = 6.&lt;/p&gt;
 &lt;span class="cm"&gt; * };&lt;/span&gt;
 &lt;span class="cm"&gt; */&lt;/span&gt;
 &lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;Solution&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-&lt;span class="nl"&gt;public:&lt;/span&gt;
+&lt;span class="k"&gt;public&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
     &lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="n"&gt;countNodes&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;TreeNode&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="n"&gt;root&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
         &lt;span class="k"&gt;if&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;root&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="nb"&gt;NULL&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
             &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
@@ -1383,14 +1475,14 @@ the contiguous subarray [4,−1,2,1] has the largest sum = 6.&lt;/p&gt;
 &lt;p&gt;考虑二分搜索算法。第一趟需要读入40亿个数，并判断每一个数32bit中的第一位（最高位开始）是1还是0，将第一位是0的写入一个文件，第一位是1的写入另一个文件。这样就按照第一位是1还是0，将所有40亿个数分成了两段，而缺失的数必定会在较小的那一段里面。然后，选取较小的那个段，再按照第二位是否为1，分成两段。依次处理每个位，直到有一个分组的个数为0.&lt;/p&gt;
 &lt;p&gt;第一次需要处理n个数，第二次最多需要处理n/2个数，第三次最多需要处理n/3个数，...，因此时间复杂度为O(n)。每次只需在原来一半的范围内进行搜索，这就是二分问题的一个主要的思想。&lt;/p&gt;
 &lt;p&gt;举一个具体的例子，假设给定一个包含10个4bit的整数{1,2,3,4,5,6,7,8,9,10}。首先按照第一位进行分组：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;第一位为&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="err"&gt;：&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;6&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;7&lt;/span&gt; &lt;span class="err"&gt;（&lt;/span&gt;&lt;span class="mi"&gt;6&lt;/span&gt;&lt;span class="err"&gt;个）&lt;/span&gt;
-&lt;span class="err"&gt;第一位为&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="err"&gt;：&lt;/span&gt; &lt;span class="mi"&gt;8&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;9&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="err"&gt;（&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="err"&gt;个）&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;第一位为0： 1,2,3,4,6,7 （6个）
+第一位为1： 8,9,10（3个）
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;第一次分组，第一位为1的一组数目较小只有3个（3 &amp;lt; 16/2=8），所以缺失的数必定在这个段里存在（第一位为0的分组里也有数缺失0）。然后，选择第二个分组，按照第二位继续分组：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;第二位为&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="err"&gt;：&lt;/span&gt; &lt;span class="mi"&gt;8&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;9&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;10&lt;/span&gt;
-&lt;span class="err"&gt;第二位为&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="err"&gt;：&lt;/span&gt; &lt;span class="n"&gt;None&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;第二位为0： 8,9,10
+第二位为1： None
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -1485,7 +1577,7 @@ the contiguous subarray [4,−1,2,1] has the largest sum = 6.&lt;/p&gt;
 
 
 &lt;p&gt;使用一个测试文件dictionary对以上程序进行测试：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;./sign &amp;lt; dictionary | sort | ./squash &amp;gt; result
+&lt;div class="highlight"&gt;&lt;pre&gt;./sign &amp;lt; dictionary &lt;span class="p"&gt;|&lt;/span&gt; sort &lt;span class="p"&gt;|&lt;/span&gt; ./squash &amp;gt; result
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -1500,7 +1592,7 @@ the contiguous subarray [4,−1,2,1] has the largest sum = 6.&lt;/p&gt;
             &lt;span class="n"&gt;sort&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;temp&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;begin&lt;/span&gt;&lt;span class="p"&gt;(),&lt;/span&gt; &lt;span class="n"&gt;temp&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;end&lt;/span&gt;&lt;span class="p"&gt;());&lt;/span&gt; 
             &lt;span class="n"&gt;map&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;temp&lt;/span&gt;&lt;span class="p"&gt;].&lt;/span&gt;&lt;span class="n"&gt;push_back&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
         &lt;span class="p"&gt;}&lt;/span&gt;
-        &lt;span class="k"&gt;for&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;auto&lt;/span&gt; &lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;map&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt; 
+        &lt;span class="k"&gt;for&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;auto&lt;/span&gt; &lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nl"&gt;x&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;map&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt; 
             &lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="n"&gt;num&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;second&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;size&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;  
             &lt;span class="k"&gt;if&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;num&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
                 &lt;span class="k"&gt;for&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt; &lt;span class="n"&gt;num&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="o"&gt;++&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
@@ -1566,7 +1658,7 @@ the contiguous subarray [4,−1,2,1] has the largest sum = 6.&lt;/p&gt;
 &lt;h2&gt;二叉树结点的定义&lt;/h2&gt;
 &lt;p&gt;每个二叉树结点包括一个值以及左孩子和右孩子结点，其定义如下：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;TreeNode&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-    &lt;span class="nl"&gt;public:&lt;/span&gt;
+    &lt;span class="k"&gt;public&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
         &lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="n"&gt;val&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
         &lt;span class="n"&gt;TreeNode&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;left&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;right&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
         &lt;span class="n"&gt;TreeNode&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="n"&gt;val&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
@@ -2015,7 +2107,7 @@ the contiguous subarray [4,−1,2,1] has the largest sum = 6.&lt;/p&gt;
 &lt;p&gt;这种方法需要多次读入或者写出文件多次。&lt;/p&gt;
 &lt;h4&gt;思路2：&lt;/h4&gt;
 &lt;p&gt;使用位图或者位向量来表示集合。例如，如下字符串可以表示集合{1,3,4,5}:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="mi"&gt;0&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;0 1 0 1 1 1
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -2130,7 +2222,7 @@ the contiguous subarray [4,−1,2,1] has the largest sum = 6.&lt;/p&gt;
 &lt;p&gt;如：1 ^ 2 ^ 2 ^ 1 ^3 ^ 4 ^ 3 = 1 ^ 1 ^ 2 ^ 2 ^ 3 ^ 3 ^ 4 = 4&lt;/p&gt;
 &lt;h3&gt;参考代码：&lt;/h3&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;Solution&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-&lt;span class="nl"&gt;public:&lt;/span&gt;
+&lt;span class="k"&gt;public&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
     &lt;span class="cm"&gt;/**&lt;/span&gt;
 &lt;span class="cm"&gt;     * @param A: Array of integers.&lt;/span&gt;
 &lt;span class="cm"&gt;     * return: The single number.&lt;/span&gt;
@@ -2165,7 +2257,7 @@ the contiguous subarray [4,−1,2,1] has the largest sum = 6.&lt;/p&gt;
 &lt;h3&gt;参考代码：&lt;/h3&gt;
 &lt;p&gt;&lt;strong&gt;思路1对应代码&lt;/strong&gt;&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;Solution&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-&lt;span class="nl"&gt;public:&lt;/span&gt;
+&lt;span class="k"&gt;public&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
     &lt;span class="cm"&gt;/**&lt;/span&gt;
 &lt;span class="cm"&gt;     * @param A : An integer array&lt;/span&gt;
 &lt;span class="cm"&gt;     * @return : An integer &lt;/span&gt;
@@ -2199,7 +2291,7 @@ the contiguous subarray [4,−1,2,1] has the largest sum = 6.&lt;/p&gt;
 &lt;/ul&gt;
 &lt;p&gt;&lt;strong&gt;思路2对应代码&lt;/strong&gt;&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;Solution&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-&lt;span class="nl"&gt;public:&lt;/span&gt;
+&lt;span class="k"&gt;public&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
     &lt;span class="cm"&gt;/**&lt;/span&gt;
 &lt;span class="cm"&gt;     * @param A : An integer array&lt;/span&gt;
 &lt;span class="cm"&gt;     * @return : An integer &lt;/span&gt;
@@ -2250,7 +2342,7 @@ O(n)时间复杂度，O(1)的额外空间复杂度&lt;/p&gt;
 &lt;p&gt;如果对所有元素进行异或操作，最后剩余的结果是出现次数为1次的两个数的异或结果，此时无法直接得到这两个数具体的值。但是，因为这两个数一定是不同的，所以最终异或的值至少有一个位为1。我们可以找出异或结果中第一个值为1的位，然后根据该位的值是否为1，将数组中的每一个数，分成两个部分。这样每个部分，就可以采用Sing number I中的方法得到只出现一次的数。&lt;/p&gt;
 &lt;h3&gt;参考代码：&lt;/h3&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;Solution&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-&lt;span class="nl"&gt;public:&lt;/span&gt;
+&lt;span class="k"&gt;public&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
     &lt;span class="cm"&gt;/**&lt;/span&gt;
 &lt;span class="cm"&gt;     * @param A : An integer array&lt;/span&gt;
 &lt;span class="cm"&gt;     * @return : Two integers&lt;/span&gt;
@@ -3299,10 +3391,10 @@ yum --enablerepo&lt;span class="o"&gt;=&lt;/span&gt;testing-1.1-devtools-6 insta
 
 &lt;p&gt;现在查看 g++ 的版本号：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;g++ --version
-g++ &lt;span class="o"&gt;(&lt;/span&gt;GCC&lt;span class="o"&gt;)&lt;/span&gt; 4.7.2 20121015 &lt;span class="o"&gt;(&lt;/span&gt;Red Hat 4.7.2-5&lt;span class="o"&gt;)&lt;/span&gt;
-Copyright &lt;span class="o"&gt;(&lt;/span&gt;C&lt;span class="o"&gt;)&lt;/span&gt; 2012 Free Software Foundation, Inc.
-This is free software; see the &lt;span class="nb"&gt;source &lt;/span&gt;&lt;span class="k"&gt;for &lt;/span&gt;copying conditions.  There is NO
-warranty; not even &lt;span class="k"&gt;for &lt;/span&gt;MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+g++ &lt;span class="o"&gt;(&lt;/span&gt;GCC&lt;span class="o"&gt;)&lt;/span&gt; 4.7.2 &lt;span class="m"&gt;20121015&lt;/span&gt; &lt;span class="o"&gt;(&lt;/span&gt;Red Hat 4.7.2-5&lt;span class="o"&gt;)&lt;/span&gt;
+Copyright &lt;span class="o"&gt;(&lt;/span&gt;C&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="m"&gt;2012&lt;/span&gt; Free Software Foundation, Inc.
+This is free software&lt;span class="p"&gt;;&lt;/span&gt; see the &lt;span class="nb"&gt;source &lt;/span&gt;&lt;span class="k"&gt;for&lt;/span&gt; copying conditions.  There is NO
+warranty&lt;span class="p"&gt;;&lt;/span&gt; not even &lt;span class="k"&gt;for&lt;/span&gt; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -3375,7 +3467,7 @@ unbind ^b
 &lt;div class="highlight"&gt;&lt;pre&gt;unbind &lt;span class="s1"&gt;&amp;#39;&amp;quot;&amp;#39;&lt;/span&gt;
 &lt;span class="nb"&gt;bind&lt;/span&gt; - splitw -v &lt;span class="c"&gt;# 分割成上下两个窗口&lt;/span&gt;
 unbind %
-&lt;span class="nb"&gt;bind&lt;/span&gt; | splitw -h &lt;span class="c"&gt;# 分割成左右两个窗口&lt;/span&gt;
+&lt;span class="nb"&gt;bind&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; splitw -h &lt;span class="c"&gt;# 分割成左右两个窗口&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -3389,10 +3481,10 @@ unbind %
 
 
 &lt;p&gt;4.panel大小调整&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nb"&gt;bind&lt;/span&gt; ^k resizep -U 10 &lt;span class="c"&gt;# 跟选择窗格的设置相同，只是多加 Ctrl（Ctrl-k）&lt;/span&gt;
-&lt;span class="nb"&gt;bind&lt;/span&gt; ^j resizep -D 10 &lt;span class="c"&gt;# 同上&lt;/span&gt;
-&lt;span class="nb"&gt;bind&lt;/span&gt; ^h resizep -L 10 &lt;span class="c"&gt;# ...&lt;/span&gt;
-&lt;span class="nb"&gt;bind&lt;/span&gt; ^l resizep -R 10 &lt;span class="c"&gt;# ...&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nb"&gt;bind&lt;/span&gt; ^k resizep -U &lt;span class="m"&gt;10&lt;/span&gt; &lt;span class="c"&gt;# 跟选择窗格的设置相同，只是多加 Ctrl（Ctrl-k）&lt;/span&gt;
+&lt;span class="nb"&gt;bind&lt;/span&gt; ^j resizep -D &lt;span class="m"&gt;10&lt;/span&gt; &lt;span class="c"&gt;# 同上&lt;/span&gt;
+&lt;span class="nb"&gt;bind&lt;/span&gt; ^h resizep -L &lt;span class="m"&gt;10&lt;/span&gt; &lt;span class="c"&gt;# ...&lt;/span&gt;
+&lt;span class="nb"&gt;bind&lt;/span&gt; ^l resizep -R &lt;span class="m"&gt;10&lt;/span&gt; &lt;span class="c"&gt;# ...&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -3725,9 +3817,9 @@ unbind %
 &lt;hr /&gt;
 &lt;h2&gt;1. 判断PPP是否可用&lt;/h2&gt;
 &lt;p&gt;首先，我们需要检查服务器是否支持搭建PPTP，在shell中输入：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;cat&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;dev&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;ppp&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;cat /dev/ppp
 
-&lt;span class="nl"&gt;cat:&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;dev&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;ppp&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="err"&gt;没有那个设备或地址&lt;/span&gt;
+cat: /dev/ppp: 没有那个设备或地址
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -3741,62 +3833,62 @@ unbind %
 &lt;/ul&gt;
 &lt;p&gt;&lt;strong&gt;（1）安装PPP&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;直接使用yum安装即可&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;yum&lt;/span&gt; &lt;span class="n"&gt;install&lt;/span&gt; &lt;span class="n"&gt;ppp&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;yum install ppp
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;&lt;strong&gt;（2）安装IPtables&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;通常Linux系统上都自带安装好了iptables，如果没有可以使用yum进行安装：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;yum&lt;/span&gt; &lt;span class="n"&gt;install&lt;/span&gt; &lt;span class="n"&gt;iptables&lt;/span&gt;
-&lt;span class="n"&gt;cp&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;rpf&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;etc&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;sysconfig&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;iptables&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;etc&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;sysconfig&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;iptables&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;pptpsave&lt;/span&gt;
-&lt;span class="n"&gt;cd&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;usr&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;src&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;yum install iptables
+cp -rpf /etc/sysconfig/iptables /etc/sysconfig/iptables.pptpsave
+&lt;span class="nb"&gt;cd&lt;/span&gt; /usr/src
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;&lt;strong&gt;（3）安装PPTP套件&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;如果你的系统直接yum那么可以直接通过yum进行安装，但是我的系统是Red Hat 4.4.6-4，yum中没有提供pptp套件的rpm包，只能自己先下载到本地。&lt;/p&gt;
 &lt;p&gt;到&lt;a href="http://poptop.sourceforge.net/yum/stable/"&gt;这里&lt;/a&gt;下载适合你系统的rpm包。可以使用&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;cat&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;proc&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;version&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;cat /proc/version
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;查看Linux系统信息。&lt;/p&gt;
 &lt;p&gt;注意：一定要正确选择适合自己系统的rpm包，如果下载错误将无法完成安装。&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;wget&lt;/span&gt; &lt;span class="n"&gt;http&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="c1"&gt;//poptop.sourceforge.net/yum/stable/rhel6/x86_64/pptpd-1.4.0-1.el6.x86_64.rpm&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;wget http://poptop.sourceforge.net/yum/stable/rhel6/x86_64/pptpd-1.4.0-1.el6.x86_64.rpm
 
-&lt;span class="n"&gt;rpm&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;ivh&lt;/span&gt; &lt;span class="n"&gt;pptpd&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mf"&gt;1.4.0&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mf"&gt;1.&lt;/span&gt;&lt;span class="n"&gt;el6&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;x86_64&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;rpm&lt;/span&gt;
+rpm -ivh pptpd-1.4.0-1.el6.x86_64.rpm
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;&lt;strong&gt;（4）进行配置&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;使用Vim编辑 /etc/sysctl.conf 文件，将其中的一行内容修改为：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;net&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;ipv4&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;ip_forward&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;net.ipv4.ip_forward &lt;span class="o"&gt;=&lt;/span&gt; 1
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;复制以下所有命令，粘贴在shell中：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;sysctl&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;p&lt;/span&gt;
-&lt;span class="n"&gt;echo&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;localip 192.168.240.1&amp;quot;&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;etc&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;pptpd&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;conf&lt;/span&gt;
-&lt;span class="n"&gt;echo&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;remoteip 192.168.240.101-200&amp;quot;&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;etc&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;pptpd&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;conf&lt;/span&gt;
-&lt;span class="n"&gt;echo&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;ms-dns 8.8.8.8&amp;quot;&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;etc&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;ppp&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;options&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;pptpd&lt;/span&gt;
-&lt;span class="n"&gt;echo&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;ms-dns 8.8.4.4&amp;quot;&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;etc&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;ppp&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;options&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;pptpd&lt;/span&gt;
-&lt;span class="n"&gt;iptables&lt;/span&gt; &lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="n"&gt;flush&lt;/span&gt; &lt;span class="n"&gt;POSTROUTING&lt;/span&gt; &lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="n"&gt;table&lt;/span&gt; &lt;span class="n"&gt;nat&lt;/span&gt;
-&lt;span class="n"&gt;iptables&lt;/span&gt; &lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="n"&gt;flush&lt;/span&gt; &lt;span class="n"&gt;FORWARD&lt;/span&gt;
-&lt;span class="n"&gt;iptables&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;A&lt;/span&gt; &lt;span class="n"&gt;INPUT&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;p&lt;/span&gt; &lt;span class="n"&gt;tcp&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;m&lt;/span&gt; &lt;span class="n"&gt;tcp&lt;/span&gt; &lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="n"&gt;dport&lt;/span&gt; &lt;span class="mi"&gt;1723&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;j&lt;/span&gt; &lt;span class="n"&gt;ACCEPT&lt;/span&gt;
-&lt;span class="n"&gt;iptables&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;A&lt;/span&gt; &lt;span class="n"&gt;INPUT&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;p&lt;/span&gt; &lt;span class="n"&gt;gre&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;j&lt;/span&gt; &lt;span class="n"&gt;ACCEPT&lt;/span&gt;
-&lt;span class="n"&gt;iptables&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;t&lt;/span&gt; &lt;span class="n"&gt;nat&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;A&lt;/span&gt; &lt;span class="n"&gt;POSTROUTING&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;s&lt;/span&gt; &lt;span class="mf"&gt;192.168.240.0&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="mi"&gt;24&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;o&lt;/span&gt; &lt;span class="n"&gt;eth0&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;j&lt;/span&gt; &lt;span class="n"&gt;MASQUERADE&lt;/span&gt;
-&lt;span class="n"&gt;service&lt;/span&gt; &lt;span class="n"&gt;iptables&lt;/span&gt; &lt;span class="n"&gt;save&lt;/span&gt;
-&lt;span class="n"&gt;service&lt;/span&gt; &lt;span class="n"&gt;pptpd&lt;/span&gt; &lt;span class="n"&gt;restart&lt;/span&gt;
-&lt;span class="n"&gt;service&lt;/span&gt; &lt;span class="n"&gt;iptables&lt;/span&gt; &lt;span class="n"&gt;restart&lt;/span&gt;
-&lt;span class="n"&gt;chkconfig&lt;/span&gt; &lt;span class="n"&gt;pptpd&lt;/span&gt; &lt;span class="n"&gt;on&lt;/span&gt;
-&lt;span class="n"&gt;chkconfig&lt;/span&gt; &lt;span class="n"&gt;iptables&lt;/span&gt; &lt;span class="n"&gt;on&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;sysctl -p
+&lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;localip 192.168.240.1&amp;quot;&lt;/span&gt; &amp;gt;&amp;gt; /etc/pptpd.conf
+&lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;remoteip 192.168.240.101-200&amp;quot;&lt;/span&gt; &amp;gt;&amp;gt; /etc/pptpd.conf
+&lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;ms-dns 8.8.8.8&amp;quot;&lt;/span&gt; &amp;gt;&amp;gt; /etc/ppp/options.pptpd
+&lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;ms-dns 8.8.4.4&amp;quot;&lt;/span&gt; &amp;gt;&amp;gt; /etc/ppp/options.pptpd
+iptables --flush POSTROUTING --table nat
+iptables --flush FORWARD
+iptables -A INPUT -p tcp -m tcp --dport &lt;span class="m"&gt;1723&lt;/span&gt; -j ACCEPT
+iptables -A INPUT -p gre -j ACCEPT
+iptables -t nat -A POSTROUTING -s 192.168.240.0/24 -o eth0 -j MASQUERADE
+service iptables save
+service pptpd restart
+service iptables restart
+chkconfig pptpd on
+chkconfig iptables on
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;以上主要设置了VPN所使用的IP地址段、包转发规则等。VPN客户端将分配到的地址为：192.168.240.* 地址段，通过VPN服务器的eth0以太网接口转发对外的数据包（可以使用ifconfig查看本机对外通信的接口是否为eth0，若不是可自行更改）。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;（5）设置VPN账号和密码&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;你任意添加VPN账户，使用Vim编辑文件 /etc/ppp/chap-secrets 一行一个账户，如：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;wwt&lt;/span&gt;  &lt;span class="n"&gt;pptpd&lt;/span&gt;  &lt;span class="mi"&gt;123456&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;wwt  pptpd  &lt;span class="m"&gt;123456&lt;/span&gt; *
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -3836,17 +3928,17 @@ unbind %
 &lt;h2&gt;安装Go&lt;/h2&gt;
 &lt;p&gt;这里以Linux平台为例。&lt;/p&gt;
 &lt;p&gt;下载&lt;a href="https://golang.org/dl/"&gt;Go的压缩包&lt;/a&gt;并解压到 /usr/local 目录：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;tar&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;C&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;usr&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;local&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;xzf&lt;/span&gt; &lt;span class="n"&gt;go&lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="n"&gt;VERSION&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="n"&gt;OS&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="n"&gt;ARCH&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;tar&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;gz&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;tar -C /usr/local -xzf go&lt;span class="nv"&gt;$VERSION&lt;/span&gt;.&lt;span class="nv"&gt;$OS&lt;/span&gt;-&lt;span class="nv"&gt;$ARCH&lt;/span&gt;.tar.gz
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;将 /usr/local/go/bin 添加到PATH环境变量中，添加如下一行内容到 /etc/profile (系统范围)或者 $HOME/.profile(如果没有这个文件需要新建一个):&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;export&lt;/span&gt; &lt;span class="n"&gt;PATH&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="n"&gt;PATH&lt;/span&gt;&lt;span class="o"&gt;:/&lt;/span&gt;&lt;span class="n"&gt;usr&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;local&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;go&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;bin&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nb"&gt;export &lt;/span&gt;&lt;span class="nv"&gt;PATH&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="nv"&gt;$PATH&lt;/span&gt;:/usr/local/go/bin
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;在shell中输入：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;go&lt;/span&gt; &lt;span class="n"&gt;help&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;go &lt;span class="nb"&gt;help&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -3870,17 +3962,17 @@ unbind %
 &lt;h2&gt;编译和运行&lt;/h2&gt;
 &lt;p&gt;有两种方式运行：&lt;/p&gt;
 &lt;p&gt;（1）解释执行&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;go&lt;/span&gt; &lt;span class="n"&gt;run&lt;/span&gt; &lt;span class="n"&gt;hello&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;go&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;go run hello.go
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;（2）编译执行&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;go&lt;/span&gt; &lt;span class="n"&gt;build&lt;/span&gt; &lt;span class="n"&gt;hello&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;go&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;go build hello.go
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;此时，会在当前目录生成hello的可执行文件，运行：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;hello&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;./hello
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -4228,14 +4320,14 @@ unbind %
 
 
 &lt;p&gt;运行结果：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="mi"&gt;1&lt;/span&gt;
-&lt;span class="n"&gt;map&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;one&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="n"&gt;two&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
-&lt;span class="mi"&gt;1&lt;/span&gt;
-&lt;span class="mi"&gt;2&lt;/span&gt;
-&lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="nb"&gt;true&lt;/span&gt;
-&lt;span class="mi"&gt;2&lt;/span&gt; &lt;span class="nb"&gt;true&lt;/span&gt;
-&lt;span class="mi"&gt;1&lt;/span&gt;
-&lt;span class="n"&gt;map&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;one&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;1
+map[one:1 two:2]
+1
+2
+1 true
+2 true
+1
+map[one:1]
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -4383,61 +4475,61 @@ n&amp;lt; command &amp;gt; ------ 之前提到过的重复command命令n次&lt;/
 ye ------ 复制从当前位置到下一个单词的词尾&lt;/p&gt;
 &lt;h2&gt;技巧篇&lt;/h2&gt;
 &lt;h3&gt;找出当前文档中相同的行&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;sort&lt;/span&gt;
-&lt;span class="o"&gt;/^&lt;/span&gt;&lt;span class="err"&gt;\&lt;/span&gt;&lt;span class="p"&gt;(.&lt;/span&gt;&lt;span class="err"&gt;\&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="err"&gt;\&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="err"&gt;$\&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="err"&gt;\&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;:sort
+/^\(.\+\)$\n\1
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;h3&gt;按时间撤消&lt;/h3&gt;
 &lt;p&gt;Vim 7 包括了一个让用户跳转到任何编辑点之前或之后的新特性。如使用&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;earlier&lt;/span&gt; &lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="n"&gt;m&lt;/span&gt; 
+&lt;div class="highlight"&gt;&lt;pre&gt;:earlier 10m 
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;可以返回到 10 分钟以前的编辑状态。
 又如使用&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;later&lt;/span&gt; &lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="n"&gt;s&lt;/span&gt; 
+&lt;div class="highlight"&gt;&lt;pre&gt;:later 5s 
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;可以跳转到 5 秒以后的编辑点。另外，可以使用 :undolist 命令查看缓冲区存在的撤销分支列表。而通过 :undo &amp;lt; number&amp;gt; 命令则能够移到撤销的某个分支。&lt;/p&gt;
 &lt;h3&gt;删除当前文档的所有空行&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;g&lt;/span&gt;&lt;span class="o"&gt;/^&lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;d&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;:g/^$/d
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;h3&gt;在每行的行首或行尾插入指定字符串&lt;/h3&gt;
 &lt;p&gt;行首插入： &lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;:%&lt;/span&gt;&lt;span class="n"&gt;s&lt;/span&gt;&lt;span class="o"&gt;/^/&lt;/span&gt;&lt;span class="n"&gt;your_word&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;:%s/^/your_word/
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;行尾插入：  &lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;:%&lt;/span&gt;&lt;span class="n"&gt;s&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;your_word&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;:%s/$/your_word/
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;例如在每行前面插入行号如下：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;:%&lt;/span&gt;&lt;span class="n"&gt;s&lt;/span&gt;&lt;span class="o"&gt;/^/&lt;/span&gt;&lt;span class="err"&gt;\&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;line&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;.&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;:%s/^/\=line(&amp;quot;.&amp;quot;)/
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;h3&gt;读取shell命令&lt;/h3&gt;
 &lt;p&gt;如插入日期：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;r&lt;/span&gt;&lt;span class="o"&gt;!&lt;/span&gt;&lt;span class="n"&gt;date&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;:r!date
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;:r 是:read的缩写，!是表明要运行一个shell命令，意思是我要把shell命令的输出读到vim里来。&lt;/p&gt;
 &lt;h3&gt;统计某个单词出现的次数&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;:%&lt;/span&gt;&lt;span class="n"&gt;s&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;word&lt;/span&gt;&lt;span class="c1"&gt;//gn&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;:%s/word//gn
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;统计的结果会在底部的状态栏显示。&lt;/p&gt;
 &lt;h3&gt;Vim粘贴缩进问题&lt;/h3&gt;
 &lt;p&gt;在Vim中粘贴Python代码后，缩进就全乱了。进入paste模式以后，可以在插入模式下粘贴内容，不会有任何变形。&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;set&lt;/span&gt; &lt;span class="n"&gt;paste&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;:set paste
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -4530,34 +4622,34 @@ ye ------ 复制从当前位置到下一个单词的词尾&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;2.生成站点&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;在你的电脑上，建立一个目录，作为博客的主目录。我们假定，它的名称为blog。&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;mkdir&lt;/span&gt; &lt;span class="n"&gt;blog&lt;/span&gt;
-&lt;span class="n"&gt;cd&lt;/span&gt; &lt;span class="n"&gt;blog&lt;/span&gt;
-&lt;span class="n"&gt;pelican&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;quickstart&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;mkdir blog
+&lt;span class="nb"&gt;cd &lt;/span&gt;blog
+pelican-quickstart
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;运行一下命令后，就生成了一个站点，包含以下目录：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;blog&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;
-&lt;span class="err"&gt;├──&lt;/span&gt; &lt;span class="n"&gt;content&lt;/span&gt;              &lt;span class="err"&gt;#&lt;/span&gt; &lt;span class="err"&gt;存放输入的源文件&lt;/span&gt;
-&lt;span class="err"&gt;│&lt;/span&gt;   &lt;span class="err"&gt;└──&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;pages&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;          &lt;span class="err"&gt;#&lt;/span&gt; &lt;span class="err"&gt;存放手工创建的静态页面&lt;/span&gt;
-&lt;span class="err"&gt;├──&lt;/span&gt; &lt;span class="n"&gt;output&lt;/span&gt;               &lt;span class="err"&gt;#&lt;/span&gt; &lt;span class="err"&gt;生成的输出文件&lt;/span&gt;
-&lt;span class="err"&gt;├──&lt;/span&gt; &lt;span class="n"&gt;develop_server&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;sh&lt;/span&gt;    &lt;span class="err"&gt;#&lt;/span&gt; &lt;span class="err"&gt;方便开启测试服务器&lt;/span&gt;
-&lt;span class="err"&gt;├──&lt;/span&gt; &lt;span class="n"&gt;Makefile&lt;/span&gt;             &lt;span class="err"&gt;#&lt;/span&gt; &lt;span class="err"&gt;方便管理博客的&lt;/span&gt;&lt;span class="n"&gt;Makefile&lt;/span&gt;
-&lt;span class="err"&gt;├──&lt;/span&gt; &lt;span class="n"&gt;pelicanconf&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;py&lt;/span&gt;       &lt;span class="err"&gt;#&lt;/span&gt; &lt;span class="err"&gt;主配置文件&lt;/span&gt;
-&lt;span class="err"&gt;└──&lt;/span&gt; &lt;span class="n"&gt;publishconf&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;py&lt;/span&gt;       &lt;span class="err"&gt;#&lt;/span&gt; &lt;span class="err"&gt;主发布文件，可删除&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;blog/
+├── content              # 存放输入的源文件
+│   └── (pages)          # 存放手工创建的静态页面
+├── output               # 生成的输出文件
+├── develop_server.sh    # 方便开启测试服务器
+├── Makefile             # 方便管理博客的Makefile
+├── pelicanconf.py       # 主配置文件
+└── publishconf.py       # 主发布文件，可删除
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;另外，生成的过程中需要配置一些东西，大部分都可以一路回车，选择默认设置，其中有一步需要你填写自己的网站域名，如果暂时没有，可以先随便设置，之后可以在pelicanconf.py文件中进行修改。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;3.创建文件&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;接下来，就可以使用你喜欢的任何编辑器用markdown语法写你的第一篇文章。需要在每篇文章的开头填入以下关于文章的元信息：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nl"&gt;Title:&lt;/span&gt; &lt;span class="err"&gt;文章标题&lt;/span&gt;
-&lt;span class="nl"&gt;Date:&lt;/span&gt; &lt;span class="err"&gt;创建日期&lt;/span&gt;
-&lt;span class="nl"&gt;Modified:&lt;/span&gt; &lt;span class="err"&gt;修改日期&lt;/span&gt;
-&lt;span class="nl"&gt;Category:&lt;/span&gt; &lt;span class="err"&gt;文章分类，标志本文处于该分类下&lt;/span&gt;
-&lt;span class="nl"&gt;Tags:&lt;/span&gt; &lt;span class="err"&gt;文章标签，标志本文处于该标签下&lt;/span&gt;
-&lt;span class="nl"&gt;Slug:&lt;/span&gt; &lt;span class="n"&gt;URL&lt;/span&gt;&lt;span class="err"&gt;中该文章的链接地址&lt;/span&gt;
-&lt;span class="nl"&gt;Author:&lt;/span&gt; &lt;span class="err"&gt;作者&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;Title: 文章标题
+Date: 创建日期
+Modified: 修改日期
+Category: 文章分类，标志本文处于该分类下
+Tags: 文章标签，标志本文处于该标签下
+Slug: URL中该文章的链接地址
+Author: 作者
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -4578,14 +4670,14 @@ ye ------ 复制从当前位置到下一个单词的词尾&lt;/p&gt;
 &lt;p&gt;把以上的文件保存在content目录下，如保存为./content/test.md&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;4.生成静态页面&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;返回博客的主目录（即包含pelican文件的目录），然后在命令行中运行：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;make&lt;/span&gt; &lt;span class="n"&gt;html&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;make html
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;这样就会自动在output目录下生成content目录下markdown文件对应的静态页面&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;5.预览站点&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;可以先在本地预览站点，在博客主目录/output目录下：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;python&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;m&lt;/span&gt; &lt;span class="n"&gt;SimpleHTTPServer&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;python -m SimpleHTTPServer
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -4597,15 +4689,15 @@ ye ------ 复制从当前位置到下一个单词的词尾&lt;/p&gt;
 其中必须修改username为自己账号的username，如：nurnoch.github.io&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;2.将生成的静态网站上传到repository&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;进入到output目录下，运行：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;git&lt;/span&gt; &lt;span class="n"&gt;init&lt;/span&gt;
-&lt;span class="n"&gt;git&lt;/span&gt; &lt;span class="n"&gt;remote&lt;/span&gt; &lt;span class="n"&gt;add&lt;/span&gt; &lt;span class="n"&gt;origin&lt;/span&gt; &lt;span class="n"&gt;https&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="c1"&gt;//github.com/username/username.github.com.git&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;git init
+git remote add origin https://github.com/username/username.github.com.git
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;将username替换为自己的github用户名，初始化，并添加远程repository，将会生成 .git的目录，然后我们将output目录下的所有文件上传到github：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;git&lt;/span&gt; &lt;span class="n"&gt;add&lt;/span&gt; &lt;span class="p"&gt;.&lt;/span&gt;
-&lt;span class="n"&gt;git&lt;/span&gt; &lt;span class="n"&gt;commit&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;m&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;update&amp;quot;&lt;/span&gt;
-&lt;span class="n"&gt;git&lt;/span&gt; &lt;span class="n"&gt;push&lt;/span&gt; &lt;span class="n"&gt;origin&lt;/span&gt; &lt;span class="n"&gt;master&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;git add .
+git commit -m &lt;span class="s2"&gt;&amp;quot;update&amp;quot;&lt;/span&gt;
+git push origin master
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -4678,7 +4770,7 @@ ye ------ 复制从当前位置到下一个单词的词尾&lt;/p&gt;
 &lt;h3&gt;增加sitemap&lt;/h3&gt;
 &lt;p&gt;Pelican有着丰富的插件，可以配置sitemap插件, 生成 sitemap.xml 供搜索引擎使用。
 首先，下载Pelican的所有插件：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;git&lt;/span&gt; &lt;span class="n"&gt;clone&lt;/span&gt; &lt;span class="n"&gt;git&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="c1"&gt;//github.com/getpelican/pelican-plugins.git&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;git clone git://github.com/getpelican/pelican-plugins.git
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -4720,7 +4812,7 @@ ye ------ 复制从当前位置到下一个单词的词尾&lt;/p&gt;
 
 
 &lt;p&gt;在文章中引用图片：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt; &lt;span class="o"&gt;!&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;aimg&lt;/span&gt;&lt;span class="p"&gt;](&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;imgs&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;test&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;png&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt; ![aimg](/imgs/test.png)
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -4872,13 +4964,13 @@ ye ------ 复制从当前位置到下一个单词的词尾&lt;/p&gt;
 
 
 &lt;p&gt;输出：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;Hello&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;wwt&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;Hello, wwt.
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;上面是简化的实现，blinker和Python-message两个模块提供了更加完备的实现。下面以python-message为例说明。
 首先需要安装：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;pip&lt;/span&gt; &lt;span class="n"&gt;install&lt;/span&gt; &lt;span class="n"&gt;message&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;pip install message
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -5513,7 +5605,7 @@ option1=0
 &lt;p&gt;支持字符串格式化的类似语法&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;cat&lt;/span&gt; &lt;span class="n"&gt;format&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;conf&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;cat format.conf
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -5734,19 +5826,19 @@ tracback.print_exc()打印出：错误类型，错误对应的值已经具体的
 
 
 &lt;p&gt;输出结果：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nx"&gt;sorry&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nb"&gt;out&lt;/span&gt; &lt;span class="nx"&gt;of&lt;/span&gt; &lt;span class="nb"&gt;range&lt;/span&gt;
-&lt;span class="nb"&gt;list&lt;/span&gt; &lt;span class="nb"&gt;index&lt;/span&gt; &lt;span class="nb"&gt;out&lt;/span&gt; &lt;span class="nx"&gt;of&lt;/span&gt; &lt;span class="nb"&gt;range&lt;/span&gt;
-&lt;span class="nx"&gt;Traceback&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;most&lt;/span&gt; &lt;span class="nx"&gt;recent&lt;/span&gt; &lt;span class="nb"&gt;call&lt;/span&gt; &lt;span class="nb"&gt;last&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
-  &lt;span class="nb"&gt;File&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;trace_back.py&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nb"&gt;line&lt;/span&gt; &lt;span class="mi"&gt;17&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="k"&gt;in&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;module&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
-    &lt;span class="nb"&gt;f&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
-  &lt;span class="nb"&gt;File&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;trace_back.py&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nb"&gt;line&lt;/span&gt; &lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="k"&gt;in&lt;/span&gt; &lt;span class="nb"&gt;f&lt;/span&gt;
-    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="nx"&gt;g&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
-  &lt;span class="nb"&gt;File&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;trace_back.py&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nb"&gt;line&lt;/span&gt; &lt;span class="mi"&gt;7&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="k"&gt;in&lt;/span&gt; &lt;span class="nx"&gt;g&lt;/span&gt;
-    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="nx"&gt;h&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
-  &lt;span class="nb"&gt;File&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;trace_back.py&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nb"&gt;line&lt;/span&gt; &lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="k"&gt;in&lt;/span&gt; &lt;span class="nx"&gt;h&lt;/span&gt;
-    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="nx"&gt;i&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
-  &lt;span class="nb"&gt;File&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;trace_back.py&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nb"&gt;line&lt;/span&gt; &lt;span class="mi"&gt;13&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="k"&gt;in&lt;/span&gt; &lt;span class="nx"&gt;i&lt;/span&gt;
-    &lt;span class="nx"&gt;print&lt;/span&gt; &lt;span class="nx"&gt;gList&lt;/span&gt;&lt;span class="err"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;7&lt;/span&gt;&lt;span class="cp"&gt;]&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;sorry, out of range
+list index out of range
+Traceback (most recent call last):
+  File &amp;quot;trace_back.py&amp;quot;, line 17, in &amp;lt;module&amp;gt;
+    f()
+  File &amp;quot;trace_back.py&amp;quot;, line 5, in f
+    return g()
+  File &amp;quot;trace_back.py&amp;quot;, line 7, in g
+    return h()
+  File &amp;quot;trace_back.py&amp;quot;, line 10, in h
+    return i()
+  File &amp;quot;trace_back.py&amp;quot;, line 13, in i
+    print gList[7]
 IndexError: list index out of range
 &lt;/pre&gt;&lt;/div&gt;
 
@@ -5799,12 +5891,12 @@ IndexError: list index out of range
 
 
 &lt;p&gt;输出log到log.txt，内容如下：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="mi"&gt;2014&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;12&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;11&lt;/span&gt; &lt;span class="mi"&gt;20&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;50&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;55&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;684&lt;/span&gt; &lt;span class="nx"&gt;trace_back.py&lt;/span&gt;&lt;span class="err"&gt;[&lt;/span&gt;&lt;span class="nb"&gt;line&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;25&lt;/span&gt;&lt;span class="cp"&gt;]&lt;/span&gt; DEBUG Information during calling f():
-2014-12-11 20:50:55,684 trace_back.py&lt;span class="cp"&gt;[&lt;/span&gt;&lt;span class="nb"&gt;line&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;13&lt;/span&gt;&lt;span class="cp"&gt;]&lt;/span&gt; INFO &lt;span class="cp"&gt;[&lt;/span&gt;&lt;span class="nx"&gt;INFO&lt;/span&gt;&lt;span class="cp"&gt;]&lt;/span&gt;:calling method g() in f()
-2014-12-11 20:50:55,684 trace_back.py&lt;span class="cp"&gt;[&lt;/span&gt;&lt;span class="nb"&gt;line&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;32&lt;/span&gt;&lt;span class="cp"&gt;]&lt;/span&gt; ERROR &lt;span class="cp"&gt;[&lt;/span&gt;&lt;span class="nb"&gt;ERROR&lt;/span&gt;&lt;span class="cp"&gt;]&lt;/span&gt;:Sorry,Exception occured.
-2014-12-11 20:50:55,684 trace_back.py&lt;span class="cp"&gt;[&lt;/span&gt;&lt;span class="nb"&gt;line&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;33&lt;/span&gt;&lt;span class="cp"&gt;]&lt;/span&gt; CRITICAL object info:list index out of range
-2014-12-11 20:50:55,684 trace_back.py&lt;span class="cp"&gt;[&lt;/span&gt;&lt;span class="nb"&gt;line&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;34&lt;/span&gt;&lt;span class="cp"&gt;]&lt;/span&gt; CRITICAL Error Type:&lt;span class="nt"&gt;&amp;lt;type&lt;/span&gt; &lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="na"&gt;exceptions&lt;/span&gt;&lt;span class="err"&gt;.&lt;/span&gt;&lt;span class="na"&gt;IndexError&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;, Error information:list index out of range
-2014-12-11 20:50:55,684 trace_back.py&lt;span class="cp"&gt;[&lt;/span&gt;&lt;span class="nb"&gt;line&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;35&lt;/span&gt;&lt;span class="cp"&gt;]&lt;/span&gt; CRITICAL   File &amp;quot;trace_back.py&amp;quot;, line 27, in &lt;span class="nt"&gt;&amp;lt;module&amp;gt;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;2014-12-11 20:50:55,684 trace_back.py[line:25] DEBUG Information during calling f():
+2014-12-11 20:50:55,684 trace_back.py[line:13] INFO [INFO]:calling method g() in f()
+2014-12-11 20:50:55,684 trace_back.py[line:32] ERROR [ERROR]:Sorry,Exception occured.
+2014-12-11 20:50:55,684 trace_back.py[line:33] CRITICAL object info:list index out of range
+2014-12-11 20:50:55,684 trace_back.py[line:34] CRITICAL Error Type:&amp;lt;type &amp;#39;exceptions.IndexError&amp;#39;&amp;gt;, Error information:list index out of range
+2014-12-11 20:50:55,684 trace_back.py[line:35] CRITICAL   File &amp;quot;trace_back.py&amp;quot;, line 27, in &amp;lt;module&amp;gt;
     f()
   File &amp;quot;trace_back.py&amp;quot;, line 14, in f
     return g()
@@ -5813,7 +5905,7 @@ IndexError: list index out of range
   File &amp;quot;trace_back.py&amp;quot;, line 19, in h
     return i()
   File &amp;quot;trace_back.py&amp;quot;, line 22, in i
-    print gList&lt;span class="cp"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;7&lt;/span&gt;&lt;span class="cp"&gt;]&lt;/span&gt;
+    print gList[7]
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -6440,29 +6532,29 @@ YAPF与其他的格式化工具不同，其算法能够把代码重新格式化�
 &lt;h3&gt;YAPF的使用&lt;/h3&gt;
 &lt;h4&gt;1.安装&lt;/h4&gt;
 &lt;p&gt;可以直接通过pip进行安装：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;pip&lt;/span&gt; &lt;span class="n"&gt;install&lt;/span&gt; &lt;span class="n"&gt;yapf&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;pip install yapf
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;h4&gt;2.使用。&lt;/h4&gt;
 &lt;p&gt;安装完成之后，就可以直接在命令行中使用了。
 以下是yapf的命令行参数：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;usage&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;yapf&lt;/span&gt; &lt;span class="o"&gt;[-&lt;/span&gt;&lt;span class="n"&gt;h&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="o"&gt;[--&lt;/span&gt;&lt;span class="n"&gt;style&lt;/span&gt; &lt;span class="n"&gt;STYLE&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="o"&gt;[-&lt;/span&gt;&lt;span class="n"&gt;d&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="o"&gt;[-&lt;/span&gt;&lt;span class="n"&gt;l&lt;/span&gt; &lt;span class="n"&gt;START&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;END&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;r&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="o"&gt;...&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;usage: yapf &lt;span class="o"&gt;[&lt;/span&gt;-h&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt;--style STYLE&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt;-d &lt;span class="p"&gt;|&lt;/span&gt; -i&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt;-l START-END &lt;span class="p"&gt;|&lt;/span&gt; -r&lt;span class="o"&gt;]&lt;/span&gt; ...
 
-&lt;span class="n"&gt;Formatter&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;Python&lt;/span&gt; &lt;span class="n"&gt;code&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;
+Formatter &lt;span class="k"&gt;for&lt;/span&gt; Python code.
 
-&lt;span class="n"&gt;positional&lt;/span&gt; &lt;span class="k"&gt;arguments&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
-  &lt;span class="n"&gt;files&lt;/span&gt;
+positional arguments:
+  files
 
-&lt;span class="n"&gt;optional&lt;/span&gt; &lt;span class="k"&gt;arguments&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
-  &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;h&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="n"&gt;help&lt;/span&gt;            &lt;span class="err"&gt;显示帮助信息&lt;/span&gt;
-  &lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="n"&gt;style&lt;/span&gt; &lt;span class="n"&gt;STYLE&lt;/span&gt;         &lt;span class="err"&gt;指定需要格式化的编程风格，如&lt;/span&gt;&lt;span class="n"&gt;pep8&lt;/span&gt;&lt;span class="err"&gt;或者&lt;/span&gt;&lt;span class="n"&gt;google&lt;/span&gt;&lt;span class="err"&gt;等&lt;/span&gt;
-                        &lt;span class="err"&gt;也可以是自定义的设置文件。默认是&lt;/span&gt;&lt;span class="n"&gt;pep8&lt;/span&gt;
-  &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;d&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="n"&gt;diff&lt;/span&gt;            &lt;span class="err"&gt;比较格式化后的文件和原文件的区别&lt;/span&gt;
-  &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="k"&gt;in&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;place&lt;/span&gt;        &lt;span class="err"&gt;直接把格式化的文件更改在源文件上&lt;/span&gt;
-  &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;l&lt;/span&gt; &lt;span class="n"&gt;START&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;END&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="n"&gt;lines&lt;/span&gt; &lt;span class="n"&gt;START&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;END&lt;/span&gt;
-                        &lt;span class="err"&gt;指定格式化的行的范围&lt;/span&gt;
-  &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;r&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="n"&gt;recursive&lt;/span&gt;       &lt;span class="err"&gt;在目录中递归运行&lt;/span&gt;
+optional arguments:
+  -h, --help            显示帮助信息
+  --style STYLE         指定需要格式化的编程风格，如pep8或者google等
+                        也可以是自定义的设置文件。默认是pep8
+  -d, --diff            比较格式化后的文件和原文件的区别
+  -i, --in-place        直接把格式化的文件更改在源文件上
+  -l START-END, --lines START-END
+                        指定格式化的行的范围
+  -r, --recursive       在目录中递归运行
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -6621,7 +6713,7 @@ str.format()是Python最为推荐的字符串格式化方法，当然也是最Py
 &lt;/ul&gt;
 &lt;h4&gt;（3）使用工具检查程序PEP8&lt;/h4&gt;
 &lt;p&gt;安装PEP8的检测程序&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;pip&lt;/span&gt; &lt;span class="n"&gt;install&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;U&lt;/span&gt; &lt;span class="n"&gt;pep8&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;pip install -U pep8
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -6632,15 +6724,15 @@ str.format()是Python最为推荐的字符串格式化方法，当然也是最Py
 
 
 &lt;p&gt;可以看到检查的结果：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;pep8&lt;/span&gt; &lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="n"&gt;first&lt;/span&gt; &lt;span class="n"&gt;quick_sort&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;py&lt;/span&gt;
-&lt;span class="n"&gt;quick_sort&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;py&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;17&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;23&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;E231&lt;/span&gt; &lt;span class="n"&gt;missing&lt;/span&gt; &lt;span class="n"&gt;whitespace&lt;/span&gt; &lt;span class="n"&gt;after&lt;/span&gt; &lt;span class="sc"&gt;&amp;#39;,&amp;#39;&lt;/span&gt;
-&lt;span class="n"&gt;quick_sort&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;py&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;18&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;W391&lt;/span&gt; &lt;span class="n"&gt;blank&lt;/span&gt; &lt;span class="n"&gt;line&lt;/span&gt; &lt;span class="n"&gt;at&lt;/span&gt; &lt;span class="n"&gt;end&lt;/span&gt; &lt;span class="n"&gt;of&lt;/span&gt; &lt;span class="n"&gt;file&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;pep8 --first quick_sort.py
+quick_sort.py:17:23: E231 missing whitespace after &lt;span class="s1"&gt;&amp;#39;,&amp;#39;&lt;/span&gt;
+quick_sort.py:18:1: W391 blank line at end of file
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;就是，后面要空格，文件最后不应该有空行。
 还可以展示出非常详细的错误和警告：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;pep8&lt;/span&gt; &lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="n"&gt;show&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;source&lt;/span&gt; &lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="n"&gt;show&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;pep8&lt;/span&gt; &lt;span class="n"&gt;quick_sort&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;py&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;pep8 --show-source --show-pep8 quick_sort.py
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -8866,9 +8958,9 @@ f(x)   \:\:\:\:\: x满足约束条件\\
 &lt;p&gt;（1）在kd树中找到包含目标点x的叶结点&lt;/p&gt;
 &lt;p&gt;（2）以此叶节点为“当前最近点”&lt;/p&gt;
 &lt;p&gt;（3）递归向上回退&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;（&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="err"&gt;）如果该结点保存的实例点比当前最几点距离目标点更近，则以该实例点为“当前”最近点&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;（a）如果该结点保存的实例点比当前最几点距离目标点更近，则以该实例点为“当前”最近点
 
-&lt;span class="err"&gt;（&lt;/span&gt;&lt;span class="n"&gt;b&lt;/span&gt;&lt;span class="err"&gt;）当前最近点一定存在于该结点一个子结点对应的区域。检查该子结点的父结点的另一子结点对应的区域是否有更近的点。即以目标点为球心，以目标点与当前最近点间的距离为半径的球体是否与另一子结点对应的区域相交。如果相交，可能在另一个子结点对应的区域中存在更近的点。移动到另一个子结点，接着递归地进行最邻近搜索。如果不相交，则向上回退。&lt;/span&gt;
+（b）当前最近点一定存在于该结点一个子结点对应的区域。检查该子结点的父结点的另一子结点对应的区域是否有更近的点。即以目标点为球心，以目标点与当前最近点间的距离为半径的球体是否与另一子结点对应的区域相交。如果相交，可能在另一个子结点对应的区域中存在更近的点。移动到另一个子结点，接着递归地进行最邻近搜索。如果不相交，则向上回退。
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -9339,10 +9431,15 @@ J(f)为模型的复杂度，模型f越复杂，复杂度J(f)就越大；反之�
 &lt;li&gt;当存在隐变量时，仍然可以用生成学习方法学习，此时判别方法就不能用&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;&lt;strong&gt;判别方法的特点：&lt;/strong&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;直接学习的是P(Y|X)或决策函数f(X)，直接面对预测，学习的效率更高&lt;/li&gt;
-&lt;li&gt;由于是直接学习P(Y|X)或决策函数f(X)，可以对数据进行各种程度上的抽象、定义特征并使用特征，因此可以简化学习问题。&lt;/li&gt;
-&lt;/ul&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;- 直接学习的是P(Y&lt;/th&gt;
+&lt;th&gt;X)或决策函数f(X)，直接面对预测，学习的效率更高&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;&lt;/tbody&gt;
+&lt;/table&gt;
 &lt;hr /&gt;
 &lt;h2&gt;分类问题&lt;/h2&gt;
 &lt;p&gt;当&lt;strong&gt;输出变量Y取有限个离散值&lt;/strong&gt;时，预测问题便成为分类问题。&lt;/p&gt;

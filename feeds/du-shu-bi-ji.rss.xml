@@ -95,13 +95,13 @@
 
 
 &lt;p&gt;输出：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;Hello&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;wwt&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;Hello, wwt.
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;上面是简化的实现，blinker和Python-message两个模块提供了更加完备的实现。下面以python-message为例说明。
 首先需要安装：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;pip&lt;/span&gt; &lt;span class="n"&gt;install&lt;/span&gt; &lt;span class="n"&gt;message&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;pip install message
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -410,7 +410,7 @@ option1=0
 &lt;p&gt;支持字符串格式化的类似语法&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;cat&lt;/span&gt; &lt;span class="n"&gt;format&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;conf&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;cat format.conf
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -631,19 +631,19 @@ tracback.print_exc()打印出：错误类型，错误对应的值已经具体的
 
 
 &lt;p&gt;输出结果：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nx"&gt;sorry&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nb"&gt;out&lt;/span&gt; &lt;span class="nx"&gt;of&lt;/span&gt; &lt;span class="nb"&gt;range&lt;/span&gt;
-&lt;span class="nb"&gt;list&lt;/span&gt; &lt;span class="nb"&gt;index&lt;/span&gt; &lt;span class="nb"&gt;out&lt;/span&gt; &lt;span class="nx"&gt;of&lt;/span&gt; &lt;span class="nb"&gt;range&lt;/span&gt;
-&lt;span class="nx"&gt;Traceback&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;most&lt;/span&gt; &lt;span class="nx"&gt;recent&lt;/span&gt; &lt;span class="nb"&gt;call&lt;/span&gt; &lt;span class="nb"&gt;last&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
-  &lt;span class="nb"&gt;File&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;trace_back.py&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nb"&gt;line&lt;/span&gt; &lt;span class="mi"&gt;17&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="k"&gt;in&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;module&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
-    &lt;span class="nb"&gt;f&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
-  &lt;span class="nb"&gt;File&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;trace_back.py&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nb"&gt;line&lt;/span&gt; &lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="k"&gt;in&lt;/span&gt; &lt;span class="nb"&gt;f&lt;/span&gt;
-    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="nx"&gt;g&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
-  &lt;span class="nb"&gt;File&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;trace_back.py&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nb"&gt;line&lt;/span&gt; &lt;span class="mi"&gt;7&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="k"&gt;in&lt;/span&gt; &lt;span class="nx"&gt;g&lt;/span&gt;
-    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="nx"&gt;h&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
-  &lt;span class="nb"&gt;File&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;trace_back.py&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nb"&gt;line&lt;/span&gt; &lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="k"&gt;in&lt;/span&gt; &lt;span class="nx"&gt;h&lt;/span&gt;
-    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="nx"&gt;i&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
-  &lt;span class="nb"&gt;File&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;trace_back.py&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nb"&gt;line&lt;/span&gt; &lt;span class="mi"&gt;13&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="k"&gt;in&lt;/span&gt; &lt;span class="nx"&gt;i&lt;/span&gt;
-    &lt;span class="nx"&gt;print&lt;/span&gt; &lt;span class="nx"&gt;gList&lt;/span&gt;&lt;span class="err"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;7&lt;/span&gt;&lt;span class="cp"&gt;]&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;sorry, out of range
+list index out of range
+Traceback (most recent call last):
+  File &amp;quot;trace_back.py&amp;quot;, line 17, in &amp;lt;module&amp;gt;
+    f()
+  File &amp;quot;trace_back.py&amp;quot;, line 5, in f
+    return g()
+  File &amp;quot;trace_back.py&amp;quot;, line 7, in g
+    return h()
+  File &amp;quot;trace_back.py&amp;quot;, line 10, in h
+    return i()
+  File &amp;quot;trace_back.py&amp;quot;, line 13, in i
+    print gList[7]
 IndexError: list index out of range
 &lt;/pre&gt;&lt;/div&gt;
 
@@ -696,12 +696,12 @@ IndexError: list index out of range
 
 
 &lt;p&gt;输出log到log.txt，内容如下：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="mi"&gt;2014&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;12&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;11&lt;/span&gt; &lt;span class="mi"&gt;20&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;50&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;55&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;684&lt;/span&gt; &lt;span class="nx"&gt;trace_back.py&lt;/span&gt;&lt;span class="err"&gt;[&lt;/span&gt;&lt;span class="nb"&gt;line&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;25&lt;/span&gt;&lt;span class="cp"&gt;]&lt;/span&gt; DEBUG Information during calling f():
-2014-12-11 20:50:55,684 trace_back.py&lt;span class="cp"&gt;[&lt;/span&gt;&lt;span class="nb"&gt;line&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;13&lt;/span&gt;&lt;span class="cp"&gt;]&lt;/span&gt; INFO &lt;span class="cp"&gt;[&lt;/span&gt;&lt;span class="nx"&gt;INFO&lt;/span&gt;&lt;span class="cp"&gt;]&lt;/span&gt;:calling method g() in f()
-2014-12-11 20:50:55,684 trace_back.py&lt;span class="cp"&gt;[&lt;/span&gt;&lt;span class="nb"&gt;line&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;32&lt;/span&gt;&lt;span class="cp"&gt;]&lt;/span&gt; ERROR &lt;span class="cp"&gt;[&lt;/span&gt;&lt;span class="nb"&gt;ERROR&lt;/span&gt;&lt;span class="cp"&gt;]&lt;/span&gt;:Sorry,Exception occured.
-2014-12-11 20:50:55,684 trace_back.py&lt;span class="cp"&gt;[&lt;/span&gt;&lt;span class="nb"&gt;line&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;33&lt;/span&gt;&lt;span class="cp"&gt;]&lt;/span&gt; CRITICAL object info:list index out of range
-2014-12-11 20:50:55,684 trace_back.py&lt;span class="cp"&gt;[&lt;/span&gt;&lt;span class="nb"&gt;line&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;34&lt;/span&gt;&lt;span class="cp"&gt;]&lt;/span&gt; CRITICAL Error Type:&lt;span class="nt"&gt;&amp;lt;type&lt;/span&gt; &lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="na"&gt;exceptions&lt;/span&gt;&lt;span class="err"&gt;.&lt;/span&gt;&lt;span class="na"&gt;IndexError&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;, Error information:list index out of range
-2014-12-11 20:50:55,684 trace_back.py&lt;span class="cp"&gt;[&lt;/span&gt;&lt;span class="nb"&gt;line&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;35&lt;/span&gt;&lt;span class="cp"&gt;]&lt;/span&gt; CRITICAL   File &amp;quot;trace_back.py&amp;quot;, line 27, in &lt;span class="nt"&gt;&amp;lt;module&amp;gt;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;2014-12-11 20:50:55,684 trace_back.py[line:25] DEBUG Information during calling f():
+2014-12-11 20:50:55,684 trace_back.py[line:13] INFO [INFO]:calling method g() in f()
+2014-12-11 20:50:55,684 trace_back.py[line:32] ERROR [ERROR]:Sorry,Exception occured.
+2014-12-11 20:50:55,684 trace_back.py[line:33] CRITICAL object info:list index out of range
+2014-12-11 20:50:55,684 trace_back.py[line:34] CRITICAL Error Type:&amp;lt;type &amp;#39;exceptions.IndexError&amp;#39;&amp;gt;, Error information:list index out of range
+2014-12-11 20:50:55,684 trace_back.py[line:35] CRITICAL   File &amp;quot;trace_back.py&amp;quot;, line 27, in &amp;lt;module&amp;gt;
     f()
   File &amp;quot;trace_back.py&amp;quot;, line 14, in f
     return g()
@@ -710,7 +710,7 @@ IndexError: list index out of range
   File &amp;quot;trace_back.py&amp;quot;, line 19, in h
     return i()
   File &amp;quot;trace_back.py&amp;quot;, line 22, in i
-    print gList&lt;span class="cp"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;7&lt;/span&gt;&lt;span class="cp"&gt;]&lt;/span&gt;
+    print gList[7]
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -1203,7 +1203,7 @@ str.format()是Python最为推荐的字符串格式化方法，当然也是最Py
 &lt;/ul&gt;
 &lt;h4&gt;（3）使用工具检查程序PEP8&lt;/h4&gt;
 &lt;p&gt;安装PEP8的检测程序&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;pip&lt;/span&gt; &lt;span class="n"&gt;install&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;U&lt;/span&gt; &lt;span class="n"&gt;pep8&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;pip install -U pep8
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -1214,15 +1214,15 @@ str.format()是Python最为推荐的字符串格式化方法，当然也是最Py
 
 
 &lt;p&gt;可以看到检查的结果：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;pep8&lt;/span&gt; &lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="n"&gt;first&lt;/span&gt; &lt;span class="n"&gt;quick_sort&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;py&lt;/span&gt;
-&lt;span class="n"&gt;quick_sort&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;py&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;17&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;23&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;E231&lt;/span&gt; &lt;span class="n"&gt;missing&lt;/span&gt; &lt;span class="n"&gt;whitespace&lt;/span&gt; &lt;span class="n"&gt;after&lt;/span&gt; &lt;span class="sc"&gt;&amp;#39;,&amp;#39;&lt;/span&gt;
-&lt;span class="n"&gt;quick_sort&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;py&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;18&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;W391&lt;/span&gt; &lt;span class="n"&gt;blank&lt;/span&gt; &lt;span class="n"&gt;line&lt;/span&gt; &lt;span class="n"&gt;at&lt;/span&gt; &lt;span class="n"&gt;end&lt;/span&gt; &lt;span class="n"&gt;of&lt;/span&gt; &lt;span class="n"&gt;file&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;pep8 --first quick_sort.py
+quick_sort.py:17:23: E231 missing whitespace after &lt;span class="s1"&gt;&amp;#39;,&amp;#39;&lt;/span&gt;
+quick_sort.py:18:1: W391 blank line at end of file
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;就是，后面要空格，文件最后不应该有空行。
 还可以展示出非常详细的错误和警告：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;pep8&lt;/span&gt; &lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="n"&gt;show&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;source&lt;/span&gt; &lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="n"&gt;show&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;pep8&lt;/span&gt; &lt;span class="n"&gt;quick_sort&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;py&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;pep8 --show-source --show-pep8 quick_sort.py
 &lt;/pre&gt;&lt;/div&gt;
 
 

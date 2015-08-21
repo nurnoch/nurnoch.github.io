@@ -4,7 +4,7 @@
 
         <title>Linux上搭建VPN服务器</title>
         <meta charset="utf-8" />
-        <link href="http://www.wengweitao.com/feeds\all.atom.xml" type="application/atom+xml" rel="alternate" title="wwt's blog Full Atom Feed" />
+        <link href="http://www.wengweitao.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="wwt's blog Full Atom Feed" />
         <link href="http://www.wengweitao.com/feeds/all.rss.xml" type="application/rss+xml" rel="alternate" title="wwt's blog Full RSS Feed" />
         <link href="http://www.wengweitao.com/feeds/gong-ju.rss.xml" type="application/atom+xml" rel="alternate" title="wwt's blog Categories Atom Feed" />
 
@@ -66,7 +66,7 @@
 
             </header>
             <footer class="post-info">
-              <abbr class="published" title="2015-05-01T21:21:00">
+              <abbr class="published" title="2015-05-01T21:21:00+08:00">
                 Fri 01 May 2015
               </abbr>
               <address class="vcard author">By 
@@ -81,9 +81,9 @@
 <hr />
 <h2>1. 判断PPP是否可用</h2>
 <p>首先，我们需要检查服务器是否支持搭建PPTP，在shell中输入：</p>
-<div class="highlight"><pre><span class="n">cat</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">ppp</span>
+<div class="highlight"><pre>cat /dev/ppp
 
-<span class="nl">cat:</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">ppp</span><span class="o">:</span> <span class="err">没有那个设备或地址</span>
+cat: /dev/ppp: 没有那个设备或地址
 </pre></div>
 
 
@@ -97,62 +97,62 @@
 </ul>
 <p><strong>（1）安装PPP</strong></p>
 <p>直接使用yum安装即可</p>
-<div class="highlight"><pre><span class="n">yum</span> <span class="n">install</span> <span class="n">ppp</span>
+<div class="highlight"><pre>yum install ppp
 </pre></div>
 
 
 <p><strong>（2）安装IPtables</strong></p>
 <p>通常Linux系统上都自带安装好了iptables，如果没有可以使用yum进行安装：</p>
-<div class="highlight"><pre><span class="n">yum</span> <span class="n">install</span> <span class="n">iptables</span>
-<span class="n">cp</span> <span class="o">-</span><span class="n">rpf</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">sysconfig</span><span class="o">/</span><span class="n">iptables</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">sysconfig</span><span class="o">/</span><span class="n">iptables</span><span class="p">.</span><span class="n">pptpsave</span>
-<span class="n">cd</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">src</span>
+<div class="highlight"><pre>yum install iptables
+cp -rpf /etc/sysconfig/iptables /etc/sysconfig/iptables.pptpsave
+<span class="nb">cd</span> /usr/src
 </pre></div>
 
 
 <p><strong>（3）安装PPTP套件</strong></p>
 <p>如果你的系统直接yum那么可以直接通过yum进行安装，但是我的系统是Red Hat 4.4.6-4，yum中没有提供pptp套件的rpm包，只能自己先下载到本地。</p>
 <p>到<a href="http://poptop.sourceforge.net/yum/stable/">这里</a>下载适合你系统的rpm包。可以使用</p>
-<div class="highlight"><pre><span class="n">cat</span> <span class="o">/</span><span class="n">proc</span><span class="o">/</span><span class="n">version</span>
+<div class="highlight"><pre>cat /proc/version
 </pre></div>
 
 
 <p>查看Linux系统信息。</p>
 <p>注意：一定要正确选择适合自己系统的rpm包，如果下载错误将无法完成安装。</p>
-<div class="highlight"><pre><span class="n">wget</span> <span class="n">http</span><span class="o">:</span><span class="c1">//poptop.sourceforge.net/yum/stable/rhel6/x86_64/pptpd-1.4.0-1.el6.x86_64.rpm</span>
+<div class="highlight"><pre>wget http://poptop.sourceforge.net/yum/stable/rhel6/x86_64/pptpd-1.4.0-1.el6.x86_64.rpm
 
-<span class="n">rpm</span> <span class="o">-</span><span class="n">ivh</span> <span class="n">pptpd</span><span class="o">-</span><span class="mf">1.4.0</span><span class="o">-</span><span class="mf">1.</span><span class="n">el6</span><span class="p">.</span><span class="n">x86_64</span><span class="p">.</span><span class="n">rpm</span>
+rpm -ivh pptpd-1.4.0-1.el6.x86_64.rpm
 </pre></div>
 
 
 <p><strong>（4）进行配置</strong></p>
 <p>使用Vim编辑 /etc/sysctl.conf 文件，将其中的一行内容修改为：</p>
-<div class="highlight"><pre><span class="n">net</span><span class="p">.</span><span class="n">ipv4</span><span class="p">.</span><span class="n">ip_forward</span> <span class="o">=</span> <span class="mi">1</span>
+<div class="highlight"><pre>net.ipv4.ip_forward <span class="o">=</span> 1
 </pre></div>
 
 
 <p>复制以下所有命令，粘贴在shell中：</p>
-<div class="highlight"><pre><span class="n">sysctl</span> <span class="o">-</span><span class="n">p</span>
-<span class="n">echo</span> <span class="s">&quot;localip 192.168.240.1&quot;</span> <span class="o">&gt;&gt;</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">pptpd</span><span class="p">.</span><span class="n">conf</span>
-<span class="n">echo</span> <span class="s">&quot;remoteip 192.168.240.101-200&quot;</span> <span class="o">&gt;&gt;</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">pptpd</span><span class="p">.</span><span class="n">conf</span>
-<span class="n">echo</span> <span class="s">&quot;ms-dns 8.8.8.8&quot;</span> <span class="o">&gt;&gt;</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">ppp</span><span class="o">/</span><span class="n">options</span><span class="p">.</span><span class="n">pptpd</span>
-<span class="n">echo</span> <span class="s">&quot;ms-dns 8.8.4.4&quot;</span> <span class="o">&gt;&gt;</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">ppp</span><span class="o">/</span><span class="n">options</span><span class="p">.</span><span class="n">pptpd</span>
-<span class="n">iptables</span> <span class="o">--</span><span class="n">flush</span> <span class="n">POSTROUTING</span> <span class="o">--</span><span class="n">table</span> <span class="n">nat</span>
-<span class="n">iptables</span> <span class="o">--</span><span class="n">flush</span> <span class="n">FORWARD</span>
-<span class="n">iptables</span> <span class="o">-</span><span class="n">A</span> <span class="n">INPUT</span> <span class="o">-</span><span class="n">p</span> <span class="n">tcp</span> <span class="o">-</span><span class="n">m</span> <span class="n">tcp</span> <span class="o">--</span><span class="n">dport</span> <span class="mi">1723</span> <span class="o">-</span><span class="n">j</span> <span class="n">ACCEPT</span>
-<span class="n">iptables</span> <span class="o">-</span><span class="n">A</span> <span class="n">INPUT</span> <span class="o">-</span><span class="n">p</span> <span class="n">gre</span> <span class="o">-</span><span class="n">j</span> <span class="n">ACCEPT</span>
-<span class="n">iptables</span> <span class="o">-</span><span class="n">t</span> <span class="n">nat</span> <span class="o">-</span><span class="n">A</span> <span class="n">POSTROUTING</span> <span class="o">-</span><span class="n">s</span> <span class="mf">192.168.240.0</span><span class="o">/</span><span class="mi">24</span> <span class="o">-</span><span class="n">o</span> <span class="n">eth0</span> <span class="o">-</span><span class="n">j</span> <span class="n">MASQUERADE</span>
-<span class="n">service</span> <span class="n">iptables</span> <span class="n">save</span>
-<span class="n">service</span> <span class="n">pptpd</span> <span class="n">restart</span>
-<span class="n">service</span> <span class="n">iptables</span> <span class="n">restart</span>
-<span class="n">chkconfig</span> <span class="n">pptpd</span> <span class="n">on</span>
-<span class="n">chkconfig</span> <span class="n">iptables</span> <span class="n">on</span>
+<div class="highlight"><pre>sysctl -p
+<span class="nb">echo</span> <span class="s2">&quot;localip 192.168.240.1&quot;</span> &gt;&gt; /etc/pptpd.conf
+<span class="nb">echo</span> <span class="s2">&quot;remoteip 192.168.240.101-200&quot;</span> &gt;&gt; /etc/pptpd.conf
+<span class="nb">echo</span> <span class="s2">&quot;ms-dns 8.8.8.8&quot;</span> &gt;&gt; /etc/ppp/options.pptpd
+<span class="nb">echo</span> <span class="s2">&quot;ms-dns 8.8.4.4&quot;</span> &gt;&gt; /etc/ppp/options.pptpd
+iptables --flush POSTROUTING --table nat
+iptables --flush FORWARD
+iptables -A INPUT -p tcp -m tcp --dport <span class="m">1723</span> -j ACCEPT
+iptables -A INPUT -p gre -j ACCEPT
+iptables -t nat -A POSTROUTING -s 192.168.240.0/24 -o eth0 -j MASQUERADE
+service iptables save
+service pptpd restart
+service iptables restart
+chkconfig pptpd on
+chkconfig iptables on
 </pre></div>
 
 
 <p>以上主要设置了VPN所使用的IP地址段、包转发规则等。VPN客户端将分配到的地址为：192.168.240.* 地址段，通过VPN服务器的eth0以太网接口转发对外的数据包（可以使用ifconfig查看本机对外通信的接口是否为eth0，若不是可自行更改）。</p>
 <p><strong>（5）设置VPN账号和密码</strong></p>
 <p>你任意添加VPN账户，使用Vim编辑文件 /etc/ppp/chap-secrets 一行一个账户，如：</p>
-<div class="highlight"><pre><span class="n">wwt</span>  <span class="n">pptpd</span>  <span class="mi">123456</span> <span class="o">*</span>
+<div class="highlight"><pre>wwt  pptpd  <span class="m">123456</span> *
 </pre></div>
 
 
@@ -235,29 +235,6 @@
 <!--
 <h4>标签</h4>
 <ul class="tagcloud">
-        <li class="tag-1"><a href="http://www.wengweitao.com/tag/python.html">Python</a></li>
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/tmux.html">tmux</a></li>
-        <li class="tag-1"><a href="http://www.wengweitao.com/tag/du-shu-bi-ji.html">读书笔记</a></li>
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/ji-qi-xue-xi.html">机器学习</a></li>
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/shu-ju-ku.html">数据库</a></li>
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/er-cha-shu.html">二叉树</a></li>
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/pai-xu-suan-fa-ji-chu-zong-jie.html">排序 算法 基础 总结</a></li>
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/wan.html">玩</a></li>
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/gong-ju.html">工具</a></li>
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/jiao-cheng-linux.html">教程、Linux</a></li>
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/go.html">Go</a></li>
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/xiao-yuan.html">校园</a></li>
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/vim.html">Vim</a></li>
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/suan-fa-fen-xi.html">算法分析</a></li>
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/ji-chu.html">基础</a></li>
-        <li class="tag-1"><a href="http://www.wengweitao.com/tag/leetcode.html">leetcode</a></li>
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/ji-chu-gai-nian.html">基础概念</a></li>
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/ce-shi.html">测试</a></li>
-        <li class="tag-1"><a href="http://www.wengweitao.com/tag/pai-xu-suan-fa-ji-chu.html">排序 算法 基础</a></li>
-        <li class="tag-3"><a href="http://www.wengweitao.com/tag/ji-ben-gai-nian.html">基本概念</a></li>
-        <li class="tag-2"><a href="http://www.wengweitao.com/tag/jiao-cheng.html">教程</a></li>
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/bian-cheng-zhu-ji.html">编程珠玑</a></li>
-        <li class="tag-1"><a href="http://www.wengweitao.com/tag/mian-shi-ti.html">面试题</a></li>
 </ul>
 -->
 

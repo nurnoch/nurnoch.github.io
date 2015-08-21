@@ -29,10 +29,10 @@ yum --enablerepo&lt;span class="o"&gt;=&lt;/span&gt;testing-1.1-devtools-6 insta
 
 &lt;p&gt;现在查看 g++ 的版本号：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;g++ --version
-g++ &lt;span class="o"&gt;(&lt;/span&gt;GCC&lt;span class="o"&gt;)&lt;/span&gt; 4.7.2 20121015 &lt;span class="o"&gt;(&lt;/span&gt;Red Hat 4.7.2-5&lt;span class="o"&gt;)&lt;/span&gt;
-Copyright &lt;span class="o"&gt;(&lt;/span&gt;C&lt;span class="o"&gt;)&lt;/span&gt; 2012 Free Software Foundation, Inc.
-This is free software; see the &lt;span class="nb"&gt;source &lt;/span&gt;&lt;span class="k"&gt;for &lt;/span&gt;copying conditions.  There is NO
-warranty; not even &lt;span class="k"&gt;for &lt;/span&gt;MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+g++ &lt;span class="o"&gt;(&lt;/span&gt;GCC&lt;span class="o"&gt;)&lt;/span&gt; 4.7.2 &lt;span class="m"&gt;20121015&lt;/span&gt; &lt;span class="o"&gt;(&lt;/span&gt;Red Hat 4.7.2-5&lt;span class="o"&gt;)&lt;/span&gt;
+Copyright &lt;span class="o"&gt;(&lt;/span&gt;C&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="m"&gt;2012&lt;/span&gt; Free Software Foundation, Inc.
+This is free software&lt;span class="p"&gt;;&lt;/span&gt; see the &lt;span class="nb"&gt;source &lt;/span&gt;&lt;span class="k"&gt;for&lt;/span&gt; copying conditions.  There is NO
+warranty&lt;span class="p"&gt;;&lt;/span&gt; not even &lt;span class="k"&gt;for&lt;/span&gt; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -105,7 +105,7 @@ unbind ^b
 &lt;div class="highlight"&gt;&lt;pre&gt;unbind &lt;span class="s1"&gt;&amp;#39;&amp;quot;&amp;#39;&lt;/span&gt;
 &lt;span class="nb"&gt;bind&lt;/span&gt; - splitw -v &lt;span class="c"&gt;# 分割成上下两个窗口&lt;/span&gt;
 unbind %
-&lt;span class="nb"&gt;bind&lt;/span&gt; | splitw -h &lt;span class="c"&gt;# 分割成左右两个窗口&lt;/span&gt;
+&lt;span class="nb"&gt;bind&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; splitw -h &lt;span class="c"&gt;# 分割成左右两个窗口&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -119,10 +119,10 @@ unbind %
 
 
 &lt;p&gt;4.panel大小调整&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nb"&gt;bind&lt;/span&gt; ^k resizep -U 10 &lt;span class="c"&gt;# 跟选择窗格的设置相同，只是多加 Ctrl（Ctrl-k）&lt;/span&gt;
-&lt;span class="nb"&gt;bind&lt;/span&gt; ^j resizep -D 10 &lt;span class="c"&gt;# 同上&lt;/span&gt;
-&lt;span class="nb"&gt;bind&lt;/span&gt; ^h resizep -L 10 &lt;span class="c"&gt;# ...&lt;/span&gt;
-&lt;span class="nb"&gt;bind&lt;/span&gt; ^l resizep -R 10 &lt;span class="c"&gt;# ...&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nb"&gt;bind&lt;/span&gt; ^k resizep -U &lt;span class="m"&gt;10&lt;/span&gt; &lt;span class="c"&gt;# 跟选择窗格的设置相同，只是多加 Ctrl（Ctrl-k）&lt;/span&gt;
+&lt;span class="nb"&gt;bind&lt;/span&gt; ^j resizep -D &lt;span class="m"&gt;10&lt;/span&gt; &lt;span class="c"&gt;# 同上&lt;/span&gt;
+&lt;span class="nb"&gt;bind&lt;/span&gt; ^h resizep -L &lt;span class="m"&gt;10&lt;/span&gt; &lt;span class="c"&gt;# ...&lt;/span&gt;
+&lt;span class="nb"&gt;bind&lt;/span&gt; ^l resizep -R &lt;span class="m"&gt;10&lt;/span&gt; &lt;span class="c"&gt;# ...&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -145,9 +145,9 @@ unbind %
 &lt;hr /&gt;
 &lt;h2&gt;1. 判断PPP是否可用&lt;/h2&gt;
 &lt;p&gt;首先，我们需要检查服务器是否支持搭建PPTP，在shell中输入：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;cat&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;dev&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;ppp&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;cat /dev/ppp
 
-&lt;span class="nl"&gt;cat:&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;dev&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;ppp&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="err"&gt;没有那个设备或地址&lt;/span&gt;
+cat: /dev/ppp: 没有那个设备或地址
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -161,62 +161,62 @@ unbind %
 &lt;/ul&gt;
 &lt;p&gt;&lt;strong&gt;（1）安装PPP&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;直接使用yum安装即可&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;yum&lt;/span&gt; &lt;span class="n"&gt;install&lt;/span&gt; &lt;span class="n"&gt;ppp&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;yum install ppp
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;&lt;strong&gt;（2）安装IPtables&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;通常Linux系统上都自带安装好了iptables，如果没有可以使用yum进行安装：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;yum&lt;/span&gt; &lt;span class="n"&gt;install&lt;/span&gt; &lt;span class="n"&gt;iptables&lt;/span&gt;
-&lt;span class="n"&gt;cp&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;rpf&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;etc&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;sysconfig&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;iptables&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;etc&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;sysconfig&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;iptables&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;pptpsave&lt;/span&gt;
-&lt;span class="n"&gt;cd&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;usr&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;src&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;yum install iptables
+cp -rpf /etc/sysconfig/iptables /etc/sysconfig/iptables.pptpsave
+&lt;span class="nb"&gt;cd&lt;/span&gt; /usr/src
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;&lt;strong&gt;（3）安装PPTP套件&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;如果你的系统直接yum那么可以直接通过yum进行安装，但是我的系统是Red Hat 4.4.6-4，yum中没有提供pptp套件的rpm包，只能自己先下载到本地。&lt;/p&gt;
 &lt;p&gt;到&lt;a href="http://poptop.sourceforge.net/yum/stable/"&gt;这里&lt;/a&gt;下载适合你系统的rpm包。可以使用&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;cat&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;proc&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;version&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;cat /proc/version
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;查看Linux系统信息。&lt;/p&gt;
 &lt;p&gt;注意：一定要正确选择适合自己系统的rpm包，如果下载错误将无法完成安装。&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;wget&lt;/span&gt; &lt;span class="n"&gt;http&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="c1"&gt;//poptop.sourceforge.net/yum/stable/rhel6/x86_64/pptpd-1.4.0-1.el6.x86_64.rpm&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;wget http://poptop.sourceforge.net/yum/stable/rhel6/x86_64/pptpd-1.4.0-1.el6.x86_64.rpm
 
-&lt;span class="n"&gt;rpm&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;ivh&lt;/span&gt; &lt;span class="n"&gt;pptpd&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mf"&gt;1.4.0&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mf"&gt;1.&lt;/span&gt;&lt;span class="n"&gt;el6&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;x86_64&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;rpm&lt;/span&gt;
+rpm -ivh pptpd-1.4.0-1.el6.x86_64.rpm
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;&lt;strong&gt;（4）进行配置&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;使用Vim编辑 /etc/sysctl.conf 文件，将其中的一行内容修改为：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;net&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;ipv4&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;ip_forward&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;net.ipv4.ip_forward &lt;span class="o"&gt;=&lt;/span&gt; 1
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;复制以下所有命令，粘贴在shell中：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;sysctl&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;p&lt;/span&gt;
-&lt;span class="n"&gt;echo&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;localip 192.168.240.1&amp;quot;&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;etc&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;pptpd&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;conf&lt;/span&gt;
-&lt;span class="n"&gt;echo&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;remoteip 192.168.240.101-200&amp;quot;&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;etc&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;pptpd&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;conf&lt;/span&gt;
-&lt;span class="n"&gt;echo&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;ms-dns 8.8.8.8&amp;quot;&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;etc&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;ppp&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;options&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;pptpd&lt;/span&gt;
-&lt;span class="n"&gt;echo&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;ms-dns 8.8.4.4&amp;quot;&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;etc&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;ppp&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;options&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;pptpd&lt;/span&gt;
-&lt;span class="n"&gt;iptables&lt;/span&gt; &lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="n"&gt;flush&lt;/span&gt; &lt;span class="n"&gt;POSTROUTING&lt;/span&gt; &lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="n"&gt;table&lt;/span&gt; &lt;span class="n"&gt;nat&lt;/span&gt;
-&lt;span class="n"&gt;iptables&lt;/span&gt; &lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="n"&gt;flush&lt;/span&gt; &lt;span class="n"&gt;FORWARD&lt;/span&gt;
-&lt;span class="n"&gt;iptables&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;A&lt;/span&gt; &lt;span class="n"&gt;INPUT&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;p&lt;/span&gt; &lt;span class="n"&gt;tcp&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;m&lt;/span&gt; &lt;span class="n"&gt;tcp&lt;/span&gt; &lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="n"&gt;dport&lt;/span&gt; &lt;span class="mi"&gt;1723&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;j&lt;/span&gt; &lt;span class="n"&gt;ACCEPT&lt;/span&gt;
-&lt;span class="n"&gt;iptables&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;A&lt;/span&gt; &lt;span class="n"&gt;INPUT&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;p&lt;/span&gt; &lt;span class="n"&gt;gre&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;j&lt;/span&gt; &lt;span class="n"&gt;ACCEPT&lt;/span&gt;
-&lt;span class="n"&gt;iptables&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;t&lt;/span&gt; &lt;span class="n"&gt;nat&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;A&lt;/span&gt; &lt;span class="n"&gt;POSTROUTING&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;s&lt;/span&gt; &lt;span class="mf"&gt;192.168.240.0&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="mi"&gt;24&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;o&lt;/span&gt; &lt;span class="n"&gt;eth0&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;j&lt;/span&gt; &lt;span class="n"&gt;MASQUERADE&lt;/span&gt;
-&lt;span class="n"&gt;service&lt;/span&gt; &lt;span class="n"&gt;iptables&lt;/span&gt; &lt;span class="n"&gt;save&lt;/span&gt;
-&lt;span class="n"&gt;service&lt;/span&gt; &lt;span class="n"&gt;pptpd&lt;/span&gt; &lt;span class="n"&gt;restart&lt;/span&gt;
-&lt;span class="n"&gt;service&lt;/span&gt; &lt;span class="n"&gt;iptables&lt;/span&gt; &lt;span class="n"&gt;restart&lt;/span&gt;
-&lt;span class="n"&gt;chkconfig&lt;/span&gt; &lt;span class="n"&gt;pptpd&lt;/span&gt; &lt;span class="n"&gt;on&lt;/span&gt;
-&lt;span class="n"&gt;chkconfig&lt;/span&gt; &lt;span class="n"&gt;iptables&lt;/span&gt; &lt;span class="n"&gt;on&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;sysctl -p
+&lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;localip 192.168.240.1&amp;quot;&lt;/span&gt; &amp;gt;&amp;gt; /etc/pptpd.conf
+&lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;remoteip 192.168.240.101-200&amp;quot;&lt;/span&gt; &amp;gt;&amp;gt; /etc/pptpd.conf
+&lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;ms-dns 8.8.8.8&amp;quot;&lt;/span&gt; &amp;gt;&amp;gt; /etc/ppp/options.pptpd
+&lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;ms-dns 8.8.4.4&amp;quot;&lt;/span&gt; &amp;gt;&amp;gt; /etc/ppp/options.pptpd
+iptables --flush POSTROUTING --table nat
+iptables --flush FORWARD
+iptables -A INPUT -p tcp -m tcp --dport &lt;span class="m"&gt;1723&lt;/span&gt; -j ACCEPT
+iptables -A INPUT -p gre -j ACCEPT
+iptables -t nat -A POSTROUTING -s 192.168.240.0/24 -o eth0 -j MASQUERADE
+service iptables save
+service pptpd restart
+service iptables restart
+chkconfig pptpd on
+chkconfig iptables on
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;以上主要设置了VPN所使用的IP地址段、包转发规则等。VPN客户端将分配到的地址为：192.168.240.* 地址段，通过VPN服务器的eth0以太网接口转发对外的数据包（可以使用ifconfig查看本机对外通信的接口是否为eth0，若不是可自行更改）。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;（5）设置VPN账号和密码&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;你任意添加VPN账户，使用Vim编辑文件 /etc/ppp/chap-secrets 一行一个账户，如：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;wwt&lt;/span&gt;  &lt;span class="n"&gt;pptpd&lt;/span&gt;  &lt;span class="mi"&gt;123456&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;wwt  pptpd  &lt;span class="m"&gt;123456&lt;/span&gt; *
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -336,61 +336,61 @@ n&amp;lt; command &amp;gt; ------ 之前提到过的重复command命令n次&lt;/
 ye ------ 复制从当前位置到下一个单词的词尾&lt;/p&gt;
 &lt;h2&gt;技巧篇&lt;/h2&gt;
 &lt;h3&gt;找出当前文档中相同的行&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;sort&lt;/span&gt;
-&lt;span class="o"&gt;/^&lt;/span&gt;&lt;span class="err"&gt;\&lt;/span&gt;&lt;span class="p"&gt;(.&lt;/span&gt;&lt;span class="err"&gt;\&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="err"&gt;\&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="err"&gt;$\&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="err"&gt;\&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;:sort
+/^\(.\+\)$\n\1
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;h3&gt;按时间撤消&lt;/h3&gt;
 &lt;p&gt;Vim 7 包括了一个让用户跳转到任何编辑点之前或之后的新特性。如使用&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;earlier&lt;/span&gt; &lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="n"&gt;m&lt;/span&gt; 
+&lt;div class="highlight"&gt;&lt;pre&gt;:earlier 10m 
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;可以返回到 10 分钟以前的编辑状态。
 又如使用&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;later&lt;/span&gt; &lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="n"&gt;s&lt;/span&gt; 
+&lt;div class="highlight"&gt;&lt;pre&gt;:later 5s 
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;可以跳转到 5 秒以后的编辑点。另外，可以使用 :undolist 命令查看缓冲区存在的撤销分支列表。而通过 :undo &amp;lt; number&amp;gt; 命令则能够移到撤销的某个分支。&lt;/p&gt;
 &lt;h3&gt;删除当前文档的所有空行&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;g&lt;/span&gt;&lt;span class="o"&gt;/^&lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;d&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;:g/^$/d
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;h3&gt;在每行的行首或行尾插入指定字符串&lt;/h3&gt;
 &lt;p&gt;行首插入： &lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;:%&lt;/span&gt;&lt;span class="n"&gt;s&lt;/span&gt;&lt;span class="o"&gt;/^/&lt;/span&gt;&lt;span class="n"&gt;your_word&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;:%s/^/your_word/
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;行尾插入：  &lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;:%&lt;/span&gt;&lt;span class="n"&gt;s&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;your_word&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;:%s/$/your_word/
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;例如在每行前面插入行号如下：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;:%&lt;/span&gt;&lt;span class="n"&gt;s&lt;/span&gt;&lt;span class="o"&gt;/^/&lt;/span&gt;&lt;span class="err"&gt;\&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;line&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;.&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;:%s/^/\=line(&amp;quot;.&amp;quot;)/
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;h3&gt;读取shell命令&lt;/h3&gt;
 &lt;p&gt;如插入日期：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;r&lt;/span&gt;&lt;span class="o"&gt;!&lt;/span&gt;&lt;span class="n"&gt;date&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;:r!date
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;:r 是:read的缩写，!是表明要运行一个shell命令，意思是我要把shell命令的输出读到vim里来。&lt;/p&gt;
 &lt;h3&gt;统计某个单词出现的次数&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;:%&lt;/span&gt;&lt;span class="n"&gt;s&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;word&lt;/span&gt;&lt;span class="c1"&gt;//gn&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;:%s/word//gn
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;统计的结果会在底部的状态栏显示。&lt;/p&gt;
 &lt;h3&gt;Vim粘贴缩进问题&lt;/h3&gt;
 &lt;p&gt;在Vim中粘贴Python代码后，缩进就全乱了。进入paste模式以后，可以在插入模式下粘贴内容，不会有任何变形。&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;set&lt;/span&gt; &lt;span class="n"&gt;paste&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;:set paste
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -483,34 +483,34 @@ ye ------ 复制从当前位置到下一个单词的词尾&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;2.生成站点&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;在你的电脑上，建立一个目录，作为博客的主目录。我们假定，它的名称为blog。&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;mkdir&lt;/span&gt; &lt;span class="n"&gt;blog&lt;/span&gt;
-&lt;span class="n"&gt;cd&lt;/span&gt; &lt;span class="n"&gt;blog&lt;/span&gt;
-&lt;span class="n"&gt;pelican&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;quickstart&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;mkdir blog
+&lt;span class="nb"&gt;cd &lt;/span&gt;blog
+pelican-quickstart
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;运行一下命令后，就生成了一个站点，包含以下目录：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;blog&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;
-&lt;span class="err"&gt;├──&lt;/span&gt; &lt;span class="n"&gt;content&lt;/span&gt;              &lt;span class="err"&gt;#&lt;/span&gt; &lt;span class="err"&gt;存放输入的源文件&lt;/span&gt;
-&lt;span class="err"&gt;│&lt;/span&gt;   &lt;span class="err"&gt;└──&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;pages&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;          &lt;span class="err"&gt;#&lt;/span&gt; &lt;span class="err"&gt;存放手工创建的静态页面&lt;/span&gt;
-&lt;span class="err"&gt;├──&lt;/span&gt; &lt;span class="n"&gt;output&lt;/span&gt;               &lt;span class="err"&gt;#&lt;/span&gt; &lt;span class="err"&gt;生成的输出文件&lt;/span&gt;
-&lt;span class="err"&gt;├──&lt;/span&gt; &lt;span class="n"&gt;develop_server&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;sh&lt;/span&gt;    &lt;span class="err"&gt;#&lt;/span&gt; &lt;span class="err"&gt;方便开启测试服务器&lt;/span&gt;
-&lt;span class="err"&gt;├──&lt;/span&gt; &lt;span class="n"&gt;Makefile&lt;/span&gt;             &lt;span class="err"&gt;#&lt;/span&gt; &lt;span class="err"&gt;方便管理博客的&lt;/span&gt;&lt;span class="n"&gt;Makefile&lt;/span&gt;
-&lt;span class="err"&gt;├──&lt;/span&gt; &lt;span class="n"&gt;pelicanconf&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;py&lt;/span&gt;       &lt;span class="err"&gt;#&lt;/span&gt; &lt;span class="err"&gt;主配置文件&lt;/span&gt;
-&lt;span class="err"&gt;└──&lt;/span&gt; &lt;span class="n"&gt;publishconf&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;py&lt;/span&gt;       &lt;span class="err"&gt;#&lt;/span&gt; &lt;span class="err"&gt;主发布文件，可删除&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;blog/
+├── content              # 存放输入的源文件
+│   └── (pages)          # 存放手工创建的静态页面
+├── output               # 生成的输出文件
+├── develop_server.sh    # 方便开启测试服务器
+├── Makefile             # 方便管理博客的Makefile
+├── pelicanconf.py       # 主配置文件
+└── publishconf.py       # 主发布文件，可删除
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;另外，生成的过程中需要配置一些东西，大部分都可以一路回车，选择默认设置，其中有一步需要你填写自己的网站域名，如果暂时没有，可以先随便设置，之后可以在pelicanconf.py文件中进行修改。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;3.创建文件&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;接下来，就可以使用你喜欢的任何编辑器用markdown语法写你的第一篇文章。需要在每篇文章的开头填入以下关于文章的元信息：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nl"&gt;Title:&lt;/span&gt; &lt;span class="err"&gt;文章标题&lt;/span&gt;
-&lt;span class="nl"&gt;Date:&lt;/span&gt; &lt;span class="err"&gt;创建日期&lt;/span&gt;
-&lt;span class="nl"&gt;Modified:&lt;/span&gt; &lt;span class="err"&gt;修改日期&lt;/span&gt;
-&lt;span class="nl"&gt;Category:&lt;/span&gt; &lt;span class="err"&gt;文章分类，标志本文处于该分类下&lt;/span&gt;
-&lt;span class="nl"&gt;Tags:&lt;/span&gt; &lt;span class="err"&gt;文章标签，标志本文处于该标签下&lt;/span&gt;
-&lt;span class="nl"&gt;Slug:&lt;/span&gt; &lt;span class="n"&gt;URL&lt;/span&gt;&lt;span class="err"&gt;中该文章的链接地址&lt;/span&gt;
-&lt;span class="nl"&gt;Author:&lt;/span&gt; &lt;span class="err"&gt;作者&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;Title: 文章标题
+Date: 创建日期
+Modified: 修改日期
+Category: 文章分类，标志本文处于该分类下
+Tags: 文章标签，标志本文处于该标签下
+Slug: URL中该文章的链接地址
+Author: 作者
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -531,14 +531,14 @@ ye ------ 复制从当前位置到下一个单词的词尾&lt;/p&gt;
 &lt;p&gt;把以上的文件保存在content目录下，如保存为./content/test.md&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;4.生成静态页面&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;返回博客的主目录（即包含pelican文件的目录），然后在命令行中运行：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;make&lt;/span&gt; &lt;span class="n"&gt;html&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;make html
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;这样就会自动在output目录下生成content目录下markdown文件对应的静态页面&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;5.预览站点&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;可以先在本地预览站点，在博客主目录/output目录下：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;python&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;m&lt;/span&gt; &lt;span class="n"&gt;SimpleHTTPServer&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;python -m SimpleHTTPServer
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -550,15 +550,15 @@ ye ------ 复制从当前位置到下一个单词的词尾&lt;/p&gt;
 其中必须修改username为自己账号的username，如：nurnoch.github.io&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;2.将生成的静态网站上传到repository&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;进入到output目录下，运行：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;git&lt;/span&gt; &lt;span class="n"&gt;init&lt;/span&gt;
-&lt;span class="n"&gt;git&lt;/span&gt; &lt;span class="n"&gt;remote&lt;/span&gt; &lt;span class="n"&gt;add&lt;/span&gt; &lt;span class="n"&gt;origin&lt;/span&gt; &lt;span class="n"&gt;https&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="c1"&gt;//github.com/username/username.github.com.git&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;git init
+git remote add origin https://github.com/username/username.github.com.git
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;将username替换为自己的github用户名，初始化，并添加远程repository，将会生成 .git的目录，然后我们将output目录下的所有文件上传到github：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;git&lt;/span&gt; &lt;span class="n"&gt;add&lt;/span&gt; &lt;span class="p"&gt;.&lt;/span&gt;
-&lt;span class="n"&gt;git&lt;/span&gt; &lt;span class="n"&gt;commit&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;m&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;update&amp;quot;&lt;/span&gt;
-&lt;span class="n"&gt;git&lt;/span&gt; &lt;span class="n"&gt;push&lt;/span&gt; &lt;span class="n"&gt;origin&lt;/span&gt; &lt;span class="n"&gt;master&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;git add .
+git commit -m &lt;span class="s2"&gt;&amp;quot;update&amp;quot;&lt;/span&gt;
+git push origin master
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -631,7 +631,7 @@ ye ------ 复制从当前位置到下一个单词的词尾&lt;/p&gt;
 &lt;h3&gt;增加sitemap&lt;/h3&gt;
 &lt;p&gt;Pelican有着丰富的插件，可以配置sitemap插件, 生成 sitemap.xml 供搜索引擎使用。
 首先，下载Pelican的所有插件：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;git&lt;/span&gt; &lt;span class="n"&gt;clone&lt;/span&gt; &lt;span class="n"&gt;git&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="c1"&gt;//github.com/getpelican/pelican-plugins.git&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;git clone git://github.com/getpelican/pelican-plugins.git
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -673,7 +673,7 @@ ye ------ 复制从当前位置到下一个单词的词尾&lt;/p&gt;
 
 
 &lt;p&gt;在文章中引用图片：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt; &lt;span class="o"&gt;!&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;aimg&lt;/span&gt;&lt;span class="p"&gt;](&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;imgs&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;test&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;png&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt; ![aimg](/imgs/test.png)
 &lt;/pre&gt;&lt;/div&gt;
 
 

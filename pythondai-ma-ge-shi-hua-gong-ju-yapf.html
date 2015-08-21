@@ -4,7 +4,7 @@
 
         <title>Python代码格式化工具——YAPF</title>
         <meta charset="utf-8" />
-        <link href="http://www.wengweitao.com/feeds\all.atom.xml" type="application/atom+xml" rel="alternate" title="wwt's blog Full Atom Feed" />
+        <link href="http://www.wengweitao.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="wwt's blog Full Atom Feed" />
         <link href="http://www.wengweitao.com/feeds/all.rss.xml" type="application/rss+xml" rel="alternate" title="wwt's blog Full RSS Feed" />
         <link href="http://www.wengweitao.com/feeds/python.rss.xml" type="application/atom+xml" rel="alternate" title="wwt's blog Categories Atom Feed" />
 
@@ -66,7 +66,7 @@
 
             </header>
             <footer class="post-info">
-              <abbr class="published" title="2015-04-07T15:10:00">
+              <abbr class="published" title="2015-04-07T15:10:00+08:00">
                 Tue 07 April 2015
               </abbr>
               <address class="vcard author">By 
@@ -83,29 +83,29 @@ YAPF与其他的格式化工具不同，其算法能够把代码重新格式化�
 <h3>YAPF的使用</h3>
 <h4>1.安装</h4>
 <p>可以直接通过pip进行安装：</p>
-<div class="highlight"><pre><span class="n">pip</span> <span class="n">install</span> <span class="n">yapf</span>
+<div class="highlight"><pre>pip install yapf
 </pre></div>
 
 
 <h4>2.使用。</h4>
 <p>安装完成之后，就可以直接在命令行中使用了。
 以下是yapf的命令行参数：</p>
-<div class="highlight"><pre><span class="n">usage</span><span class="o">:</span> <span class="n">yapf</span> <span class="o">[-</span><span class="n">h</span><span class="o">]</span> <span class="o">[--</span><span class="n">style</span> <span class="n">STYLE</span><span class="o">]</span> <span class="o">[-</span><span class="n">d</span> <span class="o">|</span> <span class="o">-</span><span class="n">i</span><span class="o">]</span> <span class="o">[-</span><span class="n">l</span> <span class="n">START</span><span class="o">-</span><span class="n">END</span> <span class="o">|</span> <span class="o">-</span><span class="n">r</span><span class="o">]</span> <span class="o">...</span>
+<div class="highlight"><pre>usage: yapf <span class="o">[</span>-h<span class="o">]</span> <span class="o">[</span>--style STYLE<span class="o">]</span> <span class="o">[</span>-d <span class="p">|</span> -i<span class="o">]</span> <span class="o">[</span>-l START-END <span class="p">|</span> -r<span class="o">]</span> ...
 
-<span class="n">Formatter</span> <span class="k">for</span> <span class="n">Python</span> <span class="n">code</span><span class="o">.</span>
+Formatter <span class="k">for</span> Python code.
 
-<span class="n">positional</span> <span class="k">arguments</span><span class="o">:</span>
-  <span class="n">files</span>
+positional arguments:
+  files
 
-<span class="n">optional</span> <span class="k">arguments</span><span class="o">:</span>
-  <span class="o">-</span><span class="n">h</span><span class="o">,</span> <span class="o">--</span><span class="n">help</span>            <span class="err">显示帮助信息</span>
-  <span class="o">--</span><span class="n">style</span> <span class="n">STYLE</span>         <span class="err">指定需要格式化的编程风格，如</span><span class="n">pep8</span><span class="err">或者</span><span class="n">google</span><span class="err">等</span>
-                        <span class="err">也可以是自定义的设置文件。默认是</span><span class="n">pep8</span>
-  <span class="o">-</span><span class="n">d</span><span class="o">,</span> <span class="o">--</span><span class="n">diff</span>            <span class="err">比较格式化后的文件和原文件的区别</span>
-  <span class="o">-</span><span class="n">i</span><span class="o">,</span> <span class="o">--</span><span class="k">in</span><span class="o">-</span><span class="n">place</span>        <span class="err">直接把格式化的文件更改在源文件上</span>
-  <span class="o">-</span><span class="n">l</span> <span class="n">START</span><span class="o">-</span><span class="n">END</span><span class="o">,</span> <span class="o">--</span><span class="n">lines</span> <span class="n">START</span><span class="o">-</span><span class="n">END</span>
-                        <span class="err">指定格式化的行的范围</span>
-  <span class="o">-</span><span class="n">r</span><span class="o">,</span> <span class="o">--</span><span class="n">recursive</span>       <span class="err">在目录中递归运行</span>
+optional arguments:
+  -h, --help            显示帮助信息
+  --style STYLE         指定需要格式化的编程风格，如pep8或者google等
+                        也可以是自定义的设置文件。默认是pep8
+  -d, --diff            比较格式化后的文件和原文件的区别
+  -i, --in-place        直接把格式化的文件更改在源文件上
+  -l START-END, --lines START-END
+                        指定格式化的行的范围
+  -r, --recursive       在目录中递归运行
 </pre></div>
 
 
@@ -236,29 +236,6 @@ YAPF与其他的格式化工具不同，其算法能够把代码重新格式化�
 <!--
 <h4>标签</h4>
 <ul class="tagcloud">
-        <li class="tag-1"><a href="http://www.wengweitao.com/tag/python.html">Python</a></li>
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/tmux.html">tmux</a></li>
-        <li class="tag-1"><a href="http://www.wengweitao.com/tag/du-shu-bi-ji.html">读书笔记</a></li>
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/ji-qi-xue-xi.html">机器学习</a></li>
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/shu-ju-ku.html">数据库</a></li>
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/er-cha-shu.html">二叉树</a></li>
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/pai-xu-suan-fa-ji-chu-zong-jie.html">排序 算法 基础 总结</a></li>
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/wan.html">玩</a></li>
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/gong-ju.html">工具</a></li>
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/jiao-cheng-linux.html">教程、Linux</a></li>
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/go.html">Go</a></li>
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/xiao-yuan.html">校园</a></li>
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/vim.html">Vim</a></li>
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/suan-fa-fen-xi.html">算法分析</a></li>
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/ji-chu.html">基础</a></li>
-        <li class="tag-1"><a href="http://www.wengweitao.com/tag/leetcode.html">leetcode</a></li>
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/ji-chu-gai-nian.html">基础概念</a></li>
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/ce-shi.html">测试</a></li>
-        <li class="tag-1"><a href="http://www.wengweitao.com/tag/pai-xu-suan-fa-ji-chu.html">排序 算法 基础</a></li>
-        <li class="tag-3"><a href="http://www.wengweitao.com/tag/ji-ben-gai-nian.html">基本概念</a></li>
-        <li class="tag-2"><a href="http://www.wengweitao.com/tag/jiao-cheng.html">教程</a></li>
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/bian-cheng-zhu-ji.html">编程珠玑</a></li>
-        <li class="tag-1"><a href="http://www.wengweitao.com/tag/mian-shi-ti.html">面试题</a></li>
 </ul>
 -->
 

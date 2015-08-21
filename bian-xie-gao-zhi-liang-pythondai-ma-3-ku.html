@@ -4,7 +4,7 @@
 
         <title>编写高质量Python代码（3）——库</title>
         <meta charset="utf-8" />
-        <link href="http://www.wengweitao.com/feeds\all.atom.xml" type="application/atom+xml" rel="alternate" title="wwt's blog Full Atom Feed" />
+        <link href="http://www.wengweitao.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="wwt's blog Full Atom Feed" />
         <link href="http://www.wengweitao.com/feeds/all.rss.xml" type="application/rss+xml" rel="alternate" title="wwt's blog Full RSS Feed" />
         <link href="http://www.wengweitao.com/feeds/du-shu-bi-ji.rss.xml" type="application/atom+xml" rel="alternate" title="wwt's blog Categories Atom Feed" />
 
@@ -66,7 +66,7 @@
 
             </header>
             <footer class="post-info">
-              <abbr class="published" title="2015-04-08T22:58:00">
+              <abbr class="published" title="2015-04-08T22:58:00+08:00">
                 Wed 08 April 2015
               </abbr>
               <address class="vcard author">By 
@@ -330,7 +330,7 @@ option1=0
 <p>支持字符串格式化的类似语法</p>
 </li>
 </ol>
-<div class="highlight"><pre><span class="n">cat</span> <span class="n">format</span><span class="p">.</span><span class="n">conf</span>
+<div class="highlight"><pre>cat format.conf
 </pre></div>
 
 
@@ -551,19 +551,19 @@ tracback.print_exc()打印出：错误类型，错误对应的值已经具体的
 
 
 <p>输出结果：</p>
-<div class="highlight"><pre><span class="nx">sorry</span><span class="p">,</span> <span class="nb">out</span> <span class="nx">of</span> <span class="nb">range</span>
-<span class="nb">list</span> <span class="nb">index</span> <span class="nb">out</span> <span class="nx">of</span> <span class="nb">range</span>
-<span class="nx">Traceback</span> <span class="p">(</span><span class="nx">most</span> <span class="nx">recent</span> <span class="nb">call</span> <span class="nb">last</span><span class="p">):</span>
-  <span class="nb">File</span> <span class="s2">&quot;trace_back.py&quot;</span><span class="p">,</span> <span class="nb">line</span> <span class="mi">17</span><span class="p">,</span> <span class="k">in</span> <span class="o">&lt;</span><span class="nx">module</span><span class="o">&gt;</span>
-    <span class="nb">f</span><span class="p">()</span>
-  <span class="nb">File</span> <span class="s2">&quot;trace_back.py&quot;</span><span class="p">,</span> <span class="nb">line</span> <span class="mi">5</span><span class="p">,</span> <span class="k">in</span> <span class="nb">f</span>
-    <span class="k">return</span> <span class="nx">g</span><span class="p">()</span>
-  <span class="nb">File</span> <span class="s2">&quot;trace_back.py&quot;</span><span class="p">,</span> <span class="nb">line</span> <span class="mi">7</span><span class="p">,</span> <span class="k">in</span> <span class="nx">g</span>
-    <span class="k">return</span> <span class="nx">h</span><span class="p">()</span>
-  <span class="nb">File</span> <span class="s2">&quot;trace_back.py&quot;</span><span class="p">,</span> <span class="nb">line</span> <span class="mi">10</span><span class="p">,</span> <span class="k">in</span> <span class="nx">h</span>
-    <span class="k">return</span> <span class="nx">i</span><span class="p">()</span>
-  <span class="nb">File</span> <span class="s2">&quot;trace_back.py&quot;</span><span class="p">,</span> <span class="nb">line</span> <span class="mi">13</span><span class="p">,</span> <span class="k">in</span> <span class="nx">i</span>
-    <span class="nx">print</span> <span class="nx">gList</span><span class="err">[</span><span class="mi">7</span><span class="cp">]</span>
+<div class="highlight"><pre>sorry, out of range
+list index out of range
+Traceback (most recent call last):
+  File &quot;trace_back.py&quot;, line 17, in &lt;module&gt;
+    f()
+  File &quot;trace_back.py&quot;, line 5, in f
+    return g()
+  File &quot;trace_back.py&quot;, line 7, in g
+    return h()
+  File &quot;trace_back.py&quot;, line 10, in h
+    return i()
+  File &quot;trace_back.py&quot;, line 13, in i
+    print gList[7]
 IndexError: list index out of range
 </pre></div>
 
@@ -616,12 +616,12 @@ IndexError: list index out of range
 
 
 <p>输出log到log.txt，内容如下：</p>
-<div class="highlight"><pre><span class="mi">2014</span><span class="o">-</span><span class="mi">12</span><span class="o">-</span><span class="mi">11</span> <span class="mi">20</span><span class="p">:</span><span class="mi">50</span><span class="p">:</span><span class="mi">55</span><span class="p">,</span><span class="mi">684</span> <span class="nx">trace_back.py</span><span class="err">[</span><span class="nb">line</span><span class="p">:</span><span class="mi">25</span><span class="cp">]</span> DEBUG Information during calling f():
-2014-12-11 20:50:55,684 trace_back.py<span class="cp">[</span><span class="nb">line</span><span class="p">:</span><span class="mi">13</span><span class="cp">]</span> INFO <span class="cp">[</span><span class="nx">INFO</span><span class="cp">]</span>:calling method g() in f()
-2014-12-11 20:50:55,684 trace_back.py<span class="cp">[</span><span class="nb">line</span><span class="p">:</span><span class="mi">32</span><span class="cp">]</span> ERROR <span class="cp">[</span><span class="nb">ERROR</span><span class="cp">]</span>:Sorry,Exception occured.
-2014-12-11 20:50:55,684 trace_back.py<span class="cp">[</span><span class="nb">line</span><span class="p">:</span><span class="mi">33</span><span class="cp">]</span> CRITICAL object info:list index out of range
-2014-12-11 20:50:55,684 trace_back.py<span class="cp">[</span><span class="nb">line</span><span class="p">:</span><span class="mi">34</span><span class="cp">]</span> CRITICAL Error Type:<span class="nt">&lt;type</span> <span class="err">&#39;</span><span class="na">exceptions</span><span class="err">.</span><span class="na">IndexError</span><span class="err">&#39;</span><span class="nt">&gt;</span>, Error information:list index out of range
-2014-12-11 20:50:55,684 trace_back.py<span class="cp">[</span><span class="nb">line</span><span class="p">:</span><span class="mi">35</span><span class="cp">]</span> CRITICAL   File &quot;trace_back.py&quot;, line 27, in <span class="nt">&lt;module&gt;</span>
+<div class="highlight"><pre>2014-12-11 20:50:55,684 trace_back.py[line:25] DEBUG Information during calling f():
+2014-12-11 20:50:55,684 trace_back.py[line:13] INFO [INFO]:calling method g() in f()
+2014-12-11 20:50:55,684 trace_back.py[line:32] ERROR [ERROR]:Sorry,Exception occured.
+2014-12-11 20:50:55,684 trace_back.py[line:33] CRITICAL object info:list index out of range
+2014-12-11 20:50:55,684 trace_back.py[line:34] CRITICAL Error Type:&lt;type &#39;exceptions.IndexError&#39;&gt;, Error information:list index out of range
+2014-12-11 20:50:55,684 trace_back.py[line:35] CRITICAL   File &quot;trace_back.py&quot;, line 27, in &lt;module&gt;
     f()
   File &quot;trace_back.py&quot;, line 14, in f
     return g()
@@ -630,7 +630,7 @@ IndexError: list index out of range
   File &quot;trace_back.py&quot;, line 19, in h
     return i()
   File &quot;trace_back.py&quot;, line 22, in i
-    print gList<span class="cp">[</span><span class="mi">7</span><span class="cp">]</span>
+    print gList[7]
 </pre></div>
 
 
@@ -834,29 +834,6 @@ threading模块基于thread进行封装，将线程操作对象化，在语言�
 <!--
 <h4>标签</h4>
 <ul class="tagcloud">
-        <li class="tag-1"><a href="http://www.wengweitao.com/tag/python.html">Python</a></li>
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/tmux.html">tmux</a></li>
-        <li class="tag-1"><a href="http://www.wengweitao.com/tag/du-shu-bi-ji.html">读书笔记</a></li>
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/ji-qi-xue-xi.html">机器学习</a></li>
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/shu-ju-ku.html">数据库</a></li>
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/er-cha-shu.html">二叉树</a></li>
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/pai-xu-suan-fa-ji-chu-zong-jie.html">排序 算法 基础 总结</a></li>
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/wan.html">玩</a></li>
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/gong-ju.html">工具</a></li>
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/jiao-cheng-linux.html">教程、Linux</a></li>
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/go.html">Go</a></li>
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/xiao-yuan.html">校园</a></li>
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/vim.html">Vim</a></li>
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/suan-fa-fen-xi.html">算法分析</a></li>
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/ji-chu.html">基础</a></li>
-        <li class="tag-1"><a href="http://www.wengweitao.com/tag/leetcode.html">leetcode</a></li>
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/ji-chu-gai-nian.html">基础概念</a></li>
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/ce-shi.html">测试</a></li>
-        <li class="tag-1"><a href="http://www.wengweitao.com/tag/pai-xu-suan-fa-ji-chu.html">排序 算法 基础</a></li>
-        <li class="tag-3"><a href="http://www.wengweitao.com/tag/ji-ben-gai-nian.html">基本概念</a></li>
-        <li class="tag-2"><a href="http://www.wengweitao.com/tag/jiao-cheng.html">教程</a></li>
-        <li class="tag-4"><a href="http://www.wengweitao.com/tag/bian-cheng-zhu-ji.html">编程珠玑</a></li>
-        <li class="tag-1"><a href="http://www.wengweitao.com/tag/mian-shi-ti.html">面试题</a></li>
 </ul>
 -->
 
