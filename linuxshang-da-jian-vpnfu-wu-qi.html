@@ -67,7 +67,7 @@
             </header>
             <footer class="post-info">
               <abbr class="published" title="2015-05-01T21:21:00+08:00">
-                Fri 01 May 2015
+                五 01 五月 2015
               </abbr>
               <address class="vcard author">By 
                 <a class="url fn" href="http://www.wengweitao.com/author/wwt.html"> wwt</a>
@@ -81,7 +81,7 @@
 <hr />
 <h2>1. 判断PPP是否可用</h2>
 <p>首先，我们需要检查服务器是否支持搭建PPTP，在shell中输入：</p>
-<div class="highlight"><pre>cat /dev/ppp
+<div class="highlight"><pre><span></span>cat /dev/ppp
 
 cat: /dev/ppp: 没有那个设备或地址
 </pre></div>
@@ -97,13 +97,13 @@ cat: /dev/ppp: 没有那个设备或地址
 </ul>
 <p><strong>（1）安装PPP</strong></p>
 <p>直接使用yum安装即可</p>
-<div class="highlight"><pre>yum install ppp
+<div class="highlight"><pre><span></span>yum install ppp
 </pre></div>
 
 
 <p><strong>（2）安装IPtables</strong></p>
 <p>通常Linux系统上都自带安装好了iptables，如果没有可以使用yum进行安装：</p>
-<div class="highlight"><pre>yum install iptables
+<div class="highlight"><pre><span></span>yum install iptables
 cp -rpf /etc/sysconfig/iptables /etc/sysconfig/iptables.pptpsave
 <span class="nb">cd</span> /usr/src
 </pre></div>
@@ -112,13 +112,13 @@ cp -rpf /etc/sysconfig/iptables /etc/sysconfig/iptables.pptpsave
 <p><strong>（3）安装PPTP套件</strong></p>
 <p>如果你的系统直接yum那么可以直接通过yum进行安装，但是我的系统是Red Hat 4.4.6-4，yum中没有提供pptp套件的rpm包，只能自己先下载到本地。</p>
 <p>到<a href="http://poptop.sourceforge.net/yum/stable/">这里</a>下载适合你系统的rpm包。可以使用</p>
-<div class="highlight"><pre>cat /proc/version
+<div class="highlight"><pre><span></span>cat /proc/version
 </pre></div>
 
 
 <p>查看Linux系统信息。</p>
 <p>注意：一定要正确选择适合自己系统的rpm包，如果下载错误将无法完成安装。</p>
-<div class="highlight"><pre>wget http://poptop.sourceforge.net/yum/stable/rhel6/x86_64/pptpd-1.4.0-1.el6.x86_64.rpm
+<div class="highlight"><pre><span></span>wget http://poptop.sourceforge.net/yum/stable/rhel6/x86_64/pptpd-1.4.0-1.el6.x86_64.rpm
 
 rpm -ivh pptpd-1.4.0-1.el6.x86_64.rpm
 </pre></div>
@@ -126,12 +126,12 @@ rpm -ivh pptpd-1.4.0-1.el6.x86_64.rpm
 
 <p><strong>（4）进行配置</strong></p>
 <p>使用Vim编辑 /etc/sysctl.conf 文件，将其中的一行内容修改为：</p>
-<div class="highlight"><pre>net.ipv4.ip_forward <span class="o">=</span> 1
+<div class="highlight"><pre><span></span>net.ipv4.ip_forward <span class="o">=</span> 1
 </pre></div>
 
 
 <p>复制以下所有命令，粘贴在shell中：</p>
-<div class="highlight"><pre>sysctl -p
+<div class="highlight"><pre><span></span>sysctl -p
 <span class="nb">echo</span> <span class="s2">&quot;localip 192.168.240.1&quot;</span> &gt;&gt; /etc/pptpd.conf
 <span class="nb">echo</span> <span class="s2">&quot;remoteip 192.168.240.101-200&quot;</span> &gt;&gt; /etc/pptpd.conf
 <span class="nb">echo</span> <span class="s2">&quot;ms-dns 8.8.8.8&quot;</span> &gt;&gt; /etc/ppp/options.pptpd
@@ -152,7 +152,7 @@ chkconfig iptables on
 <p>以上主要设置了VPN所使用的IP地址段、包转发规则等。VPN客户端将分配到的地址为：192.168.240.* 地址段，通过VPN服务器的eth0以太网接口转发对外的数据包（可以使用ifconfig查看本机对外通信的接口是否为eth0，若不是可自行更改）。</p>
 <p><strong>（5）设置VPN账号和密码</strong></p>
 <p>你任意添加VPN账户，使用Vim编辑文件 /etc/ppp/chap-secrets 一行一个账户，如：</p>
-<div class="highlight"><pre>wwt  pptpd  <span class="m">123456</span> *
+<div class="highlight"><pre><span></span>wwt  pptpd  <span class="m">123456</span> *
 </pre></div>
 
 

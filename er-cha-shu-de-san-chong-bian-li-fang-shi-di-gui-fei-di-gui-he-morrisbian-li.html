@@ -67,7 +67,7 @@
             </header>
             <footer class="post-info">
               <abbr class="published" title="2015-05-27T21:41:00+08:00">
-                Wed 27 May 2015
+                三 27 五月 2015
               </abbr>
               <address class="vcard author">By 
                 <a class="url fn" href="http://www.wengweitao.com/author/wwt.html"> wwt</a>
@@ -83,7 +83,7 @@
 <p>递归遍历的实现非常容易，非递归实现需要用到栈。而Morris算法可能很多人都不太熟悉，其强大之处在于只需要使用O(1)的空间就能实现对二叉树O(n)时间的遍历。</p>
 <h2>二叉树结点的定义</h2>
 <p>每个二叉树结点包括一个值以及左孩子和右孩子结点，其定义如下：</p>
-<div class="highlight"><pre><span class="k">class</span> <span class="nc">TreeNode</span> <span class="p">{</span>
+<div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">TreeNode</span> <span class="p">{</span>
     <span class="k">public</span><span class="o">:</span>
         <span class="kt">int</span> <span class="n">val</span><span class="p">;</span>
         <span class="n">TreeNode</span> <span class="o">*</span><span class="n">left</span><span class="p">,</span> <span class="o">*</span><span class="n">right</span><span class="p">;</span>
@@ -106,7 +106,7 @@
 <h2>递归遍历</h2>
 <p>递归实现非常简单，按照遍历的次序，对当前结点分别调用左子树和右子树即可。</p>
 <h3>前序遍历</h3>
-<div class="highlight"><pre><span class="kt">void</span> <span class="nf">preOrder</span><span class="p">(</span><span class="n">TreeNode</span> <span class="o">*</span><span class="n">root</span><span class="p">)</span> <span class="p">{</span>
+<div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">preOrder</span><span class="p">(</span><span class="n">TreeNode</span> <span class="o">*</span><span class="n">root</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">if</span><span class="p">(</span><span class="n">root</span> <span class="o">==</span> <span class="nb">NULL</span><span class="p">)</span>
         <span class="k">return</span><span class="p">;</span>
     <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">root</span><span class="o">-&gt;</span><span class="n">val</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
@@ -117,7 +117,7 @@
 
 
 <h3>中序遍历</h3>
-<div class="highlight"><pre><span class="kt">void</span> <span class="nf">inOrder</span><span class="p">(</span><span class="n">TreeNode</span> <span class="o">*</span><span class="n">root</span><span class="p">)</span> <span class="p">{</span>
+<div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">inOrder</span><span class="p">(</span><span class="n">TreeNode</span> <span class="o">*</span><span class="n">root</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">if</span><span class="p">(</span><span class="n">root</span> <span class="o">==</span> <span class="nb">NULL</span><span class="p">)</span>
         <span class="k">return</span><span class="p">;</span>
     <span class="n">inOrder</span><span class="p">(</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">left</span><span class="p">);</span>
@@ -128,7 +128,7 @@
 
 
 <h3>后序遍历</h3>
-<div class="highlight"><pre><span class="kt">void</span> <span class="nf">postOrder</span><span class="p">(</span><span class="n">TreeNode</span> <span class="o">*</span><span class="n">root</span><span class="p">)</span> <span class="p">{</span>
+<div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">postOrder</span><span class="p">(</span><span class="n">TreeNode</span> <span class="o">*</span><span class="n">root</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">if</span><span class="p">(</span><span class="n">root</span> <span class="o">==</span> <span class="nb">NULL</span><span class="p">)</span>
         <span class="k">return</span><span class="p">;</span>
     <span class="n">postOrder</span><span class="p">(</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">left</span><span class="p">);</span>
@@ -150,7 +150,7 @@
 <li>把当前结点的左孩子入栈。</li>
 </ol>
 <p>按照以上顺序入栈，这样出栈顺序就与先序遍历一样：先根结点，再左子树，最后右子树。</p>
-<div class="highlight"><pre><span class="kt">void</span> <span class="nf">preOrder2</span><span class="p">(</span><span class="n">TreeNode</span> <span class="o">*</span><span class="n">root</span><span class="p">)</span> <span class="p">{</span>
+<div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">preOrder2</span><span class="p">(</span><span class="n">TreeNode</span> <span class="o">*</span><span class="n">root</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">if</span><span class="p">(</span><span class="n">root</span> <span class="o">==</span> <span class="nb">NULL</span><span class="p">)</span>
         <span class="k">return</span><span class="p">;</span>
 
@@ -175,7 +175,7 @@
 <li>若pNode非空，那么就把pNode入栈，并把pNode变为其左孩子；（直到最左边的结点）</li>
 <li>若pNode为空，弹出栈顶的结点，并访问该结点，将pNode指向其右孩子（访问最左边的结点，并遍历其右子树）</li>
 </ol>
-<div class="highlight"><pre><span class="kt">void</span> <span class="nf">inOrder2</span><span class="p">(</span><span class="n">TreeNode</span> <span class="o">*</span><span class="n">root</span><span class="p">)</span> <span class="p">{</span>
+<div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">inOrder2</span><span class="p">(</span><span class="n">TreeNode</span> <span class="o">*</span><span class="n">root</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">if</span><span class="p">(</span><span class="n">root</span> <span class="o">==</span> <span class="nb">NULL</span><span class="p">)</span>
         <span class="k">return</span><span class="p">;</span>
 
@@ -206,7 +206,7 @@
 <li>当所有元素都压入stk2后，依次弹出stk2的栈顶结点，并访问之。</li>
 </ol>
 <p>第一个栈的入栈顺序是：根结点，左孩子和右孩子；于是，压入第二个栈的顺序是：根结点，右孩子和左孩子。因此，弹出的顺序就是：左孩子，右孩子和根结点。</p>
-<div class="highlight"><pre><span class="kt">void</span> <span class="nf">postOrder2</span><span class="p">(</span><span class="n">TreeNode</span> <span class="o">*</span><span class="n">root</span><span class="p">)</span> <span class="p">{</span>
+<div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">postOrder2</span><span class="p">(</span><span class="n">TreeNode</span> <span class="o">*</span><span class="n">root</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">if</span><span class="p">(</span><span class="n">root</span> <span class="o">==</span> <span class="nb">NULL</span><span class="p">)</span>
         <span class="k">return</span><span class="p">;</span>
 
@@ -230,7 +230,7 @@
 
 
 <p>另外，二叉树的后序遍历的非递归实现，也可以只使用一个栈来实现。</p>
-<div class="highlight"><pre><span class="kt">void</span> <span class="nf">postOrder2</span><span class="p">(</span><span class="n">TreeNode</span> <span class="o">*</span><span class="n">root</span><span class="p">)</span> <span class="p">{</span>
+<div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">postOrder2</span><span class="p">(</span><span class="n">TreeNode</span> <span class="o">*</span><span class="n">root</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">if</span><span class="p">(</span><span class="n">root</span> <span class="o">==</span> <span class="nb">NULL</span><span class="p">)</span>
         <span class="k">return</span><span class="p">;</span>
 
@@ -287,7 +287,7 @@
 </li>
 <li>重复以上两步，直到当前结点为空。</li>
 </ol>
-<div class="highlight"><pre><span class="kt">void</span> <span class="nf">inOrder3</span><span class="p">(</span><span class="n">TreeNode</span> <span class="o">*</span><span class="n">root</span><span class="p">)</span> <span class="p">{</span>
+<div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">inOrder3</span><span class="p">(</span><span class="n">TreeNode</span> <span class="o">*</span><span class="n">root</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">if</span><span class="p">(</span><span class="n">root</span> <span class="o">==</span> <span class="nb">NULL</span><span class="p">)</span>
         <span class="k">return</span><span class="p">;</span>
 
@@ -323,7 +323,7 @@
 <img alt="一棵二叉树" src="http://blog.codinghonor.com/images/2014/threaded_binary_tree.jpg" /></p>
 <h3>前序遍历</h3>
 <p>与中序遍历类似，区别仅仅是输出的顺序不同。</p>
-<div class="highlight"><pre><span class="kt">void</span> <span class="nf">preOrder3</span><span class="p">(</span><span class="n">TreeNode</span> <span class="o">*</span><span class="n">root</span><span class="p">)</span> <span class="p">{</span>
+<div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">preOrder3</span><span class="p">(</span><span class="n">TreeNode</span> <span class="o">*</span><span class="n">root</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">if</span><span class="p">(</span><span class="n">root</span> <span class="o">==</span> <span class="nb">NULL</span><span class="p">)</span>
         <span class="k">return</span><span class="p">;</span>
     <span class="n">TreeNode</span> <span class="o">*</span><span class="n">pNode</span> <span class="o">=</span> <span class="n">root</span><span class="p">;</span>
@@ -363,7 +363,7 @@
 </li>
 <li>重复以上过程，直到当前结点为空。</li>
 </ol>
-<div class="highlight"><pre><span class="kt">void</span> <span class="nf">reverse</span><span class="p">(</span><span class="n">TreeNode</span> <span class="o">*</span><span class="n">p1</span><span class="p">,</span> <span class="n">TreeNode</span> <span class="o">*</span><span class="n">p2</span><span class="p">)</span> <span class="p">{</span>
+<div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">reverse</span><span class="p">(</span><span class="n">TreeNode</span> <span class="o">*</span><span class="n">p1</span><span class="p">,</span> <span class="n">TreeNode</span> <span class="o">*</span><span class="n">p2</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">if</span><span class="p">(</span><span class="n">p1</span> <span class="o">==</span> <span class="n">p2</span><span class="p">)</span> 
         <span class="k">return</span><span class="p">;</span>
     <span class="n">TreeNode</span> <span class="o">*</span><span class="n">x</span> <span class="o">=</span> <span class="n">p1</span><span class="p">;</span> 

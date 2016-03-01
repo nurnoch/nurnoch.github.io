@@ -67,7 +67,7 @@
             </header>
             <footer class="post-info">
               <abbr class="published" title="2015-05-18T16:13:00+08:00">
-                Mon 18 May 2015
+                一 18 五月 2015
               </abbr>
               <address class="vcard author">By 
                 <a class="url fn" href="http://www.wengweitao.com/author/wwt.html"> wwt</a>
@@ -84,7 +84,7 @@
 </ol>
 <h2>桶排序的代码实现</h2>
 <p>在桶排序的代码中，我们假设输入是一个包含n个元素的数组A，且每个元素A[i]满足<span class="math">\(0 \leq A[i] &lt; 1\)</span>。此外，算法还需要一个临时数组B[0..n-1]来存放链表（即桶），并假设存在一种用于维护这些链表的机制。</p>
-<div class="highlight"><pre><span class="kt">void</span> <span class="nf">insertionSort</span><span class="p">(</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">A</span><span class="p">)</span> <span class="p">{</span>
+<div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">insertionSort</span><span class="p">(</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">A</span><span class="p">)</span> <span class="p">{</span>
     <span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="n">A</span><span class="p">.</span><span class="n">size</span><span class="p">();</span>
     <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span>
         <span class="kt">double</span> <span class="n">key</span> <span class="o">=</span> <span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>

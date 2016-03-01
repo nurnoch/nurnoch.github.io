@@ -63,7 +63,7 @@
                         <li><article class="hentry">
                                 <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/tong-pai-xu.html" rel="bookmark" title="Permalink to 桶排序">桶排序</a></h2> </header>
                                 <footer class="post-info">
-                                    <abbr class="published" title="2015-05-18T16:13:00+08:00"> Mon 18 May 2015 </abbr>
+                                    <abbr class="published" title="2015-05-18T16:13:00+08:00"> 一 18 五月 2015 </abbr>
                                     <address class="vcard author">By 
                                     <a class="url fn" href="http://www.wengweitao.com/author/wwt.html"> wwt</a>
                                     </address>
@@ -78,7 +78,7 @@
 </ol>
 <h2>桶排序的代码实现</h2>
 <p>在桶排序的代码中，我们假设输入是一个包含n个元素的数组A，且每个元素A[i]满足<span class="math">\(0 \leq A[i] &lt; 1\)</span>。此外，算法还需要一个临时数组B[0..n-1]来存放链表（即桶），并假设存在一种用于维护这些链表的机制。</p>
-<div class="highlight"><pre><span class="kt">void</span> <span class="nf">insertionSort</span><span class="p">(</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">double ...</span></pre></div> </div><!-- /.entry-content -->
+<div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">insertionSort</span><span class="p">(</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">double ...</span></pre></div> </div><!-- /.entry-content -->
 
                                 <div class="medium primary btn"><a href="http://www.wengweitao.com/tong-pai-xu.html" rel="bookmark" title="Permalink to 桶排序">Read more <i class="icon-arrow-right"></i></a></div>
 
@@ -95,7 +95,7 @@
                         <li><article class="hentry">
                                 <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/ji-shu-pai-xu-radix-sort.html" rel="bookmark" title="Permalink to 基数排序（radix sort）">基数排序（radix sort）</a></h2> </header>
                                 <footer class="post-info">
-                                    <abbr class="published" title="2015-05-17T14:12:00+08:00"> Sun 17 May 2015 </abbr>
+                                    <abbr class="published" title="2015-05-17T14:12:00+08:00"> 日 17 五月 2015 </abbr>
                                     <address class="vcard author">By 
                                     <a class="url fn" href="http://www.wengweitao.com/author/wwt.html"> wwt</a>
                                     </address>
@@ -105,7 +105,7 @@
 <p>我们有时会用基数排序来对具有多关键字域的记录进行排序。例如，我们希望用3个关键字（年、月、日）来对日期进行排序。我们可以使用基于特殊比较函数的排序算法，先比较年，如果相同再比较月，如果还相同再比较日。我们也可以采用基数排序，用一种稳定排序算法对这些信息进行三次排序：先日，再月，最后年。</p>
 <h2>基数排序的实现</h2>
 <p>基数排序的代码实现：</p>
-<div class="highlight"><pre><span class="k">const</span> <span class="kt">int</span> <span class="n">k</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>  <span class="c1">// 每个位的数值大小为从0~9</span>
+<div class="highlight"><pre><span></span><span class="k">const</span> <span class="kt">int</span> <span class="n">k</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>  <span class="c1">// 每个位的数值大小为从0~9</span>
 <span class="kt">int</span> <span class="n">base</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
 
 <span class="kt">void</span> <span class="nf">countingSort</span><span class="p">(</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">A</span><span class="p">,</span> <span class="n">vector</span><span class="o">&lt;</span><span class="kt">int ...</span></pre></div> </div><!-- /.entry-content -->
@@ -125,7 +125,7 @@
                         <li><article class="hentry">
                                 <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/ji-shu-pai-xu.html" rel="bookmark" title="Permalink to 计数排序">计数排序</a></h2> </header>
                                 <footer class="post-info">
-                                    <abbr class="published" title="2015-05-17T11:21:00+08:00"> Sun 17 May 2015 </abbr>
+                                    <abbr class="published" title="2015-05-17T11:21:00+08:00"> 日 17 五月 2015 </abbr>
                                     <address class="vcard author">By 
                                     <a class="url fn" href="http://www.wengweitao.com/author/wwt.html"> wwt</a>
                                     </address>
@@ -140,7 +140,7 @@
 </ul>
 <h2>计数排序的代码实现</h2>
 <p>在计数排序算法的代码中，假设输入是一个数组A[1...n]，A.length = n。我们还需要两个数组：B[1..n]存放排序的输出，C[0..k]提供临时存储空间。</p>
-<div class="highlight"><pre><span class="c1">// B: output of the sorted array</span>
+<div class="highlight"><pre><span></span><span class="c1">// B: output of the sorted array</span>
 <span class="c1">// k: every element in A: 0 &lt;= A ...</span></pre></div> </div><!-- /.entry-content -->
 
                                 <div class="medium primary btn"><a href="http://www.wengweitao.com/ji-shu-pai-xu.html" rel="bookmark" title="Permalink to 计数排序">Read more <i class="icon-arrow-right"></i></a></div>
@@ -158,7 +158,7 @@
                         <li><article class="hentry">
                                 <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/kuai-su-pai-xu.html" rel="bookmark" title="Permalink to 快速排序">快速排序</a></h2> </header>
                                 <footer class="post-info">
-                                    <abbr class="published" title="2015-05-16T10:22:00+08:00"> Sat 16 May 2015 </abbr>
+                                    <abbr class="published" title="2015-05-16T10:22:00+08:00"> 六 16 五月 2015 </abbr>
                                     <address class="vcard author">By 
                                     <a class="url fn" href="http://www.wengweitao.com/author/wwt.html"> wwt</a>
                                     </address>
@@ -185,7 +185,7 @@
                         <li><article class="hentry">
                                 <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/gui-bing-pai-xu.html" rel="bookmark" title="Permalink to 归并排序">归并排序</a></h2> </header>
                                 <footer class="post-info">
-                                    <abbr class="published" title="2015-05-15T19:45:00+08:00"> Fri 15 May 2015 </abbr>
+                                    <abbr class="published" title="2015-05-15T19:45:00+08:00"> 五 15 五月 2015 </abbr>
                                     <address class="vcard author">By 
                                     <a class="url fn" href="http://www.wengweitao.com/author/wwt.html"> wwt</a>
                                     </address>
@@ -199,7 +199,7 @@
 <p>当待排序的序列的长度为1时，递归“开始回升”，在这种情况下，我们不需要做任何工作，因为只有一个元素的序列已经是有序的了。</p>
 <h2>合并操作</h2>
 <p>归并排序算法的关键操作是“合并”步骤中将两个已排序的子序列进行合并。我们通过函数MERGE(A, p, q, r)来完成合并，其中A是一个数组，p、q和r是数组下标，该过程假设A[p..q]和A[q+1..r]都已有序。</p>
-<div class="highlight"><pre><span class="c1">// 对A[p..q] 和 A[q+1..r]两个有序子序列进行合并</span>
+<div class="highlight"><pre><span></span><span class="c1">// 对A[p..q] 和 A[q+1..r]两个有序子序列进行合并</span>
 <span class="kt">void</span> <span class="nf">merge</span><span class="p">(</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int ...</span></pre></div> </div><!-- /.entry-content -->
 
                                 <div class="medium primary btn"><a href="http://www.wengweitao.com/gui-bing-pai-xu.html" rel="bookmark" title="Permalink to 归并排序">Read more <i class="icon-arrow-right"></i></a></div>

@@ -67,7 +67,7 @@
             </header>
             <footer class="post-info">
               <abbr class="published" title="2015-05-24T16:49:00+08:00">
-                Sun 24 May 2015
+                日 24 五月 2015
               </abbr>
               <address class="vcard author">By 
                 <a class="url fn" href="http://www.wengweitao.com/author/wwt.html"> wwt</a>
@@ -75,18 +75,18 @@
             </footer><!-- /.post-info -->
             <div class="entry-content">
               <p>使用Django在服务器端写了一个API，返回一个JSON数据。使用Ajax调用该API：</p>
-<div class="highlight"><pre><span class="cp">&lt;!DOCTYPE HTML&gt;</span>
-<span class="nt">&lt;html&gt;</span>
-<span class="nt">&lt;head&gt;</span>
-    <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">&quot;utf-8&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">&quot;viewport&quot;</span> <span class="na">content=</span><span class="s">&quot;maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0&quot;</span><span class="nt">/&gt;</span>
-    <span class="nt">&lt;title&gt;</span>test<span class="nt">&lt;/title&gt;</span>
-<span class="nt">&lt;/head&gt;</span>
-<span class="nt">&lt;body&gt;</span>
-<span class="nt">&lt;button</span> <span class="na">onclick=</span><span class="s">&quot;showPersonInfo()&quot;</span><span class="nt">&gt;</span>点我获取数据<span class="nt">&lt;/button&gt;</span>
-<span class="nt">&lt;/body&gt;</span>
-<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;http://libs.baidu.com/jquery/1.9.0/jquery.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
-    <span class="nt">&lt;script&gt;</span>
+<div class="highlight"><pre><span></span><span class="cp">&lt;!DOCTYPE HTML&gt;</span>
+<span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">&quot;utf-8&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;viewport&quot;</span> <span class="na">content</span><span class="o">=</span><span class="s">&quot;maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0&quot;</span><span class="p">/&gt;</span>
+    <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>test<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">button</span> <span class="na">onclick</span><span class="o">=</span><span class="s">&quot;showPersonInfo()&quot;</span><span class="p">&gt;</span>点我获取数据<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;http://libs.baidu.com/jquery/1.9.0/jquery.js&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
         <span class="kd">function</span> <span class="nx">showPersonInfo</span><span class="p">(){</span>
             <span class="nx">$</span><span class="p">.</span><span class="nx">getJSON</span><span class="p">(</span>
                 <span class="s1">&#39;http://xxx/account/getuserinfo/&#39;</span><span class="p">,</span>
@@ -97,8 +97,8 @@
                 <span class="p">}</span>
             <span class="p">)</span>
         <span class="p">}</span>
-    <span class="nt">&lt;/script&gt;</span>
-<span class="nt">&lt;/html&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
 </pre></div>
 
 
@@ -126,12 +126,12 @@
 <p>JSONP只能用于GET请求。</p>
 <h4>2.直接修改Django中的views.py文件</h4>
 <p>修改views.py中对应API的实现函数，允许其他域通过Ajax请求数据：</p>
-<div class="highlight"><pre><span class="k">def</span> <span class="nf">myview</span><span class="p">(</span><span class="n">_request</span><span class="p">):</span>
-    <span class="n">response</span> <span class="o">=</span> <span class="n">HttpResponse</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">({</span><span class="s">&quot;key&quot;</span><span class="p">:</span> <span class="s">&quot;value&quot;</span><span class="p">,</span> <span class="s">&quot;key2&quot;</span><span class="p">:</span> <span class="s">&quot;value&quot;</span><span class="p">}))</span>
-    <span class="n">response</span><span class="p">[</span><span class="s">&quot;Access-Control-Allow-Origin&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s">&quot;*&quot;</span>
-    <span class="n">response</span><span class="p">[</span><span class="s">&quot;Access-Control-Allow-Methods&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s">&quot;POST, GET, OPTIONS&quot;</span>
-    <span class="n">response</span><span class="p">[</span><span class="s">&quot;Access-Control-Max-Age&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s">&quot;1000&quot;</span>
-    <span class="n">response</span><span class="p">[</span><span class="s">&quot;Access-Control-Allow-Headers&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s">&quot;*&quot;</span>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">myview</span><span class="p">(</span><span class="n">_request</span><span class="p">):</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">HttpResponse</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">({</span><span class="s2">&quot;key&quot;</span><span class="p">:</span> <span class="s2">&quot;value&quot;</span><span class="p">,</span> <span class="s2">&quot;key2&quot;</span><span class="p">:</span> <span class="s2">&quot;value&quot;</span><span class="p">}))</span>
+    <span class="n">response</span><span class="p">[</span><span class="s2">&quot;Access-Control-Allow-Origin&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;*&quot;</span>
+    <span class="n">response</span><span class="p">[</span><span class="s2">&quot;Access-Control-Allow-Methods&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;POST, GET, OPTIONS&quot;</span>
+    <span class="n">response</span><span class="p">[</span><span class="s2">&quot;Access-Control-Max-Age&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;1000&quot;</span>
+    <span class="n">response</span><span class="p">[</span><span class="s2">&quot;Access-Control-Allow-Headers&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;*&quot;</span>
     <span class="k">return</span> <span class="n">response</span>
 </pre></div>
 
@@ -139,14 +139,14 @@
 <h4>3.安装django-cors-headers</h4>
 <p><a href="https://github.com/ottoyiu/django-cors-headers">django-cors-headers</a>是Django的一个第三方APP，可以用来处理跨域访问的问题。</p>
 <p>安装django-cors-headers：</p>
-<div class="highlight"><pre>pip install django-cors-headers
+<div class="highlight"><pre><span></span>pip install django-cors-headers
 </pre></div>
 
 
 <p>在settings.py中增加：</p>
-<div class="highlight"><pre><span class="n">INSTALLED_APPS</span> <span class="o">=</span> <span class="p">(</span>
+<div class="highlight"><pre><span></span><span class="n">INSTALLED_APPS</span> <span class="o">=</span> <span class="p">(</span>
     <span class="o">...</span>
-    <span class="s">&#39;corsheaders&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;corsheaders&#39;</span><span class="p">,</span>
     <span class="o">...</span>
 <span class="p">)</span>
 
@@ -154,8 +154,8 @@
 
 <span class="n">MIDDLEWARE_CLASSES</span> <span class="o">=</span> <span class="p">(</span>
     <span class="o">...</span>
-    <span class="s">&#39;corsheaders.middleware.CorsMiddleware&#39;</span><span class="p">,</span>
-    <span class="s">&#39;django.middleware.common.CommonMiddleware&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;corsheaders.middleware.CorsMiddleware&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;django.middleware.common.CommonMiddleware&#39;</span><span class="p">,</span>
     <span class="o">...</span>
 <span class="p">)</span>
 </pre></div>

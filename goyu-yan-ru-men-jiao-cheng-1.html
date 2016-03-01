@@ -67,7 +67,7 @@
             </header>
             <footer class="post-info">
               <abbr class="published" title="2015-04-30T22:30:00+08:00">
-                Thu 30 April 2015
+                四 30 四月 2015
               </abbr>
               <address class="vcard author">By 
                 <a class="url fn" href="http://www.wengweitao.com/author/wwt.html"> wwt</a>
@@ -92,24 +92,24 @@
 <h2>安装Go</h2>
 <p>这里以Linux平台为例。</p>
 <p>下载<a href="https://golang.org/dl/">Go的压缩包</a>并解压到 /usr/local 目录：</p>
-<div class="highlight"><pre>tar -C /usr/local -xzf go<span class="nv">$VERSION</span>.<span class="nv">$OS</span>-<span class="nv">$ARCH</span>.tar.gz
+<div class="highlight"><pre><span></span>tar -C /usr/local -xzf go<span class="nv">$VERSION</span>.<span class="nv">$OS</span>-<span class="nv">$ARCH</span>.tar.gz
 </pre></div>
 
 
 <p>将 /usr/local/go/bin 添加到PATH环境变量中，添加如下一行内容到 /etc/profile (系统范围)或者 $HOME/.profile(如果没有这个文件需要新建一个):</p>
-<div class="highlight"><pre><span class="nb">export </span><span class="nv">PATH</span><span class="o">=</span><span class="nv">$PATH</span>:/usr/local/go/bin
+<div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span><span class="nv">$PATH</span>:/usr/local/go/bin
 </pre></div>
 
 
 <p>在shell中输入：</p>
-<div class="highlight"><pre>go <span class="nb">help</span>
+<div class="highlight"><pre><span></span>go <span class="nb">help</span>
 </pre></div>
 
 
 <p>如果出现go的帮助提示，则安装完成。</p>
 <h2>第一个Go程序：Hello World</h2>
 <p>编写hello.go：</p>
-<div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
+<div class="highlight"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
 
 <span class="kn">import</span> <span class="s">&quot;fmt&quot;</span>  <span class="c1">//用于输出</span>
 
@@ -126,24 +126,24 @@
 <h2>编译和运行</h2>
 <p>有两种方式运行：</p>
 <p>（1）解释执行</p>
-<div class="highlight"><pre>go run hello.go
+<div class="highlight"><pre><span></span>go run hello.go
 </pre></div>
 
 
 <p>（2）编译执行</p>
-<div class="highlight"><pre>go build hello.go
+<div class="highlight"><pre><span></span>go build hello.go
 </pre></div>
 
 
 <p>此时，会在当前目录生成hello的可执行文件，运行：</p>
-<div class="highlight"><pre>./hello
+<div class="highlight"><pre><span></span>./hello
 </pre></div>
 
 
 <h2>变量、类型和关键字</h2>
 <h3>变量声明</h3>
 <p>Go的变量声明使用关键字var，Go声明的时候把变量的类型写在变量名的后面。</p>
-<div class="highlight"><pre><span class="kd">var</span> <span class="nx">a</span> <span class="kt">int</span>  
+<div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nx">a</span> <span class="kt">int</span>  
 <span class="kd">var</span> <span class="nx">b</span> <span class="kt">bool</span>
 <span class="kd">var</span> <span class="nx">c</span> <span class="kt">string</span>
 <span class="nx">a</span> <span class="p">=</span> <span class="mi">15</span>
@@ -155,7 +155,7 @@
 
 
 <p>还有一种将声明和变量和在一起：</p>
-<div class="highlight"><pre><span class="nx">a</span> <span class="o">:=</span> <span class="mi">15</span>
+<div class="highlight"><pre><span></span><span class="nx">a</span> <span class="o">:=</span> <span class="mi">15</span>
 <span class="nx">b</span> <span class="o">:=</span> <span class="kc">false</span>
 <span class="nx">c</span> <span class="o">:=</span> <span class="s">&quot;hello, world&quot;</span>
 <span class="nx">a</span><span class="p">,</span> <span class="nx">b</span> <span class="o">:=</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span>  <span class="c1">//平行赋值</span>
@@ -164,12 +164,12 @@
 
 <p>这种情况下变量的类型是由值推导出来的。</p>
 <p>Go中存在一个特殊的变量名_。任何赋给它的值都会被丢弃。</p>
-<div class="highlight"><pre><span class="nx">_</span><span class="p">,</span> <span class="nx">b</span> <span class="p">=</span> <span class="mi">34</span><span class="p">,</span> <span class="mi">35</span>  <span class="c1">//将35赋值给b</span>
+<div class="highlight"><pre><span></span><span class="nx">_</span><span class="p">,</span> <span class="nx">b</span> <span class="p">=</span> <span class="mi">34</span><span class="p">,</span> <span class="mi">35</span>  <span class="c1">//将35赋值给b</span>
 </pre></div>
 
 
 <p>如果有多个var声明或者const和import，可以采用组的形式：</p>
-<div class="highlight"><pre><span class="kd">var</span> <span class="p">(</span>
+<div class="highlight"><pre><span></span><span class="kd">var</span> <span class="p">(</span>
     <span class="nx">x</span> <span class="kt">int</span>
     <span class="nx">y</span> <span class="kt">bool</span>
 <span class="p">)</span>
@@ -177,7 +177,7 @@
 
 
 <p>Go对声明了却未使用的变量会报错。</p>
-<div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
+<div class="highlight"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
 
 <span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">a</span> <span class="o">:=</span> <span class="mi">15</span>
@@ -187,7 +187,7 @@
 
 
 <h3>数字类型</h3>
-<div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
+<div class="highlight"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
 
 <span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
     <span class="kd">var</span> <span class="nx">a</span> <span class="kt">int</span> <span class="c1">//通用整数类型</span>
@@ -201,7 +201,7 @@
 
 <h3>常量</h3>
 <p>常量使用const进行声明，它们在编译时被创建。</p>
-<div class="highlight"><pre><span class="kd">const</span> <span class="nx">i</span> <span class="kt">int</span> <span class="p">=</span> <span class="mi">1</span>
+<div class="highlight"><pre><span></span><span class="kd">const</span> <span class="nx">i</span> <span class="kt">int</span> <span class="p">=</span> <span class="mi">1</span>
 
 <span class="kd">const</span> <span class="p">(</span>
     <span class="nx">a</span> <span class="p">=</span> <span class="nx">itoa</span>   <span class="c1">// a = 0 </span>
@@ -212,13 +212,13 @@
 
 <h3>字符串</h3>
 <p>双引号包裹的是字符串(string)，如果使用单引号那么就是字符。Go中字符串一旦赋值后，就不能再修改了：</p>
-<div class="highlight"><pre><span class="kd">var</span> <span class="nx">s</span> <span class="kt">string</span> <span class="p">=</span> <span class="s">&quot;hello&quot;</span>
+<div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nx">s</span> <span class="kt">string</span> <span class="p">=</span> <span class="s">&quot;hello&quot;</span>
 <span class="nx">s</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="p">=</span> <span class="sc">&#39;a&#39;</span>   <span class="c1">// error</span>
 </pre></div>
 
 
 <p>如果要修改，可以：</p>
-<div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
+<div class="highlight"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
 
 <span class="kn">import</span> <span class="s">&quot;fmt&quot;</span>
 
@@ -239,7 +239,7 @@
 <h2>控制结构</h2>
 <h3>if语句</h3>
 <p>if语句无需圆括号，而语句体必须有花括号</p>
-<div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
+<div class="highlight"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
 
 <span class="kn">import</span> <span class="s">&quot;fmt&quot;</span>
 
@@ -258,7 +258,7 @@
 
 <h3>for语句</h3>
 <p>Go中没有while语句。对于for语句有3种形式。</p>
-<div class="highlight"><pre><span class="c1">// 第一种， init; condition; post</span>
+<div class="highlight"><pre><span></span><span class="c1">// 第一种， init; condition; post</span>
 <span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="mi">10</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span> <span class="p">{</span>
         <span class="nx">sum</span> <span class="o">+=</span> <span class="nx">i</span>
     <span class="p">}</span>   
@@ -281,7 +281,7 @@
 
 
 <p>Go没有逗号表达式，如果想执行多个变量，应当使用平行赋值：</p>
-<div class="highlight"><pre><span class="c1">// Reverse a</span>
+<div class="highlight"><pre><span></span><span class="c1">// Reverse a</span>
 <span class="k">for</span> <span class="nx">i</span><span class="p">,</span> <span class="nx">j</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="nx">a</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="nx">j</span><span class="p">;</span> <span class="nx">i</span><span class="p">,</span> <span class="nx">j</span> <span class="p">=</span> <span class="nx">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="nx">j</span> <span class="o">-</span> <span class="mi">1</span> <span class="p">{</span>
     <span class="nx">a</span><span class="p">[</span><span class="nx">i</span><span class="p">],</span> <span class="nx">a</span><span class="p">[</span><span class="nx">j</span><span class="p">]</span> <span class="o">:=</span> <span class="nx">a</span><span class="p">[</span><span class="nx">j</span><span class="p">],</span> <span class="nx">a</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span>
 <span class="p">}</span>
@@ -289,7 +289,7 @@
 
 
 <p>关键字range可用于循环中：</p>
-<div class="highlight"><pre><span class="nx">list</span> <span class="o">:=</span> <span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">&quot;a&quot;</span><span class="p">,</span> <span class="s">&quot;b&quot;</span><span class="p">,</span> <span class="s">&quot;c&quot;</span><span class="p">}</span>  <span class="c1">// 创建一个字符串的slice</span>
+<div class="highlight"><pre><span></span><span class="nx">list</span> <span class="o">:=</span> <span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">&quot;a&quot;</span><span class="p">,</span> <span class="s">&quot;b&quot;</span><span class="p">,</span> <span class="s">&quot;c&quot;</span><span class="p">}</span>  <span class="c1">// 创建一个字符串的slice</span>
 <span class="k">for</span> <span class="nx">k</span><span class="p">,</span> <span class="nx">v</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">list</span> <span class="p">{</span>   <span class="c1">// 每次返回int类型序号和值，如0和&quot;a&quot;</span>
     <span class="c1">// doSomething()</span>
 <span class="p">}</span>   
@@ -298,7 +298,7 @@
 
 <h3>switch语句</h3>
 <p>Go的switch表示式不必是常量或整数，case可以有多个值，没有break，。</p>
-<div class="highlight"><pre><span class="k">switch</span> <span class="nx">i</span> <span class="p">{</span>
+<div class="highlight"><pre><span></span><span class="k">switch</span> <span class="nx">i</span> <span class="p">{</span>
     <span class="k">case</span> <span class="mi">0</span><span class="p">:</span>  <span class="c1">//空的case体</span>
     <span class="k">case</span> <span class="mi">1</span><span class="p">:</span>
         <span class="nx">f</span><span class="p">()</span>  <span class="c1">//当 i == 0 时， f 不会被调用</span>
@@ -327,7 +327,7 @@
 <h2>array、slices和map</h2>
 <h3>array</h3>
 <p>array由[n]type定义，n表示数组的长度，type表示数组元素的类型。</p>
-<div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
+<div class="highlight"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
 
 <span class="kn">import</span> <span class="s">&quot;fmt&quot;</span>
 
@@ -364,7 +364,7 @@
 
 
 <p>运行结果：</p>
-<div class="highlight"><pre><span class="k">[0 0 0 0 0]</span>
+<div class="highlight"><pre><span></span><span class="k">[0 0 0 0 0]</span>
 <span class="k">[0 1 0 0 0]</span>
 <span class="k">[1 2 3]</span>
 <span class="k">[1 2 3]</span>
@@ -381,7 +381,7 @@
 <li>slice是一个指向array的指针；</li>
 <li>slice是引用类型，赋值某个slice到了一个变量，两个引用会指向同一个array</li>
 </ul>
-<div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
+<div class="highlight"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
 
 <span class="kn">import</span> <span class="s">&quot;fmt&quot;</span>
 
@@ -423,7 +423,7 @@
 
 
 <p>运行结果：</p>
-<div class="highlight"><pre><span class="k">[0 0 0 0 0 0 0 0 0 0]</span>
+<div class="highlight"><pre><span></span><span class="k">[0 0 0 0 0 0 0 0 0 0]</span>
 <span class="k">[3 4]</span>
 <span class="k">[1 2 3 4 5]</span>
 <span class="err">100</span> <span class="err">100</span>
@@ -438,7 +438,7 @@
 
 <h3>map</h3>
 <p>map类似于Python中的字典，定义方法是：map[&lt; from type &gt;]&lt; to type &gt;</p>
-<div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
+<div class="highlight"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
 
 <span class="kn">import</span> <span class="s">&quot;fmt&quot;</span>
 
@@ -484,7 +484,7 @@
 
 
 <p>运行结果：</p>
-<div class="highlight"><pre>1
+<div class="highlight"><pre><span></span>1
 map[one:1 two:2]
 1
 2

@@ -67,7 +67,7 @@
             </header>
             <footer class="post-info">
               <abbr class="published" title="2015-04-08T22:58:00+08:00">
-                Wed 08 April 2015
+                三 08 四月 2015
               </abbr>
               <address class="vcard author">By 
                 <a class="url fn" href="http://www.wengweitao.com/author/wwt.html"> wwt</a>
@@ -79,17 +79,17 @@
 </blockquote>
 <h3>建议36：掌握字符串的基本用法</h3>
 <p>有个小技巧：</p>
-<div class="highlight"><pre> <span class="n">s</span> <span class="o">=</span> <span class="p">(</span><span class="s">&#39;SELECT *&#39;</span>
-         <span class="s">&#39;FROM atable &#39;</span>
-         <span class="s">&#39;WHERE afield=&quot;value&quot;&#39;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span> <span class="n">s</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;SELECT *&#39;</span>
+         <span class="s1">&#39;FROM atable &#39;</span>
+         <span class="s1">&#39;WHERE afield=&quot;value&quot;&#39;</span><span class="p">)</span>
  <span class="n">s</span>
- <span class="s">&#39;SELECT *FROM atable WHERE afield=&quot;value&quot;&#39;</span>
+ <span class="s1">&#39;SELECT *FROM atable WHERE afield=&quot;value&quot;&#39;</span>
 </pre></div>
 
 
 <p>以上利用了Python遇到未闭合的小括号时会自动将多行代码拼接为一行和把相邻的两个字符串字面量拼接在一起的特性做到的。（而如果使用三个引号会把换行符和空格都当做字符串的一部分）</p>
 <p>Python字符串分为str和unicode两种。当需要判断变量是否为字符串时，应该使用</p>
-<div class="highlight"><pre><span class="nb">isinstance</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="nb">basestring</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><span class="nb">isinstance</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="nb">basestring</span><span class="p">)</span>
 </pre></div>
 
 
@@ -121,10 +121,10 @@
 <li>split(sep, maxsplit), rsplit</li>
 </ul>
 <p>需要注意split()与split(' ')不同</p>
-<div class="highlight"><pre><span class="n">In</span> <span class="p">[</span><span class="mi">3</span><span class="p">]:</span> <span class="s">&#39; hello   world!&#39;</span><span class="o">.</span><span class="n">split</span>
-<span class="n">Out</span><span class="p">[</span><span class="mi">3</span><span class="p">]:</span> <span class="p">[</span><span class="s">&#39;hello&#39;</span><span class="p">,</span> <span class="s">&#39;world!&#39;</span><span class="p">]</span>
-<span class="n">In</span> <span class="p">[</span><span class="mi">5</span><span class="p">]:</span> <span class="s">&#39; hello   world!&#39;</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&#39; &#39;</span><span class="p">)</span>
-<span class="n">Out</span><span class="p">[</span><span class="mi">5</span><span class="p">]:</span> <span class="p">[</span><span class="s">&#39;&#39;</span><span class="p">,</span> <span class="s">&#39;hello&#39;</span><span class="p">,</span> <span class="s">&#39;&#39;</span><span class="p">,</span> <span class="s">&#39;&#39;</span><span class="p">,</span> <span class="s">&#39;world!&#39;</span><span class="p">]</span>
+<div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">3</span><span class="p">]:</span> <span class="s1">&#39; hello   world!&#39;</span><span class="o">.</span><span class="n">split</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">3</span><span class="p">]:</span> <span class="p">[</span><span class="s1">&#39;hello&#39;</span><span class="p">,</span> <span class="s1">&#39;world!&#39;</span><span class="p">]</span>
+<span class="n">In</span> <span class="p">[</span><span class="mi">5</span><span class="p">]:</span> <span class="s1">&#39; hello   world!&#39;</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">5</span><span class="p">]:</span> <span class="p">[</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;hello&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;world!&#39;</span><span class="p">]</span>
 </pre></div>
 
 
@@ -146,7 +146,7 @@
 </ul>
 <h3>建议37：按需选择sort()或者sorted()</h3>
 <h4>1.相比sort, sorted()的使用更为广泛。</h4>
-<div class="highlight"><pre><span class="nb">sorted</span><span class="p">(</span><span class="n">iterable</span><span class="p">,</span> <span class="nb">cmp</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">reverse</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><span class="nb">sorted</span><span class="p">(</span><span class="n">iterable</span><span class="p">,</span> <span class="nb">cmp</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">reverse</span><span class="p">)</span>
 <span class="n">s</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="nb">cmp</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">reverse</span><span class="p">)</span>
 </pre></div>
 
@@ -159,9 +159,9 @@ reverse：排序结果是否反转</p>
 <p>sorted 返回一个排序后的列表，原有列表保持不变；而sort直接修改原有的列表，函数返回为None。
 sort函数不需要复制原有列表，消耗内存较少，效率也比较高。</p>
 <h4>3.传入参数key比参数cmp效率高。</h4>
-<div class="highlight"><pre><span class="n">In</span> <span class="p">[</span><span class="mi">15</span><span class="p">]:</span> <span class="kn">from</span> <span class="nn">timeit</span> <span class="kn">import</span> <span class="n">Timer</span>
-<span class="n">In</span> <span class="p">[</span><span class="mi">16</span><span class="p">]:</span> <span class="n">Timer</span><span class="p">(</span><span class="n">stmt</span><span class="o">=</span><span class="s">&quot;sorted(xs, key=lambda x:x[1])&quot;</span><span class="p">,</span> <span class="n">setup</span><span class="o">=</span><span class="s">&quot;xs=range(100);xs=zip</span>
-<span class="p">(</span><span class="n">xs</span><span class="p">,</span><span class="n">xs</span><span class="p">);</span><span class="s">&quot;).timeit(10000)    # 比较x[1]位置的值</span>
+<div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">15</span><span class="p">]:</span> <span class="kn">from</span> <span class="nn">timeit</span> <span class="kn">import</span> <span class="n">Timer</span>
+<span class="n">In</span> <span class="p">[</span><span class="mi">16</span><span class="p">]:</span> <span class="n">Timer</span><span class="p">(</span><span class="n">stmt</span><span class="o">=</span><span class="s2">&quot;sorted(xs, key=lambda x:x[1])&quot;</span><span class="p">,</span> <span class="n">setup</span><span class="o">=</span><span class="s2">&quot;xs=range(100);xs=zip</span>
+<span class="p">(</span><span class="n">xs</span><span class="p">,</span><span class="n">xs</span><span class="p">);</span><span class="s2">&quot;).timeit(10000)    # 比较x[1]位置的值</span>
 <span class="n">Out</span><span class="p">[</span><span class="mi">16</span><span class="p">]:</span> <span class="mf">0.18814091348924744</span>
 <span class="n">In</span> <span class="p">[</span><span class="mi">17</span><span class="p">]:</span> <span class="nb">zip</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span><span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>
 <span class="n">Out</span><span class="p">[</span><span class="mi">17</span><span class="p">]:</span>
@@ -175,78 +175,78 @@ sort函数不需要复制原有列表，消耗内存较少，效率也比较高�
  <span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">7</span><span class="p">),</span>
  <span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">),</span>
  <span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">9</span><span class="p">)]</span>
-<span class="n">In</span> <span class="p">[</span><span class="mi">18</span><span class="p">]:</span> <span class="n">Timer</span><span class="p">(</span><span class="n">stmt</span><span class="o">=</span><span class="s">&quot;sorted(xs, cmp=lambda a,b: cmp(a[1],b[1]))&quot;</span><span class="p">,</span> <span class="n">setup</span><span class="o">=</span><span class="s">&quot;xs=rang</span>
-<span class="n">e</span><span class="p">(</span><span class="mi">100</span><span class="p">);</span><span class="n">xs</span><span class="o">=</span><span class="nb">zip</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span><span class="n">xs</span><span class="p">);</span><span class="s">&quot;).timeit(10000)  # 比较x[1]位置的值   cmp(x,y)当x &lt; y - &gt; -1</span>
+<span class="n">In</span> <span class="p">[</span><span class="mi">18</span><span class="p">]:</span> <span class="n">Timer</span><span class="p">(</span><span class="n">stmt</span><span class="o">=</span><span class="s2">&quot;sorted(xs, cmp=lambda a,b: cmp(a[1],b[1]))&quot;</span><span class="p">,</span> <span class="n">setup</span><span class="o">=</span><span class="s2">&quot;xs=rang</span>
+<span class="n">e</span><span class="p">(</span><span class="mi">100</span><span class="p">);</span><span class="n">xs</span><span class="o">=</span><span class="nb">zip</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span><span class="n">xs</span><span class="p">);</span><span class="s2">&quot;).timeit(10000)  # 比较x[1]位置的值   cmp(x,y)当x &lt; y - &gt; -1</span>
 <span class="n">Out</span><span class="p">[</span><span class="mi">18</span><span class="p">]:</span> <span class="mf">0.2789308104491681</span>
 </pre></div>
 
 
 <h4>4.sorted功能非常强大，可以方便对不同数据结构进行排序。</h4>
 <p>①对字典进行排序。</p>
-<div class="highlight"><pre><span class="n">In</span> <span class="p">[</span><span class="mi">19</span><span class="p">]:</span> <span class="n">phonebook</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;Linda&#39;</span><span class="p">:</span> <span class="s">&#39;7750&#39;</span><span class="p">,</span> <span class="s">&#39;Bob&#39;</span><span class="p">:</span> <span class="s">&#39;9345&#39;</span><span class="p">,</span> <span class="s">&#39;Carol&#39;</span><span class="p">:</span> <span class="s">&#39;5834&#39;</span><span class="p">}</span>
+<div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">19</span><span class="p">]:</span> <span class="n">phonebook</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Linda&#39;</span><span class="p">:</span> <span class="s1">&#39;7750&#39;</span><span class="p">,</span> <span class="s1">&#39;Bob&#39;</span><span class="p">:</span> <span class="s1">&#39;9345&#39;</span><span class="p">,</span> <span class="s1">&#39;Carol&#39;</span><span class="p">:</span> <span class="s1">&#39;5834&#39;</span><span class="p">}</span>
 <span class="n">In</span> <span class="p">[</span><span class="mi">20</span><span class="p">]:</span> <span class="kn">from</span> <span class="nn">operator</span> <span class="kn">import</span> <span class="n">itemgetter</span>
 <span class="n">In</span> <span class="p">[</span><span class="mi">21</span><span class="p">]:</span> <span class="n">sorted_pb</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">phonebook</span><span class="o">.</span><span class="n">iteritems</span><span class="p">(),</span> <span class="n">key</span><span class="o">=</span><span class="n">itemgetter</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
 <span class="n">In</span> <span class="p">[</span><span class="mi">22</span><span class="p">]:</span> <span class="n">sorted_pb</span>
-<span class="n">Out</span><span class="p">[</span><span class="mi">22</span><span class="p">]:</span> <span class="p">[(</span><span class="s">&#39;Carol&#39;</span><span class="p">,</span> <span class="s">&#39;5834&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s">&#39;Linda&#39;</span><span class="p">,</span> <span class="s">&#39;7750&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s">&#39;Bob&#39;</span><span class="p">,</span> <span class="s">&#39;9345&#39;</span><span class="p">)]</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">22</span><span class="p">]:</span> <span class="p">[(</span><span class="s1">&#39;Carol&#39;</span><span class="p">,</span> <span class="s1">&#39;5834&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;Linda&#39;</span><span class="p">,</span> <span class="s1">&#39;7750&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;Bob&#39;</span><span class="p">,</span> <span class="s1">&#39;9345&#39;</span><span class="p">)]</span>
 </pre></div>
 
 
 <p>itemgetter获得指定位置的值。</p>
 <p>②多维list排序。对多个字段进行排序。</p>
-<div class="highlight"><pre><span class="n">In</span> <span class="p">[</span><span class="mi">23</span><span class="p">]:</span> <span class="n">gameresult</span> <span class="o">=</span> <span class="p">[[</span><span class="s">&#39;Bob&#39;</span><span class="p">,</span> <span class="mf">95.00</span><span class="p">,</span> <span class="s">&#39;A&#39;</span><span class="p">],</span> <span class="p">[</span><span class="s">&#39;Alan&#39;</span><span class="p">,</span><span class="mf">86.0</span><span class="p">,</span><span class="s">&#39;C&#39;</span><span class="p">],</span> <span class="p">[</span><span class="s">&#39;Mandy&#39;</span><span class="p">,</span> <span class="mf">82.5</span><span class="p">,</span><span class="s">&#39;A</span>
-<span class="s">&#39;], [&#39;</span><span class="n">Rob</span><span class="s">&#39;, 86, &#39;</span><span class="n">E</span><span class="s">&#39;]]</span>
+<div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">23</span><span class="p">]:</span> <span class="n">gameresult</span> <span class="o">=</span> <span class="p">[[</span><span class="s1">&#39;Bob&#39;</span><span class="p">,</span> <span class="mf">95.00</span><span class="p">,</span> <span class="s1">&#39;A&#39;</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;Alan&#39;</span><span class="p">,</span><span class="mf">86.0</span><span class="p">,</span><span class="s1">&#39;C&#39;</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;Mandy&#39;</span><span class="p">,</span> <span class="mf">82.5</span><span class="p">,</span><span class="s1">&#39;A</span>
+<span class="s1">&#39;], [&#39;</span><span class="n">Rob</span><span class="s1">&#39;, 86, &#39;</span><span class="n">E</span><span class="s1">&#39;]]</span>
 <span class="n">In</span> <span class="p">[</span><span class="mi">24</span><span class="p">]:</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">gameresult</span><span class="p">,</span> <span class="n">key</span> <span class="o">=</span> <span class="n">itemgetter</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span>
 <span class="n">Out</span><span class="p">[</span><span class="mi">24</span><span class="p">]:</span>
-<span class="p">[[</span><span class="s">&#39;Mandy&#39;</span><span class="p">,</span> <span class="mf">82.5</span><span class="p">,</span> <span class="s">&#39;A&#39;</span><span class="p">],</span>
- <span class="p">[</span><span class="s">&#39;Bob&#39;</span><span class="p">,</span> <span class="mf">95.0</span><span class="p">,</span> <span class="s">&#39;A&#39;</span><span class="p">],</span>
- <span class="p">[</span><span class="s">&#39;Alan&#39;</span><span class="p">,</span> <span class="mf">86.0</span><span class="p">,</span> <span class="s">&#39;C&#39;</span><span class="p">],</span>
- <span class="p">[</span><span class="s">&#39;Rob&#39;</span><span class="p">,</span> <span class="mi">86</span><span class="p">,</span> <span class="s">&#39;E&#39;</span><span class="p">]]</span>
+<span class="p">[[</span><span class="s1">&#39;Mandy&#39;</span><span class="p">,</span> <span class="mf">82.5</span><span class="p">,</span> <span class="s1">&#39;A&#39;</span><span class="p">],</span>
+ <span class="p">[</span><span class="s1">&#39;Bob&#39;</span><span class="p">,</span> <span class="mf">95.0</span><span class="p">,</span> <span class="s1">&#39;A&#39;</span><span class="p">],</span>
+ <span class="p">[</span><span class="s1">&#39;Alan&#39;</span><span class="p">,</span> <span class="mf">86.0</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">],</span>
+ <span class="p">[</span><span class="s1">&#39;Rob&#39;</span><span class="p">,</span> <span class="mi">86</span><span class="p">,</span> <span class="s1">&#39;E&#39;</span><span class="p">]]</span>
 </pre></div>
 
 
 <p>先按等级，等级相同则按照分数高低排序。</p>
 <p>③字典中混合list排序。
 字典中的key或者值为列表，需要对列表中的某个位置的元素进行排序。</p>
-<div class="highlight"><pre><span class="n">In</span> <span class="p">[</span><span class="mi">25</span><span class="p">]:</span> <span class="n">mydict</span> <span class="o">=</span> <span class="p">{</span> <span class="s">&#39;Li&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s">&#39;M&#39;</span><span class="p">,</span><span class="mi">7</span><span class="p">],</span>
-   <span class="o">....</span><span class="p">:</span>        <span class="s">&#39;Zhang&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s">&#39;E&#39;</span><span class="p">,</span><span class="mi">2</span><span class="p">],</span>
-   <span class="o">....</span><span class="p">:</span>        <span class="s">&#39;Weng&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s">&#39;W&#39;</span><span class="p">,</span><span class="mi">1</span><span class="p">]}</span>
+<div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">25</span><span class="p">]:</span> <span class="n">mydict</span> <span class="o">=</span> <span class="p">{</span> <span class="s1">&#39;Li&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;M&#39;</span><span class="p">,</span><span class="mi">7</span><span class="p">],</span>
+   <span class="o">....</span><span class="p">:</span>        <span class="s1">&#39;Zhang&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;E&#39;</span><span class="p">,</span><span class="mi">2</span><span class="p">],</span>
+   <span class="o">....</span><span class="p">:</span>        <span class="s1">&#39;Weng&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;W&#39;</span><span class="p">,</span><span class="mi">1</span><span class="p">]}</span>
 <span class="n">In</span> <span class="p">[</span><span class="mi">27</span><span class="p">]:</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">mydict</span><span class="o">.</span><span class="n">iteritems</span><span class="p">(),</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span><span class="p">(</span><span class="n">k</span><span class="p">,</span><span class="n">v</span><span class="p">):</span> <span class="n">itemgetter</span><span class="p">(</span><span class="mi">1</span><span class="p">)(</span><span class="n">v</span><span class="p">))</span>
-<span class="n">Out</span><span class="p">[</span><span class="mi">27</span><span class="p">]:</span> <span class="p">[(</span><span class="s">&#39;Weng&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s">&#39;W&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">]),</span> <span class="p">(</span><span class="s">&#39;Zhang&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s">&#39;E&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">]),</span> <span class="p">(</span><span class="s">&#39;Li&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s">&#39;M&#39;</span><span class="p">,</span> <span class="mi">7</span><span class="p">])]</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">27</span><span class="p">]:</span> <span class="p">[(</span><span class="s1">&#39;Weng&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;W&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">]),</span> <span class="p">(</span><span class="s1">&#39;Zhang&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;E&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">]),</span> <span class="p">(</span><span class="s1">&#39;Li&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;M&#39;</span><span class="p">,</span> <span class="mi">7</span><span class="p">])]</span>
 </pre></div>
 
 
 <p>iteritems()返回的是（k，v），传入到函数中;  itemgetter(1)(v)取得v的第一个元素。</p>
-<div class="highlight"><pre><span class="o">&gt;&gt;&gt;</span> <span class="n">itemgetter</span><span class="p">(</span><span class="mi">1</span><span class="p">)(</span><span class="s">&#39;ABCDEFG&#39;</span><span class="p">)</span>
-<span class="s">&#39;B&#39;</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">itemgetter</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">)(</span><span class="s">&#39;ABCDEFG&#39;</span><span class="p">)</span>
-<span class="p">(</span><span class="s">&#39;B&#39;</span><span class="p">,</span> <span class="s">&#39;D&#39;</span><span class="p">,</span> <span class="s">&#39;F&#39;</span><span class="p">)</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">itemgetter</span><span class="p">(</span><span class="nb">slice</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="bp">None</span><span class="p">))(</span><span class="s">&#39;ABCDEFG&#39;</span><span class="p">)</span>
-<span class="s">&#39;CDEFG&#39;</span>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">itemgetter</span><span class="p">(</span><span class="mi">1</span><span class="p">)(</span><span class="s1">&#39;ABCDEFG&#39;</span><span class="p">)</span>
+<span class="s1">&#39;B&#39;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">itemgetter</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">)(</span><span class="s1">&#39;ABCDEFG&#39;</span><span class="p">)</span>
+<span class="p">(</span><span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;D&#39;</span><span class="p">,</span> <span class="s1">&#39;F&#39;</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">itemgetter</span><span class="p">(</span><span class="nb">slice</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="bp">None</span><span class="p">))(</span><span class="s1">&#39;ABCDEFG&#39;</span><span class="p">)</span>
+<span class="s1">&#39;CDEFG&#39;</span>
 </pre></div>
 
 
 <p>④List中混合字典排序
 列表中每一个元素都为字典，需要针对字典的多个key值进行排序。</p>
-<div class="highlight"><pre><span class="n">In</span> <span class="p">[</span><span class="mi">36</span><span class="p">]:</span> <span class="n">gameresult</span> <span class="o">=</span> <span class="p">[{</span><span class="s">&quot;name&quot;</span><span class="p">:</span><span class="s">&quot;Bob&quot;</span><span class="p">,</span> <span class="s">&quot;wins&quot;</span><span class="p">:</span><span class="mi">10</span><span class="p">,</span> <span class="s">&quot;losses&quot;</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span> <span class="s">&quot;rating&quot;</span><span class="p">:</span><span class="mf">75.00</span><span class="p">},</span>
-   <span class="o">....</span><span class="p">:</span>        <span class="p">{</span><span class="s">&quot;name&quot;</span><span class="p">:</span><span class="s">&quot;wwt&quot;</span><span class="p">,</span> <span class="s">&quot;wins&quot;</span><span class="p">:</span><span class="mi">99</span><span class="p">,</span> <span class="s">&quot;losses&quot;</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span> <span class="s">&quot;rating&quot;</span><span class="p">:</span><span class="mf">100.0</span><span class="p">}]</span>
-<span class="n">In</span> <span class="p">[</span><span class="mi">37</span><span class="p">]:</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">gameresult</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="n">itemgetter</span><span class="p">(</span><span class="s">&quot;rating&quot;</span><span class="p">,</span><span class="s">&quot;name&quot;</span><span class="p">))</span>
+<div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">36</span><span class="p">]:</span> <span class="n">gameresult</span> <span class="o">=</span> <span class="p">[{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span><span class="s2">&quot;Bob&quot;</span><span class="p">,</span> <span class="s2">&quot;wins&quot;</span><span class="p">:</span><span class="mi">10</span><span class="p">,</span> <span class="s2">&quot;losses&quot;</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span> <span class="s2">&quot;rating&quot;</span><span class="p">:</span><span class="mf">75.00</span><span class="p">},</span>
+   <span class="o">....</span><span class="p">:</span>        <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span><span class="s2">&quot;wwt&quot;</span><span class="p">,</span> <span class="s2">&quot;wins&quot;</span><span class="p">:</span><span class="mi">99</span><span class="p">,</span> <span class="s2">&quot;losses&quot;</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;rating&quot;</span><span class="p">:</span><span class="mf">100.0</span><span class="p">}]</span>
+<span class="n">In</span> <span class="p">[</span><span class="mi">37</span><span class="p">]:</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">gameresult</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="n">itemgetter</span><span class="p">(</span><span class="s2">&quot;rating&quot;</span><span class="p">,</span><span class="s2">&quot;name&quot;</span><span class="p">))</span>
 <span class="n">Out</span><span class="p">[</span><span class="mi">37</span><span class="p">]:</span>
-<span class="p">[{</span><span class="s">&#39;losses&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s">&#39;name&#39;</span><span class="p">:</span> <span class="s">&#39;Bob&#39;</span><span class="p">,</span> <span class="s">&#39;rating&#39;</span><span class="p">:</span> <span class="mf">75.0</span><span class="p">,</span> <span class="s">&#39;wins&#39;</span><span class="p">:</span> <span class="mi">10</span><span class="p">},</span>
- <span class="p">{</span><span class="s">&#39;losses&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s">&#39;name&#39;</span><span class="p">:</span> <span class="s">&#39;wwt&#39;</span><span class="p">,</span> <span class="s">&#39;rating&#39;</span><span class="p">:</span> <span class="mf">100.0</span><span class="p">,</span> <span class="s">&#39;wins&#39;</span><span class="p">:</span> <span class="mi">99</span><span class="p">}]</span>
+<span class="p">[{</span><span class="s1">&#39;losses&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;Bob&#39;</span><span class="p">,</span> <span class="s1">&#39;rating&#39;</span><span class="p">:</span> <span class="mf">75.0</span><span class="p">,</span> <span class="s1">&#39;wins&#39;</span><span class="p">:</span> <span class="mi">10</span><span class="p">},</span>
+ <span class="p">{</span><span class="s1">&#39;losses&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;wwt&#39;</span><span class="p">,</span> <span class="s1">&#39;rating&#39;</span><span class="p">:</span> <span class="mf">100.0</span><span class="p">,</span> <span class="s1">&#39;wins&#39;</span><span class="p">:</span> <span class="mi">99</span><span class="p">}]</span>
 </pre></div>
 
 
 <p>按key为rating、name排序</p>
 <h3>建议38：使用copy模块深拷贝对象</h3>
-<div class="highlight"><pre><span class="n">In</span> <span class="p">[</span><span class="mi">38</span><span class="p">]:</span> <span class="kn">import</span> <span class="nn">copy</span>
+<div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">38</span><span class="p">]:</span> <span class="kn">import</span> <span class="nn">copy</span>
 <span class="n">In</span> <span class="p">[</span><span class="mi">39</span><span class="p">]:</span> <span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span>
-<span class="n">In</span> <span class="p">[</span><span class="mi">40</span><span class="p">]:</span> <span class="n">b</span> <span class="o">=</span> <span class="n">a</span>  <span class="c">#浅拷贝</span>
+<span class="n">In</span> <span class="p">[</span><span class="mi">40</span><span class="p">]:</span> <span class="n">b</span> <span class="o">=</span> <span class="n">a</span>  <span class="c1">#浅拷贝</span>
 <span class="n">In</span> <span class="p">[</span><span class="mi">41</span><span class="p">]:</span> <span class="n">b</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">4</span>
 <span class="n">In</span> <span class="p">[</span><span class="mi">42</span><span class="p">]:</span> <span class="n">b</span>
 <span class="n">Out</span><span class="p">[</span><span class="mi">42</span><span class="p">]:</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
 <span class="n">In</span> <span class="p">[</span><span class="mi">43</span><span class="p">]:</span> <span class="n">a</span>
 <span class="n">Out</span><span class="p">[</span><span class="mi">43</span><span class="p">]:</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
-<span class="n">In</span> <span class="p">[</span><span class="mi">44</span><span class="p">]:</span> <span class="n">c</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>  <span class="c">#深拷贝</span>
+<span class="n">In</span> <span class="p">[</span><span class="mi">44</span><span class="p">]:</span> <span class="n">c</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>  <span class="c1">#深拷贝</span>
 <span class="n">In</span> <span class="p">[</span><span class="mi">49</span><span class="p">]:</span> <span class="n">c</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">5</span>
 <span class="n">In</span> <span class="p">[</span><span class="mi">50</span><span class="p">]:</span> <span class="n">a</span>
 <span class="n">Out</span><span class="p">[</span><span class="mi">50</span><span class="p">]:</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
@@ -263,7 +263,7 @@ sort函数不需要复制原有列表，消耗内存较少，效率也比较高�
 <li>使用defaultdict</li>
 <li>使用set和list</li>
 </ol>
-<div class="highlight"><pre><span class="n">some_data</span> <span class="o">=</span> <span class="p">[</span><span class="o">...</span><span class="p">]</span>
+<div class="highlight"><pre><span></span><span class="n">some_data</span> <span class="o">=</span> <span class="p">[</span><span class="o">...</span><span class="p">]</span>
 <span class="n">count_set</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">some_data</span><span class="p">)</span>
 <span class="n">count_list</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">count_set</span><span class="p">:</span>
@@ -273,7 +273,7 @@ sort函数不需要复制原有列表，消耗内存较少，效率也比较高�
 
 
 <p>还有更优雅地就是使用collections.Counter：</p>
-<div class="highlight"><pre><span class="n">In</span> <span class="p">[</span><span class="mi">52</span><span class="p">]:</span> <span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">Counter</span>
+<div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">52</span><span class="p">]:</span> <span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">Counter</span>
 <span class="n">In</span> <span class="p">[</span><span class="mi">53</span><span class="p">]:</span> <span class="n">some_data</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">656</span><span class="p">,</span><span class="mi">43</span><span class="p">,</span><span class="mi">2</span><span class="p">]</span>
 <span class="n">In</span> <span class="p">[</span><span class="mi">54</span><span class="p">]:</span> <span class="k">print</span> <span class="n">Counter</span><span class="p">(</span><span class="n">some_data</span><span class="p">)</span>
 <span class="n">Counter</span><span class="p">({</span><span class="mi">2</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">43</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">656</span><span class="p">:</span> <span class="mi">1</span><span class="p">})</span>
@@ -281,33 +281,33 @@ sort函数不需要复制原有列表，消耗内存较少，效率也比较高�
 
 
 <p>使用elements可以获取key值：</p>
-<div class="highlight"><pre><span class="n">In</span> <span class="p">[</span><span class="mi">56</span><span class="p">]:</span> <span class="nb">list</span><span class="p">(</span><span class="n">Counter</span><span class="p">(</span><span class="n">some_data</span><span class="p">)</span><span class="o">.</span><span class="n">elements</span><span class="p">())</span>
+<div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">56</span><span class="p">]:</span> <span class="nb">list</span><span class="p">(</span><span class="n">Counter</span><span class="p">(</span><span class="n">some_data</span><span class="p">)</span><span class="o">.</span><span class="n">elements</span><span class="p">())</span>
 <span class="n">Out</span><span class="p">[</span><span class="mi">56</span><span class="p">]:</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">43</span><span class="p">,</span> <span class="mi">656</span><span class="p">]</span>
 </pre></div>
 
 
 <p>使用most_common找出前N个频率最高的元素：</p>
-<div class="highlight"><pre><span class="n">In</span> <span class="p">[</span><span class="mi">57</span><span class="p">]:</span> <span class="n">Counter</span><span class="p">(</span><span class="n">some_data</span><span class="p">)</span><span class="o">.</span><span class="n">most_common</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">57</span><span class="p">]:</span> <span class="n">Counter</span><span class="p">(</span><span class="n">some_data</span><span class="p">)</span><span class="o">.</span><span class="n">most_common</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
 <span class="n">Out</span><span class="p">[</span><span class="mi">57</span><span class="p">]:</span> <span class="p">[(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">)]</span>
 </pre></div>
 
 
 <p>当访问不存在的元素时，返回的是0，而不是KeyError:</p>
-<div class="highlight"><pre><span class="p">(</span><span class="n">Counter</span><span class="p">(</span><span class="n">some_data</span><span class="p">)[</span><span class="s">&#39;a&#39;</span><span class="p">])</span>
+<div class="highlight"><pre><span></span><span class="p">(</span><span class="n">Counter</span><span class="p">(</span><span class="n">some_data</span><span class="p">)[</span><span class="s1">&#39;a&#39;</span><span class="p">])</span>
 <span class="mi">0</span>
 </pre></div>
 
 
 <p>update和subtract:</p>
-<div class="highlight"><pre><span class="n">In</span> <span class="p">[</span><span class="mi">58</span><span class="p">]:</span> <span class="n">c</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">(</span><span class="s">&quot;success&quot;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">58</span><span class="p">]:</span> <span class="n">c</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">(</span><span class="s2">&quot;success&quot;</span><span class="p">)</span>
 <span class="n">In</span> <span class="p">[</span><span class="mi">59</span><span class="p">]:</span> <span class="k">print</span> <span class="n">c</span>
-<span class="n">Counter</span><span class="p">({</span><span class="s">&#39;s&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s">&#39;c&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s">&#39;e&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s">&#39;u&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">})</span>
-<span class="n">In</span> <span class="p">[</span><span class="mi">60</span><span class="p">]:</span> <span class="n">c</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="s">&quot;sucessfully&quot;</span><span class="p">)</span> <span class="c"># 累加而不是替换</span>
+<span class="n">Counter</span><span class="p">({</span><span class="s1">&#39;s&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;e&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;u&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">})</span>
+<span class="n">In</span> <span class="p">[</span><span class="mi">60</span><span class="p">]:</span> <span class="n">c</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="s2">&quot;sucessfully&quot;</span><span class="p">)</span> <span class="c1"># 累加而不是替换</span>
 <span class="n">In</span> <span class="p">[</span><span class="mi">61</span><span class="p">]:</span> <span class="n">c</span>
-<span class="n">Out</span><span class="p">[</span><span class="mi">61</span><span class="p">]:</span> <span class="n">Counter</span><span class="p">({</span><span class="s">&#39;s&#39;</span><span class="p">:</span> <span class="mi">6</span><span class="p">,</span> <span class="s">&#39;c&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s">&#39;u&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s">&#39;e&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s">&#39;l&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s">&#39;f&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s">&#39;y&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">})</span>
-<span class="n">In</span> <span class="p">[</span><span class="mi">63</span><span class="p">]:</span> <span class="n">c</span><span class="o">.</span><span class="n">subtract</span><span class="p">(</span><span class="s">&quot;successfully&quot;</span><span class="p">)</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">61</span><span class="p">]:</span> <span class="n">Counter</span><span class="p">({</span><span class="s1">&#39;s&#39;</span><span class="p">:</span> <span class="mi">6</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;u&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;e&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;l&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;f&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">})</span>
+<span class="n">In</span> <span class="p">[</span><span class="mi">63</span><span class="p">]:</span> <span class="n">c</span><span class="o">.</span><span class="n">subtract</span><span class="p">(</span><span class="s2">&quot;successfully&quot;</span><span class="p">)</span>
 <span class="n">In</span> <span class="p">[</span><span class="mi">64</span><span class="p">]:</span> <span class="n">c</span>
-<span class="n">Out</span><span class="p">[</span><span class="mi">64</span><span class="p">]:</span> <span class="n">Counter</span><span class="p">({</span><span class="s">&#39;s&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s">&#39;c&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s">&#39;e&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s">&#39;u&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s">&#39;f&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s">&#39;l&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s">&#39;y&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">})</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">64</span><span class="p">]:</span> <span class="n">Counter</span><span class="p">({</span><span class="s1">&#39;s&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;e&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;u&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;f&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;l&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">})</span>
 </pre></div>
 
 
@@ -330,11 +330,11 @@ option1=0
 <p>支持字符串格式化的类似语法</p>
 </li>
 </ol>
-<div class="highlight"><pre>cat format.conf
+<div class="highlight"><pre><span></span>cat format.conf
 </pre></div>
 
 
-<div class="highlight"><pre><span class="p">[</span><span class="n">DEFAULT</span><span class="p">]</span>
+<div class="highlight"><pre><span></span><span class="p">[</span><span class="n">DEFAULT</span><span class="p">]</span>
 <span class="n">conn_str</span> <span class="o">=</span> <span class="o">%</span><span class="p">(</span><span class="n">dnb</span><span class="p">)</span><span class="n">s</span><span class="p">:</span><span class="o">//%</span><span class="p">(</span><span class="n">user</span><span class="p">)</span><span class="n">s</span><span class="p">:</span><span class="o">%</span><span class="p">(</span><span class="n">pw</span><span class="p">)</span><span class="n">s</span><span class="err">@</span><span class="o">%</span><span class="p">(</span><span class="n">host</span><span class="p">)</span><span class="n">s</span><span class="p">:</span><span class="o">%</span><span class="p">(</span><span class="n">port</span><span class="p">)</span><span class="n">s</span><span class="o">/%</span><span class="n">s</span><span class="p">(</span><span class="n">db</span><span class="p">)</span><span class="n">s</span>
 <span class="n">dbn</span> <span class="o">=</span> <span class="n">mysql</span>
 <span class="n">user</span> <span class="o">=</span> <span class="n">root</span>
@@ -350,8 +350,8 @@ option1=0
 <span class="n">db</span> <span class="o">=</span> <span class="n">example</span>
 <span class="kn">import</span> <span class="nn">ConfigParser</span>
 <span class="n">conf</span> <span class="o">=</span> <span class="n">ConfigParser</span><span class="o">.</span><span class="n">ConfigParser</span><span class="p">()</span>
-<span class="n">conf</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s">&#39;foramt.conf&#39;</span><span class="p">)</span>
-<span class="k">print</span> <span class="n">conf</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;db1&#39;</span><span class="p">,</span><span class="s">&#39;conn_str&#39;</span><span class="p">)</span>
+<span class="n">conf</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;foramt.conf&#39;</span><span class="p">)</span>
+<span class="k">print</span> <span class="n">conf</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;db1&#39;</span><span class="p">,</span><span class="s1">&#39;conn_str&#39;</span><span class="p">)</span>
 </pre></div>
 
 
@@ -359,13 +359,13 @@ option1=0
 <h3>建议41：使用argparse处理命令行参数</h3>
 <p>Pythonista有好几种方案，标准库中留下来的getopt, optparse和argparse。
 其中argparse是最强大的。</p>
-<div class="highlight"><pre><span class="n">In</span> <span class="p">[</span><span class="mi">65</span><span class="p">]:</span> <span class="kn">import</span> <span class="nn">argparse</span>
+<div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">65</span><span class="p">]:</span> <span class="kn">import</span> <span class="nn">argparse</span>
 <span class="n">In</span> <span class="p">[</span><span class="mi">66</span><span class="p">]:</span> <span class="n">parser</span> <span class="o">=</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">()</span>
-<span class="n">In</span> <span class="p">[</span><span class="mi">67</span><span class="p">]:</span> <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s">&#39;-o&#39;</span><span class="p">,</span><span class="s">&#39;--output&#39;</span><span class="p">)</span>
-<span class="n">Out</span><span class="p">[</span><span class="mi">67</span><span class="p">]:</span> <span class="n">_StoreAction</span><span class="p">(</span><span class="n">option_strings</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;-o&#39;</span><span class="p">,</span> <span class="s">&#39;--output&#39;</span><span class="p">],</span> <span class="n">dest</span><span class="o">=</span><span class="s">&#39;output&#39;</span><span class="p">,</span> <span class="n">nargs</span><span class="o">=</span><span class="n">No</span>
+<span class="n">In</span> <span class="p">[</span><span class="mi">67</span><span class="p">]:</span> <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;-o&#39;</span><span class="p">,</span><span class="s1">&#39;--output&#39;</span><span class="p">)</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">67</span><span class="p">]:</span> <span class="n">_StoreAction</span><span class="p">(</span><span class="n">option_strings</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;-o&#39;</span><span class="p">,</span> <span class="s1">&#39;--output&#39;</span><span class="p">],</span> <span class="n">dest</span><span class="o">=</span><span class="s1">&#39;output&#39;</span><span class="p">,</span> <span class="n">nargs</span><span class="o">=</span><span class="n">No</span>
 <span class="n">ne</span><span class="p">,</span> <span class="n">const</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">choices</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">metavar</span><span class="o">=</span><span class="bp">None</span><span class="p">)</span>
-<span class="n">In</span> <span class="p">[</span><span class="mi">68</span><span class="p">]:</span> <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s">&#39;-v&#39;</span><span class="p">,</span><span class="n">dest</span><span class="o">=</span><span class="s">&#39;verbose&#39;</span><span class="p">,</span><span class="n">action</span><span class="o">=</span><span class="s">&#39;store_true&#39;</span><span class="p">)</span>
-<span class="n">Out</span><span class="p">[</span><span class="mi">68</span><span class="p">]:</span> <span class="n">_StoreTrueAction</span><span class="p">(</span><span class="n">option_strings</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;-v&#39;</span><span class="p">],</span> <span class="n">dest</span><span class="o">=</span><span class="s">&#39;verbose&#39;</span><span class="p">,</span> <span class="n">nargs</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">const</span><span class="o">=</span>
+<span class="n">In</span> <span class="p">[</span><span class="mi">68</span><span class="p">]:</span> <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;-v&#39;</span><span class="p">,</span><span class="n">dest</span><span class="o">=</span><span class="s1">&#39;verbose&#39;</span><span class="p">,</span><span class="n">action</span><span class="o">=</span><span class="s1">&#39;store_true&#39;</span><span class="p">)</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">68</span><span class="p">]:</span> <span class="n">_StoreTrueAction</span><span class="p">(</span><span class="n">option_strings</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;-v&#39;</span><span class="p">],</span> <span class="n">dest</span><span class="o">=</span><span class="s1">&#39;verbose&#39;</span><span class="p">,</span> <span class="n">nargs</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">const</span><span class="o">=</span>
 <span class="bp">True</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">choices</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">metavar</span><span class="o">=</span><span class="bp">None</span><span class="p">)</span>
 <span class="n">In</span> <span class="p">[</span><span class="mi">69</span><span class="p">]:</span> <span class="n">args</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">parse_args</span><span class="p">()</span>
 <span class="n">In</span> <span class="p">[</span><span class="mi">70</span><span class="p">]:</span> <span class="n">args</span>
@@ -377,13 +377,13 @@ option1=0
 <h3>建议42：使用pandas处理大型CSV文件</h3>
 <p>CSV(Comma Seperated Values)作为一种逗号分隔型值的纯文本格式文件，实际中经常用到。Python提供了处理csv的API：</p>
 <p>1.reader( csvfile, dialect='excel', fmtparam  ) 用于csv文件的读取，返回reader对象。当dialect设置为excel时，默认Dialect值如下：</p>
-<div class="highlight"><pre><span class="k">class</span> <span class="nc">excel</span><span class="p">(</span><span class="n">Dialect</span><span class="p">):</span>
-    <span class="n">delimiter</span> <span class="o">=</span> <span class="s">&#39;,&#39;</span>  <span class="c"># 单个字符，用于分隔字段，常见的有, | ;</span>
-    <span class="n">quotechar</span> <span class="o">=</span> <span class="s">&#39;&quot;&#39;</span>  <span class="c"># 用于对特殊符号加引号</span>
-    <span class="n">doublequote</span> <span class="o">=</span> <span class="bp">True</span>  <span class="c"># quotechar出现时候表现形式</span>
-    <span class="n">skipinitialspace</span> <span class="o">=</span> <span class="bp">False</span> <span class="c"># true是delimiter后面的空格会忽略</span>
-    <span class="n">lineterminator</span> <span class="o">=</span> <span class="s">&#39;</span><span class="se">\r\n</span><span class="s">&#39;</span>  <span class="c">#行结束符</span>
-    <span class="n">quoting</span> <span class="o">=</span> <span class="n">QUOTE_MINIMAL</span> <span class="c"># 是否在字段前加引号</span>
+<div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">excel</span><span class="p">(</span><span class="n">Dialect</span><span class="p">):</span>
+    <span class="n">delimiter</span> <span class="o">=</span> <span class="s1">&#39;,&#39;</span>  <span class="c1"># 单个字符，用于分隔字段，常见的有, | ;</span>
+    <span class="n">quotechar</span> <span class="o">=</span> <span class="s1">&#39;&quot;&#39;</span>  <span class="c1"># 用于对特殊符号加引号</span>
+    <span class="n">doublequote</span> <span class="o">=</span> <span class="bp">True</span>  <span class="c1"># quotechar出现时候表现形式</span>
+    <span class="n">skipinitialspace</span> <span class="o">=</span> <span class="bp">False</span> <span class="c1"># true是delimiter后面的空格会忽略</span>
+    <span class="n">lineterminator</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="se">\r\n</span><span class="s1">&#39;</span>  <span class="c1">#行结束符</span>
+    <span class="n">quoting</span> <span class="o">=</span> <span class="n">QUOTE_MINIMAL</span> <span class="c1"># 是否在字段前加引号</span>
 </pre></div>
 
 
@@ -393,15 +393,15 @@ option1=0
 <p>4.csv.DictWriter(csvfile, fieldnames, restval='', extrasaction='raise', dialect='excel', <em>args, </em>*kwds)用于支持字典写入。</p>
 <p>CSV模块使用非常方便(import csv)，但如果要处理的CSV文件大小上百MB或者几个GB，那么csv模块就应付不来了。
 下面做一个实验，临时创建一个1GB的CSV文件并将其加载到内存中：</p>
-<div class="highlight"><pre><span class="n">In</span> <span class="p">[</span><span class="mi">13</span><span class="p">]:</span> <span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s">&#39;large.csv&#39;</span><span class="p">,</span><span class="s">&#39;wb&#39;</span><span class="p">)</span>
-<span class="n">In</span> <span class="p">[</span><span class="mi">14</span><span class="p">]:</span> <span class="n">f</span><span class="o">.</span><span class="n">seek</span><span class="p">(</span><span class="mi">1073741824</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>   <span class="c"># 创建大文件的技巧</span>
-<span class="n">In</span> <span class="p">[</span><span class="mi">15</span><span class="p">]:</span> <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">&quot;</span><span class="se">\0</span><span class="s">&quot;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">13</span><span class="p">]:</span> <span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;large.csv&#39;</span><span class="p">,</span><span class="s1">&#39;wb&#39;</span><span class="p">)</span>
+<span class="n">In</span> <span class="p">[</span><span class="mi">14</span><span class="p">]:</span> <span class="n">f</span><span class="o">.</span><span class="n">seek</span><span class="p">(</span><span class="mi">1073741824</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>   <span class="c1"># 创建大文件的技巧</span>
+<span class="n">In</span> <span class="p">[</span><span class="mi">15</span><span class="p">]:</span> <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\0</span><span class="s2">&quot;</span><span class="p">)</span>
 <span class="n">In</span> <span class="p">[</span><span class="mi">16</span><span class="p">]:</span> <span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 <span class="n">In</span> <span class="p">[</span><span class="mi">17</span><span class="p">]:</span> <span class="kn">import</span> <span class="nn">os</span>
-<span class="n">In</span> <span class="p">[</span><span class="mi">18</span><span class="p">]:</span> <span class="n">os</span><span class="o">.</span><span class="n">stat</span><span class="p">(</span><span class="s">&quot;large.csv&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">st_size</span>
+<span class="n">In</span> <span class="p">[</span><span class="mi">18</span><span class="p">]:</span> <span class="n">os</span><span class="o">.</span><span class="n">stat</span><span class="p">(</span><span class="s2">&quot;large.csv&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">st_size</span>
 <span class="n">Out</span><span class="p">[</span><span class="mi">18</span><span class="p">]:</span> <span class="il">1073741824L</span>
-<span class="n">In</span> <span class="p">[</span><span class="mi">19</span><span class="p">]:</span> <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s">&quot;large.csv&quot;</span><span class="p">,</span><span class="s">&quot;rb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">csvfile</span><span class="p">:</span>
-   <span class="o">....</span><span class="p">:</span>     <span class="n">mycsv</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">reader</span><span class="p">(</span><span class="n">csvfile</span><span class="p">,</span><span class="n">delimiter</span><span class="o">=</span><span class="s">&#39;;&#39;</span><span class="p">)</span>
+<span class="n">In</span> <span class="p">[</span><span class="mi">19</span><span class="p">]:</span> <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;large.csv&quot;</span><span class="p">,</span><span class="s2">&quot;rb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">csvfile</span><span class="p">:</span>
+   <span class="o">....</span><span class="p">:</span>     <span class="n">mycsv</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">reader</span><span class="p">(</span><span class="n">csvfile</span><span class="p">,</span><span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;;&#39;</span><span class="p">)</span>
    <span class="o">....</span><span class="p">:</span>     <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">mycsv</span><span class="p">:</span>
    <span class="o">....</span><span class="p">:</span>         <span class="k">print</span> <span class="n">row</span>
    <span class="o">....</span><span class="p">:</span>
@@ -436,12 +436,12 @@ option1=0
 <li>findtext(match, default=None)</li>
 <li>iter(tag)</li>
 </ul>
-<div class="highlight"><pre><span class="kn">import</span> <span class="nn">xml.etree.ElementTree</span> <span class="kn">as</span> <span class="nn">ET</span>
-<span class="n">tree</span> <span class="o">=</span> <span class="n">ET</span><span class="o">.</span><span class="n">ElementTree</span><span class="p">(</span><span class="nb">file</span><span class="o">=</span><span class="s">&quot;test.xml&quot;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">xml.etree.ElementTree</span> <span class="kn">as</span> <span class="nn">ET</span>
+<span class="n">tree</span> <span class="o">=</span> <span class="n">ET</span><span class="o">.</span><span class="n">ElementTree</span><span class="p">(</span><span class="nb">file</span><span class="o">=</span><span class="s2">&quot;test.xml&quot;</span><span class="p">)</span>
 <span class="n">root</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">getroot</span><span class="p">()</span>
 <span class="k">print</span> <span class="n">root</span>
 <span class="k">print</span> <span class="n">root</span><span class="o">.</span><span class="n">tag</span>
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">root</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="s">&quot;system/purpose&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">root</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="s2">&quot;system/purpose&quot;</span><span class="p">)</span>
     <span class="k">print</span> <span class="n">i</span><span class="o">.</span><span class="n">text</span>
 </pre></div>
 
@@ -459,15 +459,15 @@ Python有很多支持序列化的模块，如pickle，json，marshal和shelve等
 pickle最主要的两个函数时dump()和load()，分别进行序列化和反序列化。</p>
 <p>pickle.dump(obj, file, protocol )序列化数据到一个文件描述符，obj表示需要序列化的对象
 load(file): 反序列化。</p>
-<div class="highlight"><pre><span class="n">In</span> <span class="p">[</span><span class="mi">20</span><span class="p">]:</span> <span class="kn">import</span> <span class="nn">cPickle</span> <span class="kn">as</span> <span class="nn">pickle</span>
-<span class="n">In</span> <span class="p">[</span><span class="mi">21</span><span class="p">]:</span> <span class="n">my_data</span> <span class="o">=</span> <span class="p">{</span><span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Python&quot;</span><span class="p">,</span> <span class="s">&quot;type&quot;</span><span class="p">:</span> <span class="s">&quot;Language&quot;</span><span class="p">,</span> <span class="s">&quot;version&quot;</span><span class="p">:</span> <span class="s">&quot;2.7.5&quot;</span><span class="p">}</span>
-<span class="n">In</span> <span class="p">[</span><span class="mi">22</span><span class="p">]:</span> <span class="n">fp</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s">&quot;picklefile.dat&quot;</span><span class="p">,</span><span class="s">&quot;wb&quot;</span><span class="p">)</span>  <span class="c"># 打开要写入的文件</span>
+<div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">20</span><span class="p">]:</span> <span class="kn">import</span> <span class="nn">cPickle</span> <span class="kn">as</span> <span class="nn">pickle</span>
+<span class="n">In</span> <span class="p">[</span><span class="mi">21</span><span class="p">]:</span> <span class="n">my_data</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Python&quot;</span><span class="p">,</span> <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;Language&quot;</span><span class="p">,</span> <span class="s2">&quot;version&quot;</span><span class="p">:</span> <span class="s2">&quot;2.7.5&quot;</span><span class="p">}</span>
+<span class="n">In</span> <span class="p">[</span><span class="mi">22</span><span class="p">]:</span> <span class="n">fp</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;picklefile.dat&quot;</span><span class="p">,</span><span class="s2">&quot;wb&quot;</span><span class="p">)</span>  <span class="c1"># 打开要写入的文件</span>
 <span class="n">In</span> <span class="p">[</span><span class="mi">23</span><span class="p">]:</span> <span class="n">pickle</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">my_data</span><span class="p">,</span> <span class="n">fp</span><span class="p">)</span>
 <span class="n">In</span> <span class="p">[</span><span class="mi">24</span><span class="p">]:</span> <span class="n">fp</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-<span class="n">In</span> <span class="p">[</span><span class="mi">25</span><span class="p">]:</span> <span class="n">fp</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s">&quot;picklefile.dat&quot;</span><span class="p">,</span><span class="s">&quot;rb&quot;</span><span class="p">)</span>
+<span class="n">In</span> <span class="p">[</span><span class="mi">25</span><span class="p">]:</span> <span class="n">fp</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;picklefile.dat&quot;</span><span class="p">,</span><span class="s2">&quot;rb&quot;</span><span class="p">)</span>
 <span class="n">In</span> <span class="p">[</span><span class="mi">26</span><span class="p">]:</span> <span class="n">out</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">fp</span><span class="p">)</span>
 <span class="n">In</span> <span class="p">[</span><span class="mi">27</span><span class="p">]:</span> <span class="k">print</span> <span class="n">out</span>
-<span class="p">{</span><span class="s">&#39;version&#39;</span><span class="p">:</span> <span class="s">&#39;2.7.5&#39;</span><span class="p">,</span> <span class="s">&#39;type&#39;</span><span class="p">:</span> <span class="s">&#39;Language&#39;</span><span class="p">,</span> <span class="s">&#39;name&#39;</span><span class="p">:</span> <span class="s">&#39;Python&#39;</span><span class="p">}</span>
+<span class="p">{</span><span class="s1">&#39;version&#39;</span><span class="p">:</span> <span class="s1">&#39;2.7.5&#39;</span><span class="p">,</span> <span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="s1">&#39;Language&#39;</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;Python&#39;</span><span class="p">}</span>
 <span class="n">In</span> <span class="p">[</span><span class="mi">28</span><span class="p">]:</span> <span class="n">fp</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 </pre></div>
 
@@ -480,22 +480,22 @@ load(file): 反序列化。</p>
 <li>pickle模块式可以扩展的。对于不可序列化的对象，如sockets、文件句柄、数据库连接等，可以通过特殊方法__getstate__()和__setstate__()来返回实例在被pickle时的状态。</li>
 <li>能够自动维护对象间的引用。</li>
 </ul>
-<div class="highlight"><pre><span class="n">In</span> <span class="p">[</span><span class="mi">29</span><span class="p">]:</span> <span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;a&#39;</span><span class="p">,</span><span class="s">&#39;b&#39;</span><span class="p">]</span>
+<div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">29</span><span class="p">]:</span> <span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span><span class="s1">&#39;b&#39;</span><span class="p">]</span>
 <span class="n">In</span> <span class="p">[</span><span class="mi">30</span><span class="p">]:</span> <span class="n">b</span> <span class="o">=</span> <span class="n">a</span>
-<span class="n">In</span> <span class="p">[</span><span class="mi">31</span><span class="p">]:</span> <span class="n">b</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s">&#39;c&#39;</span><span class="p">)</span>
+<span class="n">In</span> <span class="p">[</span><span class="mi">31</span><span class="p">]:</span> <span class="n">b</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;c&#39;</span><span class="p">)</span>
 <span class="n">In</span> <span class="p">[</span><span class="mi">32</span><span class="p">]:</span> <span class="n">b</span>
-<span class="n">Out</span><span class="p">[</span><span class="mi">32</span><span class="p">]:</span> <span class="p">[</span><span class="s">&#39;a&#39;</span><span class="p">,</span> <span class="s">&#39;b&#39;</span><span class="p">,</span> <span class="s">&#39;c&#39;</span><span class="p">]</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">32</span><span class="p">]:</span> <span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">]</span>
 <span class="n">In</span> <span class="p">[</span><span class="mi">33</span><span class="p">]:</span> <span class="n">a</span>
-<span class="n">Out</span><span class="p">[</span><span class="mi">33</span><span class="p">]:</span> <span class="p">[</span><span class="s">&#39;a&#39;</span><span class="p">,</span> <span class="s">&#39;b&#39;</span><span class="p">,</span> <span class="s">&#39;c&#39;</span><span class="p">]</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">33</span><span class="p">]:</span> <span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">]</span>
 <span class="n">In</span> <span class="p">[</span><span class="mi">34</span><span class="p">]:</span> <span class="n">p</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">dumps</span><span class="p">((</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">))</span>
 <span class="n">In</span> <span class="p">[</span><span class="mi">35</span><span class="p">]:</span> <span class="n">a1</span><span class="p">,</span> <span class="n">b1</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
 <span class="n">In</span> <span class="p">[</span><span class="mi">36</span><span class="p">]:</span> <span class="n">a1</span>
-<span class="n">Out</span><span class="p">[</span><span class="mi">36</span><span class="p">]:</span> <span class="p">[</span><span class="s">&#39;a&#39;</span><span class="p">,</span> <span class="s">&#39;b&#39;</span><span class="p">,</span> <span class="s">&#39;c&#39;</span><span class="p">]</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">36</span><span class="p">]:</span> <span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">]</span>
 <span class="n">In</span> <span class="p">[</span><span class="mi">37</span><span class="p">]:</span> <span class="n">b1</span>
-<span class="n">Out</span><span class="p">[</span><span class="mi">37</span><span class="p">]:</span> <span class="p">[</span><span class="s">&#39;a&#39;</span><span class="p">,</span> <span class="s">&#39;b&#39;</span><span class="p">,</span> <span class="s">&#39;c&#39;</span><span class="p">]</span>
-<span class="n">In</span> <span class="p">[</span><span class="mi">38</span><span class="p">]:</span> <span class="n">a1</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s">&#39;d&#39;</span><span class="p">)</span>  <span class="c"># 反序列化后对a1对象的修改仍然会影响到b1</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">37</span><span class="p">]:</span> <span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">]</span>
+<span class="n">In</span> <span class="p">[</span><span class="mi">38</span><span class="p">]:</span> <span class="n">a1</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;d&#39;</span><span class="p">)</span>  <span class="c1"># 反序列化后对a1对象的修改仍然会影响到b1</span>
 <span class="n">In</span> <span class="p">[</span><span class="mi">39</span><span class="p">]:</span> <span class="n">b1</span>
-<span class="n">Out</span><span class="p">[</span><span class="mi">39</span><span class="p">]:</span> <span class="p">[</span><span class="s">&#39;a&#39;</span><span class="p">,</span> <span class="s">&#39;b&#39;</span><span class="p">,</span> <span class="s">&#39;c&#39;</span><span class="p">,</span> <span class="s">&#39;d&#39;</span><span class="p">]</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">39</span><span class="p">]:</span> <span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="s1">&#39;d&#39;</span><span class="p">]</span>
 </pre></div>
 
 
@@ -506,7 +506,7 @@ load(file): 反序列化。</p>
 <h3>建议45：序列化的另一个不错的选择——JSON</h3>
 <p>Python有一系列模块提供对JSON格式的支持，如simplejson, cjson, yajl, ujson, 2.6后又引入了标准库JSON。cjson是用C语言实现，yajl是Cython版本的JSON实现。
 simplejson与标准库JSON的区别不大，但更新可能更快，在实际使用中将这两者结合采用如下的import方法：</p>
-<div class="highlight"><pre><span class="k">try</span><span class="p">:</span> 
+<div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span> 
     <span class="kn">import</span> <span class="nn">simplejson</span> <span class="kn">as</span> <span class="nn">json</span>
 <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span> 
     <span class="kn">import</span> <span class="nn">json</span>
@@ -527,8 +527,8 @@ simplejson与标准库JSON的区别不大，但更新可能更快，在实际使
 <h3>建议46：使用traceback获取栈信息</h3>
 <p>traceback会输出完整的栈信息，有利于开发人员快速找到异常发生时的现场信息。
 tracback.print_exc()打印出：错误类型，错误对应的值已经具体的trace信息，包括文件名、具体行号、函数名已经对应的代码。</p>
-<div class="highlight"><pre><span class="kn">import</span> <span class="nn">traceback</span>
-<span class="n">gList</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;a&#39;</span><span class="p">,</span><span class="s">&#39;b&#39;</span><span class="p">,</span><span class="s">&#39;c&#39;</span><span class="p">,</span><span class="s">&#39;d&#39;</span><span class="p">,</span><span class="s">&#39;f&#39;</span><span class="p">,</span><span class="s">&#39;g&#39;</span><span class="p">,</span><span class="s">&#39;e&#39;</span><span class="p">]</span>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">traceback</span>
+<span class="n">gList</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span><span class="s1">&#39;b&#39;</span><span class="p">,</span><span class="s1">&#39;c&#39;</span><span class="p">,</span><span class="s1">&#39;d&#39;</span><span class="p">,</span><span class="s1">&#39;f&#39;</span><span class="p">,</span><span class="s1">&#39;g&#39;</span><span class="p">,</span><span class="s1">&#39;e&#39;</span><span class="p">]</span>
 <span class="k">def</span> <span class="nf">f</span><span class="p">():</span>
     <span class="n">gList</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span>
     <span class="k">return</span> <span class="n">g</span><span class="p">()</span>
@@ -538,20 +538,20 @@ tracback.print_exc()打印出：错误类型，错误对应的值已经具体的
     <span class="k">del</span> <span class="n">gList</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
     <span class="k">return</span> <span class="n">i</span><span class="p">()</span>
 <span class="k">def</span> <span class="nf">i</span><span class="p">():</span>
-    <span class="n">gList</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s">&#39;i&#39;</span><span class="p">)</span>
+    <span class="n">gList</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;i&#39;</span><span class="p">)</span>
     <span class="k">print</span> <span class="n">gList</span><span class="p">[</span><span class="mi">7</span><span class="p">]</span>
-<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&#39;__main__&#39;</span><span class="p">:</span>
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="n">f</span><span class="p">()</span>
     <span class="k">except</span> <span class="ne">IndexError</span> <span class="k">as</span> <span class="n">ex</span><span class="p">:</span>
-        <span class="k">print</span> <span class="s">&#39;sorry, out of range&#39;</span>
+        <span class="k">print</span> <span class="s1">&#39;sorry, out of range&#39;</span>
         <span class="k">print</span> <span class="n">ex</span>
         <span class="n">traceback</span><span class="o">.</span><span class="n">print_exc</span><span class="p">()</span>
 </pre></div>
 
 
 <p>输出结果：</p>
-<div class="highlight"><pre>sorry, out of range
+<div class="highlight"><pre><span></span>sorry, out of range
 list index out of range
 Traceback (most recent call last):
   File &quot;trace_back.py&quot;, line 17, in &lt;module&gt;
@@ -578,18 +578,18 @@ IndexError: list index out of range
 <li>Filter。决定哪些信息需要输出。</li>
 </ol>
 <p>下面是一个使用logging的例子：</p>
-<div class="highlight"><pre><span class="kn">import</span> <span class="nn">traceback</span>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">traceback</span>
 <span class="kn">import</span> <span class="nn">sys</span>
 <span class="kn">import</span> <span class="nn">logging</span>
-<span class="n">gList</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;a&#39;</span><span class="p">,</span><span class="s">&#39;b&#39;</span><span class="p">,</span><span class="s">&#39;c&#39;</span><span class="p">,</span><span class="s">&#39;d&#39;</span><span class="p">,</span><span class="s">&#39;f&#39;</span><span class="p">,</span><span class="s">&#39;g&#39;</span><span class="p">,</span><span class="s">&#39;e&#39;</span><span class="p">]</span>
-<span class="n">logging</span><span class="o">.</span><span class="n">basicConfig</span><span class="p">(</span>  <span class="c"># configure log output formatter</span>
+<span class="n">gList</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span><span class="s1">&#39;b&#39;</span><span class="p">,</span><span class="s1">&#39;c&#39;</span><span class="p">,</span><span class="s1">&#39;d&#39;</span><span class="p">,</span><span class="s1">&#39;f&#39;</span><span class="p">,</span><span class="s1">&#39;g&#39;</span><span class="p">,</span><span class="s1">&#39;e&#39;</span><span class="p">]</span>
+<span class="n">logging</span><span class="o">.</span><span class="n">basicConfig</span><span class="p">(</span>  <span class="c1"># configure log output formatter</span>
         <span class="n">level</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">DEBUG</span><span class="p">,</span>
-        <span class="n">filename</span> <span class="o">=</span> <span class="s">&#39;log.txt&#39;</span><span class="p">,</span>
-        <span class="n">filemode</span> <span class="o">=</span> <span class="s">&#39;w&#39;</span><span class="p">,</span>
-        <span class="n">format</span> <span class="o">=</span> <span class="s">&#39;</span><span class="si">%(asctime)s</span><span class="s"> </span><span class="si">%(filename)s</span><span class="s">[line:</span><span class="si">%(lineno)d</span><span class="s">] </span><span class="si">%(levelname)s</span><span class="s"> </span><span class="si">%(message)s</span><span class="s">&#39;</span><span class="p">,)</span>
+        <span class="n">filename</span> <span class="o">=</span> <span class="s1">&#39;log.txt&#39;</span><span class="p">,</span>
+        <span class="n">filemode</span> <span class="o">=</span> <span class="s1">&#39;w&#39;</span><span class="p">,</span>
+        <span class="n">format</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">%(asctime)s</span><span class="s1"> </span><span class="si">%(filename)s</span><span class="s1">[line:</span><span class="si">%(lineno)d</span><span class="s1">] </span><span class="si">%(levelname)s</span><span class="s1"> </span><span class="si">%(message)s</span><span class="s1">&#39;</span><span class="p">,)</span>
 <span class="k">def</span> <span class="nf">f</span><span class="p">():</span>
     <span class="n">gList</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span>
-    <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s">&#39;[INFO]:calling method g() in f()&#39;</span><span class="p">)</span> <span class="c"># normal message</span>
+    <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;[INFO]:calling method g() in f()&#39;</span><span class="p">)</span> <span class="c1"># normal message</span>
     <span class="k">return</span> <span class="n">g</span><span class="p">()</span>
 <span class="k">def</span> <span class="nf">g</span><span class="p">():</span>
     <span class="k">return</span> <span class="n">h</span><span class="p">()</span>
@@ -597,26 +597,26 @@ IndexError: list index out of range
     <span class="k">del</span> <span class="n">gList</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
     <span class="k">return</span> <span class="n">i</span><span class="p">()</span>
 <span class="k">def</span> <span class="nf">i</span><span class="p">():</span>
-    <span class="n">gList</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s">&#39;i&#39;</span><span class="p">)</span>
+    <span class="n">gList</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;i&#39;</span><span class="p">)</span>
     <span class="k">print</span> <span class="n">gList</span><span class="p">[</span><span class="mi">7</span><span class="p">]</span>
-<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&#39;__main__&#39;</span><span class="p">:</span>
-    <span class="n">logging</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s">&#39;Information during calling f():&#39;</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">logging</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s1">&#39;Information during calling f():&#39;</span><span class="p">)</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="n">f</span><span class="p">()</span>
     <span class="k">except</span> <span class="ne">IndexError</span> <span class="k">as</span> <span class="n">ex</span><span class="p">:</span>
-        <span class="k">print</span> <span class="s">&#39;sorry, out of range&#39;</span>
-        <span class="c">#traceback.print_exc()</span>
+        <span class="k">print</span> <span class="s1">&#39;sorry, out of range&#39;</span>
+        <span class="c1">#traceback.print_exc()</span>
         <span class="n">ty</span><span class="p">,</span><span class="n">tv</span><span class="p">,</span><span class="n">tb</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">exc_info</span><span class="p">()</span>
-        <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s">&quot;[ERROR]:Sorry,Exception occured.&quot;</span><span class="p">)</span>
-        <span class="n">logging</span><span class="o">.</span><span class="n">critical</span><span class="p">(</span><span class="s">&#39;object info:</span><span class="si">%s</span><span class="s">&#39;</span> <span class="o">%</span> <span class="n">ex</span><span class="p">)</span>
-        <span class="n">logging</span><span class="o">.</span><span class="n">critical</span><span class="p">(</span><span class="s">&#39;Error Type:{0}, Error information:{1}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">ty</span><span class="p">,</span><span class="n">tv</span><span class="p">))</span>
-        <span class="n">logging</span><span class="o">.</span><span class="n">critical</span><span class="p">(</span><span class="s">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">traceback</span><span class="o">.</span><span class="n">format_tb</span><span class="p">(</span><span class="n">tb</span><span class="p">)))</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;[ERROR]:Sorry,Exception occured.&quot;</span><span class="p">)</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">critical</span><span class="p">(</span><span class="s1">&#39;object info:</span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">ex</span><span class="p">)</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">critical</span><span class="p">(</span><span class="s1">&#39;Error Type:{0}, Error information:{1}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">ty</span><span class="p">,</span><span class="n">tv</span><span class="p">))</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">critical</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">traceback</span><span class="o">.</span><span class="n">format_tb</span><span class="p">(</span><span class="n">tb</span><span class="p">)))</span>
         <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 </pre></div>
 
 
 <p>输出log到log.txt，内容如下：</p>
-<div class="highlight"><pre>2014-12-11 20:50:55,684 trace_back.py[line:25] DEBUG Information during calling f():
+<div class="highlight"><pre><span></span>2014-12-11 20:50:55,684 trace_back.py[line:25] DEBUG Information during calling f():
 2014-12-11 20:50:55,684 trace_back.py[line:13] INFO [INFO]:calling method g() in f()
 2014-12-11 20:50:55,684 trace_back.py[line:32] ERROR [ERROR]:Sorry,Exception occured.
 2014-12-11 20:50:55,684 trace_back.py[line:33] CRITICAL object info:list index out of range
@@ -654,29 +654,29 @@ threading模块基于thread进行封装，将线程操作对象化，在语言�
 <li>threading对同步原语的支持更为完善和丰富。如有Lock指令锁，还支持条件变量condition、信号量Semaphore等。</li>
 <li>threading模块在主线程与子线程的交互上更为友好。threading中的join()方法能够阻塞当前上下文环境的线程，直到调用此方法的线程终止或者到达指定的timeout。利用该方法可以方便地控制主线程与子线程以及子线程之间的执行。</li>
 </ul>
-<div class="highlight"><pre><span class="kn">import</span> <span class="nn">threading</span><span class="o">,</span> <span class="nn">time</span><span class="o">,</span> <span class="nn">sys</span>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">threading</span><span class="o">,</span> <span class="nn">time</span><span class="o">,</span> <span class="nn">sys</span>
 <span class="k">class</span> <span class="nc">test</span><span class="p">(</span><span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">):</span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">delay</span><span class="p">):</span>
         <span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">delay</span> <span class="o">=</span> <span class="n">delay</span>
     <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">print</span> <span class="s">&#39;</span><span class="si">%s</span><span class="s"> delay for </span><span class="si">%s</span><span class="s">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">delay</span><span class="p">)</span>
+        <span class="k">print</span> <span class="s1">&#39;</span><span class="si">%s</span><span class="s1"> delay for </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">delay</span><span class="p">)</span>
         <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">delay</span><span class="p">)</span>
         <span class="n">c</span> <span class="o">=</span> <span class="mi">0</span>
         <span class="k">while</span> <span class="mi">1</span><span class="p">:</span>
-            <span class="k">print</span> <span class="s">&#39;This is thread </span><span class="si">%s</span><span class="s"> on line </span><span class="si">%s</span><span class="s">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span>
+            <span class="k">print</span> <span class="s1">&#39;This is thread </span><span class="si">%s</span><span class="s1"> on line </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span>
             <span class="n">c</span> <span class="o">=</span> <span class="n">c</span> <span class="o">+</span> <span class="mi">1</span>
             <span class="k">if</span> <span class="n">c</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
-                <span class="k">print</span> <span class="s">&#39;End of thread </span><span class="si">%s</span><span class="s">&#39;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span>
+                <span class="k">print</span> <span class="s1">&#39;End of thread </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span>
                 <span class="k">break</span>
-<span class="n">t1</span> <span class="o">=</span> <span class="n">test</span><span class="p">(</span><span class="s">&#39;Thread 1&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
-<span class="n">t2</span> <span class="o">=</span> <span class="n">test</span><span class="p">(</span><span class="s">&#39;Thread 2&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">t1</span> <span class="o">=</span> <span class="n">test</span><span class="p">(</span><span class="s1">&#39;Thread 1&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">t2</span> <span class="o">=</span> <span class="n">test</span><span class="p">(</span><span class="s1">&#39;Thread 2&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
 <span class="n">t1</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
-<span class="k">print</span> <span class="s">&#39;Wait t1 to end&#39;</span>
+<span class="k">print</span> <span class="s1">&#39;Wait t1 to end&#39;</span>
 <span class="n">t1</span><span class="o">.</span><span class="n">join</span><span class="p">()</span>
 <span class="n">t2</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
-<span class="k">print</span> <span class="s">&#39;End of main&#39;</span>
+<span class="k">print</span> <span class="s1">&#39;End of main&#39;</span>
 </pre></div>
 
 
@@ -684,12 +684,12 @@ threading模块基于thread进行封装，将线程操作对象化，在语言�
 <img alt="threading_join" src="./imgs/threading_join.png" /></p>
 <p>主线程main上使用t1的join()方法，主线程会等待t1结束后才继续运行后面的语句。线程t2的启动在join语句之后，t2一直等到t1退出后才会开始运行。</p>
 <p>thread模块不支持守护进程。thread模块在主线程退出后，所有的主线程无论是否还在工作，都会被强制结束。threading模块，支持守护进程，可以通过setDaemon()来设定线程的daemon属性，当daemon属性为True时，表面主线程的退出可以不用等待子线程的完成（默认为False，即所有子线程结束后主线程才会结束）</p>
-<div class="highlight"><pre><span class="kn">import</span> <span class="nn">threading</span>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">threading</span>
 <span class="kn">import</span> <span class="nn">time</span>
 <span class="k">def</span> <span class="nf">myfunc</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">delay</span><span class="p">):</span>
-    <span class="k">print</span> <span class="s">&#39;I will calculate square of </span><span class="si">%s</span><span class="s"> after delay for </span><span class="si">%s</span><span class="s">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">delay</span><span class="p">)</span>
+    <span class="k">print</span> <span class="s1">&#39;I will calculate square of </span><span class="si">%s</span><span class="s1"> after delay for </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">delay</span><span class="p">)</span>
     <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="n">delay</span><span class="p">)</span>
-    <span class="k">print</span> <span class="s">&#39;calculate begins...&#39;</span>
+    <span class="k">print</span> <span class="s1">&#39;calculate begins...&#39;</span>
     <span class="n">result</span> <span class="o">=</span> <span class="n">a</span><span class="o">*</span><span class="n">a</span>
     <span class="k">print</span> <span class="n">result</span>
     <span class="k">return</span> <span class="n">result</span>
@@ -728,7 +728,7 @@ threading模块基于thread进行封装，将线程操作对象化，在语言�
 <p>Queue实现了多个生产者和多个消费者的队列，当多线程之间需要信息安全交换的时候特别有用。
 需要注意的是Queue与collections.deque中的队列是不同的，前者主要用于不同线程之间的通信，它内部实现了线程的锁机制；而后者是数据结构上的概念。</p>
 <p>例子：</p>
-<div class="highlight"><pre><span class="kn">import</span> <span class="nn">os</span>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">Queue</span>
 <span class="kn">import</span> <span class="nn">threading</span>
 <span class="kn">import</span> <span class="nn">urllib2</span>
@@ -739,22 +739,22 @@ threading模块基于thread进行封装，将线程操作对象化，在语言�
     <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
             <span class="n">url</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">queue</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
-            <span class="k">print</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">+</span> <span class="s">&quot;begin download&quot;</span> <span class="o">+</span> <span class="n">url</span> <span class="o">+</span> <span class="s">&quot;...&quot;</span>
+            <span class="k">print</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">+</span> <span class="s2">&quot;begin download&quot;</span> <span class="o">+</span> <span class="n">url</span> <span class="o">+</span> <span class="s2">&quot;...&quot;</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">download_file</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">queue</span><span class="o">.</span><span class="n">task_done</span><span class="p">()</span>
-            <span class="k">print</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">+</span> <span class="s">&quot; download completed!&quot;</span>
+            <span class="k">print</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">+</span> <span class="s2">&quot; download completed!&quot;</span>
     <span class="k">def</span> <span class="nf">download_file</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">url</span><span class="p">):</span>
         <span class="n">urlhandler</span> <span class="o">=</span> <span class="n">urllib2</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
-        <span class="n">fname</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">url</span><span class="p">)</span><span class="o">+</span><span class="s">&quot;.html&quot;</span>
-        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">fname</span><span class="p">,</span> <span class="s">&quot;wb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">fname</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">url</span><span class="p">)</span><span class="o">+</span><span class="s2">&quot;.html&quot;</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">fname</span><span class="p">,</span> <span class="s2">&quot;wb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
             <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
                 <span class="n">chunk</span> <span class="o">=</span> <span class="n">urlhandler</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="mi">1024</span><span class="p">)</span>
                 <span class="k">if</span> <span class="ow">not</span> <span class="n">chunk</span><span class="p">:</span> <span class="k">break</span>
                 <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">chunk</span><span class="p">)</span>
-<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&#39;__main__&#39;</span><span class="p">:</span>
-    <span class="n">urls</span> <span class="o">=</span> <span class="p">[</span><span class="s">&quot;http://www.baidu.com&quot;</span><span class="p">,</span>
-            <span class="s">&quot;http://www.google.com&quot;</span><span class="p">,</span>
-            <span class="s">&quot;http://www.wengweitao.com&quot;</span>
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">urls</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;http://www.baidu.com&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;http://www.google.com&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;http://www.wengweitao.com&quot;</span>
             <span class="p">]</span>
     <span class="n">queue</span> <span class="o">=</span> <span class="n">Queue</span><span class="o">.</span><span class="n">Queue</span><span class="p">()</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
@@ -764,7 +764,7 @@ threading模块基于thread进行封装，将线程操作对象化，在语言�
     <span class="k">for</span> <span class="n">url</span> <span class="ow">in</span> <span class="n">urls</span><span class="p">:</span>
         <span class="n">queue</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
 
-    <span class="c"># wait for the queue to finish</span>
+    <span class="c1"># wait for the queue to finish</span>
     <span class="n">queue</span><span class="o">.</span><span class="n">join</span><span class="p">()</span>
 </pre></div>
 

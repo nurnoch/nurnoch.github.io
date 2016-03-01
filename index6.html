@@ -61,9 +61,74 @@
         <div class="eleven columns">
                  <ol id="post-list">
                         <li><article class="hentry">
+                                <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/dui-pai-xu.html" rel="bookmark" title="Permalink to 堆排序">堆排序</a></h2> </header>
+                                <footer class="post-info">
+                                    <abbr class="published" title="2015-05-14T22:23:00+08:00"> 四 14 五月 2015 </abbr>
+                                    <address class="vcard author">By 
+                                    <a class="url fn" href="http://www.wengweitao.com/author/wwt.html"> wwt</a>
+                                    </address>
+                                </footer><!-- /.post-info -->
+                                <div class="entry-content"> <p>本文将介绍一种排序算法，称为<strong>堆排序（heapsort）</strong>。堆排序最坏情况下运行时间为O(nlogn)，并且具有空间原址性：任何时候只需要常数个额外的元素空间存储临时数据。堆排序中使用了堆这个数据结构进行管理，堆这种数据结构也可以用来构造一种 有效的优先级队列。</p>
+<h2>堆</h2>
+<p><strong>堆</strong>（二叉堆）是一个数组，可以看成一个近似的完全二叉树，树中每一个结点对应数组中的一个元素，除了最底层外，该树是完全满的，而且是从左至右填充。二叉堆有两种形式：最大堆和最小堆。在最大堆中，除了根结点之外的所有结点的值小于等于其父节点的值，因此，堆中最大的元素存放在根结点中，并且在任一子树中，该子树所包含的所有结点的值都不大于该子树根结点的值。最小堆的组织方式正好相反。</p>
+<p>在堆排序算法中，我们使用最大堆，而最小堆通常用于构造优先级队列。</p>
+<p>如果把堆看成一棵树，那么堆的高度就是O(logn)。我们会发现在堆上进行的很多基本操作的运行时间至多与树的高度成正比，即时间复杂度为O(nlogn)。</p>
+<p>表示堆的数组A包括的基本属性：</p>
+<ul>
+<li>A.length() ： 返回数组元素的个数</li>
+<li>A.heap-size()：返回有多少个堆元素存放在该数组中（通常小于等于length）</li>
+</ul>
+<p>对于数组A[1..A.length ...</p> </div><!-- /.entry-content -->
+
+                                <div class="medium primary btn"><a href="http://www.wengweitao.com/dui-pai-xu.html" rel="bookmark" title="Permalink to 堆排序">Read more <i class="icon-arrow-right"></i></a></div>
+
+
+
+                                <div class="row tag-row">
+                                        <span>Tagged as : </span>
+                                            <a class="danger label" href="http://www.wengweitao.com/tag/pai-xu-suan-fa-ji-chu.html">排序 算法 基础</a>
+                                </div>
+
+
+
+                        </article></li>
+                        <li><article class="hentry">
+                                <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/cha-ru-pai-xu.html" rel="bookmark" title="Permalink to 插入排序">插入排序</a></h2> </header>
+                                <footer class="post-info">
+                                    <abbr class="published" title="2015-05-13T18:34:00+08:00"> 三 13 五月 2015 </abbr>
+                                    <address class="vcard author">By 
+                                    <a class="url fn" href="http://www.wengweitao.com/author/wwt.html"> wwt</a>
+                                    </address>
+                                </footer><!-- /.post-info -->
+                                <div class="entry-content"> <p>本文介绍一种非常简单的排序算法——<strong>插入排序</strong>。对于少量元素的排序，它是一个有效的算法。插入排序可以形象的类比为手中扑克牌的排序。开始时，左手为空并且桌子上的扑克牌的牌面朝下。然后我们每次从桌子上拿一张扑克牌，插入左手中正确的位置，我们从右向左将它与手中的每张牌进行比较，任何时候左手上的牌总是有序的。</p>
+<p>对数组A[1..n]进行插入排序步骤：</p>
+<ol>
+<li>初始时只含有一个元素A<a href="http://book.douban.com/subject/1885170/">1</a>，所以是有序的</li>
+<li>依次将A[2]~A[n]依次插入到前面已经排好序的子序列中</li>
+<li>n - 1次即可得到一个有序的表</li>
+</ol>
+<div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">insertionSort</span><span class="p">(</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">A</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="n">A</span><span class="p">.</span><span class="n">size</span><span class="p">();</span>
+    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="o">++</span><span class="n">j</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kt">int</span> <span class="n">key</span> <span class="o">=</span> <span class="n">A</span><span class="p">[</span><span class="n">j</span><span class="p">];</span>
+        <span class="c1">// Insert A[j] into the ...</span></pre></div> </div><!-- /.entry-content -->
+
+                                <div class="medium primary btn"><a href="http://www.wengweitao.com/cha-ru-pai-xu.html" rel="bookmark" title="Permalink to 插入排序">Read more <i class="icon-arrow-right"></i></a></div>
+
+
+
+                                <div class="row tag-row">
+                                        <span>Tagged as : </span>
+                                            <a class="danger label" href="http://www.wengweitao.com/tag/pai-xu-suan-fa-ji-chu.html">排序 算法 基础</a>
+                                </div>
+
+
+
+                        </article></li>
+                        <li><article class="hentry">
                                 <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/mou-pao-pai-xu.html" rel="bookmark" title="Permalink to 冒泡排序">冒泡排序</a></h2> </header>
                                 <footer class="post-info">
-                                    <abbr class="published" title="2015-05-13T16:13:00+08:00"> Wed 13 May 2015 </abbr>
+                                    <abbr class="published" title="2015-05-13T16:13:00+08:00"> 三 13 五月 2015 </abbr>
                                     <address class="vcard author">By 
                                     <a class="url fn" href="http://www.wengweitao.com/author/wwt.html"> wwt</a>
                                     </address>
@@ -71,7 +136,7 @@
                                 <div class="entry-content"> <p>冒泡排序算法比较简单，假设待排序列的长度为n，其思想是：</p>
 <p>从后往前（或者从前往后）两两比较相邻元素的值，若为逆序（即前一个大于后一个），则交换它们，直到序列比较完，我们称进行了一趟冒泡排序，结果将最小的元素交换到待排序列的第一个位置。下一趟冒泡排序，第一个元素不再参与比较，待排序列的个数减少1，每趟冒泡排序的结果把子序列中最小元素放到了最终的位置。关键字如同气泡一般逐渐往上漂浮至水面，这就是冒泡排序名字的由来。最多n-1趟就能把所有元素排好序。</p>
 <p>代码实现如下：</p>
-<div class="highlight"><pre><span class="kt">void</span> <span class="nf">bubbleSort</span><span class="p">(</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">A</span><span class="p">)</span> <span class="p">{</span>
+<div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">bubbleSort</span><span class="p">(</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">A</span><span class="p">)</span> <span class="p">{</span>
     <span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="n">A</span><span class="p">.</span><span class="n">size</span><span class="p">();</span>
     <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span>
         <span class="kt">bool</span> <span class="n">flag</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>  <span class="c1">// 表示本趟冒泡是否发生了交换的标志</span>
@@ -93,20 +158,20 @@
                         <li><article class="hentry">
                                 <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/centos-sheng-ji-gcc-he-g-de-fang-fa.html" rel="bookmark" title="Permalink to CentOS 升级 gcc 和 g++ 的方法">CentOS 升级 gcc 和 g++ 的方法</a></h2> </header>
                                 <footer class="post-info">
-                                    <abbr class="published" title="2015-05-12T19:02:00+08:00"> Tue 12 May 2015 </abbr>
+                                    <abbr class="published" title="2015-05-12T19:02:00+08:00"> 二 12 五月 2015 </abbr>
                                     <address class="vcard author">By 
                                     <a class="url fn" href="http://www.wengweitao.com/author/wwt.html"> wwt</a>
                                     </address>
                                 </footer><!-- /.post-info -->
                                 <div class="entry-content"> <p>CentOS 系统自带的 gcc 或者 g++ 的版本是：g++ (GCC) 4.4.6. GCC 版本太旧，导致了很多使用上的不便，如：无法使用g++ -std=c++11 命令来编译 C++11、无法使用Vim的很多插件（YouCompleteMe等）。因此，有必要对它进行升级。</p>
 <p>对 GCC 升级无法直接使用：</p>
-<div class="highlight"><pre>yum update gcc
+<div class="highlight"><pre><span></span>yum update gcc
 </pre></div>
 
 
 <p>以下是升级的详细过程。</p>
 <h3>1.使用 redhat developer toolset 1.1 的repo，安装GCC</h3>
-<div class="highlight"><pre><span class="nb">cd</span> /etc/yum.repos.d
+<div class="highlight"><pre><span></span><span class="nb">cd</span> /etc/yum.repos.d
 
 wget http://people ...</pre></div> </div><!-- /.entry-content -->
 
@@ -125,7 +190,7 @@ wget http://people ...</pre></div> </div><!-- /.entry-content -->
                         <li><article class="hentry">
                                 <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/zhong-duan-chuang-kou-guan-li-shen-qi-tmux.html" rel="bookmark" title="Permalink to 终端窗口管理神器——tmux">终端窗口管理神器——tmux</a></h2> </header>
                                 <footer class="post-info">
-                                    <abbr class="published" title="2015-05-11T09:12:00+08:00"> Mon 11 May 2015 </abbr>
+                                    <abbr class="published" title="2015-05-11T09:12:00+08:00"> 一 11 五月 2015 </abbr>
                                     <address class="vcard author">By 
                                     <a class="url fn" href="http://www.wengweitao.com/author/wwt.html"> wwt</a>
                                     </address>
@@ -141,7 +206,7 @@ wget http://people ...</pre></div> </div><!-- /.entry-content -->
 <p><img alt="tmux示例" src="http://tmux.sourceforge.net/tmux4.png" /></p>
 <h2>tmux的基本概念</h2>
 <p>首先，需要先安装tmux：</p>
-<div class="highlight"><pre>sudo yum install tmux
+<div class="highlight"><pre><span></span>sudo yum install tmux
 </pre></div>
 
 
@@ -158,79 +223,6 @@ wget http://people ...</pre></div> </div><!-- /.entry-content -->
                                 <div class="row tag-row">
                                         <span>Tagged as : </span>
                                             <a class="danger label" href="http://www.wengweitao.com/tag/tmux.html">tmux</a>
-                                </div>
-
-
-
-                        </article></li>
-                        <li><article class="hentry">
-                                <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/xuan-ze-wen-ti-ji-fu-za-du-fen-xi.html" rel="bookmark" title="Permalink to 选择问题及复杂度分析">选择问题及复杂度分析</a></h2> </header>
-                                <footer class="post-info">
-                                    <abbr class="published" title="2015-05-06T11:10:00+08:00"> Wed 06 May 2015 </abbr>
-                                    <address class="vcard author">By 
-                                    <a class="url fn" href="http://www.wengweitao.com/author/wwt.html"> wwt</a>
-                                    </address>
-                                </footer><!-- /.post-info -->
-                                <div class="entry-content"> <p>选择问题是在实际应用中经常碰到的问题，最常见的选择问题有：选最大、选最小、选中位数、选第二大等。</p>
-<p>可以描述为从n个元素的集合L中选出第k小的元素，其中<span class="math">\(1 \leq k \leq n\)</span>。这里的第k小表示：将L中的元素按照升序排列，排在第k个位置的元素。如k=1时，选出的就是最小元素。</p>
-<p>本文将对选择问题进行总结并对它们的复杂度进行分析。</p>
-<h2>选最大最小问题</h2>
-<h3>选最大算法</h3>
-<p>选最大问题，最容易想到的方法就是顺序比较算法，从第一个元素开始依次往后比较n个元素，用一个变量max保存当前的最大值，算法实现如下：</p>
-<div class="highlight"><pre><span class="kt">int</span> <span class="nf">findMax</span><span class="p">(</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">L</span><span class="p">,</span> <span class="kt">int</span> <span class="n">n</span><span class="p">)</span> <span class="p">{</span>
-    <span class="kt">int</span> <span class="n">max</span> <span class="o">=</span> <span class="n">L</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>  
-    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">if</span><span class="p">(</span><span class="n">L</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">max</span><span class="p">)</span>
-            <span class="n">max ...</span></pre></div> </div><!-- /.entry-content -->
-
-                                <div class="medium primary btn"><a href="http://www.wengweitao.com/xuan-ze-wen-ti-ji-fu-za-du-fen-xi.html" rel="bookmark" title="Permalink to 选择问题及复杂度分析">Read more <i class="icon-arrow-right"></i></a></div>
-
-
-
-                                <div class="row tag-row">
-                                        <span>Tagged as : </span>
-                                            <a class="danger label" href="http://www.wengweitao.com/tag/suan-fa-fen-xi.html">算法分析</a>
-                                </div>
-
-
-
-                        </article></li>
-                        <li><article class="hentry">
-                                <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/linuxshang-da-jian-vpnfu-wu-qi.html" rel="bookmark" title="Permalink to Linux上搭建VPN服务器">Linux上搭建VPN服务器</a></h2> </header>
-                                <footer class="post-info">
-                                    <abbr class="published" title="2015-05-01T21:21:00+08:00"> Fri 01 May 2015 </abbr>
-                                    <address class="vcard author">By 
-                                    <a class="url fn" href="http://www.wengweitao.com/author/wwt.html"> wwt</a>
-                                    </address>
-                                </footer><!-- /.post-info -->
-                                <div class="entry-content"> <p>今天是五一劳动节，也就是五月份的第一天，不巧的是校园上网账号欠费了，导致无法通过认证上网。于是，就琢磨着如何不通过认证直接上网。实验室有几台服务器，这些服务器都无需认证可直接访问外网，很自然的就想到以下两种方法：</p>
-<p>（1）在服务器上设置代理服务器，然后在自己的PC和iPhone上设置代理上网</p>
-<p>（2）在服务器上搭建一个VPN PPTP服务器，在PC和iPhone上新建一个VPN连接上网。</p>
-<p>根据校园网的环境和平时的使用情况，最终决定采用VPN的方式。接下来，我以Red Hat系统为例，详细说明搭建的过程。</p>
-<hr />
-<h2>1. 判断PPP是否可用</h2>
-<p>首先，我们需要检查服务器是否支持搭建PPTP，在shell中输入：</p>
-<div class="highlight"><pre>cat /dev/ppp
-
-cat: /dev/ppp: 没有那个设备或地址
-</pre></div>
-
-
-<p>如果出现以上提示，说明这台服务器PPP可用；若出现"Permission denied"提示，则无法使用PPP，考虑更换一台服务器。</p>
-<h2>2. 安装所需的软件包</h2>
-<p>主要需要以下3个软件包：</p>
-<ul>
-<li>PPP：点对点协议</li>
-<li>PPTP：点对点通道协议</li>
-<li>IPtables ...</li></ul> </div><!-- /.entry-content -->
-
-                                <div class="medium primary btn"><a href="http://www.wengweitao.com/linuxshang-da-jian-vpnfu-wu-qi.html" rel="bookmark" title="Permalink to Linux上搭建VPN服务器">Read more <i class="icon-arrow-right"></i></a></div>
-
-
-
-                                <div class="row tag-row">
-                                        <span>Tagged as : </span>
-                                            <a class="danger label" href="http://www.wengweitao.com/tag/jiao-cheng.html">教程</a>
                                 </div>
 
 

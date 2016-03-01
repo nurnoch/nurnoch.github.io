@@ -63,7 +63,7 @@
                         <li><article class="hentry">
                                 <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/pythonrong-qi-counterde-shi-yong.html" rel="bookmark" title="Permalink to Python容器——Counter的使用">Python容器——Counter的使用</a></h2> </header>
                                 <footer class="post-info">
-                                    <abbr class="published" title="2015-04-08T14:52:00+08:00"> Wed 08 April 2015 </abbr>
+                                    <abbr class="published" title="2015-04-08T14:52:00+08:00"> 三 08 四月 2015 </abbr>
                                     <address class="vcard author">By 
                                     <a class="url fn" href="http://www.wengweitao.com/author/wwt.html"> wwt</a>
                                     </address>
@@ -72,12 +72,12 @@
 <p>Counter是Python标准库提供的一个非常有用的容器，可以用来对序列中出现的各个元素，进行计数。这篇文章中，利用Counter来实现多元集合(MultiSets)、概率质量函数(PMFs)以及贝叶斯假设。</p>
 </blockquote>
 <p>在Python代码中使用Counter，只需从collections包引入：</p>
-<div class="highlight"><pre><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">Counter</span>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">Counter</span>
 </pre></div>
 
 
 <h3>1.判断两个字符串是否由相同的字母集合调换顺序而成的（anagram）</h3>
-<div class="highlight"><pre><span class="k">def</span> <span class="nf">is_anagram</span><span class="p">(</span><span class="n">word1</span><span class="p">,</span> <span class="n">word2</span><span class="p">):</span>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">is_anagram</span><span class="p">(</span><span class="n">word1</span><span class="p">,</span> <span class="n">word2</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Checks whether the words are anagrams.</span>
 
 <span class="sd">    word1: string</span>
@@ -109,7 +109,7 @@
                         <li><article class="hentry">
                                 <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/bian-xie-gao-zhi-liang-pythondai-ma-2.html" rel="bookmark" title="Permalink to 编写高质量Python代码（2）">编写高质量Python代码（2）</a></h2> </header>
                                 <footer class="post-info">
-                                    <abbr class="published" title="2015-04-07T22:39:00+08:00"> Tue 07 April 2015 </abbr>
+                                    <abbr class="published" title="2015-04-07T22:39:00+08:00"> 二 07 四月 2015 </abbr>
                                     <address class="vcard author">By 
                                     <a class="url fn" href="http://www.wengweitao.com/author/wwt.html"> wwt</a>
                                     </address>
@@ -120,16 +120,16 @@
 <h3>建议8： 利用assert语句来发现问题</h3>
 <p>assert语句主要为调试程序服务，能够快速方便地检查程序的异常或者发现不恰当的输入等，防止意想不到的情况出现。
 基本语法如下：</p>
-<div class="highlight"><pre><span class="k">assert</span> <span class="n">expression1</span> <span class="p">[</span><span class="s">&quot;,&quot;</span> <span class="n">expression2</span><span class="p">]</span> 
-<span class="c">#assert x == y, &quot;not equals&quot;</span>
+<div class="highlight"><pre><span></span><span class="k">assert</span> <span class="n">expression1</span> <span class="p">[</span><span class="s2">&quot;,&quot;</span> <span class="n">expression2</span><span class="p">]</span> 
+<span class="c1">#assert x == y, &quot;not equals&quot;</span>
 </pre></div>
 
 
 <p>其中计算expressi1的值若为False则会引发一个AssertionError，expression是可选的，用来传递具体的异常信息。</p>
 <p>另外，需要注意的是断言是对程序的性能有一定的影响，禁用断言的方法是运行时加上 -O标志。</p>
 <h3>建议9： 交换值时不推荐使用中间变量</h3>
-<div class="highlight"><pre><span class="n">In</span> <span class="p">[</span><span class="mi">1</span><span class="p">]:</span> <span class="kn">from</span> <span class="nn">timeit</span> <span class="kn">import</span> <span class="n">Timer</span>
-<span class="n">In</span> <span class="p">[</span><span class="mi">2</span><span class="p">]:</span> <span class="n">Timer</span><span class="p">(</span><span class="s">&#39;temp = x; x = y; y = temp&#39;</span><span class="p">,</span> <span class="s">&#39;x = 2; y = 3&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">timeit</span><span class="p">()</span>
+<div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">1</span><span class="p">]:</span> <span class="kn">from</span> <span class="nn">timeit</span> <span class="kn">import</span> <span class="n">Timer</span>
+<span class="n">In</span> <span class="p">[</span><span class="mi">2</span><span class="p">]:</span> <span class="n">Timer</span><span class="p">(</span><span class="s1">&#39;temp = x; x = y; y = temp&#39;</span><span class="p">,</span> <span class="s1">&#39;x = 2; y = 3&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">timeit</span><span class="p">()</span>
 <span class="n">Out</span><span class="p">[</span><span class="mi">2</span><span class="p">]:</span> <span class="mf">0.054762504979284254</span>
 <span class="n">In</span> <span class="p">[</span><span class="mi">3 ...</span></pre></div> </div><!-- /.entry-content -->
 
@@ -148,7 +148,7 @@
                         <li><article class="hentry">
                                 <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/pythondai-ma-ge-shi-hua-gong-ju-yapf.html" rel="bookmark" title="Permalink to Python代码格式化工具——YAPF">Python代码格式化工具——YAPF</a></h2> </header>
                                 <footer class="post-info">
-                                    <abbr class="published" title="2015-04-07T15:10:00+08:00"> Tue 07 April 2015 </abbr>
+                                    <abbr class="published" title="2015-04-07T15:10:00+08:00"> 二 07 四月 2015 </abbr>
                                     <address class="vcard author">By 
                                     <a class="url fn" href="http://www.wengweitao.com/author/wwt.html"> wwt</a>
                                     </address>
@@ -162,14 +162,14 @@ YAPF与其他的格式化工具不同，其算法能够把代码重新格式化�
 <h3>YAPF的使用</h3>
 <h4>1.安装</h4>
 <p>可以直接通过pip进行安装：</p>
-<div class="highlight"><pre>pip install yapf
+<div class="highlight"><pre><span></span>pip install yapf
 </pre></div>
 
 
 <h4>2.使用。</h4>
 <p>安装完成之后，就可以直接在命令行中使用了。
 以下是yapf的命令行参数：</p>
-<div class="highlight"><pre>usage: yapf <span class="o">[</span>-h<span class="o">]</span> <span class="o">[</span>--style STYLE<span class="o">]</span> <span class="o">[</span>-d <span class="p">|</span> -i<span class="o">]</span> <span class="o">[</span>-l START-END <span class="p">|</span> -r<span class="o">]</span> ...
+<div class="highlight"><pre><span></span>usage: yapf <span class="o">[</span>-h<span class="o">]</span> <span class="o">[</span>--style STYLE<span class="o">]</span> <span class="o">[</span>-d <span class="p">|</span> -i<span class="o">]</span> <span class="o">[</span>-l START-END <span class="p">|</span> -r<span class="o">]</span> ...
 
 Formatter <span class="k">for</span> Python code.
 
@@ -191,7 +191,7 @@ positional arguments ...</pre></div> </div><!-- /.entry-content -->
                         <li><article class="hentry">
                                 <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/bian-xie-gao-zhi-liang-pythondai-ma-1.html" rel="bookmark" title="Permalink to 编写高质量Python代码（1）">编写高质量Python代码（1）</a></h2> </header>
                                 <footer class="post-info">
-                                    <abbr class="published" title="2015-04-06T18:42:00+08:00"> Mon 06 April 2015 </abbr>
+                                    <abbr class="published" title="2015-04-06T18:42:00+08:00"> 一 06 四月 2015 </abbr>
                                     <address class="vcard author">By 
                                     <a class="url fn" href="http://www.wengweitao.com/author/wwt.html"> wwt</a>
                                     </address>
@@ -202,7 +202,7 @@ positional arguments ...</pre></div> </div><!-- /.entry-content -->
 <h3>建议1： 理解Pythonic概念</h3>
 <h4>（1）Pythonic的定义</h4>
 <p>遵循Pythonic的代码看起来像伪代码：</p>
-<div class="highlight"><pre><span class="k">def</span> <span class="nf">quicksort</span><span class="p">(</span><span class="n">array</span><span class="p">):</span>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">quicksort</span><span class="p">(</span><span class="n">array</span><span class="p">):</span>
     <span class="n">less</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="n">greater</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">array</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">:</span>
@@ -214,7 +214,7 @@ positional arguments ...</pre></div> </div><!-- /.entry-content -->
         <span class="k">else</span><span class="p">:</span>
             <span class="n">less</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">quicksort</span><span class="p">(</span><span class="n">less</span><span class="p">)</span> <span class="o">+</span> <span class="p">[</span><span class="n">pivot</span><span class="p">]</span> <span class="o">+</span> <span class="n">quicksort</span><span class="p">(</span><span class="n">greater</span><span class="p">)</span>
-<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&#39;__main__ ...</span></pre></div> </div><!-- /.entry-content -->
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__ ...</span></pre></div> </div><!-- /.entry-content -->
 
                                 <div class="medium primary btn"><a href="http://www.wengweitao.com/bian-xie-gao-zhi-liang-pythondai-ma-1.html" rel="bookmark" title="Permalink to 编写高质量Python代码（1）">Read more <i class="icon-arrow-right"></i></a></div>
 

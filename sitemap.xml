@@ -5,28 +5,28 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://www.wengweitao.com/</loc>
-<lastmod>2015-08-21T21:32:06-00:00</lastmod>
+<lastmod>2016-03-01T18:33:29-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://www.wengweitao.com/archives.html</loc>
-<lastmod>2015-08-21T21:32:06-00:00</lastmod>
+<lastmod>2016-03-01T18:33:29-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://www.wengweitao.com/tags.html</loc>
-<lastmod>2015-08-21T21:32:06-00:00</lastmod>
+<lastmod>2016-03-01T18:33:29-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://www.wengweitao.com/categories.html</loc>
-<lastmod>2015-08-21T21:32:06-00:00</lastmod>
+<lastmod>2016-03-01T18:33:29-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -36,6 +36,20 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <lastmod>2013-04-18T00:00:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.3</priority>
+</url>
+
+<url>
+<loc>http://www.wengweitao.com/test.html</loc>
+<lastmod>2016-03-01T17:10:00+08:00</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+
+<url>
+<loc>http://www.wengweitao.com/2015nian-xiao-zhao-zhao-gong-zuo-zong-jie-zhi-hu-lian-wang-gong-si-ji-zhu-pian.html</loc>
+<lastmod>2015-12-27T14:22:00+08:00</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
 </url>
 
 <url>
@@ -516,7 +530,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://www.wengweitao.com/category/sheng-huo.html</loc>
-<lastmod>2015-04-14T20:12:00+08:06</lastmod>
+<lastmod>2016-03-01T17:10:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -536,8 +550,8 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
-<loc>http://www.wengweitao.com/tag/ji-ben-gai-nian.html</loc>
-<lastmod>2014-07-30T20:12:00+08:06</lastmod>
+<loc>http://www.wengweitao.com/tag/zong-jie.html</loc>
+<lastmod>2016-03-01T17:10:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -594,6 +608,20 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
 <loc>http://www.wengweitao.com/tag/wan.html</loc>
 <lastmod>2015-04-14T20:12:00+08:06</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>http://www.wengweitao.com/tag/xiao-zhao.html</loc>
+<lastmod>2015-12-27T14:22:00+08:06</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>http://www.wengweitao.com/tag/ji-ben-gai-nian.html</loc>
+<lastmod>2014-07-30T20:12:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -691,7 +719,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://www.wengweitao.com/author/wwt.html</loc>
-<lastmod>2015-08-21T19:22:00+08:06</lastmod>
+<lastmod>2016-03-01T17:10:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>

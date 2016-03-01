@@ -67,7 +67,7 @@
             </header>
             <footer class="post-info">
               <abbr class="published" title="2014-07-27T16:18:00+08:00">
-                Sun 27 July 2014
+                日 27 七月 2014
               </abbr>
               <address class="vcard author">By 
                 <a class="url fn" href="http://www.wengweitao.com/author/wwt.html"> wwt</a>
@@ -121,7 +121,7 @@
 <p>（1）在kd树中找到包含目标点x的叶结点</p>
 <p>（2）以此叶节点为“当前最近点”</p>
 <p>（3）递归向上回退</p>
-<div class="highlight"><pre>（a）如果该结点保存的实例点比当前最几点距离目标点更近，则以该实例点为“当前”最近点
+<div class="highlight"><pre><span></span>（a）如果该结点保存的实例点比当前最几点距离目标点更近，则以该实例点为“当前”最近点
 
 （b）当前最近点一定存在于该结点一个子结点对应的区域。检查该子结点的父结点的另一子结点对应的区域是否有更近的点。即以目标点为球心，以目标点与当前最近点间的距离为半径的球体是否与另一子结点对应的区域相交。如果相交，可能在另一个子结点对应的区域中存在更近的点。移动到另一个子结点，接着递归地进行最邻近搜索。如果不相交，则向上回退。
 </pre></div>

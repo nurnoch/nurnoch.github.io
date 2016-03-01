@@ -67,7 +67,7 @@
             </header>
             <footer class="post-info">
               <abbr class="published" title="2015-04-16T13:46:00+08:00">
-                Thu 16 April 2015
+                四 16 四月 2015
               </abbr>
               <address class="vcard author">By 
                 <a class="url fn" href="http://www.wengweitao.com/author/wwt.html"> wwt</a>
@@ -112,25 +112,25 @@
 <h3>在本地搭建Pelican</h3>
 <p><strong>1.安装</strong></p>
 <p>直接使用pip安装Pelican即可：</p>
-<div class="highlight"><pre><span class="n">pip</span> <span class="n">install</span> <span class="n">pelican</span>
+<div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">pelican</span>
 </pre></div>
 
 
 <p>通常我们都是使用Markdown来书写文章，所以还需要Pelican支持Markdown：</p>
-<div class="highlight"><pre><span class="n">pip</span> <span class="n">install</span> <span class="n">markdown</span>
+<div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">markdown</span>
 </pre></div>
 
 
 <p><strong>2.生成站点</strong></p>
 <p>在你的电脑上，建立一个目录，作为博客的主目录。我们假定，它的名称为blog。</p>
-<div class="highlight"><pre>mkdir blog
-<span class="nb">cd </span>blog
+<div class="highlight"><pre><span></span>mkdir blog
+<span class="nb">cd</span> blog
 pelican-quickstart
 </pre></div>
 
 
 <p>运行一下命令后，就生成了一个站点，包含以下目录：</p>
-<div class="highlight"><pre>blog/
+<div class="highlight"><pre><span></span>blog/
 ├── content              # 存放输入的源文件
 │   └── (pages)          # 存放手工创建的静态页面
 ├── output               # 生成的输出文件
@@ -144,7 +144,7 @@ pelican-quickstart
 <p>另外，生成的过程中需要配置一些东西，大部分都可以一路回车，选择默认设置，其中有一步需要你填写自己的网站域名，如果暂时没有，可以先随便设置，之后可以在pelicanconf.py文件中进行修改。</p>
 <p><strong>3.创建文件</strong></p>
 <p>接下来，就可以使用你喜欢的任何编辑器用markdown语法写你的第一篇文章。需要在每篇文章的开头填入以下关于文章的元信息：</p>
-<div class="highlight"><pre>Title: 文章标题
+<div class="highlight"><pre><span></span>Title: 文章标题
 Date: 创建日期
 Modified: 修改日期
 Category: 文章分类，标志本文处于该分类下
@@ -155,7 +155,7 @@ Author: 作者
 
 
 <p>其中Title和Category是必选的，其他的选择可以不写。在这些元信息的后面就是文章的内容了，例如：</p>
-<div class="highlight"><pre><span class="n">Title</span><span class="o">:</span> <span class="n">My</span> <span class="kd">super</span> <span class="n">title</span>
+<div class="highlight"><pre><span></span><span class="n">Title</span><span class="o">:</span> <span class="n">My</span> <span class="kd">super</span> <span class="n">title</span>
 <span class="n">Date</span><span class="o">:</span> <span class="mi">2010</span><span class="o">-</span><span class="mi">12</span><span class="o">-</span><span class="mi">03</span> <span class="mi">10</span><span class="o">:</span><span class="mi">20</span>
 <span class="n">Modified</span><span class="o">:</span> <span class="mi">2010</span><span class="o">-</span><span class="mi">12</span><span class="o">-</span><span class="mi">05</span> <span class="mi">19</span><span class="o">:</span><span class="mi">30</span>
 <span class="n">Category</span><span class="o">:</span> <span class="n">Python</span>
@@ -171,14 +171,14 @@ Author: 作者
 <p>把以上的文件保存在content目录下，如保存为./content/test.md</p>
 <p><strong>4.生成静态页面</strong></p>
 <p>返回博客的主目录（即包含pelican文件的目录），然后在命令行中运行：</p>
-<div class="highlight"><pre>make html
+<div class="highlight"><pre><span></span>make html
 </pre></div>
 
 
 <p>这样就会自动在output目录下生成content目录下markdown文件对应的静态页面</p>
 <p><strong>5.预览站点</strong></p>
 <p>可以先在本地预览站点，在博客主目录/output目录下：</p>
-<div class="highlight"><pre>python -m SimpleHTTPServer
+<div class="highlight"><pre><span></span>python -m SimpleHTTPServer
 </pre></div>
 
 
@@ -190,13 +190,13 @@ Author: 作者
 其中必须修改username为自己账号的username，如：nurnoch.github.io</p>
 <p><strong>2.将生成的静态网站上传到repository</strong></p>
 <p>进入到output目录下，运行：</p>
-<div class="highlight"><pre>git init
+<div class="highlight"><pre><span></span>git init
 git remote add origin https://github.com/username/username.github.com.git
 </pre></div>
 
 
 <p>将username替换为自己的github用户名，初始化，并添加远程repository，将会生成 .git的目录，然后我们将output目录下的所有文件上传到github：</p>
-<div class="highlight"><pre>git add .
+<div class="highlight"><pre><span></span>git add .
 git commit -m <span class="s2">&quot;update&quot;</span>
 git push origin master
 </pre></div>
@@ -208,62 +208,62 @@ git push origin master
 注意：第一次需要等待一段时间后才能看到。</p>
 <h2>配置Pelican</h2>
 <p>通过修改在博客根目录下的pelicanconf.py文件，可以对Pelican进行配置，具体配置可以<a href="http://docs.getpelican.com/en/3.4.0/settings.html">参考这里</a>。以下，是官方文档给出的一个配置例子：</p>
-<div class="highlight"><pre><span class="c"># -*- coding: utf-8 -*-</span>
+<div class="highlight"><pre><span></span><span class="c1"># -*- coding: utf-8 -*-</span>
 <span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">unicode_literals</span>
 
-<span class="n">AUTHOR</span> <span class="o">=</span> <span class="s">&#39;Alexis Métaireau&#39;</span>
-<span class="n">SITENAME</span> <span class="o">=</span> <span class="s">&quot;Alexis&#39; log&quot;</span>
-<span class="n">SITEURL</span> <span class="o">=</span> <span class="s">&#39;http://blog.notmyidea.org&#39;</span>
-<span class="n">TIMEZONE</span> <span class="o">=</span> <span class="s">&quot;Europe/Paris&quot;</span>
+<span class="n">AUTHOR</span> <span class="o">=</span> <span class="s1">&#39;Alexis Métaireau&#39;</span>
+<span class="n">SITENAME</span> <span class="o">=</span> <span class="s2">&quot;Alexis&#39; log&quot;</span>
+<span class="n">SITEURL</span> <span class="o">=</span> <span class="s1">&#39;http://blog.notmyidea.org&#39;</span>
+<span class="n">TIMEZONE</span> <span class="o">=</span> <span class="s2">&quot;Europe/Paris&quot;</span>
 
-<span class="c"># can be useful in development, but set to False when you&#39;re ready to publish</span>
+<span class="c1"># can be useful in development, but set to False when you&#39;re ready to publish</span>
 <span class="n">RELATIVE_URLS</span> <span class="o">=</span> <span class="bp">True</span>
 
-<span class="n">GITHUB_URL</span> <span class="o">=</span> <span class="s">&#39;http://github.com/ametaireau/&#39;</span>
-<span class="n">DISQUS_SITENAME</span> <span class="o">=</span> <span class="s">&quot;blog-notmyidea&quot;</span>
+<span class="n">GITHUB_URL</span> <span class="o">=</span> <span class="s1">&#39;http://github.com/ametaireau/&#39;</span>
+<span class="n">DISQUS_SITENAME</span> <span class="o">=</span> <span class="s2">&quot;blog-notmyidea&quot;</span>
 <span class="n">PDF_GENERATOR</span> <span class="o">=</span> <span class="bp">False</span>
 <span class="n">REVERSE_CATEGORY_ORDER</span> <span class="o">=</span> <span class="bp">True</span>
-<span class="n">LOCALE</span> <span class="o">=</span> <span class="s">&quot;C&quot;</span>
+<span class="n">LOCALE</span> <span class="o">=</span> <span class="s2">&quot;C&quot;</span>
 <span class="n">DEFAULT_PAGINATION</span> <span class="o">=</span> <span class="mi">4</span>
 <span class="n">DEFAULT_DATE</span> <span class="o">=</span> <span class="p">(</span><span class="mi">2012</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 
-<span class="n">FEED_ALL_RSS</span> <span class="o">=</span> <span class="s">&#39;feeds/all.rss.xml&#39;</span>
-<span class="n">CATEGORY_FEED_RSS</span> <span class="o">=</span> <span class="s">&#39;feeds/</span><span class="si">%s</span><span class="s">.rss.xml&#39;</span>
+<span class="n">FEED_ALL_RSS</span> <span class="o">=</span> <span class="s1">&#39;feeds/all.rss.xml&#39;</span>
+<span class="n">CATEGORY_FEED_RSS</span> <span class="o">=</span> <span class="s1">&#39;feeds/</span><span class="si">%s</span><span class="s1">.rss.xml&#39;</span>
 
-<span class="n">LINKS</span> <span class="o">=</span> <span class="p">((</span><span class="s">&#39;Biologeek&#39;</span><span class="p">,</span> <span class="s">&#39;http://biologeek.org&#39;</span><span class="p">),</span>
-         <span class="p">(</span><span class="s">&#39;Filyb&#39;</span><span class="p">,</span> <span class="s">&quot;http://filyb.info/&quot;</span><span class="p">),</span>
-         <span class="p">(</span><span class="s">&#39;Libert-fr&#39;</span><span class="p">,</span> <span class="s">&quot;http://www.libert-fr.com&quot;</span><span class="p">),</span>
-         <span class="p">(</span><span class="s">&#39;N1k0&#39;</span><span class="p">,</span> <span class="s">&quot;http://prendreuncafe.com/blog/&quot;</span><span class="p">),</span>
-         <span class="p">(</span><span class="s">&#39;Tarek Ziadé&#39;</span><span class="p">,</span> <span class="s">&quot;http://ziade.org/blog&quot;</span><span class="p">),</span>
-         <span class="p">(</span><span class="s">&#39;Zubin Mithra&#39;</span><span class="p">,</span> <span class="s">&quot;http://zubin71.wordpress.com/&quot;</span><span class="p">),)</span>
+<span class="n">LINKS</span> <span class="o">=</span> <span class="p">((</span><span class="s1">&#39;Biologeek&#39;</span><span class="p">,</span> <span class="s1">&#39;http://biologeek.org&#39;</span><span class="p">),</span>
+         <span class="p">(</span><span class="s1">&#39;Filyb&#39;</span><span class="p">,</span> <span class="s2">&quot;http://filyb.info/&quot;</span><span class="p">),</span>
+         <span class="p">(</span><span class="s1">&#39;Libert-fr&#39;</span><span class="p">,</span> <span class="s2">&quot;http://www.libert-fr.com&quot;</span><span class="p">),</span>
+         <span class="p">(</span><span class="s1">&#39;N1k0&#39;</span><span class="p">,</span> <span class="s2">&quot;http://prendreuncafe.com/blog/&quot;</span><span class="p">),</span>
+         <span class="p">(</span><span class="s1">&#39;Tarek Ziadé&#39;</span><span class="p">,</span> <span class="s2">&quot;http://ziade.org/blog&quot;</span><span class="p">),</span>
+         <span class="p">(</span><span class="s1">&#39;Zubin Mithra&#39;</span><span class="p">,</span> <span class="s2">&quot;http://zubin71.wordpress.com/&quot;</span><span class="p">),)</span>
 
-<span class="n">SOCIAL</span> <span class="o">=</span> <span class="p">((</span><span class="s">&#39;twitter&#39;</span><span class="p">,</span> <span class="s">&#39;http://twitter.com/ametaireau&#39;</span><span class="p">),</span>
-          <span class="p">(</span><span class="s">&#39;lastfm&#39;</span><span class="p">,</span> <span class="s">&#39;http://lastfm.com/user/akounet&#39;</span><span class="p">),</span>
-          <span class="p">(</span><span class="s">&#39;github&#39;</span><span class="p">,</span> <span class="s">&#39;http://github.com/ametaireau&#39;</span><span class="p">),)</span>
+<span class="n">SOCIAL</span> <span class="o">=</span> <span class="p">((</span><span class="s1">&#39;twitter&#39;</span><span class="p">,</span> <span class="s1">&#39;http://twitter.com/ametaireau&#39;</span><span class="p">),</span>
+          <span class="p">(</span><span class="s1">&#39;lastfm&#39;</span><span class="p">,</span> <span class="s1">&#39;http://lastfm.com/user/akounet&#39;</span><span class="p">),</span>
+          <span class="p">(</span><span class="s1">&#39;github&#39;</span><span class="p">,</span> <span class="s1">&#39;http://github.com/ametaireau&#39;</span><span class="p">),)</span>
 
-<span class="c"># global metadata to all the contents</span>
-<span class="n">DEFAULT_METADATA</span> <span class="o">=</span> <span class="p">((</span><span class="s">&#39;yeah&#39;</span><span class="p">,</span> <span class="s">&#39;it is&#39;</span><span class="p">),)</span>
+<span class="c1"># global metadata to all the contents</span>
+<span class="n">DEFAULT_METADATA</span> <span class="o">=</span> <span class="p">((</span><span class="s1">&#39;yeah&#39;</span><span class="p">,</span> <span class="s1">&#39;it is&#39;</span><span class="p">),)</span>
 
-<span class="c"># path-specific metadata</span>
+<span class="c1"># path-specific metadata</span>
 <span class="n">EXTRA_PATH_METADATA</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s">&#39;extra/robots.txt&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s">&#39;path&#39;</span><span class="p">:</span> <span class="s">&#39;robots.txt&#39;</span><span class="p">},</span>
+    <span class="s1">&#39;extra/robots.txt&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;path&#39;</span><span class="p">:</span> <span class="s1">&#39;robots.txt&#39;</span><span class="p">},</span>
     <span class="p">}</span>
 
-<span class="c"># static paths will be copied without parsing their contents</span>
+<span class="c1"># static paths will be copied without parsing their contents</span>
 <span class="n">STATIC_PATHS</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="s">&#39;pictures&#39;</span><span class="p">,</span>
-    <span class="s">&#39;extra/robots.txt&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;pictures&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;extra/robots.txt&#39;</span><span class="p">,</span>
     <span class="p">]</span>
 
-<span class="c"># custom page generated with a jinja2 template</span>
-<span class="n">TEMPLATE_PAGES</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;pages/jinja2_template.html&#39;</span><span class="p">:</span> <span class="s">&#39;jinja2_template.html&#39;</span><span class="p">}</span>
+<span class="c1"># custom page generated with a jinja2 template</span>
+<span class="n">TEMPLATE_PAGES</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;pages/jinja2_template.html&#39;</span><span class="p">:</span> <span class="s1">&#39;jinja2_template.html&#39;</span><span class="p">}</span>
 
-<span class="c"># code blocks with line numbers</span>
-<span class="n">PYGMENTS_RST_OPTIONS</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;linenos&#39;</span><span class="p">:</span> <span class="s">&#39;table&#39;</span><span class="p">}</span>
+<span class="c1"># code blocks with line numbers</span>
+<span class="n">PYGMENTS_RST_OPTIONS</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;linenos&#39;</span><span class="p">:</span> <span class="s1">&#39;table&#39;</span><span class="p">}</span>
 
-<span class="c"># foobar will not be used, because it&#39;s not in caps. All configuration keys</span>
-<span class="c"># have to be in caps</span>
-<span class="n">foobar</span> <span class="o">=</span> <span class="s">&quot;barbaz&quot;</span>
+<span class="c1"># foobar will not be used, because it&#39;s not in caps. All configuration keys</span>
+<span class="c1"># have to be in caps</span>
+<span class="n">foobar</span> <span class="o">=</span> <span class="s2">&quot;barbaz&quot;</span>
 </pre></div>
 
 
@@ -271,27 +271,27 @@ git push origin master
 <h3>增加sitemap</h3>
 <p>Pelican有着丰富的插件，可以配置sitemap插件, 生成 sitemap.xml 供搜索引擎使用。
 首先，下载Pelican的所有插件：</p>
-<div class="highlight"><pre>git clone git://github.com/getpelican/pelican-plugins.git
+<div class="highlight"><pre><span></span>git clone git://github.com/getpelican/pelican-plugins.git
 </pre></div>
 
 
 <p>修改pelicanconf.py文件：</p>
-<div class="highlight"><pre><span class="n">PLUGIN_PATH</span> <span class="o">=</span> <span class="s">u&quot;pelican-plugins&quot;</span>
+<div class="highlight"><pre><span></span><span class="n">PLUGIN_PATH</span> <span class="o">=</span> <span class="s2">u&quot;pelican-plugins&quot;</span>
 
-<span class="n">PLUGINS</span> <span class="o">=</span> <span class="p">[</span><span class="s">&quot;sitemap&quot;</span><span class="p">]</span>
+<span class="n">PLUGINS</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;sitemap&quot;</span><span class="p">]</span>
 
-<span class="c"># 配置sitemap 插件</span>
+<span class="c1"># 配置sitemap 插件</span>
 <span class="n">SITEMAP</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s">&quot;format&quot;</span><span class="p">:</span> <span class="s">&quot;xml&quot;</span><span class="p">,</span>
-    <span class="s">&quot;priorities&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="s">&quot;articles&quot;</span><span class="p">:</span> <span class="mf">0.7</span><span class="p">,</span>
-        <span class="s">&quot;indexes&quot;</span><span class="p">:</span> <span class="mf">0.5</span><span class="p">,</span>
-        <span class="s">&quot;pages&quot;</span><span class="p">:</span> <span class="mf">0.3</span><span class="p">,</span>
+    <span class="s2">&quot;format&quot;</span><span class="p">:</span> <span class="s2">&quot;xml&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;priorities&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;articles&quot;</span><span class="p">:</span> <span class="mf">0.7</span><span class="p">,</span>
+        <span class="s2">&quot;indexes&quot;</span><span class="p">:</span> <span class="mf">0.5</span><span class="p">,</span>
+        <span class="s2">&quot;pages&quot;</span><span class="p">:</span> <span class="mf">0.3</span><span class="p">,</span>
     <span class="p">},</span>
-    <span class="s">&quot;changefreqs&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="s">&quot;articles&quot;</span><span class="p">:</span> <span class="s">&quot;monthly&quot;</span><span class="p">,</span>
-        <span class="s">&quot;indexes&quot;</span><span class="p">:</span> <span class="s">&quot;daily&quot;</span><span class="p">,</span>
-        <span class="s">&quot;pages&quot;</span><span class="p">:</span> <span class="s">&quot;monthly&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;changefreqs&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;articles&quot;</span><span class="p">:</span> <span class="s2">&quot;monthly&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;indexes&quot;</span><span class="p">:</span> <span class="s2">&quot;daily&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;pages&quot;</span><span class="p">:</span> <span class="s2">&quot;monthly&quot;</span><span class="p">,</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -300,7 +300,7 @@ git push origin master
 <p>使用浏览器访问 <em>your domain name</em>/sitemap.xml即可看到生成的 Sitemap 了。</p>
 <h3>增加评论功能</h3>
 <p>Pelican支持Disqus评论, 可以在Disqus上申请一个账号, 然后在pelicanconf.py里添加或修改DISQUS_SITENAME项:</p>
-<div class="highlight"><pre><span class="n">DISQUS_SITENAME</span> <span class="o">=</span> <span class="s">u&quot;*your Disqus username*&quot;</span>
+<div class="highlight"><pre><span></span><span class="n">DISQUS_SITENAME</span> <span class="o">=</span> <span class="s2">u&quot;*your Disqus username*&quot;</span>
 </pre></div>
 
 
@@ -308,12 +308,12 @@ git push origin master
 <h3>在文章中插入本地图片</h3>
 <p>content目录下建立一个 imgs目录
 然后在 pelicanconf.py 中添加:</p>
-<div class="highlight"><pre><span class="n">STATIC_PATHS</span> <span class="o">=</span> <span class="p">[</span><span class="s">u&quot;imgs&quot;</span><span class="p">]</span>
+<div class="highlight"><pre><span></span><span class="n">STATIC_PATHS</span> <span class="o">=</span> <span class="p">[</span><span class="s2">u&quot;imgs&quot;</span><span class="p">]</span>
 </pre></div>
 
 
 <p>在文章中引用图片：</p>
-<div class="highlight"><pre> ![aimg](/imgs/test.png)
+<div class="highlight"><pre><span></span> ![aimg](/imgs/test.png)
 </pre></div>
 
 

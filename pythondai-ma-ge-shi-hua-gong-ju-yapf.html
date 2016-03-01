@@ -67,7 +67,7 @@
             </header>
             <footer class="post-info">
               <abbr class="published" title="2015-04-07T15:10:00+08:00">
-                Tue 07 April 2015
+                二 07 四月 2015
               </abbr>
               <address class="vcard author">By 
                 <a class="url fn" href="http://www.wengweitao.com/author/wwt.html"> wwt</a>
@@ -83,14 +83,14 @@ YAPF与其他的格式化工具不同，其算法能够把代码重新格式化�
 <h3>YAPF的使用</h3>
 <h4>1.安装</h4>
 <p>可以直接通过pip进行安装：</p>
-<div class="highlight"><pre>pip install yapf
+<div class="highlight"><pre><span></span>pip install yapf
 </pre></div>
 
 
 <h4>2.使用。</h4>
 <p>安装完成之后，就可以直接在命令行中使用了。
 以下是yapf的命令行参数：</p>
-<div class="highlight"><pre>usage: yapf <span class="o">[</span>-h<span class="o">]</span> <span class="o">[</span>--style STYLE<span class="o">]</span> <span class="o">[</span>-d <span class="p">|</span> -i<span class="o">]</span> <span class="o">[</span>-l START-END <span class="p">|</span> -r<span class="o">]</span> ...
+<div class="highlight"><pre><span></span>usage: yapf <span class="o">[</span>-h<span class="o">]</span> <span class="o">[</span>--style STYLE<span class="o">]</span> <span class="o">[</span>-d <span class="p">|</span> -i<span class="o">]</span> <span class="o">[</span>-l START-END <span class="p">|</span> -r<span class="o">]</span> ...
 
 Formatter <span class="k">for</span> Python code.
 
@@ -111,13 +111,13 @@ optional arguments:
 
 <h4>3.例子</h4>
 <p>以下是一段非常ugly的代码：</p>
-<div class="highlight"><pre><span class="n">x</span> <span class="o">=</span> <span class="p">{</span>  <span class="s">&#39;a&#39;</span><span class="p">:</span><span class="mi">37</span><span class="p">,</span><span class="s">&#39;b&#39;</span><span class="p">:</span><span class="mi">42</span><span class="p">,</span>
+<div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="p">{</span>  <span class="s1">&#39;a&#39;</span><span class="p">:</span><span class="mi">37</span><span class="p">,</span><span class="s1">&#39;b&#39;</span><span class="p">:</span><span class="mi">42</span><span class="p">,</span>
 
-<span class="s">&#39;c&#39;</span><span class="p">:</span><span class="mi">927</span><span class="p">}</span>
+<span class="s1">&#39;c&#39;</span><span class="p">:</span><span class="mi">927</span><span class="p">}</span>
 
-<span class="n">y</span> <span class="o">=</span> <span class="s">&#39;hello &#39;&#39;world&#39;</span>
-<span class="n">z</span> <span class="o">=</span> <span class="s">&#39;hello &#39;</span><span class="o">+</span><span class="s">&#39;world&#39;</span>
-<span class="n">a</span> <span class="o">=</span> <span class="s">&#39;hello {}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s">&#39;world&#39;</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="s1">&#39;hello &#39;&#39;world&#39;</span>
+<span class="n">z</span> <span class="o">=</span> <span class="s1">&#39;hello &#39;</span><span class="o">+</span><span class="s1">&#39;world&#39;</span>
+<span class="n">a</span> <span class="o">=</span> <span class="s1">&#39;hello {}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39;world&#39;</span><span class="p">)</span>
 <span class="k">class</span> <span class="nc">foo</span>  <span class="p">(</span>     <span class="nb">object</span>  <span class="p">):</span>
   <span class="k">def</span> <span class="nf">f</span>    <span class="p">(</span><span class="bp">self</span>   <span class="p">):</span>
     <span class="k">return</span>       <span class="mi">37</span><span class="o">*-+</span><span class="mi">2</span>
@@ -129,11 +129,11 @@ optional arguments:
 
 
 <p>利用yapf将它格式化：</p>
-<div class="highlight"><pre><span class="n">x</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;a&#39;</span><span class="p">:</span> <span class="mi">37</span><span class="p">,</span> <span class="s">&#39;b&#39;</span><span class="p">:</span> <span class="mi">42</span><span class="p">,</span> <span class="s">&#39;c&#39;</span><span class="p">:</span> <span class="mi">927</span><span class="p">}</span>
+<div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="mi">37</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">:</span> <span class="mi">42</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">:</span> <span class="mi">927</span><span class="p">}</span>
 
-<span class="n">y</span> <span class="o">=</span> <span class="s">&#39;hello &#39;</span> <span class="s">&#39;world&#39;</span>
-<span class="n">z</span> <span class="o">=</span> <span class="s">&#39;hello &#39;</span> <span class="o">+</span> <span class="s">&#39;world&#39;</span>
-<span class="n">a</span> <span class="o">=</span> <span class="s">&#39;hello {}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s">&#39;world&#39;</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="s1">&#39;hello &#39;</span> <span class="s1">&#39;world&#39;</span>
+<span class="n">z</span> <span class="o">=</span> <span class="s1">&#39;hello &#39;</span> <span class="o">+</span> <span class="s1">&#39;world&#39;</span>
+<span class="n">a</span> <span class="o">=</span> <span class="s1">&#39;hello {}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39;world&#39;</span><span class="p">)</span>
 
 
 <span class="k">class</span> <span class="nc">foo</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
@@ -151,7 +151,7 @@ optional arguments:
 
 <p>好看很多！</p>
 <p>另外，YAPF在格式化的时候仍然有一些问题。如：</p>
-<div class="highlight"><pre><span class="n">BAZ</span> <span class="o">=</span> <span class="p">{</span>
+<div class="highlight"><pre><span></span><span class="n">BAZ</span> <span class="o">=</span> <span class="p">{</span>
     <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span>
     <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">],</span>
     <span class="p">[</span><span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">12</span><span class="p">]</span>
@@ -160,17 +160,17 @@ optional arguments:
 
 
 <p>当有一大段内容的时候，我们都习惯分行排列，因为这显然更方便我们阅读。但是，使用YAPF格式化后：</p>
-<div class="highlight"><pre><span class="n">BAZ</span> <span class="o">=</span> <span class="p">{[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">],</span> <span class="p">[</span><span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">12</span><span class="p">]}</span>
+<div class="highlight"><pre><span></span><span class="n">BAZ</span> <span class="o">=</span> <span class="p">{[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">],</span> <span class="p">[</span><span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">12</span><span class="p">]}</span>
 </pre></div>
 
 
 <p>遇到这种情况，YAPF也提供了解决的方法，就是在代码段的后面加上：
  # yapf: disable</p>
-<div class="highlight"><pre><span class="n">BAZ</span> <span class="o">=</span> <span class="p">{</span>
+<div class="highlight"><pre><span></span><span class="n">BAZ</span> <span class="o">=</span> <span class="p">{</span>
     <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span>
     <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">],</span>
     <span class="p">[</span><span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">12</span><span class="p">]</span>
-<span class="p">}</span> <span class="c"># yapf: disable</span>
+<span class="p">}</span> <span class="c1"># yapf: disable</span>
 </pre></div>
 
 

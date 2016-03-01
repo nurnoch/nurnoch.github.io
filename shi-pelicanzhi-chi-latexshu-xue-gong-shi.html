@@ -67,7 +67,7 @@
             </header>
             <footer class="post-info">
               <abbr class="published" title="2015-04-10T19:35:00+08:00">
-                Fri 10 April 2015
+                五 10 四月 2015
               </abbr>
               <address class="vcard author">By 
                 <a class="url fn" href="http://www.wengweitao.com/author/wwt.html"> wwt</a>
@@ -80,9 +80,9 @@
 这个插件可以通过使用MathJax使pelican拥有渲染数学公式的能力，并且同时支持Markdown 和reStructuredText，用起来也非常的方便！</p>
 <h2>安装</h2>
 <p>在Pelican的安装目录中找到Pelican的配置文件pelicanconf.py，在文件中增加：</p>
-<div class="highlight"><pre><span class="n">PLUGIN_PATH</span> <span class="o">=</span> <span class="s">u&quot;pelican-plugins&quot;</span>
+<div class="highlight"><pre><span></span><span class="n">PLUGIN_PATH</span> <span class="o">=</span> <span class="s2">u&quot;pelican-plugins&quot;</span>
 
-<span class="n">PLUGINS</span> <span class="o">=</span> <span class="p">[</span> <span class="s">&quot;render_math&quot;</span><span class="p">]</span>
+<span class="n">PLUGINS</span> <span class="o">=</span> <span class="p">[</span> <span class="s2">&quot;render_math&quot;</span><span class="p">]</span>
 </pre></div>
 
 
@@ -94,13 +94,13 @@
 </p>
 <div class="math">$$1 + 1 = 2$$</div>
 <h3>书写一个质能守恒公式</h3>
-<div class="highlight"><pre><span class="sb">$$</span><span class="nb">E </span><span class="o">=</span><span class="nb"> mc^</span><span class="m">2</span><span class="s">$$</span>
+<div class="highlight"><pre><span></span><span class="sb">$$</span><span class="nb">E </span><span class="o">=</span><span class="nb"> mc^</span><span class="m">2</span><span class="s">$$</span>
 </pre></div>
 
 
 <div class="math">$$E=mc^2$$</div>
 <h3>希腊字母</h3>
-<div class="highlight"><pre><span class="s">$</span><span class="nv">\alpha</span><span class="nb">, </span><span class="nv">\beta</span><span class="nb">, ..., </span><span class="nv">\omega</span><span class="s">$</span>
+<div class="highlight"><pre><span></span><span class="s">$</span><span class="nv">\alpha</span><span class="nb">, </span><span class="nv">\beta</span><span class="nb">, ..., </span><span class="nv">\omega</span><span class="s">$</span>
 <span class="s">$</span><span class="nv">\Gamma</span><span class="nb">, </span><span class="nv">\Delta</span><span class="nb">, …, </span><span class="nv">\Omega</span><span class="s">$</span>
 </pre></div>
 
@@ -108,13 +108,13 @@
 <p>小写希腊字母：<span class="math">\(\alpha, \beta, ..., \omega\)</span>
 大写希腊字母：<span class="math">\(\Gamma, \Delta, …, \Omega\)</span></p>
 <h3>上标和下标</h3>
-<div class="highlight"><pre><span class="s">$</span><span class="nb">x_i^</span><span class="m">2</span><span class="s">$</span>
+<div class="highlight"><pre><span></span><span class="s">$</span><span class="nb">x_i^</span><span class="m">2</span><span class="s">$</span>
 </pre></div>
 
 
 <p>上标和下标分别为^ 和 _. 例如：<span class="math">\(x_i^2\)</span>.</p>
 <h3>求和与积分</h3>
-<div class="highlight"><pre><span class="sb">$$</span><span class="nv">\sum</span><span class="nb">_{k</span><span class="o">=</span><span class="m">1</span><span class="nb">}^{n}</span><span class="nv">\frac</span><span class="nb">{</span><span class="m">1</span><span class="nb">}{k}</span><span class="s">$$</span> 
+<div class="highlight"><pre><span></span><span class="sb">$$</span><span class="nv">\sum</span><span class="nb">_{k</span><span class="o">=</span><span class="m">1</span><span class="nb">}^{n}</span><span class="nv">\frac</span><span class="nb">{</span><span class="m">1</span><span class="nb">}{k}</span><span class="s">$$</span> 
 <span class="sb">$$</span><span class="nv">\sum</span><span class="nb">_{k</span><span class="o">=</span><span class="m">1</span><span class="nb">}^n</span><span class="nv">\frac</span><span class="nb">{</span><span class="m">1</span><span class="nb">}{k}</span><span class="s">$$</span> 
 <span class="sb">$$</span><span class="nv">\int</span><span class="nb">_a^b f</span><span class="o">(</span><span class="nb">x</span><span class="o">)</span><span class="nb">dx</span><span class="s">$$</span>
 </pre></div>

@@ -63,7 +63,7 @@
                         <li><article class="hentry">
                                 <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/python-socketwang-luo-bian-cheng.html" rel="bookmark" title="Permalink to Python Socket网络编程">Python Socket网络编程</a></h2> </header>
                                 <footer class="post-info">
-                                    <abbr class="published" title="2015-07-27T18:49:00+08:00"> Mon 27 July 2015 </abbr>
+                                    <abbr class="published" title="2015-07-27T18:49:00+08:00"> 一 27 七月 2015 </abbr>
                                     <address class="vcard author">By 
                                     <a class="url fn" href="http://www.wengweitao.com/author/wwt.html"> wwt</a>
                                     </address>
@@ -71,14 +71,14 @@
                                 <div class="entry-content"> <p>在网络通信中socket几乎无处不在，它可以看成是应用层与TCP/IP协议簇通信的中间软件抽象层，是两个应用程序彼此进行通信的接口，并且把复杂的TCP/IP协议细节隐藏在接口之后。Python提供了socket模块，可以非常方便的进行socket编程。</p>
 <h2>创建一个server socket</h2>
 <p>使用<code>socket</code>方法创建一个新的socket，通常提供两个参数，第一个参数是address family, 第二个是socket type。</p>
-<div class="highlight"><pre><span class="c">#create an INET, STREAMing socket</span>
+<div class="highlight"><pre><span></span><span class="c1">#create an INET, STREAMing socket</span>
 <span class="n">s</span> <span class="o">=</span> <span class="n">socket</span><span class="o">.</span><span class="n">socket</span><span class="p">(</span><span class="n">socket</span><span class="o">.</span><span class="n">AF_INET</span><span class="p">,</span> <span class="n">socket</span><span class="o">.</span><span class="n">SOCK_STREAM</span><span class="p">)</span>
 </pre></div>
 
 
 <p>以上创建了一个address family为IP协议，并且传输协议为TCP的socket。</p>
 <p>服务器端在创建一个socket之后，需要绑定到一个IP地址与端口，提供服务，这就要用到<code>bind</code>方法。</p>
-<div class="highlight"><pre><span class="c"># bind the socket to all available interfaces on port 8888</span>
+<div class="highlight"><pre><span></span><span class="c1"># bind the socket to all available interfaces on port 8888</span>
 <span class="n">s ...</span></pre></div> </div><!-- /.entry-content -->
 
                                 <div class="medium primary btn"><a href="http://www.wengweitao.com/python-socketwang-luo-bian-cheng.html" rel="bookmark" title="Permalink to Python Socket网络编程">Read more <i class="icon-arrow-right"></i></a></div>
@@ -97,23 +97,23 @@
                         <li><article class="hentry">
                                 <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/corskua-yu-zi-yuan-gong-xiang-cross-origin-resource-sharing.html" rel="bookmark" title="Permalink to CORS（跨域资源共享，Cross-Origin Resource Sharing）">CORS（跨域资源共享，Cross-Origin Resource Sharing）</a></h2> </header>
                                 <footer class="post-info">
-                                    <abbr class="published" title="2015-05-24T16:49:00+08:00"> Sun 24 May 2015 </abbr>
+                                    <abbr class="published" title="2015-05-24T16:49:00+08:00"> 日 24 五月 2015 </abbr>
                                     <address class="vcard author">By 
                                     <a class="url fn" href="http://www.wengweitao.com/author/wwt.html"> wwt</a>
                                     </address>
                                 </footer><!-- /.post-info -->
                                 <div class="entry-content"> <p>使用Django在服务器端写了一个API，返回一个JSON数据。使用Ajax调用该API：</p>
-<div class="highlight"><pre><span class="cp">&lt;!DOCTYPE HTML&gt;</span>
-<span class="nt">&lt;html&gt;</span>
-<span class="nt">&lt;head&gt;</span>
-    <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">&quot;utf-8&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">&quot;viewport&quot;</span> <span class="na">content=</span><span class="s">&quot;maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0&quot;</span><span class="nt">/&gt;</span>
-    <span class="nt">&lt;title&gt;</span>test<span class="nt">&lt;/title&gt;</span>
-<span class="nt">&lt;/head&gt;</span>
-<span class="nt">&lt;body&gt;</span>
-<span class="nt">&lt;button</span> <span class="na">onclick=</span><span class="s">&quot;showPersonInfo()&quot;</span><span class="nt">&gt;</span>点我获取数据<span class="nt">&lt;/button&gt;</span>
-<span class="nt">&lt;/body&gt;</span>
-<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;http://libs.baidu.com/jquery/1.9.0/jquery.js ...</span></pre></div> </div><!-- /.entry-content -->
+<div class="highlight"><pre><span></span><span class="cp">&lt;!DOCTYPE HTML&gt;</span>
+<span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">&quot;utf-8&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;viewport&quot;</span> <span class="na">content</span><span class="o">=</span><span class="s">&quot;maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0&quot;</span><span class="p">/&gt;</span>
+    <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>test<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">button</span> <span class="na">onclick</span><span class="o">=</span><span class="s">&quot;showPersonInfo()&quot;</span><span class="p">&gt;</span>点我获取数据<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;http://libs.baidu.com/jquery/1.9.0/jquery.js ...</span></pre></div> </div><!-- /.entry-content -->
 
                                 <div class="medium primary btn"><a href="http://www.wengweitao.com/corskua-yu-zi-yuan-gong-xiang-cross-origin-resource-sharing.html" rel="bookmark" title="Permalink to CORS（跨域资源共享，Cross-Origin Resource Sharing）">Read more <i class="icon-arrow-right"></i></a></div>
 
@@ -130,19 +130,19 @@
                         <li><article class="hentry">
                                 <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/false-is-false-is-false-de-jie-guo-shi-true.html" rel="bookmark" title="Permalink to False is False is False 的结果是 True ?">False is False is False 的结果是 True ?</a></h2> </header>
                                 <footer class="post-info">
-                                    <abbr class="published" title="2015-04-25T10:37:00+08:00"> Sat 25 April 2015 </abbr>
+                                    <abbr class="published" title="2015-04-25T10:37:00+08:00"> 六 25 四月 2015 </abbr>
                                     <address class="vcard author">By 
                                     <a class="url fn" href="http://www.wengweitao.com/author/wwt.html"> wwt</a>
                                     </address>
                                 </footer><!-- /.post-info -->
                                 <div class="entry-content"> <p>在<a href="https://www.youtube.com/channel/UCgxzjK6GuOHVKR_08TT4hJQ">PyCon 2015</a>中提到一个问题：</p>
-<div class="highlight"><pre><span class="bp">False</span> <span class="ow">is</span> <span class="bp">False</span> <span class="ow">is</span> <span class="bp">False</span>
+<div class="highlight"><pre><span></span><span class="bp">False</span> <span class="ow">is</span> <span class="bp">False</span> <span class="ow">is</span> <span class="bp">False</span>
 </pre></div>
 
 
 <p>在Python中运行，以上命令得到的结果是：<strong>True</strong>！
 而</p>
-<div class="highlight"><pre><span class="p">(</span><span class="bp">False</span> <span class="ow">is</span> <span class="bp">False</span><span class="p">)</span> <span class="ow">is</span> <span class="bp">False</span>
+<div class="highlight"><pre><span></span><span class="p">(</span><span class="bp">False</span> <span class="ow">is</span> <span class="bp">False</span><span class="p">)</span> <span class="ow">is</span> <span class="bp">False</span>
 </pre></div>
 
 
@@ -167,7 +167,7 @@
                         <li><article class="hentry">
                                 <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/bian-xie-gao-zhi-liang-pythondai-ma-4-she-ji-mo-shi.html" rel="bookmark" title="Permalink to 编写高质量Python代码（4）——设计模式">编写高质量Python代码（4）——设计模式</a></h2> </header>
                                 <footer class="post-info">
-                                    <abbr class="published" title="2015-04-13T23:31:00+08:00"> Mon 13 April 2015 </abbr>
+                                    <abbr class="published" title="2015-04-13T23:31:00+08:00"> 一 13 四月 2015 </abbr>
                                     <address class="vcard author">By 
                                     <a class="url fn" href="http://www.wengweitao.com/author/wwt.html"> wwt</a>
                                     </address>
@@ -178,14 +178,14 @@
 <h3>建议50：利用模块设计实现单例模式</h3>
 <p>GOF的23种设计模式中，单例是最常用的模式，通过单例模式可以保证系统中一个类只有一个实例而且该实例易于被外界访问，从而方便对实例个数的控制并节约系统资源。</p>
 <p>Python语言实现实例没有那么方便，因为缺乏声明私有构造函数的语法元素，实例又带有类型信息。如：</p>
-<div class="highlight"><pre><span class="k">class</span> <span class="nc">_Singleton</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">_Singleton</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="k">pass</span>
 <span class="n">Singleton</span> <span class="o">=</span> <span class="n">_Singleton</span><span class="p">()</span>
 <span class="k">del</span> <span class="n">_Singleton</span>
 <span class="n">another</span> <span class="o">=</span> <span class="n">Singleton</span><span class="o">.</span><span class="n">__class__</span><span class="p">()</span>
 <span class="k">print</span> <span class="nb">type</span><span class="p">(</span><span class="n">another</span><span class="p">)</span>
 
-<span class="c"># 输出 &lt;class &#39;__main__._Singleton&#39;&gt;</span>
+<span class="c1"># 输出 &lt;class &#39;__main__._Singleton&#39;&gt;</span>
 </pre></div>
 
 
@@ -197,7 +197,7 @@
 <li>import 机制是线程安全的</li>
 </ul>
 <p>例如：</p>
-<div class="highlight"><pre><span class="c"># World.py</span>
+<div class="highlight"><pre><span></span><span class="c1"># World.py</span>
 <span class="kn">import</span> <span class="nn">Sun</span>
 <span class="k">def</span> <span class="nf">run</span><span class="p">():</span>
     <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
@@ -219,7 +219,7 @@
                         <li><article class="hentry">
                                 <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/bian-xie-gao-zhi-liang-pythondai-ma-3-ku.html" rel="bookmark" title="Permalink to 编写高质量Python代码（3）——库">编写高质量Python代码（3）——库</a></h2> </header>
                                 <footer class="post-info">
-                                    <abbr class="published" title="2015-04-08T22:58:00+08:00"> Wed 08 April 2015 </abbr>
+                                    <abbr class="published" title="2015-04-08T22:58:00+08:00"> 三 08 四月 2015 </abbr>
                                     <address class="vcard author">By 
                                     <a class="url fn" href="http://www.wengweitao.com/author/wwt.html"> wwt</a>
                                     </address>
@@ -229,17 +229,17 @@
 </blockquote>
 <h3>建议36：掌握字符串的基本用法</h3>
 <p>有个小技巧：</p>
-<div class="highlight"><pre> <span class="n">s</span> <span class="o">=</span> <span class="p">(</span><span class="s">&#39;SELECT *&#39;</span>
-         <span class="s">&#39;FROM atable &#39;</span>
-         <span class="s">&#39;WHERE afield=&quot;value&quot;&#39;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span> <span class="n">s</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;SELECT *&#39;</span>
+         <span class="s1">&#39;FROM atable &#39;</span>
+         <span class="s1">&#39;WHERE afield=&quot;value&quot;&#39;</span><span class="p">)</span>
  <span class="n">s</span>
- <span class="s">&#39;SELECT *FROM atable WHERE afield=&quot;value&quot;&#39;</span>
+ <span class="s1">&#39;SELECT *FROM atable WHERE afield=&quot;value&quot;&#39;</span>
 </pre></div>
 
 
 <p>以上利用了Python遇到未闭合的小括号时会自动将多行代码拼接为一行和把相邻的两个字符串字面量拼接在一起的特性做到的。（而如果使用三个引号会把换行符和空格都当做字符串的一部分）</p>
 <p>Python字符串分为str和unicode两种。当需要判断变量是否为字符串时，应该使用</p>
-<div class="highlight"><pre><span class="nb">isinstance</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="nb">basestring</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><span class="nb">isinstance</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="nb">basestring</span><span class="p">)</span>
 </pre></div>
 
 

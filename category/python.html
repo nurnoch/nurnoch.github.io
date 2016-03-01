@@ -64,7 +64,7 @@
                         <li><article class="hentry">
                                 <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/python-socketwang-luo-bian-cheng.html" rel="bookmark" title="Permalink to Python Socket网络编程">Python Socket网络编程</a></h2> </header>
                                 <footer class="post-info">
-                                    <abbr class="published" title="2015-07-27T18:49:00+08:00"> Mon 27 July 2015 </abbr>
+                                    <abbr class="published" title="2015-07-27T18:49:00+08:00"> 一 27 七月 2015 </abbr>
                                     <address class="vcard author">By 
                                     <a class="url fn" href="http://www.wengweitao.com/author/wwt.html"> wwt</a>
                                     </address>
@@ -72,14 +72,14 @@
                                 <div class="entry-content"> <p>在网络通信中socket几乎无处不在，它可以看成是应用层与TCP/IP协议簇通信的中间软件抽象层，是两个应用程序彼此进行通信的接口，并且把复杂的TCP/IP协议细节隐藏在接口之后。Python提供了socket模块，可以非常方便的进行socket编程。</p>
 <h2>创建一个server socket</h2>
 <p>使用<code>socket</code>方法创建一个新的socket，通常提供两个参数，第一个参数是address family, 第二个是socket type。</p>
-<div class="highlight"><pre><span class="c">#create an INET, STREAMing socket</span>
+<div class="highlight"><pre><span></span><span class="c1">#create an INET, STREAMing socket</span>
 <span class="n">s</span> <span class="o">=</span> <span class="n">socket</span><span class="o">.</span><span class="n">socket</span><span class="p">(</span><span class="n">socket</span><span class="o">.</span><span class="n">AF_INET</span><span class="p">,</span> <span class="n">socket</span><span class="o">.</span><span class="n">SOCK_STREAM</span><span class="p">)</span>
 </pre></div>
 
 
 <p>以上创建了一个address family为IP协议，并且传输协议为TCP的socket。</p>
 <p>服务器端在创建一个socket之后，需要绑定到一个IP地址与端口，提供服务，这就要用到<code>bind</code>方法。</p>
-<div class="highlight"><pre><span class="c"># bind the socket to all available interfaces on port 8888</span>
+<div class="highlight"><pre><span></span><span class="c1"># bind the socket to all available interfaces on port 8888</span>
 <span class="n">s ...</span></pre></div> </div><!-- /.entry-content -->
 
                                 <div class="medium primary btn"><a href="http://www.wengweitao.com/python-socketwang-luo-bian-cheng.html" rel="bookmark" title="Permalink to Python Socket网络编程">Read more <i class="icon-arrow-right"></i></a></div>
@@ -98,23 +98,23 @@
                         <li><article class="hentry">
                                 <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/corskua-yu-zi-yuan-gong-xiang-cross-origin-resource-sharing.html" rel="bookmark" title="Permalink to CORS（跨域资源共享，Cross-Origin Resource Sharing）">CORS（跨域资源共享，Cross-Origin Resource Sharing）</a></h2> </header>
                                 <footer class="post-info">
-                                    <abbr class="published" title="2015-05-24T16:49:00+08:00"> Sun 24 May 2015 </abbr>
+                                    <abbr class="published" title="2015-05-24T16:49:00+08:00"> 日 24 五月 2015 </abbr>
                                     <address class="vcard author">By 
                                     <a class="url fn" href="http://www.wengweitao.com/author/wwt.html"> wwt</a>
                                     </address>
                                 </footer><!-- /.post-info -->
                                 <div class="entry-content"> <p>使用Django在服务器端写了一个API，返回一个JSON数据。使用Ajax调用该API：</p>
-<div class="highlight"><pre><span class="cp">&lt;!DOCTYPE HTML&gt;</span>
-<span class="nt">&lt;html&gt;</span>
-<span class="nt">&lt;head&gt;</span>
-    <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">&quot;utf-8&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">&quot;viewport&quot;</span> <span class="na">content=</span><span class="s">&quot;maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0&quot;</span><span class="nt">/&gt;</span>
-    <span class="nt">&lt;title&gt;</span>test<span class="nt">&lt;/title&gt;</span>
-<span class="nt">&lt;/head&gt;</span>
-<span class="nt">&lt;body&gt;</span>
-<span class="nt">&lt;button</span> <span class="na">onclick=</span><span class="s">&quot;showPersonInfo()&quot;</span><span class="nt">&gt;</span>点我获取数据<span class="nt">&lt;/button&gt;</span>
-<span class="nt">&lt;/body&gt;</span>
-<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;http://libs.baidu.com/jquery/1.9.0/jquery.js ...</span></pre></div> </div><!-- /.entry-content -->
+<div class="highlight"><pre><span></span><span class="cp">&lt;!DOCTYPE HTML&gt;</span>
+<span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">&quot;utf-8&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;viewport&quot;</span> <span class="na">content</span><span class="o">=</span><span class="s">&quot;maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0&quot;</span><span class="p">/&gt;</span>
+    <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>test<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">button</span> <span class="na">onclick</span><span class="o">=</span><span class="s">&quot;showPersonInfo()&quot;</span><span class="p">&gt;</span>点我获取数据<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;http://libs.baidu.com/jquery/1.9.0/jquery.js ...</span></pre></div> </div><!-- /.entry-content -->
 
                                 <div class="medium primary btn"><a href="http://www.wengweitao.com/corskua-yu-zi-yuan-gong-xiang-cross-origin-resource-sharing.html" rel="bookmark" title="Permalink to CORS（跨域资源共享，Cross-Origin Resource Sharing）">Read more <i class="icon-arrow-right"></i></a></div>
 
@@ -131,19 +131,19 @@
                         <li><article class="hentry">
                                 <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/false-is-false-is-false-de-jie-guo-shi-true.html" rel="bookmark" title="Permalink to False is False is False 的结果是 True ?">False is False is False 的结果是 True ?</a></h2> </header>
                                 <footer class="post-info">
-                                    <abbr class="published" title="2015-04-25T10:37:00+08:00"> Sat 25 April 2015 </abbr>
+                                    <abbr class="published" title="2015-04-25T10:37:00+08:00"> 六 25 四月 2015 </abbr>
                                     <address class="vcard author">By 
                                     <a class="url fn" href="http://www.wengweitao.com/author/wwt.html"> wwt</a>
                                     </address>
                                 </footer><!-- /.post-info -->
                                 <div class="entry-content"> <p>在<a href="https://www.youtube.com/channel/UCgxzjK6GuOHVKR_08TT4hJQ">PyCon 2015</a>中提到一个问题：</p>
-<div class="highlight"><pre><span class="bp">False</span> <span class="ow">is</span> <span class="bp">False</span> <span class="ow">is</span> <span class="bp">False</span>
+<div class="highlight"><pre><span></span><span class="bp">False</span> <span class="ow">is</span> <span class="bp">False</span> <span class="ow">is</span> <span class="bp">False</span>
 </pre></div>
 
 
 <p>在Python中运行，以上命令得到的结果是：<strong>True</strong>！
 而</p>
-<div class="highlight"><pre><span class="p">(</span><span class="bp">False</span> <span class="ow">is</span> <span class="bp">False</span><span class="p">)</span> <span class="ow">is</span> <span class="bp">False</span>
+<div class="highlight"><pre><span></span><span class="p">(</span><span class="bp">False</span> <span class="ow">is</span> <span class="bp">False</span><span class="p">)</span> <span class="ow">is</span> <span class="bp">False</span>
 </pre></div>
 
 
@@ -168,7 +168,7 @@
                         <li><article class="hentry">
                                 <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/pythonrong-qi-counterde-shi-yong.html" rel="bookmark" title="Permalink to Python容器——Counter的使用">Python容器——Counter的使用</a></h2> </header>
                                 <footer class="post-info">
-                                    <abbr class="published" title="2015-04-08T14:52:00+08:00"> Wed 08 April 2015 </abbr>
+                                    <abbr class="published" title="2015-04-08T14:52:00+08:00"> 三 08 四月 2015 </abbr>
                                     <address class="vcard author">By 
                                     <a class="url fn" href="http://www.wengweitao.com/author/wwt.html"> wwt</a>
                                     </address>
@@ -177,12 +177,12 @@
 <p>Counter是Python标准库提供的一个非常有用的容器，可以用来对序列中出现的各个元素，进行计数。这篇文章中，利用Counter来实现多元集合(MultiSets)、概率质量函数(PMFs)以及贝叶斯假设。</p>
 </blockquote>
 <p>在Python代码中使用Counter，只需从collections包引入：</p>
-<div class="highlight"><pre><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">Counter</span>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">Counter</span>
 </pre></div>
 
 
 <h3>1.判断两个字符串是否由相同的字母集合调换顺序而成的（anagram）</h3>
-<div class="highlight"><pre><span class="k">def</span> <span class="nf">is_anagram</span><span class="p">(</span><span class="n">word1</span><span class="p">,</span> <span class="n">word2</span><span class="p">):</span>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">is_anagram</span><span class="p">(</span><span class="n">word1</span><span class="p">,</span> <span class="n">word2</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Checks whether the words are anagrams.</span>
 
 <span class="sd">    word1: string</span>
@@ -214,7 +214,7 @@
                         <li><article class="hentry">
                                 <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/pythondai-ma-ge-shi-hua-gong-ju-yapf.html" rel="bookmark" title="Permalink to Python代码格式化工具——YAPF">Python代码格式化工具——YAPF</a></h2> </header>
                                 <footer class="post-info">
-                                    <abbr class="published" title="2015-04-07T15:10:00+08:00"> Tue 07 April 2015 </abbr>
+                                    <abbr class="published" title="2015-04-07T15:10:00+08:00"> 二 07 四月 2015 </abbr>
                                     <address class="vcard author">By 
                                     <a class="url fn" href="http://www.wengweitao.com/author/wwt.html"> wwt</a>
                                     </address>
@@ -228,14 +228,14 @@ YAPF与其他的格式化工具不同，其算法能够把代码重新格式化�
 <h3>YAPF的使用</h3>
 <h4>1.安装</h4>
 <p>可以直接通过pip进行安装：</p>
-<div class="highlight"><pre>pip install yapf
+<div class="highlight"><pre><span></span>pip install yapf
 </pre></div>
 
 
 <h4>2.使用。</h4>
 <p>安装完成之后，就可以直接在命令行中使用了。
 以下是yapf的命令行参数：</p>
-<div class="highlight"><pre>usage: yapf <span class="o">[</span>-h<span class="o">]</span> <span class="o">[</span>--style STYLE<span class="o">]</span> <span class="o">[</span>-d <span class="p">|</span> -i<span class="o">]</span> <span class="o">[</span>-l START-END <span class="p">|</span> -r<span class="o">]</span> ...
+<div class="highlight"><pre><span></span>usage: yapf <span class="o">[</span>-h<span class="o">]</span> <span class="o">[</span>--style STYLE<span class="o">]</span> <span class="o">[</span>-d <span class="p">|</span> -i<span class="o">]</span> <span class="o">[</span>-l START-END <span class="p">|</span> -r<span class="o">]</span> ...
 
 Formatter <span class="k">for</span> Python code.
 

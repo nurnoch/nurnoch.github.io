@@ -67,7 +67,7 @@
             </header>
             <footer class="post-info">
               <abbr class="published" title="2015-04-16T20:12:00+08:00">
-                Thu 16 April 2015
+                四 16 四月 2015
               </abbr>
               <address class="vcard author">By 
                 <a class="url fn" href="http://www.wengweitao.com/author/wwt.html"> wwt</a>
@@ -172,61 +172,61 @@ n&lt; command &gt; ------ 之前提到过的重复command命令n次</p>
 ye ------ 复制从当前位置到下一个单词的词尾</p>
 <h2>技巧篇</h2>
 <h3>找出当前文档中相同的行</h3>
-<div class="highlight"><pre>:sort
+<div class="highlight"><pre><span></span>:sort
 /^\(.\+\)$\n\1
 </pre></div>
 
 
 <h3>按时间撤消</h3>
 <p>Vim 7 包括了一个让用户跳转到任何编辑点之前或之后的新特性。如使用</p>
-<div class="highlight"><pre>:earlier 10m 
+<div class="highlight"><pre><span></span>:earlier 10m 
 </pre></div>
 
 
 <p>可以返回到 10 分钟以前的编辑状态。
 又如使用</p>
-<div class="highlight"><pre>:later 5s 
+<div class="highlight"><pre><span></span>:later 5s 
 </pre></div>
 
 
 <p>可以跳转到 5 秒以后的编辑点。另外，可以使用 :undolist 命令查看缓冲区存在的撤销分支列表。而通过 :undo &lt; number&gt; 命令则能够移到撤销的某个分支。</p>
 <h3>删除当前文档的所有空行</h3>
-<div class="highlight"><pre>:g/^$/d
+<div class="highlight"><pre><span></span>:g/^$/d
 </pre></div>
 
 
 <h3>在每行的行首或行尾插入指定字符串</h3>
 <p>行首插入： </p>
-<div class="highlight"><pre>:%s/^/your_word/
+<div class="highlight"><pre><span></span>:%s/^/your_word/
 </pre></div>
 
 
 <p>行尾插入：  </p>
-<div class="highlight"><pre>:%s/$/your_word/
+<div class="highlight"><pre><span></span>:%s/$/your_word/
 </pre></div>
 
 
 <p>例如在每行前面插入行号如下：</p>
-<div class="highlight"><pre>:%s/^/\=line(&quot;.&quot;)/
+<div class="highlight"><pre><span></span>:%s/^/\=line(&quot;.&quot;)/
 </pre></div>
 
 
 <h3>读取shell命令</h3>
 <p>如插入日期：</p>
-<div class="highlight"><pre>:r!date
+<div class="highlight"><pre><span></span>:r!date
 </pre></div>
 
 
 <p>:r 是:read的缩写，!是表明要运行一个shell命令，意思是我要把shell命令的输出读到vim里来。</p>
 <h3>统计某个单词出现的次数</h3>
-<div class="highlight"><pre>:%s/word//gn
+<div class="highlight"><pre><span></span>:%s/word//gn
 </pre></div>
 
 
 <p>统计的结果会在底部的状态栏显示。</p>
 <h3>Vim粘贴缩进问题</h3>
 <p>在Vim中粘贴Python代码后，缩进就全乱了。进入paste模式以后，可以在插入模式下粘贴内容，不会有任何变形。</p>
-<div class="highlight"><pre>:set paste
+<div class="highlight"><pre><span></span>:set paste
 </pre></div>
 
 

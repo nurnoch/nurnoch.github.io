@@ -67,7 +67,7 @@
             </header>
             <footer class="post-info">
               <abbr class="published" title="2015-08-21T19:22:00+08:00">
-                Fri 21 August 2015
+                五 21 八月 2015
               </abbr>
               <address class="vcard author">By 
                 <a class="url fn" href="http://www.wengweitao.com/author/wwt.html"> wwt</a>
@@ -107,7 +107,7 @@
 </table>
 <p>对于测试数据集（test.csv）一共有784列，除了没有lable之外，每个列的含义与训练数据集相同。</p>
 <p>测试数据集一共有28000个待分类的手写数字，我们提交分类结果的时候应该按照一行一个结果的格式提交（具体要求的结果格式可以参照页面给的样例），并且需要有一个header表示每列的内容如：</p>
-<div class="highlight"><pre>ImageId,Label
+<div class="highlight"><pre><span></span>ImageId,Label
 1,3
 2,5
 3,1
@@ -131,29 +131,29 @@
 <p>对于手写数字识别的问题，很多模型都可以解决，例如：logistic归回、SVM以及随机森林等。这里我们选用随机森林作为分类器，随机森林虽然稍微有点复杂，但是通常效果还不错，而且利用scikit-learn可以非常方便的实现。
 很多人可能对随机森林不太熟悉，这里我还是简单的介绍一下。随机森林（random forest）就是以随机的方式生成一个森林，这个森林是由很多棵决策树构成的。当有一个新的输入的时候，就让每棵决策树去分类，然后查看哪个类被选择的最多，这个输入就属于哪个类。
 下面我们就利用scikit-learn来实现随机森林：</p>
-<div class="highlight"><pre><span class="c">#coding=utf-8</span>
+<div class="highlight"><pre><span></span><span class="c1">#coding=utf-8</span>
 <span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">RandomForestClassifier</span>
 <span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">genfromtxt</span><span class="p">,</span> <span class="n">savetxt</span>
 
 <span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
-    <span class="c"># 创建训练集</span>
-    <span class="n">dataset</span> <span class="o">=</span> <span class="n">genfromtxt</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="s">&#39;train.csv&#39;</span><span class="p">,</span> <span class="s">&#39;r&#39;</span><span class="p">),</span> <span class="n">delimiter</span> <span class="o">=</span> <span class="s">&#39;,&#39;</span><span class="p">,</span> <span class="n">dtype</span> <span class="o">=</span> <span class="s">&#39;f8&#39;</span><span class="p">)[</span><span class="mi">1</span><span class="p">:]</span>
-    <span class="n">target</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">dataset</span><span class="p">]</span> <span class="c"># 第一列为label</span>
+    <span class="c1"># 创建训练集</span>
+    <span class="n">dataset</span> <span class="o">=</span> <span class="n">genfromtxt</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="s1">&#39;train.csv&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">),</span> <span class="n">delimiter</span> <span class="o">=</span> <span class="s1">&#39;,&#39;</span><span class="p">,</span> <span class="n">dtype</span> <span class="o">=</span> <span class="s1">&#39;f8&#39;</span><span class="p">)[</span><span class="mi">1</span><span class="p">:]</span>
+    <span class="n">target</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">dataset</span><span class="p">]</span> <span class="c1"># 第一列为label</span>
     <span class="n">train</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">dataset</span><span class="p">]</span>
 
-    <span class="c"># 创建测试集</span>
-    <span class="n">test</span> <span class="o">=</span> <span class="n">genfromtxt</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="s">&#39;test.csv&#39;</span><span class="p">,</span> <span class="s">&#39;r&#39;</span><span class="p">),</span> <span class="n">delimiter</span> <span class="o">=</span> <span class="s">&#39;,&#39;</span><span class="p">,</span> <span class="n">dtype</span> <span class="o">=</span> <span class="s">&#39;f8&#39;</span><span class="p">)[</span><span class="mi">1</span><span class="p">:]</span>
+    <span class="c1"># 创建测试集</span>
+    <span class="n">test</span> <span class="o">=</span> <span class="n">genfromtxt</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="s1">&#39;test.csv&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">),</span> <span class="n">delimiter</span> <span class="o">=</span> <span class="s1">&#39;,&#39;</span><span class="p">,</span> <span class="n">dtype</span> <span class="o">=</span> <span class="s1">&#39;f8&#39;</span><span class="p">)[</span><span class="mi">1</span><span class="p">:]</span>
 
-    <span class="c"># 创建并且训练一个随机森林模型</span>
+    <span class="c1"># 创建并且训练一个随机森林模型</span>
     <span class="n">rf</span> <span class="o">=</span> <span class="n">RandomForestClassifier</span><span class="p">(</span><span class="n">n_estimators</span> <span class="o">=</span> <span class="mi">100</span><span class="p">)</span>
     <span class="n">rf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">train</span><span class="p">,</span> <span class="n">target</span><span class="p">)</span>
     <span class="n">predicted_results</span> <span class="o">=</span> <span class="p">[[</span><span class="n">index</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">x</span><span class="p">]</span> <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">rf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">test</span><span class="p">))]</span>
 
-    <span class="c"># 利用随机森林对测试集进行预测，并将结果保存到输出文件中</span>
-    <span class="n">savetxt</span><span class="p">(</span><span class="s">&#39;result.csv&#39;</span><span class="p">,</span> <span class="n">predicted_results</span><span class="p">,</span> <span class="n">delimiter</span> <span class="o">=</span> <span class="s">&#39;,&#39;</span><span class="p">,</span> <span class="n">fmt</span> <span class="o">=</span> <span class="s">&#39;</span><span class="si">%d</span><span class="s">,</span><span class="si">%d</span><span class="s">&#39;</span><span class="p">,</span> 
-            <span class="n">header</span> <span class="o">=</span> <span class="s">&#39;ImageId,Label&#39;</span><span class="p">,</span> <span class="n">comments</span> <span class="o">=</span> <span class="s">&#39;&#39;</span><span class="p">)</span>
+    <span class="c1"># 利用随机森林对测试集进行预测，并将结果保存到输出文件中</span>
+    <span class="n">savetxt</span><span class="p">(</span><span class="s1">&#39;result.csv&#39;</span><span class="p">,</span> <span class="n">predicted_results</span><span class="p">,</span> <span class="n">delimiter</span> <span class="o">=</span> <span class="s1">&#39;,&#39;</span><span class="p">,</span> <span class="n">fmt</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">%d</span><span class="s1">,</span><span class="si">%d</span><span class="s1">&#39;</span><span class="p">,</span> 
+            <span class="n">header</span> <span class="o">=</span> <span class="s1">&#39;ImageId,Label&#39;</span><span class="p">,</span> <span class="n">comments</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
 
-<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&#39;__main__&#39;</span><span class="p">:</span>
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
     <span class="n">main</span><span class="p">()</span>
 </pre></div>
 
@@ -161,7 +161,7 @@
 <p>首先，分别从两个文件创建训练集和数据集；然后，利用训练集训练一个随机森林模型，直接调用<code>sklearn.ensemble.RandomForestClassifier</code>传入的参数<code>100</code>表示森林有100棵树；最后输出结果的格式为(ImageId,Label)，写出到文件<code>result.csv</code>中。</p>
 <h3>3. 提交结果</h3>
 <p>既然已经得到了预测的结果，那么就将结果上传到Kaggle。如果上传格式不对，就无法提交成功，所以要确保按照指定的要求提交。我们将<code>result.csv</code>文件提交，经过判定就得出了模型的准确率和排名，如下所示，排名为395，分数（准确率）为0.96457。</p>
-<div class="highlight"><pre>395 new nurnoch 0.96457 1   Fri, 21 Aug 2015 11:10:40
+<div class="highlight"><pre><span></span>395 new nurnoch 0.96457 1   Fri, 21 Aug 2015 11:10:40
 </pre></div>
 
 

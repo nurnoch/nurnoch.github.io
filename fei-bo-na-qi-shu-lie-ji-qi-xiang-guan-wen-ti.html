@@ -67,7 +67,7 @@
             </header>
             <footer class="post-info">
               <abbr class="published" title="2015-04-05T00:00:00+08:00">
-                Sun 05 April 2015
+                日 05 四月 2015
               </abbr>
               <address class="vcard author">By 
                 <a class="url fn" href="http://www.wengweitao.com/author/wwt.html"> wwt</a>
@@ -78,7 +78,7 @@
 <img alt="Fibonacci" src="http://ac.jobdu.com/upload/201201/image/fbncslie.jpg" /></p>
 <p>现在要求输出斐波那契数列的第n项。</p>
 <p>首先，最容易想到的方法就是直接利用递归求解：</p>
-<div class="highlight"><pre><span class="kt">long</span> <span class="kt">long</span> <span class="nf">fib</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="p">)</span> <span class="p">{</span>
+<div class="highlight"><pre><span></span><span class="kt">long</span> <span class="kt">long</span> <span class="nf">fib</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">if</span><span class="p">(</span><span class="n">n</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
         <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
     <span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="n">n</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span>
@@ -91,7 +91,7 @@
 
 <p>递归求解的形式非常简单易懂，但是递归的解法存在很严重的效率问题，因为计算过程中很多结点都是重复计算的，而且重复的结点数随着n的增大而急剧增加。例如，假设n=100，那么程序的速度将慢到无法忍受！</p>
 <p>上面递归的方法之所以慢，是因为大量的重复计算，我们只需要把已经得到的数列的中间项保存起来，下次需要的时候直接查找，就不用重复计算了。</p>
-<div class="highlight"><pre><span class="kt">long</span> <span class="kt">long</span> <span class="nf">fib</span><span class="p">(</span><span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">n</span><span class="p">)</span> <span class="p">{</span>
+<div class="highlight"><pre><span></span><span class="kt">long</span> <span class="kt">long</span> <span class="nf">fib</span><span class="p">(</span><span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">n</span><span class="p">)</span> <span class="p">{</span>
     <span class="kt">int</span> <span class="n">fibs</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">};</span>
     <span class="k">if</span><span class="p">(</span><span class="n">n</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">)</span> <span class="k">return</span> <span class="n">fibs</span><span class="p">[</span><span class="n">n</span><span class="p">];</span>                                                                                                                                                                             
     <span class="kt">long</span> <span class="kt">long</span> <span class="n">fib1</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
@@ -113,7 +113,7 @@
 <p>一只青蛙一次可以跳上1级台阶，也可以跳上2级。求该青蛙跳上一个n级的台阶总共有多少种跳法？</p>
 <p>当只有1级台阶，有1种跳法；当只有2级台阶，有2种跳法。
 当台阶数大于2，第一次跳有两种选择：第一次只跳1级，那么此时跳法的数目等于后面剩下的n-1级台阶的跳法数目；第一次跳2级，那么此时跳法的数目等于后面剩下的n-1级台阶的跳法数目。所以n级台阶不同跳法总数为f(n) = f(n-1) + f(n-2)。实际上就是斐波那契数列了。</p>
-<div class="highlight"><pre><span class="kt">long</span> <span class="kt">long</span> <span class="nf">numJump</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="p">)</span> <span class="p">{</span>
+<div class="highlight"><pre><span></span><span class="kt">long</span> <span class="kt">long</span> <span class="nf">numJump</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">if</span><span class="p">(</span><span class="n">n</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span>
         <span class="k">return</span> <span class="mi">1</span><span class="p">;</span>
     <span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="n">n</span> <span class="o">==</span> <span class="mi">2</span><span class="p">)</span>

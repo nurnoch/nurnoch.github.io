@@ -67,7 +67,7 @@
             </header>
             <footer class="post-info">
               <abbr class="published" title="2015-04-25T10:37:00+08:00">
-                Sat 25 April 2015
+                六 25 四月 2015
               </abbr>
               <address class="vcard author">By 
                 <a class="url fn" href="http://www.wengweitao.com/author/wwt.html"> wwt</a>
@@ -75,13 +75,13 @@
             </footer><!-- /.post-info -->
             <div class="entry-content">
               <p>在<a href="https://www.youtube.com/channel/UCgxzjK6GuOHVKR_08TT4hJQ">PyCon 2015</a>中提到一个问题：</p>
-<div class="highlight"><pre><span class="bp">False</span> <span class="ow">is</span> <span class="bp">False</span> <span class="ow">is</span> <span class="bp">False</span>
+<div class="highlight"><pre><span></span><span class="bp">False</span> <span class="ow">is</span> <span class="bp">False</span> <span class="ow">is</span> <span class="bp">False</span>
 </pre></div>
 
 
 <p>在Python中运行，以上命令得到的结果是：<strong>True</strong>！
 而</p>
-<div class="highlight"><pre><span class="p">(</span><span class="bp">False</span> <span class="ow">is</span> <span class="bp">False</span><span class="p">)</span> <span class="ow">is</span> <span class="bp">False</span>
+<div class="highlight"><pre><span></span><span class="p">(</span><span class="bp">False</span> <span class="ow">is</span> <span class="bp">False</span><span class="p">)</span> <span class="ow">is</span> <span class="bp">False</span>
 </pre></div>
 
 
@@ -92,25 +92,25 @@
 <p>Formally, if a, b, c, ..., y, z are expressions and op1, op2, ..., opN are comparison operators, then a op1 b op2 c ... y opN z is equivalent to a op1 b and b op2 c and ... y opN z, except that each expression is evaluated at most once.</p>
 </blockquote>
 <p>所以</p>
-<div class="highlight"><pre><span class="n">a</span> <span class="ow">is</span> <span class="n">b</span> <span class="ow">is</span> <span class="n">c</span>
+<div class="highlight"><pre><span></span><span class="n">a</span> <span class="ow">is</span> <span class="n">b</span> <span class="ow">is</span> <span class="n">c</span>
 
-<span class="c"># 相当于</span>
+<span class="c1"># 相当于</span>
 
 <span class="p">(</span><span class="n">a</span> <span class="ow">is</span> <span class="n">b</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">b</span> <span class="ow">is</span> <span class="n">c</span><span class="p">)</span>
 </pre></div>
 
 
 <p>这样上面的第一个例子的结果就容易解释了：</p>
-<div class="highlight"><pre><span class="bp">False</span> <span class="ow">is</span> <span class="bp">False</span> <span class="ow">is</span> <span class="bp">False</span>
+<div class="highlight"><pre><span></span><span class="bp">False</span> <span class="ow">is</span> <span class="bp">False</span> <span class="ow">is</span> <span class="bp">False</span>
 
-<span class="c">#相当于</span>
+<span class="c1">#相当于</span>
 
 <span class="p">(</span><span class="bp">False</span> <span class="ow">is</span> <span class="bp">False</span><span class="p">)</span> <span class="ow">is</span> <span class="p">(</span><span class="bp">False</span> <span class="ow">is</span> <span class="bp">False</span><span class="p">)</span>
 </pre></div>
 
 
 <p>这也是为什么我们可以在Python中直接使用：</p>
-<div class="highlight"><pre><span class="mi">1</span> <span class="o">&lt;</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="mi">5</span>
+<div class="highlight"><pre><span></span><span class="mi">1</span> <span class="o">&lt;</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="mi">5</span>
 </pre></div>
 
 

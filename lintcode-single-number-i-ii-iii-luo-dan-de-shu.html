@@ -67,7 +67,7 @@
             </header>
             <footer class="post-info">
               <abbr class="published" title="2015-05-20T21:15:00+08:00">
-                Wed 20 May 2015
+                三 20 五月 2015
               </abbr>
               <address class="vcard author">By 
                 <a class="url fn" href="http://www.wengweitao.com/author/wwt.html"> wwt</a>
@@ -85,7 +85,7 @@
 <p>这道题利用了异或位运算的一个性质，即：一个数与自身异或的结果为0。我们只需遍历数组中的每一个元素，并将其进行异或。因为，异或满足交换律，所以最终的异或结果将仅仅包含只出现一次的那个数。</p>
 <p>如：1 ^ 2 ^ 2 ^ 1 ^3 ^ 4 ^ 3 = 1 ^ 1 ^ 2 ^ 2 ^ 3 ^ 3 ^ 4 = 4</p>
 <h3>参考代码：</h3>
-<div class="highlight"><pre><span class="k">class</span> <span class="nc">Solution</span> <span class="p">{</span>
+<div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Solution</span> <span class="p">{</span>
 <span class="k">public</span><span class="o">:</span>
     <span class="cm">/**</span>
 <span class="cm">     * @param A: Array of integers.</span>
@@ -120,7 +120,7 @@
 利用掩码的思想。</p>
 <h3>参考代码：</h3>
 <p><strong>思路1对应代码</strong></p>
-<div class="highlight"><pre><span class="k">class</span> <span class="nc">Solution</span> <span class="p">{</span>
+<div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Solution</span> <span class="p">{</span>
 <span class="k">public</span><span class="o">:</span>
     <span class="cm">/**</span>
 <span class="cm">     * @param A : An integer array</span>
@@ -154,7 +154,7 @@
 <li>虽然有两层的循环，但是外层循环是常量，所以时间复杂度还是O(n)，空间复杂度为O(1)。</li>
 </ul>
 <p><strong>思路2对应代码</strong></p>
-<div class="highlight"><pre><span class="k">class</span> <span class="nc">Solution</span> <span class="p">{</span>
+<div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Solution</span> <span class="p">{</span>
 <span class="k">public</span><span class="o">:</span>
     <span class="cm">/**</span>
 <span class="cm">     * @param A : An integer array</span>
@@ -205,7 +205,7 @@ O(n)时间复杂度，O(1)的额外空间复杂度</p>
 <p>与以上两题不同的是，这道题有两个数只出现一次。基本的思路还是利用位运算，除去出现次数为2次的数。</p>
 <p>如果对所有元素进行异或操作，最后剩余的结果是出现次数为1次的两个数的异或结果，此时无法直接得到这两个数具体的值。但是，因为这两个数一定是不同的，所以最终异或的值至少有一个位为1。我们可以找出异或结果中第一个值为1的位，然后根据该位的值是否为1，将数组中的每一个数，分成两个部分。这样每个部分，就可以采用Sing number I中的方法得到只出现一次的数。</p>
 <h3>参考代码：</h3>
-<div class="highlight"><pre><span class="k">class</span> <span class="nc">Solution</span> <span class="p">{</span>
+<div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Solution</span> <span class="p">{</span>
 <span class="k">public</span><span class="o">:</span>
     <span class="cm">/**</span>
 <span class="cm">     * @param A : An integer array</span>

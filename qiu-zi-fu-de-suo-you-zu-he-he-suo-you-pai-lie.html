@@ -67,7 +67,7 @@
             </header>
             <footer class="post-info">
               <abbr class="published" title="2015-04-10T14:41:00+08:00">
-                Fri 10 April 2015
+                五 10 四月 2015
               </abbr>
               <address class="vcard author">By 
                 <a class="url fn" href="http://www.wengweitao.com/author/wwt.html"> wwt</a>
@@ -88,7 +88,7 @@
 </ol>
 <p>分析到这里，可以看出这是非常典型的递归。接下来，就可以写出代码。</p>
 <p><strong>代码实现</strong>:</p>
-<div class="highlight"><pre><span class="kt">void</span> <span class="nf">Permutation</span><span class="p">(</span><span class="kt">char</span><span class="o">*</span> <span class="n">str</span><span class="p">)</span> <span class="p">{</span>
+<div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">Permutation</span><span class="p">(</span><span class="kt">char</span><span class="o">*</span> <span class="n">str</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">if</span><span class="p">(</span><span class="n">str</span> <span class="o">==</span> <span class="nb">NULL</span><span class="p">)</span>
         <span class="k">return</span><span class="p">;</span>
     <span class="n">PermutationCore</span><span class="p">(</span><span class="n">str</span><span class="p">,</span> <span class="n">str</span><span class="p">);</span>
@@ -123,7 +123,7 @@
 </ul>
 <p>也就是说，我们可以把求n个字符组成长度为m的组合问题分解成两个子问题，分别求n-1个字符串长度为m-1的组合，以及求n-1个字符的长度为m的组合。这两个子问题都可以用递归方式解决。</p>
 <p><strong>代码实现</strong>:</p>
-<div class="highlight"><pre><span class="kt">void</span> <span class="nf">Combination</span><span class="p">(</span><span class="kt">char</span><span class="o">*</span> <span class="n">str</span><span class="p">)</span> <span class="p">{</span>
+<div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">Combination</span><span class="p">(</span><span class="kt">char</span><span class="o">*</span> <span class="n">str</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">if</span><span class="p">(</span><span class="n">str</span> <span class="o">==</span> <span class="nb">NULL</span><span class="p">)</span>
         <span class="k">return</span><span class="p">;</span>
     <span class="kt">int</span> <span class="n">length</span> <span class="o">=</span> <span class="n">strlen</span><span class="p">(</span><span class="n">str</span><span class="p">);</span>
@@ -157,7 +157,7 @@
 以输入3个字符a、b、c为例：
 3个字符，可以用3个位来表示，从右到左的每一位分别用来代表a、b、c，该位为1表示取该元素，该位为0表示不取该元素。例如如组合a表示为001，组合b表示为010，组合ac表示为101，组合abc表示为111，而000是没有意义的，所以总共的结果就是<span class="math">\(2^n - 1\)</span>种。</p>
 <p>因此，我们可以从值1开始循环到<span class="math">\(2^n - 1\)</span>，输出每个值所代表的组合即可。</p>
-<div class="highlight"><pre><span class="kt">void</span> <span class="nf">Combination2</span><span class="p">(</span><span class="kt">char</span> <span class="o">*</span><span class="n">str</span><span class="p">)</span> <span class="p">{</span>
+<div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">Combination2</span><span class="p">(</span><span class="kt">char</span> <span class="o">*</span><span class="n">str</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">if</span><span class="p">(</span><span class="n">str</span> <span class="o">==</span> <span class="nb">NULL</span><span class="p">)</span>
         <span class="k">return</span><span class="p">;</span>
     <span class="kt">int</span> <span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">,</span><span class="n">temp</span><span class="p">;</span>
@@ -187,7 +187,7 @@
 <div class="math">$$a1 + a2 + a5 + a6 = a3 + a4 + a7 + a8$$</div>
 <p><img alt="cubic" src="./imgs/cube.png" /></p>
 <p><strong>代码实现</strong>：</p>
-<div class="highlight"><pre><span class="kt">bool</span> <span class="nf">IsEqual</span><span class="p">(</span><span class="kt">int</span> <span class="o">*</span><span class="n">nums</span><span class="p">)</span> <span class="p">{</span>
+<div class="highlight"><pre><span></span><span class="kt">bool</span> <span class="nf">IsEqual</span><span class="p">(</span><span class="kt">int</span> <span class="o">*</span><span class="n">nums</span><span class="p">)</span> <span class="p">{</span>
     <span class="kt">int</span> <span class="n">sum1</span> <span class="o">=</span> <span class="n">nums</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">nums</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">nums</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">+</span> <span class="n">nums</span><span class="p">[</span><span class="mi">3</span><span class="p">];</span>
     <span class="kt">int</span> <span class="n">sum2</span> <span class="o">=</span> <span class="n">nums</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">+</span> <span class="n">nums</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="o">+</span> <span class="n">nums</span><span class="p">[</span><span class="mi">6</span><span class="p">]</span> <span class="o">+</span> <span class="n">nums</span><span class="p">[</span><span class="mi">7</span><span class="p">];</span>
     <span class="kt">int</span> <span class="n">sum3</span> <span class="o">=</span> <span class="n">nums</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">nums</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">+</span> <span class="n">nums</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">+</span> <span class="n">nums</span><span class="p">[</span><span class="mi">6</span><span class="p">];</span>
@@ -234,7 +234,7 @@
 接下来，分别用0~7这8个数字对ColumnIndex进行初始化。注意，此时所有的皇后不同行也不同列。
 因此，我们只需要对ColumnIndex数组进行全排列，判断每一个排列所对应的8个皇后的位置是否在对角线上即可。</p>
 <p><strong>代码实现</strong>：</p>
-<div class="highlight"><pre><span class="kt">void</span> <span class="nf">swap</span><span class="p">(</span><span class="kt">int</span><span class="o">&amp;</span> <span class="n">a</span><span class="p">,</span> <span class="kt">int</span><span class="o">&amp;</span> <span class="n">b</span><span class="p">)</span> <span class="p">{</span>
+<div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">swap</span><span class="p">(</span><span class="kt">int</span><span class="o">&amp;</span> <span class="n">a</span><span class="p">,</span> <span class="kt">int</span><span class="o">&amp;</span> <span class="n">b</span><span class="p">)</span> <span class="p">{</span>
     <span class="kt">int</span> <span class="n">temp</span> <span class="o">=</span> <span class="n">a</span><span class="p">;</span>
     <span class="n">a</span> <span class="o">=</span> <span class="n">b</span><span class="p">;</span>
     <span class="n">b</span> <span class="o">=</span> <span class="n">temp</span><span class="p">;</span>

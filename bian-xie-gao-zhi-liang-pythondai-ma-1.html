@@ -67,7 +67,7 @@
             </header>
             <footer class="post-info">
               <abbr class="published" title="2015-04-06T18:42:00+08:00">
-                Mon 06 April 2015
+                一 06 四月 2015
               </abbr>
               <address class="vcard author">By 
                 <a class="url fn" href="http://www.wengweitao.com/author/wwt.html"> wwt</a>
@@ -80,7 +80,7 @@
 <h3>建议1： 理解Pythonic概念</h3>
 <h4>（1）Pythonic的定义</h4>
 <p>遵循Pythonic的代码看起来像伪代码：</p>
-<div class="highlight"><pre><span class="k">def</span> <span class="nf">quicksort</span><span class="p">(</span><span class="n">array</span><span class="p">):</span>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">quicksort</span><span class="p">(</span><span class="n">array</span><span class="p">):</span>
     <span class="n">less</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="n">greater</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">array</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">:</span>
@@ -92,7 +92,7 @@
         <span class="k">else</span><span class="p">:</span>
             <span class="n">less</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">quicksort</span><span class="p">(</span><span class="n">less</span><span class="p">)</span> <span class="o">+</span> <span class="p">[</span><span class="n">pivot</span><span class="p">]</span> <span class="o">+</span> <span class="n">quicksort</span><span class="p">(</span><span class="n">greater</span><span class="p">)</span>
-<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&#39;__main__&#39;</span><span class="p">:</span>
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
     <span class="k">print</span> <span class="n">quicksort</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">])</span>
 </pre></div>
 
@@ -101,28 +101,28 @@
 <h4>（2）代码风格</h4>
 <p>Pythonic的代码要充分体现Python自身特色。
 例如交换两个数(packaging/unpackaging)：</p>
-<div class="highlight"><pre><span class="n">a</span> <span class="o">=</span> <span class="mi">1</span>
+<div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mi">1</span>
 <span class="n">b</span> <span class="o">=</span> <span class="mi">2</span>
 <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">b</span><span class="p">,</span> <span class="n">a</span>
 </pre></div>
 
 
 <p>还有需要安全关闭文件描述符，可以使用with语句：</p>
-<div class="highlight"><pre><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">path</span><span class="p">,</span><span class="s">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+<div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">path</span><span class="p">,</span><span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
     <span class="n">do_st</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
 </pre></div>
 
 
 <p>我们应当追求充分利用Python的语法，但不应过分追求奇技淫巧，比如利用Slice语法：</p>
-<div class="highlight"><pre><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">]</span>
-<span class="n">c</span> <span class="o">=</span> <span class="s">&#39;abcdef&#39;</span>
+<div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">]</span>
+<span class="n">c</span> <span class="o">=</span> <span class="s1">&#39;abcdef&#39;</span>
 <span class="k">print</span> <span class="n">a</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
 <span class="k">print</span> <span class="n">c</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
 </pre></div>
 
 
 <p>这是一个实现列表倒序输出的功能，但是如果不熟悉该语法的可能就看不懂，实际上，这个时候更能体现Pythonic的代码是充分利用Python的库里的reversed函数：</p>
-<div class="highlight"><pre><span class="nb">list</span><span class="p">(</span><span class="nb">reversed</span><span class="p">(</span><span class="n">a</span><span class="p">))</span>
+<div class="highlight"><pre><span></span><span class="nb">list</span><span class="p">(</span><span class="nb">reversed</span><span class="p">(</span><span class="n">a</span><span class="p">))</span>
 <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
 </pre></div>
 
@@ -130,18 +130,18 @@
 <h4>（3）标准库</h4>
 <p>写Pythonic的程序必须对Python的标准库有充分了解，特别是内置函数与内置数据类型。
 例如格式化输出字符串,通常的做法：</p>
-<div class="highlight"><pre><span class="k">print</span> <span class="s">&#39;Hello </span><span class="si">%s</span><span class="s">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="s">&#39;Tom&#39;</span><span class="p">,)</span>
+<div class="highlight"><pre><span></span><span class="k">print</span> <span class="s1">&#39;Hello </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="s1">&#39;Tom&#39;</span><span class="p">,)</span>
 </pre></div>
 
 
 <p>Pythonic的代码：</p>
-<div class="highlight"><pre><span class="k">print</span> <span class="s">&#39;Hello %{name}s&#39;</span> <span class="o">%</span> <span class="p">{</span><span class="s">&#39;name&#39;</span><span class="p">:</span> <span class="s">&#39;Tom&#39;</span><span class="p">}</span>
+<div class="highlight"><pre><span></span><span class="k">print</span> <span class="s1">&#39;Hello %{name}s&#39;</span> <span class="o">%</span> <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;Tom&#39;</span><span class="p">}</span>
 </pre></div>
 
 
 <p>尤其是参数多的时候可读性更好。
 str.format()是Python最为推荐的字符串格式化方法，当然也是最Pythonic的。</p>
-<div class="highlight"><pre><span class="k">print</span> <span class="s">&#39;{greet} from {language}.&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">greet</span> <span class="o">=</span> <span class="s">&#39;Hello world&#39;</span><span class="p">,</span> <span class="n">language</span> <span class="o">=</span> <span class="s">&#39;Python&#39;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><span class="k">print</span> <span class="s1">&#39;{greet} from {language}.&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">greet</span> <span class="o">=</span> <span class="s1">&#39;Hello world&#39;</span><span class="p">,</span> <span class="n">language</span> <span class="o">=</span> <span class="s1">&#39;Python&#39;</span><span class="p">)</span>
 </pre></div>
 
 
@@ -163,18 +163,18 @@ str.format()是Python最为推荐的字符串格式化方法，当然也是最Py
 </ul>
 <h4>（3）使用工具检查程序PEP8</h4>
 <p>安装PEP8的检测程序</p>
-<div class="highlight"><pre>pip install -U pep8
+<div class="highlight"><pre><span></span>pip install -U pep8
 </pre></div>
 
 
 <p>下面使用工具检查：</p>
-<div class="highlight"><pre><span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&#39;__main__&#39;</span><span class="p">:</span>
+<div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
     <span class="k">print</span> <span class="n">quicksort</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">])</span>
 </pre></div>
 
 
 <p>可以看到检查的结果：</p>
-<div class="highlight"><pre>pep8 --first quick_sort.py
+<div class="highlight"><pre><span></span>pep8 --first quick_sort.py
 quick_sort.py:17:23: E231 missing whitespace after <span class="s1">&#39;,&#39;</span>
 quick_sort.py:18:1: W391 blank line at end of file
 </pre></div>
@@ -182,7 +182,7 @@ quick_sort.py:18:1: W391 blank line at end of file
 
 <p>就是，后面要空格，文件最后不应该有空行。
 还可以展示出非常详细的错误和警告：</p>
-<div class="highlight"><pre>pep8 --show-source --show-pep8 quick_sort.py
+<div class="highlight"><pre><span></span>pep8 --show-source --show-pep8 quick_sort.py
 </pre></div>
 
 
@@ -192,12 +192,12 @@ quick_sort.py:18:1: W391 blank line at end of file
 可以利用Python实现C中Python并不自带的功能：</p>
 <p>三元运算符：  C ? X : Y  =&gt;  X if C else Y</p>
 <p>类似switch的跳转功能：</p>
-<div class="highlight"><pre><span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
     <span class="k">return</span> <span class="p">{</span>
-            <span class="mi">0</span><span class="p">:</span> <span class="s">&quot;You typed zero.</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span>
-            <span class="mi">1</span><span class="p">:</span> <span class="s">&quot;You are in top.</span><span class="se">\n</span><span class="s">&quot;</span>
-            <span class="p">}</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="s">&quot;Only single-digit numbers are allowed</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">)</span>
-<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&#39;__main__&#39;</span><span class="p">:</span>
+            <span class="mi">0</span><span class="p">:</span> <span class="s2">&quot;You typed zero.</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span>
+            <span class="mi">1</span><span class="p">:</span> <span class="s2">&quot;You are in top.</span><span class="se">\n</span><span class="s2">&quot;</span>
+            <span class="p">}</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="s2">&quot;Only single-digit numbers are allowed</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
     <span class="k">print</span> <span class="n">f</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 </pre></div>
 
@@ -208,25 +208,25 @@ quick_sort.py:18:1: W391 blank line at end of file
 给外部访问的函数和方法添加文档注释，包括方法功能，参数，返回值以及可能的异常进行说明。</p>
 <h3>建议5： 通过适当添加空行使代码布局更为优雅、合理</h3>
 <p>如以下代码：</p>
-<div class="highlight"><pre><span class="kn">import</span> <span class="nn">random</span>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">random</span>
 <span class="n">guess_made</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="n">name</span> <span class="o">=</span> <span class="nb">raw_input</span><span class="p">(</span><span class="s">&#39;Hello! What is your name?</span><span class="se">\n</span><span class="s">&#39;</span><span class="p">)</span>
+<span class="n">name</span> <span class="o">=</span> <span class="nb">raw_input</span><span class="p">(</span><span class="s1">&#39;Hello! What is your name?</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
 <span class="n">number</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
-<span class="k">print</span> <span class="s">&#39;Well, {0}, I am thinking of a number between 1 and 20.&#39;</span>\
+<span class="k">print</span> <span class="s1">&#39;Well, {0}, I am thinking of a number between 1 and 20.&#39;</span>\
         <span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
 <span class="k">while</span> <span class="n">guess_made</span> <span class="o">&lt;</span> <span class="mi">6</span><span class="p">:</span>
-    <span class="n">guess</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">raw_input</span><span class="p">(</span><span class="s">&#39;Take a guess: &#39;</span><span class="p">))</span>
+    <span class="n">guess</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">raw_input</span><span class="p">(</span><span class="s1">&#39;Take a guess: &#39;</span><span class="p">))</span>
     <span class="n">guess_made</span> <span class="o">+=</span> <span class="mi">1</span>
     <span class="k">if</span> <span class="n">guess</span> <span class="o">&lt;</span> <span class="n">number</span><span class="p">:</span>
-        <span class="k">print</span> <span class="s">&#39;Your guess is too low.&#39;</span>
+        <span class="k">print</span> <span class="s1">&#39;Your guess is too low.&#39;</span>
     <span class="k">if</span> <span class="n">guess</span> <span class="o">&gt;</span> <span class="n">number</span><span class="p">:</span>
-        <span class="k">print</span> <span class="s">&#39;Your guess is too high.&#39;</span>
+        <span class="k">print</span> <span class="s1">&#39;Your guess is too high.&#39;</span>
     <span class="k">if</span> <span class="n">guess</span> <span class="o">==</span> <span class="n">number</span><span class="p">:</span>
         <span class="k">break</span>
 <span class="k">if</span> <span class="n">guess</span> <span class="o">==</span> <span class="n">number</span><span class="p">:</span>
-    <span class="k">print</span> <span class="s">&#39;Good job&#39;</span>
+    <span class="k">print</span> <span class="s1">&#39;Good job&#39;</span>
 <span class="k">else</span><span class="p">:</span>
-    <span class="k">print</span> <span class="s">&#39;Nope&#39;</span>
+    <span class="k">print</span> <span class="s1">&#39;Nope&#39;</span>
 </pre></div>
 
 
@@ -234,7 +234,7 @@ quick_sort.py:18:1: W391 blank line at end of file
 <li>一组代码表达完一个完整的思路后，应该用空白行隔开</li>
 <li>尽量保持上下文语义的易理解性。如当一个函数调用另一个函数时，尽量将它们放在一起，最好调用者在上，被调用者在下。</li>
 </ul>
-<div class="highlight"><pre><span class="k">def</span> <span class="nf">A</span><span class="p">():</span>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">A</span><span class="p">():</span>
     <span class="n">B</span><span class="p">()</span>
 <span class="k">def</span> <span class="nf">B</span><span class="p">():</span>
     <span class="k">pass</span>

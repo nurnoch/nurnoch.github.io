@@ -67,7 +67,7 @@
             </header>
             <footer class="post-info">
               <abbr class="published" title="2015-06-03T20:37:00+08:00">
-                Wed 03 June 2015
+                三 03 六月 2015
               </abbr>
               <address class="vcard author">By 
                 <a class="url fn" href="http://www.wengweitao.com/author/wwt.html"> wwt</a>
@@ -90,13 +90,13 @@
 <p>考虑二分搜索算法。第一趟需要读入40亿个数，并判断每一个数32bit中的第一位（最高位开始）是1还是0，将第一位是0的写入一个文件，第一位是1的写入另一个文件。这样就按照第一位是1还是0，将所有40亿个数分成了两段，而缺失的数必定会在较小的那一段里面。然后，选取较小的那个段，再按照第二位是否为1，分成两段。依次处理每个位，直到有一个分组的个数为0.</p>
 <p>第一次需要处理n个数，第二次最多需要处理n/2个数，第三次最多需要处理n/3个数，...，因此时间复杂度为O(n)。每次只需在原来一半的范围内进行搜索，这就是二分问题的一个主要的思想。</p>
 <p>举一个具体的例子，假设给定一个包含10个4bit的整数{1,2,3,4,5,6,7,8,9,10}。首先按照第一位进行分组：</p>
-<div class="highlight"><pre>第一位为0： 1,2,3,4,6,7 （6个）
+<div class="highlight"><pre><span></span>第一位为0： 1,2,3,4,6,7 （6个）
 第一位为1： 8,9,10（3个）
 </pre></div>
 
 
 <p>第一次分组，第一位为1的一组数目较小只有3个（3 &lt; 16/2=8），所以缺失的数必定在这个段里存在（第一位为0的分组里也有数缺失0）。然后，选择第二个分组，按照第二位继续分组：</p>
-<div class="highlight"><pre>第二位为0： 8,9,10
+<div class="highlight"><pre><span></span>第二位为0： 8,9,10
 第二位为1： None
 </pre></div>
 
@@ -107,7 +107,7 @@
 <p>将一个n元一维数组向量向左旋转i个位置。例如，n=8且i=3时，向量abcdefgh旋转之后的结果为defghabc。如何完成该操作？</p>
 <h3>程序设计</h3>
 <p>我们可以将问题看做是把数组ab转换成ba，同时假定我们拥有一个函数可以将数组中特定部分的元素求逆。从ab开始，首先对a求逆得到<span class="math">\(a^rb\)</span>，然后对b求逆得到<span class="math">\(a^rb^r\)</span>。最后对整体求逆，得到的结果恰好是ba。</p>
-<div class="highlight"><pre><span class="kt">void</span> <span class="nf">reverse</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="p">,</span> <span class="kt">int</span> <span class="n">j</span><span class="p">)</span> <span class="p">{</span>
+<div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">reverse</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="p">,</span> <span class="kt">int</span> <span class="n">j</span><span class="p">)</span> <span class="p">{</span>
     <span class="kt">int</span> <span class="n">t</span><span class="p">;</span>
     <span class="k">while</span><span class="p">(</span><span class="n">i</span> <span class="o">&lt;</span> <span class="n">j</span><span class="p">)</span> <span class="p">{</span>
         <span class="n">t</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
@@ -140,12 +140,12 @@
 <p>对于第一个问题，我们可以将单词中的字母按照字母表顺序排列，如"pots"的标识就是"opst"，互为变位词的单词其标识都是相同的。对于第二个问题，我们将所有单词按照其标识的顺序进行排序。</p>
 <h3>变位词程序的实现</h3>
 <p>首先，创建第一个程序用于标识单词：</p>
-<div class="highlight"><pre><span class="cm">/* sign.c -- sign each line of a file for finding anagrams                      </span>
+<div class="highlight"><pre><span></span><span class="cm">/* sign.c -- sign each line of a file for finding anagrams                      </span>
 <span class="cm">   For example: the input line &quot;stop&quot; gives the output line &quot;opst&quot;</span>
 <span class="cm">*/</span>
-<span class="cp">#include &lt;stdio.h&gt;</span>
-<span class="cp">#include &lt;stdlib.h&gt;</span>
-<span class="cp">#include &lt;string.h&gt;</span>
+<span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;stdlib.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;string.h&gt;</span><span class="cp"></span>
 <span class="cp">#define WORDMAX 100   </span><span class="cm">/* word size is smaller than 100 */</span><span class="cp"></span>
 
 <span class="kt">int</span> <span class="nf">charcomp</span><span class="p">(</span><span class="kt">char</span> <span class="o">*</span><span class="n">x</span><span class="p">,</span> <span class="kt">char</span> <span class="o">*</span><span class="n">y</span><span class="p">)</span> <span class="p">{</span>
@@ -167,11 +167,11 @@
 <p>sign程序每次读入一个单词，然后输出单词的标识和单词本身的对(sign, word)。</p>
 <p>第二个程序用来实现对每个标识和单词对的排序。可以直接利用sort系统程序。</p>
 <p>第三个程序用来将变位词输出在同一行。</p>
-<div class="highlight"><pre><span class="cm">/* squash.c -- print anagrams in the same line                                  </span>
+<div class="highlight"><pre><span></span><span class="cm">/* squash.c -- print anagrams in the same line                                  </span>
 <span class="cm">   The input lines &quot;opst stop&quot; and &quot;opst post&quot; go to &quot;stop post&quot;</span>
 <span class="cm">*/</span>
-<span class="cp">#include &lt;stdio.h&gt;</span>
-<span class="cp">#include &lt;string.h&gt;</span>
+<span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;string.h&gt;</span><span class="cp"></span>
 <span class="cp">#define WORDMAX 100</span>
 
 <span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
@@ -192,12 +192,12 @@
 
 
 <p>使用一个测试文件dictionary对以上程序进行测试：</p>
-<div class="highlight"><pre>./sign &lt; dictionary <span class="p">|</span> sort <span class="p">|</span> ./squash &gt; result
+<div class="highlight"><pre><span></span>./sign &lt; dictionary <span class="p">|</span> sort <span class="p">|</span> ./squash &gt; result
 </pre></div>
 
 
 <p>使用hash的另一种实现：</p>
-<div class="highlight"><pre>    <span class="n">vector</span><span class="o">&lt;</span><span class="n">string</span><span class="o">&gt;</span> <span class="n">anagrams</span><span class="p">(</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">string</span><span class="o">&gt;&amp;</span> <span class="n">strs</span><span class="p">)</span> <span class="p">{</span>
+<div class="highlight"><pre><span></span>    <span class="n">vector</span><span class="o">&lt;</span><span class="n">string</span><span class="o">&gt;</span> <span class="n">anagrams</span><span class="p">(</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">string</span><span class="o">&gt;&amp;</span> <span class="n">strs</span><span class="p">)</span> <span class="p">{</span>
         <span class="n">unordered_map</span><span class="o">&lt;</span><span class="n">string</span><span class="p">,</span> <span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&gt;</span> <span class="n">map</span><span class="p">;</span>
         <span class="n">vector</span><span class="o">&lt;</span><span class="n">string</span><span class="o">&gt;</span> <span class="n">result</span><span class="p">;</span>
         <span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="n">strs</span><span class="p">.</span><span class="n">size</span><span class="p">();</span>

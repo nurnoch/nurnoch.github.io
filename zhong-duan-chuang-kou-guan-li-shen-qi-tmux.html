@@ -67,7 +67,7 @@
             </header>
             <footer class="post-info">
               <abbr class="published" title="2015-05-11T09:12:00+08:00">
-                Mon 11 May 2015
+                一 11 五月 2015
               </abbr>
               <address class="vcard author">By 
                 <a class="url fn" href="http://www.wengweitao.com/author/wwt.html"> wwt</a>
@@ -85,7 +85,7 @@
 <p><img alt="tmux示例" src="http://tmux.sourceforge.net/tmux4.png" /></p>
 <h2>tmux的基本概念</h2>
 <p>首先，需要先安装tmux：</p>
-<div class="highlight"><pre>sudo yum install tmux
+<div class="highlight"><pre><span></span>sudo yum install tmux
 </pre></div>
 
 
@@ -123,47 +123,47 @@
 <h2>对tmux进行个性化配置</h2>
 <p>默认的配置，可以比较不习惯，可以编辑 $HOME/.tmux.conf 文件，对tmux进行配置。</p>
 <p>1.将前缀更改为 <strong>ctrl + a</strong>：</p>
-<div class="highlight"><pre><span class="nb">set</span> -g prefix ^a
+<div class="highlight"><pre><span></span><span class="nb">set</span> -g prefix ^a
 unbind ^b
-<span class="nb">bind </span>a send-prefix
+<span class="nb">bind</span> a send-prefix
 </pre></div>
 
 
 <p>保存后，为了使配置生效：
 先按 <strong>ctrl+b</strong>，然后输入<strong>：</strong>，进入命令行模式， 在命令行模式下输入：</p>
-<div class="highlight"><pre><span class="nb">source</span>-file ~/.tmux.conf
+<div class="highlight"><pre><span></span>source-file ~/.tmux.conf
 </pre></div>
 
 
 <p>现在就把前缀改为了ctrl + a了。</p>
 <p>2.水平或垂直分割窗口</p>
-<div class="highlight"><pre>unbind <span class="s1">&#39;&quot;&#39;</span>
-<span class="nb">bind</span> - splitw -v <span class="c"># 分割成上下两个窗口</span>
+<div class="highlight"><pre><span></span>unbind <span class="s1">&#39;&quot;&#39;</span>
+<span class="nb">bind</span> - splitw -v <span class="c1"># 分割成上下两个窗口</span>
 unbind %
-<span class="nb">bind</span> <span class="p">|</span> splitw -h <span class="c"># 分割成左右两个窗口</span>
+<span class="nb">bind</span> <span class="p">|</span> splitw -h <span class="c1"># 分割成左右两个窗口</span>
 </pre></div>
 
 
 <p>3.切换窗格设置为和Vim一样</p>
-<div class="highlight"><pre><span class="c"># navigate panes with hjkl</span>
-<span class="nb">bind </span>h <span class="k">select</span>-pane -L
-<span class="nb">bind </span>j <span class="k">select</span>-pane -D
-<span class="nb">bind </span>k <span class="k">select</span>-pane -U
-<span class="nb">bind </span>l <span class="k">select</span>-pane -R
+<div class="highlight"><pre><span></span><span class="c1"># navigate panes with hjkl</span>
+<span class="nb">bind</span> h <span class="k">select</span>-pane -L
+<span class="nb">bind</span> j <span class="k">select</span>-pane -D
+<span class="nb">bind</span> k <span class="k">select</span>-pane -U
+<span class="nb">bind</span> l <span class="k">select</span>-pane -R
 </pre></div>
 
 
 <p>4.panel大小调整</p>
-<div class="highlight"><pre><span class="nb">bind</span> ^k resizep -U <span class="m">10</span> <span class="c"># 跟选择窗格的设置相同，只是多加 Ctrl（Ctrl-k）</span>
-<span class="nb">bind</span> ^j resizep -D <span class="m">10</span> <span class="c"># 同上</span>
-<span class="nb">bind</span> ^h resizep -L <span class="m">10</span> <span class="c"># ...</span>
-<span class="nb">bind</span> ^l resizep -R <span class="m">10</span> <span class="c"># ...</span>
+<div class="highlight"><pre><span></span><span class="nb">bind</span> ^k resizep -U <span class="m">10</span> <span class="c1"># 跟选择窗格的设置相同，只是多加 Ctrl（Ctrl-k）</span>
+<span class="nb">bind</span> ^j resizep -D <span class="m">10</span> <span class="c1"># 同上</span>
+<span class="nb">bind</span> ^h resizep -L <span class="m">10</span> <span class="c1"># ...</span>
+<span class="nb">bind</span> ^l resizep -R <span class="m">10</span> <span class="c1"># ...</span>
 </pre></div>
 
 
 <p>5.交换两个窗格</p>
-<div class="highlight"><pre><span class="nb">bind</span> ^u swapp -U <span class="c"># 与上窗格交换 Ctrl-u</span>
-<span class="nb">bind</span> ^d swapp -D <span class="c"># 与下窗格交换 Ctrl-d</span>
+<div class="highlight"><pre><span></span><span class="nb">bind</span> ^u swapp -U <span class="c1"># 与上窗格交换 Ctrl-u</span>
+<span class="nb">bind</span> ^d swapp -D <span class="c1"># 与下窗格交换 Ctrl-d</span>
 </pre></div>
 
 

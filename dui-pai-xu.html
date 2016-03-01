@@ -67,7 +67,7 @@
             </header>
             <footer class="post-info">
               <abbr class="published" title="2015-05-14T22:23:00+08:00">
-                Thu 14 May 2015
+                四 14 五月 2015
               </abbr>
               <address class="vcard author">By 
                 <a class="url fn" href="http://www.wengweitao.com/author/wwt.html"> wwt</a>
@@ -99,7 +99,7 @@
 </ul>
 <h2>维护堆的性质</h2>
 <p>MAX-HEAPIFY 是用于维护最大堆性质的一个重要的过程。它的输入为一个数组A和一个下标i，并且假定此时根结点为LEFT(i)和RIGHT(i)的二叉树都是最大堆，通过让A[i]的值在最大堆中逐级下降，从而使得以下标i为根结点的二叉树满足最大堆的性质。</p>
-<div class="highlight"><pre><span class="kt">void</span> <span class="nf">maxHeapify</span><span class="p">(</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">A</span><span class="p">,</span> <span class="kt">int</span> <span class="n">i</span><span class="p">)</span> <span class="p">{</span>
+<div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">maxHeapify</span><span class="p">(</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">A</span><span class="p">,</span> <span class="kt">int</span> <span class="n">i</span><span class="p">)</span> <span class="p">{</span>
     <span class="kt">int</span> <span class="n">l</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>  <span class="c1">// 根结点的下标为0</span>
     <span class="kt">int</span> <span class="n">r</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">2</span><span class="p">;</span>
     <span class="kt">int</span> <span class="n">largest</span><span class="p">;</span>
@@ -130,7 +130,7 @@
 <p><strong>因此，MAX-HEAPIFY的时间复杂度为O(h)，其中h为树的高度。</strong></p>
 <h2>建堆</h2>
 <p>当用数组表示存储n个元素的堆时，叶结点的下标为n/2+1,...,n，而下标小于等于n/2的都是分支结点（下标从1开始）。对于每一个叶结点可以把它们看出只有一个元素的堆，因此建堆的过程就是对树中每一个分支结点调用MAX-HEAPIFY。</p>
-<div class="highlight"><pre><span class="kt">void</span> <span class="nf">buildMaxHeap</span><span class="p">(</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">A</span><span class="p">)</span> <span class="p">{</span>
+<div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">buildMaxHeap</span><span class="p">(</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">A</span><span class="p">)</span> <span class="p">{</span>
     <span class="n">heap_size</span> <span class="o">=</span> <span class="n">heap_length</span><span class="p">;</span>
     <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">heap_length</span><span class="o">/</span><span class="mi">2</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">;</span> <span class="o">--</span><span class="n">i</span><span class="p">)</span>
         <span class="n">maxHeapify</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">i</span><span class="p">);</span>
@@ -149,7 +149,7 @@
 <li>不断重复2,3步，直到堆中只剩下一个元素，此时排序完成。</li>
 </ol>
 <p><strong>堆排序的完整代码：</strong></p>
-<div class="highlight"><pre><span class="kt">void</span> <span class="nf">swap</span><span class="p">(</span><span class="kt">int</span> <span class="o">&amp;</span><span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="o">&amp;</span><span class="n">b</span><span class="p">)</span> <span class="p">{</span>
+<div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">swap</span><span class="p">(</span><span class="kt">int</span> <span class="o">&amp;</span><span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="o">&amp;</span><span class="n">b</span><span class="p">)</span> <span class="p">{</span>
     <span class="kt">int</span> <span class="n">temp</span> <span class="o">=</span> <span class="n">a</span><span class="p">;</span>
     <span class="n">a</span> <span class="o">=</span> <span class="n">b</span><span class="p">;</span>
     <span class="n">b</span> <span class="o">=</span> <span class="n">temp</span><span class="p">;</span>
@@ -195,7 +195,7 @@
 <p>堆除了能够运用在排序中，还常用用于实现一个高效的优先队列。和堆一样，优先队列也分为：最大优先队列和最小优先队列。</p>
 <p>最大优先队列可以用于在共享计算机系统的作业调度，每次选取一个优先级最高的作业进行调度。而最小优先队列可以用于基于事件驱动的模拟器，每个时间都有一个时间作为关键字，事件必须按照时间的顺序进行模拟，每次选取一个“优先级”最低的事件作为下一个要模拟的事件。</p>
 <p>这里，我们关注于使用最大堆实现最大优先队列。</p>
-<div class="highlight"><pre><span class="kt">int</span> <span class="nf">heapMaximum</span><span class="p">(</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">A</span><span class="p">)</span> <span class="p">{</span>
+<div class="highlight"><pre><span></span><span class="kt">int</span> <span class="nf">heapMaximum</span><span class="p">(</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">A</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">return</span> <span class="n">A</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
 <span class="p">}</span>
 

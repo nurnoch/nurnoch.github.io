@@ -67,7 +67,7 @@
             </header>
             <footer class="post-info">
               <abbr class="published" title="2015-04-08T14:52:00+08:00">
-                Wed 08 April 2015
+                三 08 四月 2015
               </abbr>
               <address class="vcard author">By 
                 <a class="url fn" href="http://www.wengweitao.com/author/wwt.html"> wwt</a>
@@ -78,12 +78,12 @@
 <p>Counter是Python标准库提供的一个非常有用的容器，可以用来对序列中出现的各个元素，进行计数。这篇文章中，利用Counter来实现多元集合(MultiSets)、概率质量函数(PMFs)以及贝叶斯假设。</p>
 </blockquote>
 <p>在Python代码中使用Counter，只需从collections包引入：</p>
-<div class="highlight"><pre><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">Counter</span>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">Counter</span>
 </pre></div>
 
 
 <h3>1.判断两个字符串是否由相同的字母集合调换顺序而成的（anagram）</h3>
-<div class="highlight"><pre><span class="k">def</span> <span class="nf">is_anagram</span><span class="p">(</span><span class="n">word1</span><span class="p">,</span> <span class="n">word2</span><span class="p">):</span>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">is_anagram</span><span class="p">(</span><span class="n">word1</span><span class="p">,</span> <span class="n">word2</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Checks whether the words are anagrams.</span>
 
 <span class="sd">    word1: string</span>
@@ -99,7 +99,7 @@
 <p>Counter如果传入的参数是字符串，就会统计字符串中每个字符出现的次数，如果两个字符串由相同的字母集合颠倒顺序而成，则它们Counter的结果应该是一样的。</p>
 <h3>2.多元集合(MultiSets)</h3>
 <p>multiset是相同元素可以出现多次的集合，Counter可以非常自然地用来表示multiset。并且可以将Counter扩展，使之拥有set的一些操作如is_subset。</p>
-<div class="highlight"><pre><span class="k">class</span> <span class="nc">Multiset</span><span class="p">(</span><span class="n">Counter</span><span class="p">):</span>
+<div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Multiset</span><span class="p">(</span><span class="n">Counter</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;A multiset is a set where elements can appear more than once.&quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="nf">is_subset</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
@@ -114,14 +114,14 @@
                 <span class="k">return</span> <span class="bp">False</span>
         <span class="k">return</span> <span class="bp">True</span>
 
-    <span class="c"># map the &lt;= operator to is_subset</span>
+    <span class="c1"># map the &lt;= operator to is_subset</span>
     <span class="n">__le__</span> <span class="o">=</span> <span class="n">is_subset</span>
 </pre></div>
 
 
 <h3>3.概率质量函数</h3>
 <p>概率质量函数（probability mass function，简写为pmf）是离散随机变量在各特定取值上的概率。可以利用Counter表示概率质量函数。</p>
-<div class="highlight"><pre><span class="k">class</span> <span class="nc">Pmf</span><span class="p">(</span><span class="n">Counter</span><span class="p">):</span>
+<div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Pmf</span><span class="p">(</span><span class="n">Counter</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;A Counter with probabilities.&quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="nf">normalize</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -163,17 +163,17 @@
 <p>add: 返回的是两个随机变量分布两两组合之和的新的概率质量函数</p>
 <p>render: 返回按值排序的(value, probability)的组合对，方便画图的时候使用</p>
 <p>下面以骰子（ps: 这个竟然念tou子。。。）作为例子。</p>
-<div class="highlight"><pre><span class="n">d6</span> <span class="o">=</span> <span class="n">Pmf</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">])</span>
+<div class="highlight"><pre><span></span><span class="n">d6</span> <span class="o">=</span> <span class="n">Pmf</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">])</span>
 <span class="n">d6</span><span class="o">.</span><span class="n">normalize</span><span class="p">()</span>
-<span class="n">d6</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s">&#39;one die&#39;</span>
+<span class="n">d6</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;one die&#39;</span>
 <span class="k">print</span><span class="p">(</span><span class="n">d6</span><span class="p">)</span>
 </pre></div>
 
 
 <p>Pmf({1: 0.16666666666666666, 2: 0.16666666666666666, 3: 0.16666666666666666, 4: 0.16666666666666666, 5: 0.16666666666666666, 6: 0.16666666666666666})</p>
 <p>使用add，我们可以计算出两个骰子和的分布：</p>
-<div class="highlight"><pre><span class="n">d6_twice</span> <span class="o">=</span> <span class="n">d6</span> <span class="o">+</span> <span class="n">d6</span>
-<span class="n">d6_twice</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s">&#39;two dices&#39;</span>
+<div class="highlight"><pre><span></span><span class="n">d6_twice</span> <span class="o">=</span> <span class="n">d6</span> <span class="o">+</span> <span class="n">d6</span>
+<span class="n">d6_twice</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;two dices&#39;</span>
 
 <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">prob</span> <span class="ow">in</span> <span class="n">d6_twice</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
     <span class="k">print</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">prob</span><span class="p">)</span>
@@ -181,19 +181,19 @@
 
 
 <p>借助numpy.sum，我们可以直接计算三个骰子和的分布：</p>
-<div class="highlight"><pre><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 <span class="n">d6_thrice</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">([</span><span class="n">d6</span><span class="p">]</span><span class="o">*</span><span class="mi">3</span><span class="p">)</span>
-<span class="n">d6_thrice</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s">&#39;three dices&#39;</span>
+<span class="n">d6_thrice</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;three dices&#39;</span>
 </pre></div>
 
 
 <p>最后可以使用render返回结果，利用matplotlib把结果画图表示出来：</p>
-<div class="highlight"><pre><span class="k">for</span> <span class="n">die</span> <span class="ow">in</span> <span class="p">[</span><span class="n">d6</span><span class="p">,</span> <span class="n">d6_twice</span><span class="p">,</span> <span class="n">d6_thrice</span><span class="p">]:</span>
+<div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">die</span> <span class="ow">in</span> <span class="p">[</span><span class="n">d6</span><span class="p">,</span> <span class="n">d6_twice</span><span class="p">,</span> <span class="n">d6_thrice</span><span class="p">]:</span>
     <span class="n">xs</span><span class="p">,</span> <span class="n">ys</span> <span class="o">=</span> <span class="n">die</span><span class="o">.</span><span class="n">render</span><span class="p">()</span>
     <span class="n">pyplot</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">ys</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">die</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
 
-<span class="n">pyplot</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s">&#39;Total&#39;</span><span class="p">)</span>
-<span class="n">pyplot</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s">&#39;Probability&#39;</span><span class="p">)</span>
+<span class="n">pyplot</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Total&#39;</span><span class="p">)</span>
+<span class="n">pyplot</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Probability&#39;</span><span class="p">)</span>
 <span class="n">pyplot</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
 <span class="n">pyplot</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
@@ -204,9 +204,9 @@
 <h3>4.贝叶斯统计</h3>
 <p>我们继续用掷骰子的例子来说明用Counter如何实现贝叶斯统计。现在假设，一个盒子中有5种不同的骰子，分别是：4面、6面、8面、12面和20面的。假设我们随机从盒子中取出一个骰子，投出的骰子的点数为6。那么，取得那5个不同骰子的概率分别是多少？</p>
 <p>（1）首先，我们需要生成每个骰子的概率质量函数：</p>
-<div class="highlight"><pre><span class="k">def</span> <span class="nf">make_die</span><span class="p">(</span><span class="n">num_sides</span><span class="p">):</span>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">make_die</span><span class="p">(</span><span class="n">num_sides</span><span class="p">):</span>
     <span class="n">die</span> <span class="o">=</span> <span class="n">Pmf</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">num_sides</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>
-    <span class="n">die</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s">&#39;d</span><span class="si">%d</span><span class="s">&#39;</span> <span class="o">%</span> <span class="n">num_sides</span>
+    <span class="n">die</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;d</span><span class="si">%d</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">num_sides</span>
     <span class="n">die</span><span class="o">.</span><span class="n">normalize</span><span class="p">()</span>
     <span class="k">return</span> <span class="n">die</span>
 
@@ -217,7 +217,7 @@
 
 
 <p>（2）接下来，定义一个抽象类Suite。Suite是一个概率质量函数表示了一组假设(hypotheses)及其概率分布。Suite类包含一个bayesian_update函数，用来基于新的数据来更新假设(hypotheses)的概率。</p>
-<div class="highlight"><pre><span class="k">class</span> <span class="nc">Suite</span><span class="p">(</span><span class="n">Pmf</span><span class="p">):</span>
+<div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Suite</span><span class="p">(</span><span class="n">Pmf</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Map from hypothesis to probability.&quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="nf">bayesian_update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
@@ -237,7 +237,7 @@
 
 <p>其中的likelihood函数由各个类继承后，自己实现不同的计算方法。</p>
 <p>（3）定义DiceSuite类，它继承了类Suite。</p>
-<div class="highlight"><pre><span class="k">class</span> <span class="nc">DiceSuite</span><span class="p">(</span><span class="n">Suite</span><span class="p">):</span>
+<div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">DiceSuite</span><span class="p">(</span><span class="n">Suite</span><span class="p">):</span>
 
     <span class="k">def</span> <span class="nf">likelihood</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">hypo</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Computes the likelihood of the data under the hypothesis.</span>
@@ -253,7 +253,7 @@
 data: 观察到的骰子掷出的点数，如本例中的6
 hypo: 可能掷出的那个骰子</p>
 <p>（4）将第一步创建的dice传给DiceSuite，然后根据给定的值，就可以得出相应的结果。</p>
-<div class="highlight"><pre><span class="n">dice_suite</span> <span class="o">=</span> <span class="n">DiceSuite</span><span class="p">(</span><span class="n">dice</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><span class="n">dice_suite</span> <span class="o">=</span> <span class="n">DiceSuite</span><span class="p">(</span><span class="n">dice</span><span class="p">)</span>
 
 <span class="n">dice_suite</span><span class="o">.</span><span class="n">bayesian_update</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span>
 
@@ -270,7 +270,7 @@ hypo: 可能掷出的那个骰子</p>
 
 <p>正如，我们所期望的4个面的骰子的概率为0（因为4个面的点数只可能为0~4），而6个面的和8个面的概率最大。
 现在，假设我们又掷了一次骰子，这次出现的点数是8，重新计算概率：</p>
-<div class="highlight"><pre><span class="n">dice_suite</span><span class="o">.</span><span class="n">bayesian_update</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><span class="n">dice_suite</span><span class="o">.</span><span class="n">bayesian_update</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span>
 
 <span class="k">for</span> <span class="n">die</span><span class="p">,</span> <span class="n">prob</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">dice_suite</span><span class="o">.</span><span class="n">items</span><span class="p">()):</span>
     <span class="k">print</span> <span class="n">die</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">prob</span>

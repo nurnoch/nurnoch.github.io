@@ -61,9 +61,71 @@
         <div class="eleven columns">
                  <ol id="post-list">
                         <li><article class="hentry">
+                                <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/tong-pai-xu.html" rel="bookmark" title="Permalink to 桶排序">桶排序</a></h2> </header>
+                                <footer class="post-info">
+                                    <abbr class="published" title="2015-05-18T16:13:00+08:00"> 一 18 五月 2015 </abbr>
+                                    <address class="vcard author">By 
+                                    <a class="url fn" href="http://www.wengweitao.com/author/wwt.html"> wwt</a>
+                                    </address>
+                                </footer><!-- /.post-info -->
+                                <div class="entry-content"> <p>本文继续介绍一种非比较排序算法——<strong>桶排序（bucket sort）</strong>。通排序假设输入数据服从均匀分布，平均情况下它的时间复杂度为O(n)。与计数排序类似，因为对输入数据作了某种假设，桶排序的速度也很快。具体的，计数排序假设输入数据都属于一个小区间的整数，而桶排序则假设输入数据是由一个随机过程产生，该过程将元素均匀、独立地分布在[0,1)区间上。</p>
+<h2>桶排序的基本思想</h2>
+<ol>
+<li>桶排序将[0,1)区间划分成大小相同的n个子区间，称为桶</li>
+<li>将n个输入分别放入各个桶中</li>
+<li>对桶中的数进行排序</li>
+<li>遍历每个桶，按照次序把各个桶中的元素列出来</li>
+</ol>
+<h2>桶排序的代码实现</h2>
+<p>在桶排序的代码中，我们假设输入是一个包含n个元素的数组A，且每个元素A[i]满足<span class="math">\(0 \leq A[i] &lt; 1\)</span>。此外，算法还需要一个临时数组B[0..n-1]来存放链表（即桶），并假设存在一种用于维护这些链表的机制。</p>
+<div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">insertionSort</span><span class="p">(</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">double ...</span></pre></div> </div><!-- /.entry-content -->
+
+                                <div class="medium primary btn"><a href="http://www.wengweitao.com/tong-pai-xu.html" rel="bookmark" title="Permalink to 桶排序">Read more <i class="icon-arrow-right"></i></a></div>
+
+
+
+                                <div class="row tag-row">
+                                        <span>Tagged as : </span>
+                                            <a class="danger label" href="http://www.wengweitao.com/tag/pai-xu-suan-fa-ji-chu.html">排序 算法 基础</a>
+                                </div>
+
+
+
+                        </article></li>
+                        <li><article class="hentry">
+                                <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/ji-shu-pai-xu-radix-sort.html" rel="bookmark" title="Permalink to 基数排序（radix sort）">基数排序（radix sort）</a></h2> </header>
+                                <footer class="post-info">
+                                    <abbr class="published" title="2015-05-17T14:12:00+08:00"> 日 17 五月 2015 </abbr>
+                                    <address class="vcard author">By 
+                                    <a class="url fn" href="http://www.wengweitao.com/author/wwt.html"> wwt</a>
+                                    </address>
+                                </footer><!-- /.post-info -->
+                                <div class="entry-content"> <p>本文继续介绍另外一种非比较排序算法——<strong>基数排序（radix sort）</strong>，最早用在卡片排序机上。基数排序的原理是将整数按位切割成不同的数字，然后按每个位数分别比较。对于十进制的数字，每列只会用到10个位置，一个d位数将占用d列。</p>
+<p>基数排序<strong>先按最低有效位进行排序</strong>，然后按次低有效位进行排序，直到对所有的d位数字都进行了排序。为了确保基数排序的正确性，<strong>一位数的排序算法必须是稳定的</strong>。</p>
+<p>我们有时会用基数排序来对具有多关键字域的记录进行排序。例如，我们希望用3个关键字（年、月、日）来对日期进行排序。我们可以使用基于特殊比较函数的排序算法，先比较年，如果相同再比较月，如果还相同再比较日。我们也可以采用基数排序，用一种稳定排序算法对这些信息进行三次排序：先日，再月，最后年。</p>
+<h2>基数排序的实现</h2>
+<p>基数排序的代码实现：</p>
+<div class="highlight"><pre><span></span><span class="k">const</span> <span class="kt">int</span> <span class="n">k</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>  <span class="c1">// 每个位的数值大小为从0~9</span>
+<span class="kt">int</span> <span class="n">base</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+
+<span class="kt">void</span> <span class="nf">countingSort</span><span class="p">(</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">A</span><span class="p">,</span> <span class="n">vector</span><span class="o">&lt;</span><span class="kt">int ...</span></pre></div> </div><!-- /.entry-content -->
+
+                                <div class="medium primary btn"><a href="http://www.wengweitao.com/ji-shu-pai-xu-radix-sort.html" rel="bookmark" title="Permalink to 基数排序（radix sort）">Read more <i class="icon-arrow-right"></i></a></div>
+
+
+
+                                <div class="row tag-row">
+                                        <span>Tagged as : </span>
+                                            <a class="danger label" href="http://www.wengweitao.com/tag/pai-xu-suan-fa-ji-chu.html">排序 算法 基础</a>
+                                </div>
+
+
+
+                        </article></li>
+                        <li><article class="hentry">
                                 <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/ji-shu-pai-xu.html" rel="bookmark" title="Permalink to 计数排序">计数排序</a></h2> </header>
                                 <footer class="post-info">
-                                    <abbr class="published" title="2015-05-17T11:21:00+08:00"> Sun 17 May 2015 </abbr>
+                                    <abbr class="published" title="2015-05-17T11:21:00+08:00"> 日 17 五月 2015 </abbr>
                                     <address class="vcard author">By 
                                     <a class="url fn" href="http://www.wengweitao.com/author/wwt.html"> wwt</a>
                                     </address>
@@ -78,7 +140,7 @@
 </ul>
 <h2>计数排序的代码实现</h2>
 <p>在计数排序算法的代码中，假设输入是一个数组A[1...n]，A.length = n。我们还需要两个数组：B[1..n]存放排序的输出，C[0..k]提供临时存储空间。</p>
-<div class="highlight"><pre><span class="c1">// B: output of the sorted array</span>
+<div class="highlight"><pre><span></span><span class="c1">// B: output of the sorted array</span>
 <span class="c1">// k: every element in A: 0 &lt;= A ...</span></pre></div> </div><!-- /.entry-content -->
 
                                 <div class="medium primary btn"><a href="http://www.wengweitao.com/ji-shu-pai-xu.html" rel="bookmark" title="Permalink to 计数排序">Read more <i class="icon-arrow-right"></i></a></div>
@@ -96,7 +158,7 @@
                         <li><article class="hentry">
                                 <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/kuai-su-pai-xu.html" rel="bookmark" title="Permalink to 快速排序">快速排序</a></h2> </header>
                                 <footer class="post-info">
-                                    <abbr class="published" title="2015-05-16T10:22:00+08:00"> Sat 16 May 2015 </abbr>
+                                    <abbr class="published" title="2015-05-16T10:22:00+08:00"> 六 16 五月 2015 </abbr>
                                     <address class="vcard author">By 
                                     <a class="url fn" href="http://www.wengweitao.com/author/wwt.html"> wwt</a>
                                     </address>
@@ -123,7 +185,7 @@
                         <li><article class="hentry">
                                 <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/gui-bing-pai-xu.html" rel="bookmark" title="Permalink to 归并排序">归并排序</a></h2> </header>
                                 <footer class="post-info">
-                                    <abbr class="published" title="2015-05-15T19:45:00+08:00"> Fri 15 May 2015 </abbr>
+                                    <abbr class="published" title="2015-05-15T19:45:00+08:00"> 五 15 五月 2015 </abbr>
                                     <address class="vcard author">By 
                                     <a class="url fn" href="http://www.wengweitao.com/author/wwt.html"> wwt</a>
                                     </address>
@@ -137,75 +199,10 @@
 <p>当待排序的序列的长度为1时，递归“开始回升”，在这种情况下，我们不需要做任何工作，因为只有一个元素的序列已经是有序的了。</p>
 <h2>合并操作</h2>
 <p>归并排序算法的关键操作是“合并”步骤中将两个已排序的子序列进行合并。我们通过函数MERGE(A, p, q, r)来完成合并，其中A是一个数组，p、q和r是数组下标，该过程假设A[p..q]和A[q+1..r]都已有序。</p>
-<div class="highlight"><pre><span class="c1">// 对A[p..q] 和 A[q+1..r]两个有序子序列进行合并</span>
+<div class="highlight"><pre><span></span><span class="c1">// 对A[p..q] 和 A[q+1..r]两个有序子序列进行合并</span>
 <span class="kt">void</span> <span class="nf">merge</span><span class="p">(</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int ...</span></pre></div> </div><!-- /.entry-content -->
 
                                 <div class="medium primary btn"><a href="http://www.wengweitao.com/gui-bing-pai-xu.html" rel="bookmark" title="Permalink to 归并排序">Read more <i class="icon-arrow-right"></i></a></div>
-
-
-
-                                <div class="row tag-row">
-                                        <span>Tagged as : </span>
-                                            <a class="danger label" href="http://www.wengweitao.com/tag/pai-xu-suan-fa-ji-chu.html">排序 算法 基础</a>
-                                </div>
-
-
-
-                        </article></li>
-                        <li><article class="hentry">
-                                <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/dui-pai-xu.html" rel="bookmark" title="Permalink to 堆排序">堆排序</a></h2> </header>
-                                <footer class="post-info">
-                                    <abbr class="published" title="2015-05-14T22:23:00+08:00"> Thu 14 May 2015 </abbr>
-                                    <address class="vcard author">By 
-                                    <a class="url fn" href="http://www.wengweitao.com/author/wwt.html"> wwt</a>
-                                    </address>
-                                </footer><!-- /.post-info -->
-                                <div class="entry-content"> <p>本文将介绍一种排序算法，称为<strong>堆排序（heapsort）</strong>。堆排序最坏情况下运行时间为O(nlogn)，并且具有空间原址性：任何时候只需要常数个额外的元素空间存储临时数据。堆排序中使用了堆这个数据结构进行管理，堆这种数据结构也可以用来构造一种 有效的优先级队列。</p>
-<h2>堆</h2>
-<p><strong>堆</strong>（二叉堆）是一个数组，可以看成一个近似的完全二叉树，树中每一个结点对应数组中的一个元素，除了最底层外，该树是完全满的，而且是从左至右填充。二叉堆有两种形式：最大堆和最小堆。在最大堆中，除了根结点之外的所有结点的值小于等于其父节点的值，因此，堆中最大的元素存放在根结点中，并且在任一子树中，该子树所包含的所有结点的值都不大于该子树根结点的值。最小堆的组织方式正好相反。</p>
-<p>在堆排序算法中，我们使用最大堆，而最小堆通常用于构造优先级队列。</p>
-<p>如果把堆看成一棵树，那么堆的高度就是O(logn)。我们会发现在堆上进行的很多基本操作的运行时间至多与树的高度成正比，即时间复杂度为O(nlogn)。</p>
-<p>表示堆的数组A包括的基本属性：</p>
-<ul>
-<li>A.length() ： 返回数组元素的个数</li>
-<li>A.heap-size()：返回有多少个堆元素存放在该数组中（通常小于等于length）</li>
-</ul>
-<p>对于数组A[1..A.length ...</p> </div><!-- /.entry-content -->
-
-                                <div class="medium primary btn"><a href="http://www.wengweitao.com/dui-pai-xu.html" rel="bookmark" title="Permalink to 堆排序">Read more <i class="icon-arrow-right"></i></a></div>
-
-
-
-                                <div class="row tag-row">
-                                        <span>Tagged as : </span>
-                                            <a class="danger label" href="http://www.wengweitao.com/tag/pai-xu-suan-fa-ji-chu.html">排序 算法 基础</a>
-                                </div>
-
-
-
-                        </article></li>
-                        <li><article class="hentry">
-                                <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/cha-ru-pai-xu.html" rel="bookmark" title="Permalink to 插入排序">插入排序</a></h2> </header>
-                                <footer class="post-info">
-                                    <abbr class="published" title="2015-05-13T18:34:00+08:00"> Wed 13 May 2015 </abbr>
-                                    <address class="vcard author">By 
-                                    <a class="url fn" href="http://www.wengweitao.com/author/wwt.html"> wwt</a>
-                                    </address>
-                                </footer><!-- /.post-info -->
-                                <div class="entry-content"> <p>本文介绍一种非常简单的排序算法——<strong>插入排序</strong>。对于少量元素的排序，它是一个有效的算法。插入排序可以形象的类比为手中扑克牌的排序。开始时，左手为空并且桌子上的扑克牌的牌面朝下。然后我们每次从桌子上拿一张扑克牌，插入左手中正确的位置，我们从右向左将它与手中的每张牌进行比较，任何时候左手上的牌总是有序的。</p>
-<p>对数组A[1..n]进行插入排序步骤：</p>
-<ol>
-<li>初始时只含有一个元素A<a href="http://book.douban.com/subject/1885170/">1</a>，所以是有序的</li>
-<li>依次将A[2]~A[n]依次插入到前面已经排好序的子序列中</li>
-<li>n - 1次即可得到一个有序的表</li>
-</ol>
-<div class="highlight"><pre><span class="kt">void</span> <span class="nf">insertionSort</span><span class="p">(</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">A</span><span class="p">)</span> <span class="p">{</span>
-    <span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="n">A</span><span class="p">.</span><span class="n">size</span><span class="p">();</span>
-    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="o">++</span><span class="n">j</span><span class="p">)</span> <span class="p">{</span>
-        <span class="kt">int</span> <span class="n">key</span> <span class="o">=</span> <span class="n">A</span><span class="p">[</span><span class="n">j</span><span class="p">];</span>
-        <span class="c1">// Insert A[j] into the ...</span></pre></div> </div><!-- /.entry-content -->
-
-                                <div class="medium primary btn"><a href="http://www.wengweitao.com/cha-ru-pai-xu.html" rel="bookmark" title="Permalink to 插入排序">Read more <i class="icon-arrow-right"></i></a></div>
 
 
 

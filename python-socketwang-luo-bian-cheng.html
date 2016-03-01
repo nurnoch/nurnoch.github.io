@@ -67,7 +67,7 @@
             </header>
             <footer class="post-info">
               <abbr class="published" title="2015-07-27T18:49:00+08:00">
-                Mon 27 July 2015
+                一 27 七月 2015
               </abbr>
               <address class="vcard author">By 
                 <a class="url fn" href="http://www.wengweitao.com/author/wwt.html"> wwt</a>
@@ -77,31 +77,31 @@
               <p>在网络通信中socket几乎无处不在，它可以看成是应用层与TCP/IP协议簇通信的中间软件抽象层，是两个应用程序彼此进行通信的接口，并且把复杂的TCP/IP协议细节隐藏在接口之后。Python提供了socket模块，可以非常方便的进行socket编程。</p>
 <h2>创建一个server socket</h2>
 <p>使用<code>socket</code>方法创建一个新的socket，通常提供两个参数，第一个参数是address family, 第二个是socket type。</p>
-<div class="highlight"><pre><span class="c">#create an INET, STREAMing socket</span>
+<div class="highlight"><pre><span></span><span class="c1">#create an INET, STREAMing socket</span>
 <span class="n">s</span> <span class="o">=</span> <span class="n">socket</span><span class="o">.</span><span class="n">socket</span><span class="p">(</span><span class="n">socket</span><span class="o">.</span><span class="n">AF_INET</span><span class="p">,</span> <span class="n">socket</span><span class="o">.</span><span class="n">SOCK_STREAM</span><span class="p">)</span>
 </pre></div>
 
 
 <p>以上创建了一个address family为IP协议，并且传输协议为TCP的socket。</p>
 <p>服务器端在创建一个socket之后，需要绑定到一个IP地址与端口，提供服务，这就要用到<code>bind</code>方法。</p>
-<div class="highlight"><pre><span class="c"># bind the socket to all available interfaces on port 8888</span>
-<span class="n">s</span><span class="o">.</span><span class="n">bind</span><span class="p">((</span><span class="s">&#39;&#39;</span><span class="p">,</span> <span class="mi">8888</span><span class="p">))</span>
+<div class="highlight"><pre><span></span><span class="c1"># bind the socket to all available interfaces on port 8888</span>
+<span class="n">s</span><span class="o">.</span><span class="n">bind</span><span class="p">((</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="mi">8888</span><span class="p">))</span>
 </pre></div>
 
 
 <p>使用<code>listen</code>方法，将socket设置为监听状态。listen方法后面跟一个参数，表示最多可以在队列里面接收的请求数目。</p>
-<div class="highlight"><pre><span class="c">#become a server socket</span>
+<div class="highlight"><pre><span></span><span class="c1">#become a server socket</span>
 <span class="n">serversocket</span><span class="o">.</span><span class="n">listen</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
 </pre></div>
 
 
 <p>现在，我们已经创建了一个server socket，然后编写一个无限循环体，接收来自客户端的连接，利用<code>accept</code>方法，它返回一个新的socket，表示与远端的连接，同时返回一个地址对，表示远端连接的IP地址与端口号。</p>
-<div class="highlight"><pre><span class="c"># enter the main loop of the web server</span>
+<div class="highlight"><pre><span></span><span class="c1"># enter the main loop of the web server</span>
 <span class="k">while</span> <span class="mi">1</span><span class="p">:</span>
-    <span class="c">#accept connections from outside, return a pair (conn, addr)</span>
+    <span class="c1">#accept connections from outside, return a pair (conn, addr)</span>
     <span class="p">(</span><span class="n">clientsocket</span><span class="p">,</span> <span class="n">address</span><span class="p">)</span> <span class="o">=</span> <span class="n">serversocket</span><span class="o">.</span><span class="n">accept</span><span class="p">()</span>
-    <span class="c">#now do something with the clientsocket</span>
-    <span class="c">#in this case, we&#39;ll pretend this is a threaded server</span>
+    <span class="c1">#now do something with the clientsocket</span>
+    <span class="c1">#in this case, we&#39;ll pretend this is a threaded server</span>
     <span class="n">ct</span> <span class="o">=</span> <span class="n">client_thread</span><span class="p">(</span><span class="n">clientsocket</span><span class="p">)</span>
     <span class="n">ct</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
 </pre></div>
@@ -109,12 +109,12 @@
 
 <p>通常，循环体中的server socket不会发送和接收任何数据，而仅仅是接收来自远端的连接，将新的连接交给其他的线程去处理，然后就继续侦听更多其他的连接，否则的话在处理一个连接的时候，就无法接受其他新的连接了。</p>
 <p>接下来，我们新建一个线程对连接进行处理。首先，使用<code>recv</code>方法接受来自socket的数据，后面带着一个参数表示一次最多可以接受数据的大小。然后使用<code>sendall</code>方法回复socket，sendall不断发送数据直到所有数据发送完毕或者发生了异常。最后，需要记得把socket关闭，因为每个socket就代表了系统中的一个文件描述符，如果没有及时关闭，可能会超过系统最大文件描述符的数量，导致无法创建新的socket。</p>
-<div class="highlight"><pre><span class="k">def</span> <span class="nf">handle_request</span><span class="p">(</span><span class="n">sock</span><span class="p">,</span> <span class="n">addr</span><span class="p">):</span>
-    <span class="k">print</span> <span class="s">&quot;Accept new connection from {addr}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">addr</span> <span class="o">=</span> <span class="n">addr</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">handle_request</span><span class="p">(</span><span class="n">sock</span><span class="p">,</span> <span class="n">addr</span><span class="p">):</span>
+    <span class="k">print</span> <span class="s2">&quot;Accept new connection from {addr}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">addr</span> <span class="o">=</span> <span class="n">addr</span><span class="p">)</span>
     <span class="n">request_data</span> <span class="o">=</span> <span class="n">client_connection</span><span class="o">.</span><span class="n">recv</span><span class="p">(</span><span class="mi">1024</span><span class="p">)</span>
     <span class="k">print</span> <span class="n">request_data</span><span class="o">.</span><span class="n">decode</span><span class="p">()</span>
-    <span class="n">http_response</span> <span class="o">=</span> <span class="s">&quot;Hello, world!&quot;</span>
-    <span class="c"># send response data to the socket</span>
+    <span class="n">http_response</span> <span class="o">=</span> <span class="s2">&quot;Hello, world!&quot;</span>
+    <span class="c1"># send response data to the socket</span>
     <span class="n">sock</span><span class="o">.</span><span class="n">sendall</span><span class="p">(</span><span class="n">http_response</span><span class="p">)</span>
     <span class="n">sock</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 </pre></div>
@@ -128,44 +128,44 @@
 <li>接受连接， 分发给其他线程处理。</li>
 </ol>
 <p>以下是完整的server socket示例代码：</p>
-<div class="highlight"><pre><span class="kn">import</span> <span class="nn">socket</span>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">socket</span>
 <span class="kn">import</span> <span class="nn">threading</span>
 
-<span class="n">SERVER_ADDRESS</span> <span class="o">=</span> <span class="p">(</span><span class="n">HOST</span><span class="p">,</span> <span class="n">PORT</span><span class="p">)</span> <span class="o">=</span> <span class="s">&#39;&#39;</span><span class="p">,</span> <span class="mi">8888</span>
+<span class="n">SERVER_ADDRESS</span> <span class="o">=</span> <span class="p">(</span><span class="n">HOST</span><span class="p">,</span> <span class="n">PORT</span><span class="p">)</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="mi">8888</span>
 <span class="n">REQUEST_QUEUE_SIZE</span> <span class="o">=</span> <span class="mi">1024</span>
 
 <span class="k">def</span> <span class="nf">handle_request</span><span class="p">(</span><span class="n">sock</span><span class="p">,</span> <span class="n">addr</span><span class="p">):</span>
-    <span class="k">print</span> <span class="s">&quot;Accept new connection from {addr}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">addr</span> <span class="o">=</span> <span class="n">addr</span><span class="p">)</span>
+    <span class="k">print</span> <span class="s2">&quot;Accept new connection from {addr}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">addr</span> <span class="o">=</span> <span class="n">addr</span><span class="p">)</span>
     <span class="n">request_data</span> <span class="o">=</span> <span class="n">client_connection</span><span class="o">.</span><span class="n">recv</span><span class="p">(</span><span class="mi">1024</span><span class="p">)</span>
     <span class="k">print</span> <span class="n">request_data</span><span class="o">.</span><span class="n">decode</span><span class="p">()</span>
-    <span class="n">http_response</span> <span class="o">=</span> <span class="s">&quot;Hello, world!&quot;</span>
-    <span class="c"># send response data to the socket</span>
+    <span class="n">http_response</span> <span class="o">=</span> <span class="s2">&quot;Hello, world!&quot;</span>
+    <span class="c1"># send response data to the socket</span>
     <span class="n">sock</span><span class="o">.</span><span class="n">sendall</span><span class="p">(</span><span class="n">http_response</span><span class="p">)</span>
     <span class="n">sock</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 
 <span class="k">def</span> <span class="nf">serve_forever</span><span class="p">():</span>
     <span class="n">server_socket</span> <span class="o">=</span> <span class="n">socket</span><span class="o">.</span><span class="n">socket</span><span class="p">(</span><span class="n">socket</span><span class="o">.</span><span class="n">AF_INET</span><span class="p">,</span> <span class="n">socket</span><span class="o">.</span><span class="n">SOCK_STREAM</span><span class="p">)</span>
-    <span class="c"># reuse socket immediately</span>
+    <span class="c1"># reuse socket immediately</span>
     <span class="n">server_socket</span><span class="o">.</span><span class="n">setsockopt</span><span class="p">(</span><span class="n">socket</span><span class="o">.</span><span class="n">SOL_SOCKET</span><span class="p">,</span> <span class="n">socket</span><span class="o">.</span><span class="n">SO_REUSEADDR</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
     <span class="n">server_socket</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="n">SERVER_ADDRESS</span><span class="p">)</span>
     <span class="n">server_socket</span><span class="o">.</span><span class="n">listen</span><span class="p">(</span><span class="n">REQUEST_QUEUE_SIZE</span><span class="p">)</span>
-    <span class="k">print</span> <span class="s">&#39;Serving HTTP on port {port} ...&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">port</span> <span class="o">=</span> <span class="n">PORT</span><span class="p">)</span>
+    <span class="k">print</span> <span class="s1">&#39;Serving HTTP on port {port} ...&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">port</span> <span class="o">=</span> <span class="n">PORT</span><span class="p">)</span>
 
     <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="n">client_connection</span><span class="p">,</span> <span class="n">client_address</span> <span class="o">=</span> <span class="n">server_socket</span><span class="o">.</span><span class="n">accept</span><span class="p">()</span>
         <span class="k">except</span> <span class="ne">IOError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
             <span class="n">code</span><span class="p">,</span> <span class="n">msg</span> <span class="o">=</span> <span class="n">e</span><span class="o">.</span><span class="n">args</span>
-            <span class="c"># restart &#39;accept&#39; if it was interrupted</span>
+            <span class="c1"># restart &#39;accept&#39; if it was interrupted</span>
             <span class="k">if</span> <span class="n">code</span> <span class="o">==</span> <span class="n">errno</span><span class="o">.</span><span class="n">EINTR</span><span class="p">:</span>
                 <span class="k">continue</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="k">raise</span>
-        <span class="c"># create a thread to handle this request</span>
+        <span class="c1"># create a thread to handle this request</span>
         <span class="n">t</span> <span class="o">=</span> <span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">handle_request</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">sock</span><span class="p">,</span> <span class="n">addr</span><span class="p">))</span>
         <span class="n">t</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
 
-<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&#39;__main__&#39;</span><span class="p">:</span>
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
     <span class="n">serve_forever</span><span class="p">()</span>
 </pre></div>
 
@@ -179,19 +179,19 @@
 <li>接收服务器返回的数据；</li>
 <li>关闭socket。</li>
 </ol>
-<div class="highlight"><pre><span class="kn">import</span> <span class="nn">socket</span>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">socket</span>
 
-<span class="n">HOST</span> <span class="o">=</span> <span class="s">&#39;localhost&#39;</span> <span class="c"># the remote host</span>
-<span class="n">PORT</span> <span class="o">=</span> <span class="mi">8888</span> <span class="c"># port used by server</span>
+<span class="n">HOST</span> <span class="o">=</span> <span class="s1">&#39;localhost&#39;</span> <span class="c1"># the remote host</span>
+<span class="n">PORT</span> <span class="o">=</span> <span class="mi">8888</span> <span class="c1"># port used by server</span>
 
 <span class="n">client_socket</span> <span class="o">=</span> <span class="n">socket</span><span class="o">.</span><span class="n">socket</span><span class="p">(</span><span class="n">socket</span><span class="o">.</span><span class="n">AF_INET</span><span class="p">,</span> <span class="n">socket</span><span class="o">.</span><span class="n">SOCK_STREAM</span><span class="p">)</span>
-<span class="c"># connect to server</span>
+<span class="c1"># connect to server</span>
 <span class="n">client_socket</span><span class="o">.</span><span class="n">connect</span><span class="p">((</span><span class="n">HOST</span><span class="p">,</span> <span class="n">PORT</span><span class="p">))</span>
-<span class="c"># send something to the server</span>
-<span class="n">client_socket</span><span class="o">.</span><span class="n">sendall</span><span class="p">(</span><span class="s">&quot;Hello, world&quot;</span><span class="p">)</span>
+<span class="c1"># send something to the server</span>
+<span class="n">client_socket</span><span class="o">.</span><span class="n">sendall</span><span class="p">(</span><span class="s2">&quot;Hello, world&quot;</span><span class="p">)</span>
 <span class="n">data</span> <span class="o">=</span> <span class="n">client_socket</span><span class="o">.</span><span class="n">recv</span><span class="p">(</span><span class="mi">1024</span><span class="p">)</span>
 <span class="n">client_socket</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-<span class="k">print</span> <span class="s">&#39;Received&#39;</span><span class="p">,</span> <span class="nb">repr</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="k">print</span> <span class="s1">&#39;Received&#39;</span><span class="p">,</span> <span class="nb">repr</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 </pre></div>
 
 
@@ -201,7 +201,7 @@
 <p>Python的select模块提供了IO复用的功能,如select和poll等都能够执行I/O多路复用。</p>
 <h3>select</h3>
 <p>select方法的调用形式如下：</p>
-<div class="highlight"><pre><span class="n">select</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">rlist</span><span class="p">,</span> <span class="n">wlist</span><span class="p">,</span> <span class="n">xlist</span><span class="p">[,</span> <span class="n">timeout</span><span class="p">]</span>
+<div class="highlight"><pre><span></span><span class="n">select</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">rlist</span><span class="p">,</span> <span class="n">wlist</span><span class="p">,</span> <span class="n">xlist</span><span class="p">[,</span> <span class="n">timeout</span><span class="p">]</span>
 </pre></div>
 
 
@@ -215,80 +215,80 @@
 <p>select方法返回的是一个三元组的列表表示准备好的对象。
 一个示例程序：
 server端等待至少一个socket就绪：</p>
-<div class="highlight"><pre><span class="kn">import</span> <span class="nn">socket</span>                                                                       
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">socket</span>                                                                       
 <span class="kn">import</span> <span class="nn">select</span>                                                                       
 <span class="kn">import</span> <span class="nn">sys</span>                                                                          
 <span class="kn">import</span> <span class="nn">Queue</span>                                                                        
 
-<span class="c"># create a server socket                                                            </span>
+<span class="c1"># create a server socket                                                            </span>
 <span class="n">server</span> <span class="o">=</span> <span class="n">socket</span><span class="o">.</span><span class="n">socket</span><span class="p">(</span><span class="n">socket</span><span class="o">.</span><span class="n">AF_INET</span><span class="p">,</span> <span class="n">socket</span><span class="o">.</span><span class="n">SOCK_STREAM</span><span class="p">)</span>                          
 <span class="n">server</span><span class="o">.</span><span class="n">setblocking</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>                                                                                                                                                                                     
-<span class="n">server</span><span class="o">.</span><span class="n">bind</span><span class="p">((</span><span class="s">&#39;localhost&#39;</span><span class="p">,</span> <span class="mi">8888</span><span class="p">))</span>                                                    
+<span class="n">server</span><span class="o">.</span><span class="n">bind</span><span class="p">((</span><span class="s1">&#39;localhost&#39;</span><span class="p">,</span> <span class="mi">8888</span><span class="p">))</span>                                                    
 <span class="n">server</span><span class="o">.</span><span class="n">listen</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>                                                                    
 
-<span class="c"># socketss ready for reading                                                        </span>
+<span class="c1"># socketss ready for reading                                                        </span>
 <span class="n">rlist</span> <span class="o">=</span> <span class="p">[</span><span class="n">server</span><span class="p">]</span>                                                                    
-<span class="c"># sockets ready for writing                                                         </span>
+<span class="c1"># sockets ready for writing                                                         </span>
 <span class="n">wlist</span> <span class="o">=</span> <span class="p">[]</span>                                                                          
-<span class="c"># exception                                                                         </span>
+<span class="c1"># exception                                                                         </span>
 <span class="n">elist</span> <span class="o">=</span><span class="p">[]</span>                                                                           
 
-<span class="c"># each connection needs a queue to act as a buffer for the data to be sent          </span>
-<span class="c"># through it                                                                        </span>
+<span class="c1"># each connection needs a queue to act as a buffer for the data to be sent          </span>
+<span class="c1"># through it                                                                        </span>
 <span class="n">message_queues</span> <span class="o">=</span> <span class="p">{}</span>                                                                 
 
-<span class="c"># main loop                                                                         </span>
+<span class="c1"># main loop                                                                         </span>
 <span class="k">while</span> <span class="n">rlist</span><span class="p">:</span>                                                                        
-    <span class="c"># wait for at least one socket is ready                                         </span>
-    <span class="k">print</span> <span class="s">&quot;waiting for the next event&quot;</span>                                              
+    <span class="c1"># wait for at least one socket is ready                                         </span>
+    <span class="k">print</span> <span class="s2">&quot;waiting for the next event&quot;</span>                                              
     <span class="n">readable</span><span class="p">,</span> <span class="n">writable</span><span class="p">,</span> <span class="n">exceptional</span> <span class="o">=</span> <span class="n">select</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">rlist</span><span class="p">,</span> <span class="n">wlist</span><span class="p">,</span> <span class="n">elist</span><span class="p">)</span>            
 
-    <span class="c"># handle readable lists                                                         </span>
+    <span class="c1"># handle readable lists                                                         </span>
     <span class="k">for</span> <span class="n">sock</span> <span class="ow">in</span> <span class="n">readable</span><span class="p">:</span>                                                           
-        <span class="c"># server socket: ready to accept another connection                         </span>
+        <span class="c1"># server socket: ready to accept another connection                         </span>
         <span class="k">if</span> <span class="n">sock</span> <span class="o">==</span> <span class="n">server</span><span class="p">:</span>                                                          
             <span class="n">conn</span><span class="p">,</span> <span class="n">addr</span> <span class="o">=</span> <span class="n">sock</span><span class="o">.</span><span class="n">accept</span><span class="p">()</span>                                              
-            <span class="k">print</span> <span class="s">&quot;new connection from {addr}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">addr</span> <span class="o">=</span> <span class="n">addr</span><span class="p">)</span>                  
+            <span class="k">print</span> <span class="s2">&quot;new connection from {addr}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">addr</span> <span class="o">=</span> <span class="n">addr</span><span class="p">)</span>                  
             <span class="n">conn</span><span class="o">.</span><span class="n">setblocking</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>                                                     
-            <span class="c"># add new connection to rlist                                           </span>
+            <span class="c1"># add new connection to rlist                                           </span>
             <span class="n">rlist</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">conn</span><span class="p">)</span>                                                      
 
-            <span class="c"># give the connection a queue for data to send                          </span>
+            <span class="c1"># give the connection a queue for data to send                          </span>
             <span class="n">message_queues</span><span class="p">[</span><span class="n">conn</span><span class="p">]</span> <span class="o">=</span> <span class="n">Queue</span><span class="o">.</span><span class="n">Queue</span><span class="p">()</span>                                    
-        <span class="c"># established connection from client                                        </span>
+        <span class="c1"># established connection from client                                        </span>
         <span class="k">else</span><span class="p">:</span>                                                                       
             <span class="n">request_data</span> <span class="o">=</span> <span class="n">sock</span><span class="o">.</span><span class="n">recv</span><span class="p">(</span><span class="mi">1024</span><span class="p">)</span>   
                         <span class="k">if</span> <span class="n">request_data</span><span class="p">:</span>                                                     
-                <span class="k">print</span>  <span class="s">&quot;received {data} from {addr}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>                     
+                <span class="k">print</span>  <span class="s2">&quot;received {data} from {addr}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>                     
                     <span class="n">data</span> <span class="o">=</span> <span class="n">request_data</span><span class="p">,</span> <span class="n">addr</span> <span class="o">=</span> <span class="n">sock</span><span class="o">.</span><span class="n">getpeername</span><span class="p">())</span>              
                 <span class="n">message_queues</span><span class="p">[</span><span class="n">sock</span><span class="p">]</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="n">request_data</span><span class="p">)</span>                           
-                <span class="c"># add to response                                                </span>
+                <span class="c1"># add to response                                                </span>
                 <span class="k">if</span> <span class="n">sock</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">wlist</span><span class="p">:</span>                                            
                     <span class="n">wlist</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">sock</span><span class="p">)</span>                                           
-            <span class="c"># without data should be closed                                      </span>
+            <span class="c1"># without data should be closed                                      </span>
             <span class="k">else</span><span class="p">:</span>                                                                
-                <span class="k">print</span> <span class="s">&quot;closing {addr} after no reading data&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">addr</span> <span class="o">=</span> <span class="n">sock</span><span class="o">.</span><span class="n">getpeername</span><span class="p">())</span>
+                <span class="k">print</span> <span class="s2">&quot;closing {addr} after no reading data&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">addr</span> <span class="o">=</span> <span class="n">sock</span><span class="o">.</span><span class="n">getpeername</span><span class="p">())</span>
                 <span class="k">if</span> <span class="n">sock</span> <span class="ow">in</span> <span class="n">wlist</span><span class="p">:</span>                                                
                     <span class="n">wlist</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">sock</span><span class="p">)</span>                                           
                 <span class="n">rlist</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">sock</span><span class="p">)</span>                                               
                 <span class="n">sock</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>                                                     
                 <span class="k">del</span> <span class="n">message_queues</span><span class="p">[</span><span class="n">sock</span><span class="p">]</span>                                         
 
-    <span class="c"># handle writable lists                                                      </span>
+    <span class="c1"># handle writable lists                                                      </span>
     <span class="k">for</span> <span class="n">sock</span> <span class="ow">in</span> <span class="n">writable</span><span class="p">:</span>                                                        
         <span class="k">try</span><span class="p">:</span>                                                                     
             <span class="n">next_msg</span> <span class="o">=</span> <span class="n">message_queues</span><span class="p">[</span><span class="n">sock</span><span class="p">]</span><span class="o">.</span><span class="n">get_nowait</span><span class="p">()</span>                         
         <span class="k">except</span> <span class="n">Queue</span><span class="o">.</span><span class="n">Empty</span><span class="p">:</span>                                                      
-            <span class="c"># no message to send                                                 </span>
-            <span class="k">print</span> <span class="s">&quot;output queue for {addr} is empty&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">addr</span> <span class="o">=</span> <span class="n">sock</span><span class="o">.</span><span class="n">getpeername</span><span class="p">())</span>
+            <span class="c1"># no message to send                                                 </span>
+            <span class="k">print</span> <span class="s2">&quot;output queue for {addr} is empty&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">addr</span> <span class="o">=</span> <span class="n">sock</span><span class="o">.</span><span class="n">getpeername</span><span class="p">())</span>
             <span class="n">wlist</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">sock</span><span class="p">)</span>                                                   
         <span class="k">else</span><span class="p">:</span>                                                                    
-            <span class="k">print</span> <span class="s">&quot;sending {msg} to {addr}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">msg</span> <span class="o">=</span> <span class="n">next_msg</span><span class="p">,</span> <span class="n">addr</span> <span class="o">=</span> <span class="n">sock</span><span class="o">.</span><span class="n">getpeername</span><span class="p">())</span>
+            <span class="k">print</span> <span class="s2">&quot;sending {msg} to {addr}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">msg</span> <span class="o">=</span> <span class="n">next_msg</span><span class="p">,</span> <span class="n">addr</span> <span class="o">=</span> <span class="n">sock</span><span class="o">.</span><span class="n">getpeername</span><span class="p">())</span>
             <span class="n">sock</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">next_msg</span><span class="p">)</span>                                                  
 
-    <span class="c"># handle exceptional lists                                                   </span>
+    <span class="c1"># handle exceptional lists                                                   </span>
     <span class="k">for</span> <span class="n">sock</span> <span class="ow">in</span> <span class="n">exceptional</span><span class="p">:</span>                                                     
-        <span class="k">print</span> <span class="s">&quot;handling exeptional condition for&quot;</span><span class="p">,</span> <span class="n">sock</span><span class="o">.</span><span class="n">getpeername</span><span class="p">()</span>            
+        <span class="k">print</span> <span class="s2">&quot;handling exeptional condition for&quot;</span><span class="p">,</span> <span class="n">sock</span><span class="o">.</span><span class="n">getpeername</span><span class="p">()</span>            
         <span class="n">rlist</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">sock</span><span class="p">)</span>                                                       
         <span class="k">if</span> <span class="n">sock</span> <span class="ow">in</span> <span class="n">wlist</span><span class="p">:</span>                                                        
             <span class="n">wlist</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">sock</span><span class="p">)</span>                                                   
@@ -298,34 +298,34 @@ server端等待至少一个socket就绪：</p>
 
 
 <p>client端，创建两个socket向server发送消息：</p>
-<div class="highlight"><pre><span class="kn">import</span> <span class="nn">socket</span>                                                                                                                                                                                             
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">socket</span>                                                                                                                                                                                             
 <span class="kn">import</span> <span class="nn">sys</span>                                                                          
 
-<span class="c"># create 2 sockets for clients                                                      </span>
+<span class="c1"># create 2 sockets for clients                                                      </span>
 <span class="n">clients</span> <span class="o">=</span> <span class="p">[</span><span class="n">socket</span><span class="o">.</span><span class="n">socket</span><span class="p">(</span><span class="n">socket</span><span class="o">.</span><span class="n">AF_INET</span><span class="p">,</span> <span class="n">socket</span><span class="o">.</span><span class="n">SOCK_STREAM</span><span class="p">),</span>                       
            <span class="n">socket</span><span class="o">.</span><span class="n">socket</span><span class="p">(</span><span class="n">socket</span><span class="o">.</span><span class="n">AF_INET</span><span class="p">,</span> <span class="n">socket</span><span class="o">.</span><span class="n">SOCK_STREAM</span><span class="p">)</span>                        
            <span class="p">]</span>                                                                        
-<span class="c"># tow messages to send                                                              </span>
-<span class="n">messages</span> <span class="o">=</span> <span class="p">[</span><span class="s">&quot;Hello, server.&quot;</span><span class="p">,</span> <span class="s">&quot;This is my message&quot;</span><span class="p">]</span>                                 
+<span class="c1"># tow messages to send                                                              </span>
+<span class="n">messages</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Hello, server.&quot;</span><span class="p">,</span> <span class="s2">&quot;This is my message&quot;</span><span class="p">]</span>                                 
 
-<span class="c"># connect to the server                                                             </span>
-<span class="n">server_address</span> <span class="o">=</span> <span class="p">(</span><span class="s">&#39;localhost&#39;</span><span class="p">,</span> <span class="mi">8888</span><span class="p">)</span>                                                
-<span class="k">print</span> <span class="s">&quot;connecting to {addr}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">addr</span> <span class="o">=</span> <span class="n">server_address</span><span class="p">)</span>                          
+<span class="c1"># connect to the server                                                             </span>
+<span class="n">server_address</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;localhost&#39;</span><span class="p">,</span> <span class="mi">8888</span><span class="p">)</span>                                                
+<span class="k">print</span> <span class="s2">&quot;connecting to {addr}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">addr</span> <span class="o">=</span> <span class="n">server_address</span><span class="p">)</span>                          
 <span class="k">for</span> <span class="n">sock</span> <span class="ow">in</span> <span class="n">clients</span><span class="p">:</span>                                                                
     <span class="n">sock</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">server_address</span><span class="p">)</span>                                                    
 
-<span class="c"># send one piece of messages once                                                   </span>
+<span class="c1"># send one piece of messages once                                                   </span>
 <span class="k">for</span> <span class="n">msg</span> <span class="ow">in</span> <span class="n">messages</span><span class="p">:</span>                                                                
-    <span class="c"># send message to the server                                                    </span>
+    <span class="c1"># send message to the server                                                    </span>
     <span class="k">for</span> <span class="n">sock</span> <span class="ow">in</span> <span class="n">clients</span><span class="p">:</span>                                                            
-        <span class="k">print</span> <span class="s">&quot;{addr} : sending {msg}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">addr</span> <span class="o">=</span> <span class="n">sock</span><span class="o">.</span><span class="n">getpeername</span><span class="p">(),</span> <span class="n">msg</span> <span class="o">=</span> <span class="n">msg</span><span class="p">)</span>
+        <span class="k">print</span> <span class="s2">&quot;{addr} : sending {msg}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">addr</span> <span class="o">=</span> <span class="n">sock</span><span class="o">.</span><span class="n">getpeername</span><span class="p">(),</span> <span class="n">msg</span> <span class="o">=</span> <span class="n">msg</span><span class="p">)</span>
         <span class="n">sock</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>                                                              
-    <span class="c"># read response from the server                                                 </span>
+    <span class="c1"># read response from the server                                                 </span>
     <span class="k">for</span> <span class="n">sock</span> <span class="ow">in</span> <span class="n">clients</span><span class="p">:</span>                                                            
         <span class="n">response_data</span> <span class="o">=</span> <span class="n">sock</span><span class="o">.</span><span class="n">recv</span><span class="p">(</span><span class="mi">1024</span><span class="p">)</span>                                             
-        <span class="k">print</span> <span class="s">&quot;{addr} : received {data}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">addr</span> <span class="o">=</span> <span class="n">sock</span><span class="o">.</span><span class="n">getpeername</span><span class="p">(),</span> <span class="n">data</span> <span class="o">=</span> <span class="n">response_data</span><span class="p">)</span>
+        <span class="k">print</span> <span class="s2">&quot;{addr} : received {data}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">addr</span> <span class="o">=</span> <span class="n">sock</span><span class="o">.</span><span class="n">getpeername</span><span class="p">(),</span> <span class="n">data</span> <span class="o">=</span> <span class="n">response_data</span><span class="p">)</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">response_data</span><span class="p">:</span>                                                       
-            <span class="k">print</span> <span class="s">&quot;closing socket {addr}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">addr</span> <span class="o">=</span> <span class="n">sock</span><span class="o">.</span><span class="n">getpeername</span><span class="p">())</span>         
+            <span class="k">print</span> <span class="s2">&quot;closing socket {addr}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">addr</span> <span class="o">=</span> <span class="n">sock</span><span class="o">.</span><span class="n">getpeername</span><span class="p">())</span>         
             <span class="n">sock</span><span class="o">.</span><span class="n">close</span><span class="p">()</span> 
 </pre></div>
 
@@ -340,83 +340,83 @@ server端等待至少一个socket就绪：</p>
 <li><code>poll.unregister(fd)</code>从polling对象中移除fd。</li>
 </ol>
 <p>一个示例程序：</p>
-<div class="highlight"><pre><span class="kn">import</span> <span class="nn">select</span>                                                                                                                                                                                  
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">select</span>                                                                                                                                                                                  
 <span class="kn">import</span> <span class="nn">socket</span>                                                                    
 <span class="kn">import</span> <span class="nn">sys</span>                                                                       
 <span class="kn">import</span> <span class="nn">Queue</span>                                                                     
 
-<span class="c"># create a server socket                                                         </span>
+<span class="c1"># create a server socket                                                         </span>
 <span class="n">server</span> <span class="o">=</span> <span class="n">socket</span><span class="o">.</span><span class="n">socket</span><span class="p">(</span><span class="n">socket</span><span class="o">.</span><span class="n">AF_INET</span><span class="p">,</span> <span class="n">socket</span><span class="o">.</span><span class="n">SOCK_STREAM</span><span class="p">)</span>                       
 <span class="n">server</span><span class="o">.</span><span class="n">setblocking</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>                                                            
-<span class="n">server</span><span class="o">.</span><span class="n">bind</span><span class="p">((</span><span class="s">&#39;localhost&#39;</span><span class="p">,</span> <span class="mi">8888</span><span class="p">))</span>                                                 
+<span class="n">server</span><span class="o">.</span><span class="n">bind</span><span class="p">((</span><span class="s1">&#39;localhost&#39;</span><span class="p">,</span> <span class="mi">8888</span><span class="p">))</span>                                                 
 <span class="n">server</span><span class="o">.</span><span class="n">listen</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>                                                                 
 
-<span class="c"># queuses for message to send                                                    </span>
+<span class="c1"># queuses for message to send                                                    </span>
 <span class="n">message_queues</span> <span class="o">=</span> <span class="p">{}</span>                                                              
 
-<span class="c"># eventmask is an optional bitmask describing the type of events you want to     </span>
-<span class="c"># check for                                                                      </span>
+<span class="c1"># eventmask is an optional bitmask describing the type of events you want to     </span>
+<span class="c1"># check for                                                                      </span>
 <span class="n">READ_ONLY</span> <span class="o">=</span> <span class="n">select</span><span class="o">.</span><span class="n">POLLIN</span> <span class="o">|</span> <span class="n">select</span><span class="o">.</span><span class="n">POLLPRI</span> <span class="o">|</span> <span class="n">select</span><span class="o">.</span><span class="n">POLLHUP</span> <span class="o">|</span> <span class="n">select</span><span class="o">.</span><span class="n">POLLERR</span>     
 <span class="n">READ_WRITE</span> <span class="o">=</span> <span class="n">READ_ONLY</span> <span class="o">|</span> <span class="n">select</span><span class="o">.</span><span class="n">POLLOUT</span>                                             
 
-<span class="c"># Returns a polling object, which supports registering and unregistering file    </span>
-<span class="c"># descriptors, and then polling them for I/O events                                 </span>
+<span class="c1"># Returns a polling object, which supports registering and unregistering file    </span>
+<span class="c1"># descriptors, and then polling them for I/O events                                 </span>
 <span class="n">poller</span> <span class="o">=</span> <span class="n">select</span><span class="o">.</span><span class="n">poll</span><span class="p">()</span>                                                              
 
-<span class="c"># Register a file descriptor with the polling object                                </span>
+<span class="c1"># Register a file descriptor with the polling object                                </span>
 <span class="n">poller</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="n">server</span><span class="p">,</span> <span class="n">READ_ONLY</span><span class="p">)</span>                                                  
 
-<span class="c"># map file desriptor to socket                                                      </span>
+<span class="c1"># map file desriptor to socket                                                      </span>
 <span class="n">fd_to_socket</span> <span class="o">=</span> <span class="p">{</span><span class="n">server</span><span class="o">.</span><span class="n">fileno</span><span class="p">():</span> <span class="n">server</span><span class="p">,</span> <span class="p">}</span>                                          
 
-<span class="c"># timeout pass to poll(), ms                                                        </span>
+<span class="c1"># timeout pass to poll(), ms                                                        </span>
 <span class="n">TIMEOUT</span> <span class="o">=</span> <span class="mi">1000</span>                                                                      
 
-<span class="c"># in the loop calls poll() and process returned events                              </span>
+<span class="c1"># in the loop calls poll() and process returned events                              </span>
 <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>                                                                         
-    <span class="c"># wait for at least one socket be ready                                         </span>
-    <span class="k">print</span> <span class="s">&quot;waiting for the next event&quot;</span>                                              
+    <span class="c1"># wait for at least one socket be ready                                         </span>
+    <span class="k">print</span> <span class="s2">&quot;waiting for the next event&quot;</span>                                              
     <span class="n">events</span> <span class="o">=</span> <span class="n">poller</span><span class="o">.</span><span class="n">poll</span><span class="p">(</span><span class="n">TIMEOUT</span><span class="p">)</span>                            
 
     <span class="k">for</span> <span class="n">fd</span><span class="p">,</span> <span class="n">flag</span> <span class="ow">in</span> <span class="n">events</span><span class="p">:</span>                                                      
-        <span class="c"># retrieve socket from fd                                                </span>
+        <span class="c1"># retrieve socket from fd                                                </span>
         <span class="n">s</span> <span class="o">=</span> <span class="n">fd_to_socket</span><span class="p">[</span><span class="n">fd</span><span class="p">]</span>                                                     
-        <span class="c"># handle read                                                            </span>
+        <span class="c1"># handle read                                                            </span>
         <span class="k">if</span> <span class="n">flag</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">select</span><span class="o">.</span><span class="n">POLLIN</span> <span class="o">|</span> <span class="n">select</span><span class="o">.</span><span class="n">POLLPRI</span><span class="p">):</span>                              
             <span class="k">if</span> <span class="n">s</span> <span class="ow">is</span> <span class="n">server</span><span class="p">:</span>                                                      
-                <span class="c"># a readable server is ready to accept a connection              </span>
+                <span class="c1"># a readable server is ready to accept a connection              </span>
                 <span class="n">conn</span><span class="p">,</span> <span class="n">addr</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">accept</span><span class="p">()</span>                                          
-                <span class="k">print</span> <span class="s">&quot;new connection from {addr}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">addr</span> <span class="o">=</span> <span class="n">addr</span><span class="p">)</span>           
+                <span class="k">print</span> <span class="s2">&quot;new connection from {addr}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">addr</span> <span class="o">=</span> <span class="n">addr</span><span class="p">)</span>           
                 <span class="n">conn</span><span class="o">.</span><span class="n">setblocking</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>                                              
                 <span class="n">fd_to_socket</span><span class="p">[</span><span class="n">conn</span><span class="o">.</span><span class="n">fileno</span><span class="p">()]</span> <span class="o">=</span> <span class="n">conn</span>                               
                 <span class="n">poller</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="n">conn</span><span class="p">,</span> <span class="n">READ_ONLY</span><span class="p">)</span>                                 
 
-                <span class="c"># give the connection a queue for sending messages               </span>
+                <span class="c1"># give the connection a queue for sending messages               </span>
                 <span class="n">message_queues</span><span class="p">[</span><span class="n">conn</span><span class="p">]</span> <span class="o">=</span> <span class="n">Queue</span><span class="o">.</span><span class="n">Queue</span><span class="p">()</span>                             
-        <span class="c"># otherwise receive data waiting to be read                              </span>
+        <span class="c1"># otherwise receive data waiting to be read                              </span>
             <span class="k">else</span><span class="p">:</span>                                                                
                 <span class="n">request_data</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">recv</span><span class="p">(</span><span class="mi">1024</span><span class="p">)</span>                                      
                 <span class="k">if</span> <span class="n">request_data</span><span class="p">:</span>                                                 
-                    <span class="k">print</span> <span class="s">&quot;received {data} from {addr}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">request_data</span><span class="p">,</span> <span class="n">addr</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">getpeername</span><span class="p">())</span>
+                    <span class="k">print</span> <span class="s2">&quot;received {data} from {addr}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">request_data</span><span class="p">,</span> <span class="n">addr</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">getpeername</span><span class="p">())</span>
                     <span class="n">message_queues</span><span class="p">[</span><span class="n">s</span><span class="p">]</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="n">request_data</span><span class="p">)</span>                          
-                    <span class="c"># add to writable for response                               </span>
+                    <span class="c1"># add to writable for response                               </span>
                     <span class="n">poller</span><span class="o">.</span><span class="n">modify</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">READ_WRITE</span><span class="p">)</span>                                 
-                <span class="c"># get empty data means to close the connection                   </span>
+                <span class="c1"># get empty data means to close the connection                   </span>
                 <span class="k">else</span><span class="p">:</span>                                                            
-                    <span class="k">print</span> <span class="s">&quot;closing {addr} after reading no data&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">addr</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">getpeername</span><span class="p">())</span>
-                    <span class="c"># stop listening for readable                                </span>
+                    <span class="k">print</span> <span class="s2">&quot;closing {addr} after reading no data&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">addr</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">getpeername</span><span class="p">())</span>
+                    <span class="c1"># stop listening for readable                                </span>
                     <span class="n">poller</span><span class="o">.</span><span class="n">unregister</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>                                         
                     <span class="n">s</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>                                                    
                     <span class="k">del</span> <span class="n">message_queues</span><span class="p">[</span><span class="n">s</span><span class="p">]</span>                                        
-        <span class="c"># a client hang up the connection                                        </span>
+        <span class="c1"># a client hang up the connection                                        </span>
         <span class="k">elif</span> <span class="n">flag</span> <span class="o">&amp;</span> <span class="n">select</span><span class="o">.</span><span class="n">POLLHUP</span><span class="p">:</span>                                              
-            <span class="k">print</span> <span class="s">&quot;closing {addr} after receiving HUP&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">addr</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">getpeername</span><span class="p">())</span>
-            <span class="c"># stop listening for readable                                                    poller.unregister(s)                                                 </span>
+            <span class="k">print</span> <span class="s2">&quot;closing {addr} after receiving HUP&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">addr</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">getpeername</span><span class="p">())</span>
+            <span class="c1"># stop listening for readable                                                    poller.unregister(s)                                                 </span>
             <span class="n">s</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>                                                            
             <span class="k">del</span> <span class="n">message_queues</span><span class="p">[</span><span class="n">s</span><span class="p">]</span>                                                
-        <span class="c"># any event with POLLERR cause to close the socket                       </span>
+        <span class="c1"># any event with POLLERR cause to close the socket                       </span>
         <span class="k">elif</span> <span class="n">flag</span> <span class="o">&amp;</span> <span class="n">select</span><span class="o">.</span><span class="n">POLLERR</span><span class="p">:</span>                                              
-            <span class="k">print</span> <span class="s">&quot;handling exception for {addr}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">addr</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">getpeername</span><span class="p">())</span> 
+            <span class="k">print</span> <span class="s2">&quot;handling exception for {addr}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">addr</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">getpeername</span><span class="p">())</span> 
             <span class="n">poller</span><span class="o">.</span><span class="n">unregister</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>                                                 
             <span class="n">s</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>                                                            
             <span class="k">del</span> <span class="n">message_queues</span><span class="p">[</span><span class="n">s</span><span class="p">]</span>                      

@@ -64,7 +64,7 @@
                         <li><article class="hentry">
                                 <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/bian-xie-gao-zhi-liang-pythondai-ma-4-she-ji-mo-shi.html" rel="bookmark" title="Permalink to 编写高质量Python代码（4）——设计模式">编写高质量Python代码（4）——设计模式</a></h2> </header>
                                 <footer class="post-info">
-                                    <abbr class="published" title="2015-04-13T23:31:00+08:00"> Mon 13 April 2015 </abbr>
+                                    <abbr class="published" title="2015-04-13T23:31:00+08:00"> 一 13 四月 2015 </abbr>
                                     <address class="vcard author">By 
                                     <a class="url fn" href="http://www.wengweitao.com/author/wwt.html"> wwt</a>
                                     </address>
@@ -75,14 +75,14 @@
 <h3>建议50：利用模块设计实现单例模式</h3>
 <p>GOF的23种设计模式中，单例是最常用的模式，通过单例模式可以保证系统中一个类只有一个实例而且该实例易于被外界访问，从而方便对实例个数的控制并节约系统资源。</p>
 <p>Python语言实现实例没有那么方便，因为缺乏声明私有构造函数的语法元素，实例又带有类型信息。如：</p>
-<div class="highlight"><pre><span class="k">class</span> <span class="nc">_Singleton</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">_Singleton</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="k">pass</span>
 <span class="n">Singleton</span> <span class="o">=</span> <span class="n">_Singleton</span><span class="p">()</span>
 <span class="k">del</span> <span class="n">_Singleton</span>
 <span class="n">another</span> <span class="o">=</span> <span class="n">Singleton</span><span class="o">.</span><span class="n">__class__</span><span class="p">()</span>
 <span class="k">print</span> <span class="nb">type</span><span class="p">(</span><span class="n">another</span><span class="p">)</span>
 
-<span class="c"># 输出 &lt;class &#39;__main__._Singleton&#39;&gt;</span>
+<span class="c1"># 输出 &lt;class &#39;__main__._Singleton&#39;&gt;</span>
 </pre></div>
 
 
@@ -94,7 +94,7 @@
 <li>import 机制是线程安全的</li>
 </ul>
 <p>例如：</p>
-<div class="highlight"><pre><span class="c"># World.py</span>
+<div class="highlight"><pre><span></span><span class="c1"># World.py</span>
 <span class="kn">import</span> <span class="nn">Sun</span>
 <span class="k">def</span> <span class="nf">run</span><span class="p">():</span>
     <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
@@ -116,7 +116,7 @@
                         <li><article class="hentry">
                                 <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/bian-xie-gao-zhi-liang-pythondai-ma-3-ku.html" rel="bookmark" title="Permalink to 编写高质量Python代码（3）——库">编写高质量Python代码（3）——库</a></h2> </header>
                                 <footer class="post-info">
-                                    <abbr class="published" title="2015-04-08T22:58:00+08:00"> Wed 08 April 2015 </abbr>
+                                    <abbr class="published" title="2015-04-08T22:58:00+08:00"> 三 08 四月 2015 </abbr>
                                     <address class="vcard author">By 
                                     <a class="url fn" href="http://www.wengweitao.com/author/wwt.html"> wwt</a>
                                     </address>
@@ -126,17 +126,17 @@
 </blockquote>
 <h3>建议36：掌握字符串的基本用法</h3>
 <p>有个小技巧：</p>
-<div class="highlight"><pre> <span class="n">s</span> <span class="o">=</span> <span class="p">(</span><span class="s">&#39;SELECT *&#39;</span>
-         <span class="s">&#39;FROM atable &#39;</span>
-         <span class="s">&#39;WHERE afield=&quot;value&quot;&#39;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span> <span class="n">s</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;SELECT *&#39;</span>
+         <span class="s1">&#39;FROM atable &#39;</span>
+         <span class="s1">&#39;WHERE afield=&quot;value&quot;&#39;</span><span class="p">)</span>
  <span class="n">s</span>
- <span class="s">&#39;SELECT *FROM atable WHERE afield=&quot;value&quot;&#39;</span>
+ <span class="s1">&#39;SELECT *FROM atable WHERE afield=&quot;value&quot;&#39;</span>
 </pre></div>
 
 
 <p>以上利用了Python遇到未闭合的小括号时会自动将多行代码拼接为一行和把相邻的两个字符串字面量拼接在一起的特性做到的。（而如果使用三个引号会把换行符和空格都当做字符串的一部分）</p>
 <p>Python字符串分为str和unicode两种。当需要判断变量是否为字符串时，应该使用</p>
-<div class="highlight"><pre><span class="nb">isinstance</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="nb">basestring</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><span class="nb">isinstance</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="nb">basestring</span><span class="p">)</span>
 </pre></div>
 
 
@@ -173,7 +173,7 @@
                         <li><article class="hentry">
                                 <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/bian-xie-gao-zhi-liang-pythondai-ma-2.html" rel="bookmark" title="Permalink to 编写高质量Python代码（2）">编写高质量Python代码（2）</a></h2> </header>
                                 <footer class="post-info">
-                                    <abbr class="published" title="2015-04-07T22:39:00+08:00"> Tue 07 April 2015 </abbr>
+                                    <abbr class="published" title="2015-04-07T22:39:00+08:00"> 二 07 四月 2015 </abbr>
                                     <address class="vcard author">By 
                                     <a class="url fn" href="http://www.wengweitao.com/author/wwt.html"> wwt</a>
                                     </address>
@@ -184,16 +184,16 @@
 <h3>建议8： 利用assert语句来发现问题</h3>
 <p>assert语句主要为调试程序服务，能够快速方便地检查程序的异常或者发现不恰当的输入等，防止意想不到的情况出现。
 基本语法如下：</p>
-<div class="highlight"><pre><span class="k">assert</span> <span class="n">expression1</span> <span class="p">[</span><span class="s">&quot;,&quot;</span> <span class="n">expression2</span><span class="p">]</span> 
-<span class="c">#assert x == y, &quot;not equals&quot;</span>
+<div class="highlight"><pre><span></span><span class="k">assert</span> <span class="n">expression1</span> <span class="p">[</span><span class="s2">&quot;,&quot;</span> <span class="n">expression2</span><span class="p">]</span> 
+<span class="c1">#assert x == y, &quot;not equals&quot;</span>
 </pre></div>
 
 
 <p>其中计算expressi1的值若为False则会引发一个AssertionError，expression是可选的，用来传递具体的异常信息。</p>
 <p>另外，需要注意的是断言是对程序的性能有一定的影响，禁用断言的方法是运行时加上 -O标志。</p>
 <h3>建议9： 交换值时不推荐使用中间变量</h3>
-<div class="highlight"><pre><span class="n">In</span> <span class="p">[</span><span class="mi">1</span><span class="p">]:</span> <span class="kn">from</span> <span class="nn">timeit</span> <span class="kn">import</span> <span class="n">Timer</span>
-<span class="n">In</span> <span class="p">[</span><span class="mi">2</span><span class="p">]:</span> <span class="n">Timer</span><span class="p">(</span><span class="s">&#39;temp = x; x = y; y = temp&#39;</span><span class="p">,</span> <span class="s">&#39;x = 2; y = 3&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">timeit</span><span class="p">()</span>
+<div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">1</span><span class="p">]:</span> <span class="kn">from</span> <span class="nn">timeit</span> <span class="kn">import</span> <span class="n">Timer</span>
+<span class="n">In</span> <span class="p">[</span><span class="mi">2</span><span class="p">]:</span> <span class="n">Timer</span><span class="p">(</span><span class="s1">&#39;temp = x; x = y; y = temp&#39;</span><span class="p">,</span> <span class="s1">&#39;x = 2; y = 3&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">timeit</span><span class="p">()</span>
 <span class="n">Out</span><span class="p">[</span><span class="mi">2</span><span class="p">]:</span> <span class="mf">0.054762504979284254</span>
 <span class="n">In</span> <span class="p">[</span><span class="mi">3 ...</span></pre></div> </div><!-- /.entry-content -->
 
@@ -212,7 +212,7 @@
                         <li><article class="hentry">
                                 <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/bian-xie-gao-zhi-liang-pythondai-ma-1.html" rel="bookmark" title="Permalink to 编写高质量Python代码（1）">编写高质量Python代码（1）</a></h2> </header>
                                 <footer class="post-info">
-                                    <abbr class="published" title="2015-04-06T18:42:00+08:00"> Mon 06 April 2015 </abbr>
+                                    <abbr class="published" title="2015-04-06T18:42:00+08:00"> 一 06 四月 2015 </abbr>
                                     <address class="vcard author">By 
                                     <a class="url fn" href="http://www.wengweitao.com/author/wwt.html"> wwt</a>
                                     </address>
@@ -223,7 +223,7 @@
 <h3>建议1： 理解Pythonic概念</h3>
 <h4>（1）Pythonic的定义</h4>
 <p>遵循Pythonic的代码看起来像伪代码：</p>
-<div class="highlight"><pre><span class="k">def</span> <span class="nf">quicksort</span><span class="p">(</span><span class="n">array</span><span class="p">):</span>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">quicksort</span><span class="p">(</span><span class="n">array</span><span class="p">):</span>
     <span class="n">less</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="n">greater</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">array</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">:</span>
@@ -235,7 +235,7 @@
         <span class="k">else</span><span class="p">:</span>
             <span class="n">less</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">quicksort</span><span class="p">(</span><span class="n">less</span><span class="p">)</span> <span class="o">+</span> <span class="p">[</span><span class="n">pivot</span><span class="p">]</span> <span class="o">+</span> <span class="n">quicksort</span><span class="p">(</span><span class="n">greater</span><span class="p">)</span>
-<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&#39;__main__ ...</span></pre></div> </div><!-- /.entry-content -->
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__ ...</span></pre></div> </div><!-- /.entry-content -->
 
                                 <div class="medium primary btn"><a href="http://www.wengweitao.com/bian-xie-gao-zhi-liang-pythondai-ma-1.html" rel="bookmark" title="Permalink to 编写高质量Python代码（1）">Read more <i class="icon-arrow-right"></i></a></div>
 
