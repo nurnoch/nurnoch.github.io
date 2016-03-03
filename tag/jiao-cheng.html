@@ -61,6 +61,62 @@
         <div class="eleven columns">
                  <ol id="post-list">
                         <li><article class="hentry">
+                                <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/virtualenvjie-shao.html" rel="bookmark" title="Permalink to virtualenv介绍">virtualenv介绍</a></h2> </header>
+                                <footer class="post-info">
+                                    <abbr class="published" title="2016-03-01T22:48:00+08:00"> 二 01 三月 2016 </abbr>
+                                    <address class="vcard author">By 
+                                    <a class="url fn" href="http://www.wengweitao.com/author/wwt.html"> wwt</a>
+                                    </address>
+                                </footer><!-- /.post-info -->
+                                <div class="entry-content"> <p>virtualenv是一个用来创建独立Python环境的工具。</p>
+<h2>什么时候会用到virtualenv？</h2>
+<ol>
+<li>
+<p>假设系统中的两个应用，其中A应用对库LibFoo的版本要求为1，而B应用对同一个库LibFoo的版本要求为2，两个应用对同一个库的要求想冲突了，而系统中库默认都安装到<code>/usr/lib/python2.7/site-packages</code>，那么如何能够同时使用这两个应用呢？</p>
+</li>
+<li>
+<p>你的用户权限不够，使得无法将包安装到<code>site-packages</code>目录</p>
+</li>
+<li>
+<p>需要使用一个应用，并且与系统其它应用相独立。</p>
+</li>
+</ol>
+<p>如果你遇到以上的问题，那么virtualenv会对你有帮助。virtualenv可以创建一个环境，拥有着自己的安装目录，而不会与系统的共享库或者其它virtualenv环境相干扰。</p>
+<h2>如何安装virtualenv？</h2>
+<p>如果系统上已经安装了pip：</p>
+<div class="highlight"><pre><span></span><span class="o">[</span>sudo<span class="o">]</span> pip install virtualenv
+</pre></div>
+
+
+<h2>如何使用virtualenv？</h2>
+<div class="highlight"><pre><span></span><span class="nb">cd</span> my_project_folder
+
+virtual ENV
+
+<span class="nb">source</span> bin/activate
+
+deactivate
+</pre></div>
+
+
+<p>以上就是virtualenv的基本使用过程。</p>
+<h3>创建一个虚拟环境</h3>
+<p>首先，<code>virtual ENV</code>会在当前目录创建名为ENV的虚拟环境，此时在当前目录会自动生成三个目录：bin, include和lib。默认情况下创建的虚拟环境会依赖于系统中的site-packages，即系统中已经安装好的库在虚拟环境中仍然可以使用 ...</p> </div><!-- /.entry-content -->
+
+                                <div class="medium primary btn"><a href="http://www.wengweitao.com/virtualenvjie-shao.html" rel="bookmark" title="Permalink to virtualenv介绍">Read more <i class="icon-arrow-right"></i></a></div>
+
+
+
+                                <div class="row tag-row">
+                                        <span>Tagged as : </span>
+                                            <a class="danger label" href="http://www.wengweitao.com/tag/python.html">Python</a>
+                                            <a class="danger label" href="http://www.wengweitao.com/tag/jiao-cheng.html">教程</a>
+                                </div>
+
+
+
+                        </article></li>
+                        <li><article class="hentry">
                                 <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/kaggleru-men-zhi-nan.html" rel="bookmark" title="Permalink to Kaggle入门指南">Kaggle入门指南</a></h2> </header>
                                 <footer class="post-info">
                                     <abbr class="published" title="2015-08-21T19:22:00+08:00"> 五 21 八月 2015 </abbr>
@@ -207,44 +263,6 @@ cat: /dev/ppp: 没有那个设备或地址
 
 
                         </article></li>
-                        <li><article class="hentry">
-                                <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/shi-pelicanzhi-chi-latexshu-xue-gong-shi.html" rel="bookmark" title="Permalink to 使Pelican支持LaTex数学公式">使Pelican支持LaTex数学公式</a></h2> </header>
-                                <footer class="post-info">
-                                    <abbr class="published" title="2015-04-10T19:35:00+08:00"> 五 10 四月 2015 </abbr>
-                                    <address class="vcard author">By 
-                                    <a class="url fn" href="http://www.wengweitao.com/author/wwt.html"> wwt</a>
-                                    </address>
-                                </footer><!-- /.post-info -->
-                                <div class="entry-content"> <p>作为一个技术博客，在写文章的时候，肯定需要经常输入各种公式符号。在之前写一篇文章的时候，发现Pelican默认是不支持编辑数学公式的。之前用过一些在线的markdonw编辑器，都是通过<a href="https://github.com/mathjax/mathjax">MathJax</a>来支持在markdown中书写数学公式，而且用起来非常的方便，语法基本和LaTex一样。于是，就找到了一种简单的使Pelican支持LaTex语法的数学公式，在这里分享给大家。</p>
-<h2>如何使Pelican支持渲染数学公式</h2>
-<p>最简单的方法就是使用Pelican的一个插件——<a href="https://github.com/barrysteyn/pelican_plugin-render_math">pelican_plugin-render_math</a>。
-这个插件可以通过使用MathJax使pelican拥有渲染数学公式的能力，并且同时支持Markdown 和reStructuredText，用起来也非常的方便！</p>
-<h2>安装</h2>
-<p>在Pelican的安装目录中找到Pelican的配置文件pelicanconf.py，在文件中增加：</p>
-<div class="highlight"><pre><span></span><span class="n">PLUGIN_PATH</span> <span class="o">=</span> <span class="s2">u&quot;pelican-plugins&quot;</span>
-
-<span class="n">PLUGINS</span> <span class="o">=</span> <span class="p">[</span> <span class="s2">&quot;render_math&quot;</span><span class="p">]</span>
-</pre></div>
-
-
-<p>为了使插件生效，必须保证插件render_path所在的目录是可以访问的。通常，这个插件同其他插件都一起放在pelican-plugins目录中。</p>
-<p>没错，只要这一步你的pelican网站就可以通过mathjax渲染数学公式了！不需要更改任何模板文件。</p>
-<p>Just use and enjoy!</p>
-<h2>开始使用</h2>
-<p>对于内联的公式，将公式用\<span class="math">\(...\\)</span>包含起来，对于需要单独另起一行显示的公式使用\<span class="math">\(\\)</span>...\<span class="math">\(\\)</span>包含起来。例如：<span class="math">\(1 + 1 ...</span></p> </div><!-- /.entry-content -->
-
-                                <div class="medium primary btn"><a href="http://www.wengweitao.com/shi-pelicanzhi-chi-latexshu-xue-gong-shi.html" rel="bookmark" title="Permalink to 使Pelican支持LaTex数学公式">Read more <i class="icon-arrow-right"></i></a></div>
-
-
-
-                                <div class="row tag-row">
-                                        <span>Tagged as : </span>
-                                            <a class="danger label" href="http://www.wengweitao.com/tag/jiao-cheng.html">教程</a>
-                                </div>
-
-
-
-                        </article></li>
                 </ol><!-- /#posts-list -->
 
         </div><!-- /.eleven.columns -->
@@ -321,7 +339,8 @@ cat: /dev/ppp: 没有那个设备或地址
 </div> </div><!-- /.row -->
 
 <p class="paginator">
-    Page 1 / 1
+    Page 1 / 2
+        <a href="http://www.wengweitao.com/tag/jiao-cheng2.html"><i class="icon-arrow-right"></i></a>
 </p>
 </section><!-- /#content -->
 

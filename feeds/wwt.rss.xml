@@ -1,5 +1,122 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>wwt's blog</title><link>http://www.wengweitao.com/</link><description></description><atom:link href="http://www.wengweitao.com/feeds/wwt.rss.xml" rel="self"></atom:link><lastBuildDate>Sun, 27 Dec 2015 14:22:00 +0800</lastBuildDate><item><title>2015年校招找工作总结之互联网公司（技术篇）</title><link>http://www.wengweitao.com/2015nian-xiao-zhao-zhao-gong-zuo-zong-jie-zhi-hu-lian-wang-gong-si-ji-zhu-pian.html</link><description>&lt;p&gt;2015年校招基本已经结束，回学校之后不少14级的师弟师妹们都在问我找工作的一些问题。经历了2个月的找工作经历，也积累了一些经验，虽然并没有像大牛们那样拿了许多牛逼的offer，但是作为普通的校招求职者，还是希望能够记录下自己的经验和教训，作为一个总结，也希望能够给明年找工作的师弟师妹们一点帮助。&lt;/p&gt;
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>wwt's blog</title><link>http://www.wengweitao.com/</link><description></description><atom:link href="http://www.wengweitao.com/feeds/wwt.rss.xml" rel="self"></atom:link><lastBuildDate>Tue, 01 Mar 2016 22:48:00 +0800</lastBuildDate><item><title>virtualenv介绍</title><link>http://www.wengweitao.com/virtualenvjie-shao.html</link><description>&lt;p&gt;virtualenv是一个用来创建独立Python环境的工具。&lt;/p&gt;
+&lt;h2&gt;什么时候会用到virtualenv？&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;假设系统中的两个应用，其中A应用对库LibFoo的版本要求为1，而B应用对同一个库LibFoo的版本要求为2，两个应用对同一个库的要求想冲突了，而系统中库默认都安装到&lt;code&gt;/usr/lib/python2.7/site-packages&lt;/code&gt;，那么如何能够同时使用这两个应用呢？&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;你的用户权限不够，使得无法将包安装到&lt;code&gt;site-packages&lt;/code&gt;目录&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;需要使用一个应用，并且与系统其它应用相独立。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;如果你遇到以上的问题，那么virtualenv会对你有帮助。virtualenv可以创建一个环境，拥有着自己的安装目录，而不会与系统的共享库或者其它virtualenv环境相干扰。&lt;/p&gt;
+&lt;h2&gt;如何安装virtualenv？&lt;/h2&gt;
+&lt;p&gt;如果系统上已经安装了pip：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;sudo&lt;span class="o"&gt;]&lt;/span&gt; pip install virtualenv
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;如何使用virtualenv？&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nb"&gt;cd&lt;/span&gt; my_project_folder
+
+virtual ENV
+
+&lt;span class="nb"&gt;source&lt;/span&gt; bin/activate
+
+deactivate
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;以上就是virtualenv的基本使用过程。&lt;/p&gt;
+&lt;h3&gt;创建一个虚拟环境&lt;/h3&gt;
+&lt;p&gt;首先，&lt;code&gt;virtual ENV&lt;/code&gt;会在当前目录创建名为ENV的虚拟环境，此时在当前目录会自动生成三个目录：bin, include和lib。默认情况下创建的虚拟环境会依赖于系统中的site-packages，即系统中已经安装好的库在虚拟环境中仍然可以使用，如果想去除依赖，那么可以：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;virtualenv --no-site-packages ENV
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;启动虚拟环境&lt;/h3&gt;
+&lt;p&gt;通过&lt;code&gt;source bin/activate&lt;/code&gt;可以启动当前目录下的虚拟环境。启动后，shell的提示符就会发生改变，表示进入了虚拟环境。&lt;/p&gt;
+&lt;h3&gt;离开虚拟环境&lt;/h3&gt;
+&lt;p&gt;使用&lt;code&gt;deactivate&lt;/code&gt;离开虚拟环境。&lt;/p&gt;
+&lt;p&gt;以上。&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">wwt</dc:creator><pubDate>Tue, 01 Mar 2016 22:48:00 +0800</pubDate><guid>tag:www.wengweitao.com,2016-03-01:virtualenvjie-shao.html</guid><category>Python</category><category>教程</category></item><item><title>2015年校招找工作总结之国企篇</title><link>http://www.wengweitao.com/2015nian-xiao-zhao-zhao-gong-zuo-zong-jie-zhi-guo-qi-pian.html</link><description>&lt;p&gt;在上一篇的文章中&lt;a href="http://www.wengweitao.com/2015nian-xiao-zhao-zhao-gong-zuo-zong-jie-zhi-hu-lian-wang-gong-si-ji-zhu-pian.html"&gt;上一篇&lt;/a&gt;，我已经提到过我最终签约了一家银行。选择太重要了，一念天堂一念地狱啊。其实，最开始也没怎么想过去国企的，准备了几个月也基本是围绕互联网技术岗位来准备的，真是没想到还是去了国企。&lt;/p&gt;
+&lt;p&gt;最早有进国企的想法（仅仅是想法）是在研一的时候，听一个去了国企的11级师兄介绍银行的求职经历，他当时介绍了去银行的各种好处，并且说到总行的时候，提到：&lt;code&gt;别看了，能进就进去吧!!&lt;/code&gt; 当时，我听完还是比较心动的，还跟同学说要是以后能进总行就好了。不过，当时师兄一直强调总行本部有多那么难进，我也就只是随便心里想想而已，没想到现在竟然真的成真了。其实，我的性格还是最适合当程序员的，而且本身也挺喜欢接触各种技术，最终放弃程序员的工作，虽然当时签工行的时候没有多少犹豫，但是签完自己再想想还是会觉得有些可惜，不知道未来在自己完全不熟悉的岗位上会发展的如何（当然，如果放弃工总签约互联网也会有同样的感觉）。选择程序员或者银行国企都各有各的好处，无论选择了什么岗位都一样需要努力奋斗的，既然做出了选择，那么就&lt;strong&gt;但行好事莫问前程&lt;/strong&gt;吧！好了，不废话了，接下来就介绍一些我的银行求职经历。&lt;/p&gt;
+&lt;h2&gt;为什么去银行？&lt;/h2&gt;
+&lt;p&gt;作为计算机专业的学生，大部分人肯定都会选择进入互联网行业。现在互联网公司这么火，开的工资又高，一个应届毕业生也可以比较轻松的拿到30w+的年薪，以后还可以自己创业，还能有暴富的机会。互联网这么好，我为什么还要加入银行呢？以下是我的几个想法：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;单位足够好。我之所以选择加入银行很大一部分原因就是：宇宙行总行给了我offer。其实，我一共就参加了两家银行的面试，如果是非四大行总行给的offer，那么我还是更愿意从事技术岗位当一名程序员。之前也只是听别人老是提到总行怎么怎么好，具体怎样其实我也不清楚。总之，宇宙行的总行不至于差吧。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;稳定安逸的工作。互联网公司的工作强度大家肯定都听说过，996工作制并不少见，在游戏公司加班的就更多了。而且，在业余时间，作为一名程序员肯定还会自己额外在家学点新技术，看些技术书籍或者文章。这样以后生活的时间就会被工作的时间大量占用，还得整天对着电脑，会过得比较累。在银行的工作强度就小很多了，以后就能有更多私人自由的时间，多看看书、看看电影、出去走走、陪陪家里人以及编程。银行也有编制，工作很稳定，在“论资排辈”的国企，要是你愿意可以在一家公司待一辈子。Life is too short, I prefer easy mode now!&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;一定的社会地位。无论在哪个地方，在银行工作都算一个比较体面的工作，特别是对于国有银行来说。国企都有编制，据说工行总行最低的编制是副处，级别应该比支行行长更高。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;发展的前景。在互联网时代大家都在唱衰传统行业，但是《财富》杂志评选的中国500强企业的利润最高的前四名被四大行所包揽，宇宙行仍然是全球利润最高的公司，事实上BAT三家一年的利润总和不到宇宙行的零头。虽然这其中很大一部分是由于占了国有企业的优势，但是这么大的企业足够成为一个好的职业发展平台。况且，目前互联网金融如此火爆，未来银行也更多的需要金融+计算机的复合人才，拥有计算机专业背景或许能成为一个优势。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;较好的收入。当然对于应届毕业生，刚毕业的工资估计任何行业都无法和互联网公司相比。银行业也算工资待遇不错的。银行的工资制度比较复杂，包括基本工资、N险1金以及可能存在的各种隐性福利。据已经毕业的师兄师姐介绍，四大行软件中心的应届毕业生待遇在12-20w左右，也还算不错。至于总行具体待遇，我也不知道。。。银行很多单位还会帮忙申请公租房、每个月有租房补贴以及解决员工儿女上幼儿园等问题。其实，刚毕业前几年的工资并没有那么重要，并不具有太大的可比性。以现在的房价，刚毕业工资再高恐怕也买不起吧。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;户口。对于要长期留京发展的同学来说，户口就太重要了，甚至是必须的。孩子上学、买车、买房以及办理各种事情的时候，有了户口都会方便许多。现在的趋势是户口的名额越来越严，以前还能拿到户口的单位，今年的名额也大量缩减。互联网公司的户口名额都比较少，很难解决户口。而国企解决户口就相对容易多了。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2&gt;计算机专业去银行能做什么？&lt;/h2&gt;
+&lt;p&gt;去银行最多的当然是经济金融类专业的同学了，近些年咱们计算机专业每年也有不少同学加入各大银行。计算机专业其实是现在找工作最容易的一个公司，在信息时代哪个单位还不需要计算机啊。对于计算机专业，银行的岗位可以简单分为：技术岗和非技术岗，区分的方法就是：是否需要写代码。以中国工商银行为例，包括：总行本部、总行直属机构、各省市分行。&lt;/p&gt;
+&lt;h3&gt;总行本部&lt;/h3&gt;
+&lt;p&gt;工行总行本部是四大行中最早开始招聘的，大约在9月初就开始了，而大部分的银行招聘在10月和11月才开始启动。这也是为了能够招到更好的人才，先下手为强嘛。总行本部招聘岗位分为三类，每位应聘者限报一类岗位，分别是：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;职能部门类。新员工入行后将安排为期两年的培养锻炼计划，主要派赴北京地区分支机构轮岗，部分员工第二年将赴海外分支机构锻炼。两年培养期满后转入总行本部内设职能部门工作。&lt;/li&gt;
+&lt;li&gt;运作中心类。总行本部部门内设的业务运作中心，新员工入行后直接安排到运作中心工作。&lt;/li&gt;
+&lt;li&gt;利润中心类。总行本部内设的独立核算的利润中心，新员工入行后直接安排到利润中心工作。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;对于报考的要求：
+- 学历要求：职能部门类和利润中心要求硕士研究生学历，运作中心要求本科学历；
+- 专业要求：经济、金融、会计、管理、法律以及计算机等理工类专业均可报名，小语种专业包括德语、法语、西班牙语、葡萄牙语等。
+- 外语要求：通过国家大学英语六级（CET6）考试（成绩在425分及以上），或托业（TOEIC）听读公开考试715分及以上，或新托福（TOEFL-IBT）考试85分及以上，或雅思（IELTS）考试6.5分及以上。&lt;/p&gt;
+&lt;p&gt;其他的没有明确规定的要求，不过在简历筛选的时候，估计他们内部还有一套标准，会筛掉一部分的简历。&lt;/p&gt;
+&lt;p&gt;因为，实验室之前也没有进入总行本部的师兄师姐，所以目前我也不清楚总行本部的具体工作情况。对于职能部门，需要先委托北京分行轮岗两年，需要在各个岗位上进行锻炼，包括：前台柜员、大堂经理以及后台科室。每个岗位的轮岗时间不低于半年。等两年期满后，回总行。去了总行，以管理为主，基本上就和技术就没啥关系了。&lt;/p&gt;
+&lt;h3&gt;软件开发中心&lt;/h3&gt;
+&lt;p&gt;软件开发中心顾名思义就是负责软件开发的，也是跟计算机专业最对口的岗位。软件中心的岗位具体包括应用研发岗位、应用测试岗位、应用支持岗位。除了在北京工作之外，软件中心在南方的几个城市也都设了研发部，对于不想到北京工作的同学就多了几个选择。本科和研究生都可以参加软开的应聘，研究生要求必须通过英语六级。&lt;/p&gt;
+&lt;p&gt;软件开发中心是银行所有机构中最接近互联网公司的，对应聘者的技术有一定的要求，同时也存在着加班的可能性。&lt;/p&gt;
+&lt;h3&gt;数据中心&lt;/h3&gt;
+&lt;p&gt;数据中心也是技术类岗位，承担集团测试统一管理及信息安全技术研究职能。数据中心的岗位具体包括业务测试岗位、技术测试岗位、信息安全岗位。业务测试岗要求的是金融类相关专业，而后面两个岗位要求的是计算机相关岗位。报考的条件基本与软开类似。&lt;/p&gt;
+&lt;h3&gt;分行&lt;/h3&gt;
+&lt;p&gt;各个银行在全国的大部分省市都设有分支行，主要面向银行业务，这也是各家银行招聘人数最多的机构。在投简历的时候需要注意区别招聘岗位是分行还是支行，因为支行也是统一在分行里面招聘的。对于分行以管理为主，而支行以义务为主。刚加入分支行的时候，也需要1-2年的轮岗经验。&lt;/p&gt;
+&lt;h3&gt;其他机构&lt;/h3&gt;
+&lt;p&gt;除了软开和数据中心，总行还有一些直属的机构，例如信用卡中心、产品研发中心以及电子银行中心等。具体信息可以登录各大银行的招聘网站查看。&lt;/p&gt;
+&lt;h2&gt;想进银行如何准备？&lt;/h2&gt;
+&lt;p&gt;相对求职互联网技术岗位时，需要看各种书以及在leetcode上刷题，准备银行的话就相对轻松一些。首先，介绍下国企一般都看重应聘者的条件。&lt;/p&gt;
+&lt;h3&gt;银行看重应聘者哪些能力&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;好的学历背景。国企的确会看重学历背景，985高校毕业的学生有助于通过简历的筛选。&lt;/li&gt;
+&lt;li&gt;丰富的社团活动经历。在校期间担任各种学生会社团学生干部，可以提现出你的组织协调和领导能力。&lt;/li&gt;
+&lt;li&gt;特长。包括但不限于：弹琴、舞蹈、体育等。不知道coding算不算。。。&lt;/li&gt;
+&lt;li&gt;口头表达和组织协调能力。这个能力是非常重要的，如果太差肯定也过不了面试。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3&gt;现在应该如何准备？&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;丰富简历。如果有打算进入国企，应该多参加一些社团活动，丰富简历。对于本专业的科研项目，也要做好，这也是你能力的一个证明。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;锻炼表达和社交能力。主要为了面试中的无领导小组讨论做准备，对于以后的工作也十分重要。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;练习往年笔试真题。银行的笔试内容与公务员的行测类似，市面上有很多教材，其中比较有名的是《银行考试一本通》。这本书我也买了，不过就翻了几页，感觉用处不是太大，当然有时间多看看肯定是好的。还有就是配套的历年银行笔试的真题，这个我还是比较推荐的，做真题比什么都好。至少在笔试前做一套熟悉下题型。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;准备好本专业知识。特别是对于应聘软开和数据中心的岗位，笔试也有考察编程语言、数据库以及计算机系统等计算机知识，面试中面试官也会根据你的专业和项目经历进行有针对性的提问。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;suit up! 去挑一套帅气（美丽）的正装，面试的时候是必备的。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;以上所说的都是道听途说后的想法，仅作参考。&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">wwt</dc:creator><pubDate>Mon, 29 Feb 2016 22:48:00 +0800</pubDate><guid>tag:www.wengweitao.com,2016-02-29:2015nian-xiao-zhao-zhao-gong-zuo-zong-jie-zhi-guo-qi-pian.html</guid><category>校招</category><category>总结</category></item><item><title>2015年校招找工作总结之互联网公司（技术篇）</title><link>http://www.wengweitao.com/2015nian-xiao-zhao-zhao-gong-zuo-zong-jie-zhi-hu-lian-wang-gong-si-ji-zhu-pian.html</link><description>&lt;p&gt;2015年校招基本已经结束，回学校之后不少14级的师弟师妹们都在问我找工作的一些问题。经历了2个月的找工作经历，也积累了一些经验，虽然并没有像大牛们那样拿了许多牛逼的offer，但是作为普通的校招求职者，还是希望能够记录下自己的经验和教训，作为一个总结，也希望能够给明年找工作的师弟师妹们一点帮助。&lt;/p&gt;
 &lt;p&gt;首先，介绍下我的基本情况。我本科是物理学，研究生转到计算机，在找工作之前没有任何互联网公司的实习经历，主要报的是数据挖掘和机器学习工程师岗位，投了多家公司的简历，最终拿到了：蚂蚁金服（C++研发工程师）、大众点评（算法工程师）、猎豹移动、摩根斯坦利、工行总行、农行软开这些offer。简历投了很多，后来拿到宇宙行的offer后，就没怎么面试了，很多面试就都放弃了。这篇文章先介绍我找技术相关岗位的一些经历。&lt;/p&gt;
 &lt;h2&gt;校招的基本流程&lt;/h2&gt;
 &lt;p&gt;通常互联网公司招聘的基本流程为：投递简历，参加笔试（部分公司内推可以免笔试），3-4轮面试，发出offer，HR通过电话告知薪资待遇，决定是否接受offer，签订合同和三方。&lt;/p&gt;

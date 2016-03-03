@@ -61,6 +61,62 @@
         <div class="eleven columns">
                  <ol id="post-list">
                         <li><article class="hentry">
+                                <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/virtualenvjie-shao.html" rel="bookmark" title="Permalink to virtualenv介绍">virtualenv介绍</a></h2> </header>
+                                <footer class="post-info">
+                                    <abbr class="published" title="2016-03-01T22:48:00+08:00"> 二 01 三月 2016 </abbr>
+                                    <address class="vcard author">By 
+                                    <a class="url fn" href="http://www.wengweitao.com/author/wwt.html"> wwt</a>
+                                    </address>
+                                </footer><!-- /.post-info -->
+                                <div class="entry-content"> <p>virtualenv是一个用来创建独立Python环境的工具。</p>
+<h2>什么时候会用到virtualenv？</h2>
+<ol>
+<li>
+<p>假设系统中的两个应用，其中A应用对库LibFoo的版本要求为1，而B应用对同一个库LibFoo的版本要求为2，两个应用对同一个库的要求想冲突了，而系统中库默认都安装到<code>/usr/lib/python2.7/site-packages</code>，那么如何能够同时使用这两个应用呢？</p>
+</li>
+<li>
+<p>你的用户权限不够，使得无法将包安装到<code>site-packages</code>目录</p>
+</li>
+<li>
+<p>需要使用一个应用，并且与系统其它应用相独立。</p>
+</li>
+</ol>
+<p>如果你遇到以上的问题，那么virtualenv会对你有帮助。virtualenv可以创建一个环境，拥有着自己的安装目录，而不会与系统的共享库或者其它virtualenv环境相干扰。</p>
+<h2>如何安装virtualenv？</h2>
+<p>如果系统上已经安装了pip：</p>
+<div class="highlight"><pre><span></span><span class="o">[</span>sudo<span class="o">]</span> pip install virtualenv
+</pre></div>
+
+
+<h2>如何使用virtualenv？</h2>
+<div class="highlight"><pre><span></span><span class="nb">cd</span> my_project_folder
+
+virtual ENV
+
+<span class="nb">source</span> bin/activate
+
+deactivate
+</pre></div>
+
+
+<p>以上就是virtualenv的基本使用过程。</p>
+<h3>创建一个虚拟环境</h3>
+<p>首先，<code>virtual ENV</code>会在当前目录创建名为ENV的虚拟环境，此时在当前目录会自动生成三个目录：bin, include和lib。默认情况下创建的虚拟环境会依赖于系统中的site-packages，即系统中已经安装好的库在虚拟环境中仍然可以使用 ...</p> </div><!-- /.entry-content -->
+
+                                <div class="medium primary btn"><a href="http://www.wengweitao.com/virtualenvjie-shao.html" rel="bookmark" title="Permalink to virtualenv介绍">Read more <i class="icon-arrow-right"></i></a></div>
+
+
+
+                                <div class="row tag-row">
+                                        <span>Tagged as : </span>
+                                            <a class="danger label" href="http://www.wengweitao.com/tag/python.html">Python</a>
+                                            <a class="danger label" href="http://www.wengweitao.com/tag/jiao-cheng.html">教程</a>
+                                </div>
+
+
+
+                        </article></li>
+                        <li><article class="hentry">
                                 <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/python-socketwang-luo-bian-cheng.html" rel="bookmark" title="Permalink to Python Socket网络编程">Python Socket网络编程</a></h2> </header>
                                 <footer class="post-info">
                                     <abbr class="published" title="2015-07-27T18:49:00+08:00"> 一 27 七月 2015 </abbr>
@@ -205,63 +261,6 @@
         <span class="n">Sun</span><span class="o">.</span><span class="n">set ...</span></pre></div> </div><!-- /.entry-content -->
 
                                 <div class="medium primary btn"><a href="http://www.wengweitao.com/bian-xie-gao-zhi-liang-pythondai-ma-4-she-ji-mo-shi.html" rel="bookmark" title="Permalink to 编写高质量Python代码（4）——设计模式">Read more <i class="icon-arrow-right"></i></a></div>
-
-
-
-                                <div class="row tag-row">
-                                        <span>Tagged as : </span>
-                                            <a class="danger label" href="http://www.wengweitao.com/tag/python.html">Python</a>
-                                </div>
-
-
-
-                        </article></li>
-                        <li><article class="hentry">
-                                <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/bian-xie-gao-zhi-liang-pythondai-ma-3-ku.html" rel="bookmark" title="Permalink to 编写高质量Python代码（3）——库">编写高质量Python代码（3）——库</a></h2> </header>
-                                <footer class="post-info">
-                                    <abbr class="published" title="2015-04-08T22:58:00+08:00"> 三 08 四月 2015 </abbr>
-                                    <address class="vcard author">By 
-                                    <a class="url fn" href="http://www.wengweitao.com/author/wwt.html"> wwt</a>
-                                    </address>
-                                </footer><!-- /.post-info -->
-                                <div class="entry-content"> <blockquote>
-<p>Python具有非常丰富的库，这篇文章介绍了常用库的使用和技巧。</p>
-</blockquote>
-<h3>建议36：掌握字符串的基本用法</h3>
-<p>有个小技巧：</p>
-<div class="highlight"><pre><span></span> <span class="n">s</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;SELECT *&#39;</span>
-         <span class="s1">&#39;FROM atable &#39;</span>
-         <span class="s1">&#39;WHERE afield=&quot;value&quot;&#39;</span><span class="p">)</span>
- <span class="n">s</span>
- <span class="s1">&#39;SELECT *FROM atable WHERE afield=&quot;value&quot;&#39;</span>
-</pre></div>
-
-
-<p>以上利用了Python遇到未闭合的小括号时会自动将多行代码拼接为一行和把相邻的两个字符串字面量拼接在一起的特性做到的。（而如果使用三个引号会把换行符和空格都当做字符串的一部分）</p>
-<p>Python字符串分为str和unicode两种。当需要判断变量是否为字符串时，应该使用</p>
-<div class="highlight"><pre><span></span><span class="nb">isinstance</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="nb">basestring</span><span class="p">)</span>
-</pre></div>
-
-
-<p>Python提供了很多判定字符串的函数如：</p>
-<ul>
-<li>isalnum()</li>
-<li>isalpha() </li>
-<li>isdigit() </li>
-<li>islower()</li>
-<li>isupper()</li>
-<li>isspace()</li>
-<li>istitle() 首字母大写</li>
-<li>startswith(prefix, start, end)</li>
-<li>endswith</li>
-</ul>
-<p>查找和替换：</p>
-<ul>
-<li>count(sub, start, end )</li>
-<li>find  找不到返回-1</li>
-<li>index   找不到返回ValueError ...</li></ul> </div><!-- /.entry-content -->
-
-                                <div class="medium primary btn"><a href="http://www.wengweitao.com/bian-xie-gao-zhi-liang-pythondai-ma-3-ku.html" rel="bookmark" title="Permalink to 编写高质量Python代码（3）——库">Read more <i class="icon-arrow-right"></i></a></div>
 
 
 
