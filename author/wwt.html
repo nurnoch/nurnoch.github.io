@@ -61,6 +61,33 @@
         <div class="eleven columns">
                  <ol id="post-list">
                         <li><article class="hentry">
+                                <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/shi-yong-pythonchu-li-excelwen-jian.html" rel="bookmark" title="Permalink to 使用Python处理excel文件">使用Python处理excel文件</a></h2> </header>
+                                <footer class="post-info">
+                                    <abbr class="published" title="2016-03-07T21:06:00+08:00"> 一 07 三月 2016 </abbr>
+                                    <address class="vcard author">By 
+                                    <a class="url fn" href="http://www.wengweitao.com/author/wwt.html"> wwt</a>
+                                    </address>
+                                </footer><!-- /.post-info -->
+                                <div class="entry-content"> <p>最近一段时间好几个其他学院的同学找我帮忙处理保存在excel中的数据。对于非计算机专业的同学，平时可能仅仅是用excel做一些简单的数据处理，稍微复杂一些的excel函数可能就写不了，于是就找我们计算机专业的同学帮忙。不过excel，我几乎从来不用，只能借助于编程实现对excel的数据处理了。对于这类问题，首选自然是Python啦。其实，Python是一门非常容易掌握和使用的语言，我也经常向非计算机专业的同学推荐学习Python，学完之后非常有用。这篇文章就面向非计算机专业的同学介绍如何使用Python来对excel文件进行数据处理。</p>
+<h2>安装Python环境</h2>
+<p><a href="https://www.continuum.io/downloads">ANACONDA</a>是一个Python的发行版本，包含了400多个Python最常用的库，其中就包括了数据分析中需要经常使用到的Numpy和Pandas等。更重要的是，不论在哪个平台上，都可以一键安装，自动配置好环境，不需要用户任何的额外操作，非常方便。因此，安装Python环境就只需要到ANACONDA网站上下载安装文件，双击安装即可。</p>
+<p>安装完成之后，使用<code>windows + r</code>键打开Windows命令行，输入ipython，然后回车：</p>
+<div class="highlight"><pre><span></span><span class="n">Python</span> <span class="mf">2.7.11</span> <span class="o">|</span><span class="n">Anaconda</span> <span class="mf">2.5.0</span> <span class="p">(</span><span class="mi">64</span><span class="o">-</span><span class="n">bit</span><span class="p">)</span><span class="o">|</span> <span class="p">(</span><span class="k">default</span><span class="p">,</span> <span class="n">Jan</span> <span class="mi">29</span> <span class="mi">2016 ...</span></pre></div> </div><!-- /.entry-content -->
+
+                                <div class="medium primary btn"><a href="http://www.wengweitao.com/shi-yong-pythonchu-li-excelwen-jian.html" rel="bookmark" title="Permalink to 使用Python处理excel文件">Read more <i class="icon-arrow-right"></i></a></div>
+
+
+
+                                <div class="row tag-row">
+                                        <span>Tagged as : </span>
+                                            <a class="danger label" href="http://www.wengweitao.com/tag/python.html">Python</a>
+                                            <a class="danger label" href="http://www.wengweitao.com/tag/jiao-cheng.html">教程</a>
+                                </div>
+
+
+
+                        </article></li>
+                        <li><article class="hentry">
                                 <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/virtualenvjie-shao.html" rel="bookmark" title="Permalink to virtualenv介绍">virtualenv介绍</a></h2> </header>
                                 <footer class="post-info">
                                     <abbr class="published" title="2016-03-01T22:48:00+08:00"> 二 01 三月 2016 </abbr>
@@ -199,35 +226,6 @@ deactivate
 
 
                         </article></li>
-                        <li><article class="hentry">
-                                <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/sheng-cheng-xue-xi-suan-fa-yu-pan-bie-xue-xi-suan-fa.html" rel="bookmark" title="Permalink to 生成学习算法与判别学习算法">生成学习算法与判别学习算法</a></h2> </header>
-                                <footer class="post-info">
-                                    <abbr class="published" title="2015-08-05T22:42:00+08:00"> 三 05 八月 2015 </abbr>
-                                    <address class="vcard author">By 
-                                    <a class="url fn" href="http://www.wengweitao.com/author/wwt.html"> wwt</a>
-                                    </address>
-                                </footer><!-- /.post-info -->
-                                <div class="entry-content"> <p>机器学习中有两类学习算法：<strong>生成学习算法</strong>（Generative learning algorithm）和<strong>判别学习算法</strong>（Discriminative learning algorithm），它们所学到的模型分别成为生成模型和判别模型。那么这两种学习算法的区别是什么呢？</p>
-<p>举一个具体的例子，假设我们现在要对两种动物进行分类，给定一个动物要么是大象（y=1），要么是狗（y=0）。</p>
-<p>对于生成学习算法，我们需要利用训练数据分别构建一个描述大象的模型和一个描述狗的模型，然后给定一个新的动物作为输入，我们分别将该动物与大象模型和狗模型进行匹配，然后根据匹配的结果更像哪一个进行分类。用数学公式可以描述为：</p>
-<p>大象的模型：P(x|y=1)表示了大象的特征分布；</p>
-<p>狗的模型：P(x|y=0)表示了狗的特征分布；</p>
-<p>生成模型：给定一个新的输入x，根据贝叶斯公式：</p>
-<div class="math">$$P(y|x)=\frac{P(x,y)}{P(x ...</div> </div><!-- /.entry-content -->
-
-                                <div class="medium primary btn"><a href="http://www.wengweitao.com/sheng-cheng-xue-xi-suan-fa-yu-pan-bie-xue-xi-suan-fa.html" rel="bookmark" title="Permalink to 生成学习算法与判别学习算法">Read more <i class="icon-arrow-right"></i></a></div>
-
-
-
-                                <div class="row tag-row">
-                                        <span>Tagged as : </span>
-                                            <a class="danger label" href="http://www.wengweitao.com/tag/ji-qi-xue-xi.html">机器学习</a>
-                                            <a class="danger label" href="http://www.wengweitao.com/tag/ji-chu.html">基础</a>
-                                </div>
-
-
-
-                        </article></li>
                 </ol><!-- /#posts-list -->
 
         </div><!-- /.eleven.columns -->
@@ -304,7 +302,7 @@ deactivate
 </div> </div><!-- /.row -->
 
 <p class="paginator">
-    Page 1 / 13
+    Page 1 / 14
         <a href="http://www.wengweitao.com/author/wwt2.html"><i class="icon-arrow-right"></i></a>
 </p>
 </section><!-- /#content -->

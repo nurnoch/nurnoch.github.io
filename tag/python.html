@@ -61,6 +61,33 @@
         <div class="eleven columns">
                  <ol id="post-list">
                         <li><article class="hentry">
+                                <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/shi-yong-pythonchu-li-excelwen-jian.html" rel="bookmark" title="Permalink to 使用Python处理excel文件">使用Python处理excel文件</a></h2> </header>
+                                <footer class="post-info">
+                                    <abbr class="published" title="2016-03-07T21:06:00+08:00"> 一 07 三月 2016 </abbr>
+                                    <address class="vcard author">By 
+                                    <a class="url fn" href="http://www.wengweitao.com/author/wwt.html"> wwt</a>
+                                    </address>
+                                </footer><!-- /.post-info -->
+                                <div class="entry-content"> <p>最近一段时间好几个其他学院的同学找我帮忙处理保存在excel中的数据。对于非计算机专业的同学，平时可能仅仅是用excel做一些简单的数据处理，稍微复杂一些的excel函数可能就写不了，于是就找我们计算机专业的同学帮忙。不过excel，我几乎从来不用，只能借助于编程实现对excel的数据处理了。对于这类问题，首选自然是Python啦。其实，Python是一门非常容易掌握和使用的语言，我也经常向非计算机专业的同学推荐学习Python，学完之后非常有用。这篇文章就面向非计算机专业的同学介绍如何使用Python来对excel文件进行数据处理。</p>
+<h2>安装Python环境</h2>
+<p><a href="https://www.continuum.io/downloads">ANACONDA</a>是一个Python的发行版本，包含了400多个Python最常用的库，其中就包括了数据分析中需要经常使用到的Numpy和Pandas等。更重要的是，不论在哪个平台上，都可以一键安装，自动配置好环境，不需要用户任何的额外操作，非常方便。因此，安装Python环境就只需要到ANACONDA网站上下载安装文件，双击安装即可。</p>
+<p>安装完成之后，使用<code>windows + r</code>键打开Windows命令行，输入ipython，然后回车：</p>
+<div class="highlight"><pre><span></span><span class="n">Python</span> <span class="mf">2.7.11</span> <span class="o">|</span><span class="n">Anaconda</span> <span class="mf">2.5.0</span> <span class="p">(</span><span class="mi">64</span><span class="o">-</span><span class="n">bit</span><span class="p">)</span><span class="o">|</span> <span class="p">(</span><span class="k">default</span><span class="p">,</span> <span class="n">Jan</span> <span class="mi">29</span> <span class="mi">2016 ...</span></pre></div> </div><!-- /.entry-content -->
+
+                                <div class="medium primary btn"><a href="http://www.wengweitao.com/shi-yong-pythonchu-li-excelwen-jian.html" rel="bookmark" title="Permalink to 使用Python处理excel文件">Read more <i class="icon-arrow-right"></i></a></div>
+
+
+
+                                <div class="row tag-row">
+                                        <span>Tagged as : </span>
+                                            <a class="danger label" href="http://www.wengweitao.com/tag/python.html">Python</a>
+                                            <a class="danger label" href="http://www.wengweitao.com/tag/jiao-cheng.html">教程</a>
+                                </div>
+
+
+
+                        </article></li>
+                        <li><article class="hentry">
                                 <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/virtualenvjie-shao.html" rel="bookmark" title="Permalink to virtualenv介绍">virtualenv介绍</a></h2> </header>
                                 <footer class="post-info">
                                     <abbr class="published" title="2016-03-01T22:48:00+08:00"> 二 01 三月 2016 </abbr>
@@ -220,58 +247,6 @@ deactivate
 
 
                         </article></li>
-                        <li><article class="hentry">
-                                <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/bian-xie-gao-zhi-liang-pythondai-ma-4-she-ji-mo-shi.html" rel="bookmark" title="Permalink to 编写高质量Python代码（4）——设计模式">编写高质量Python代码（4）——设计模式</a></h2> </header>
-                                <footer class="post-info">
-                                    <abbr class="published" title="2015-04-13T23:31:00+08:00"> 一 13 四月 2015 </abbr>
-                                    <address class="vcard author">By 
-                                    <a class="url fn" href="http://www.wengweitao.com/author/wwt.html"> wwt</a>
-                                    </address>
-                                </footer><!-- /.post-info -->
-                                <div class="entry-content"> <blockquote>
-<p>本文将介绍如何写出Pythonic的设计模式代码，让设计模式更好的应用在实际的Python编程当中。</p>
-</blockquote>
-<h3>建议50：利用模块设计实现单例模式</h3>
-<p>GOF的23种设计模式中，单例是最常用的模式，通过单例模式可以保证系统中一个类只有一个实例而且该实例易于被外界访问，从而方便对实例个数的控制并节约系统资源。</p>
-<p>Python语言实现实例没有那么方便，因为缺乏声明私有构造函数的语法元素，实例又带有类型信息。如：</p>
-<div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">_Singleton</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="k">pass</span>
-<span class="n">Singleton</span> <span class="o">=</span> <span class="n">_Singleton</span><span class="p">()</span>
-<span class="k">del</span> <span class="n">_Singleton</span>
-<span class="n">another</span> <span class="o">=</span> <span class="n">Singleton</span><span class="o">.</span><span class="n">__class__</span><span class="p">()</span>
-<span class="k">print</span> <span class="nb">type</span><span class="p">(</span><span class="n">another</span><span class="p">)</span>
-
-<span class="c1"># 输出 &lt;class &#39;__main__._Singleton&#39;&gt;</span>
-</pre></div>
-
-
-<p>虽然把Singleton的类定义删除了，但是还是可以通过已有实例的__class__属性生成一个新的实例。</p>
-<p>其实模块采用的方法是天然的单例实现方式：</p>
-<ul>
-<li>所有变量都会绑定到模块</li>
-<li>模块只初始化一次</li>
-<li>import 机制是线程安全的</li>
-</ul>
-<p>例如：</p>
-<div class="highlight"><pre><span></span><span class="c1"># World.py</span>
-<span class="kn">import</span> <span class="nn">Sun</span>
-<span class="k">def</span> <span class="nf">run</span><span class="p">():</span>
-    <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
-        <span class="n">Sun</span><span class="o">.</span><span class="n">rise</span><span class="p">()</span>
-        <span class="n">Sun</span><span class="o">.</span><span class="n">set ...</span></pre></div> </div><!-- /.entry-content -->
-
-                                <div class="medium primary btn"><a href="http://www.wengweitao.com/bian-xie-gao-zhi-liang-pythondai-ma-4-she-ji-mo-shi.html" rel="bookmark" title="Permalink to 编写高质量Python代码（4）——设计模式">Read more <i class="icon-arrow-right"></i></a></div>
-
-
-
-                                <div class="row tag-row">
-                                        <span>Tagged as : </span>
-                                            <a class="danger label" href="http://www.wengweitao.com/tag/python.html">Python</a>
-                                </div>
-
-
-
-                        </article></li>
                 </ol><!-- /#posts-list -->
 
         </div><!-- /.eleven.columns -->
@@ -348,7 +323,7 @@ deactivate
 </div> </div><!-- /.row -->
 
 <p class="paginator">
-    Page 1 / 2
+    Page 1 / 3
         <a href="http://www.wengweitao.com/tag/python2.html"><i class="icon-arrow-right"></i></a>
 </p>
 </section><!-- /#content -->
