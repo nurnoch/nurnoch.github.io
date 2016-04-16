@@ -2,10 +2,11 @@
 <html lang="zh">
 <head>
 
-        <title>wwt's blog - Docker</title>
+        <title>在carina上使用Docker搭建免费的ShadowSocks</title>
         <meta charset="utf-8" />
         <link href="http://www.wengweitao.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="wwt's blog Full Atom Feed" />
         <link href="http://www.wengweitao.com/feeds/all.rss.xml" type="application/rss+xml" rel="alternate" title="wwt's blog Full RSS Feed" />
+        <link href="http://www.wengweitao.com/feeds/gong-ju.rss.xml" type="application/atom+xml" rel="alternate" title="wwt's blog Categories Atom Feed" />
 
 
         <!-- Mobile viewport optimized: j.mp/bplateviewport -->
@@ -51,24 +52,29 @@
               </ul>
             </div>
 
-<section id="content">
-
-
+<section id="content" class="body">
 
    <div class="row">
-
-
         <div class="eleven columns">
-                 <ol id="post-list">
-                        <li><article class="hentry">
-                                <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/zai-carinashang-shi-yong-dockerda-jian-mian-fei-de-shadowsocks.html" rel="bookmark" title="Permalink to 在carina上使用Docker搭建免费的ShadowSocks">在carina上使用Docker搭建免费的ShadowSocks</a></h2> </header>
-                                <footer class="post-info">
-                                    <abbr class="published" title="2016-04-16T13:06:00+08:00"> 六 16 四月 2016 </abbr>
-                                    <address class="vcard author">By 
-                                    <a class="url fn" href="http://www.wengweitao.com/author/wwt.html"> wwt</a>
-                                    </address>
-                                </footer><!-- /.post-info -->
-                                <div class="entry-content"> <h2></h2>
+
+
+            <header>
+              <h2 class="entry-title">
+                <a href="http://www.wengweitao.com/zai-carinashang-shi-yong-dockerda-jian-mian-fei-de-shadowsocks.html" rel="bookmark"
+                   title="Permalink to 在carina上使用Docker搭建免费的ShadowSocks">在carina上使用Docker搭建免费的ShadowSocks</a></h2>
+           
+
+            </header>
+            <footer class="post-info">
+              <abbr class="published" title="2016-04-16T13:06:00+08:00">
+                六 16 四月 2016
+              </abbr>
+              <address class="vcard author">By 
+                <a class="url fn" href="http://www.wengweitao.com/author/wwt.html"> wwt</a>
+              </address>
+            </footer><!-- /.post-info -->
+            <div class="entry-content">
+              <h2></h2>
 <p><a href="https://getcarina.com/">Carina</a>是Rackspace旗下的一个网站，提供了Docker服务。最近，看到消息可以在该网站上注册账号，免费试用Docker服务。竟然有这么好的事，于是尝试注册了一个账号，搭建了一个免费的shadowsocks服务器。</p>
 <h3>账号注册</h3>
 <p>注册的过程需要发送验证码短信，才能注册成功。而且，不支持中国大陆的手机号。解决方法是在手机上下载 <a href="https://go-text.me/">textme</a>  APP，可以得到一个美国的虚拟手机号，用于发送和接收短信。得到虚拟手机号后，输入接收到的短信验证码即可成功注册。</p>
@@ -78,54 +84,89 @@
 <h3>配置Docker CLI</h3>
 <p>点击cluster下面的按钮<code>Get access</code>，下载一个Docker集群配置信息文件。</p>
 <p>解压后，进入该目录。source docker.env设置合适的docker环境变量：</p>
-<div class="highlight"><pre><span></span><span class="nb">source</span> docker.env ...</pre></div> </div><!-- /.entry-content -->
-
-                                <div class="medium primary btn"><a href="http://www.wengweitao.com/zai-carinashang-shi-yong-dockerda-jian-mian-fei-de-shadowsocks.html" rel="bookmark" title="Permalink to 在carina上使用Docker搭建免费的ShadowSocks">Read more <i class="icon-arrow-right"></i></a></div>
-
+<div class="highlight"><pre><span></span><span class="nb">source</span> docker.env
+</pre></div>
 
 
-                                <div class="row tag-row">
-                                        <span>Tagged as : </span>
-                                            <a class="danger label" href="http://www.wengweitao.com/tag/docker.html">Docker</a>
-                                            <a class="danger label" href="http://www.wengweitao.com/tag/jiao-cheng.html">教程</a>
-                                </div>
+<p>查看是否连接上：</p>
+<div class="highlight"><pre><span></span>➜ docker info
+Containers: 11
+Images: 6
+Role: primary
+Strategy: spread
+Filters: health, port, dependency, affinity, constraint
+Nodes: 1
+ 2ede2591-1ec0-4c2b-a3ef-59697ff02ba7-n1: 104.130.22.24:42376
+  └ Status: Healthy
+  └ Containers: 11
+  └ Reserved CPUs: <span class="m">0</span> / 12
+  └ Reserved Memory: <span class="m">0</span> B / 4.2 GiB
+  └ Labels: com.docker.network.driver.overlay.bind_interface<span class="o">=</span>eth1, <span class="nv">executiondriver</span><span class="o">=</span>native-0.2, <span class="nv">kernelversion</span><span class="o">=</span>3.18.21-2-rackos, <span class="nv">operatingsystem</span><span class="o">=</span>Debian GNU/Linux <span class="m">7</span> <span class="o">(</span>wheezy<span class="o">)</span> <span class="o">(</span>containerized<span class="o">)</span>, <span class="nv">storagedriver</span><span class="o">=</span>aufs
+  └ Error: <span class="o">(</span>none<span class="o">)</span>
+  └ UpdatedAt: 2016-04-15T11:53:04Z
+Kernel Version: 3.18.21-2-rackos
+Operating System: linux
+CPUs: 12
+Total Memory: 4.2 GiB
+Name: 2ede2591-1ec0-4c2b-a3ef-59697ff02ba7-n1
+</pre></div>
 
 
-
-                        </article></li>
-                        <li><article class="hentry">
-                                <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/dockerxue-xi.html" rel="bookmark" title="Permalink to Docker学习">Docker学习</a></h2> </header>
-                                <footer class="post-info">
-                                    <abbr class="published" title="2016-04-16T12:06:00+08:00"> 六 16 四月 2016 </abbr>
-                                    <address class="vcard author">By 
-                                    <a class="url fn" href="http://www.wengweitao.com/author/wwt.html"> wwt</a>
-                                    </address>
-                                </footer><!-- /.post-info -->
-                                <div class="entry-content"> <blockquote>
-<p>Docker是诞生于2013年的一个开源项目，在开源之后就受到了广泛的关注和讨论。3年时间过去了，Docker已经成为了广大程序员耳熟能详的一个工具，在业界也得到了非常广泛的应用。我也一直对Docker十分感兴趣，便抽空了解了下Docker。</p>
-</blockquote>
-<h3>简介</h3>
-<p>了解Docker的人都知道它的概念与集装箱类似，但是Docker英文翻译过来的名字是“码头工人”。那么问题来了：Docker到底是码头工人还是集装箱呢？这就需要先简单的介绍一下集装箱的历史了。在1956年集装箱出现之前，货物的运输是一件成本非常高的事情，物流系统非常的零散和低效。假设内陆的地方想将大米出口到国外，那么首先需要工人将大米装到汽车上，然后通过汽车运输到沿海的港口，港口上的码头工人需要将大米从汽车转到轮船之上。可以看出这个过程中需要大量的人力作为货物的中转，不同运输工具之间的转换也存在着消耗，成本很高而且效率极低。于是，就出现了集装箱这个改变世界的箱子。集装箱是一个标准化的箱子，规定了标准的尺寸，使得不同的货物都可以装在集装箱中，无论是在公路或者海洋等各种运输场景中，集装箱都可以不用转变形态直接运输，中间的转运工作可以通过相同的搬运机械自动化运作。而且，集装箱也为不同的货物之间实现了隔离和保护，使得不同货物之间不会相互影响，也避免了外部环境对货物的影响。随着集装箱的出现，大大提高了运输的效率，使得码头工人这个职业基本消失。可以说，集装箱是人类现代社会最重要的发明之一，没有集装箱就没有经济的全球化。<strong>Docker就是软件世界的集装箱化</strong>。Docker允许开发人员将一个应用及其所有的依赖装到一个标准化的单元，这保证了不管它所运行的环境如何，它总是可以相同的运行。</p>
-<p><img alt="logo" src="http://ww4.sinaimg.cn/large/9f9f764egw1f2ycqndgtqj208301ygln.jpg" /></p>
-<p>Docker是使用Go语言实现的一个开源项目，目标是<strong>实现轻量级的操作系统虚拟化解决方案</strong>，是在Linux容器 ...</p> </div><!-- /.entry-content -->
-
-                                <div class="medium primary btn"><a href="http://www.wengweitao.com/dockerxue-xi.html" rel="bookmark" title="Permalink to Docker学习">Read more <i class="icon-arrow-right"></i></a></div>
+<p>可以看到cluster中结点的具体信息。</p>
+<h3>通过Docker安装shadowsocks</h3>
+<p>通过Docker安装shadowsocks非常方便，只需要一个命令：</p>
+<div class="highlight"><pre><span></span>docker run -d --name shadowsocks -p 12306:12306 oddrationale/docker-shadowsocks -s 0.0.0.0 -p <span class="m">12306</span> -k yourpassword -m aes-256-cfb
+</pre></div>
 
 
+<p>-p是设置shadowsocks的服务器端口号；-k后面设置自己的密码。</p>
+<p>使用<code>docker ps</code>查看是否安装成功：</p>
+<div class="highlight"><pre><span></span>➜  docker ps                                                                                                                        
+CONTAINER ID        IMAGE                             COMMAND                CREATED                  STATUS              PORTS                            NAMES
+1016c8cc0ce4        oddrationale/docker-shadowsocks   <span class="s2">&quot;/usr/local/bin/ssse   Less than a second ago   Up 22 seconds       104.130.22.24:12306-&gt;12306/tcp   2ede2591-1ec0-4c2b-a3ef-59697ff02ba7-n1/shadowsocks   </span>
+<span class="s2">b47dd901c3dd        carina/consul                     &quot;</span>/bin/consul agent -   <span class="m">5</span> hours ago              Up <span class="m">5</span> hours                                           2ede2591-1ec0-4c2b-a3ef-59697ff02ba7-n1/carina-svcd  
+</pre></div>
 
-                                <div class="row tag-row">
-                                        <span>Tagged as : </span>
-                                            <a class="danger label" href="http://www.wengweitao.com/tag/docker.html">Docker</a>
-                                            <a class="danger label" href="http://www.wengweitao.com/tag/jiao-cheng.html">教程</a>
-                                </div>
+
+<p>可以看到shadowsocks服务已经在运行了。</p>
+<p>使用port命令，可以查看shadowsocks服务的IP和端口：</p>
+<div class="highlight"><pre><span></span>➜  docker port shadowsocks
+12306/tcp -&gt; 104.130.22.24:12306
+</pre></div>
 
 
+<p>记住shadowsocks的IP和端口号，待会儿需要填入shadowsocks代理软件中。</p>
+<h3>使用shadowsocks科学上网</h3>
+<p>（1）下载Windows系统的<a href="http://pan.baidu.com/s/1c05CZT2">Shadowsocks客户端</a>，解压到任意目录，运行其中的shadowsocks.exe。</p>
+<p>（2）添加shadowsocks的服务器IP和端口号、密码。点确定即可。</p>
+<p><img alt="shadowsocks" src="http://ww2.sinaimg.cn/large/9f9f764egw1f2ygf33os1j207c07vaai.jpg" /></p>
+<p>（3）右键点击任务栏中shadowsocks.exe的图标，勾选“启用系统代理”。</p>
+<p>（4）打开任意浏览器，即可自由上网。</p>
+<hr />
+<h3>References</h3>
+<ol>
+<li><a href="http://www.rendoumi.com/wan-quan-mian-fei-de-shadowsocksfu-wu-qi/">不花一分钱，搭建一个完全免费的Shadowsocks服务器</a></li>
+<li><a href="http://liujin.me/blog/2015/05/27/Docker-DigitalOcean-Shadowsocks-5-%E5%88%86%E9%92%9F%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/">Docker + DigitalOcean + Shadowsocks 5分钟科学上网</a></li>
+<li><a href="https://leohxj.gitbooks.io/a-programmer-prepares/content/effciency/break-through-intranet.html">程序员的自我修养</a></li>
+<li><a href="http://www.ishadowsocks.net/">shadowsocks客户端</a></li>
+</ol>
+            </div><!-- /.entry-content -->
+            <div class="comments">
+              <h3>Comments</h3>
+              <div id="disqus_thread"></div>
+              <script type="text/javascript">
+                var disqus_identifier = "zai-carinashang-shi-yong-dockerda-jian-mian-fei-de-shadowsocks.html";
+                (function() {
+                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                dsq.src = 'http://wengwt.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                })();
+              </script>
+            </div>
 
-                        </article></li>
-                </ol><!-- /#posts-list -->
 
         </div><!-- /.eleven.columns -->
-        
+
 <div class="three columns">
 
 <!--
@@ -198,10 +239,8 @@
 
 </div> </div><!-- /.row -->
 
-<p class="paginator">
-    Page 1 / 1
-</p>
-</section><!-- /#content -->
+
+</section>
 
        </div><!-- /.row -->
     </div><!-- /.container -->

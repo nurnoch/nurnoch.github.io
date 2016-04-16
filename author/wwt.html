@@ -61,6 +61,39 @@
         <div class="eleven columns">
                  <ol id="post-list">
                         <li><article class="hentry">
+                                <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/zai-carinashang-shi-yong-dockerda-jian-mian-fei-de-shadowsocks.html" rel="bookmark" title="Permalink to 在carina上使用Docker搭建免费的ShadowSocks">在carina上使用Docker搭建免费的ShadowSocks</a></h2> </header>
+                                <footer class="post-info">
+                                    <abbr class="published" title="2016-04-16T13:06:00+08:00"> 六 16 四月 2016 </abbr>
+                                    <address class="vcard author">By 
+                                    <a class="url fn" href="http://www.wengweitao.com/author/wwt.html"> wwt</a>
+                                    </address>
+                                </footer><!-- /.post-info -->
+                                <div class="entry-content"> <h2></h2>
+<p><a href="https://getcarina.com/">Carina</a>是Rackspace旗下的一个网站，提供了Docker服务。最近，看到消息可以在该网站上注册账号，免费试用Docker服务。竟然有这么好的事，于是尝试注册了一个账号，搭建了一个免费的shadowsocks服务器。</p>
+<h3>账号注册</h3>
+<p>注册的过程需要发送验证码短信，才能注册成功。而且，不支持中国大陆的手机号。解决方法是在手机上下载 <a href="https://go-text.me/">textme</a>  APP，可以得到一个美国的虚拟手机号，用于发送和接收短信。得到虚拟手机号后，输入接收到的短信验证码即可成功注册。</p>
+<h3>创建cluster</h3>
+<p>登陆进去后，界面非常简单，点击<code>Add Cluster...</code>新建一个docker集群，待会儿就在这个集群上面搭建shadowsocks服务。输入cluster的名称，这里我用<code>wwt</code>，点击<code>Create Cluster</code>，需要等待几分钟的时间即可创建完毕。</p>
+<p><img alt="cluster" src="http://ww3.sinaimg.cn/large/9f9f764egw1f2yg3kq0thj20fj0jaq4d.jpg" /></p>
+<h3>配置Docker CLI</h3>
+<p>点击cluster下面的按钮<code>Get access</code>，下载一个Docker集群配置信息文件。</p>
+<p>解压后，进入该目录。source docker.env设置合适的docker环境变量：</p>
+<div class="highlight"><pre><span></span><span class="nb">source</span> docker.env ...</pre></div> </div><!-- /.entry-content -->
+
+                                <div class="medium primary btn"><a href="http://www.wengweitao.com/zai-carinashang-shi-yong-dockerda-jian-mian-fei-de-shadowsocks.html" rel="bookmark" title="Permalink to 在carina上使用Docker搭建免费的ShadowSocks">Read more <i class="icon-arrow-right"></i></a></div>
+
+
+
+                                <div class="row tag-row">
+                                        <span>Tagged as : </span>
+                                            <a class="danger label" href="http://www.wengweitao.com/tag/docker.html">Docker</a>
+                                            <a class="danger label" href="http://www.wengweitao.com/tag/jiao-cheng.html">教程</a>
+                                </div>
+
+
+
+                        </article></li>
+                        <li><article class="hentry">
                                 <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/dockerxue-xi.html" rel="bookmark" title="Permalink to Docker学习">Docker学习</a></h2> </header>
                                 <footer class="post-info">
                                     <abbr class="published" title="2016-04-16T12:06:00+08:00"> 六 16 四月 2016 </abbr>
@@ -186,34 +219,6 @@ deactivate
 <p>作为计算机专业的学生，大部分人肯定都会选择进入互联网行业。现在互联网公司这么火，开的工资又高，一个应届毕业生也可以比较轻松的拿到30w+的年薪 ...</p> </div><!-- /.entry-content -->
 
                                 <div class="medium primary btn"><a href="http://www.wengweitao.com/2015nian-xiao-zhao-zhao-gong-zuo-zong-jie-zhi-guo-qi-pian.html" rel="bookmark" title="Permalink to 2015年校招找工作总结之国企篇">Read more <i class="icon-arrow-right"></i></a></div>
-
-
-
-                                <div class="row tag-row">
-                                        <span>Tagged as : </span>
-                                            <a class="danger label" href="http://www.wengweitao.com/tag/xiao-zhao.html">校招</a>
-                                            <a class="danger label" href="http://www.wengweitao.com/tag/zong-jie.html">总结</a>
-                                </div>
-
-
-
-                        </article></li>
-                        <li><article class="hentry">
-                                <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/2015nian-xiao-zhao-zhao-gong-zuo-zong-jie-zhi-hu-lian-wang-gong-si-ji-zhu-pian.html" rel="bookmark" title="Permalink to 2015年校招找工作总结之互联网公司（技术篇）">2015年校招找工作总结之互联网公司（技术篇）</a></h2> </header>
-                                <footer class="post-info">
-                                    <abbr class="published" title="2015-12-27T14:22:00+08:00"> 日 27 十二月 2015 </abbr>
-                                    <address class="vcard author">By 
-                                    <a class="url fn" href="http://www.wengweitao.com/author/wwt.html"> wwt</a>
-                                    </address>
-                                </footer><!-- /.post-info -->
-                                <div class="entry-content"> <p>2015年校招基本已经结束，回学校之后不少14级的师弟师妹们都在问我找工作的一些问题。经历了2个月的找工作经历，也积累了一些经验，虽然并没有像大牛们那样拿了许多牛逼的offer，但是作为普通的校招求职者，还是希望能够记录下自己的经验和教训，作为一个总结，也希望能够给明年找工作的师弟师妹们一点帮助。</p>
-<p>首先，介绍下我的基本情况。我本科是物理学，研究生转到计算机，在找工作之前没有任何互联网公司的实习经历，主要报的是数据挖掘和机器学习工程师岗位，投了多家公司的简历，最终拿到了：蚂蚁金服（C++研发工程师）、大众点评（算法工程师）、猎豹移动、摩根斯坦利、工行总行、农行软开这些offer。简历投了很多，后来拿到宇宙行的offer后，就没怎么面试了，很多面试就都放弃了。这篇文章先介绍我找技术相关岗位的一些经历。</p>
-<h2>校招的基本流程</h2>
-<p>通常互联网公司招聘的基本流程为：投递简历，参加笔试（部分公司内推可以免笔试），3-4轮面试，发出offer，HR通过电话告知薪资待遇，决定是否接受offer，签订合同和三方。</p>
-<h2>简历制作</h2>
-<p>找工作的时候制作一份合格的简历非常重要。当然，大牛无论简历怎样都不是问题。曾经听过一个播客节目，节目中七牛CEO许世伟说，他当时校招的时候简历都没做，金山到他们学校宣讲的时候，直接现场手写简历就投了 ...</p> </div><!-- /.entry-content -->
-
-                                <div class="medium primary btn"><a href="http://www.wengweitao.com/2015nian-xiao-zhao-zhao-gong-zuo-zong-jie-zhi-hu-lian-wang-gong-si-ji-zhu-pian.html" rel="bookmark" title="Permalink to 2015年校招找工作总结之互联网公司（技术篇）">Read more <i class="icon-arrow-right"></i></a></div>
 
 
 

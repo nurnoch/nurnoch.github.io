@@ -1,5 +1,80 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>wwt's blog</title><link href="http://www.wengweitao.com/" rel="alternate"></link><link href="http://www.wengweitao.com/feeds/gong-ju.rss.xml" rel="self"></link><id>http://www.wengweitao.com/</id><updated>2015-05-12T19:02:00+08:00</updated><entry><title>CentOS 升级 gcc 和 g++ 的方法</title><link href="http://www.wengweitao.com/centos-sheng-ji-gcc-he-g-de-fang-fa.html" rel="alternate"></link><updated>2015-05-12T19:02:00+08:00</updated><author><name>wwt</name></author><id>tag:www.wengweitao.com,2015-05-12:centos-sheng-ji-gcc-he-g-de-fang-fa.html</id><summary type="html">&lt;p&gt;CentOS 系统自带的 gcc 或者 g++ 的版本是：g++ (GCC) 4.4.6. GCC 版本太旧，导致了很多使用上的不便，如：无法使用g++ -std=c++11 命令来编译 C++11、无法使用Vim的很多插件（YouCompleteMe等）。因此，有必要对它进行升级。&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>wwt's blog</title><link href="http://www.wengweitao.com/" rel="alternate"></link><link href="http://www.wengweitao.com/feeds/gong-ju.rss.xml" rel="self"></link><id>http://www.wengweitao.com/</id><updated>2016-04-16T13:06:00+08:00</updated><entry><title>在carina上使用Docker搭建免费的ShadowSocks</title><link href="http://www.wengweitao.com/zai-carinashang-shi-yong-dockerda-jian-mian-fei-de-shadowsocks.html" rel="alternate"></link><updated>2016-04-16T13:06:00+08:00</updated><author><name>wwt</name></author><id>tag:www.wengweitao.com,2016-04-16:zai-carinashang-shi-yong-dockerda-jian-mian-fei-de-shadowsocks.html</id><summary type="html">&lt;h2&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://getcarina.com/"&gt;Carina&lt;/a&gt;是Rackspace旗下的一个网站，提供了Docker服务。最近，看到消息可以在该网站上注册账号，免费试用Docker服务。竟然有这么好的事，于是尝试注册了一个账号，搭建了一个免费的shadowsocks服务器。&lt;/p&gt;
+&lt;h3&gt;账号注册&lt;/h3&gt;
+&lt;p&gt;注册的过程需要发送验证码短信，才能注册成功。而且，不支持中国大陆的手机号。解决方法是在手机上下载 &lt;a href="https://go-text.me/"&gt;textme&lt;/a&gt;  APP，可以得到一个美国的虚拟手机号，用于发送和接收短信。得到虚拟手机号后，输入接收到的短信验证码即可成功注册。&lt;/p&gt;
+&lt;h3&gt;创建cluster&lt;/h3&gt;
+&lt;p&gt;登陆进去后，界面非常简单，点击&lt;code&gt;Add Cluster...&lt;/code&gt;新建一个docker集群，待会儿就在这个集群上面搭建shadowsocks服务。输入cluster的名称，这里我用&lt;code&gt;wwt&lt;/code&gt;，点击&lt;code&gt;Create Cluster&lt;/code&gt;，需要等待几分钟的时间即可创建完毕。&lt;/p&gt;
+&lt;p&gt;&lt;img alt="cluster" src="http://ww3.sinaimg.cn/large/9f9f764egw1f2yg3kq0thj20fj0jaq4d.jpg" /&gt;&lt;/p&gt;
+&lt;h3&gt;配置Docker CLI&lt;/h3&gt;
+&lt;p&gt;点击cluster下面的按钮&lt;code&gt;Get access&lt;/code&gt;，下载一个Docker集群配置信息文件。&lt;/p&gt;
+&lt;p&gt;解压后，进入该目录。source docker.env设置合适的docker环境变量：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nb"&gt;source&lt;/span&gt; docker.env
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;查看是否连接上：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;➜ docker info
+Containers: 11
+Images: 6
+Role: primary
+Strategy: spread
+Filters: health, port, dependency, affinity, constraint
+Nodes: 1
+ 2ede2591-1ec0-4c2b-a3ef-59697ff02ba7-n1: 104.130.22.24:42376
+  └ Status: Healthy
+  └ Containers: 11
+  └ Reserved CPUs: &lt;span class="m"&gt;0&lt;/span&gt; / 12
+  └ Reserved Memory: &lt;span class="m"&gt;0&lt;/span&gt; B / 4.2 GiB
+  └ Labels: com.docker.network.driver.overlay.bind_interface&lt;span class="o"&gt;=&lt;/span&gt;eth1, &lt;span class="nv"&gt;executiondriver&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;native-0.2, &lt;span class="nv"&gt;kernelversion&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;3.18.21-2-rackos, &lt;span class="nv"&gt;operatingsystem&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;Debian GNU/Linux &lt;span class="m"&gt;7&lt;/span&gt; &lt;span class="o"&gt;(&lt;/span&gt;wheezy&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="o"&gt;(&lt;/span&gt;containerized&lt;span class="o"&gt;)&lt;/span&gt;, &lt;span class="nv"&gt;storagedriver&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;aufs
+  └ Error: &lt;span class="o"&gt;(&lt;/span&gt;none&lt;span class="o"&gt;)&lt;/span&gt;
+  └ UpdatedAt: 2016-04-15T11:53:04Z
+Kernel Version: 3.18.21-2-rackos
+Operating System: linux
+CPUs: 12
+Total Memory: 4.2 GiB
+Name: 2ede2591-1ec0-4c2b-a3ef-59697ff02ba7-n1
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;可以看到cluster中结点的具体信息。&lt;/p&gt;
+&lt;h3&gt;通过Docker安装shadowsocks&lt;/h3&gt;
+&lt;p&gt;通过Docker安装shadowsocks非常方便，只需要一个命令：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;docker run -d --name shadowsocks -p 12306:12306 oddrationale/docker-shadowsocks -s 0.0.0.0 -p &lt;span class="m"&gt;12306&lt;/span&gt; -k yourpassword -m aes-256-cfb
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;-p是设置shadowsocks的服务器端口号；-k后面设置自己的密码。&lt;/p&gt;
+&lt;p&gt;使用&lt;code&gt;docker ps&lt;/code&gt;查看是否安装成功：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;➜  docker ps                                                                                                                        
+CONTAINER ID        IMAGE                             COMMAND                CREATED                  STATUS              PORTS                            NAMES
+1016c8cc0ce4        oddrationale/docker-shadowsocks   &lt;span class="s2"&gt;&amp;quot;/usr/local/bin/ssse   Less than a second ago   Up 22 seconds       104.130.22.24:12306-&amp;gt;12306/tcp   2ede2591-1ec0-4c2b-a3ef-59697ff02ba7-n1/shadowsocks   &lt;/span&gt;
+&lt;span class="s2"&gt;b47dd901c3dd        carina/consul                     &amp;quot;&lt;/span&gt;/bin/consul agent -   &lt;span class="m"&gt;5&lt;/span&gt; hours ago              Up &lt;span class="m"&gt;5&lt;/span&gt; hours                                           2ede2591-1ec0-4c2b-a3ef-59697ff02ba7-n1/carina-svcd  
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;可以看到shadowsocks服务已经在运行了。&lt;/p&gt;
+&lt;p&gt;使用port命令，可以查看shadowsocks服务的IP和端口：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;➜  docker port shadowsocks
+12306/tcp -&amp;gt; 104.130.22.24:12306
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;记住shadowsocks的IP和端口号，待会儿需要填入shadowsocks代理软件中。&lt;/p&gt;
+&lt;h3&gt;使用shadowsocks科学上网&lt;/h3&gt;
+&lt;p&gt;（1）下载Windows系统的&lt;a href="http://pan.baidu.com/s/1c05CZT2"&gt;Shadowsocks客户端&lt;/a&gt;，解压到任意目录，运行其中的shadowsocks.exe。&lt;/p&gt;
+&lt;p&gt;（2）添加shadowsocks的服务器IP和端口号、密码。点确定即可。&lt;/p&gt;
+&lt;p&gt;&lt;img alt="shadowsocks" src="http://ww2.sinaimg.cn/large/9f9f764egw1f2ygf33os1j207c07vaai.jpg" /&gt;&lt;/p&gt;
+&lt;p&gt;（3）右键点击任务栏中shadowsocks.exe的图标，勾选“启用系统代理”。&lt;/p&gt;
+&lt;p&gt;（4）打开任意浏览器，即可自由上网。&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h3&gt;References&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href="http://www.rendoumi.com/wan-quan-mian-fei-de-shadowsocksfu-wu-qi/"&gt;不花一分钱，搭建一个完全免费的Shadowsocks服务器&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://liujin.me/blog/2015/05/27/Docker-DigitalOcean-Shadowsocks-5-%E5%88%86%E9%92%9F%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/"&gt;Docker + DigitalOcean + Shadowsocks 5分钟科学上网&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://leohxj.gitbooks.io/a-programmer-prepares/content/effciency/break-through-intranet.html"&gt;程序员的自我修养&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://www.ishadowsocks.net/"&gt;shadowsocks客户端&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;</summary><category term="Docker"></category><category term="教程"></category></entry><entry><title>CentOS 升级 gcc 和 g++ 的方法</title><link href="http://www.wengweitao.com/centos-sheng-ji-gcc-he-g-de-fang-fa.html" rel="alternate"></link><updated>2015-05-12T19:02:00+08:00</updated><author><name>wwt</name></author><id>tag:www.wengweitao.com,2015-05-12:centos-sheng-ji-gcc-he-g-de-fang-fa.html</id><summary type="html">&lt;p&gt;CentOS 系统自带的 gcc 或者 g++ 的版本是：g++ (GCC) 4.4.6. GCC 版本太旧，导致了很多使用上的不便，如：无法使用g++ -std=c++11 命令来编译 C++11、无法使用Vim的很多插件（YouCompleteMe等）。因此，有必要对它进行升级。&lt;/p&gt;
 &lt;p&gt;对 GCC 升级无法直接使用：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;yum update gcc
 &lt;/pre&gt;&lt;/div&gt;
