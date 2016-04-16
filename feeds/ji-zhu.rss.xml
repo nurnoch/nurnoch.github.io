@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>wwt's blog</title><link href="http://www.wengweitao.com/" rel="alternate"></link><link href="http://www.wengweitao.com/feeds/ji-zhu.rss.xml" rel="self"></link><id>http://www.wengweitao.com/</id><updated>2016-04-16T12:06:00+08:00</updated><entry><title>Docker学习</title><link href="http://www.wengweitao.com/dockerxue-xi.html" rel="alternate"></link><updated>2016-04-16T12:06:00+08:00</updated><author><name>wwt</name></author><id>tag:www.wengweitao.com,2016-04-16:dockerxue-xi.html</id><summary type="html">&lt;blockquote&gt;
+&lt;p&gt;Docker是诞生于2013年的一个开源项目，在开源之后就受到了广泛的关注和讨论。3年时间过去了，Docker已经成为了广大程序员耳熟能详的一个工具，在业界也得到了非常广泛的应用。我也一直对Docker十分感兴趣，便抽空了解了下Docker。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3&gt;简介&lt;/h3&gt;
+&lt;p&gt;了解Docker的人都知道它的概念与集装箱类似，但是Docker英文翻译过来的名字是“码头工人”。那么问题来了：Docker到底是码头工人还是集装箱呢？这就需要先简单的介绍一下集装箱的历史了。在1956年集装箱出现之前，货物的运输是一件成本非常高的事情，物流系统非常的零散和低效。假设内陆的地方想将大米出口到国外，那么首先需要工人将大米装到汽车上，然后通过汽车运输到沿海的港口，港口上的码头工人需要将大米从汽车转到轮船之上。可以看出这个过程中需要大量的人力作为货物的中转，不同运输工具之间的转换也存在着消耗，成本很高而且效率极低。于是，就出现了集装箱这个改变世界的箱子。集装箱是一个标准化的箱子，规定了标准的尺寸，使得不同的货物都可以装在集装箱中，无论是在公路或者海洋等各种运输场景中，集装箱都可以不用转变形态直接运输，中间的转运工作可以通过相同的搬运机械自动化运作。而且，集装箱也为不同的货物之间实现了隔离和保护，使得不同货物之间不会相互影响，也避免了外部环境对货物的影响。随着集装箱的出现，大大提高了运输的效率，使得码头工人这个职业基本消失。可以说，集装箱是人类现代社会最重要的发明之一，没有集装箱就没有经济的全球化。&lt;strong&gt;Docker就是软件世界的集装箱化&lt;/strong&gt;。Docker允许开发人员将一个应用及其所有的依赖装到一个标准化的单元，这保证了不管它所运行的环境如何，它总是可以相同的运行。&lt;/p&gt;
+&lt;p&gt;&lt;img alt="logo" src="http://ww4.sinaimg.cn/large/9f9f764egw1f2ycqndgtqj208301ygln.jpg" /&gt;&lt;/p&gt;
+&lt;p&gt;Docker是使用Go语言实现的一个开源项目，目标是&lt;strong&gt;实现轻量级的操作系统虚拟化解决方案&lt;/strong&gt;，是在Linux容器（LXC）的基础上进行封装，让用户不必操心容器的管理细节，使得用户操作Docker容器就像操作一个快速轻量级的虚拟机一样简单。Docker提供了一套集成的工具，使得开发人员可以在任何地方构建、传输和运行应用。Docker提供的这种CaaS（Docker Container as a Service）服务具有以下几个优点：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;灵活性：开发人员可以自由的定义环境，更加容易和快速的创建和部署应用；&lt;/li&gt;
+&lt;li&gt;可控制性：开发人员可以控制从基础设施到应用层面的所有代码，并且提供了对IT运维操作环境的标准化、安全和扩展。&lt;/li&gt;
+&lt;li&gt;可移植性：开发人员不定担心开发和生产环境的差异，使得容器可以运行于所有主流的Linux发行版和Windows操作系统中。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;从实现的功能上看，Docker与虚拟机有着相似的地方，但是Docker更加高效。虚拟机中每一个封装的应用都包括完整的guest操作系统，所以大小很可能有几十GB大；而Docker包括应用和其所有的依赖，但是与其他容器共享操作系统内核。他们作为独立的进程在宿主操作系统的用户空间中运行。并且不会限制于某些特定的设施，可以运行于任何计算机上。下图展现了虚拟机与Docker的区别。&lt;/p&gt;
+&lt;p&gt;&lt;img alt="虚拟机与Docker" src="http://ww1.sinaimg.cn/large/9f9f764egw1f2ycodfhlwj20or0eeacy.jpg" /&gt;&lt;/p&gt;
+&lt;h3&gt;安装Docker&lt;/h3&gt;
+&lt;p&gt;Docker可以在Linux、Mac OSX以及Windows上进行安装。本文以Linux系统的Cent OS发行版为例进行说明。在Cent OS中安装Docker可以直接使用yum包管理工具进行安装。&lt;/p&gt;
+&lt;p&gt;（1）首先，确保当前的yum软件源是最新的：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo yum update
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;（2）增加Docker的yum软件源：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo tee /etc/yum.repos.d/docker.repo &lt;span class="s"&gt;&amp;lt;&amp;lt;-&amp;#39;EOF&amp;#39;&lt;/span&gt;
+&lt;span class="s"&gt;[dockerrepo]&lt;/span&gt;
+&lt;span class="s"&gt;name=Docker Repository&lt;/span&gt;
+&lt;span class="s"&gt;baseurl=https://yum.dockerproject.org/repo/main/centos/$releasever/&lt;/span&gt;
+&lt;span class="s"&gt;enabled=1&lt;/span&gt;
+&lt;span class="s"&gt;gpgcheck=1&lt;/span&gt;
+&lt;span class="s"&gt;gpgkey=https://yum.dockerproject.org/gpg&lt;/span&gt;
+&lt;span class="s"&gt;EOF&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;（3）使用yum install安装Docker：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo yum install docker-engine
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;（4）查看是否安装成功：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;➜  docker docker --version
+Docker version 1.7.1, build 786b29d
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;运行一个官方示例，检查Docker是否能正常运行：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;➜  docker docker run hello-world
+Hello from Docker.
+This message shows that your installation appears to be working correctly.
+To generate this message, Docker took the following steps:
+ 1. The Docker client contacted the Docker daemon.
+ 2. The Docker daemon pulled the &lt;span class="s2"&gt;&amp;quot;hello-world&amp;quot;&lt;/span&gt; image from the Docker Hub.
+ 3. The Docker daemon created a new container from that image which runs the
+    executable that produces the output you are currently reading.
+ 4. The Docker daemon streamed that output to the Docker client, which sent it
+    to your terminal.
+To try something more ambitious, you can run an Ubuntu container with:
+ $ docker run -it ubuntu bash
+Share images, automate workflows, and more with a free Docker Hub account:
+ https://hub.docker.com
+For more examples and ideas, visit:
+ https://docs.docker.com/userguide/
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;容器和镜像的概念&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;容器（container）&lt;/strong&gt;：容器可以看成一个精简的Linux操作系统，利用容器来运行应用。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;镜像（image）&lt;/strong&gt;：镜像是可以载入到容器中的软件，一个镜像可以是一个非常简单的应用也可以是复杂的应用，这取决于你如何构建它。例如上面例子中的&lt;code&gt;hello-world&lt;/code&gt;就是一个镜像。&lt;/p&gt;
+&lt;p&gt;当我们运行&lt;code&gt;docker docker run hello-world&lt;/code&gt;，Docker引擎会完成以下几个过程：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;检查你是否拥有hello-world软件镜像&lt;/li&gt;
+&lt;li&gt;从Docker Hub（一个Docker镜像仓库）下载镜像&lt;/li&gt;
+&lt;li&gt;将镜像加载到容器中并且运行它&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;运行镜像&lt;/h3&gt;
+&lt;p&gt;每个人都可以创建各种各样的Docker镜像，并且发布在Docker Hub上。我们可以通过Docker Hub找到这些镜像。&lt;/p&gt;
+&lt;p&gt;（1）寻找whalesay镜像&lt;/p&gt;
+&lt;p&gt;whalesay是一个从cowsay改变得到的一个应用，将原本牛的图案改成了Docker的logo中的鲸。打开Docker Hub：https://hub.docker.com/，在搜索框中输入&lt;code&gt;whalesay&lt;/code&gt;搜索该镜像，找到&lt;code&gt;docker/whalesay&lt;/code&gt;后点击进去，可以看到关于这个镜像的详细信息。&lt;/p&gt;
+&lt;p&gt;（2）运行whalesay镜像&lt;/p&gt;
+&lt;p&gt;可以使用&lt;code&gt;docker run&lt;/code&gt;命令运行该镜像：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;docker run docker/whalesay cowsay boo
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;效果如下所示：&lt;/p&gt;
+&lt;p&gt;&lt;img alt="whalesay" src="http://ww3.sinaimg.cn/large/9f9f764egw1f2ydebuahjj20d707aaae.jpg" /&gt;&lt;/p&gt;
+&lt;p&gt;此时，可以运行&lt;code&gt;docker images&lt;/code&gt;可以查看到whalesay镜像已经下载到本地。&lt;/p&gt;
+&lt;h3&gt;创建镜像&lt;/h3&gt;
+&lt;p&gt;（1）写一个Dockerfile&lt;/p&gt;
+&lt;p&gt;首先，需要创建一个Dockerfile，包含了如何创建镜像的一些指令。&lt;/p&gt;
+&lt;p&gt;新建一个目录，这个目录就是构建镜像的上下文，包括了创建镜像所需要的一切：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;mkdir myFirstDocker
+&lt;span class="nb"&gt;cd&lt;/span&gt; myFirstDocker
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;然后创建Dockerfile文件，然后输入以下内容：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;FROM docker/whalesay:latest
+RUN apt-get -y update &lt;span class="o"&gt;&amp;amp;&amp;amp;&lt;/span&gt; apt-get install -y fortunes
+CMD /usr/games/fortune -a &lt;span class="p"&gt;|&lt;/span&gt; cowsay
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;FROM&lt;/code&gt;告诉Docker镜像是基于哪个镜像的。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;RUN&lt;/code&gt;在创建中运行apt-get安装fortunes应用，这个应用可以随机产生一个名人名言谚语等。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;CMD&lt;/code&gt;一旦镜像拥有了需要的应用之后，只需要将镜像加载好后运行应用。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;#&lt;/code&gt;注释&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;（2）从Dockerfile构建一个镜像&lt;/p&gt;
+&lt;p&gt;编写好Dockerfile后，就可以使用&lt;code&gt;docker build&lt;/code&gt;命令生成一个镜像：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ docker build -t docker-whale .
+Sending build context to Docker daemon 158.8 MB
+...snip...
+Removing intermediate container a8e6faa88df3
+Successfully built 7d9495d03763
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;（3）了解构建镜像的过程&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;docker build -t docker-whale .&lt;/code&gt;命令，从当前目录读取Dockerfile，并且构建了一个称为docker-whale的镜像。包含了以下几个过程：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Docker检查确保所有构建需要的东西都满足&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Docker载入whalesay镜像&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;更新apt-get包管理器&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;下载fortunes应用&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;完成构建并输出结果&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;（4）运行新构建的docker-whale&lt;/p&gt;
+&lt;p&gt;首先，可以使用&lt;code&gt;docker images&lt;/code&gt;命令查看新的docker-whale在本地已经存在。然后，运行之：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;➜  myFirstDocker docker run docker-whale
+ ________________________________________ 
+/ The truth you speak has no past and no &lt;span class="se"&gt;\&lt;/span&gt;
+&lt;span class="p"&gt;|&lt;/span&gt; future. It is, and that&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;s all it needs &lt;span class="p"&gt;|&lt;/span&gt;
+&lt;span class="se"&gt;\ &lt;/span&gt;to be.                                 /
+ ---------------------------------------- 
+    &lt;span class="se"&gt;\&lt;/span&gt;
+     &lt;span class="se"&gt;\&lt;/span&gt;
+      &lt;span class="se"&gt;\ &lt;/span&gt;    
+                    &lt;span class="c1"&gt;##        .            &lt;/span&gt;
+              &lt;span class="c1"&gt;## ## ##       ==            &lt;/span&gt;
+           &lt;span class="c1"&gt;## ## ## ##      ===            &lt;/span&gt;
+       /&lt;span class="s2"&gt;&amp;quot;&amp;quot;&amp;quot;&amp;quot;&amp;quot;&amp;quot;&amp;quot;&amp;quot;&amp;quot;&amp;quot;&amp;quot;&amp;quot;&amp;quot;&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;___/ &lt;span class="o"&gt;===&lt;/span&gt;        
+  ~~~ &lt;span class="o"&gt;{&lt;/span&gt;~~ ~~~~ ~~~ ~~~~ ~~ ~ /  &lt;span class="o"&gt;===&lt;/span&gt;- ~~~   
+       &lt;span class="se"&gt;\_&lt;/span&gt;_____ o          __/            
+        &lt;span class="se"&gt;\ &lt;/span&gt;   &lt;span class="se"&gt;\ &lt;/span&gt;       __/             
+          &lt;span class="se"&gt;\_&lt;/span&gt;___&lt;span class="se"&gt;\_&lt;/span&gt;_____/  
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;使用Docker Hub&lt;/h3&gt;
+&lt;p&gt;Docker Hub有点像GitHub上面有很多用户创建的各种镜像，可以使用push和pull等命令发布和使用这些镜像。&lt;/p&gt;
+&lt;p&gt;（1）注册账号&lt;/p&gt;
+&lt;p&gt;首先在Docker Hub上创建一个账号。&lt;/p&gt;
+&lt;p&gt;（2）新建仓库&lt;/p&gt;
+&lt;p&gt;新建一个仓库，用来发布刚刚创建的docker-whale&lt;/p&gt;
+&lt;p&gt;（3）修改镜像标签&lt;/p&gt;
+&lt;p&gt;先使用&lt;code&gt;docker images&lt;/code&gt;查看镜像的repo名字和IMAGE ID。&lt;/p&gt;
+&lt;p&gt;&lt;img alt="images" src="http://ww4.sinaimg.cn/large/9f9f764egw1f2ydwbklvvj20mg03m0u0.jpg" /&gt;&lt;/p&gt;
+&lt;p&gt;repo名字为docker-whale不包括命名空间，需要根据你的Docker Hub的账号包括命名空间如：&lt;code&gt;nurnoch/docker-whale&lt;/code&gt;。&lt;/p&gt;
+&lt;p&gt;然后使用docker tag命令修改docker-whale镜像的标签：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;docker tag sha256:3ae87 nurnoch/docker-whale:latest
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;再次使用docker images就可以看到新的一个tagged image了。&lt;/p&gt;
+&lt;p&gt;（4）上传镜像&lt;/p&gt;
+&lt;p&gt;登陆到Docker Hub：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;docker login --username&lt;span class="o"&gt;=&lt;/span&gt;nurnoch --email&lt;span class="o"&gt;=&lt;/span&gt;wengweitao@foxmail.com
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;使用docker push上传镜像到仓库：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;docker push nurnoch/docker-whale
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;（5）运行上传的镜像&lt;/p&gt;
+&lt;p&gt;先将本地的映像删除：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;docker rmi -f sha256:3ae87
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;可以跟IMAGE ID或者镜像名。&lt;/p&gt;
+&lt;p&gt;然后运行：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;docker run nurnoch/docker-whale
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;以上就是Docker的简单介绍。&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h3&gt;References&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href="https://docs.docker.com/"&gt;Docker官网&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://book.douban.com/subject/2354988/"&gt;集装箱改变世界&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://ipn.li/kernelpanic/8/"&gt;内和恐慌#8：「集装箱化」与运维管理&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://v.youku.com/v_show/id_XNzUyMzA4MTE2.html?from=y1.6-91.3.1.5bdbf57c947311e3b8b7"&gt;罗辑思维：改变世界的箱子 84  &lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.gitbook.com/book/yeasy/docker_practice"&gt;Docker —— 从入门到实践&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;</summary><category term="Docker"></category><category term="教程"></category></entry></feed>

@@ -61,6 +61,35 @@
         <div class="eleven columns">
                  <ol id="post-list">
                         <li><article class="hentry">
+                                <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/zhi-chi-xiang-liang-ji-xian-xing-zhi-chi-xiang-liang-ji.html" rel="bookmark" title="Permalink to 支持向量机——线性支持向量机">支持向量机——线性支持向量机</a></h2> </header>
+                                <footer class="post-info">
+                                    <abbr class="published" title="2014-08-03T14:54:00+08:00"> 日 03 八月 2014 </abbr>
+                                    <address class="vcard author">By 
+                                    <a class="url fn" href="http://www.wengweitao.com/author/wwt.html"> wwt</a>
+                                    </address>
+                                </footer><!-- /.post-info -->
+                                <div class="entry-content"> <blockquote>
+<p>对于理想情况下线性可分的问题，可以使用上文介绍的线性可分支持向量机（硬间隔最大化）完美解决。但是，实际情况中，训练数据往往是线性不可分的，即在样本中存在噪声或特异点。此时，可以使用本文中介绍的更一般的学习算法——线性支持向量机（软间隔最大化）。</p>
+</blockquote>
+<h2>线性支持向量机</h2>
+<p>怎样才能把<a href="http://www.wengweitao.com/zhi-chi-xiang-liang-ji-xian-xing-ke-fen-zhi-chi-xiang-liang-ji.html">上文中介绍的线性可分支持向量机</a>扩展到线性不可分的数据集中呢？这就需要改变硬间隔最大化，使其成为软间隔最大化。</p>
+<p>通常情况下，数据集中存在一些特异点（outlier），将这些特异点去除后，剩下大部分样本点组成的集合是线性可分的。那些线性不可分的样本点<span class="math">\((x_i, y_i)\)</span>意味着不能满足函数间隔大于等于1的约束条件（即<span class="math">\(y_i(w.x_i + b)-1 \geq 0\)</span>）。为了解决这个问题，可以为每个样本点引入一个松弛变量<span class="math">\(\xi_i \geq 0\)</span>，使函数间隔加上松弛变量后大于等于1.同时对每个松弛变量<span class="math">\(\xi_i\)</span>，支付一个代价<span class="math">\(\xi_i\)</span>。这样线性不可分的线性支持向量机的学习问题变成如下的凸二次规划问题：
+</p>
+<div class="math">$$min_{w,b,\xi ...</div> </div><!-- /.entry-content -->
+
+                                <div class="medium primary btn"><a href="http://www.wengweitao.com/zhi-chi-xiang-liang-ji-xian-xing-zhi-chi-xiang-liang-ji.html" rel="bookmark" title="Permalink to 支持向量机——线性支持向量机">Read more <i class="icon-arrow-right"></i></a></div>
+
+
+
+                                <div class="row tag-row">
+                                        <span>Tagged as : </span>
+                                            <a class="danger label" href="http://www.wengweitao.com/tag/du-shu-bi-ji.html">读书笔记</a>
+                                </div>
+
+
+
+                        </article></li>
+                        <li><article class="hentry">
                                 <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/zhi-chi-xiang-liang-ji-xian-xing-ke-fen-zhi-chi-xiang-liang-ji.html" rel="bookmark" title="Permalink to 支持向量机——线性可分支持向量机">支持向量机——线性可分支持向量机</a></h2> </header>
                                 <footer class="post-info">
                                     <abbr class="published" title="2014-08-02T20:32:00+08:00"> 六 02 八月 2014 </abbr>
@@ -197,41 +226,6 @@
 
 
                         </article></li>
-                        <li><article class="hentry">
-                                <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/jue-ce-shu.html" rel="bookmark" title="Permalink to 决策树">决策树</a></h2> </header>
-                                <footer class="post-info">
-                                    <abbr class="published" title="2014-07-29T10:00:00+08:00"> 二 29 七月 2014 </abbr>
-                                    <address class="vcard author">By 
-                                    <a class="url fn" href="http://www.wengweitao.com/author/wwt.html"> wwt</a>
-                                    </address>
-                                </footer><!-- /.post-info -->
-                                <div class="entry-content"> <blockquote>
-<p>决策树（decision tree）是一种基本的分类与回归方法。它可以认为是if-then规则的集合，也可以认为是定义在特征空间与类空间上的条件概率分布。其主要优点是模型可读性好，分类速度快。决策树的学习通常包含3个部分：特征选择、决策树生成和决策树的修剪。学习时，利用训练数据，根据损失函数最小化的原则建立决策树模型；预测时，对新的数据，利用决策树模型进行分类。常用的算法有ID3、C4.5和CART。</p>
-</blockquote>
-<h2>决策树模型与学习</h2>
-<h3>决策树模型</h3>
-<p><strong>决策树</strong></p>
-<p>分类决策树模型是一种描述对实例进行分类的树形结构。决策树由结点和有向边组成。结点有两种类型：内部结点和叶结点。<strong>内部结点</strong>表示一个特征或者属性，<strong>叶节点</strong>表示一个类。</p>
-<p>用决策树分类，从根结点开始，对实例的某一特征进行测试，根据测试结果，将实例分配到其子结点；这时，每一个子结点对应着该特征的一个取值。如此递归的对实例进行测试并分配，直至到达叶节点，最后将实例分配到叶节点的类中。</p>
-<h3>决策树与if-then规则</h3>
-<p>互斥且完备</p>
-<h3>决策树与条件概率分布</h3>
-<p>决策树还可以表示为<strong>给定特征条件下类的条件概率分布</strong>。各叶节点上的条件概率往往偏向某一个类，决策树分类时将该结点的实例强行分到条件概率大的那一类去。</p>
-<h3>决策树学习</h3>
-<p>学习的目标 ...</p> </div><!-- /.entry-content -->
-
-                                <div class="medium primary btn"><a href="http://www.wengweitao.com/jue-ce-shu.html" rel="bookmark" title="Permalink to 决策树">Read more <i class="icon-arrow-right"></i></a></div>
-
-
-
-                                <div class="row tag-row">
-                                        <span>Tagged as : </span>
-                                            <a class="danger label" href="http://www.wengweitao.com/tag/du-shu-bi-ji.html">读书笔记</a>
-                                </div>
-
-
-
-                        </article></li>
                 </ol><!-- /#posts-list -->
 
         </div><!-- /.eleven.columns -->
@@ -271,6 +265,7 @@
 		<li><a href="http://www.wengweitao.com/category/du-shu-bi-ji.html">读书笔记</a></li>
 		<li><a href="http://www.wengweitao.com/category/gong-ju.html">工具</a></li>
 		<li><a href="http://www.wengweitao.com/category/ji-qi-xue-xi.html">机器学习</a></li>
+		<li><a href="http://www.wengweitao.com/category/ji-zhu.html">技术</a></li>
 		<li><a href="http://www.wengweitao.com/category/python.html">Python</a></li>
 		<li><a href="http://www.wengweitao.com/category/sheng-huo.html">生活</a></li>
 		<li><a href="http://www.wengweitao.com/category/suan-fa-yu-shu-ju-jie-gou.html">算法与数据结构</a></li>

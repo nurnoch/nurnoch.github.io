@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+
+        <title>Docker学习</title>
+        <meta charset="utf-8" />
+        <link href="http://www.wengweitao.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="wwt's blog Full Atom Feed" />
+        <link href="http://www.wengweitao.com/feeds/all.rss.xml" type="application/rss+xml" rel="alternate" title="wwt's blog Full RSS Feed" />
+        <link href="http://www.wengweitao.com/feeds/ji-zhu.rss.xml" type="application/atom+xml" rel="alternate" title="wwt's blog Categories Atom Feed" />
+
+
+        <!-- Mobile viewport optimized: j.mp/bplateviewport -->
+        <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1">
+        <meta name="google-site-verification" content="pEViDEEJCicDD__DfnOAQ7xKtjtxJhVDoGDAOahOWy0" />
+
+        <meta name="sogou_site_verification" content="ia8yXdZS0p"/>
+
+        <link rel="stylesheet" type="text/css" href="http://www.wengweitao.com/theme/gumby.css" />
+        <link rel="stylesheet" type="text/css" href="http://www.wengweitao.com/theme/style.css" />
+        <link rel="stylesheet" type="text/css" href="http://www.wengweitao.com/theme/pygment.css" />
+
+
+        <script src="http://www.wengweitao.com/theme/js/libs/modernizr-2.6.2.min.js"></script>
+
+
+
+
+</head>
+
+<body id="index" class="home">
+
+
+    <div class="container">
+
+        <div class="row">
+
+          <header id="banner" class="body">
+                  <h1><a href="http://www.wengweitao.com/">wwt's blog <strong></strong></a></h1>
+          </header><!-- /#banner -->
+
+            <div id="navigation" class="navbar row">
+              <a href="#" gumby-trigger="#navigation &gt; ul" class="toggle"><i class="icon-menu"></i></a>
+             
+              <ul class="columns">
+                <li><a href="http://www.wengweitao.com/">首页</a></li>
+
+                <li><a href="/categories.html">分类</a></li>
+                <li><a href="/tags.html">标签</a></li>
+                <li><a href="/archives.html">归档</a></li>
+                <li><a href="/pages/about-me.html">关于我</a></li>
+
+              </ul>
+            </div>
+
+<section id="content" class="body">
+
+   <div class="row">
+        <div class="eleven columns">
+
+
+            <header>
+              <h2 class="entry-title">
+                <a href="http://www.wengweitao.com/dockerxue-xi.html" rel="bookmark"
+                   title="Permalink to Docker学习">Docker学习</a></h2>
+           
+
+            </header>
+            <footer class="post-info">
+              <abbr class="published" title="2016-04-16T12:06:00+08:00">
+                六 16 四月 2016
+              </abbr>
+              <address class="vcard author">By 
+                <a class="url fn" href="http://www.wengweitao.com/author/wwt.html"> wwt</a>
+              </address>
+            </footer><!-- /.post-info -->
+            <div class="entry-content">
+              <blockquote>
+<p>Docker是诞生于2013年的一个开源项目，在开源之后就受到了广泛的关注和讨论。3年时间过去了，Docker已经成为了广大程序员耳熟能详的一个工具，在业界也得到了非常广泛的应用。我也一直对Docker十分感兴趣，便抽空了解了下Docker。</p>
+</blockquote>
+<h3>简介</h3>
+<p>了解Docker的人都知道它的概念与集装箱类似，但是Docker英文翻译过来的名字是“码头工人”。那么问题来了：Docker到底是码头工人还是集装箱呢？这就需要先简单的介绍一下集装箱的历史了。在1956年集装箱出现之前，货物的运输是一件成本非常高的事情，物流系统非常的零散和低效。假设内陆的地方想将大米出口到国外，那么首先需要工人将大米装到汽车上，然后通过汽车运输到沿海的港口，港口上的码头工人需要将大米从汽车转到轮船之上。可以看出这个过程中需要大量的人力作为货物的中转，不同运输工具之间的转换也存在着消耗，成本很高而且效率极低。于是，就出现了集装箱这个改变世界的箱子。集装箱是一个标准化的箱子，规定了标准的尺寸，使得不同的货物都可以装在集装箱中，无论是在公路或者海洋等各种运输场景中，集装箱都可以不用转变形态直接运输，中间的转运工作可以通过相同的搬运机械自动化运作。而且，集装箱也为不同的货物之间实现了隔离和保护，使得不同货物之间不会相互影响，也避免了外部环境对货物的影响。随着集装箱的出现，大大提高了运输的效率，使得码头工人这个职业基本消失。可以说，集装箱是人类现代社会最重要的发明之一，没有集装箱就没有经济的全球化。<strong>Docker就是软件世界的集装箱化</strong>。Docker允许开发人员将一个应用及其所有的依赖装到一个标准化的单元，这保证了不管它所运行的环境如何，它总是可以相同的运行。</p>
+<p><img alt="logo" src="http://ww4.sinaimg.cn/large/9f9f764egw1f2ycqndgtqj208301ygln.jpg" /></p>
+<p>Docker是使用Go语言实现的一个开源项目，目标是<strong>实现轻量级的操作系统虚拟化解决方案</strong>，是在Linux容器（LXC）的基础上进行封装，让用户不必操心容器的管理细节，使得用户操作Docker容器就像操作一个快速轻量级的虚拟机一样简单。Docker提供了一套集成的工具，使得开发人员可以在任何地方构建、传输和运行应用。Docker提供的这种CaaS（Docker Container as a Service）服务具有以下几个优点：</p>
+<ul>
+<li>灵活性：开发人员可以自由的定义环境，更加容易和快速的创建和部署应用；</li>
+<li>可控制性：开发人员可以控制从基础设施到应用层面的所有代码，并且提供了对IT运维操作环境的标准化、安全和扩展。</li>
+<li>可移植性：开发人员不定担心开发和生产环境的差异，使得容器可以运行于所有主流的Linux发行版和Windows操作系统中。</li>
+</ul>
+<p>从实现的功能上看，Docker与虚拟机有着相似的地方，但是Docker更加高效。虚拟机中每一个封装的应用都包括完整的guest操作系统，所以大小很可能有几十GB大；而Docker包括应用和其所有的依赖，但是与其他容器共享操作系统内核。他们作为独立的进程在宿主操作系统的用户空间中运行。并且不会限制于某些特定的设施，可以运行于任何计算机上。下图展现了虚拟机与Docker的区别。</p>
+<p><img alt="虚拟机与Docker" src="http://ww1.sinaimg.cn/large/9f9f764egw1f2ycodfhlwj20or0eeacy.jpg" /></p>
+<h3>安装Docker</h3>
+<p>Docker可以在Linux、Mac OSX以及Windows上进行安装。本文以Linux系统的Cent OS发行版为例进行说明。在Cent OS中安装Docker可以直接使用yum包管理工具进行安装。</p>
+<p>（1）首先，确保当前的yum软件源是最新的：</p>
+<div class="highlight"><pre><span></span>sudo yum update
+</pre></div>
+
+
+<p>（2）增加Docker的yum软件源：</p>
+<div class="highlight"><pre><span></span>sudo tee /etc/yum.repos.d/docker.repo <span class="s">&lt;&lt;-&#39;EOF&#39;</span>
+<span class="s">[dockerrepo]</span>
+<span class="s">name=Docker Repository</span>
+<span class="s">baseurl=https://yum.dockerproject.org/repo/main/centos/$releasever/</span>
+<span class="s">enabled=1</span>
+<span class="s">gpgcheck=1</span>
+<span class="s">gpgkey=https://yum.dockerproject.org/gpg</span>
+<span class="s">EOF</span>
+</pre></div>
+
+
+<p>（3）使用yum install安装Docker：</p>
+<div class="highlight"><pre><span></span>sudo yum install docker-engine
+</pre></div>
+
+
+<p>（4）查看是否安装成功：</p>
+<div class="highlight"><pre><span></span>➜  docker docker --version
+Docker version 1.7.1, build 786b29d
+</pre></div>
+
+
+<p>运行一个官方示例，检查Docker是否能正常运行：</p>
+<div class="highlight"><pre><span></span>➜  docker docker run hello-world
+Hello from Docker.
+This message shows that your installation appears to be working correctly.
+To generate this message, Docker took the following steps:
+ 1. The Docker client contacted the Docker daemon.
+ 2. The Docker daemon pulled the <span class="s2">&quot;hello-world&quot;</span> image from the Docker Hub.
+ 3. The Docker daemon created a new container from that image which runs the
+    executable that produces the output you are currently reading.
+ 4. The Docker daemon streamed that output to the Docker client, which sent it
+    to your terminal.
+To try something more ambitious, you can run an Ubuntu container with:
+ $ docker run -it ubuntu bash
+Share images, automate workflows, and more with a free Docker Hub account:
+ https://hub.docker.com
+For more examples and ideas, visit:
+ https://docs.docker.com/userguide/
+</pre></div>
+
+
+<h3>容器和镜像的概念</h3>
+<p><strong>容器（container）</strong>：容器可以看成一个精简的Linux操作系统，利用容器来运行应用。</p>
+<p><strong>镜像（image）</strong>：镜像是可以载入到容器中的软件，一个镜像可以是一个非常简单的应用也可以是复杂的应用，这取决于你如何构建它。例如上面例子中的<code>hello-world</code>就是一个镜像。</p>
+<p>当我们运行<code>docker docker run hello-world</code>，Docker引擎会完成以下几个过程：</p>
+<ul>
+<li>检查你是否拥有hello-world软件镜像</li>
+<li>从Docker Hub（一个Docker镜像仓库）下载镜像</li>
+<li>将镜像加载到容器中并且运行它</li>
+</ul>
+<h3>运行镜像</h3>
+<p>每个人都可以创建各种各样的Docker镜像，并且发布在Docker Hub上。我们可以通过Docker Hub找到这些镜像。</p>
+<p>（1）寻找whalesay镜像</p>
+<p>whalesay是一个从cowsay改变得到的一个应用，将原本牛的图案改成了Docker的logo中的鲸。打开Docker Hub：https://hub.docker.com/，在搜索框中输入<code>whalesay</code>搜索该镜像，找到<code>docker/whalesay</code>后点击进去，可以看到关于这个镜像的详细信息。</p>
+<p>（2）运行whalesay镜像</p>
+<p>可以使用<code>docker run</code>命令运行该镜像：</p>
+<div class="highlight"><pre><span></span>docker run docker/whalesay cowsay boo
+</pre></div>
+
+
+<p>效果如下所示：</p>
+<p><img alt="whalesay" src="http://ww3.sinaimg.cn/large/9f9f764egw1f2ydebuahjj20d707aaae.jpg" /></p>
+<p>此时，可以运行<code>docker images</code>可以查看到whalesay镜像已经下载到本地。</p>
+<h3>创建镜像</h3>
+<p>（1）写一个Dockerfile</p>
+<p>首先，需要创建一个Dockerfile，包含了如何创建镜像的一些指令。</p>
+<p>新建一个目录，这个目录就是构建镜像的上下文，包括了创建镜像所需要的一切：</p>
+<div class="highlight"><pre><span></span>mkdir myFirstDocker
+<span class="nb">cd</span> myFirstDocker
+</pre></div>
+
+
+<p>然后创建Dockerfile文件，然后输入以下内容：</p>
+<div class="highlight"><pre><span></span>FROM docker/whalesay:latest
+RUN apt-get -y update <span class="o">&amp;&amp;</span> apt-get install -y fortunes
+CMD /usr/games/fortune -a <span class="p">|</span> cowsay
+</pre></div>
+
+
+<ul>
+<li><code>FROM</code>告诉Docker镜像是基于哪个镜像的。</li>
+<li><code>RUN</code>在创建中运行apt-get安装fortunes应用，这个应用可以随机产生一个名人名言谚语等。</li>
+<li><code>CMD</code>一旦镜像拥有了需要的应用之后，只需要将镜像加载好后运行应用。</li>
+<li><code>#</code>注释</li>
+</ul>
+<p>（2）从Dockerfile构建一个镜像</p>
+<p>编写好Dockerfile后，就可以使用<code>docker build</code>命令生成一个镜像：</p>
+<div class="highlight"><pre><span></span>$ docker build -t docker-whale .
+Sending build context to Docker daemon 158.8 MB
+...snip...
+Removing intermediate container a8e6faa88df3
+Successfully built 7d9495d03763
+</pre></div>
+
+
+<p>（3）了解构建镜像的过程</p>
+<p><code>docker build -t docker-whale .</code>命令，从当前目录读取Dockerfile，并且构建了一个称为docker-whale的镜像。包含了以下几个过程：</p>
+<ul>
+<li>
+<p>Docker检查确保所有构建需要的东西都满足</p>
+</li>
+<li>
+<p>Docker载入whalesay镜像</p>
+</li>
+<li>
+<p>更新apt-get包管理器</p>
+</li>
+<li>
+<p>下载fortunes应用</p>
+</li>
+<li>
+<p>完成构建并输出结果</p>
+</li>
+</ul>
+<p>（4）运行新构建的docker-whale</p>
+<p>首先，可以使用<code>docker images</code>命令查看新的docker-whale在本地已经存在。然后，运行之：</p>
+<div class="highlight"><pre><span></span>➜  myFirstDocker docker run docker-whale
+ ________________________________________ 
+/ The truth you speak has no past and no <span class="se">\</span>
+<span class="p">|</span> future. It is, and that<span class="err">&#39;</span>s all it needs <span class="p">|</span>
+<span class="se">\ </span>to be.                                 /
+ ---------------------------------------- 
+    <span class="se">\</span>
+     <span class="se">\</span>
+      <span class="se">\ </span>    
+                    <span class="c1">##        .            </span>
+              <span class="c1">## ## ##       ==            </span>
+           <span class="c1">## ## ## ##      ===            </span>
+       /<span class="s2">&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;</span>___/ <span class="o">===</span>        
+  ~~~ <span class="o">{</span>~~ ~~~~ ~~~ ~~~~ ~~ ~ /  <span class="o">===</span>- ~~~   
+       <span class="se">\_</span>_____ o          __/            
+        <span class="se">\ </span>   <span class="se">\ </span>       __/             
+          <span class="se">\_</span>___<span class="se">\_</span>_____/  
+</pre></div>
+
+
+<h3>使用Docker Hub</h3>
+<p>Docker Hub有点像GitHub上面有很多用户创建的各种镜像，可以使用push和pull等命令发布和使用这些镜像。</p>
+<p>（1）注册账号</p>
+<p>首先在Docker Hub上创建一个账号。</p>
+<p>（2）新建仓库</p>
+<p>新建一个仓库，用来发布刚刚创建的docker-whale</p>
+<p>（3）修改镜像标签</p>
+<p>先使用<code>docker images</code>查看镜像的repo名字和IMAGE ID。</p>
+<p><img alt="images" src="http://ww4.sinaimg.cn/large/9f9f764egw1f2ydwbklvvj20mg03m0u0.jpg" /></p>
+<p>repo名字为docker-whale不包括命名空间，需要根据你的Docker Hub的账号包括命名空间如：<code>nurnoch/docker-whale</code>。</p>
+<p>然后使用docker tag命令修改docker-whale镜像的标签：</p>
+<div class="highlight"><pre><span></span>docker tag sha256:3ae87 nurnoch/docker-whale:latest
+</pre></div>
+
+
+<p>再次使用docker images就可以看到新的一个tagged image了。</p>
+<p>（4）上传镜像</p>
+<p>登陆到Docker Hub：</p>
+<div class="highlight"><pre><span></span>docker login --username<span class="o">=</span>nurnoch --email<span class="o">=</span>wengweitao@foxmail.com
+</pre></div>
+
+
+<p>使用docker push上传镜像到仓库：</p>
+<div class="highlight"><pre><span></span>docker push nurnoch/docker-whale
+</pre></div>
+
+
+<p>（5）运行上传的镜像</p>
+<p>先将本地的映像删除：</p>
+<div class="highlight"><pre><span></span>docker rmi -f sha256:3ae87
+</pre></div>
+
+
+<p>可以跟IMAGE ID或者镜像名。</p>
+<p>然后运行：</p>
+<div class="highlight"><pre><span></span>docker run nurnoch/docker-whale
+</pre></div>
+
+
+<p>以上就是Docker的简单介绍。</p>
+<hr />
+<h3>References</h3>
+<ol>
+<li><a href="https://docs.docker.com/">Docker官网</a></li>
+<li><a href="https://book.douban.com/subject/2354988/">集装箱改变世界</a></li>
+<li><a href="https://ipn.li/kernelpanic/8/">内和恐慌#8：「集装箱化」与运维管理</a></li>
+<li><a href="http://v.youku.com/v_show/id_XNzUyMzA4MTE2.html?from=y1.6-91.3.1.5bdbf57c947311e3b8b7">罗辑思维：改变世界的箱子 84  </a></li>
+<li><a href="https://www.gitbook.com/book/yeasy/docker_practice">Docker —— 从入门到实践</a></li>
+</ol>
+            </div><!-- /.entry-content -->
+            <div class="comments">
+              <h3>Comments</h3>
+              <div id="disqus_thread"></div>
+              <script type="text/javascript">
+                var disqus_identifier = "dockerxue-xi.html";
+                (function() {
+                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                dsq.src = 'http://wengwt.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                })();
+              </script>
+            </div>
+
+
+        </div><!-- /.eleven.columns -->
+
+<div class="three columns">
+
+<!--
+<h4>Pages</h4>
+
+ <ul>
+      <li><a href="/categories.html">分类</a></li>
+      <li><a href="/tags.html">标签</a></li>
+      <li><a href="/archives.html">归档</a></li>
+      <li><a href="/pages/about-me.html">关于我</a></li>
+  </ul>
+-->
+
+<aside id="sidebar"><!--Google站内搜索开始-->
+        <div class="search">
+                <!--<h2>站内搜索</h2>-->
+                <form method=get action="http://www.google.com/search">
+                <input type=text name=q>
+                <input type=submit name=btnG value="搜索">
+                <input type=hidden name=ie value=UTF-8>
+                <input type=hidden name=oe value=UTF-8>
+                <input type=hidden name=hl value=zh-CN>
+                <input type=hidden name=domains value="http://www.wengweitao.com">
+                <input type=hidden name=sitesearch value="http://www.wengweitao.com">
+                </form>
+        </div>
+<!--Google站内搜索结束-->
+
+<h4>分类</h4>
+<ul>
+		<li><a href="http://www.wengweitao.com/category/bian-cheng-yu-yan.html">编程语言</a></li>
+		<li><a href="http://www.wengweitao.com/category/csji-chu.html">CS基础</a></li>
+		<li><a href="http://www.wengweitao.com/category/du-shu-bi-ji.html">读书笔记</a></li>
+		<li><a href="http://www.wengweitao.com/category/gong-ju.html">工具</a></li>
+		<li><a href="http://www.wengweitao.com/category/ji-qi-xue-xi.html">机器学习</a></li>
+		<li><a href="http://www.wengweitao.com/category/ji-zhu.html">技术</a></li>
+		<li><a href="http://www.wengweitao.com/category/python.html">Python</a></li>
+		<li><a href="http://www.wengweitao.com/category/sheng-huo.html">生活</a></li>
+		<li><a href="http://www.wengweitao.com/category/suan-fa-yu-shu-ju-jie-gou.html">算法与数据结构</a></li>
+</ul>
+
+<!--
+<h4>标签</h4>
+<ul class="tagcloud">
+</ul>
+-->
+
+
+<nav class="widget">
+  <h4>社交</h4>
+  <ul>
+    <li><a href="http://weibo.com/u/2678027854">新浪微博</a></li>
+    <li><a href="http://www.douban.com/people/wengwt/">豆瓣</a></li>
+    <li><a href="http://www.zhihu.com/people/vita-49">知乎</a></li>
+    <li><a href="https://github.com/nurnoch">Github</a></li>
+    <li><a href="https://www.v2ex.com/member/wwttc">V2EX</a></li>
+  </ul>
+</nav>
+
+<nav class="widget">
+  <h4>友情链接</h4>
+  <ul>
+    <li><a href="http://netlab.pkusz.edu.cn/">互联网信息工程研发中心</a></li>
+    <li><a href="http://www.houcj.net/">houcj's blog</a></li>
+    <li><a href="http://www.rudy-yuan.net/">rundy-yuan's blog</a></li>
+    <li><a href="http://zwyang.me/blog/">zwyanswer's blog</a></li>
+  </ul>
+</nav>
+
+
+</div> </div><!-- /.row -->
+
+
+</section>
+
+       </div><!-- /.row -->
+    </div><!-- /.container -->
+
+
+       <div class="container.nopad bg">
+
+    
+        <footer id="credits" class="row">
+          <div class="seven columns left-center">
+
+                   <address id="about" class="vcard body">
+                    Proudly powered by  <a href="http://getpelican.com/">Pelican</a> and Theme by Gum © 2015 wwt       
+                       <!-- cnzz -->
+                    <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1255354158'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s4.cnzz.com/z_stat.php%3Fid%3D1255354158%26show%3Dpic2' type='text/javascript'%3E%3C/script%3E"));</script>  
+                    </address>
+                   
+          </div>
+
+
+          <div class="seven columns">
+            <div class="row">
+              <ul class="socbtns">
+
+
+
+
+
+              </ul>
+            </div>
+          </div>
+        </footer>
+
+    </div>
+
+
+
+<script type="text/javascript">
+    var disqus_shortname = 'wengwt';
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+  <script src="http://www.wengweitao.com/theme/js/libs/jquery-1.9.1.min.js"></script>
+  <script src="http://www.wengweitao.com/theme/js/libs/gumby.min.js"></script>
+  <script src="http://www.wengweitao.com/theme/js/plugins.js"></script>
+</body>
+</html>
