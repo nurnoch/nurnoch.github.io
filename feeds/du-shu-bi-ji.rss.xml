@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>wwt's blog</title><link href="http://www.wengweitao.com/" rel="alternate"></link><link href="http://www.wengweitao.com/feeds/du-shu-bi-ji.rss.xml" rel="self"></link><id>http://www.wengweitao.com/</id><updated>2015-04-13T23:31:00+08:00</updated><entry><title>编写高质量Python代码（4）——设计模式</title><link href="http://www.wengweitao.com/bian-xie-gao-zhi-liang-pythondai-ma-4-she-ji-mo-shi.html" rel="alternate"></link><updated>2015-04-13T23:31:00+08:00</updated><author><name>wwt</name></author><id>tag:www.wengweitao.com,2015-04-13:bian-xie-gao-zhi-liang-pythondai-ma-4-she-ji-mo-shi.html</id><summary type="html">&lt;blockquote&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>wwt's blog</title><link href="http://www.wengweitao.com/" rel="alternate"></link><link href="http://www.wengweitao.com/feeds/du-shu-bi-ji.rss.xml" rel="self"></link><id>http://www.wengweitao.com/</id><updated>2015-04-13T23:31:00+08:00</updated><entry><title>编写高质量Python代码（4）——设计模式</title><link href="http://www.wengweitao.com/bian-xie-gao-zhi-liang-pythondai-ma-4-she-ji-mo-shi.html" rel="alternate"></link><published>2015-04-13T23:31:00+08:00</published><author><name>wwt</name></author><id>tag:www.wengweitao.com,2015-04-13:bian-xie-gao-zhi-liang-pythondai-ma-4-she-ji-mo-shi.html</id><summary type="html">&lt;blockquote&gt;
 &lt;p&gt;本文将介绍如何写出Pythonic的设计模式代码，让设计模式更好的应用在实际的Python编程当中。&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h3&gt;建议50：利用模块设计实现单例模式&lt;/h3&gt;
@@ -154,7 +154,7 @@
 &lt;hr /&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Read from《&lt;a href="http://book.douban.com/subject/25910544/"&gt;编写高质量代码：改善Python程序的91个建议&lt;/a&gt;》&lt;/p&gt;
-&lt;/blockquote&gt;</summary><category term="Python"></category></entry><entry><title>编写高质量Python代码（3）——库</title><link href="http://www.wengweitao.com/bian-xie-gao-zhi-liang-pythondai-ma-3-ku.html" rel="alternate"></link><updated>2015-04-08T22:58:00+08:00</updated><author><name>wwt</name></author><id>tag:www.wengweitao.com,2015-04-08:bian-xie-gao-zhi-liang-pythondai-ma-3-ku.html</id><summary type="html">&lt;blockquote&gt;
+&lt;/blockquote&gt;</summary><category term="Python"></category></entry><entry><title>编写高质量Python代码（3）——库</title><link href="http://www.wengweitao.com/bian-xie-gao-zhi-liang-pythondai-ma-3-ku.html" rel="alternate"></link><published>2015-04-08T22:58:00+08:00</published><author><name>wwt</name></author><id>tag:www.wengweitao.com,2015-04-08:bian-xie-gao-zhi-liang-pythondai-ma-3-ku.html</id><summary type="html">&lt;blockquote&gt;
 &lt;p&gt;Python具有非常丰富的库，这篇文章介绍了常用库的使用和技巧。&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h3&gt;建议36：掌握字符串的基本用法&lt;/h3&gt;
@@ -853,7 +853,7 @@ threading模块基于thread进行封装，将线程操作对象化，在语言�
 &lt;h2&gt;&lt;img alt="threading_queue" src="./imgs/threading_queue.png" /&gt;&lt;/h2&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Read from《&lt;a href="http://book.douban.com/subject/25910544/"&gt;编写高质量代码：改善Python程序的91个建议&lt;/a&gt;》&lt;/p&gt;
-&lt;/blockquote&gt;</summary><category term="Python"></category></entry><entry><title>编写高质量Python代码（2）</title><link href="http://www.wengweitao.com/bian-xie-gao-zhi-liang-pythondai-ma-2.html" rel="alternate"></link><updated>2015-04-07T22:39:00+08:00</updated><author><name>wwt</name></author><id>tag:www.wengweitao.com,2015-04-07:bian-xie-gao-zhi-liang-pythondai-ma-2.html</id><summary type="html">&lt;blockquote&gt;
+&lt;/blockquote&gt;</summary><category term="Python"></category></entry><entry><title>编写高质量Python代码（2）</title><link href="http://www.wengweitao.com/bian-xie-gao-zhi-liang-pythondai-ma-2.html" rel="alternate"></link><published>2015-04-07T22:39:00+08:00</published><author><name>wwt</name></author><id>tag:www.wengweitao.com,2015-04-07:bian-xie-gao-zhi-liang-pythondai-ma-2.html</id><summary type="html">&lt;blockquote&gt;
 &lt;p&gt;这篇文章基础语法出发讲述Python的使用技巧和注意事项&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h3&gt;建议8： 利用assert语句来发现问题&lt;/h3&gt;
@@ -1114,7 +1114,7 @@ encode(): 编码。将Unicode编码转换为另一种编码。&lt;/p&gt;
 &lt;hr /&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Read from《&lt;a href="http://book.douban.com/subject/25910544/"&gt;编写高质量代码：改善Python程序的91个建议&lt;/a&gt;》&lt;/p&gt;
-&lt;/blockquote&gt;</summary><category term="Python"></category></entry><entry><title>编写高质量Python代码（1）</title><link href="http://www.wengweitao.com/bian-xie-gao-zhi-liang-pythondai-ma-1.html" rel="alternate"></link><updated>2015-04-06T18:42:00+08:00</updated><author><name>wwt</name></author><id>tag:www.wengweitao.com,2015-04-06:bian-xie-gao-zhi-liang-pythondai-ma-1.html</id><summary type="html">&lt;blockquote&gt;
+&lt;/blockquote&gt;</summary><category term="Python"></category></entry><entry><title>编写高质量Python代码（1）</title><link href="http://www.wengweitao.com/bian-xie-gao-zhi-liang-pythondai-ma-1.html" rel="alternate"></link><published>2015-04-06T18:42:00+08:00</published><author><name>wwt</name></author><id>tag:www.wengweitao.com,2015-04-06:bian-xie-gao-zhi-liang-pythondai-ma-1.html</id><summary type="html">&lt;blockquote&gt;
 &lt;p&gt;去年参加了珠海的PyCon大会，幸运地抽中了三本书，其中一本是《编写高质量代码：改善Python程序的91个建议》。本书从多个方面给出了编写高质量Python代码的91个建议，我把每一章的建议都先总结下来，分享给大家。&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h3&gt;建议1： 理解Pythonic概念&lt;/h3&gt;

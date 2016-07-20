@@ -1,47 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>wwt's blog</title><link href="http://www.wengweitao.com/" rel="alternate"></link><link href="http://www.wengweitao.com/feeds/python.rss.xml" rel="self"></link><id>http://www.wengweitao.com/</id><updated>2016-03-01T22:48:00+08:00</updated><entry><title>virtualenv介绍</title><link href="http://www.wengweitao.com/virtualenvjie-shao.html" rel="alternate"></link><updated>2016-03-01T22:48:00+08:00</updated><author><name>wwt</name></author><id>tag:www.wengweitao.com,2016-03-01:virtualenvjie-shao.html</id><summary type="html">&lt;p&gt;virtualenv是一个用来创建独立Python环境的工具。&lt;/p&gt;
-&lt;h2&gt;什么时候会用到virtualenv？&lt;/h2&gt;
-&lt;ol&gt;
-&lt;li&gt;
-&lt;p&gt;假设系统中的两个应用，其中A应用对库LibFoo的版本要求为1，而B应用对同一个库LibFoo的版本要求为2，两个应用对同一个库的要求想冲突了，而系统中库默认都安装到&lt;code&gt;/usr/lib/python2.7/site-packages&lt;/code&gt;，那么如何能够同时使用这两个应用呢？&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;你的用户权限不够，使得无法将包安装到&lt;code&gt;site-packages&lt;/code&gt;目录&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;需要使用一个应用，并且与系统其它应用相独立。&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;如果你遇到以上的问题，那么virtualenv会对你有帮助。virtualenv可以创建一个环境，拥有着自己的安装目录，而不会与系统的共享库或者其它virtualenv环境相干扰。&lt;/p&gt;
-&lt;h2&gt;如何安装virtualenv？&lt;/h2&gt;
-&lt;p&gt;如果系统上已经安装了pip：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;sudo&lt;span class="o"&gt;]&lt;/span&gt; pip install virtualenv
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;h2&gt;如何使用virtualenv？&lt;/h2&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nb"&gt;cd&lt;/span&gt; my_project_folder
-
-virtual ENV
-
-&lt;span class="nb"&gt;source&lt;/span&gt; bin/activate
-
-deactivate
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;以上就是virtualenv的基本使用过程。&lt;/p&gt;
-&lt;h3&gt;创建一个虚拟环境&lt;/h3&gt;
-&lt;p&gt;首先，&lt;code&gt;virtual ENV&lt;/code&gt;会在当前目录创建名为ENV的虚拟环境，此时在当前目录会自动生成三个目录：bin, include和lib。默认情况下创建的虚拟环境会依赖于系统中的site-packages，即系统中已经安装好的库在虚拟环境中仍然可以使用，如果想去除依赖，那么可以：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;virtualenv --no-site-packages ENV
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;h3&gt;启动虚拟环境&lt;/h3&gt;
-&lt;p&gt;通过&lt;code&gt;source bin/activate&lt;/code&gt;可以启动当前目录下的虚拟环境。启动后，shell的提示符就会发生改变，表示进入了虚拟环境。&lt;/p&gt;
-&lt;h3&gt;离开虚拟环境&lt;/h3&gt;
-&lt;p&gt;使用&lt;code&gt;deactivate&lt;/code&gt;离开虚拟环境。&lt;/p&gt;
-&lt;p&gt;以上。&lt;/p&gt;</summary><category term="Python"></category><category term="教程"></category></entry><entry><title>Python Socket网络编程</title><link href="http://www.wengweitao.com/python-socketwang-luo-bian-cheng.html" rel="alternate"></link><updated>2015-07-27T18:49:00+08:00</updated><author><name>wwt</name></author><id>tag:www.wengweitao.com,2015-07-27:python-socketwang-luo-bian-cheng.html</id><summary type="html">&lt;p&gt;在网络通信中socket几乎无处不在，它可以看成是应用层与TCP/IP协议簇通信的中间软件抽象层，是两个应用程序彼此进行通信的接口，并且把复杂的TCP/IP协议细节隐藏在接口之后。Python提供了socket模块，可以非常方便的进行socket编程。&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>wwt's blog</title><link href="http://www.wengweitao.com/" rel="alternate"></link><link href="http://www.wengweitao.com/feeds/python.rss.xml" rel="self"></link><id>http://www.wengweitao.com/</id><updated>2015-07-27T18:49:00+08:00</updated><entry><title>Python Socket网络编程</title><link href="http://www.wengweitao.com/python-socketwang-luo-bian-cheng.html" rel="alternate"></link><published>2015-07-27T18:49:00+08:00</published><author><name>wwt</name></author><id>tag:www.wengweitao.com,2015-07-27:python-socketwang-luo-bian-cheng.html</id><summary type="html">&lt;p&gt;在网络通信中socket几乎无处不在，它可以看成是应用层与TCP/IP协议簇通信的中间软件抽象层，是两个应用程序彼此进行通信的接口，并且把复杂的TCP/IP协议细节隐藏在接口之后。Python提供了socket模块，可以非常方便的进行socket编程。&lt;/p&gt;
 &lt;h2&gt;创建一个server socket&lt;/h2&gt;
 &lt;p&gt;使用&lt;code&gt;socket&lt;/code&gt;方法创建一个新的socket，通常提供两个参数，第一个参数是address family, 第二个是socket type。&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;#create an INET, STREAMing socket&lt;/span&gt;
@@ -400,7 +358,7 @@ server端等待至少一个socket就绪：&lt;/p&gt;
 &lt;li&gt;&lt;a href="https://docs.python.org/2/howto/sockets.html"&gt;socket programming&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://docs.python.org/2/library/select.html"&gt;select docs&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="http://pymotw.com/2/select/#module-selects://docs.python.org/2/library/select.html"&gt;select – Wait for I/O Efficiently&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;</summary><category term="Python"></category><category term="教程"></category></entry><entry><title>CORS（跨域资源共享，Cross-Origin Resource Sharing）</title><link href="http://www.wengweitao.com/corskua-yu-zi-yuan-gong-xiang-cross-origin-resource-sharing.html" rel="alternate"></link><updated>2015-05-24T16:49:00+08:00</updated><author><name>wwt</name></author><id>tag:www.wengweitao.com,2015-05-24:corskua-yu-zi-yuan-gong-xiang-cross-origin-resource-sharing.html</id><summary type="html">&lt;p&gt;使用Django在服务器端写了一个API，返回一个JSON数据。使用Ajax调用该API：&lt;/p&gt;
+&lt;/ol&gt;</summary><category term="Python"></category><category term="教程"></category></entry><entry><title>CORS（跨域资源共享，Cross-Origin Resource Sharing）</title><link href="http://www.wengweitao.com/corskua-yu-zi-yuan-gong-xiang-cross-origin-resource-sharing.html" rel="alternate"></link><published>2015-05-24T16:49:00+08:00</published><author><name>wwt</name></author><id>tag:www.wengweitao.com,2015-05-24:corskua-yu-zi-yuan-gong-xiang-cross-origin-resource-sharing.html</id><summary type="html">&lt;p&gt;使用Django在服务器端写了一个API，返回一个JSON数据。使用Ajax调用该API：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="cp"&gt;&amp;lt;!DOCTYPE HTML&amp;gt;&lt;/span&gt;
 &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;html&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
 &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;head&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
@@ -487,7 +445,7 @@ server端等待至少一个socket就绪：&lt;/p&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;可以配置允许跨域访问的白名单或者直接设置为允许所有的跨域访问。具体配置可以参考&lt;a href="https://github.com/ottoyiu/django-cors-headers#configuration"&gt;这里&lt;/a&gt;。&lt;/p&gt;</summary><category term="Python"></category></entry><entry><title>False is False is False 的结果是 True ?</title><link href="http://www.wengweitao.com/false-is-false-is-false-de-jie-guo-shi-true.html" rel="alternate"></link><updated>2015-04-25T10:37:00+08:00</updated><author><name>wwt</name></author><id>tag:www.wengweitao.com,2015-04-25:false-is-false-is-false-de-jie-guo-shi-true.html</id><summary type="html">&lt;p&gt;在&lt;a href="https://www.youtube.com/channel/UCgxzjK6GuOHVKR_08TT4hJQ"&gt;PyCon 2015&lt;/a&gt;中提到一个问题：&lt;/p&gt;
+&lt;p&gt;可以配置允许跨域访问的白名单或者直接设置为允许所有的跨域访问。具体配置可以参考&lt;a href="https://github.com/ottoyiu/django-cors-headers#configuration"&gt;这里&lt;/a&gt;。&lt;/p&gt;</summary><category term="Python"></category></entry><entry><title>False is False is False 的结果是 True ?</title><link href="http://www.wengweitao.com/false-is-false-is-false-de-jie-guo-shi-true.html" rel="alternate"></link><published>2015-04-25T10:37:00+08:00</published><author><name>wwt</name></author><id>tag:www.wengweitao.com,2015-04-25:false-is-false-is-false-de-jie-guo-shi-true.html</id><summary type="html">&lt;p&gt;在&lt;a href="https://www.youtube.com/channel/UCgxzjK6GuOHVKR_08TT4hJQ"&gt;PyCon 2015&lt;/a&gt;中提到一个问题：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="bp"&gt;False&lt;/span&gt; &lt;span class="ow"&gt;is&lt;/span&gt; &lt;span class="bp"&gt;False&lt;/span&gt; &lt;span class="ow"&gt;is&lt;/span&gt; &lt;span class="bp"&gt;False&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
@@ -527,7 +485,7 @@ server端等待至少一个socket就绪：&lt;/p&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;类似的这种表达式的原因（而在C/C++中是无法这么写的）。这种写法从某种程度上来说，更符合英语的写法，但是为了避免让人误解，最好还是在适当的地方使用圆括号括起来。&lt;/p&gt;</summary><category term="Python"></category></entry><entry><title>Python容器——Counter的使用</title><link href="http://www.wengweitao.com/pythonrong-qi-counterde-shi-yong.html" rel="alternate"></link><updated>2015-04-08T14:52:00+08:00</updated><author><name>wwt</name></author><id>tag:www.wengweitao.com,2015-04-08:pythonrong-qi-counterde-shi-yong.html</id><summary type="html">&lt;blockquote&gt;
+&lt;p&gt;类似的这种表达式的原因（而在C/C++中是无法这么写的）。这种写法从某种程度上来说，更符合英语的写法，但是为了避免让人误解，最好还是在适当的地方使用圆括号括起来。&lt;/p&gt;</summary><category term="Python"></category></entry><entry><title>Python容器——Counter的使用</title><link href="http://www.wengweitao.com/pythonrong-qi-counterde-shi-yong.html" rel="alternate"></link><published>2015-04-08T14:52:00+08:00</published><author><name>wwt</name></author><id>tag:www.wengweitao.com,2015-04-08:pythonrong-qi-counterde-shi-yong.html</id><summary type="html">&lt;blockquote&gt;
 &lt;p&gt;Counter是Python标准库提供的一个非常有用的容器，可以用来对序列中出现的各个元素，进行计数。这篇文章中，利用Counter来实现多元集合(MultiSets)、概率质量函数(PMFs)以及贝叶斯假设。&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;在Python代码中使用Counter，只需从collections包引入：&lt;/p&gt;
@@ -741,7 +699,7 @@ hypo: 可能掷出的那个骰子&lt;/p&gt;
 &lt;hr /&gt;
 &lt;p&gt;以上的几个例子，展示了Counter的用处。实际中，Counter的使用还比较少，如果能够恰当的使用起来将会带来非常多的方便。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Reference&lt;/strong&gt;：
-Using Counters : http://nbviewer.ipython.org/github/AllenDowney/PythonCounterPmf/blob/master/PythonCounterPmf.ipynb&lt;/p&gt;</summary><category term="Python"></category></entry><entry><title>Python代码格式化工具——YAPF</title><link href="http://www.wengweitao.com/pythondai-ma-ge-shi-hua-gong-ju-yapf.html" rel="alternate"></link><updated>2015-04-07T15:10:00+08:00</updated><author><name>wwt</name></author><id>tag:www.wengweitao.com,2015-04-07:pythondai-ma-ge-shi-hua-gong-ju-yapf.html</id><summary type="html">&lt;blockquote&gt;
+Using Counters : http://nbviewer.ipython.org/github/AllenDowney/PythonCounterPmf/blob/master/PythonCounterPmf.ipynb&lt;/p&gt;</summary><category term="Python"></category></entry><entry><title>Python代码格式化工具——YAPF</title><link href="http://www.wengweitao.com/pythondai-ma-ge-shi-hua-gong-ju-yapf.html" rel="alternate"></link><published>2015-04-07T15:10:00+08:00</published><author><name>wwt</name></author><id>tag:www.wengweitao.com,2015-04-07:pythondai-ma-ge-shi-hua-gong-ju-yapf.html</id><summary type="html">&lt;blockquote&gt;
 &lt;p&gt;&lt;a href="https://github.com/google/yapf"&gt;YAPF&lt;/a&gt;是Google开源的一个工具，可以用来格式化Python代码，使Python代码拥有一致的编程风格，减轻了团队或者个人进行代码风格维护的单调的工作。&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h3&gt;介绍&lt;/h3&gt;

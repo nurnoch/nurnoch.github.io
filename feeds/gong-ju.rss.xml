@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>wwt's blog</title><link href="http://www.wengweitao.com/" rel="alternate"></link><link href="http://www.wengweitao.com/feeds/gong-ju.rss.xml" rel="self"></link><id>http://www.wengweitao.com/</id><updated>2015-05-12T19:02:00+08:00</updated><entry><title>CentOS 升级 gcc 和 g++ 的方法</title><link href="http://www.wengweitao.com/centos-sheng-ji-gcc-he-g-de-fang-fa.html" rel="alternate"></link><updated>2015-05-12T19:02:00+08:00</updated><author><name>wwt</name></author><id>tag:www.wengweitao.com,2015-05-12:centos-sheng-ji-gcc-he-g-de-fang-fa.html</id><summary type="html">&lt;p&gt;CentOS 系统自带的 gcc 或者 g++ 的版本是：g++ (GCC) 4.4.6. GCC 版本太旧，导致了很多使用上的不便，如：无法使用g++ -std=c++11 命令来编译 C++11、无法使用Vim的很多插件（YouCompleteMe等）。因此，有必要对它进行升级。&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>wwt's blog</title><link href="http://www.wengweitao.com/" rel="alternate"></link><link href="http://www.wengweitao.com/feeds/gong-ju.rss.xml" rel="self"></link><id>http://www.wengweitao.com/</id><updated>2015-05-12T19:02:00+08:00</updated><entry><title>CentOS 升级 gcc 和 g++ 的方法</title><link href="http://www.wengweitao.com/centos-sheng-ji-gcc-he-g-de-fang-fa.html" rel="alternate"></link><published>2015-05-12T19:02:00+08:00</published><author><name>wwt</name></author><id>tag:www.wengweitao.com,2015-05-12:centos-sheng-ji-gcc-he-g-de-fang-fa.html</id><summary type="html">&lt;p&gt;CentOS 系统自带的 gcc 或者 g++ 的版本是：g++ (GCC) 4.4.6. GCC 版本太旧，导致了很多使用上的不便，如：无法使用g++ -std=c++11 命令来编译 C++11、无法使用Vim的很多插件（YouCompleteMe等）。因此，有必要对它进行升级。&lt;/p&gt;
 &lt;p&gt;对 GCC 升级无法直接使用：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;yum update gcc
 &lt;/pre&gt;&lt;/div&gt;
@@ -39,7 +39,7 @@ warranty&lt;span class="p"&gt;;&lt;/span&gt; not even &lt;span class="k"&gt;for&
 &lt;p&gt;已经从4.4.6升级到4.7.2了。&lt;/p&gt;
 &lt;hr /&gt;
 &lt;h2&gt;Reference&lt;/h2&gt;
-&lt;p&gt;http://superuser.com/questions/381160/how-to-install-gcc-4-7-x-4-8-x-on-centos/542091#542091&lt;/p&gt;</summary><category term="教程、Linux"></category></entry><entry><title>终端窗口管理神器——tmux</title><link href="http://www.wengweitao.com/zhong-duan-chuang-kou-guan-li-shen-qi-tmux.html" rel="alternate"></link><updated>2015-05-11T09:12:00+08:00</updated><author><name>wwt</name></author><id>tag:www.wengweitao.com,2015-05-11:zhong-duan-chuang-kou-guan-li-shen-qi-tmux.html</id><summary type="html">&lt;h2&gt;什么是tmux&lt;/h2&gt;
+&lt;p&gt;http://superuser.com/questions/381160/how-to-install-gcc-4-7-x-4-8-x-on-centos/542091#542091&lt;/p&gt;</summary><category term="教程、Linux"></category></entry><entry><title>终端窗口管理神器——tmux</title><link href="http://www.wengweitao.com/zhong-duan-chuang-kou-guan-li-shen-qi-tmux.html" rel="alternate"></link><published>2015-05-11T09:12:00+08:00</published><author><name>wwt</name></author><id>tag:www.wengweitao.com,2015-05-11:zhong-duan-chuang-kou-guan-li-shen-qi-tmux.html</id><summary type="html">&lt;h2&gt;什么是tmux&lt;/h2&gt;
 &lt;p&gt;tmux是一个终端的复用器（terminal multiplexer），可以简单理解为一个终端的窗口管理程序。相比系统自带的 screen 功能要强大许多。其使用场景和特性包括：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;当你使用SSH连接到服务器的时候，由于网络掉线导致连接中断（这是经常发生的。。。）。当你重新连接后，所有的工作现场丢失了。你还得重新打开之前的各种窗口，进入各种很深的目录，非常麻烦。而如果使用tmux，即时掉线之后，重新连接也能直接回到之前的工作环境，极大提高工作的效率。&lt;/li&gt;
@@ -138,7 +138,7 @@ unbind %
 &lt;li&gt;https://github.com/tony/tmux-config&lt;/li&gt;
 &lt;li&gt;https://gist.github.com/spicycode/1229612&lt;/li&gt;
 &lt;li&gt;http://zanshin.net/2013/09/05/my-tmux-configuration/&lt;/li&gt;
-&lt;/ol&gt;</summary><category term="tmux"></category></entry><entry><title>Linux上搭建VPN服务器</title><link href="http://www.wengweitao.com/linuxshang-da-jian-vpnfu-wu-qi.html" rel="alternate"></link><updated>2015-05-01T21:21:00+08:00</updated><author><name>wwt</name></author><id>tag:www.wengweitao.com,2015-05-01:linuxshang-da-jian-vpnfu-wu-qi.html</id><summary type="html">&lt;p&gt;今天是五一劳动节，也就是五月份的第一天，不巧的是校园上网账号欠费了，导致无法通过认证上网。于是，就琢磨着如何不通过认证直接上网。实验室有几台服务器，这些服务器都无需认证可直接访问外网，很自然的就想到以下两种方法：&lt;/p&gt;
+&lt;/ol&gt;</summary><category term="tmux"></category></entry><entry><title>Linux上搭建VPN服务器</title><link href="http://www.wengweitao.com/linuxshang-da-jian-vpnfu-wu-qi.html" rel="alternate"></link><published>2015-05-01T21:21:00+08:00</published><author><name>wwt</name></author><id>tag:www.wengweitao.com,2015-05-01:linuxshang-da-jian-vpnfu-wu-qi.html</id><summary type="html">&lt;p&gt;今天是五一劳动节，也就是五月份的第一天，不巧的是校园上网账号欠费了，导致无法通过认证上网。于是，就琢磨着如何不通过认证直接上网。实验室有几台服务器，这些服务器都无需认证可直接访问外网，很自然的就想到以下两种方法：&lt;/p&gt;
 &lt;p&gt;（1）在服务器上设置代理服务器，然后在自己的PC和iPhone上设置代理上网&lt;/p&gt;
 &lt;p&gt;（2）在服务器上搭建一个VPN PPTP服务器，在PC和iPhone上新建一个VPN连接上网。&lt;/p&gt;
 &lt;p&gt;根据校园网的环境和平时的使用情况，最终决定采用VPN的方式。接下来，我以Red Hat系统为例，详细说明搭建的过程。&lt;/p&gt;
@@ -238,7 +238,7 @@ chkconfig iptables on
 &lt;ol&gt;
 &lt;li&gt;&lt;a href="http://www.vixual.net/blog/archives/32"&gt;CentOS 5/6 快速安裝 VPN Server (PPTP)&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="http://www.cnblogs.com/sixiweb/archive/2012/11/20/2778732.html"&gt;Linux下搭建VPN服务器（CentOS、pptp）&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;</summary><category term="教程"></category></entry><entry><title>Vim入门教程</title><link href="http://www.wengweitao.com/vimru-men-jiao-cheng.html" rel="alternate"></link><updated>2015-04-16T20:12:00+08:00</updated><author><name>wwt</name></author><id>tag:www.wengweitao.com,2015-04-16:vimru-men-jiao-cheng.html</id><summary type="html">&lt;blockquote&gt;
+&lt;/ol&gt;</summary><category term="教程"></category></entry><entry><title>Vim入门教程</title><link href="http://www.wengweitao.com/vimru-men-jiao-cheng.html" rel="alternate"></link><published>2015-04-16T20:12:00+08:00</published><author><name>wwt</name></author><id>tag:www.wengweitao.com,2015-04-16:vimru-men-jiao-cheng.html</id><summary type="html">&lt;blockquote&gt;
 &lt;p&gt;Vim 在编辑器中是神一样的存在，熟练掌握Vim将极大提高编辑文本的效率。本文将介绍Vim最基本的操作和技巧。&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h2&gt;操作篇&lt;/h2&gt;
@@ -434,7 +434,7 @@ ye ------ 复制从当前位置到下一个单词的词尾&lt;/p&gt;
         "}); ";
     (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
 }
-&lt;/script&gt;</summary><category term="Vim"></category></entry><entry><title>使用Pelican + Github Pages搭建个人博客</title><link href="http://www.wengweitao.com/shi-yong-pelican-github-pagesda-jian-ge-ren-bo-ke.html" rel="alternate"></link><updated>2015-04-16T13:46:00+08:00</updated><author><name>wwt</name></author><id>tag:www.wengweitao.com,2015-04-16:shi-yong-pelican-github-pagesda-jian-ge-ren-bo-ke.html</id><summary type="html">&lt;blockquote&gt;
+&lt;/script&gt;</summary><category term="Vim"></category></entry><entry><title>使用Pelican + Github Pages搭建个人博客</title><link href="http://www.wengweitao.com/shi-yong-pelican-github-pagesda-jian-ge-ren-bo-ke.html" rel="alternate"></link><published>2015-04-16T13:46:00+08:00</published><author><name>wwt</name></author><id>tag:www.wengweitao.com,2015-04-16:shi-yong-pelican-github-pagesda-jian-ge-ren-bo-ke.html</id><summary type="html">&lt;blockquote&gt;
 &lt;p&gt;最近有不少同学问我，如何使用Python的Pelican搭建一个像我这样的一个个人博客。今天正好论文投稿结束，于是便抽出时间写这篇教程，希望对大家有用。有任何疑问欢迎在评论里说明。&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h2&gt;静态网站&lt;/h2&gt;
@@ -696,7 +696,7 @@ git push origin master
 &lt;li&gt;Static Site Generators: https://staticsitegenerators.net/&lt;/li&gt;
 &lt;li&gt;Pelican Docs: http://docs.getpelican.com/en/3.5.0/&lt;/li&gt;
 &lt;li&gt;github Pages和Jekyll入门：http://www.ruanyifeng.com/blog/2012/08/blogging_with_jekyll.html&lt;/li&gt;
-&lt;/ol&gt;</summary><category term="教程"></category></entry><entry><title>使Pelican支持LaTex数学公式</title><link href="http://www.wengweitao.com/shi-pelicanzhi-chi-latexshu-xue-gong-shi.html" rel="alternate"></link><updated>2015-04-10T19:35:00+08:00</updated><author><name>wwt</name></author><id>tag:www.wengweitao.com,2015-04-10:shi-pelicanzhi-chi-latexshu-xue-gong-shi.html</id><summary type="html">&lt;p&gt;作为一个技术博客，在写文章的时候，肯定需要经常输入各种公式符号。在之前写一篇文章的时候，发现Pelican默认是不支持编辑数学公式的。之前用过一些在线的markdonw编辑器，都是通过&lt;a href="https://github.com/mathjax/mathjax"&gt;MathJax&lt;/a&gt;来支持在markdown中书写数学公式，而且用起来非常的方便，语法基本和LaTex一样。于是，就找到了一种简单的使Pelican支持LaTex语法的数学公式，在这里分享给大家。&lt;/p&gt;
+&lt;/ol&gt;</summary><category term="教程"></category></entry><entry><title>使Pelican支持LaTex数学公式</title><link href="http://www.wengweitao.com/shi-pelicanzhi-chi-latexshu-xue-gong-shi.html" rel="alternate"></link><published>2015-04-10T19:35:00+08:00</published><author><name>wwt</name></author><id>tag:www.wengweitao.com,2015-04-10:shi-pelicanzhi-chi-latexshu-xue-gong-shi.html</id><summary type="html">&lt;p&gt;作为一个技术博客，在写文章的时候，肯定需要经常输入各种公式符号。在之前写一篇文章的时候，发现Pelican默认是不支持编辑数学公式的。之前用过一些在线的markdonw编辑器，都是通过&lt;a href="https://github.com/mathjax/mathjax"&gt;MathJax&lt;/a&gt;来支持在markdown中书写数学公式，而且用起来非常的方便，语法基本和LaTex一样。于是，就找到了一种简单的使Pelican支持LaTex语法的数学公式，在这里分享给大家。&lt;/p&gt;
 &lt;h2&gt;如何使Pelican支持渲染数学公式&lt;/h2&gt;
 &lt;p&gt;最简单的方法就是使用Pelican的一个插件——&lt;a href="https://github.com/barrysteyn/pelican_plugin-render_math"&gt;pelican_plugin-render_math&lt;/a&gt;。
 这个插件可以通过使用MathJax使pelican拥有渲染数学公式的能力，并且同时支持Markdown 和reStructuredText，用起来也非常的方便！&lt;/p&gt;
