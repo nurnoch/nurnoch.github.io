@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>wwt's blog</title><link href="http://www.wengweitao.com/" rel="alternate"></link><link href="http://www.wengweitao.com/feeds/suan-fa-yu-shu-ju-jie-gou.rss.xml" rel="self"></link><id>http://www.wengweitao.com/</id><updated>2015-06-29T10:42:00+08:00</updated><entry><title>[leetcode] Majority Element II</title><link href="http://www.wengweitao.com/leetcode-majority-element-ii.html" rel="alternate"></link><published>2015-06-29T10:42:00+08:00</published><author><name>wwt</name></author><id>tag:www.wengweitao.com,2015-06-29:leetcode-majority-element-ii.html</id><summary type="html">&lt;h3&gt;题目&lt;/h3&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>往往台的博客</title><link href="http://www.wengweitao.com/" rel="alternate"></link><link href="http://www.wengweitao.com/feeds/suan-fa-yu-shu-ju-jie-gou.rss.xml" rel="self"></link><id>http://www.wengweitao.com/</id><updated>2015-06-29T10:42:00+08:00</updated><entry><title>[leetcode] Majority Element II</title><link href="http://www.wengweitao.com/leetcode-majority-element-ii.html" rel="alternate"></link><published>2015-06-29T10:42:00+08:00</published><author><name>往往台</name></author><id>tag:www.wengweitao.com,2015-06-29:leetcode-majority-element-ii.html</id><summary type="html">&lt;h3&gt;题目&lt;/h3&gt;
 &lt;p&gt;&lt;a href="https://leetcode.com/problems/majority-element-ii/"&gt;Majority Element II&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Given an integer array of size n, find all elements that appear more than ⌊ n/3 ⌋ times. The algorithm should run in linear time and in O(1) space.&lt;/p&gt;
 &lt;h3&gt;分析&lt;/h3&gt;
@@ -57,7 +57,7 @@
         &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;result&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
     &lt;span class="p"&gt;}&lt;/span&gt;
 &lt;span class="p"&gt;};&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;</summary><category term="leetcode"></category><category term="面试题"></category></entry><entry><title>[leetcode] Basic Calculator II</title><link href="http://www.wengweitao.com/leetcode-basic-calculator-ii.html" rel="alternate"></link><published>2015-06-22T14:11:00+08:00</published><author><name>wwt</name></author><id>tag:www.wengweitao.com,2015-06-22:leetcode-basic-calculator-ii.html</id><summary type="html">&lt;hr /&gt;
+&lt;/pre&gt;&lt;/div&gt;</summary><category term="leetcode"></category><category term="面试题"></category></entry><entry><title>[leetcode] Basic Calculator II</title><link href="http://www.wengweitao.com/leetcode-basic-calculator-ii.html" rel="alternate"></link><published>2015-06-22T14:11:00+08:00</published><author><name>往往台</name></author><id>tag:www.wengweitao.com,2015-06-22:leetcode-basic-calculator-ii.html</id><summary type="html">&lt;hr /&gt;
 &lt;h3&gt;题目&lt;/h3&gt;
 &lt;p&gt;&lt;a href="https://leetcode.com/problems/basic-calculator-ii/"&gt;Basic Calculator II &lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Implement a basic calculator to evaluate a simple expression string.&lt;/p&gt;
@@ -135,7 +135,7 @@
         &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;result&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
     &lt;span class="p"&gt;}&lt;/span&gt;
 &lt;span class="p"&gt;};&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;</summary><category term="leetcode"></category><category term="面试题"></category></entry><entry><title>[leetcode] Invert Binary Tree</title><link href="http://www.wengweitao.com/leetcode-invert-binary-tree.html" rel="alternate"></link><published>2015-06-12T15:54:00+08:00</published><author><name>wwt</name></author><id>tag:www.wengweitao.com,2015-06-12:leetcode-invert-binary-tree.html</id><summary type="html">&lt;h3&gt;题目&lt;/h3&gt;
+&lt;/pre&gt;&lt;/div&gt;</summary><category term="leetcode"></category><category term="面试题"></category></entry><entry><title>[leetcode] Invert Binary Tree</title><link href="http://www.wengweitao.com/leetcode-invert-binary-tree.html" rel="alternate"></link><published>2015-06-12T15:54:00+08:00</published><author><name>往往台</name></author><id>tag:www.wengweitao.com,2015-06-12:leetcode-invert-binary-tree.html</id><summary type="html">&lt;h3&gt;题目&lt;/h3&gt;
 &lt;p&gt;&lt;a href="https://leetcode.com/problems/invert-binary-tree/"&gt;Invert Binary Tree &lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;img alt="例子" src="http://i1.tietuku.com/88c1805f904cd57d.png" /&gt;&lt;/p&gt;
 &lt;h3&gt;分析&lt;/h3&gt;
@@ -214,7 +214,7 @@
         &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;root&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
     &lt;span class="p"&gt;}&lt;/span&gt;
 &lt;span class="p"&gt;};&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;</summary><category term="leetcode"></category><category term="面试题"></category></entry><entry><title>[leetcode] Implement Stack using Queues</title><link href="http://www.wengweitao.com/leetcode-implement-stack-using-queues.html" rel="alternate"></link><published>2015-06-11T16:02:00+08:00</published><author><name>wwt</name></author><id>tag:www.wengweitao.com,2015-06-11:leetcode-implement-stack-using-queues.html</id><summary type="html">&lt;h3&gt;题目&lt;/h3&gt;
+&lt;/pre&gt;&lt;/div&gt;</summary><category term="leetcode"></category><category term="面试题"></category></entry><entry><title>[leetcode] Implement Stack using Queues</title><link href="http://www.wengweitao.com/leetcode-implement-stack-using-queues.html" rel="alternate"></link><published>2015-06-11T16:02:00+08:00</published><author><name>往往台</name></author><id>tag:www.wengweitao.com,2015-06-11:leetcode-implement-stack-using-queues.html</id><summary type="html">&lt;h3&gt;题目&lt;/h3&gt;
 &lt;p&gt;&lt;a href="https://leetcode.com/problems/implement-stack-using-queues/"&gt;Implement Stack using Queues&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Implement the following operations of a stack using queues.&lt;/p&gt;
 &lt;ul&gt;
@@ -328,7 +328,7 @@ Depending on your language, queue may not be supported natively. You may simulat
         &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;s1&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;empty&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="o"&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class="n"&gt;s2&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;empty&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;
     &lt;span class="p"&gt;}&lt;/span&gt;
 &lt;span class="p"&gt;};&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;</summary><category term="leetcode"></category><category term="面试题"></category></entry><entry><title>[leetcode] Basic Calculator</title><link href="http://www.wengweitao.com/leetcode-basic-calculator.html" rel="alternate"></link><published>2015-06-10T10:12:00+08:00</published><author><name>wwt</name></author><id>tag:www.wengweitao.com,2015-06-10:leetcode-basic-calculator.html</id><summary type="html">&lt;h3&gt;题目&lt;/h3&gt;
+&lt;/pre&gt;&lt;/div&gt;</summary><category term="leetcode"></category><category term="面试题"></category></entry><entry><title>[leetcode] Basic Calculator</title><link href="http://www.wengweitao.com/leetcode-basic-calculator.html" rel="alternate"></link><published>2015-06-10T10:12:00+08:00</published><author><name>往往台</name></author><id>tag:www.wengweitao.com,2015-06-10:leetcode-basic-calculator.html</id><summary type="html">&lt;h3&gt;题目&lt;/h3&gt;
 &lt;p&gt;&lt;a href="https://leetcode.com/problems/basic-calculator/"&gt;Basic Calculator&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Implement a basic calculator to evaluate a simple expression string.&lt;/p&gt;
 &lt;p&gt;The expression string may contain open ( and closing parentheses ), the plus + or minus sign -, non-negative integers and empty spaces .&lt;/p&gt;
@@ -405,7 +405,7 @@ Note: Do not use the eval built-in library function.&lt;/p&gt;
         &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;result&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
     &lt;span class="p"&gt;}&lt;/span&gt;
 &lt;span class="p"&gt;};&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;</summary><category term="leetcode"></category><category term="面试题"></category></entry><entry><title>连续子数组的最大和</title><link href="http://www.wengweitao.com/lian-xu-zi-shu-zu-de-zui-da-he.html" rel="alternate"></link><published>2015-06-09T21:46:00+08:00</published><author><name>wwt</name></author><id>tag:www.wengweitao.com,2015-06-09:lian-xu-zi-shu-zu-de-zui-da-he.html</id><summary type="html">&lt;hr /&gt;
+&lt;/pre&gt;&lt;/div&gt;</summary><category term="leetcode"></category><category term="面试题"></category></entry><entry><title>连续子数组的最大和</title><link href="http://www.wengweitao.com/lian-xu-zi-shu-zu-de-zui-da-he.html" rel="alternate"></link><published>2015-06-09T21:46:00+08:00</published><author><name>往往台</name></author><id>tag:www.wengweitao.com,2015-06-09:lian-xu-zi-shu-zu-de-zui-da-he.html</id><summary type="html">&lt;hr /&gt;
 &lt;p&gt;算法的设计对于程序的运行时间具有极大的影响，复杂深奥的算法有时可以极大提高程序运行的效率。本文将通过一个经典的问题——连续子数组的最大和（Maximum Subarray ），研究四种不同的算法，并比较这四种算法的运行时间，来说明不同的算法对提高程序运行效率的重要性。&lt;/p&gt;
 &lt;h3&gt;问题描述&lt;/h3&gt;
 &lt;p&gt;&lt;a href="https://leetcode.com/problems/maximum-subarray/"&gt;Maximum Subarray&lt;/a&gt; &lt;/p&gt;
@@ -713,7 +713,7 @@ the contiguous subarray [4,−1,2,1] has the largest sum = 6.&lt;/p&gt;
         "}); ";
     (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
 }
-&lt;/script&gt;</summary><category term="编程珠玑"></category></entry><entry><title>[leetcode] Rectangle Area</title><link href="http://www.wengweitao.com/leetcode-rectangle-area.html" rel="alternate"></link><published>2015-06-08T11:23:00+08:00</published><author><name>wwt</name></author><id>tag:www.wengweitao.com,2015-06-08:leetcode-rectangle-area.html</id><summary type="html">&lt;h3&gt;题目&lt;/h3&gt;
+&lt;/script&gt;</summary><category term="编程珠玑"></category></entry><entry><title>[leetcode] Rectangle Area</title><link href="http://www.wengweitao.com/leetcode-rectangle-area.html" rel="alternate"></link><published>2015-06-08T11:23:00+08:00</published><author><name>往往台</name></author><id>tag:www.wengweitao.com,2015-06-08:leetcode-rectangle-area.html</id><summary type="html">&lt;h3&gt;题目&lt;/h3&gt;
 &lt;p&gt;&lt;a href="https://leetcode.com/problems/rectangle-area/"&gt;Rectangle Area&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Find the total area covered by two rectilinear rectangles in a 2D plane.&lt;/p&gt;
 &lt;p&gt;Each rectangle is defined by its bottom left corner and top right corner as shown in the figure.&lt;/p&gt;
@@ -759,7 +759,7 @@ Expected:   17
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;以上的test case，(GH)在(EF)的左上角，不符合题目的规定（应该在右上角的）。所以计算s1和s2的时候，要加上abs取绝对值，这样就AC了。&lt;/p&gt;</summary><category term="leetcode"></category><category term="面试题"></category></entry><entry><title>[leetcode] Count Complete Tree Nodes</title><link href="http://www.wengweitao.com/leetcode-count-complete-tree-nodes.html" rel="alternate"></link><published>2015-06-06T11:19:00+08:00</published><author><name>wwt</name></author><id>tag:www.wengweitao.com,2015-06-06:leetcode-count-complete-tree-nodes.html</id><summary type="html">&lt;h3&gt;题目&lt;/h3&gt;
+&lt;p&gt;以上的test case，(GH)在(EF)的左上角，不符合题目的规定（应该在右上角的）。所以计算s1和s2的时候，要加上abs取绝对值，这样就AC了。&lt;/p&gt;</summary><category term="leetcode"></category><category term="面试题"></category></entry><entry><title>[leetcode] Count Complete Tree Nodes</title><link href="http://www.wengweitao.com/leetcode-count-complete-tree-nodes.html" rel="alternate"></link><published>2015-06-06T11:19:00+08:00</published><author><name>往往台</name></author><id>tag:www.wengweitao.com,2015-06-06:leetcode-count-complete-tree-nodes.html</id><summary type="html">&lt;h3&gt;题目&lt;/h3&gt;
 &lt;p&gt;&lt;a href="https://leetcode.com/problems/count-complete-tree-nodes/"&gt;Count Complete Tree Nodes&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Given a complete binary tree, count the number of nodes.&lt;/p&gt;
 &lt;h3&gt;分析&lt;/h3&gt;
@@ -849,7 +849,7 @@ Expected:   17
         "}); ";
     (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
 }
-&lt;/script&gt;</summary><category term="leetcode"></category><category term="面试题"></category></entry><entry><title>算法中的灵机一动</title><link href="http://www.wengweitao.com/suan-fa-zhong-de-ling-ji-yi-dong.html" rel="alternate"></link><published>2015-06-03T20:37:00+08:00</published><author><name>wwt</name></author><id>tag:www.wengweitao.com,2015-06-03:suan-fa-zhong-de-ling-ji-yi-dong.html</id><summary type="html">&lt;p&gt;研究算法能给程序员带来许多好处，减少开发的时间，同时使执行速度更快。有些看起来很困难的问题，可能也存在着一个简单的、意想不到的答案。这些就是灵机一动的算法，需要在大量的研究之后才能出现。本文围绕三个小问题，来说明算法的灵机一动。&lt;/p&gt;
+&lt;/script&gt;</summary><category term="leetcode"></category><category term="面试题"></category></entry><entry><title>算法中的灵机一动</title><link href="http://www.wengweitao.com/suan-fa-zhong-de-ling-ji-yi-dong.html" rel="alternate"></link><published>2015-06-03T20:37:00+08:00</published><author><name>往往台</name></author><id>tag:www.wengweitao.com,2015-06-03:suan-fa-zhong-de-ling-ji-yi-dong.html</id><summary type="html">&lt;p&gt;研究算法能给程序员带来许多好处，减少开发的时间，同时使执行速度更快。有些看起来很困难的问题，可能也存在着一个简单的、意想不到的答案。这些就是灵机一动的算法，需要在大量的研究之后才能出现。本文围绕三个小问题，来说明算法的灵机一动。&lt;/p&gt;
 &lt;h2&gt;无处不在的二分搜索&lt;/h2&gt;
 &lt;h3&gt;问题描述&lt;/h3&gt;
 &lt;p&gt;给定一个最多包含40亿个随机排列的32位整数的&lt;strong&gt;顺序&lt;/strong&gt;文件，找出一个不在文件中的32位整数。&lt;/p&gt;
@@ -1038,7 +1038,7 @@ Expected:   17
         "}); ";
     (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
 }
-&lt;/script&gt;</summary><category term="读书笔记"></category></entry><entry><title>二叉树的三种遍历方式（递归、非递归和Morris遍历）</title><link href="http://www.wengweitao.com/er-cha-shu-de-san-chong-bian-li-fang-shi-di-gui-fei-di-gui-he-morrisbian-li.html" rel="alternate"></link><published>2015-05-27T21:41:00+08:00</published><author><name>wwt</name></author><id>tag:www.wengweitao.com,2015-05-27:er-cha-shu-de-san-chong-bian-li-fang-shi-di-gui-fei-di-gui-he-morrisbian-li.html</id><summary type="html">&lt;p&gt;二叉树遍历是二叉树的最基本的操作，其实现方式主要有三种：&lt;/p&gt;
+&lt;/script&gt;</summary><category term="读书笔记"></category></entry><entry><title>二叉树的三种遍历方式（递归、非递归和Morris遍历）</title><link href="http://www.wengweitao.com/er-cha-shu-de-san-chong-bian-li-fang-shi-di-gui-fei-di-gui-he-morrisbian-li.html" rel="alternate"></link><published>2015-05-27T21:41:00+08:00</published><author><name>往往台</name></author><id>tag:www.wengweitao.com,2015-05-27:er-cha-shu-de-san-chong-bian-li-fang-shi-di-gui-fei-di-gui-he-morrisbian-li.html</id><summary type="html">&lt;p&gt;二叉树遍历是二叉树的最基本的操作，其实现方式主要有三种：&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;递归遍历&lt;/li&gt;
 &lt;li&gt;非递归遍历&lt;/li&gt;
@@ -1389,7 +1389,7 @@ Expected:   17
 &lt;hr /&gt;
 &lt;h3&gt;References&lt;/h3&gt;
 &lt;p&gt;http://noalgo.info/832.html&lt;/p&gt;
-&lt;p&gt;http://www.cnblogs.com/AnnieKim/archive/2013/06/15/morristraversal.html&lt;/p&gt;</summary><category term="二叉树"></category></entry><entry><title>怎样给一个磁盘文件排序？</title><link href="http://www.wengweitao.com/zen-yang-gei-yi-ge-ci-pan-wen-jian-pai-xu.html" rel="alternate"></link><published>2015-05-23T12:32:00+08:00</published><author><name>wwt</name></author><id>tag:www.wengweitao.com,2015-05-23:zen-yang-gei-yi-ge-ci-pan-wen-jian-pai-xu.html</id><summary type="html">&lt;h3&gt;问题描述：&lt;/h3&gt;
+&lt;p&gt;http://www.cnblogs.com/AnnieKim/archive/2013/06/15/morristraversal.html&lt;/p&gt;</summary><category term="二叉树"></category></entry><entry><title>怎样给一个磁盘文件排序？</title><link href="http://www.wengweitao.com/zen-yang-gei-yi-ge-ci-pan-wen-jian-pai-xu.html" rel="alternate"></link><published>2015-05-23T12:32:00+08:00</published><author><name>往往台</name></author><id>tag:www.wengweitao.com,2015-05-23:zen-yang-gei-yi-ge-ci-pan-wen-jian-pai-xu.html</id><summary type="html">&lt;h3&gt;问题描述：&lt;/h3&gt;
 &lt;p&gt;&lt;strong&gt;输入：&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;一个最多包含n个正整数的文件，每个数都小于n，其中n=10^7（即每个数都是7位的正整数）。输入的文件中没有任何重复的数，并且没有其他数据与该整数关联。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;输出：&lt;/strong&gt;&lt;/p&gt;
@@ -1513,7 +1513,7 @@ Expected:   17
         "}); ";
     (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
 }
-&lt;/script&gt;</summary><category term="读书笔记"></category></entry><entry><title>LintCode Single Number I II III 落单的数</title><link href="http://www.wengweitao.com/lintcode-single-number-i-ii-iii-luo-dan-de-shu.html" rel="alternate"></link><published>2015-05-20T21:15:00+08:00</published><author><name>wwt</name></author><id>tag:www.wengweitao.com,2015-05-20:lintcode-single-number-i-ii-iii-luo-dan-de-shu.html</id><summary type="html">&lt;h2&gt;&lt;a href="http://www.lintcode.com/zh-cn/problem/single-number/"&gt;Single Number I&lt;/a&gt;&lt;/h2&gt;
+&lt;/script&gt;</summary><category term="读书笔记"></category></entry><entry><title>LintCode Single Number I II III 落单的数</title><link href="http://www.wengweitao.com/lintcode-single-number-i-ii-iii-luo-dan-de-shu.html" rel="alternate"></link><published>2015-05-20T21:15:00+08:00</published><author><name>往往台</name></author><id>tag:www.wengweitao.com,2015-05-20:lintcode-single-number-i-ii-iii-luo-dan-de-shu.html</id><summary type="html">&lt;h2&gt;&lt;a href="http://www.lintcode.com/zh-cn/problem/single-number/"&gt;Single Number I&lt;/a&gt;&lt;/h2&gt;
 &lt;h3&gt;题目描述：&lt;/h3&gt;
 &lt;p&gt;给出2*n + 1 个的数字，除其中一个数字之外其他每个数字均出现两次，找到这个数字。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;样例&lt;/strong&gt;
@@ -1690,7 +1690,7 @@ O(n)时间复杂度，O(1)的额外空间复杂度&lt;/p&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;时间复杂度为O(n)，空间复杂度为O(1)。&lt;/p&gt;</summary><category term="面试题"></category></entry><entry><title>排序算法总结</title><link href="http://www.wengweitao.com/pai-xu-suan-fa-zong-jie.html" rel="alternate"></link><published>2015-05-19T20:35:00+08:00</published><author><name>wwt</name></author><id>tag:www.wengweitao.com,2015-05-19:pai-xu-suan-fa-zong-jie.html</id><summary type="html">&lt;p&gt;在前面的几篇文章中，分别介绍了几种最常见的算法：&lt;/p&gt;
+&lt;p&gt;时间复杂度为O(n)，空间复杂度为O(1)。&lt;/p&gt;</summary><category term="面试题"></category></entry><entry><title>排序算法总结</title><link href="http://www.wengweitao.com/pai-xu-suan-fa-zong-jie.html" rel="alternate"></link><published>2015-05-19T20:35:00+08:00</published><author><name>往往台</name></author><id>tag:www.wengweitao.com,2015-05-19:pai-xu-suan-fa-zong-jie.html</id><summary type="html">&lt;p&gt;在前面的几篇文章中，分别介绍了几种最常见的算法：&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;&lt;a href="http://www.wengweitao.com/cha-ru-pai-xu.html"&gt;直接插入排序&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="http://www.wengweitao.com/mou-pao-pai-xu.html"&gt;冒泡排序&lt;/a&gt;&lt;/li&gt;
@@ -1817,7 +1817,7 @@ O(n)时间复杂度，O(1)的额外空间复杂度&lt;/p&gt;
         "}); ";
     (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
 }
-&lt;/script&gt;</summary><category term="排序 算法 基础 总结"></category></entry><entry><title>桶排序</title><link href="http://www.wengweitao.com/tong-pai-xu.html" rel="alternate"></link><published>2015-05-18T16:13:00+08:00</published><author><name>wwt</name></author><id>tag:www.wengweitao.com,2015-05-18:tong-pai-xu.html</id><summary type="html">&lt;p&gt;本文继续介绍一种非比较排序算法——&lt;strong&gt;桶排序（bucket sort）&lt;/strong&gt;。通排序假设输入数据服从均匀分布，平均情况下它的时间复杂度为O(n)。与计数排序类似，因为对输入数据作了某种假设，桶排序的速度也很快。具体的，计数排序假设输入数据都属于一个小区间的整数，而桶排序则假设输入数据是由一个随机过程产生，该过程将元素均匀、独立地分布在[0,1)区间上。&lt;/p&gt;
+&lt;/script&gt;</summary><category term="排序 算法 基础 总结"></category></entry><entry><title>桶排序</title><link href="http://www.wengweitao.com/tong-pai-xu.html" rel="alternate"></link><published>2015-05-18T16:13:00+08:00</published><author><name>往往台</name></author><id>tag:www.wengweitao.com,2015-05-18:tong-pai-xu.html</id><summary type="html">&lt;p&gt;本文继续介绍一种非比较排序算法——&lt;strong&gt;桶排序（bucket sort）&lt;/strong&gt;。通排序假设输入数据服从均匀分布，平均情况下它的时间复杂度为O(n)。与计数排序类似，因为对输入数据作了某种假设，桶排序的速度也很快。具体的，计数排序假设输入数据都属于一个小区间的整数，而桶排序则假设输入数据是由一个随机过程产生，该过程将元素均匀、独立地分布在[0,1)区间上。&lt;/p&gt;
 &lt;h2&gt;桶排序的基本思想&lt;/h2&gt;
 &lt;ol&gt;
 &lt;li&gt;桶排序将[0,1)区间划分成大小相同的n个子区间，称为桶&lt;/li&gt;
@@ -1913,7 +1913,7 @@ O(n)时间复杂度，O(1)的额外空间复杂度&lt;/p&gt;
         "}); ";
     (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
 }
-&lt;/script&gt;</summary><category term="排序 算法 基础"></category></entry><entry><title>基数排序（radix sort）</title><link href="http://www.wengweitao.com/ji-shu-pai-xu-radix-sort.html" rel="alternate"></link><published>2015-05-17T14:12:00+08:00</published><author><name>wwt</name></author><id>tag:www.wengweitao.com,2015-05-17:ji-shu-pai-xu-radix-sort.html</id><summary type="html">&lt;p&gt;本文继续介绍另外一种非比较排序算法——&lt;strong&gt;基数排序（radix sort）&lt;/strong&gt;，最早用在卡片排序机上。基数排序的原理是将整数按位切割成不同的数字，然后按每个位数分别比较。对于十进制的数字，每列只会用到10个位置，一个d位数将占用d列。&lt;/p&gt;
+&lt;/script&gt;</summary><category term="排序 算法 基础"></category></entry><entry><title>基数排序（radix sort）</title><link href="http://www.wengweitao.com/ji-shu-pai-xu-radix-sort.html" rel="alternate"></link><published>2015-05-17T14:12:00+08:00</published><author><name>往往台</name></author><id>tag:www.wengweitao.com,2015-05-17:ji-shu-pai-xu-radix-sort.html</id><summary type="html">&lt;p&gt;本文继续介绍另外一种非比较排序算法——&lt;strong&gt;基数排序（radix sort）&lt;/strong&gt;，最早用在卡片排序机上。基数排序的原理是将整数按位切割成不同的数字，然后按每个位数分别比较。对于十进制的数字，每列只会用到10个位置，一个d位数将占用d列。&lt;/p&gt;
 &lt;p&gt;基数排序&lt;strong&gt;先按最低有效位进行排序&lt;/strong&gt;，然后按次低有效位进行排序，直到对所有的d位数字都进行了排序。为了确保基数排序的正确性，&lt;strong&gt;一位数的排序算法必须是稳定的&lt;/strong&gt;。&lt;/p&gt;
 &lt;p&gt;我们有时会用基数排序来对具有多关键字域的记录进行排序。例如，我们希望用3个关键字（年、月、日）来对日期进行排序。我们可以使用基于特殊比较函数的排序算法，先比较年，如果相同再比较月，如果还相同再比较日。我们也可以采用基数排序，用一种稳定排序算法对这些信息进行三次排序：先日，再月，最后年。&lt;/p&gt;
 &lt;h2&gt;基数排序的实现&lt;/h2&gt;
@@ -2007,7 +2007,7 @@ O(n)时间复杂度，O(1)的额外空间复杂度&lt;/p&gt;
         "}); ";
     (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
 }
-&lt;/script&gt;</summary><category term="排序 算法 基础"></category></entry><entry><title>计数排序</title><link href="http://www.wengweitao.com/ji-shu-pai-xu.html" rel="alternate"></link><published>2015-05-17T11:21:00+08:00</published><author><name>wwt</name></author><id>tag:www.wengweitao.com,2015-05-17:ji-shu-pai-xu.html</id><summary type="html">&lt;p&gt;之前介绍的都是基于比较的排序算法，对于包含n个元素的输入序列来说，任何比较排序在最坏情况下都要经过O(nlogn)次比较。本文将介绍第一种非比较排序算法——&lt;strong&gt;计数排序&lt;/strong&gt;。&lt;/p&gt;
+&lt;/script&gt;</summary><category term="排序 算法 基础"></category></entry><entry><title>计数排序</title><link href="http://www.wengweitao.com/ji-shu-pai-xu.html" rel="alternate"></link><published>2015-05-17T11:21:00+08:00</published><author><name>往往台</name></author><id>tag:www.wengweitao.com,2015-05-17:ji-shu-pai-xu.html</id><summary type="html">&lt;p&gt;之前介绍的都是基于比较的排序算法，对于包含n个元素的输入序列来说，任何比较排序在最坏情况下都要经过O(nlogn)次比较。本文将介绍第一种非比较排序算法——&lt;strong&gt;计数排序&lt;/strong&gt;。&lt;/p&gt;
 &lt;h2&gt;计数排序的基本思想&lt;/h2&gt;
 &lt;p&gt;计数排序假设n个输入元素中的每一个都是在0到k区间内的一个整数，其中k为某个整数。当k=O(n)时，计数排序的运算时间为O(n)。&lt;/p&gt;
 &lt;p&gt;基本思想：&lt;/p&gt;
@@ -2048,7 +2048,7 @@ O(n)时间复杂度，O(1)的额外空间复杂度&lt;/p&gt;
 &lt;p&gt;计数排序的稳定性很重要的一个原因是：计数排序经常会被用于基数排序算法的一个子过程。我们将在下一篇文章中介绍，为了使基数排序能够正确运行，计数排序必须是稳定的。&lt;/p&gt;
 &lt;hr /&gt;
 &lt;h2&gt;Reference&lt;/h2&gt;
-&lt;p&gt;&lt;a href="http://book.douban.com/subject/1885170/"&gt;算法导论&lt;/a&gt;&lt;/p&gt;</summary><category term="排序 算法 基础"></category></entry><entry><title>快速排序</title><link href="http://www.wengweitao.com/kuai-su-pai-xu.html" rel="alternate"></link><published>2015-05-16T10:22:00+08:00</published><author><name>wwt</name></author><id>tag:www.wengweitao.com,2015-05-16:kuai-su-pai-xu.html</id><summary type="html">&lt;p&gt;本文介绍的是实际排序应用中最常用的一种排序算法——&lt;strong&gt;快速排序&lt;/strong&gt;。快速排序虽然在最坏情况下时间复杂度为&lt;span class="math"&gt;\(O(n^2)\)&lt;/span&gt;，但是它的平均性能非常好，它的期望运行时间是O(nlogn)，而且O(nlogn)所隐含的常数因子非常小。另外，它还能够进行原址排序。&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://book.douban.com/subject/1885170/"&gt;算法导论&lt;/a&gt;&lt;/p&gt;</summary><category term="排序 算法 基础"></category></entry><entry><title>快速排序</title><link href="http://www.wengweitao.com/kuai-su-pai-xu.html" rel="alternate"></link><published>2015-05-16T10:22:00+08:00</published><author><name>往往台</name></author><id>tag:www.wengweitao.com,2015-05-16:kuai-su-pai-xu.html</id><summary type="html">&lt;p&gt;本文介绍的是实际排序应用中最常用的一种排序算法——&lt;strong&gt;快速排序&lt;/strong&gt;。快速排序虽然在最坏情况下时间复杂度为&lt;span class="math"&gt;\(O(n^2)\)&lt;/span&gt;，但是它的平均性能非常好，它的期望运行时间是O(nlogn)，而且O(nlogn)所隐含的常数因子非常小。另外，它还能够进行原址排序。&lt;/p&gt;
 &lt;h2&gt;快速排序描述&lt;/h2&gt;
 &lt;p&gt;与归并排序一样，快速排序也使用了分治的思想。下面是对一个数组A[p..r]进行快速排序的三步分治过程：&lt;/p&gt;
 &lt;ul&gt;
@@ -2209,7 +2209,7 @@ O(n)时间复杂度，O(1)的额外空间复杂度&lt;/p&gt;
         "}); ";
     (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
 }
-&lt;/script&gt;</summary><category term="排序 算法 基础"></category></entry><entry><title>归并排序</title><link href="http://www.wengweitao.com/gui-bing-pai-xu.html" rel="alternate"></link><published>2015-05-15T19:45:00+08:00</published><author><name>wwt</name></author><id>tag:www.wengweitao.com,2015-05-15:gui-bing-pai-xu.html</id><summary type="html">&lt;p&gt;本文介绍利用分治法思想的一种排序算法——&lt;strong&gt;归并排序&lt;/strong&gt;。直观上其操作如下：&lt;/p&gt;
+&lt;/script&gt;</summary><category term="排序 算法 基础"></category></entry><entry><title>归并排序</title><link href="http://www.wengweitao.com/gui-bing-pai-xu.html" rel="alternate"></link><published>2015-05-15T19:45:00+08:00</published><author><name>往往台</name></author><id>tag:www.wengweitao.com,2015-05-15:gui-bing-pai-xu.html</id><summary type="html">&lt;p&gt;本文介绍利用分治法思想的一种排序算法——&lt;strong&gt;归并排序&lt;/strong&gt;。直观上其操作如下：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;分解&lt;/strong&gt;：分解待排序的n个元素的序列成2个具有n/2个元素的子序列&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;解决&lt;/strong&gt;：使用归并排序递归地排序两个子序列&lt;/li&gt;
@@ -2336,7 +2336,7 @@ aT(n/b) + D(n) + C(n) &amp;amp; 其他
         "}); ";
     (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
 }
-&lt;/script&gt;</summary><category term="排序 算法 基础"></category></entry><entry><title>堆排序</title><link href="http://www.wengweitao.com/dui-pai-xu.html" rel="alternate"></link><published>2015-05-14T22:23:00+08:00</published><author><name>wwt</name></author><id>tag:www.wengweitao.com,2015-05-14:dui-pai-xu.html</id><summary type="html">&lt;p&gt;本文将介绍一种排序算法，称为&lt;strong&gt;堆排序（heapsort）&lt;/strong&gt;。堆排序最坏情况下运行时间为O(nlogn)，并且具有空间原址性：任何时候只需要常数个额外的元素空间存储临时数据。堆排序中使用了堆这个数据结构进行管理，堆这种数据结构也可以用来构造一种 有效的优先级队列。&lt;/p&gt;
+&lt;/script&gt;</summary><category term="排序 算法 基础"></category></entry><entry><title>堆排序</title><link href="http://www.wengweitao.com/dui-pai-xu.html" rel="alternate"></link><published>2015-05-14T22:23:00+08:00</published><author><name>往往台</name></author><id>tag:www.wengweitao.com,2015-05-14:dui-pai-xu.html</id><summary type="html">&lt;p&gt;本文将介绍一种排序算法，称为&lt;strong&gt;堆排序（heapsort）&lt;/strong&gt;。堆排序最坏情况下运行时间为O(nlogn)，并且具有空间原址性：任何时候只需要常数个额外的元素空间存储临时数据。堆排序中使用了堆这个数据结构进行管理，堆这种数据结构也可以用来构造一种 有效的优先级队列。&lt;/p&gt;
 &lt;h2&gt;堆&lt;/h2&gt;
 &lt;p&gt;&lt;strong&gt;堆&lt;/strong&gt;（二叉堆）是一个数组，可以看成一个近似的完全二叉树，树中每一个结点对应数组中的一个元素，除了最底层外，该树是完全满的，而且是从左至右填充。二叉堆有两种形式：最大堆和最小堆。在最大堆中，除了根结点之外的所有结点的值小于等于其父节点的值，因此，堆中最大的元素存放在根结点中，并且在任一子树中，该子树所包含的所有结点的值都不大于该子树根结点的值。最小堆的组织方式正好相反。&lt;/p&gt;
 &lt;p&gt;在堆排序算法中，我们使用最大堆，而最小堆通常用于构造优先级队列。&lt;/p&gt;
@@ -2537,7 +2537,7 @@ aT(n/b) + D(n) + C(n) &amp;amp; 其他
         "}); ";
     (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
 }
-&lt;/script&gt;</summary><category term="排序 算法 基础"></category></entry><entry><title>插入排序</title><link href="http://www.wengweitao.com/cha-ru-pai-xu.html" rel="alternate"></link><published>2015-05-13T18:34:00+08:00</published><author><name>wwt</name></author><id>tag:www.wengweitao.com,2015-05-13:cha-ru-pai-xu.html</id><summary type="html">&lt;p&gt;本文介绍一种非常简单的排序算法——&lt;strong&gt;插入排序&lt;/strong&gt;。对于少量元素的排序，它是一个有效的算法。插入排序可以形象的类比为手中扑克牌的排序。开始时，左手为空并且桌子上的扑克牌的牌面朝下。然后我们每次从桌子上拿一张扑克牌，插入左手中正确的位置，我们从右向左将它与手中的每张牌进行比较，任何时候左手上的牌总是有序的。&lt;/p&gt;
+&lt;/script&gt;</summary><category term="排序 算法 基础"></category></entry><entry><title>插入排序</title><link href="http://www.wengweitao.com/cha-ru-pai-xu.html" rel="alternate"></link><published>2015-05-13T18:34:00+08:00</published><author><name>往往台</name></author><id>tag:www.wengweitao.com,2015-05-13:cha-ru-pai-xu.html</id><summary type="html">&lt;p&gt;本文介绍一种非常简单的排序算法——&lt;strong&gt;插入排序&lt;/strong&gt;。对于少量元素的排序，它是一个有效的算法。插入排序可以形象的类比为手中扑克牌的排序。开始时，左手为空并且桌子上的扑克牌的牌面朝下。然后我们每次从桌子上拿一张扑克牌，插入左手中正确的位置，我们从右向左将它与手中的每张牌进行比较，任何时候左手上的牌总是有序的。&lt;/p&gt;
 &lt;p&gt;对数组A[1..n]进行插入排序步骤：&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;初始时只含有一个元素A&lt;a href="http://book.douban.com/subject/1885170/"&gt;1&lt;/a&gt;，所以是有序的&lt;/li&gt;
@@ -2601,7 +2601,7 @@ aT(n/b) + D(n) + C(n) &amp;amp; 其他
         "}); ";
     (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
 }
-&lt;/script&gt;</summary><category term="排序 算法 基础"></category></entry><entry><title>冒泡排序</title><link href="http://www.wengweitao.com/mou-pao-pai-xu.html" rel="alternate"></link><published>2015-05-13T16:13:00+08:00</published><author><name>wwt</name></author><id>tag:www.wengweitao.com,2015-05-13:mou-pao-pai-xu.html</id><summary type="html">&lt;p&gt;冒泡排序算法比较简单，假设待排序列的长度为n，其思想是：&lt;/p&gt;
+&lt;/script&gt;</summary><category term="排序 算法 基础"></category></entry><entry><title>冒泡排序</title><link href="http://www.wengweitao.com/mou-pao-pai-xu.html" rel="alternate"></link><published>2015-05-13T16:13:00+08:00</published><author><name>往往台</name></author><id>tag:www.wengweitao.com,2015-05-13:mou-pao-pai-xu.html</id><summary type="html">&lt;p&gt;冒泡排序算法比较简单，假设待排序列的长度为n，其思想是：&lt;/p&gt;
 &lt;p&gt;从后往前（或者从前往后）两两比较相邻元素的值，若为逆序（即前一个大于后一个），则交换它们，直到序列比较完，我们称进行了一趟冒泡排序，结果将最小的元素交换到待排序列的第一个位置。下一趟冒泡排序，第一个元素不再参与比较，待排序列的个数减少1，每趟冒泡排序的结果把子序列中最小元素放到了最终的位置。关键字如同气泡一般逐渐往上漂浮至水面，这就是冒泡排序名字的由来。最多n-1趟就能把所有元素排好序。&lt;/p&gt;
 &lt;p&gt;代码实现如下：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kt"&gt;void&lt;/span&gt; &lt;span class="nf"&gt;bubbleSort&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;vector&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="kt"&gt;int&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="n"&gt;A&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
@@ -2664,7 +2664,7 @@ aT(n/b) + D(n) + C(n) &amp;amp; 其他
         "}); ";
     (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
 }
-&lt;/script&gt;</summary><category term="排序 算法 基础"></category></entry><entry><title>选择问题及复杂度分析</title><link href="http://www.wengweitao.com/xuan-ze-wen-ti-ji-fu-za-du-fen-xi.html" rel="alternate"></link><published>2015-05-06T11:10:00+08:00</published><author><name>wwt</name></author><id>tag:www.wengweitao.com,2015-05-06:xuan-ze-wen-ti-ji-fu-za-du-fen-xi.html</id><summary type="html">&lt;p&gt;选择问题是在实际应用中经常碰到的问题，最常见的选择问题有：选最大、选最小、选中位数、选第二大等。&lt;/p&gt;
+&lt;/script&gt;</summary><category term="排序 算法 基础"></category></entry><entry><title>选择问题及复杂度分析</title><link href="http://www.wengweitao.com/xuan-ze-wen-ti-ji-fu-za-du-fen-xi.html" rel="alternate"></link><published>2015-05-06T11:10:00+08:00</published><author><name>往往台</name></author><id>tag:www.wengweitao.com,2015-05-06:xuan-ze-wen-ti-ji-fu-za-du-fen-xi.html</id><summary type="html">&lt;p&gt;选择问题是在实际应用中经常碰到的问题，最常见的选择问题有：选最大、选最小、选中位数、选第二大等。&lt;/p&gt;
 &lt;p&gt;可以描述为从n个元素的集合L中选出第k小的元素，其中&lt;span class="math"&gt;\(1 \leq k \leq n\)&lt;/span&gt;。这里的第k小表示：将L中的元素按照升序排列，排在第k个位置的元素。如k=1时，选出的就是最小元素。&lt;/p&gt;
 &lt;p&gt;本文将对选择问题进行总结并对它们的复杂度进行分析。&lt;/p&gt;
 &lt;h2&gt;选最大最小问题&lt;/h2&gt;
@@ -2974,7 +2974,7 @@ aT(n/b) + D(n) + C(n) &amp;amp; 其他
         "}); ";
     (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
 }
-&lt;/script&gt;</summary><category term="算法分析"></category></entry><entry><title>求字符的所有组合和所有排列</title><link href="http://www.wengweitao.com/qiu-zi-fu-de-suo-you-zu-he-he-suo-you-pai-lie.html" rel="alternate"></link><published>2015-04-10T14:41:00+08:00</published><author><name>wwt</name></author><id>tag:www.wengweitao.com,2015-04-10:qiu-zi-fu-de-suo-you-zu-he-he-suo-you-pai-lie.html</id><summary type="html">&lt;blockquote&gt;
+&lt;/script&gt;</summary><category term="算法分析"></category></entry><entry><title>求字符的所有组合和所有排列</title><link href="http://www.wengweitao.com/qiu-zi-fu-de-suo-you-zu-he-he-suo-you-pai-lie.html" rel="alternate"></link><published>2015-04-10T14:41:00+08:00</published><author><name>往往台</name></author><id>tag:www.wengweitao.com,2015-04-10:qiu-zi-fu-de-suo-you-zu-he-he-suo-you-pai-lie.html</id><summary type="html">&lt;blockquote&gt;
 &lt;p&gt;昨天看到一道关于求解字符串的排列的问题。如何求出几个字符的所有排列，发现对这种类似的题型还不是很熟练，因此本文对字符的全排列和全组合的问题作下总结，加深自己的理解和记忆，同时也希望能够帮助大家更好的学习和理解该类问题。&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h2&gt;字符串的排列&lt;/h2&gt;
@@ -3213,7 +3213,7 @@ aT(n/b) + D(n) + C(n) &amp;amp; 其他
         "}); ";
     (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
 }
-&lt;/script&gt;</summary><category term="面试题"></category></entry><entry><title>斐波那契数列及其相关问题</title><link href="http://www.wengweitao.com/fei-bo-na-qi-shu-lie-ji-qi-xiang-guan-wen-ti.html" rel="alternate"></link><published>2015-04-05T00:00:00+08:00</published><author><name>wwt</name></author><id>tag:www.wengweitao.com,2015-04-05:fei-bo-na-qi-shu-lie-ji-qi-xiang-guan-wen-ti.html</id><summary type="html">&lt;p&gt;很多书在提到递归的时候，总是会拿斐波那契数列作为例子，它的定义如下：
+&lt;/script&gt;</summary><category term="面试题"></category></entry><entry><title>斐波那契数列及其相关问题</title><link href="http://www.wengweitao.com/fei-bo-na-qi-shu-lie-ji-qi-xiang-guan-wen-ti.html" rel="alternate"></link><published>2015-04-05T00:00:00+08:00</published><author><name>往往台</name></author><id>tag:www.wengweitao.com,2015-04-05:fei-bo-na-qi-shu-lie-ji-qi-xiang-guan-wen-ti.html</id><summary type="html">&lt;p&gt;很多书在提到递归的时候，总是会拿斐波那契数列作为例子，它的定义如下：
 &lt;img alt="Fibonacci" src="http://ac.jobdu.com/upload/201201/image/fbncslie.jpg" /&gt;&lt;/p&gt;
 &lt;p&gt;现在要求输出斐波那契数列的第n项。&lt;/p&gt;
 &lt;p&gt;首先，最容易想到的方法就是直接利用递归求解：&lt;/p&gt;

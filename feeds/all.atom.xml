@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>wwt's blog</title><link href="http://www.wengweitao.com/" rel="alternate"></link><link href="http://www.wengweitao.com/feeds/all.atom.xml" rel="self"></link><id>http://www.wengweitao.com/</id><updated>2016-04-17T22:48:00+08:00</updated><entry><title>在carina上使用Docker搭建免费的ShadowSocks</title><link href="http://www.wengweitao.com/zai-carinashang-shi-yong-dockerda-jian-mian-fei-de-shadowsocks.html" rel="alternate"></link><published>2016-04-17T22:48:00+08:00</published><author><name>wwt</name></author><id>tag:www.wengweitao.com,2016-04-17:zai-carinashang-shi-yong-dockerda-jian-mian-fei-de-shadowsocks.html</id><summary type="html">&lt;p&gt;&lt;a href="https://getcarina.com/"&gt;Carina&lt;/a&gt;是Rackspace旗下的一个网站，提供了Docker服务。最近，看到消息可以在该网站上注册账号，免费试用Docker服务。竟然有这么好的事，于是尝试注册了一个账号，搭建了一个免费的shadowsocks服务器。&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>往往台的博客</title><link href="http://www.wengweitao.com/" rel="alternate"></link><link href="http://www.wengweitao.com/feeds/all.atom.xml" rel="self"></link><id>http://www.wengweitao.com/</id><updated>2016-04-17T22:48:00+08:00</updated><entry><title>在carina上使用Docker搭建免费的ShadowSocks</title><link href="http://www.wengweitao.com/zai-carinashang-shi-yong-dockerda-jian-mian-fei-de-shadowsocks.html" rel="alternate"></link><published>2016-04-17T22:48:00+08:00</published><author><name>往往台</name></author><id>tag:www.wengweitao.com,2016-04-17:zai-carinashang-shi-yong-dockerda-jian-mian-fei-de-shadowsocks.html</id><summary type="html">&lt;p&gt;&lt;a href="https://getcarina.com/"&gt;Carina&lt;/a&gt;是Rackspace旗下的一个网站，提供了Docker服务。最近，看到消息可以在该网站上注册账号，免费试用Docker服务。竟然有这么好的事，于是尝试注册了一个账号，搭建了一个免费的shadowsocks服务器。&lt;/p&gt;
 &lt;h3&gt;账号注册&lt;/h3&gt;
 &lt;p&gt;注册的过程需要发送验证码短信，才能注册成功。而且，不支持中国大陆的手机号。解决方法是在手机上下载 &lt;a href="https://go-text.me/"&gt;textme&lt;/a&gt;  APP，可以得到一个美国的虚拟手机号，用于发送和接收短信。得到虚拟手机号后，输入接收到的短信验证码即可成功注册。&lt;/p&gt;
 &lt;h3&gt;创建cluster&lt;/h3&gt;
@@ -73,7 +73,7 @@ CONTAINER ID        IMAGE                             COMMAND                CRE
 &lt;li&gt;&lt;a href="http://liujin.me/blog/2015/05/27/Docker-DigitalOcean-Shadowsocks-5-%E5%88%86%E9%92%9F%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/"&gt;Docker + DigitalOcean + Shadowsocks 5分钟科学上网&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://leohxj.gitbooks.io/a-programmer-prepares/content/effciency/break-through-intranet.html"&gt;程序员的自我修养&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="http://www.ishadowsocks.net/"&gt;shadowsocks客户端&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;</summary><category term="工具"></category><category term="教程"></category></entry><entry><title>Docker学习</title><link href="http://www.wengweitao.com/dockerxue-xi.html" rel="alternate"></link><published>2016-04-16T22:48:00+08:00</published><author><name>wwt</name></author><id>tag:www.wengweitao.com,2016-04-16:dockerxue-xi.html</id><summary type="html">&lt;blockquote&gt;
+&lt;/ol&gt;</summary><category term="工具"></category><category term="教程"></category></entry><entry><title>Docker学习</title><link href="http://www.wengweitao.com/dockerxue-xi.html" rel="alternate"></link><published>2016-04-16T22:48:00+08:00</published><author><name>往往台</name></author><id>tag:www.wengweitao.com,2016-04-16:dockerxue-xi.html</id><summary type="html">&lt;blockquote&gt;
 &lt;p&gt;Docker是诞生于2013年的一个开源项目，在开源之后就受到了广泛的关注和讨论。3年时间过去了，Docker已经成为了广大程序员耳熟能详的一个工具，在业界也得到了非常广泛的应用。我也一直对Docker十分感兴趣，便抽空了解了下Docker。&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h3&gt;简介&lt;/h3&gt;
@@ -280,7 +280,7 @@ Successfully built 7d9495d03763
 &lt;li&gt;&lt;a href="https://ipn.li/kernelpanic/8/"&gt;内和恐慌#8：「集装箱化」与运维管理&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="http://v.youku.com/v_show/id_XNzUyMzA4MTE2.html?from=y1.6-91.3.1.5bdbf57c947311e3b8b7"&gt;罗辑思维：改变世界的箱子 84  &lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://www.gitbook.com/book/yeasy/docker_practice"&gt;Docker —— 从入门到实践&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;</summary><category term="工具"></category><category term="教程"></category></entry><entry><title>使用Python处理excel文件</title><link href="http://www.wengweitao.com/shi-yong-pythonchu-li-excelwen-jian.html" rel="alternate"></link><published>2016-03-07T22:48:00+08:00</published><author><name>wwt</name></author><id>tag:www.wengweitao.com,2016-03-07:shi-yong-pythonchu-li-excelwen-jian.html</id><summary type="html">&lt;p&gt;最近一段时间好几个其他学院的同学找我帮忙处理保存在excel中的数据。对于非计算机专业的同学，平时可能仅仅是用excel做一些简单的数据处理，稍微复杂一些的excel函数可能就写不了，于是就找我们计算机专业的同学帮忙。不过excel，我几乎从来不用，只能借助于编程实现对excel的数据处理了。对于这类问题，首选自然是Python啦。其实，Python是一门非常容易掌握和使用的语言，我也经常向非计算机专业的同学推荐学习Python，学完之后非常有用。这篇文章就面向非计算机专业的同学介绍如何使用Python来对excel文件进行数据处理。&lt;/p&gt;
+&lt;/ol&gt;</summary><category term="工具"></category><category term="教程"></category></entry><entry><title>使用Python处理excel文件</title><link href="http://www.wengweitao.com/shi-yong-pythonchu-li-excelwen-jian.html" rel="alternate"></link><published>2016-03-07T22:48:00+08:00</published><author><name>往往台</name></author><id>tag:www.wengweitao.com,2016-03-07:shi-yong-pythonchu-li-excelwen-jian.html</id><summary type="html">&lt;p&gt;最近一段时间好几个其他学院的同学找我帮忙处理保存在excel中的数据。对于非计算机专业的同学，平时可能仅仅是用excel做一些简单的数据处理，稍微复杂一些的excel函数可能就写不了，于是就找我们计算机专业的同学帮忙。不过excel，我几乎从来不用，只能借助于编程实现对excel的数据处理了。对于这类问题，首选自然是Python啦。其实，Python是一门非常容易掌握和使用的语言，我也经常向非计算机专业的同学推荐学习Python，学完之后非常有用。这篇文章就面向非计算机专业的同学介绍如何使用Python来对excel文件进行数据处理。&lt;/p&gt;
 &lt;h2&gt;安装Python环境&lt;/h2&gt;
 &lt;p&gt;&lt;a href="https://www.continuum.io/downloads"&gt;ANACONDA&lt;/a&gt;是一个Python的发行版本，包含了400多个Python最常用的库，其中就包括了数据分析中需要经常使用到的Numpy和Pandas等。更重要的是，不论在哪个平台上，都可以一键安装，自动配置好环境，不需要用户任何的额外操作，非常方便。因此，安装Python环境就只需要到ANACONDA网站上下载安装文件，双击安装即可。&lt;/p&gt;
 &lt;p&gt;安装完成之后，使用&lt;code&gt;windows + r&lt;/code&gt;键打开Windows命令行，输入ipython，然后回车：&lt;/p&gt;
@@ -380,7 +380,7 @@ dtype: object
 &lt;span class="n"&gt;out&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;pd&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;ExcelWriter&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;output.xls&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;span class="n"&gt;new_df&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;to_excel&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;out&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;span class="n"&gt;out&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;save&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;</summary><category term="Python"></category><category term="教程"></category></entry><entry><title>2015年校招找工作总结之国企篇</title><link href="http://www.wengweitao.com/2015nian-xiao-zhao-zhao-gong-zuo-zong-jie-zhi-guo-qi-pian.html" rel="alternate"></link><published>2016-02-29T22:48:00+08:00</published><author><name>wwt</name></author><id>tag:www.wengweitao.com,2016-02-29:2015nian-xiao-zhao-zhao-gong-zuo-zong-jie-zhi-guo-qi-pian.html</id><summary type="html">&lt;p&gt;在上一篇的文章中&lt;a href="http://www.wengweitao.com/2015nian-xiao-zhao-zhao-gong-zuo-zong-jie-zhi-hu-lian-wang-gong-si-ji-zhu-pian.html"&gt;上一篇&lt;/a&gt;，我已经提到过我最终签约了一家银行。选择太重要了，一念天堂一念地狱啊。其实，最开始也没怎么想过去国企的，准备了几个月也基本是围绕互联网技术岗位来准备的，真是没想到还是去了国企。&lt;/p&gt;
+&lt;/pre&gt;&lt;/div&gt;</summary><category term="Python"></category><category term="教程"></category></entry><entry><title>2015年校招找工作总结之国企篇</title><link href="http://www.wengweitao.com/2015nian-xiao-zhao-zhao-gong-zuo-zong-jie-zhi-guo-qi-pian.html" rel="alternate"></link><published>2016-02-29T22:48:00+08:00</published><author><name>往往台</name></author><id>tag:www.wengweitao.com,2016-02-29:2015nian-xiao-zhao-zhao-gong-zuo-zong-jie-zhi-guo-qi-pian.html</id><summary type="html">&lt;p&gt;在上一篇的文章中&lt;a href="http://www.wengweitao.com/2015nian-xiao-zhao-zhao-gong-zuo-zong-jie-zhi-hu-lian-wang-gong-si-ji-zhu-pian.html"&gt;上一篇&lt;/a&gt;，我已经提到过我最终签约了一家银行。选择太重要了，一念天堂一念地狱啊。其实，最开始也没怎么想过去国企的，准备了几个月也基本是围绕互联网技术岗位来准备的，真是没想到还是去了国企。&lt;/p&gt;
 &lt;p&gt;最早有进国企的想法（仅仅是想法）是在研一的时候，听一个去了国企的11级师兄介绍银行的求职经历，他当时介绍了去银行的各种好处，并且说到总行的时候，提到：&lt;code&gt;别看了，能进就进去吧!!&lt;/code&gt; 当时，我听完还是比较心动的，还跟同学说要是以后能进总行就好了。不过，当时师兄一直强调总行本部有多那么难进，我也就只是随便心里想想而已，没想到现在竟然真的成真了。其实，我的性格还是最适合当程序员的，而且本身也挺喜欢接触各种技术，最终放弃程序员的工作，虽然当时签工行的时候没有多少犹豫，但是签完自己再想想还是会觉得有些可惜，不知道未来在自己完全不熟悉的岗位上会发展的如何（当然，如果放弃工总签约互联网也会有同样的感觉）。选择程序员或者银行国企都各有各的好处，无论选择了什么岗位都一样需要努力奋斗的，既然做出了选择，那么就&lt;strong&gt;但行好事莫问前程&lt;/strong&gt;吧！好了，不废话了，接下来就介绍一些我的银行求职经历。&lt;/p&gt;
 &lt;h2&gt;为什么去银行？&lt;/h2&gt;
 &lt;p&gt;作为计算机专业的学生，大部分人肯定都会选择进入互联网行业。现在互联网公司这么火，开的工资又高，一个应届毕业生也可以比较轻松的拿到30w+的年薪，以后还可以自己创业，还能有暴富的机会。互联网这么好，我为什么还要加入银行呢？以下是我的几个想法：&lt;/p&gt;
@@ -455,7 +455,7 @@ dtype: object
 &lt;p&gt;suit up! 去挑一套帅气（美丽）的正装，面试的时候是必备的。&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;以上所说的都是道听途说后的想法，仅作参考。&lt;/p&gt;</summary><category term="校招"></category><category term="总结"></category></entry><entry><title>2015年校招找工作总结之互联网公司（技术篇）</title><link href="http://www.wengweitao.com/2015nian-xiao-zhao-zhao-gong-zuo-zong-jie-zhi-hu-lian-wang-gong-si-ji-zhu-pian.html" rel="alternate"></link><published>2015-12-27T14:22:00+08:00</published><author><name>wwt</name></author><id>tag:www.wengweitao.com,2015-12-27:2015nian-xiao-zhao-zhao-gong-zuo-zong-jie-zhi-hu-lian-wang-gong-si-ji-zhu-pian.html</id><summary type="html">&lt;p&gt;2015年校招基本已经结束，回学校之后不少14级的师弟师妹们都在问我找工作的一些问题。经历了2个月的找工作经历，我多少也积累了一些经验，虽然并没有像大牛们那样拿了许多牛逼的offer，但是作为普通的校招求职者，还是希望能够记录下自己的经验和教训，作为一个总结，也希望能够给明年找工作的师弟师妹们一点帮助。
+&lt;p&gt;以上所说的都是道听途说后的想法，仅作参考。&lt;/p&gt;</summary><category term="校招"></category><category term="总结"></category></entry><entry><title>2015年校招找工作总结之互联网公司（技术篇）</title><link href="http://www.wengweitao.com/2015nian-xiao-zhao-zhao-gong-zuo-zong-jie-zhi-hu-lian-wang-gong-si-ji-zhu-pian.html" rel="alternate"></link><published>2015-12-27T14:22:00+08:00</published><author><name>往往台</name></author><id>tag:www.wengweitao.com,2015-12-27:2015nian-xiao-zhao-zhao-gong-zuo-zong-jie-zhi-hu-lian-wang-gong-si-ji-zhu-pian.html</id><summary type="html">&lt;p&gt;2015年校招基本已经结束，回学校之后不少14级的师弟师妹们都在问我找工作的一些问题。经历了2个月的找工作经历，我多少也积累了一些经验，虽然并没有像大牛们那样拿了许多牛逼的offer，但是作为普通的校招求职者，还是希望能够记录下自己的经验和教训，作为一个总结，也希望能够给明年找工作的师弟师妹们一点帮助。
 首先，介绍下我的基本情况。我本科是物理学，研究生转到计算机，在找工作之前没有任何互联网公司的实习经历，主要报的是数据挖掘和机器学习工程师岗位，投了多家公司的简历，最终拿到了：蚂蚁金服（C++研发工程师）、大众点评（算法工程师）、猎豹移动、摩根斯坦利、工行总行、农行软开这些offer。简历投了很多，后来拿到宇宙行的offer后，就无心面试了，很多面试就都放弃了。这篇文章先介绍我找技术相关岗位的一些经历。&lt;/p&gt;
 &lt;h2&gt;校招的基本流程&lt;/h2&gt;
 &lt;p&gt;通常互联网公司招聘的基本流程为：投递简历，参加笔试（部分公司内推可以免笔试），3-4轮面试，发出offer，HR通过电话告知薪资待遇，决定是否接受offer，签订合同和三方。&lt;/p&gt;
@@ -573,7 +573,7 @@ dtype: object
 &lt;li&gt;应届生网：掌握公司的招聘信息&lt;/li&gt;
 &lt;li&gt;各个博客：很多人都会在个人博客上面分享自己的面试经验，善用Google搜索，搜集一些往年面试的真题和经验。&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;每年都是“史上最难就业季”，很多人都说今年是互联网的寒冬，但是只要好好准备，平日里注意积累，找一家不错的互联网公司还是不难的。希望大家都能拿到满意的offer。&lt;/p&gt;</summary><category term="校招"></category><category term="总结"></category></entry><entry><title>Kaggle 入门指南</title><link href="http://www.wengweitao.com/kaggle-ru-men-zhi-nan.html" rel="alternate"></link><published>2015-08-21T16:49:00+08:00</published><author><name>wwt</name></author><id>tag:www.wengweitao.com,2015-08-21:kaggle-ru-men-zhi-nan.html</id><summary type="html">&lt;hr /&gt;
+&lt;p&gt;每年都是“史上最难就业季”，很多人都说今年是互联网的寒冬，但是只要好好准备，平日里注意积累，找一家不错的互联网公司还是不难的。希望大家都能拿到满意的offer。&lt;/p&gt;</summary><category term="校招"></category><category term="总结"></category></entry><entry><title>Kaggle 入门指南</title><link href="http://www.wengweitao.com/kaggle-ru-men-zhi-nan.html" rel="alternate"></link><published>2015-08-21T16:49:00+08:00</published><author><name>往往台</name></author><id>tag:www.wengweitao.com,2015-08-21:kaggle-ru-men-zhi-nan.html</id><summary type="html">&lt;hr /&gt;
 &lt;p&gt;&lt;a href="https://www.kaggle.com"&gt;Kaggle&lt;/a&gt;是一个非常著名的数据建模和分析的竞赛平台，对于数据挖掘的爱好者来说是一个非常好的学习平台。我们可以通过Kaggle提供的数据集，通过实战提高自己的数据挖掘和分析能力。这篇文章就介绍如何参与一个Kaggle的竞赛，希望能够让更多的数据挖掘爱好者能够熟悉Kaggle竞赛的基本流程，加入到Kaggle中。&lt;/p&gt;
 &lt;p&gt;我们就以一个简单的竞赛任务——&lt;a href="https://www.kaggle.com/c/digit-recognizer"&gt;手写数字识别&lt;/a&gt;为例，进行介绍。&lt;/p&gt;
 &lt;h2&gt;查看竞赛任务描述&lt;/h2&gt;
@@ -671,7 +671,7 @@ dtype: object
 
 
 &lt;p&gt;几行的代码就可以取得0.96的准确率还是挺不错的。&lt;/p&gt;
-&lt;p&gt;以上就是参加Kaggle竞赛的一个简单入门教程。Have fun!&lt;/p&gt;</summary><category term="机器学习"></category><category term="教程"></category></entry><entry><title>生成学习算法与判别学习算法</title><link href="http://www.wengweitao.com/sheng-cheng-xue-xi-suan-fa-yu-pan-bie-xue-xi-suan-fa.html" rel="alternate"></link><published>2015-08-05T22:42:00+08:00</published><author><name>wwt</name></author><id>tag:www.wengweitao.com,2015-08-05:sheng-cheng-xue-xi-suan-fa-yu-pan-bie-xue-xi-suan-fa.html</id><summary type="html">&lt;p&gt;机器学习中有两类学习算法：&lt;strong&gt;生成学习算法&lt;/strong&gt;（Generative learning algorithm）和&lt;strong&gt;判别学习算法&lt;/strong&gt;（Discriminative learning algorithm），它们所学到的模型分别成为生成模型和判别模型。那么这两种学习算法的区别是什么呢？&lt;/p&gt;
+&lt;p&gt;以上就是参加Kaggle竞赛的一个简单入门教程。Have fun!&lt;/p&gt;</summary><category term="机器学习"></category><category term="教程"></category></entry><entry><title>生成学习算法与判别学习算法</title><link href="http://www.wengweitao.com/sheng-cheng-xue-xi-suan-fa-yu-pan-bie-xue-xi-suan-fa.html" rel="alternate"></link><published>2015-08-05T22:42:00+08:00</published><author><name>往往台</name></author><id>tag:www.wengweitao.com,2015-08-05:sheng-cheng-xue-xi-suan-fa-yu-pan-bie-xue-xi-suan-fa.html</id><summary type="html">&lt;p&gt;机器学习中有两类学习算法：&lt;strong&gt;生成学习算法&lt;/strong&gt;（Generative learning algorithm）和&lt;strong&gt;判别学习算法&lt;/strong&gt;（Discriminative learning algorithm），它们所学到的模型分别成为生成模型和判别模型。那么这两种学习算法的区别是什么呢？&lt;/p&gt;
 &lt;p&gt;举一个具体的例子，假设我们现在要对两种动物进行分类，给定一个动物要么是大象（y=1），要么是狗（y=0）。&lt;/p&gt;
 &lt;p&gt;对于生成学习算法，我们需要利用训练数据分别构建一个描述大象的模型和一个描述狗的模型，然后给定一个新的动物作为输入，我们分别将该动物与大象模型和狗模型进行匹配，然后根据匹配的结果更像哪一个进行分类。用数学公式可以描述为：&lt;/p&gt;
 &lt;p&gt;大象的模型：P(x|y=1)表示了大象的特征分布；&lt;/p&gt;
@@ -732,7 +732,7 @@ dtype: object
         "}); ";
     (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
 }
-&lt;/script&gt;</summary><category term="机器学习"></category><category term="基础"></category></entry><entry><title>数据库事务</title><link href="http://www.wengweitao.com/shu-ju-ku-shi-wu.html" rel="alternate"></link><published>2015-07-30T22:42:00+08:00</published><author><name>wwt</name></author><id>tag:www.wengweitao.com,2015-07-30:shu-ju-ku-shi-wu.html</id><summary type="html">&lt;p&gt;最近几天面试蚂蚁金服，一共两次面试，两次都被问到了&lt;strong&gt;数据库事务&lt;/strong&gt;的相关知识。由于此前并没有系统学过数据库，平时也主要都是在使用数据库，而没有深入了解过数据库一些基本概念，所以对于这些问题，虽然意思理解，但总不能非常准确的表达出来。这篇文章，就总结下数据库事务的一些基本概念。&lt;/p&gt;
+&lt;/script&gt;</summary><category term="机器学习"></category><category term="基础"></category></entry><entry><title>数据库事务</title><link href="http://www.wengweitao.com/shu-ju-ku-shi-wu.html" rel="alternate"></link><published>2015-07-30T22:42:00+08:00</published><author><name>往往台</name></author><id>tag:www.wengweitao.com,2015-07-30:shu-ju-ku-shi-wu.html</id><summary type="html">&lt;p&gt;最近几天面试蚂蚁金服，一共两次面试，两次都被问到了&lt;strong&gt;数据库事务&lt;/strong&gt;的相关知识。由于此前并没有系统学过数据库，平时也主要都是在使用数据库，而没有深入了解过数据库一些基本概念，所以对于这些问题，虽然意思理解，但总不能非常准确的表达出来。这篇文章，就总结下数据库事务的一些基本概念。&lt;/p&gt;
 &lt;h2&gt;什么是数据库事务？&lt;/h2&gt;
 &lt;p&gt;&lt;strong&gt;数据库事务&lt;/strong&gt;（简称：事务 Transaction）是数据库管理系统执行过程中的一个逻辑单位，由一个有限的数据库操作序列构成。数据库事务作为一个逻辑单位，要么全部执行，要么全部不执行。&lt;/p&gt;
 &lt;p&gt;那么事务有什么作用呢？举一个例子，假设我们用支付宝进行转账，A用户要向B用户转100元，通常需要以下几个步骤：&lt;/p&gt;
@@ -829,7 +829,7 @@ dtype: object
 &lt;li&gt;&lt;a href="http://anjianshi.net/post/yan-jiu-bi-ji/db_isolation"&gt;http://anjianshi.net/post/yan-jiu-bi-ji/db_isolation&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="http://nsdifficult.com/blog/20150714/dbTransaction/"&gt;http://nsdifficult.com/blog/20150714/dbTransaction/&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="http://blog.sina.com.cn/s/blog_3fc85e260100msz3.html"&gt;http://blog.sina.com.cn/s/blog_3fc85e260100msz3.html&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;</summary><category term="数据库"></category></entry><entry><title>Python Socket网络编程</title><link href="http://www.wengweitao.com/python-socketwang-luo-bian-cheng.html" rel="alternate"></link><published>2015-07-27T18:49:00+08:00</published><author><name>wwt</name></author><id>tag:www.wengweitao.com,2015-07-27:python-socketwang-luo-bian-cheng.html</id><summary type="html">&lt;p&gt;在网络通信中socket几乎无处不在，它可以看成是应用层与TCP/IP协议簇通信的中间软件抽象层，是两个应用程序彼此进行通信的接口，并且把复杂的TCP/IP协议细节隐藏在接口之后。Python提供了socket模块，可以非常方便的进行socket编程。&lt;/p&gt;
+&lt;/ol&gt;</summary><category term="数据库"></category></entry><entry><title>Python Socket网络编程</title><link href="http://www.wengweitao.com/python-socketwang-luo-bian-cheng.html" rel="alternate"></link><published>2015-07-27T18:49:00+08:00</published><author><name>往往台</name></author><id>tag:www.wengweitao.com,2015-07-27:python-socketwang-luo-bian-cheng.html</id><summary type="html">&lt;p&gt;在网络通信中socket几乎无处不在，它可以看成是应用层与TCP/IP协议簇通信的中间软件抽象层，是两个应用程序彼此进行通信的接口，并且把复杂的TCP/IP协议细节隐藏在接口之后。Python提供了socket模块，可以非常方便的进行socket编程。&lt;/p&gt;
 &lt;h2&gt;创建一个server socket&lt;/h2&gt;
 &lt;p&gt;使用&lt;code&gt;socket&lt;/code&gt;方法创建一个新的socket，通常提供两个参数，第一个参数是address family, 第二个是socket type。&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;#create an INET, STREAMing socket&lt;/span&gt;
@@ -1188,7 +1188,7 @@ server端等待至少一个socket就绪：&lt;/p&gt;
 &lt;li&gt;&lt;a href="https://docs.python.org/2/howto/sockets.html"&gt;socket programming&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://docs.python.org/2/library/select.html"&gt;select docs&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="http://pymotw.com/2/select/#module-selects://docs.python.org/2/library/select.html"&gt;select – Wait for I/O Efficiently&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;</summary><category term="Python"></category><category term="教程"></category></entry><entry><title>[leetcode] Majority Element II</title><link href="http://www.wengweitao.com/leetcode-majority-element-ii.html" rel="alternate"></link><published>2015-06-29T10:42:00+08:00</published><author><name>wwt</name></author><id>tag:www.wengweitao.com,2015-06-29:leetcode-majority-element-ii.html</id><summary type="html">&lt;h3&gt;题目&lt;/h3&gt;
+&lt;/ol&gt;</summary><category term="Python"></category><category term="教程"></category></entry><entry><title>[leetcode] Majority Element II</title><link href="http://www.wengweitao.com/leetcode-majority-element-ii.html" rel="alternate"></link><published>2015-06-29T10:42:00+08:00</published><author><name>往往台</name></author><id>tag:www.wengweitao.com,2015-06-29:leetcode-majority-element-ii.html</id><summary type="html">&lt;h3&gt;题目&lt;/h3&gt;
 &lt;p&gt;&lt;a href="https://leetcode.com/problems/majority-element-ii/"&gt;Majority Element II&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Given an integer array of size n, find all elements that appear more than ⌊ n/3 ⌋ times. The algorithm should run in linear time and in O(1) space.&lt;/p&gt;
 &lt;h3&gt;分析&lt;/h3&gt;
@@ -1246,7 +1246,7 @@ server端等待至少一个socket就绪：&lt;/p&gt;
         &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;result&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
     &lt;span class="p"&gt;}&lt;/span&gt;
 &lt;span class="p"&gt;};&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;</summary><category term="leetcode"></category><category term="面试题"></category></entry><entry><title>[leetcode] Basic Calculator II</title><link href="http://www.wengweitao.com/leetcode-basic-calculator-ii.html" rel="alternate"></link><published>2015-06-22T14:11:00+08:00</published><author><name>wwt</name></author><id>tag:www.wengweitao.com,2015-06-22:leetcode-basic-calculator-ii.html</id><summary type="html">&lt;hr /&gt;
+&lt;/pre&gt;&lt;/div&gt;</summary><category term="leetcode"></category><category term="面试题"></category></entry><entry><title>[leetcode] Basic Calculator II</title><link href="http://www.wengweitao.com/leetcode-basic-calculator-ii.html" rel="alternate"></link><published>2015-06-22T14:11:00+08:00</published><author><name>往往台</name></author><id>tag:www.wengweitao.com,2015-06-22:leetcode-basic-calculator-ii.html</id><summary type="html">&lt;hr /&gt;
 &lt;h3&gt;题目&lt;/h3&gt;
 &lt;p&gt;&lt;a href="https://leetcode.com/problems/basic-calculator-ii/"&gt;Basic Calculator II &lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Implement a basic calculator to evaluate a simple expression string.&lt;/p&gt;
@@ -1324,7 +1324,7 @@ server端等待至少一个socket就绪：&lt;/p&gt;
         &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;result&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
     &lt;span class="p"&gt;}&lt;/span&gt;
 &lt;span class="p"&gt;};&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;</summary><category term="leetcode"></category><category term="面试题"></category></entry><entry><title>[leetcode] Invert Binary Tree</title><link href="http://www.wengweitao.com/leetcode-invert-binary-tree.html" rel="alternate"></link><published>2015-06-12T15:54:00+08:00</published><author><name>wwt</name></author><id>tag:www.wengweitao.com,2015-06-12:leetcode-invert-binary-tree.html</id><summary type="html">&lt;h3&gt;题目&lt;/h3&gt;
+&lt;/pre&gt;&lt;/div&gt;</summary><category term="leetcode"></category><category term="面试题"></category></entry><entry><title>[leetcode] Invert Binary Tree</title><link href="http://www.wengweitao.com/leetcode-invert-binary-tree.html" rel="alternate"></link><published>2015-06-12T15:54:00+08:00</published><author><name>往往台</name></author><id>tag:www.wengweitao.com,2015-06-12:leetcode-invert-binary-tree.html</id><summary type="html">&lt;h3&gt;题目&lt;/h3&gt;
 &lt;p&gt;&lt;a href="https://leetcode.com/problems/invert-binary-tree/"&gt;Invert Binary Tree &lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;img alt="例子" src="http://i1.tietuku.com/88c1805f904cd57d.png" /&gt;&lt;/p&gt;
 &lt;h3&gt;分析&lt;/h3&gt;
@@ -1403,7 +1403,7 @@ server端等待至少一个socket就绪：&lt;/p&gt;
         &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;root&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
     &lt;span class="p"&gt;}&lt;/span&gt;
 &lt;span class="p"&gt;};&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;</summary><category term="leetcode"></category><category term="面试题"></category></entry><entry><title>[leetcode] Implement Stack using Queues</title><link href="http://www.wengweitao.com/leetcode-implement-stack-using-queues.html" rel="alternate"></link><published>2015-06-11T16:02:00+08:00</published><author><name>wwt</name></author><id>tag:www.wengweitao.com,2015-06-11:leetcode-implement-stack-using-queues.html</id><summary type="html">&lt;h3&gt;题目&lt;/h3&gt;
+&lt;/pre&gt;&lt;/div&gt;</summary><category term="leetcode"></category><category term="面试题"></category></entry><entry><title>[leetcode] Implement Stack using Queues</title><link href="http://www.wengweitao.com/leetcode-implement-stack-using-queues.html" rel="alternate"></link><published>2015-06-11T16:02:00+08:00</published><author><name>往往台</name></author><id>tag:www.wengweitao.com,2015-06-11:leetcode-implement-stack-using-queues.html</id><summary type="html">&lt;h3&gt;题目&lt;/h3&gt;
 &lt;p&gt;&lt;a href="https://leetcode.com/problems/implement-stack-using-queues/"&gt;Implement Stack using Queues&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Implement the following operations of a stack using queues.&lt;/p&gt;
 &lt;ul&gt;
@@ -1517,7 +1517,7 @@ Depending on your language, queue may not be supported natively. You may simulat
         &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;s1&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;empty&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="o"&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class="n"&gt;s2&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;empty&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;
     &lt;span class="p"&gt;}&lt;/span&gt;
 &lt;span class="p"&gt;};&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;</summary><category term="leetcode"></category><category term="面试题"></category></entry><entry><title>[leetcode] Basic Calculator</title><link href="http://www.wengweitao.com/leetcode-basic-calculator.html" rel="alternate"></link><published>2015-06-10T10:12:00+08:00</published><author><name>wwt</name></author><id>tag:www.wengweitao.com,2015-06-10:leetcode-basic-calculator.html</id><summary type="html">&lt;h3&gt;题目&lt;/h3&gt;
+&lt;/pre&gt;&lt;/div&gt;</summary><category term="leetcode"></category><category term="面试题"></category></entry><entry><title>[leetcode] Basic Calculator</title><link href="http://www.wengweitao.com/leetcode-basic-calculator.html" rel="alternate"></link><published>2015-06-10T10:12:00+08:00</published><author><name>往往台</name></author><id>tag:www.wengweitao.com,2015-06-10:leetcode-basic-calculator.html</id><summary type="html">&lt;h3&gt;题目&lt;/h3&gt;
 &lt;p&gt;&lt;a href="https://leetcode.com/problems/basic-calculator/"&gt;Basic Calculator&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Implement a basic calculator to evaluate a simple expression string.&lt;/p&gt;
 &lt;p&gt;The expression string may contain open ( and closing parentheses ), the plus + or minus sign -, non-negative integers and empty spaces .&lt;/p&gt;
@@ -1594,7 +1594,7 @@ Note: Do not use the eval built-in library function.&lt;/p&gt;
         &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;result&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
     &lt;span class="p"&gt;}&lt;/span&gt;
 &lt;span class="p"&gt;};&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;</summary><category term="leetcode"></category><category term="面试题"></category></entry><entry><title>连续子数组的最大和</title><link href="http://www.wengweitao.com/lian-xu-zi-shu-zu-de-zui-da-he.html" rel="alternate"></link><published>2015-06-09T21:46:00+08:00</published><author><name>wwt</name></author><id>tag:www.wengweitao.com,2015-06-09:lian-xu-zi-shu-zu-de-zui-da-he.html</id><summary type="html">&lt;hr /&gt;
+&lt;/pre&gt;&lt;/div&gt;</summary><category term="leetcode"></category><category term="面试题"></category></entry><entry><title>连续子数组的最大和</title><link href="http://www.wengweitao.com/lian-xu-zi-shu-zu-de-zui-da-he.html" rel="alternate"></link><published>2015-06-09T21:46:00+08:00</published><author><name>往往台</name></author><id>tag:www.wengweitao.com,2015-06-09:lian-xu-zi-shu-zu-de-zui-da-he.html</id><summary type="html">&lt;hr /&gt;
 &lt;p&gt;算法的设计对于程序的运行时间具有极大的影响，复杂深奥的算法有时可以极大提高程序运行的效率。本文将通过一个经典的问题——连续子数组的最大和（Maximum Subarray ），研究四种不同的算法，并比较这四种算法的运行时间，来说明不同的算法对提高程序运行效率的重要性。&lt;/p&gt;
 &lt;h3&gt;问题描述&lt;/h3&gt;
 &lt;p&gt;&lt;a href="https://leetcode.com/problems/maximum-subarray/"&gt;Maximum Subarray&lt;/a&gt; &lt;/p&gt;
@@ -1902,7 +1902,7 @@ the contiguous subarray [4,−1,2,1] has the largest sum = 6.&lt;/p&gt;
         "}); ";
     (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
 }
-&lt;/script&gt;</summary><category term="编程珠玑"></category></entry><entry><title>[leetcode] Rectangle Area</title><link href="http://www.wengweitao.com/leetcode-rectangle-area.html" rel="alternate"></link><published>2015-06-08T11:23:00+08:00</published><author><name>wwt</name></author><id>tag:www.wengweitao.com,2015-06-08:leetcode-rectangle-area.html</id><summary type="html">&lt;h3&gt;题目&lt;/h3&gt;
+&lt;/script&gt;</summary><category term="编程珠玑"></category></entry><entry><title>[leetcode] Rectangle Area</title><link href="http://www.wengweitao.com/leetcode-rectangle-area.html" rel="alternate"></link><published>2015-06-08T11:23:00+08:00</published><author><name>往往台</name></author><id>tag:www.wengweitao.com,2015-06-08:leetcode-rectangle-area.html</id><summary type="html">&lt;h3&gt;题目&lt;/h3&gt;
 &lt;p&gt;&lt;a href="https://leetcode.com/problems/rectangle-area/"&gt;Rectangle Area&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Find the total area covered by two rectilinear rectangles in a 2D plane.&lt;/p&gt;
 &lt;p&gt;Each rectangle is defined by its bottom left corner and top right corner as shown in the figure.&lt;/p&gt;
@@ -1948,7 +1948,7 @@ Expected:   17
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;以上的test case，(GH)在(EF)的左上角，不符合题目的规定（应该在右上角的）。所以计算s1和s2的时候，要加上abs取绝对值，这样就AC了。&lt;/p&gt;</summary><category term="leetcode"></category><category term="面试题"></category></entry><entry><title>[leetcode] Count Complete Tree Nodes</title><link href="http://www.wengweitao.com/leetcode-count-complete-tree-nodes.html" rel="alternate"></link><published>2015-06-06T11:19:00+08:00</published><author><name>wwt</name></author><id>tag:www.wengweitao.com,2015-06-06:leetcode-count-complete-tree-nodes.html</id><summary type="html">&lt;h3&gt;题目&lt;/h3&gt;
+&lt;p&gt;以上的test case，(GH)在(EF)的左上角，不符合题目的规定（应该在右上角的）。所以计算s1和s2的时候，要加上abs取绝对值，这样就AC了。&lt;/p&gt;</summary><category term="leetcode"></category><category term="面试题"></category></entry><entry><title>[leetcode] Count Complete Tree Nodes</title><link href="http://www.wengweitao.com/leetcode-count-complete-tree-nodes.html" rel="alternate"></link><published>2015-06-06T11:19:00+08:00</published><author><name>往往台</name></author><id>tag:www.wengweitao.com,2015-06-06:leetcode-count-complete-tree-nodes.html</id><summary type="html">&lt;h3&gt;题目&lt;/h3&gt;
 &lt;p&gt;&lt;a href="https://leetcode.com/problems/count-complete-tree-nodes/"&gt;Count Complete Tree Nodes&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Given a complete binary tree, count the number of nodes.&lt;/p&gt;
 &lt;h3&gt;分析&lt;/h3&gt;
@@ -2038,7 +2038,7 @@ Expected:   17
         "}); ";
     (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
 }
-&lt;/script&gt;</summary><category term="leetcode"></category><category term="面试题"></category></entry><entry><title>算法中的灵机一动</title><link href="http://www.wengweitao.com/suan-fa-zhong-de-ling-ji-yi-dong.html" rel="alternate"></link><published>2015-06-03T20:37:00+08:00</published><author><name>wwt</name></author><id>tag:www.wengweitao.com,2015-06-03:suan-fa-zhong-de-ling-ji-yi-dong.html</id><summary type="html">&lt;p&gt;研究算法能给程序员带来许多好处，减少开发的时间，同时使执行速度更快。有些看起来很困难的问题，可能也存在着一个简单的、意想不到的答案。这些就是灵机一动的算法，需要在大量的研究之后才能出现。本文围绕三个小问题，来说明算法的灵机一动。&lt;/p&gt;
+&lt;/script&gt;</summary><category term="leetcode"></category><category term="面试题"></category></entry><entry><title>算法中的灵机一动</title><link href="http://www.wengweitao.com/suan-fa-zhong-de-ling-ji-yi-dong.html" rel="alternate"></link><published>2015-06-03T20:37:00+08:00</published><author><name>往往台</name></author><id>tag:www.wengweitao.com,2015-06-03:suan-fa-zhong-de-ling-ji-yi-dong.html</id><summary type="html">&lt;p&gt;研究算法能给程序员带来许多好处，减少开发的时间，同时使执行速度更快。有些看起来很困难的问题，可能也存在着一个简单的、意想不到的答案。这些就是灵机一动的算法，需要在大量的研究之后才能出现。本文围绕三个小问题，来说明算法的灵机一动。&lt;/p&gt;
 &lt;h2&gt;无处不在的二分搜索&lt;/h2&gt;
 &lt;h3&gt;问题描述&lt;/h3&gt;
 &lt;p&gt;给定一个最多包含40亿个随机排列的32位整数的&lt;strong&gt;顺序&lt;/strong&gt;文件，找出一个不在文件中的32位整数。&lt;/p&gt;
@@ -2227,7 +2227,7 @@ Expected:   17
         "}); ";
     (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
 }
-&lt;/script&gt;</summary><category term="读书笔记"></category></entry><entry><title>二叉树的三种遍历方式（递归、非递归和Morris遍历）</title><link href="http://www.wengweitao.com/er-cha-shu-de-san-chong-bian-li-fang-shi-di-gui-fei-di-gui-he-morrisbian-li.html" rel="alternate"></link><published>2015-05-27T21:41:00+08:00</published><author><name>wwt</name></author><id>tag:www.wengweitao.com,2015-05-27:er-cha-shu-de-san-chong-bian-li-fang-shi-di-gui-fei-di-gui-he-morrisbian-li.html</id><summary type="html">&lt;p&gt;二叉树遍历是二叉树的最基本的操作，其实现方式主要有三种：&lt;/p&gt;
+&lt;/script&gt;</summary><category term="读书笔记"></category></entry><entry><title>二叉树的三种遍历方式（递归、非递归和Morris遍历）</title><link href="http://www.wengweitao.com/er-cha-shu-de-san-chong-bian-li-fang-shi-di-gui-fei-di-gui-he-morrisbian-li.html" rel="alternate"></link><published>2015-05-27T21:41:00+08:00</published><author><name>往往台</name></author><id>tag:www.wengweitao.com,2015-05-27:er-cha-shu-de-san-chong-bian-li-fang-shi-di-gui-fei-di-gui-he-morrisbian-li.html</id><summary type="html">&lt;p&gt;二叉树遍历是二叉树的最基本的操作，其实现方式主要有三种：&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;递归遍历&lt;/li&gt;
 &lt;li&gt;非递归遍历&lt;/li&gt;
@@ -2578,7 +2578,7 @@ Expected:   17
 &lt;hr /&gt;
 &lt;h3&gt;References&lt;/h3&gt;
 &lt;p&gt;http://noalgo.info/832.html&lt;/p&gt;
-&lt;p&gt;http://www.cnblogs.com/AnnieKim/archive/2013/06/15/morristraversal.html&lt;/p&gt;</summary><category term="二叉树"></category></entry><entry><title>CORS（跨域资源共享，Cross-Origin Resource Sharing）</title><link href="http://www.wengweitao.com/corskua-yu-zi-yuan-gong-xiang-cross-origin-resource-sharing.html" rel="alternate"></link><published>2015-05-24T16:49:00+08:00</published><author><name>wwt</name></author><id>tag:www.wengweitao.com,2015-05-24:corskua-yu-zi-yuan-gong-xiang-cross-origin-resource-sharing.html</id><summary type="html">&lt;p&gt;使用Django在服务器端写了一个API，返回一个JSON数据。使用Ajax调用该API：&lt;/p&gt;
+&lt;p&gt;http://www.cnblogs.com/AnnieKim/archive/2013/06/15/morristraversal.html&lt;/p&gt;</summary><category term="二叉树"></category></entry><entry><title>CORS（跨域资源共享，Cross-Origin Resource Sharing）</title><link href="http://www.wengweitao.com/corskua-yu-zi-yuan-gong-xiang-cross-origin-resource-sharing.html" rel="alternate"></link><published>2015-05-24T16:49:00+08:00</published><author><name>往往台</name></author><id>tag:www.wengweitao.com,2015-05-24:corskua-yu-zi-yuan-gong-xiang-cross-origin-resource-sharing.html</id><summary type="html">&lt;p&gt;使用Django在服务器端写了一个API，返回一个JSON数据。使用Ajax调用该API：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="cp"&gt;&amp;lt;!DOCTYPE HTML&amp;gt;&lt;/span&gt;
 &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;html&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
 &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;head&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
@@ -2665,7 +2665,7 @@ Expected:   17
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;可以配置允许跨域访问的白名单或者直接设置为允许所有的跨域访问。具体配置可以参考&lt;a href="https://github.com/ottoyiu/django-cors-headers#configuration"&gt;这里&lt;/a&gt;。&lt;/p&gt;</summary><category term="Python"></category></entry><entry><title>怎样给一个磁盘文件排序？</title><link href="http://www.wengweitao.com/zen-yang-gei-yi-ge-ci-pan-wen-jian-pai-xu.html" rel="alternate"></link><published>2015-05-23T12:32:00+08:00</published><author><name>wwt</name></author><id>tag:www.wengweitao.com,2015-05-23:zen-yang-gei-yi-ge-ci-pan-wen-jian-pai-xu.html</id><summary type="html">&lt;h3&gt;问题描述：&lt;/h3&gt;
+&lt;p&gt;可以配置允许跨域访问的白名单或者直接设置为允许所有的跨域访问。具体配置可以参考&lt;a href="https://github.com/ottoyiu/django-cors-headers#configuration"&gt;这里&lt;/a&gt;。&lt;/p&gt;</summary><category term="Python"></category></entry><entry><title>怎样给一个磁盘文件排序？</title><link href="http://www.wengweitao.com/zen-yang-gei-yi-ge-ci-pan-wen-jian-pai-xu.html" rel="alternate"></link><published>2015-05-23T12:32:00+08:00</published><author><name>往往台</name></author><id>tag:www.wengweitao.com,2015-05-23:zen-yang-gei-yi-ge-ci-pan-wen-jian-pai-xu.html</id><summary type="html">&lt;h3&gt;问题描述：&lt;/h3&gt;
 &lt;p&gt;&lt;strong&gt;输入：&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;一个最多包含n个正整数的文件，每个数都小于n，其中n=10^7（即每个数都是7位的正整数）。输入的文件中没有任何重复的数，并且没有其他数据与该整数关联。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;输出：&lt;/strong&gt;&lt;/p&gt;
@@ -2789,7 +2789,7 @@ Expected:   17
         "}); ";
     (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
 }
-&lt;/script&gt;</summary><category term="读书笔记"></category></entry><entry><title>LintCode Single Number I II III 落单的数</title><link href="http://www.wengweitao.com/lintcode-single-number-i-ii-iii-luo-dan-de-shu.html" rel="alternate"></link><published>2015-05-20T21:15:00+08:00</published><author><name>wwt</name></author><id>tag:www.wengweitao.com,2015-05-20:lintcode-single-number-i-ii-iii-luo-dan-de-shu.html</id><summary type="html">&lt;h2&gt;&lt;a href="http://www.lintcode.com/zh-cn/problem/single-number/"&gt;Single Number I&lt;/a&gt;&lt;/h2&gt;
+&lt;/script&gt;</summary><category term="读书笔记"></category></entry><entry><title>LintCode Single Number I II III 落单的数</title><link href="http://www.wengweitao.com/lintcode-single-number-i-ii-iii-luo-dan-de-shu.html" rel="alternate"></link><published>2015-05-20T21:15:00+08:00</published><author><name>往往台</name></author><id>tag:www.wengweitao.com,2015-05-20:lintcode-single-number-i-ii-iii-luo-dan-de-shu.html</id><summary type="html">&lt;h2&gt;&lt;a href="http://www.lintcode.com/zh-cn/problem/single-number/"&gt;Single Number I&lt;/a&gt;&lt;/h2&gt;
 &lt;h3&gt;题目描述：&lt;/h3&gt;
 &lt;p&gt;给出2*n + 1 个的数字，除其中一个数字之外其他每个数字均出现两次，找到这个数字。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;样例&lt;/strong&gt;
@@ -2966,7 +2966,7 @@ O(n)时间复杂度，O(1)的额外空间复杂度&lt;/p&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;时间复杂度为O(n)，空间复杂度为O(1)。&lt;/p&gt;</summary><category term="面试题"></category></entry><entry><title>排序算法总结</title><link href="http://www.wengweitao.com/pai-xu-suan-fa-zong-jie.html" rel="alternate"></link><published>2015-05-19T20:35:00+08:00</published><author><name>wwt</name></author><id>tag:www.wengweitao.com,2015-05-19:pai-xu-suan-fa-zong-jie.html</id><summary type="html">&lt;p&gt;在前面的几篇文章中，分别介绍了几种最常见的算法：&lt;/p&gt;
+&lt;p&gt;时间复杂度为O(n)，空间复杂度为O(1)。&lt;/p&gt;</summary><category term="面试题"></category></entry><entry><title>排序算法总结</title><link href="http://www.wengweitao.com/pai-xu-suan-fa-zong-jie.html" rel="alternate"></link><published>2015-05-19T20:35:00+08:00</published><author><name>往往台</name></author><id>tag:www.wengweitao.com,2015-05-19:pai-xu-suan-fa-zong-jie.html</id><summary type="html">&lt;p&gt;在前面的几篇文章中，分别介绍了几种最常见的算法：&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;&lt;a href="http://www.wengweitao.com/cha-ru-pai-xu.html"&gt;直接插入排序&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="http://www.wengweitao.com/mou-pao-pai-xu.html"&gt;冒泡排序&lt;/a&gt;&lt;/li&gt;
@@ -3093,7 +3093,7 @@ O(n)时间复杂度，O(1)的额外空间复杂度&lt;/p&gt;
         "}); ";
     (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
 }
-&lt;/script&gt;</summary><category term="排序 算法 基础 总结"></category></entry><entry><title>桶排序</title><link href="http://www.wengweitao.com/tong-pai-xu.html" rel="alternate"></link><published>2015-05-18T16:13:00+08:00</published><author><name>wwt</name></author><id>tag:www.wengweitao.com,2015-05-18:tong-pai-xu.html</id><summary type="html">&lt;p&gt;本文继续介绍一种非比较排序算法——&lt;strong&gt;桶排序（bucket sort）&lt;/strong&gt;。通排序假设输入数据服从均匀分布，平均情况下它的时间复杂度为O(n)。与计数排序类似，因为对输入数据作了某种假设，桶排序的速度也很快。具体的，计数排序假设输入数据都属于一个小区间的整数，而桶排序则假设输入数据是由一个随机过程产生，该过程将元素均匀、独立地分布在[0,1)区间上。&lt;/p&gt;
+&lt;/script&gt;</summary><category term="排序 算法 基础 总结"></category></entry><entry><title>桶排序</title><link href="http://www.wengweitao.com/tong-pai-xu.html" rel="alternate"></link><published>2015-05-18T16:13:00+08:00</published><author><name>往往台</name></author><id>tag:www.wengweitao.com,2015-05-18:tong-pai-xu.html</id><summary type="html">&lt;p&gt;本文继续介绍一种非比较排序算法——&lt;strong&gt;桶排序（bucket sort）&lt;/strong&gt;。通排序假设输入数据服从均匀分布，平均情况下它的时间复杂度为O(n)。与计数排序类似，因为对输入数据作了某种假设，桶排序的速度也很快。具体的，计数排序假设输入数据都属于一个小区间的整数，而桶排序则假设输入数据是由一个随机过程产生，该过程将元素均匀、独立地分布在[0,1)区间上。&lt;/p&gt;
 &lt;h2&gt;桶排序的基本思想&lt;/h2&gt;
 &lt;ol&gt;
 &lt;li&gt;桶排序将[0,1)区间划分成大小相同的n个子区间，称为桶&lt;/li&gt;
@@ -3189,7 +3189,7 @@ O(n)时间复杂度，O(1)的额外空间复杂度&lt;/p&gt;
         "}); ";
     (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
 }
-&lt;/script&gt;</summary><category term="排序 算法 基础"></category></entry><entry><title>基数排序（radix sort）</title><link href="http://www.wengweitao.com/ji-shu-pai-xu-radix-sort.html" rel="alternate"></link><published>2015-05-17T14:12:00+08:00</published><author><name>wwt</name></author><id>tag:www.wengweitao.com,2015-05-17:ji-shu-pai-xu-radix-sort.html</id><summary type="html">&lt;p&gt;本文继续介绍另外一种非比较排序算法——&lt;strong&gt;基数排序（radix sort）&lt;/strong&gt;，最早用在卡片排序机上。基数排序的原理是将整数按位切割成不同的数字，然后按每个位数分别比较。对于十进制的数字，每列只会用到10个位置，一个d位数将占用d列。&lt;/p&gt;
+&lt;/script&gt;</summary><category term="排序 算法 基础"></category></entry><entry><title>基数排序（radix sort）</title><link href="http://www.wengweitao.com/ji-shu-pai-xu-radix-sort.html" rel="alternate"></link><published>2015-05-17T14:12:00+08:00</published><author><name>往往台</name></author><id>tag:www.wengweitao.com,2015-05-17:ji-shu-pai-xu-radix-sort.html</id><summary type="html">&lt;p&gt;本文继续介绍另外一种非比较排序算法——&lt;strong&gt;基数排序（radix sort）&lt;/strong&gt;，最早用在卡片排序机上。基数排序的原理是将整数按位切割成不同的数字，然后按每个位数分别比较。对于十进制的数字，每列只会用到10个位置，一个d位数将占用d列。&lt;/p&gt;
 &lt;p&gt;基数排序&lt;strong&gt;先按最低有效位进行排序&lt;/strong&gt;，然后按次低有效位进行排序，直到对所有的d位数字都进行了排序。为了确保基数排序的正确性，&lt;strong&gt;一位数的排序算法必须是稳定的&lt;/strong&gt;。&lt;/p&gt;
 &lt;p&gt;我们有时会用基数排序来对具有多关键字域的记录进行排序。例如，我们希望用3个关键字（年、月、日）来对日期进行排序。我们可以使用基于特殊比较函数的排序算法，先比较年，如果相同再比较月，如果还相同再比较日。我们也可以采用基数排序，用一种稳定排序算法对这些信息进行三次排序：先日，再月，最后年。&lt;/p&gt;
 &lt;h2&gt;基数排序的实现&lt;/h2&gt;
@@ -3283,7 +3283,7 @@ O(n)时间复杂度，O(1)的额外空间复杂度&lt;/p&gt;
         "}); ";
     (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
 }
-&lt;/script&gt;</summary><category term="排序 算法 基础"></category></entry><entry><title>计数排序</title><link href="http://www.wengweitao.com/ji-shu-pai-xu.html" rel="alternate"></link><published>2015-05-17T11:21:00+08:00</published><author><name>wwt</name></author><id>tag:www.wengweitao.com,2015-05-17:ji-shu-pai-xu.html</id><summary type="html">&lt;p&gt;之前介绍的都是基于比较的排序算法，对于包含n个元素的输入序列来说，任何比较排序在最坏情况下都要经过O(nlogn)次比较。本文将介绍第一种非比较排序算法——&lt;strong&gt;计数排序&lt;/strong&gt;。&lt;/p&gt;
+&lt;/script&gt;</summary><category term="排序 算法 基础"></category></entry><entry><title>计数排序</title><link href="http://www.wengweitao.com/ji-shu-pai-xu.html" rel="alternate"></link><published>2015-05-17T11:21:00+08:00</published><author><name>往往台</name></author><id>tag:www.wengweitao.com,2015-05-17:ji-shu-pai-xu.html</id><summary type="html">&lt;p&gt;之前介绍的都是基于比较的排序算法，对于包含n个元素的输入序列来说，任何比较排序在最坏情况下都要经过O(nlogn)次比较。本文将介绍第一种非比较排序算法——&lt;strong&gt;计数排序&lt;/strong&gt;。&lt;/p&gt;
 &lt;h2&gt;计数排序的基本思想&lt;/h2&gt;
 &lt;p&gt;计数排序假设n个输入元素中的每一个都是在0到k区间内的一个整数，其中k为某个整数。当k=O(n)时，计数排序的运算时间为O(n)。&lt;/p&gt;
 &lt;p&gt;基本思想：&lt;/p&gt;
@@ -3324,7 +3324,7 @@ O(n)时间复杂度，O(1)的额外空间复杂度&lt;/p&gt;
 &lt;p&gt;计数排序的稳定性很重要的一个原因是：计数排序经常会被用于基数排序算法的一个子过程。我们将在下一篇文章中介绍，为了使基数排序能够正确运行，计数排序必须是稳定的。&lt;/p&gt;
 &lt;hr /&gt;
 &lt;h2&gt;Reference&lt;/h2&gt;
-&lt;p&gt;&lt;a href="http://book.douban.com/subject/1885170/"&gt;算法导论&lt;/a&gt;&lt;/p&gt;</summary><category term="排序 算法 基础"></category></entry><entry><title>快速排序</title><link href="http://www.wengweitao.com/kuai-su-pai-xu.html" rel="alternate"></link><published>2015-05-16T10:22:00+08:00</published><author><name>wwt</name></author><id>tag:www.wengweitao.com,2015-05-16:kuai-su-pai-xu.html</id><summary type="html">&lt;p&gt;本文介绍的是实际排序应用中最常用的一种排序算法——&lt;strong&gt;快速排序&lt;/strong&gt;。快速排序虽然在最坏情况下时间复杂度为&lt;span class="math"&gt;\(O(n^2)\)&lt;/span&gt;，但是它的平均性能非常好，它的期望运行时间是O(nlogn)，而且O(nlogn)所隐含的常数因子非常小。另外，它还能够进行原址排序。&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://book.douban.com/subject/1885170/"&gt;算法导论&lt;/a&gt;&lt;/p&gt;</summary><category term="排序 算法 基础"></category></entry><entry><title>快速排序</title><link href="http://www.wengweitao.com/kuai-su-pai-xu.html" rel="alternate"></link><published>2015-05-16T10:22:00+08:00</published><author><name>往往台</name></author><id>tag:www.wengweitao.com,2015-05-16:kuai-su-pai-xu.html</id><summary type="html">&lt;p&gt;本文介绍的是实际排序应用中最常用的一种排序算法——&lt;strong&gt;快速排序&lt;/strong&gt;。快速排序虽然在最坏情况下时间复杂度为&lt;span class="math"&gt;\(O(n^2)\)&lt;/span&gt;，但是它的平均性能非常好，它的期望运行时间是O(nlogn)，而且O(nlogn)所隐含的常数因子非常小。另外，它还能够进行原址排序。&lt;/p&gt;
 &lt;h2&gt;快速排序描述&lt;/h2&gt;
 &lt;p&gt;与归并排序一样，快速排序也使用了分治的思想。下面是对一个数组A[p..r]进行快速排序的三步分治过程：&lt;/p&gt;
 &lt;ul&gt;
@@ -3485,7 +3485,7 @@ O(n)时间复杂度，O(1)的额外空间复杂度&lt;/p&gt;
         "}); ";
     (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
 }
-&lt;/script&gt;</summary><category term="排序 算法 基础"></category></entry><entry><title>归并排序</title><link href="http://www.wengweitao.com/gui-bing-pai-xu.html" rel="alternate"></link><published>2015-05-15T19:45:00+08:00</published><author><name>wwt</name></author><id>tag:www.wengweitao.com,2015-05-15:gui-bing-pai-xu.html</id><summary type="html">&lt;p&gt;本文介绍利用分治法思想的一种排序算法——&lt;strong&gt;归并排序&lt;/strong&gt;。直观上其操作如下：&lt;/p&gt;
+&lt;/script&gt;</summary><category term="排序 算法 基础"></category></entry><entry><title>归并排序</title><link href="http://www.wengweitao.com/gui-bing-pai-xu.html" rel="alternate"></link><published>2015-05-15T19:45:00+08:00</published><author><name>往往台</name></author><id>tag:www.wengweitao.com,2015-05-15:gui-bing-pai-xu.html</id><summary type="html">&lt;p&gt;本文介绍利用分治法思想的一种排序算法——&lt;strong&gt;归并排序&lt;/strong&gt;。直观上其操作如下：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;分解&lt;/strong&gt;：分解待排序的n个元素的序列成2个具有n/2个元素的子序列&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;解决&lt;/strong&gt;：使用归并排序递归地排序两个子序列&lt;/li&gt;
@@ -3612,7 +3612,7 @@ aT(n/b) + D(n) + C(n) &amp;amp; 其他
         "}); ";
     (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
 }
-&lt;/script&gt;</summary><category term="排序 算法 基础"></category></entry><entry><title>堆排序</title><link href="http://www.wengweitao.com/dui-pai-xu.html" rel="alternate"></link><published>2015-05-14T22:23:00+08:00</published><author><name>wwt</name></author><id>tag:www.wengweitao.com,2015-05-14:dui-pai-xu.html</id><summary type="html">&lt;p&gt;本文将介绍一种排序算法，称为&lt;strong&gt;堆排序（heapsort）&lt;/strong&gt;。堆排序最坏情况下运行时间为O(nlogn)，并且具有空间原址性：任何时候只需要常数个额外的元素空间存储临时数据。堆排序中使用了堆这个数据结构进行管理，堆这种数据结构也可以用来构造一种 有效的优先级队列。&lt;/p&gt;
+&lt;/script&gt;</summary><category term="排序 算法 基础"></category></entry><entry><title>堆排序</title><link href="http://www.wengweitao.com/dui-pai-xu.html" rel="alternate"></link><published>2015-05-14T22:23:00+08:00</published><author><name>往往台</name></author><id>tag:www.wengweitao.com,2015-05-14:dui-pai-xu.html</id><summary type="html">&lt;p&gt;本文将介绍一种排序算法，称为&lt;strong&gt;堆排序（heapsort）&lt;/strong&gt;。堆排序最坏情况下运行时间为O(nlogn)，并且具有空间原址性：任何时候只需要常数个额外的元素空间存储临时数据。堆排序中使用了堆这个数据结构进行管理，堆这种数据结构也可以用来构造一种 有效的优先级队列。&lt;/p&gt;
 &lt;h2&gt;堆&lt;/h2&gt;
 &lt;p&gt;&lt;strong&gt;堆&lt;/strong&gt;（二叉堆）是一个数组，可以看成一个近似的完全二叉树，树中每一个结点对应数组中的一个元素，除了最底层外，该树是完全满的，而且是从左至右填充。二叉堆有两种形式：最大堆和最小堆。在最大堆中，除了根结点之外的所有结点的值小于等于其父节点的值，因此，堆中最大的元素存放在根结点中，并且在任一子树中，该子树所包含的所有结点的值都不大于该子树根结点的值。最小堆的组织方式正好相反。&lt;/p&gt;
 &lt;p&gt;在堆排序算法中，我们使用最大堆，而最小堆通常用于构造优先级队列。&lt;/p&gt;
@@ -3813,7 +3813,7 @@ aT(n/b) + D(n) + C(n) &amp;amp; 其他
         "}); ";
     (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
 }
-&lt;/script&gt;</summary><category term="排序 算法 基础"></category></entry><entry><title>插入排序</title><link href="http://www.wengweitao.com/cha-ru-pai-xu.html" rel="alternate"></link><published>2015-05-13T18:34:00+08:00</published><author><name>wwt</name></author><id>tag:www.wengweitao.com,2015-05-13:cha-ru-pai-xu.html</id><summary type="html">&lt;p&gt;本文介绍一种非常简单的排序算法——&lt;strong&gt;插入排序&lt;/strong&gt;。对于少量元素的排序，它是一个有效的算法。插入排序可以形象的类比为手中扑克牌的排序。开始时，左手为空并且桌子上的扑克牌的牌面朝下。然后我们每次从桌子上拿一张扑克牌，插入左手中正确的位置，我们从右向左将它与手中的每张牌进行比较，任何时候左手上的牌总是有序的。&lt;/p&gt;
+&lt;/script&gt;</summary><category term="排序 算法 基础"></category></entry><entry><title>插入排序</title><link href="http://www.wengweitao.com/cha-ru-pai-xu.html" rel="alternate"></link><published>2015-05-13T18:34:00+08:00</published><author><name>往往台</name></author><id>tag:www.wengweitao.com,2015-05-13:cha-ru-pai-xu.html</id><summary type="html">&lt;p&gt;本文介绍一种非常简单的排序算法——&lt;strong&gt;插入排序&lt;/strong&gt;。对于少量元素的排序，它是一个有效的算法。插入排序可以形象的类比为手中扑克牌的排序。开始时，左手为空并且桌子上的扑克牌的牌面朝下。然后我们每次从桌子上拿一张扑克牌，插入左手中正确的位置，我们从右向左将它与手中的每张牌进行比较，任何时候左手上的牌总是有序的。&lt;/p&gt;
 &lt;p&gt;对数组A[1..n]进行插入排序步骤：&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;初始时只含有一个元素A&lt;a href="http://book.douban.com/subject/1885170/"&gt;1&lt;/a&gt;，所以是有序的&lt;/li&gt;
@@ -3877,7 +3877,7 @@ aT(n/b) + D(n) + C(n) &amp;amp; 其他
         "}); ";
     (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
 }
-&lt;/script&gt;</summary><category term="排序 算法 基础"></category></entry><entry><title>冒泡排序</title><link href="http://www.wengweitao.com/mou-pao-pai-xu.html" rel="alternate"></link><published>2015-05-13T16:13:00+08:00</published><author><name>wwt</name></author><id>tag:www.wengweitao.com,2015-05-13:mou-pao-pai-xu.html</id><summary type="html">&lt;p&gt;冒泡排序算法比较简单，假设待排序列的长度为n，其思想是：&lt;/p&gt;
+&lt;/script&gt;</summary><category term="排序 算法 基础"></category></entry><entry><title>冒泡排序</title><link href="http://www.wengweitao.com/mou-pao-pai-xu.html" rel="alternate"></link><published>2015-05-13T16:13:00+08:00</published><author><name>往往台</name></author><id>tag:www.wengweitao.com,2015-05-13:mou-pao-pai-xu.html</id><summary type="html">&lt;p&gt;冒泡排序算法比较简单，假设待排序列的长度为n，其思想是：&lt;/p&gt;
 &lt;p&gt;从后往前（或者从前往后）两两比较相邻元素的值，若为逆序（即前一个大于后一个），则交换它们，直到序列比较完，我们称进行了一趟冒泡排序，结果将最小的元素交换到待排序列的第一个位置。下一趟冒泡排序，第一个元素不再参与比较，待排序列的个数减少1，每趟冒泡排序的结果把子序列中最小元素放到了最终的位置。关键字如同气泡一般逐渐往上漂浮至水面，这就是冒泡排序名字的由来。最多n-1趟就能把所有元素排好序。&lt;/p&gt;
 &lt;p&gt;代码实现如下：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kt"&gt;void&lt;/span&gt; &lt;span class="nf"&gt;bubbleSort&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;vector&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="kt"&gt;int&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="n"&gt;A&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
@@ -3940,7 +3940,7 @@ aT(n/b) + D(n) + C(n) &amp;amp; 其他
         "}); ";
     (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
 }
-&lt;/script&gt;</summary><category term="排序 算法 基础"></category></entry><entry><title>CentOS 升级 gcc 和 g++ 的方法</title><link href="http://www.wengweitao.com/centos-sheng-ji-gcc-he-g-de-fang-fa.html" rel="alternate"></link><published>2015-05-12T19:02:00+08:00</published><author><name>wwt</name></author><id>tag:www.wengweitao.com,2015-05-12:centos-sheng-ji-gcc-he-g-de-fang-fa.html</id><summary type="html">&lt;p&gt;CentOS 系统自带的 gcc 或者 g++ 的版本是：g++ (GCC) 4.4.6. GCC 版本太旧，导致了很多使用上的不便，如：无法使用g++ -std=c++11 命令来编译 C++11、无法使用Vim的很多插件（YouCompleteMe等）。因此，有必要对它进行升级。&lt;/p&gt;
+&lt;/script&gt;</summary><category term="排序 算法 基础"></category></entry><entry><title>CentOS 升级 gcc 和 g++ 的方法</title><link href="http://www.wengweitao.com/centos-sheng-ji-gcc-he-g-de-fang-fa.html" rel="alternate"></link><published>2015-05-12T19:02:00+08:00</published><author><name>往往台</name></author><id>tag:www.wengweitao.com,2015-05-12:centos-sheng-ji-gcc-he-g-de-fang-fa.html</id><summary type="html">&lt;p&gt;CentOS 系统自带的 gcc 或者 g++ 的版本是：g++ (GCC) 4.4.6. GCC 版本太旧，导致了很多使用上的不便，如：无法使用g++ -std=c++11 命令来编译 C++11、无法使用Vim的很多插件（YouCompleteMe等）。因此，有必要对它进行升级。&lt;/p&gt;
 &lt;p&gt;对 GCC 升级无法直接使用：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;yum update gcc
 &lt;/pre&gt;&lt;/div&gt;
@@ -3980,7 +3980,7 @@ warranty&lt;span class="p"&gt;;&lt;/span&gt; not even &lt;span class="k"&gt;for&
 &lt;p&gt;已经从4.4.6升级到4.7.2了。&lt;/p&gt;
 &lt;hr /&gt;
 &lt;h2&gt;Reference&lt;/h2&gt;
-&lt;p&gt;http://superuser.com/questions/381160/how-to-install-gcc-4-7-x-4-8-x-on-centos/542091#542091&lt;/p&gt;</summary><category term="教程、Linux"></category></entry><entry><title>终端窗口管理神器——tmux</title><link href="http://www.wengweitao.com/zhong-duan-chuang-kou-guan-li-shen-qi-tmux.html" rel="alternate"></link><published>2015-05-11T09:12:00+08:00</published><author><name>wwt</name></author><id>tag:www.wengweitao.com,2015-05-11:zhong-duan-chuang-kou-guan-li-shen-qi-tmux.html</id><summary type="html">&lt;h2&gt;什么是tmux&lt;/h2&gt;
+&lt;p&gt;http://superuser.com/questions/381160/how-to-install-gcc-4-7-x-4-8-x-on-centos/542091#542091&lt;/p&gt;</summary><category term="教程、Linux"></category></entry><entry><title>终端窗口管理神器——tmux</title><link href="http://www.wengweitao.com/zhong-duan-chuang-kou-guan-li-shen-qi-tmux.html" rel="alternate"></link><published>2015-05-11T09:12:00+08:00</published><author><name>往往台</name></author><id>tag:www.wengweitao.com,2015-05-11:zhong-duan-chuang-kou-guan-li-shen-qi-tmux.html</id><summary type="html">&lt;h2&gt;什么是tmux&lt;/h2&gt;
 &lt;p&gt;tmux是一个终端的复用器（terminal multiplexer），可以简单理解为一个终端的窗口管理程序。相比系统自带的 screen 功能要强大许多。其使用场景和特性包括：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;当你使用SSH连接到服务器的时候，由于网络掉线导致连接中断（这是经常发生的。。。）。当你重新连接后，所有的工作现场丢失了。你还得重新打开之前的各种窗口，进入各种很深的目录，非常麻烦。而如果使用tmux，即时掉线之后，重新连接也能直接回到之前的工作环境，极大提高工作的效率。&lt;/li&gt;
@@ -4079,7 +4079,7 @@ unbind %
 &lt;li&gt;https://github.com/tony/tmux-config&lt;/li&gt;
 &lt;li&gt;https://gist.github.com/spicycode/1229612&lt;/li&gt;
 &lt;li&gt;http://zanshin.net/2013/09/05/my-tmux-configuration/&lt;/li&gt;
-&lt;/ol&gt;</summary><category term="tmux"></category></entry><entry><title>选择问题及复杂度分析</title><link href="http://www.wengweitao.com/xuan-ze-wen-ti-ji-fu-za-du-fen-xi.html" rel="alternate"></link><published>2015-05-06T11:10:00+08:00</published><author><name>wwt</name></author><id>tag:www.wengweitao.com,2015-05-06:xuan-ze-wen-ti-ji-fu-za-du-fen-xi.html</id><summary type="html">&lt;p&gt;选择问题是在实际应用中经常碰到的问题，最常见的选择问题有：选最大、选最小、选中位数、选第二大等。&lt;/p&gt;
+&lt;/ol&gt;</summary><category term="tmux"></category></entry><entry><title>选择问题及复杂度分析</title><link href="http://www.wengweitao.com/xuan-ze-wen-ti-ji-fu-za-du-fen-xi.html" rel="alternate"></link><published>2015-05-06T11:10:00+08:00</published><author><name>往往台</name></author><id>tag:www.wengweitao.com,2015-05-06:xuan-ze-wen-ti-ji-fu-za-du-fen-xi.html</id><summary type="html">&lt;p&gt;选择问题是在实际应用中经常碰到的问题，最常见的选择问题有：选最大、选最小、选中位数、选第二大等。&lt;/p&gt;
 &lt;p&gt;可以描述为从n个元素的集合L中选出第k小的元素，其中&lt;span class="math"&gt;\(1 \leq k \leq n\)&lt;/span&gt;。这里的第k小表示：将L中的元素按照升序排列，排在第k个位置的元素。如k=1时，选出的就是最小元素。&lt;/p&gt;
 &lt;p&gt;本文将对选择问题进行总结并对它们的复杂度进行分析。&lt;/p&gt;
 &lt;h2&gt;选最大最小问题&lt;/h2&gt;
@@ -4389,7 +4389,7 @@ unbind %
         "}); ";
     (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
 }
-&lt;/script&gt;</summary><category term="算法分析"></category></entry><entry><title>Linux上搭建VPN服务器</title><link href="http://www.wengweitao.com/linuxshang-da-jian-vpnfu-wu-qi.html" rel="alternate"></link><published>2015-05-01T21:21:00+08:00</published><author><name>wwt</name></author><id>tag:www.wengweitao.com,2015-05-01:linuxshang-da-jian-vpnfu-wu-qi.html</id><summary type="html">&lt;p&gt;今天是五一劳动节，也就是五月份的第一天，不巧的是校园上网账号欠费了，导致无法通过认证上网。于是，就琢磨着如何不通过认证直接上网。实验室有几台服务器，这些服务器都无需认证可直接访问外网，很自然的就想到以下两种方法：&lt;/p&gt;
+&lt;/script&gt;</summary><category term="算法分析"></category></entry><entry><title>Linux上搭建VPN服务器</title><link href="http://www.wengweitao.com/linuxshang-da-jian-vpnfu-wu-qi.html" rel="alternate"></link><published>2015-05-01T21:21:00+08:00</published><author><name>往往台</name></author><id>tag:www.wengweitao.com,2015-05-01:linuxshang-da-jian-vpnfu-wu-qi.html</id><summary type="html">&lt;p&gt;今天是五一劳动节，也就是五月份的第一天，不巧的是校园上网账号欠费了，导致无法通过认证上网。于是，就琢磨着如何不通过认证直接上网。实验室有几台服务器，这些服务器都无需认证可直接访问外网，很自然的就想到以下两种方法：&lt;/p&gt;
 &lt;p&gt;（1）在服务器上设置代理服务器，然后在自己的PC和iPhone上设置代理上网&lt;/p&gt;
 &lt;p&gt;（2）在服务器上搭建一个VPN PPTP服务器，在PC和iPhone上新建一个VPN连接上网。&lt;/p&gt;
 &lt;p&gt;根据校园网的环境和平时的使用情况，最终决定采用VPN的方式。接下来，我以Red Hat系统为例，详细说明搭建的过程。&lt;/p&gt;
@@ -4489,7 +4489,7 @@ chkconfig iptables on
 &lt;ol&gt;
 &lt;li&gt;&lt;a href="http://www.vixual.net/blog/archives/32"&gt;CentOS 5/6 快速安裝 VPN Server (PPTP)&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="http://www.cnblogs.com/sixiweb/archive/2012/11/20/2778732.html"&gt;Linux下搭建VPN服务器（CentOS、pptp）&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;</summary><category term="教程"></category></entry><entry><title>Go语言入门教程（1）</title><link href="http://www.wengweitao.com/goyu-yan-ru-men-jiao-cheng-1.html" rel="alternate"></link><published>2015-04-30T22:30:00+08:00</published><author><name>wwt</name></author><id>tag:www.wengweitao.com,2015-04-30:goyu-yan-ru-men-jiao-cheng-1.html</id><summary type="html">&lt;h2&gt;什么是Go？&lt;/h2&gt;
+&lt;/ol&gt;</summary><category term="教程"></category></entry><entry><title>Go语言入门教程（1）</title><link href="http://www.wengweitao.com/goyu-yan-ru-men-jiao-cheng-1.html" rel="alternate"></link><published>2015-04-30T22:30:00+08:00</published><author><name>往往台</name></author><id>tag:www.wengweitao.com,2015-04-30:goyu-yan-ru-men-jiao-cheng-1.html</id><summary type="html">&lt;h2&gt;什么是Go？&lt;/h2&gt;
 &lt;p&gt;以下是&lt;a href="https://golang.org/doc/"&gt;Go官方网站&lt;/a&gt;对其解释：&lt;/p&gt;
 &lt;p&gt;Go 编程语言是一个使得程序员更加有效率的开源项目。Go是有表达力、简洁、清晰和有效率的。它的并行机制使其很容易编写多核和网络应用，而新奇的类型系统允许构建有弹性的模块化程序。Go编译到机器码非常快速，同时具有便利的垃圾回收和强大的运行时反射。它是快速的、静态类型编译语言，但是感觉上是动态类型的，解释型语言。&lt;/p&gt;
 &lt;h2&gt;Go的特性&lt;/h2&gt;
@@ -4916,7 +4916,7 @@ map[one:1]
 &lt;li&gt;&lt;a href="https://github.com/mikespook/Learning-Go-zh-cn"&gt;学习Go语言&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="http://coolshell.cn/articles/8460.html"&gt;Go语言简介&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="http://tour.go-zh.org/list"&gt;Go指南&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;</summary><category term="Go"></category></entry><entry><title>False is False is False 的结果是 True ?</title><link href="http://www.wengweitao.com/false-is-false-is-false-de-jie-guo-shi-true.html" rel="alternate"></link><published>2015-04-25T10:37:00+08:00</published><author><name>wwt</name></author><id>tag:www.wengweitao.com,2015-04-25:false-is-false-is-false-de-jie-guo-shi-true.html</id><summary type="html">&lt;p&gt;在&lt;a href="https://www.youtube.com/channel/UCgxzjK6GuOHVKR_08TT4hJQ"&gt;PyCon 2015&lt;/a&gt;中提到一个问题：&lt;/p&gt;
+&lt;/ol&gt;</summary><category term="Go"></category></entry><entry><title>False is False is False 的结果是 True ?</title><link href="http://www.wengweitao.com/false-is-false-is-false-de-jie-guo-shi-true.html" rel="alternate"></link><published>2015-04-25T10:37:00+08:00</published><author><name>往往台</name></author><id>tag:www.wengweitao.com,2015-04-25:false-is-false-is-false-de-jie-guo-shi-true.html</id><summary type="html">&lt;p&gt;在&lt;a href="https://www.youtube.com/channel/UCgxzjK6GuOHVKR_08TT4hJQ"&gt;PyCon 2015&lt;/a&gt;中提到一个问题：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="bp"&gt;False&lt;/span&gt; &lt;span class="ow"&gt;is&lt;/span&gt; &lt;span class="bp"&gt;False&lt;/span&gt; &lt;span class="ow"&gt;is&lt;/span&gt; &lt;span class="bp"&gt;False&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
@@ -4956,7 +4956,7 @@ map[one:1]
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;类似的这种表达式的原因（而在C/C++中是无法这么写的）。这种写法从某种程度上来说，更符合英语的写法，但是为了避免让人误解，最好还是在适当的地方使用圆括号括起来。&lt;/p&gt;</summary><category term="Python"></category></entry><entry><title>Vim入门教程</title><link href="http://www.wengweitao.com/vimru-men-jiao-cheng.html" rel="alternate"></link><published>2015-04-16T20:12:00+08:00</published><author><name>wwt</name></author><id>tag:www.wengweitao.com,2015-04-16:vimru-men-jiao-cheng.html</id><summary type="html">&lt;blockquote&gt;
+&lt;p&gt;类似的这种表达式的原因（而在C/C++中是无法这么写的）。这种写法从某种程度上来说，更符合英语的写法，但是为了避免让人误解，最好还是在适当的地方使用圆括号括起来。&lt;/p&gt;</summary><category term="Python"></category></entry><entry><title>Vim入门教程</title><link href="http://www.wengweitao.com/vimru-men-jiao-cheng.html" rel="alternate"></link><published>2015-04-16T20:12:00+08:00</published><author><name>往往台</name></author><id>tag:www.wengweitao.com,2015-04-16:vimru-men-jiao-cheng.html</id><summary type="html">&lt;blockquote&gt;
 &lt;p&gt;Vim 在编辑器中是神一样的存在，熟练掌握Vim将极大提高编辑文本的效率。本文将介绍Vim最基本的操作和技巧。&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h2&gt;操作篇&lt;/h2&gt;
@@ -5152,7 +5152,7 @@ ye ------ 复制从当前位置到下一个单词的词尾&lt;/p&gt;
         "}); ";
     (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
 }
-&lt;/script&gt;</summary><category term="Vim"></category></entry><entry><title>使用Pelican + Github Pages搭建个人博客</title><link href="http://www.wengweitao.com/shi-yong-pelican-github-pagesda-jian-ge-ren-bo-ke.html" rel="alternate"></link><published>2015-04-16T13:46:00+08:00</published><author><name>wwt</name></author><id>tag:www.wengweitao.com,2015-04-16:shi-yong-pelican-github-pagesda-jian-ge-ren-bo-ke.html</id><summary type="html">&lt;blockquote&gt;
+&lt;/script&gt;</summary><category term="Vim"></category></entry><entry><title>使用Pelican + Github Pages搭建个人博客</title><link href="http://www.wengweitao.com/shi-yong-pelican-github-pagesda-jian-ge-ren-bo-ke.html" rel="alternate"></link><published>2015-04-16T13:46:00+08:00</published><author><name>往往台</name></author><id>tag:www.wengweitao.com,2015-04-16:shi-yong-pelican-github-pagesda-jian-ge-ren-bo-ke.html</id><summary type="html">&lt;blockquote&gt;
 &lt;p&gt;最近有不少同学问我，如何使用Python的Pelican搭建一个像我这样的一个个人博客。今天正好论文投稿结束，于是便抽出时间写这篇教程，希望对大家有用。有任何疑问欢迎在评论里说明。&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h2&gt;静态网站&lt;/h2&gt;
@@ -5414,7 +5414,7 @@ git push origin master
 &lt;li&gt;Static Site Generators: https://staticsitegenerators.net/&lt;/li&gt;
 &lt;li&gt;Pelican Docs: http://docs.getpelican.com/en/3.5.0/&lt;/li&gt;
 &lt;li&gt;github Pages和Jekyll入门：http://www.ruanyifeng.com/blog/2012/08/blogging_with_jekyll.html&lt;/li&gt;
-&lt;/ol&gt;</summary><category term="教程"></category></entry><entry><title>互联网实验室河源游玩</title><link href="http://www.wengweitao.com/hu-lian-wang-shi-yan-shi-he-yuan-you-wan.html" rel="alternate"></link><published>2015-04-14T20:12:00+08:00</published><author><name>wwt</name></author><id>tag:www.wengweitao.com,2015-04-14:hu-lian-wang-shi-yan-shi-he-yuan-you-wan.html</id><summary type="html">&lt;p&gt;4月份，春暖花开，正是出游的好时间。实验室一年一度的集体出游（当然是老板全部报销啦~），就定在了4月11日和12日这两天，今年去的地方是——河源。实验室一群小伙伴度过了非常欢乐的一个周末。&lt;/p&gt;
+&lt;/ol&gt;</summary><category term="教程"></category></entry><entry><title>互联网实验室河源游玩</title><link href="http://www.wengweitao.com/hu-lian-wang-shi-yan-shi-he-yuan-you-wan.html" rel="alternate"></link><published>2015-04-14T20:12:00+08:00</published><author><name>往往台</name></author><id>tag:www.wengweitao.com,2015-04-14:hu-lian-wang-shi-yan-shi-he-yuan-you-wan.html</id><summary type="html">&lt;p&gt;4月份，春暖花开，正是出游的好时间。实验室一年一度的集体出游（当然是老板全部报销啦~），就定在了4月11日和12日这两天，今年去的地方是——河源。实验室一群小伙伴度过了非常欢乐的一个周末。&lt;/p&gt;
 &lt;h3&gt;河源&lt;/h3&gt;
 &lt;p&gt;在去&lt;a href="http://zh.wikipedia.org/wiki/%E6%B2%B3%E6%BA%90%E5%B8%82"&gt;河源&lt;/a&gt;游玩之前，仅仅是听过有河源这个地方，其他的都是这次旅游完才了解到的。&lt;/p&gt;
 &lt;ul&gt;
@@ -5447,7 +5447,7 @@ git push origin master
 &lt;p&gt;回到深圳，还剩了不少经费，就实验室集体聚餐一次。除了研三忙着写毕业论文的师兄师姐，大家基本都到了。&lt;/p&gt;
 &lt;p&gt;&lt;img alt="聚餐" src="./imgs/聚餐1.jpg" /&gt;&lt;/p&gt;
 &lt;hr /&gt;
-&lt;p&gt;这次河源之行大家还是非常欢乐。平时大家一直在实验室待着，天天对着电脑和论文，难得有这么好的机会，实验室12级，13级，14级的小伙伴们能够聚在一起出去游玩，彼此之间的感情也更加好了。今后，应该多组织大家出去。&lt;/p&gt;</summary><category term="玩"></category></entry><entry><title>编写高质量Python代码（4）——设计模式</title><link href="http://www.wengweitao.com/bian-xie-gao-zhi-liang-pythondai-ma-4-she-ji-mo-shi.html" rel="alternate"></link><published>2015-04-13T23:31:00+08:00</published><author><name>wwt</name></author><id>tag:www.wengweitao.com,2015-04-13:bian-xie-gao-zhi-liang-pythondai-ma-4-she-ji-mo-shi.html</id><summary type="html">&lt;blockquote&gt;
+&lt;p&gt;这次河源之行大家还是非常欢乐。平时大家一直在实验室待着，天天对着电脑和论文，难得有这么好的机会，实验室12级，13级，14级的小伙伴们能够聚在一起出去游玩，彼此之间的感情也更加好了。今后，应该多组织大家出去。&lt;/p&gt;</summary><category term="玩"></category></entry><entry><title>编写高质量Python代码（4）——设计模式</title><link href="http://www.wengweitao.com/bian-xie-gao-zhi-liang-pythondai-ma-4-she-ji-mo-shi.html" rel="alternate"></link><published>2015-04-13T23:31:00+08:00</published><author><name>往往台</name></author><id>tag:www.wengweitao.com,2015-04-13:bian-xie-gao-zhi-liang-pythondai-ma-4-she-ji-mo-shi.html</id><summary type="html">&lt;blockquote&gt;
 &lt;p&gt;本文将介绍如何写出Pythonic的设计模式代码，让设计模式更好的应用在实际的Python编程当中。&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h3&gt;建议50：利用模块设计实现单例模式&lt;/h3&gt;
@@ -5602,7 +5602,7 @@ git push origin master
 &lt;hr /&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Read from《&lt;a href="http://book.douban.com/subject/25910544/"&gt;编写高质量代码：改善Python程序的91个建议&lt;/a&gt;》&lt;/p&gt;
-&lt;/blockquote&gt;</summary><category term="Python"></category></entry><entry><title>使Pelican支持LaTex数学公式</title><link href="http://www.wengweitao.com/shi-pelicanzhi-chi-latexshu-xue-gong-shi.html" rel="alternate"></link><published>2015-04-10T19:35:00+08:00</published><author><name>wwt</name></author><id>tag:www.wengweitao.com,2015-04-10:shi-pelicanzhi-chi-latexshu-xue-gong-shi.html</id><summary type="html">&lt;p&gt;作为一个技术博客，在写文章的时候，肯定需要经常输入各种公式符号。在之前写一篇文章的时候，发现Pelican默认是不支持编辑数学公式的。之前用过一些在线的markdonw编辑器，都是通过&lt;a href="https://github.com/mathjax/mathjax"&gt;MathJax&lt;/a&gt;来支持在markdown中书写数学公式，而且用起来非常的方便，语法基本和LaTex一样。于是，就找到了一种简单的使Pelican支持LaTex语法的数学公式，在这里分享给大家。&lt;/p&gt;
+&lt;/blockquote&gt;</summary><category term="Python"></category></entry><entry><title>使Pelican支持LaTex数学公式</title><link href="http://www.wengweitao.com/shi-pelicanzhi-chi-latexshu-xue-gong-shi.html" rel="alternate"></link><published>2015-04-10T19:35:00+08:00</published><author><name>往往台</name></author><id>tag:www.wengweitao.com,2015-04-10:shi-pelicanzhi-chi-latexshu-xue-gong-shi.html</id><summary type="html">&lt;p&gt;作为一个技术博客，在写文章的时候，肯定需要经常输入各种公式符号。在之前写一篇文章的时候，发现Pelican默认是不支持编辑数学公式的。之前用过一些在线的markdonw编辑器，都是通过&lt;a href="https://github.com/mathjax/mathjax"&gt;MathJax&lt;/a&gt;来支持在markdown中书写数学公式，而且用起来非常的方便，语法基本和LaTex一样。于是，就找到了一种简单的使Pelican支持LaTex语法的数学公式，在这里分享给大家。&lt;/p&gt;
 &lt;h2&gt;如何使Pelican支持渲染数学公式&lt;/h2&gt;
 &lt;p&gt;最简单的方法就是使用Pelican的一个插件——&lt;a href="https://github.com/barrysteyn/pelican_plugin-render_math"&gt;pelican_plugin-render_math&lt;/a&gt;。
 这个插件可以通过使用MathJax使pelican拥有渲染数学公式的能力，并且同时支持Markdown 和reStructuredText，用起来也非常的方便！&lt;/p&gt;
@@ -5689,7 +5689,7 @@ git push origin master
         "}); ";
     (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
 }
-&lt;/script&gt;</summary><category term="教程"></category></entry><entry><title>求字符的所有组合和所有排列</title><link href="http://www.wengweitao.com/qiu-zi-fu-de-suo-you-zu-he-he-suo-you-pai-lie.html" rel="alternate"></link><published>2015-04-10T14:41:00+08:00</published><author><name>wwt</name></author><id>tag:www.wengweitao.com,2015-04-10:qiu-zi-fu-de-suo-you-zu-he-he-suo-you-pai-lie.html</id><summary type="html">&lt;blockquote&gt;
+&lt;/script&gt;</summary><category term="教程"></category></entry><entry><title>求字符的所有组合和所有排列</title><link href="http://www.wengweitao.com/qiu-zi-fu-de-suo-you-zu-he-he-suo-you-pai-lie.html" rel="alternate"></link><published>2015-04-10T14:41:00+08:00</published><author><name>往往台</name></author><id>tag:www.wengweitao.com,2015-04-10:qiu-zi-fu-de-suo-you-zu-he-he-suo-you-pai-lie.html</id><summary type="html">&lt;blockquote&gt;
 &lt;p&gt;昨天看到一道关于求解字符串的排列的问题。如何求出几个字符的所有排列，发现对这种类似的题型还不是很熟练，因此本文对字符的全排列和全组合的问题作下总结，加深自己的理解和记忆，同时也希望能够帮助大家更好的学习和理解该类问题。&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h2&gt;字符串的排列&lt;/h2&gt;
@@ -5928,7 +5928,7 @@ git push origin master
         "}); ";
     (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
 }
-&lt;/script&gt;</summary><category term="面试题"></category></entry><entry><title>编写高质量Python代码（3）——库</title><link href="http://www.wengweitao.com/bian-xie-gao-zhi-liang-pythondai-ma-3-ku.html" rel="alternate"></link><published>2015-04-08T22:58:00+08:00</published><author><name>wwt</name></author><id>tag:www.wengweitao.com,2015-04-08:bian-xie-gao-zhi-liang-pythondai-ma-3-ku.html</id><summary type="html">&lt;blockquote&gt;
+&lt;/script&gt;</summary><category term="面试题"></category></entry><entry><title>编写高质量Python代码（3）——库</title><link href="http://www.wengweitao.com/bian-xie-gao-zhi-liang-pythondai-ma-3-ku.html" rel="alternate"></link><published>2015-04-08T22:58:00+08:00</published><author><name>往往台</name></author><id>tag:www.wengweitao.com,2015-04-08:bian-xie-gao-zhi-liang-pythondai-ma-3-ku.html</id><summary type="html">&lt;blockquote&gt;
 &lt;p&gt;Python具有非常丰富的库，这篇文章介绍了常用库的使用和技巧。&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h3&gt;建议36：掌握字符串的基本用法&lt;/h3&gt;
@@ -6627,7 +6627,7 @@ threading模块基于thread进行封装，将线程操作对象化，在语言�
 &lt;h2&gt;&lt;img alt="threading_queue" src="./imgs/threading_queue.png" /&gt;&lt;/h2&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Read from《&lt;a href="http://book.douban.com/subject/25910544/"&gt;编写高质量代码：改善Python程序的91个建议&lt;/a&gt;》&lt;/p&gt;
-&lt;/blockquote&gt;</summary><category term="Python"></category></entry><entry><title>Python容器——Counter的使用</title><link href="http://www.wengweitao.com/pythonrong-qi-counterde-shi-yong.html" rel="alternate"></link><published>2015-04-08T14:52:00+08:00</published><author><name>wwt</name></author><id>tag:www.wengweitao.com,2015-04-08:pythonrong-qi-counterde-shi-yong.html</id><summary type="html">&lt;blockquote&gt;
+&lt;/blockquote&gt;</summary><category term="Python"></category></entry><entry><title>Python容器——Counter的使用</title><link href="http://www.wengweitao.com/pythonrong-qi-counterde-shi-yong.html" rel="alternate"></link><published>2015-04-08T14:52:00+08:00</published><author><name>往往台</name></author><id>tag:www.wengweitao.com,2015-04-08:pythonrong-qi-counterde-shi-yong.html</id><summary type="html">&lt;blockquote&gt;
 &lt;p&gt;Counter是Python标准库提供的一个非常有用的容器，可以用来对序列中出现的各个元素，进行计数。这篇文章中，利用Counter来实现多元集合(MultiSets)、概率质量函数(PMFs)以及贝叶斯假设。&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;在Python代码中使用Counter，只需从collections包引入：&lt;/p&gt;
@@ -6841,7 +6841,7 @@ hypo: 可能掷出的那个骰子&lt;/p&gt;
 &lt;hr /&gt;
 &lt;p&gt;以上的几个例子，展示了Counter的用处。实际中，Counter的使用还比较少，如果能够恰当的使用起来将会带来非常多的方便。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Reference&lt;/strong&gt;：
-Using Counters : http://nbviewer.ipython.org/github/AllenDowney/PythonCounterPmf/blob/master/PythonCounterPmf.ipynb&lt;/p&gt;</summary><category term="Python"></category></entry><entry><title>编写高质量Python代码（2）</title><link href="http://www.wengweitao.com/bian-xie-gao-zhi-liang-pythondai-ma-2.html" rel="alternate"></link><published>2015-04-07T22:39:00+08:00</published><author><name>wwt</name></author><id>tag:www.wengweitao.com,2015-04-07:bian-xie-gao-zhi-liang-pythondai-ma-2.html</id><summary type="html">&lt;blockquote&gt;
+Using Counters : http://nbviewer.ipython.org/github/AllenDowney/PythonCounterPmf/blob/master/PythonCounterPmf.ipynb&lt;/p&gt;</summary><category term="Python"></category></entry><entry><title>编写高质量Python代码（2）</title><link href="http://www.wengweitao.com/bian-xie-gao-zhi-liang-pythondai-ma-2.html" rel="alternate"></link><published>2015-04-07T22:39:00+08:00</published><author><name>往往台</name></author><id>tag:www.wengweitao.com,2015-04-07:bian-xie-gao-zhi-liang-pythondai-ma-2.html</id><summary type="html">&lt;blockquote&gt;
 &lt;p&gt;这篇文章基础语法出发讲述Python的使用技巧和注意事项&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h3&gt;建议8： 利用assert语句来发现问题&lt;/h3&gt;
@@ -7102,7 +7102,7 @@ encode(): 编码。将Unicode编码转换为另一种编码。&lt;/p&gt;
 &lt;hr /&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Read from《&lt;a href="http://book.douban.com/subject/25910544/"&gt;编写高质量代码：改善Python程序的91个建议&lt;/a&gt;》&lt;/p&gt;
-&lt;/blockquote&gt;</summary><category term="Python"></category></entry><entry><title>Python代码格式化工具——YAPF</title><link href="http://www.wengweitao.com/pythondai-ma-ge-shi-hua-gong-ju-yapf.html" rel="alternate"></link><published>2015-04-07T15:10:00+08:00</published><author><name>wwt</name></author><id>tag:www.wengweitao.com,2015-04-07:pythondai-ma-ge-shi-hua-gong-ju-yapf.html</id><summary type="html">&lt;blockquote&gt;
+&lt;/blockquote&gt;</summary><category term="Python"></category></entry><entry><title>Python代码格式化工具——YAPF</title><link href="http://www.wengweitao.com/pythondai-ma-ge-shi-hua-gong-ju-yapf.html" rel="alternate"></link><published>2015-04-07T15:10:00+08:00</published><author><name>往往台</name></author><id>tag:www.wengweitao.com,2015-04-07:pythondai-ma-ge-shi-hua-gong-ju-yapf.html</id><summary type="html">&lt;blockquote&gt;
 &lt;p&gt;&lt;a href="https://github.com/google/yapf"&gt;YAPF&lt;/a&gt;是Google开源的一个工具，可以用来格式化Python代码，使Python代码拥有一致的编程风格，减轻了团队或者个人进行代码风格维护的单调的工作。&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h3&gt;介绍&lt;/h3&gt;
@@ -7203,7 +7203,7 @@ optional arguments:
 
 
 &lt;hr /&gt;
-&lt;p&gt;所以，YAPF是一个非常有用的工具，它可以帮助你将代码变得更加一致、更加容易阅读并且Pythonic。&lt;/p&gt;</summary><category term="Python"></category><category term="工具"></category></entry><entry><title>编写高质量Python代码（1）</title><link href="http://www.wengweitao.com/bian-xie-gao-zhi-liang-pythondai-ma-1.html" rel="alternate"></link><published>2015-04-06T18:42:00+08:00</published><author><name>wwt</name></author><id>tag:www.wengweitao.com,2015-04-06:bian-xie-gao-zhi-liang-pythondai-ma-1.html</id><summary type="html">&lt;blockquote&gt;
+&lt;p&gt;所以，YAPF是一个非常有用的工具，它可以帮助你将代码变得更加一致、更加容易阅读并且Pythonic。&lt;/p&gt;</summary><category term="Python"></category><category term="工具"></category></entry><entry><title>编写高质量Python代码（1）</title><link href="http://www.wengweitao.com/bian-xie-gao-zhi-liang-pythondai-ma-1.html" rel="alternate"></link><published>2015-04-06T18:42:00+08:00</published><author><name>往往台</name></author><id>tag:www.wengweitao.com,2015-04-06:bian-xie-gao-zhi-liang-pythondai-ma-1.html</id><summary type="html">&lt;blockquote&gt;
 &lt;p&gt;去年参加了珠海的PyCon大会，幸运地抽中了三本书，其中一本是《编写高质量代码：改善Python程序的91个建议》。本书从多个方面给出了编写高质量Python代码的91个建议，我把每一章的建议都先总结下来，分享给大家。&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h3&gt;建议1： 理解Pythonic概念&lt;/h3&gt;
@@ -7390,7 +7390,7 @@ quick_sort.py:18:1: W391 blank line at end of file
 &lt;hr /&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Read from《&lt;a href="http://book.douban.com/subject/25910544/"&gt;编写高质量代码：改善Python程序的91个建议&lt;/a&gt;》&lt;/p&gt;
-&lt;/blockquote&gt;</summary><category term="Python"></category></entry><entry><title>斐波那契数列及其相关问题</title><link href="http://www.wengweitao.com/fei-bo-na-qi-shu-lie-ji-qi-xiang-guan-wen-ti.html" rel="alternate"></link><published>2015-04-05T00:00:00+08:00</published><author><name>wwt</name></author><id>tag:www.wengweitao.com,2015-04-05:fei-bo-na-qi-shu-lie-ji-qi-xiang-guan-wen-ti.html</id><summary type="html">&lt;p&gt;很多书在提到递归的时候，总是会拿斐波那契数列作为例子，它的定义如下：
+&lt;/blockquote&gt;</summary><category term="Python"></category></entry><entry><title>斐波那契数列及其相关问题</title><link href="http://www.wengweitao.com/fei-bo-na-qi-shu-lie-ji-qi-xiang-guan-wen-ti.html" rel="alternate"></link><published>2015-04-05T00:00:00+08:00</published><author><name>往往台</name></author><id>tag:www.wengweitao.com,2015-04-05:fei-bo-na-qi-shu-lie-ji-qi-xiang-guan-wen-ti.html</id><summary type="html">&lt;p&gt;很多书在提到递归的时候，总是会拿斐波那契数列作为例子，它的定义如下：
 &lt;img alt="Fibonacci" src="http://ac.jobdu.com/upload/201201/image/fbncslie.jpg" /&gt;&lt;/p&gt;
 &lt;p&gt;现在要求输出斐波那契数列的第n项。&lt;/p&gt;
 &lt;p&gt;首先，最容易想到的方法就是直接利用递归求解：&lt;/p&gt;
@@ -7454,7 +7454,7 @@ quick_sort.py:18:1: W391 blank line at end of file
 &lt;p&gt;与上面的跳台阶问题类似。当n&amp;gt;2时，第一次跳有n种选择：第一次只跳1级，那么此时跳法的数目等于后面剩下的n-1级台阶的跳法数目；第一次跳2级，那么此时跳法的数目等于后面剩下的n-1级台阶的跳法数目，依次类推，第一次直接跳n级。所以，所以n级台阶不同跳法总数为f(n) = f(n-1) + f(n-2) + ... + f(1) + 1。利用归纳法可以证明f(n) = 2^(n-1).&lt;/p&gt;
 &lt;h3&gt;3. 矩形覆盖&lt;/h3&gt;
 &lt;p&gt;我们可以用2&lt;em&gt;1的小矩形横着或者竖着去覆盖更大的矩形。请问用n个2&lt;/em&gt;1的小矩形无重叠地覆盖一个2*n的大矩形，总共有多少种方法？&lt;/p&gt;
-&lt;p&gt;假设2 * n的大矩形总共有f(n)中覆盖方法。首先，用2*1的小矩形去覆盖大矩形最左边时有两个选择，若横着覆盖，则这个小矩形下面的那个小矩形也必须要横着覆盖，此时剩余2 * (n - 2)的区域，这种情形下的覆盖方法记为f(n - 2)；若竖着覆盖，则剩余2 * (n - 1)的区域，这种情形下覆盖的方法记为f(n - 1)。所以总的覆盖方法有：f(n - 1) + f(n - 2)。仍然是一个斐波那契数列。&lt;/p&gt;</summary><category term="面试题"></category></entry><entry><title>信息技术协会第一期电脑技术培训顺利举办</title><link href="http://www.wengweitao.com/xin-xi-ji-zhu-xie-hui-di-yi-qi-dian-nao-ji-zhu-pei-xun-shun-li-ju-ban.html" rel="alternate"></link><published>2014-10-18T20:12:00+08:00</published><author><name>wwt</name></author><id>tag:www.wengweitao.com,2014-10-18:xin-xi-ji-zhu-xie-hui-di-yi-qi-dian-nao-ji-zhu-pei-xun-shun-li-ju-ban.html</id><summary type="html">&lt;blockquote&gt;
+&lt;p&gt;假设2 * n的大矩形总共有f(n)中覆盖方法。首先，用2*1的小矩形去覆盖大矩形最左边时有两个选择，若横着覆盖，则这个小矩形下面的那个小矩形也必须要横着覆盖，此时剩余2 * (n - 2)的区域，这种情形下的覆盖方法记为f(n - 2)；若竖着覆盖，则剩余2 * (n - 1)的区域，这种情形下覆盖的方法记为f(n - 1)。所以总的覆盖方法有：f(n - 1) + f(n - 2)。仍然是一个斐波那契数列。&lt;/p&gt;</summary><category term="面试题"></category></entry><entry><title>信息技术协会第一期电脑技术培训顺利举办</title><link href="http://www.wengweitao.com/xin-xi-ji-zhu-xie-hui-di-yi-qi-dian-nao-ji-zhu-pei-xun-shun-li-ju-ban.html" rel="alternate"></link><published>2014-10-18T20:12:00+08:00</published><author><name>往往台</name></author><id>tag:www.wengweitao.com,2014-10-18:xin-xi-ji-zhu-xie-hui-di-yi-qi-dian-nao-ji-zhu-pei-xun-shun-li-ju-ban.html</id><summary type="html">&lt;blockquote&gt;
 &lt;p&gt;新的学年开始了，一直想着信协能够举办几个新的有意思的活动，想了好久觉得既有意义，又能吸引其他专业的同学参加的，那么技术培训是个不错的选择。于是，就和协会的小伙伴们商量，准备定期举办同学们最感兴趣的系列技术专题培训。第一期便是Photoshop培训。&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;2014年10月17日晚七点，南燕信息技术协会举办了第一期电脑培训活动--Photoshop基础入门与应用的培训讲座。活动受到了同学们的广泛欢迎和好评。 &lt;/p&gt;
@@ -7466,7 +7466,7 @@ quick_sort.py:18:1: W391 blank line at end of file
 &lt;blockquote&gt;
 &lt;p&gt;信息技术协会致力于为北大深研院的同学们营造一个学习和交流信息学科得环境和氛围，为大家提供有关信息领域的设计、应用、资讯等方面的信息。信息技术协会积极打造与深港信息类企业合作和联动的平台，帮助学生走出校园，观察产业发展动态；积极开展电脑维护活动，帮助同学们解决生活中遇到的技术困难。在以后，信息技术协会仍然会坚持协会宗旨，继续为大家服务。&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;转自：http://news.pkusz.edu.cn/article-143-4357.html&lt;/p&gt;</summary><category term="校园"></category></entry><entry><title>EM算法</title><link href="http://www.wengweitao.com/emsuan-fa.html" rel="alternate"></link><published>2014-08-10T19:09:00+08:00</published><author><name>wwt</name></author><id>tag:www.wengweitao.com,2014-08-10:emsuan-fa.html</id><summary type="html">&lt;blockquote&gt;
+&lt;p&gt;转自：http://news.pkusz.edu.cn/article-143-4357.html&lt;/p&gt;</summary><category term="校园"></category></entry><entry><title>EM算法</title><link href="http://www.wengweitao.com/emsuan-fa.html" rel="alternate"></link><published>2014-08-10T19:09:00+08:00</published><author><name>往往台</name></author><id>tag:www.wengweitao.com,2014-08-10:emsuan-fa.html</id><summary type="html">&lt;blockquote&gt;
 &lt;p&gt;EM算法是一种迭代算法，用于含有隐变量（hidden variable）的概率模型参数的极大似然估计，或极大后验概率估计。EM算法的每次迭代分为两步：E步，求期望（Expectation）；M步，求极大（Maximization）。所以这一算法称为期望极大算法。&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h2&gt;EM算法的引入&lt;/h2&gt;
@@ -7691,7 +7691,7 @@ quick_sort.py:18:1: W391 blank line at end of file
         "}); ";
     (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
 }
-&lt;/script&gt;</summary><category term="读书笔记"></category></entry><entry><title>提升树</title><link href="http://www.wengweitao.com/ti-sheng-shu.html" rel="alternate"></link><published>2014-08-07T22:27:00+08:00</published><author><name>wwt</name></author><id>tag:www.wengweitao.com,2014-08-07:ti-sheng-shu.html</id><summary type="html">&lt;blockquote&gt;
+&lt;/script&gt;</summary><category term="读书笔记"></category></entry><entry><title>提升树</title><link href="http://www.wengweitao.com/ti-sheng-shu.html" rel="alternate"></link><published>2014-08-07T22:27:00+08:00</published><author><name>往往台</name></author><id>tag:www.wengweitao.com,2014-08-07:ti-sheng-shu.html</id><summary type="html">&lt;blockquote&gt;
 &lt;p&gt;提升树是以分类树或回归树为基本分类器的提升方法。提升树被认为是统计学习中性能最好的方法之一。&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h2&gt;提升树模型&lt;/h2&gt;
@@ -7814,7 +7814,7 @@ J是回归树的复杂度即叶节点的个数。&lt;/p&gt;
         "}); ";
     (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
 }
-&lt;/script&gt;</summary><category term="读书笔记"></category></entry><entry><title>AdaBoost算法</title><link href="http://www.wengweitao.com/adaboostsuan-fa.html" rel="alternate"></link><published>2014-08-06T19:56:00+08:00</published><author><name>wwt</name></author><id>tag:www.wengweitao.com,2014-08-06:adaboostsuan-fa.html</id><summary type="html">&lt;blockquote&gt;
+&lt;/script&gt;</summary><category term="读书笔记"></category></entry><entry><title>AdaBoost算法</title><link href="http://www.wengweitao.com/adaboostsuan-fa.html" rel="alternate"></link><published>2014-08-06T19:56:00+08:00</published><author><name>往往台</name></author><id>tag:www.wengweitao.com,2014-08-06:adaboostsuan-fa.html</id><summary type="html">&lt;blockquote&gt;
 &lt;p&gt;提升（boosting）方法是一种常用的统计学习方法。在分类问题中，它通过改变训练样本的权重，学习多个分类器，并将这些分类器进行线性组合，提高分类的性能。&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h2&gt;提升方法AdaBoost算法&lt;/h2&gt;
@@ -7962,7 +7962,7 @@ J是回归树的复杂度即叶节点的个数。&lt;/p&gt;
         "}); ";
     (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
 }
-&lt;/script&gt;</summary><category term="读书笔记"></category></entry><entry><title>支持向量机——SMO（序列最小最优化算法）</title><link href="http://www.wengweitao.com/zhi-chi-xiang-liang-ji-smoxu-lie-zui-xiao-zui-you-hua-suan-fa.html" rel="alternate"></link><published>2014-08-05T10:02:00+08:00</published><author><name>wwt</name></author><id>tag:www.wengweitao.com,2014-08-05:zhi-chi-xiang-liang-ji-smoxu-lie-zui-xiao-zui-you-hua-suan-fa.html</id><summary type="html">&lt;blockquote&gt;
+&lt;/script&gt;</summary><category term="读书笔记"></category></entry><entry><title>支持向量机——SMO（序列最小最优化算法）</title><link href="http://www.wengweitao.com/zhi-chi-xiang-liang-ji-smoxu-lie-zui-xiao-zui-you-hua-suan-fa.html" rel="alternate"></link><published>2014-08-05T10:02:00+08:00</published><author><name>往往台</name></author><id>tag:www.wengweitao.com,2014-08-05:zhi-chi-xiang-liang-ji-smoxu-lie-zui-xiao-zui-you-hua-suan-fa.html</id><summary type="html">&lt;blockquote&gt;
 &lt;p&gt;SVM的学习算法可以归结为凸二次规划问题。这样的凸二次规划问题你具有全局最优解，并且许多最优化算法可以用来求解，但是当训练样本容量很大，这些算法往往变得非常低效，以致无法使用。所以本文介绍了如何高效地实现支持向量机学习。&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;我们将用序列最小最优化（sequential minimal optimization, SMO）算法，求解
@@ -8158,7 +8158,7 @@ L,　\alpha_2^{new, unc}　&amp;lt; L
         "}); ";
     (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
 }
-&lt;/script&gt;</summary><category term="读书笔记"></category></entry><entry><title>支持向量机——非线性支持向量机</title><link href="http://www.wengweitao.com/zhi-chi-xiang-liang-ji-fei-xian-xing-zhi-chi-xiang-liang-ji.html" rel="alternate"></link><published>2014-08-04T19:39:00+08:00</published><author><name>wwt</name></author><id>tag:www.wengweitao.com,2014-08-04:zhi-chi-xiang-liang-ji-fei-xian-xing-zhi-chi-xiang-liang-ji.html</id><summary type="html">&lt;blockquote&gt;
+&lt;/script&gt;</summary><category term="读书笔记"></category></entry><entry><title>支持向量机——非线性支持向量机</title><link href="http://www.wengweitao.com/zhi-chi-xiang-liang-ji-fei-xian-xing-zhi-chi-xiang-liang-ji.html" rel="alternate"></link><published>2014-08-04T19:39:00+08:00</published><author><name>往往台</name></author><id>tag:www.wengweitao.com,2014-08-04:zhi-chi-xiang-liang-ji-fei-xian-xing-zhi-chi-xiang-liang-ji.html</id><summary type="html">&lt;blockquote&gt;
 &lt;p&gt;如果分类问题是非线性的，那么就要用到非线性支持向量机。非线性支持向量机主要特点就是利用核技巧。&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h2&gt;核技巧&lt;/h2&gt;
@@ -8361,7 +8361,7 @@ M是半正定矩阵当且仅当对所有不为零&lt;span class="math"&gt;\(的x
         "}); ";
     (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
 }
-&lt;/script&gt;</summary><category term="读书笔记"></category></entry><entry><title>支持向量机——线性支持向量机</title><link href="http://www.wengweitao.com/zhi-chi-xiang-liang-ji-xian-xing-zhi-chi-xiang-liang-ji.html" rel="alternate"></link><published>2014-08-03T14:54:00+08:00</published><author><name>wwt</name></author><id>tag:www.wengweitao.com,2014-08-03:zhi-chi-xiang-liang-ji-xian-xing-zhi-chi-xiang-liang-ji.html</id><summary type="html">&lt;blockquote&gt;
+&lt;/script&gt;</summary><category term="读书笔记"></category></entry><entry><title>支持向量机——线性支持向量机</title><link href="http://www.wengweitao.com/zhi-chi-xiang-liang-ji-xian-xing-zhi-chi-xiang-liang-ji.html" rel="alternate"></link><published>2014-08-03T14:54:00+08:00</published><author><name>往往台</name></author><id>tag:www.wengweitao.com,2014-08-03:zhi-chi-xiang-liang-ji-xian-xing-zhi-chi-xiang-liang-ji.html</id><summary type="html">&lt;blockquote&gt;
 &lt;p&gt;对于理想情况下线性可分的问题，可以使用上文介绍的线性可分支持向量机（硬间隔最大化）完美解决。但是，实际情况中，训练数据往往是线性不可分的，即在样本中存在噪声或特异点。此时，可以使用本文中介绍的更一般的学习算法——线性支持向量机（软间隔最大化）。&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h2&gt;线性支持向量机&lt;/h2&gt;
@@ -8517,7 +8517,7 @@ z, z &amp;gt; 0\\
         "}); ";
     (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
 }
-&lt;/script&gt;</summary><category term="读书笔记"></category></entry><entry><title>支持向量机——线性可分支持向量机</title><link href="http://www.wengweitao.com/zhi-chi-xiang-liang-ji-xian-xing-ke-fen-zhi-chi-xiang-liang-ji.html" rel="alternate"></link><published>2014-08-02T20:32:00+08:00</published><author><name>wwt</name></author><id>tag:www.wengweitao.com,2014-08-02:zhi-chi-xiang-liang-ji-xian-xing-ke-fen-zhi-chi-xiang-liang-ji.html</id><summary type="html">&lt;blockquote&gt;
+&lt;/script&gt;</summary><category term="读书笔记"></category></entry><entry><title>支持向量机——线性可分支持向量机</title><link href="http://www.wengweitao.com/zhi-chi-xiang-liang-ji-xian-xing-ke-fen-zhi-chi-xiang-liang-ji.html" rel="alternate"></link><published>2014-08-02T20:32:00+08:00</published><author><name>往往台</name></author><id>tag:www.wengweitao.com,2014-08-02:zhi-chi-xiang-liang-ji-xian-xing-ke-fen-zhi-chi-xiang-liang-ji.html</id><summary type="html">&lt;blockquote&gt;
 &lt;p&gt;支持向量机（support vector machine， SVM）是一种二类分类模型。它的基本模型是定义在特征空间上的间隔最大的线性分类器，间隔最大使之有别与感知机。支持向量机还包括核技巧，这使它成为实质上的非线性分类器。SVM的学习策略是间隔最大化，可形式化为一个求解凸二次规划的问题，也等价于正则化的合页损失函数的最小化问题。SVM的学习算法是求解凸二次规划的最优算法。SVM学习方法包含构建由简至烦的模型：
 - 线性可分支持向量机：当训练数据线性可分时，通过硬间隔最大化（hard margin maximization），学习一个线性分类器
 - 线性支持向量机：当训练数据近似线性可分时，通过软间隔最大化（soft margin maximization），学习一个线性分类器，也称为软间隔支持向量机
@@ -8692,7 +8692,7 @@ z, z &amp;gt; 0\\
         "}); ";
     (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
 }
-&lt;/script&gt;</summary><category term="读书笔记"></category></entry><entry><title>逻辑斯谛回归与最大熵模型</title><link href="http://www.wengweitao.com/luo-ji-si-di-hui-gui-yu-zui-da-shang-mo-xing.html" rel="alternate"></link><published>2014-08-01T09:53:00+08:00</published><author><name>wwt</name></author><id>tag:www.wengweitao.com,2014-08-01:luo-ji-si-di-hui-gui-yu-zui-da-shang-mo-xing.html</id><summary type="html">&lt;blockquote&gt;
+&lt;/script&gt;</summary><category term="读书笔记"></category></entry><entry><title>逻辑斯谛回归与最大熵模型</title><link href="http://www.wengweitao.com/luo-ji-si-di-hui-gui-yu-zui-da-shang-mo-xing.html" rel="alternate"></link><published>2014-08-01T09:53:00+08:00</published><author><name>往往台</name></author><id>tag:www.wengweitao.com,2014-08-01:luo-ji-si-di-hui-gui-yu-zui-da-shang-mo-xing.html</id><summary type="html">&lt;blockquote&gt;
 &lt;p&gt;逻辑斯谛回归（logistic regression）是统计学习中的经典分类方法，可以用于二类分类也可以用于多类分类。最大熵模型由最大熵原理推导出来，最大熵原理是概率模型学习或估计的一个准则，最大熵原理认为在所有可能的概率模型的集合中，熵最大的模型是最好的模型，最大熵模型也可以用于二类分类和多类分类。逻辑斯谛回归模型与最大熵模型都属于对数线性模型&lt;sup id="fnref:log"&gt;&lt;a class="footnote-ref" href="#fn:log" rel="footnote"&gt;1&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h2&gt;逻辑斯谛回归模型&lt;/h2&gt;
@@ -8873,7 +8873,7 @@ w就可以学到逻辑斯谛回归模型。&lt;/p&gt;
         "}); ";
     (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
 }
-&lt;/script&gt;</summary><category term="读书笔记"></category></entry><entry><title>牛顿法</title><link href="http://www.wengweitao.com/niu-dun-fa.html" rel="alternate"></link><published>2014-07-30T20:12:00+08:00</published><author><name>wwt</name></author><id>tag:www.wengweitao.com,2014-07-30:niu-dun-fa.html</id><summary type="html">&lt;blockquote&gt;
+&lt;/script&gt;</summary><category term="读书笔记"></category></entry><entry><title>牛顿法</title><link href="http://www.wengweitao.com/niu-dun-fa.html" rel="alternate"></link><published>2014-07-30T20:12:00+08:00</published><author><name>往往台</name></author><id>tag:www.wengweitao.com,2014-07-30:niu-dun-fa.html</id><summary type="html">&lt;blockquote&gt;
 &lt;p&gt;牛顿法是近似求解方程的方法，方法是使用函数的泰勒级数的前面几项来寻找方程的根。在统计学习中，牛顿法（Newton method）和拟牛顿法（quasi Newton method）也是&lt;strong&gt;求解无约束最优化问题&lt;/strong&gt;的常用方法。有&lt;strong&gt;收敛速度快&lt;/strong&gt;的优点。牛顿法是&lt;strong&gt;迭代方法&lt;/strong&gt;，每一步需要求解目标函数的海森矩阵（Hessian matrix）的逆矩阵，计算比较复杂。拟牛顿法通过正定矩阵近似海赛矩阵的逆矩阵或海赛矩阵，简化了这一过程。&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h2&gt;牛顿法&lt;/h2&gt;
@@ -9049,7 +9049,7 @@ w就可以学到逻辑斯谛回归模型。&lt;/p&gt;
         "}); ";
     (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
 }
-&lt;/script&gt;</summary><category term="基本概念"></category></entry><entry><title>拉格朗日对偶性（Lagrange Duality）</title><link href="http://www.wengweitao.com/la-ge-lang-ri-dui-ou-xing-lagrange-duality.html" rel="alternate"></link><published>2014-07-30T09:56:00+08:00</published><author><name>wwt</name></author><id>tag:www.wengweitao.com,2014-07-30:la-ge-lang-ri-dui-ou-xing-lagrange-duality.html</id><summary type="html">&lt;blockquote&gt;
+&lt;/script&gt;</summary><category term="基本概念"></category></entry><entry><title>拉格朗日对偶性（Lagrange Duality）</title><link href="http://www.wengweitao.com/la-ge-lang-ri-dui-ou-xing-lagrange-duality.html" rel="alternate"></link><published>2014-07-30T09:56:00+08:00</published><author><name>往往台</name></author><id>tag:www.wengweitao.com,2014-07-30:la-ge-lang-ri-dui-ou-xing-lagrange-duality.html</id><summary type="html">&lt;blockquote&gt;
 &lt;p&gt;在求解约束优化问题的时候，常常利用拉格朗日对偶性（Lagrange Duality）将原始问题转化为对偶问题，通过求解对偶问题而得到原始问题的解。该方法用在许多统计学习方法中，如最大熵模型和SVM等。&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h2&gt;原始问题&lt;/h2&gt;
@@ -9170,7 +9170,7 @@ f(x)   \:\:\:\:\: x满足约束条件\\
         "}); ";
     (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
 }
-&lt;/script&gt;</summary><category term="基础概念"></category></entry><entry><title>决策树</title><link href="http://www.wengweitao.com/jue-ce-shu.html" rel="alternate"></link><published>2014-07-29T10:00:00+08:00</published><author><name>wwt</name></author><id>tag:www.wengweitao.com,2014-07-29:jue-ce-shu.html</id><summary type="html">&lt;blockquote&gt;
+&lt;/script&gt;</summary><category term="基础概念"></category></entry><entry><title>决策树</title><link href="http://www.wengweitao.com/jue-ce-shu.html" rel="alternate"></link><published>2014-07-29T10:00:00+08:00</published><author><name>往往台</name></author><id>tag:www.wengweitao.com,2014-07-29:jue-ce-shu.html</id><summary type="html">&lt;blockquote&gt;
 &lt;p&gt;决策树（decision tree）是一种基本的分类与回归方法。它可以认为是if-then规则的集合，也可以认为是定义在特征空间与类空间上的条件概率分布。其主要优点是模型可读性好，分类速度快。决策树的学习通常包含3个部分：特征选择、决策树生成和决策树的修剪。学习时，利用训练数据，根据损失函数最小化的原则建立决策树模型；预测时，对新的数据，利用决策树模型进行分类。常用的算法有ID3、C4.5和CART。&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h2&gt;决策树模型与学习&lt;/h2&gt;
@@ -9402,7 +9402,7 @@ f(x)   \:\:\:\:\: x满足约束条件\\
         "}); ";
     (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
 }
-&lt;/script&gt;</summary><category term="读书笔记"></category></entry><entry><title>朴素贝叶斯法</title><link href="http://www.wengweitao.com/po-su-bei-xie-si-fa.html" rel="alternate"></link><published>2014-07-28T14:06:00+08:00</published><author><name>wwt</name></author><id>tag:www.wengweitao.com,2014-07-28:po-su-bei-xie-si-fa.html</id><summary type="html">&lt;blockquote&gt;
+&lt;/script&gt;</summary><category term="读书笔记"></category></entry><entry><title>朴素贝叶斯法</title><link href="http://www.wengweitao.com/po-su-bei-xie-si-fa.html" rel="alternate"></link><published>2014-07-28T14:06:00+08:00</published><author><name>往往台</name></author><id>tag:www.wengweitao.com,2014-07-28:po-su-bei-xie-si-fa.html</id><summary type="html">&lt;blockquote&gt;
 &lt;p&gt;朴素贝叶斯法（naive Bayes）是基于贝叶斯定理与特征条件独立假设的分类方法。对于给定的训练数据集，利用特征条件独立假设学习输入/输出的联合概率分布；然后基于此模型，对给定的输入x，利用贝叶斯定理求出后验概率最大的输出y。&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h2&gt;朴素贝叶斯法的学习与分类&lt;/h2&gt;
@@ -9490,7 +9490,7 @@ f(x)   \:\:\:\:\: x满足约束条件\\
         "}); ";
     (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
 }
-&lt;/script&gt;</summary><category term="读书笔记"></category></entry><entry><title>k近邻法</title><link href="http://www.wengweitao.com/kjin-lin-fa.html" rel="alternate"></link><published>2014-07-27T16:18:00+08:00</published><author><name>wwt</name></author><id>tag:www.wengweitao.com,2014-07-27:kjin-lin-fa.html</id><summary type="html">&lt;blockquote&gt;
+&lt;/script&gt;</summary><category term="读书笔记"></category></entry><entry><title>k近邻法</title><link href="http://www.wengweitao.com/kjin-lin-fa.html" rel="alternate"></link><published>2014-07-27T16:18:00+08:00</published><author><name>往往台</name></author><id>tag:www.wengweitao.com,2014-07-27:kjin-lin-fa.html</id><summary type="html">&lt;blockquote&gt;
 &lt;p&gt;k近邻法（k-nearest neighbor, k-NN）是一种基于分类与回归的方法。分类时，对新的待分类的实例，根据其k个最近邻的训练实例的类别，通过多数表决等方式进行预测。因此，k近邻算法不具有显示的学习过程。k值的选择、距离度量及分类决策规则是k近邻法的3个基本要素。&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h2&gt;k近邻算法&lt;/h2&gt;
@@ -9585,7 +9585,7 @@ f(x)   \:\:\:\:\: x满足约束条件\\
         "}); ";
     (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
 }
-&lt;/script&gt;</summary><category term="读书笔记"></category></entry><entry><title>感知机</title><link href="http://www.wengweitao.com/gan-zhi-ji.html" rel="alternate"></link><published>2014-07-26T20:12:00+08:00</published><author><name>wwt</name></author><id>tag:www.wengweitao.com,2014-07-26:gan-zhi-ji.html</id><summary type="html">&lt;blockquote&gt;
+&lt;/script&gt;</summary><category term="读书笔记"></category></entry><entry><title>感知机</title><link href="http://www.wengweitao.com/gan-zhi-ji.html" rel="alternate"></link><published>2014-07-26T20:12:00+08:00</published><author><name>往往台</name></author><id>tag:www.wengweitao.com,2014-07-26:gan-zhi-ji.html</id><summary type="html">&lt;blockquote&gt;
 &lt;p&gt;感知机（perceptron）是二类分类的线性分类模型，其输入为实例的特征向量，输出为实例的类别，取+1和-1二值。感知机对应于输入空间中将实例划分为正负两类的分离超平面，属于判别模型。感知机学习旨在求出将训练数据进行线性划分的分离超平面，为此导入了基于误分类的损失函数，利用梯度下降法对损失函数进行极小化，求得感知机模型。感知机学习算法具有简单而易于实现的优点，分为原始形式和对偶形式。感知机是神经网络与支持向量机的基础。&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h2&gt;感知机模型&lt;/h2&gt;
@@ -9729,7 +9729,7 @@ f(x)   \:\:\:\:\: x满足约束条件\\
         "}); ";
     (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
 }
-&lt;/script&gt;</summary><category term="读书笔记"></category></entry><entry><title>梯度下降法</title><link href="http://www.wengweitao.com/ti-du-xia-jiang-fa.html" rel="alternate"></link><published>2014-07-26T16:18:00+08:00</published><author><name>wwt</name></author><id>tag:www.wengweitao.com,2014-07-26:ti-du-xia-jiang-fa.html</id><summary type="html">&lt;p&gt;&lt;strong&gt;梯度下降法（Gradient Descent）&lt;/strong&gt;是一种常见的最优化算法，用于求解函数的最大值或者最小值。&lt;/p&gt;
+&lt;/script&gt;</summary><category term="读书笔记"></category></entry><entry><title>梯度下降法</title><link href="http://www.wengweitao.com/ti-du-xia-jiang-fa.html" rel="alternate"></link><published>2014-07-26T16:18:00+08:00</published><author><name>往往台</name></author><id>tag:www.wengweitao.com,2014-07-26:ti-du-xia-jiang-fa.html</id><summary type="html">&lt;p&gt;&lt;strong&gt;梯度下降法（Gradient Descent）&lt;/strong&gt;是一种常见的最优化算法，用于求解函数的最大值或者最小值。&lt;/p&gt;
 &lt;h2&gt;梯度的概念&lt;/h2&gt;
 &lt;p&gt;一个函数&lt;span class="math"&gt;\(J(\theta)\)&lt;/span&gt;对它的一个变量&lt;span class="math"&gt;\(\theta\)&lt;/span&gt;的梯度定义为：
 &lt;/p&gt;
@@ -9830,7 +9830,7 @@ for i=1 to m, {
         "}); ";
     (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
 }
-&lt;/script&gt;</summary><category term="基本概念"></category></entry><entry><title>统计学习方法概论</title><link href="http://www.wengweitao.com/tong-ji-xue-xi-fang-fa-gai-lun.html" rel="alternate"></link><published>2014-07-25T20:12:00+08:00</published><author><name>wwt</name></author><id>tag:www.wengweitao.com,2014-07-25:tong-ji-xue-xi-fang-fa-gai-lun.html</id><summary type="html">&lt;blockquote&gt;
+&lt;/script&gt;</summary><category term="基本概念"></category></entry><entry><title>统计学习方法概论</title><link href="http://www.wengweitao.com/tong-ji-xue-xi-fang-fa-gai-lun.html" rel="alternate"></link><published>2014-07-25T20:12:00+08:00</published><author><name>往往台</name></author><id>tag:www.wengweitao.com,2014-07-25:tong-ji-xue-xi-fang-fa-gai-lun.html</id><summary type="html">&lt;blockquote&gt;
 &lt;p&gt;本文主要介绍统计学习方法的一些基本概念。首先叙述统计学习的定义、研究对象与方法；然后叙述什么是监督学习；接着提出统计学习方法的三要素：模型、测量和算法；然后又介绍了模型选择的方法，包括：正则化与交叉验证；也介绍了学习方法的泛化能力；接着介绍了监督学习中的两种模型：生成模型和判别模型；最后介绍了监督学习方法的应用：分类问题、标注问题与回归问题。&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h2&gt;统计学习&lt;/h2&gt;
@@ -10097,4 +10097,4 @@ J(f)为模型的复杂度，模型f越复杂，复杂度J(f)就越大；反之�
         "}); ";
     (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
 }
-&lt;/script&gt;</summary><category term="读书笔记"></category></entry><entry><title>Hello, world</title><link href="http://www.wengweitao.com/hello-world.html" rel="alternate"></link><published>2014-07-20T00:00:00+08:00</published><author><name>wwt</name></author><id>tag:www.wengweitao.com,2014-07-20:hello-world.html</id><summary type="html">&lt;p&gt;Hello, world!&lt;/p&gt;</summary><category term="测试"></category></entry></feed>
+&lt;/script&gt;</summary><category term="读书笔记"></category></entry><entry><title>Hello, world</title><link href="http://www.wengweitao.com/hello-world.html" rel="alternate"></link><published>2014-07-20T00:00:00+08:00</published><author><name>往往台</name></author><id>tag:www.wengweitao.com,2014-07-20:hello-world.html</id><summary type="html">&lt;p&gt;Hello, world!&lt;/p&gt;</summary><category term="测试"></category></entry></feed>

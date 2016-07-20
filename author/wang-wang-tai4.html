@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+
+        <title>往往台的博客 - Articles by 往往台</title>
+        <meta charset="utf-8" />
+        <link href="http://www.wengweitao.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="往往台的博客 Full Atom Feed" />
+        <link href="http://www.wengweitao.com/feeds/all.rss.xml" type="application/rss+xml" rel="alternate" title="往往台的博客 Full RSS Feed" />
+
+
+        <!-- Mobile viewport optimized: j.mp/bplateviewport -->
+        <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1">
+        <meta name="google-site-verification" content="pEViDEEJCicDD__DfnOAQ7xKtjtxJhVDoGDAOahOWy0" />
+
+        <meta name="sogou_site_verification" content="ia8yXdZS0p"/>
+
+        <link rel="stylesheet" type="text/css" href="http://www.wengweitao.com/theme/gumby.css" />
+        <link rel="stylesheet" type="text/css" href="http://www.wengweitao.com/theme/style.css" />
+        <link rel="stylesheet" type="text/css" href="http://www.wengweitao.com/theme/pygment.css" />
+
+
+        <script src="http://www.wengweitao.com/theme/js/libs/modernizr-2.6.2.min.js"></script>
+
+
+
+
+</head>
+
+<body id="index" class="home">
+
+
+    <div class="container">
+
+        <div class="row">
+
+          <header id="banner" class="body">
+                  <h1><a href="http://www.wengweitao.com/">往往台的博客 <strong></strong></a></h1>
+          </header><!-- /#banner -->
+
+            <div id="navigation" class="navbar row">
+              <a href="#" gumby-trigger="#navigation &gt; ul" class="toggle"><i class="icon-menu"></i></a>
+             
+              <ul class="columns">
+                <li><a href="http://www.wengweitao.com/">首页</a></li>
+
+                <li><a href="/categories.html">分类</a></li>
+                <li><a href="/tags.html">标签</a></li>
+                <li><a href="/archives.html">归档</a></li>
+                <li><a href="/pages/about-me.html">关于我</a></li>
+
+              </ul>
+            </div>
+
+<section id="content">
+<h2>Articles by 往往台</h2>
+
+
+   <div class="row">
+
+
+        <div class="eleven columns">
+                 <ol id="post-list">
+                        <li><article class="hentry">
+                                <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/leetcode-rectangle-area.html" rel="bookmark" title="Permalink to [leetcode] Rectangle Area">[leetcode] Rectangle Area</a></h2> </header>
+                                <footer class="post-info">
+                                    <abbr class="published" title="2015-06-08T11:23:00+08:00"> 一 08 六月 2015 </abbr>
+                                    <address class="vcard author">By 
+                                    <a class="url fn" href="http://www.wengweitao.com/author/wang-wang-tai.html"> 往往台</a>
+                                    </address>
+                                </footer><!-- /.post-info -->
+                                <div class="entry-content"> <h3>题目</h3>
+<p><a href="https://leetcode.com/problems/rectangle-area/">Rectangle Area</a></p>
+<p>Find the total area covered by two rectilinear rectangles in a 2D plane.</p>
+<p>Each rectangle is defined by its bottom left corner and top right corner as shown in the figure.</p>
+<p><img alt="rectangle area" src="https://leetcode.com/static/images/problemset/rectangle_area.png" /></p>
+<p>Assume that the total area is never beyond the maximum possible value of int.</p>
+<h3>分析</h3>
+<p>分别给定两个矩形的左下角坐标和右上角的坐标 ...</p> </div><!-- /.entry-content -->
+
+                                <div class="medium primary btn"><a href="http://www.wengweitao.com/leetcode-rectangle-area.html" rel="bookmark" title="Permalink to [leetcode] Rectangle Area">Read more <i class="icon-arrow-right"></i></a></div>
+
+
+
+                                <div class="row tag-row">
+                                        <span>Tagged as : </span>
+                                            <a class="danger label" href="http://www.wengweitao.com/tag/leetcode.html">leetcode</a>
+                                            <a class="danger label" href="http://www.wengweitao.com/tag/mian-shi-ti.html">面试题</a>
+                                </div>
+
+
+
+                        </article></li>
+                        <li><article class="hentry">
+                                <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/leetcode-count-complete-tree-nodes.html" rel="bookmark" title="Permalink to [leetcode] Count Complete Tree Nodes">[leetcode] Count Complete Tree Nodes</a></h2> </header>
+                                <footer class="post-info">
+                                    <abbr class="published" title="2015-06-06T11:19:00+08:00"> 六 06 六月 2015 </abbr>
+                                    <address class="vcard author">By 
+                                    <a class="url fn" href="http://www.wengweitao.com/author/wang-wang-tai.html"> 往往台</a>
+                                    </address>
+                                </footer><!-- /.post-info -->
+                                <div class="entry-content"> <h3>题目</h3>
+<p><a href="https://leetcode.com/problems/count-complete-tree-nodes/">Count Complete Tree Nodes</a></p>
+<p>Given a complete binary tree, count the number of nodes.</p>
+<h3>分析</h3>
+<p>给定一棵完全二叉树，求出该树的结点数目。</p>
+<p><a href="http://en.wikipedia.org/wiki/Binary_tree#Types_of_binary_trees">完全二叉树</a>的定义为：</p>
+<p>高度为h，有n个结点的二叉树，当前仅当其每一个结点都与高度为h的满二叉树中编号为1~n的结点一一对应时，称为完全二叉树。即叶节点只可能出现在层次最大的两层上，最大层上的叶节点从左到右依次排列。</p>
+<p>本题利用递归实现：</p>
+<ul>
+<li>如果当前结点的左右子树的高度相同，那么是一棵满二叉树，利用公式<span class="math">\(n = 2^h -1\)</span>计算出结点个数</li>
+<li>如果当前结点的左右子树高度不相同，那么递归求解其左子树的结点数left和右子树的结点数righ。返回left + right + 1即为结点总数。</li>
+</ul>
+<h3>参考代码</h3>
+<div class="highlight"><pre><span></span><span class="cm">/**</span>
+<span class="cm"> * Definition for a binary tree node.</span>
+<span class="cm"> * struct TreeNode ...</span></pre></div> </div><!-- /.entry-content -->
+
+                                <div class="medium primary btn"><a href="http://www.wengweitao.com/leetcode-count-complete-tree-nodes.html" rel="bookmark" title="Permalink to [leetcode] Count Complete Tree Nodes">Read more <i class="icon-arrow-right"></i></a></div>
+
+
+
+                                <div class="row tag-row">
+                                        <span>Tagged as : </span>
+                                            <a class="danger label" href="http://www.wengweitao.com/tag/leetcode.html">leetcode</a>
+                                            <a class="danger label" href="http://www.wengweitao.com/tag/mian-shi-ti.html">面试题</a>
+                                </div>
+
+
+
+                        </article></li>
+                        <li><article class="hentry">
+                                <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/suan-fa-zhong-de-ling-ji-yi-dong.html" rel="bookmark" title="Permalink to 算法中的灵机一动">算法中的灵机一动</a></h2> </header>
+                                <footer class="post-info">
+                                    <abbr class="published" title="2015-06-03T20:37:00+08:00"> 三 03 六月 2015 </abbr>
+                                    <address class="vcard author">By 
+                                    <a class="url fn" href="http://www.wengweitao.com/author/wang-wang-tai.html"> 往往台</a>
+                                    </address>
+                                </footer><!-- /.post-info -->
+                                <div class="entry-content"> <p>研究算法能给程序员带来许多好处，减少开发的时间，同时使执行速度更快。有些看起来很困难的问题，可能也存在着一个简单的、意想不到的答案。这些就是灵机一动的算法，需要在大量的研究之后才能出现。本文围绕三个小问题，来说明算法的灵机一动。</p>
+<h2>无处不在的二分搜索</h2>
+<h3>问题描述</h3>
+<p>给定一个最多包含40亿个随机排列的32位整数的<strong>顺序</strong>文件，找出一个不在文件中的32位整数。</p>
+<ul>
+<li>在具有足够的内存情况下，如何解决该问题？</li>
+<li>如果有几个外部的临时文件可以用，但是仅有几百字节的内存，该如何解决该问题？</li>
+</ul>
+<h3>程序设计</h3>
+<h4>内存足够的情况</h4>
+<p>如果内存足够，就可以考虑位图的技术。使用一个大小为<span class="math">\(2^{32}/8\)</span>字节（512MB）形成的位图来表示出现的整数。然后，可以判断位图集合中的每一个数是否为-1，若为-1（-1的二进制表示全为1），表示该元素表示的数均出现在序列中，若不为-1，则未出现的整数在其中。</p>
+<h4>内存有限的情况</h4>
+<p>如果仅有几百个字节内存和几个稀疏顺序文件的情况下如何找到缺失的整数？</p>
+<p>考虑二分搜索算法。第一趟需要读入40亿个数，并判断每一个数32bit中的第一位（最高位开始）是1还是0，将第一位是0的写入一个文件，第一位是1的写入另一个文件。这样就按照第一位是1还是0，将所有40亿个数分成了两段 ...</p> </div><!-- /.entry-content -->
+
+                                <div class="medium primary btn"><a href="http://www.wengweitao.com/suan-fa-zhong-de-ling-ji-yi-dong.html" rel="bookmark" title="Permalink to 算法中的灵机一动">Read more <i class="icon-arrow-right"></i></a></div>
+
+
+
+                                <div class="row tag-row">
+                                        <span>Tagged as : </span>
+                                            <a class="danger label" href="http://www.wengweitao.com/tag/du-shu-bi-ji.html">读书笔记</a>
+                                </div>
+
+
+
+                        </article></li>
+                        <li><article class="hentry">
+                                <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/er-cha-shu-de-san-chong-bian-li-fang-shi-di-gui-fei-di-gui-he-morrisbian-li.html" rel="bookmark" title="Permalink to 二叉树的三种遍历方式（递归、非递归和Morris遍历）">二叉树的三种遍历方式（递归、非递归和Morris遍历）</a></h2> </header>
+                                <footer class="post-info">
+                                    <abbr class="published" title="2015-05-27T21:41:00+08:00"> 三 27 五月 2015 </abbr>
+                                    <address class="vcard author">By 
+                                    <a class="url fn" href="http://www.wengweitao.com/author/wang-wang-tai.html"> 往往台</a>
+                                    </address>
+                                </footer><!-- /.post-info -->
+                                <div class="entry-content"> <p>二叉树遍历是二叉树的最基本的操作，其实现方式主要有三种：</p>
+<ol>
+<li>递归遍历</li>
+<li>非递归遍历</li>
+<li>Morris遍历</li>
+</ol>
+<p>递归遍历的实现非常容易，非递归实现需要用到栈。而Morris算法可能很多人都不太熟悉，其强大之处在于只需要使用O(1)的空间就能实现对二叉树O(n)时间的遍历。</p>
+<h2>二叉树结点的定义</h2>
+<p>每个二叉树结点包括一个值以及左孩子和右孩子结点，其定义如下：</p>
+<div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">TreeNode</span> <span class="p">{</span>
+    <span class="k">public</span><span class="o">:</span>
+        <span class="kt">int</span> <span class="n">val</span><span class="p">;</span>
+        <span class="n">TreeNode</span> <span class="o">*</span><span class="n">left</span><span class="p">,</span> <span class="o">*</span><span class="n">right</span><span class="p">;</span>
+        <span class="n">TreeNode</span><span class="p">(</span><span class="kt">int</span> <span class="n">val</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">this</span><span class="o">-&gt;</span><span class="n">val</span> <span class="o">=</span> <span class="n">val</span><span class="p">;</span>
+            <span class="k">this</span><span class="o">-&gt;</span><span class="n">left</span> <span class="o">=</span> <span class="k">this</span><span class="o">-&gt;</span><span class="n">right</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
+        <span class="p">}</span>   
+<span class="p">};</span>
+</pre></div>
+
+
+<h2>二叉树的遍历</h2>
+<p>二叉树的遍历，就是按照某条搜索路径访问树中的每一个结点，使得每个结点均被访问一次，而且仅被访问一次。常见的遍历次序有：</p>
+<ol>
+<li>先序遍历：先访问根结点，再访问左子树，最后访问右子树</li>
+<li>中序遍历：先访问左子树，再访问根结点，最后访问右子树</li>
+<li>后序遍历 ...</li></ol> </div><!-- /.entry-content -->
+
+                                <div class="medium primary btn"><a href="http://www.wengweitao.com/er-cha-shu-de-san-chong-bian-li-fang-shi-di-gui-fei-di-gui-he-morrisbian-li.html" rel="bookmark" title="Permalink to 二叉树的三种遍历方式（递归、非递归和Morris遍历）">Read more <i class="icon-arrow-right"></i></a></div>
+
+
+
+                                <div class="row tag-row">
+                                        <span>Tagged as : </span>
+                                            <a class="danger label" href="http://www.wengweitao.com/tag/er-cha-shu.html">二叉树</a>
+                                </div>
+
+
+
+                        </article></li>
+                        <li><article class="hentry">
+                                <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/corskua-yu-zi-yuan-gong-xiang-cross-origin-resource-sharing.html" rel="bookmark" title="Permalink to CORS（跨域资源共享，Cross-Origin Resource Sharing）">CORS（跨域资源共享，Cross-Origin Resource Sharing）</a></h2> </header>
+                                <footer class="post-info">
+                                    <abbr class="published" title="2015-05-24T16:49:00+08:00"> 日 24 五月 2015 </abbr>
+                                    <address class="vcard author">By 
+                                    <a class="url fn" href="http://www.wengweitao.com/author/wang-wang-tai.html"> 往往台</a>
+                                    </address>
+                                </footer><!-- /.post-info -->
+                                <div class="entry-content"> <p>使用Django在服务器端写了一个API，返回一个JSON数据。使用Ajax调用该API：</p>
+<div class="highlight"><pre><span></span><span class="cp">&lt;!DOCTYPE HTML&gt;</span>
+<span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">&quot;utf-8&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;viewport&quot;</span> <span class="na">content</span><span class="o">=</span><span class="s">&quot;maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0&quot;</span><span class="p">/&gt;</span>
+    <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>test<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">button</span> <span class="na">onclick</span><span class="o">=</span><span class="s">&quot;showPersonInfo()&quot;</span><span class="p">&gt;</span>点我获取数据<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;http://libs.baidu.com/jquery/1.9.0/jquery.js ...</span></pre></div> </div><!-- /.entry-content -->
+
+                                <div class="medium primary btn"><a href="http://www.wengweitao.com/corskua-yu-zi-yuan-gong-xiang-cross-origin-resource-sharing.html" rel="bookmark" title="Permalink to CORS（跨域资源共享，Cross-Origin Resource Sharing）">Read more <i class="icon-arrow-right"></i></a></div>
+
+
+
+                                <div class="row tag-row">
+                                        <span>Tagged as : </span>
+                                            <a class="danger label" href="http://www.wengweitao.com/tag/python.html">Python</a>
+                                </div>
+
+
+
+                        </article></li>
+                </ol><!-- /#posts-list -->
+
+        </div><!-- /.eleven.columns -->
+        
+<div class="three columns">
+
+<!--
+<h4>Pages</h4>
+
+ <ul>
+      <li><a href="/categories.html">分类</a></li>
+      <li><a href="/tags.html">标签</a></li>
+      <li><a href="/archives.html">归档</a></li>
+      <li><a href="/pages/about-me.html">关于我</a></li>
+  </ul>
+-->
+
+<aside id="sidebar"><!--Google站内搜索开始-->
+        <div class="search">
+                <!--<h2>站内搜索</h2>-->
+                <form method=get action="http://www.google.com/search">
+                <input type=text name=q>
+                <input type=submit name=btnG value="搜索">
+                <input type=hidden name=ie value=UTF-8>
+                <input type=hidden name=oe value=UTF-8>
+                <input type=hidden name=hl value=zh-CN>
+                <input type=hidden name=domains value="http://www.wengweitao.com">
+                <input type=hidden name=sitesearch value="http://www.wengweitao.com">
+                </form>
+        </div>
+<!--Google站内搜索结束-->
+
+<h4>分类</h4>
+<ul>
+		<li><a href="http://www.wengweitao.com/category/bian-cheng-yu-yan.html">编程语言</a></li>
+		<li><a href="http://www.wengweitao.com/category/csji-chu.html">CS基础</a></li>
+		<li><a href="http://www.wengweitao.com/category/du-shu-bi-ji.html">读书笔记</a></li>
+		<li><a href="http://www.wengweitao.com/category/gong-ju.html">工具</a></li>
+		<li><a href="http://www.wengweitao.com/category/ji-qi-xue-xi.html">机器学习</a></li>
+		<li><a href="http://www.wengweitao.com/category/python.html">Python</a></li>
+		<li><a href="http://www.wengweitao.com/category/sheng-huo.html">生活</a></li>
+		<li><a href="http://www.wengweitao.com/category/suan-fa-yu-shu-ju-jie-gou.html">算法与数据结构</a></li>
+</ul>
+
+<!--
+<h4>标签</h4>
+<ul class="tagcloud">
+</ul>
+-->
+
+
+<nav class="widget">
+  <h4>社交</h4>
+  <ul>
+    <li><a href="http://weibo.com/u/2678027854">新浪微博</a></li>
+    <li><a href="http://www.douban.com/people/wengwt/">豆瓣</a></li>
+    <li><a href="http://www.zhihu.com/people/vita-49">知乎</a></li>
+    <li><a href="https://github.com/nurnoch">GitHub</a></li>
+    <li><a href="https://www.v2ex.com/member/wwttc">V2EX</a></li>
+    <li><a href="https://www.instagram.com/wwt836/">instagram</a></li>
+  </ul>
+</nav>
+
+<nav class="widget">
+  <h4>友情链接</h4>
+  <ul>
+    <li><a href="http://www.rudy-yuan.net/">rundy-yuan's blog</a></li>
+    <li><a href="http://www.houcj.net/">houcj's blog</a></li>
+    <li><a href="http://zwyang.me/blog/">zwyanswer's blog</a></li>
+  </ul>
+</nav>
+
+
+</div> </div><!-- /.row -->
+
+<p class="paginator">
+            <a href="http://www.wengweitao.com/author/wang-wang-tai3.html"><i class="icon-arrow-left"></i></a>
+    Page 4 / 14
+        <a href="http://www.wengweitao.com/author/wang-wang-tai5.html"><i class="icon-arrow-right"></i></a>
+</p>
+</section><!-- /#content -->
+
+       </div><!-- /.row -->
+    </div><!-- /.container -->
+
+
+       <div class="container.nopad bg">
+
+    
+        <footer id="credits" class="row">
+          <div class="seven columns left-center">
+
+                   <address id="about" class="vcard body">
+                    Proudly powered by  <a href="http://getpelican.com/">Pelican</a> and Theme by Gum © 2015 wwt       
+                       <!-- cnzz -->
+                    <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1255354158'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s4.cnzz.com/z_stat.php%3Fid%3D1255354158%26show%3Dpic2' type='text/javascript'%3E%3C/script%3E"));</script>  
+                    </address>
+                   
+          </div>
+
+
+          <div class="seven columns">
+            <div class="row">
+              <ul class="socbtns">
+
+
+
+
+
+              </ul>
+            </div>
+          </div>
+        </footer>
+
+    </div>
+
+
+
+<script type="text/javascript">
+    var disqus_shortname = 'wengwt';
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+  <script src="http://www.wengweitao.com/theme/js/libs/jquery-1.9.1.min.js"></script>
+  <script src="http://www.wengweitao.com/theme/js/libs/gumby.min.js"></script>
+  <script src="http://www.wengweitao.com/theme/js/plugins.js"></script>
+</body>
+</html>

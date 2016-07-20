@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+
+        <title>往往台的博客 - Articles by 往往台</title>
+        <meta charset="utf-8" />
+        <link href="http://www.wengweitao.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="往往台的博客 Full Atom Feed" />
+        <link href="http://www.wengweitao.com/feeds/all.rss.xml" type="application/rss+xml" rel="alternate" title="往往台的博客 Full RSS Feed" />
+
+
+        <!-- Mobile viewport optimized: j.mp/bplateviewport -->
+        <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1">
+        <meta name="google-site-verification" content="pEViDEEJCicDD__DfnOAQ7xKtjtxJhVDoGDAOahOWy0" />
+
+        <meta name="sogou_site_verification" content="ia8yXdZS0p"/>
+
+        <link rel="stylesheet" type="text/css" href="http://www.wengweitao.com/theme/gumby.css" />
+        <link rel="stylesheet" type="text/css" href="http://www.wengweitao.com/theme/style.css" />
+        <link rel="stylesheet" type="text/css" href="http://www.wengweitao.com/theme/pygment.css" />
+
+
+        <script src="http://www.wengweitao.com/theme/js/libs/modernizr-2.6.2.min.js"></script>
+
+
+
+
+</head>
+
+<body id="index" class="home">
+
+
+    <div class="container">
+
+        <div class="row">
+
+          <header id="banner" class="body">
+                  <h1><a href="http://www.wengweitao.com/">往往台的博客 <strong></strong></a></h1>
+          </header><!-- /#banner -->
+
+            <div id="navigation" class="navbar row">
+              <a href="#" gumby-trigger="#navigation &gt; ul" class="toggle"><i class="icon-menu"></i></a>
+             
+              <ul class="columns">
+                <li><a href="http://www.wengweitao.com/">首页</a></li>
+
+                <li><a href="/categories.html">分类</a></li>
+                <li><a href="/tags.html">标签</a></li>
+                <li><a href="/archives.html">归档</a></li>
+                <li><a href="/pages/about-me.html">关于我</a></li>
+
+              </ul>
+            </div>
+
+<section id="content">
+<h2>Articles by 往往台</h2>
+
+
+   <div class="row">
+
+
+        <div class="eleven columns">
+                 <ol id="post-list">
+                        <li><article class="hentry">
+                                <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/zen-yang-gei-yi-ge-ci-pan-wen-jian-pai-xu.html" rel="bookmark" title="Permalink to 怎样给一个磁盘文件排序？">怎样给一个磁盘文件排序？</a></h2> </header>
+                                <footer class="post-info">
+                                    <abbr class="published" title="2015-05-23T12:32:00+08:00"> 六 23 五月 2015 </abbr>
+                                    <address class="vcard author">By 
+                                    <a class="url fn" href="http://www.wengweitao.com/author/wang-wang-tai.html"> 往往台</a>
+                                    </address>
+                                </footer><!-- /.post-info -->
+                                <div class="entry-content"> <h3>问题描述：</h3>
+<p><strong>输入：</strong></p>
+<p>一个最多包含n个正整数的文件，每个数都小于n，其中n=10^7（即每个数都是7位的正整数）。输入的文件中没有任何重复的数，并且没有其他数据与该整数关联。</p>
+<p><strong>输出：</strong></p>
+<p>按升序排列的输入整数的列表。</p>
+<p><strong>约束：</strong></p>
+<p>最多大约有1MB的内存空间可用，有充足的磁盘空间，运行的理想时间是10秒左右。</p>
+<h3>程序设计</h3>
+<h4>思路1：</h4>
+<p>如果每个号码使用一个32bit的int类型表示的话，那么在可用的1MB的存储空间中大约可以存入：
+</p>
+<div class="math">$$10^6 / 4 = 25000个数字。$$</div>
+<p>
+因此，可以利用多路归并的思想。</p>
+<ol>
+<li>将一千万个数字分成40份，每次将一份大小为25000个的正整数读入内存，利用快速排序对其进行排序。</li>
+<li>然后使用多路归并将各个已排好序的部分中的数据再次整体排好序后存入输出文件。</li>
+</ol>
+<p>这种方法需要多次读入或者写出文件多次。</p>
+<h4>思路2：</h4>
+<p>使用位图或者位向量来表示集合。例如，如下字符串可以表示集合{1,3,4,5}:</p>
+<div class="highlight"><pre><span></span>0 1 0 1 1 1
+</pre></div>
+
+
+<p>代表集合中数值的位都置为1，其他所有位都置为0.</p>
+<p>1MB的内存空间大约可以存储800万个位，每个7位十进制数最多不超过1000万个整数。我们使用一个具有1000万个位的字符串来表示这个文件 ...</p> </div><!-- /.entry-content -->
+
+                                <div class="medium primary btn"><a href="http://www.wengweitao.com/zen-yang-gei-yi-ge-ci-pan-wen-jian-pai-xu.html" rel="bookmark" title="Permalink to 怎样给一个磁盘文件排序？">Read more <i class="icon-arrow-right"></i></a></div>
+
+
+
+                                <div class="row tag-row">
+                                        <span>Tagged as : </span>
+                                            <a class="danger label" href="http://www.wengweitao.com/tag/du-shu-bi-ji.html">读书笔记</a>
+                                </div>
+
+
+
+                        </article></li>
+                        <li><article class="hentry">
+                                <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/lintcode-single-number-i-ii-iii-luo-dan-de-shu.html" rel="bookmark" title="Permalink to LintCode Single Number I II III 落单的数">LintCode  Single Number I II III 落单的数</a></h2> </header>
+                                <footer class="post-info">
+                                    <abbr class="published" title="2015-05-20T21:15:00+08:00"> 三 20 五月 2015 </abbr>
+                                    <address class="vcard author">By 
+                                    <a class="url fn" href="http://www.wengweitao.com/author/wang-wang-tai.html"> 往往台</a>
+                                    </address>
+                                </footer><!-- /.post-info -->
+                                <div class="entry-content"> <h2><a href="http://www.lintcode.com/zh-cn/problem/single-number/">Single Number I</a></h2>
+<h3>题目描述：</h3>
+<p>给出2*n + 1 个的数字，除其中一个数字之外其他每个数字均出现两次，找到这个数字。</p>
+<p><strong>样例</strong>
+给出 [1,2,2,1,3,4,3]，返回 4</p>
+<p><strong>挑战</strong>
+一次遍历，常数级的额外空间复杂度</p>
+<h3>题目分析：</h3>
+<p>这道题利用了异或位运算的一个性质，即：一个数与自身异或的结果为0。我们只需遍历数组中的每一个元素，并将其进行异或。因为，异或满足交换律，所以最终的异或结果将仅仅包含只出现一次的那个数。</p>
+<p>如：1 ^ 2 ^ 2 ^ 1 ^3 ^ 4 ^ 3 = 1 ^ 1 ^ 2 ^ 2 ^ 3 ^ 3 ^ 4 = 4</p>
+<h3>参考代码 ...</h3> </div><!-- /.entry-content -->
+
+                                <div class="medium primary btn"><a href="http://www.wengweitao.com/lintcode-single-number-i-ii-iii-luo-dan-de-shu.html" rel="bookmark" title="Permalink to LintCode Single Number I II III 落单的数">Read more <i class="icon-arrow-right"></i></a></div>
+
+
+
+                                <div class="row tag-row">
+                                        <span>Tagged as : </span>
+                                            <a class="danger label" href="http://www.wengweitao.com/tag/mian-shi-ti.html">面试题</a>
+                                </div>
+
+
+
+                        </article></li>
+                        <li><article class="hentry">
+                                <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/pai-xu-suan-fa-zong-jie.html" rel="bookmark" title="Permalink to 排序算法总结">排序算法总结</a></h2> </header>
+                                <footer class="post-info">
+                                    <abbr class="published" title="2015-05-19T20:35:00+08:00"> 二 19 五月 2015 </abbr>
+                                    <address class="vcard author">By 
+                                    <a class="url fn" href="http://www.wengweitao.com/author/wang-wang-tai.html"> 往往台</a>
+                                    </address>
+                                </footer><!-- /.post-info -->
+                                <div class="entry-content"> <p>在前面的几篇文章中，分别介绍了几种最常见的算法：</p>
+<ol>
+<li><a href="http://www.wengweitao.com/cha-ru-pai-xu.html">直接插入排序</a></li>
+<li><a href="http://www.wengweitao.com/mou-pao-pai-xu.html">冒泡排序</a></li>
+<li><a href="http://www.wengweitao.com/gui-bing-pai-xu.html">归并排序</a></li>
+<li><a href="http://www.wengweitao.com/dui-pai-xu.html">堆排序</a></li>
+<li><a href="http://www.wengweitao.com/kuai-su-pai-xu.html">快速排序</a></li>
+<li><a href="http://www.wengweitao.com/ji-shhtml">计数排序</a></li>
+<li><a href="http://www.wengweitao.com/ji-shu-pai-xu-radix-sort.html">基数排序</a></li>
+<li><a href="http://www.wengweitao.com/tong-pai-xuww.wengweitao.com/ji-shu-pai-xu-radix-sort.html">桶排序</a></li>
+</ol>
+<p>本文将对这8种排序进行总结。</p>
+<h2>比较排序与非比较排序算法</h2>
+<p><strong>比较排序算法：</strong></p>
+<p>插入排序、冒泡排序、归并排序、堆排序和快速排序都是比较排序算法。它们都是通过对元素进行比较操作来确定输入数组的有序次序。使用决策树模型，可以证明任意比较排序算法排序n个元素的最坏运行时间的下界为<span class="math">\(\Omega(nlogn)\)</span>。归并排序和堆排序的最坏运行时间都为O(nlogn)都是渐近最优的比较算法。快速排序平均运行时间也为O(nlogn)，而且在实际应用中速度通常都比较快，是排序大数组最常用的算法。</p>
+<p><strong>非比较排序算法：</strong>：
+计数排序、基数排序和桶排序都是非比较排序算法。通过比较操作之外的方法来获得序列的有序次序的信息，就有可能打破<span class="math">\(\Omega(nlogn)\)</span>的时间下界。</p>
+<h2>从时间复杂度上看</h2>
+<p>直接插入排序、冒泡排序的平均情况下的时间复杂度都是<span class="math">\(O(n^2)\)</span>，并且实现也比较简单。但是，插入排序和冒泡排序在最好情况下，时间复杂度可以达到O(n)。</p>
+<p>归并排序、堆排序和快速排序的平均情况下的时间复杂度都是O ...</p> </div><!-- /.entry-content -->
+
+                                <div class="medium primary btn"><a href="http://www.wengweitao.com/pai-xu-suan-fa-zong-jie.html" rel="bookmark" title="Permalink to 排序算法总结">Read more <i class="icon-arrow-right"></i></a></div>
+
+
+
+                                <div class="row tag-row">
+                                        <span>Tagged as : </span>
+                                            <a class="danger label" href="http://www.wengweitao.com/tag/pai-xu-suan-fa-ji-chu-zong-jie.html">排序 算法 基础 总结</a>
+                                </div>
+
+
+
+                        </article></li>
+                        <li><article class="hentry">
+                                <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/tong-pai-xu.html" rel="bookmark" title="Permalink to 桶排序">桶排序</a></h2> </header>
+                                <footer class="post-info">
+                                    <abbr class="published" title="2015-05-18T16:13:00+08:00"> 一 18 五月 2015 </abbr>
+                                    <address class="vcard author">By 
+                                    <a class="url fn" href="http://www.wengweitao.com/author/wang-wang-tai.html"> 往往台</a>
+                                    </address>
+                                </footer><!-- /.post-info -->
+                                <div class="entry-content"> <p>本文继续介绍一种非比较排序算法——<strong>桶排序（bucket sort）</strong>。通排序假设输入数据服从均匀分布，平均情况下它的时间复杂度为O(n)。与计数排序类似，因为对输入数据作了某种假设，桶排序的速度也很快。具体的，计数排序假设输入数据都属于一个小区间的整数，而桶排序则假设输入数据是由一个随机过程产生，该过程将元素均匀、独立地分布在[0,1)区间上。</p>
+<h2>桶排序的基本思想</h2>
+<ol>
+<li>桶排序将[0,1)区间划分成大小相同的n个子区间，称为桶</li>
+<li>将n个输入分别放入各个桶中</li>
+<li>对桶中的数进行排序</li>
+<li>遍历每个桶，按照次序把各个桶中的元素列出来</li>
+</ol>
+<h2>桶排序的代码实现</h2>
+<p>在桶排序的代码中，我们假设输入是一个包含n个元素的数组A，且每个元素A[i]满足<span class="math">\(0 \leq A[i] &lt; 1\)</span>。此外，算法还需要一个临时数组B[0..n-1]来存放链表（即桶），并假设存在一种用于维护这些链表的机制。</p>
+<div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">insertionSort</span><span class="p">(</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">double ...</span></pre></div> </div><!-- /.entry-content -->
+
+                                <div class="medium primary btn"><a href="http://www.wengweitao.com/tong-pai-xu.html" rel="bookmark" title="Permalink to 桶排序">Read more <i class="icon-arrow-right"></i></a></div>
+
+
+
+                                <div class="row tag-row">
+                                        <span>Tagged as : </span>
+                                            <a class="danger label" href="http://www.wengweitao.com/tag/pai-xu-suan-fa-ji-chu.html">排序 算法 基础</a>
+                                </div>
+
+
+
+                        </article></li>
+                        <li><article class="hentry">
+                                <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/ji-shu-pai-xu-radix-sort.html" rel="bookmark" title="Permalink to 基数排序（radix sort）">基数排序（radix sort）</a></h2> </header>
+                                <footer class="post-info">
+                                    <abbr class="published" title="2015-05-17T14:12:00+08:00"> 日 17 五月 2015 </abbr>
+                                    <address class="vcard author">By 
+                                    <a class="url fn" href="http://www.wengweitao.com/author/wang-wang-tai.html"> 往往台</a>
+                                    </address>
+                                </footer><!-- /.post-info -->
+                                <div class="entry-content"> <p>本文继续介绍另外一种非比较排序算法——<strong>基数排序（radix sort）</strong>，最早用在卡片排序机上。基数排序的原理是将整数按位切割成不同的数字，然后按每个位数分别比较。对于十进制的数字，每列只会用到10个位置，一个d位数将占用d列。</p>
+<p>基数排序<strong>先按最低有效位进行排序</strong>，然后按次低有效位进行排序，直到对所有的d位数字都进行了排序。为了确保基数排序的正确性，<strong>一位数的排序算法必须是稳定的</strong>。</p>
+<p>我们有时会用基数排序来对具有多关键字域的记录进行排序。例如，我们希望用3个关键字（年、月、日）来对日期进行排序。我们可以使用基于特殊比较函数的排序算法，先比较年，如果相同再比较月，如果还相同再比较日。我们也可以采用基数排序，用一种稳定排序算法对这些信息进行三次排序：先日，再月，最后年。</p>
+<h2>基数排序的实现</h2>
+<p>基数排序的代码实现：</p>
+<div class="highlight"><pre><span></span><span class="k">const</span> <span class="kt">int</span> <span class="n">k</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>  <span class="c1">// 每个位的数值大小为从0~9</span>
+<span class="kt">int</span> <span class="n">base</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+
+<span class="kt">void</span> <span class="nf">countingSort</span><span class="p">(</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">A</span><span class="p">,</span> <span class="n">vector</span><span class="o">&lt;</span><span class="kt">int ...</span></pre></div> </div><!-- /.entry-content -->
+
+                                <div class="medium primary btn"><a href="http://www.wengweitao.com/ji-shu-pai-xu-radix-sort.html" rel="bookmark" title="Permalink to 基数排序（radix sort）">Read more <i class="icon-arrow-right"></i></a></div>
+
+
+
+                                <div class="row tag-row">
+                                        <span>Tagged as : </span>
+                                            <a class="danger label" href="http://www.wengweitao.com/tag/pai-xu-suan-fa-ji-chu.html">排序 算法 基础</a>
+                                </div>
+
+
+
+                        </article></li>
+                </ol><!-- /#posts-list -->
+
+        </div><!-- /.eleven.columns -->
+        
+<div class="three columns">
+
+<!--
+<h4>Pages</h4>
+
+ <ul>
+      <li><a href="/categories.html">分类</a></li>
+      <li><a href="/tags.html">标签</a></li>
+      <li><a href="/archives.html">归档</a></li>
+      <li><a href="/pages/about-me.html">关于我</a></li>
+  </ul>
+-->
+
+<aside id="sidebar"><!--Google站内搜索开始-->
+        <div class="search">
+                <!--<h2>站内搜索</h2>-->
+                <form method=get action="http://www.google.com/search">
+                <input type=text name=q>
+                <input type=submit name=btnG value="搜索">
+                <input type=hidden name=ie value=UTF-8>
+                <input type=hidden name=oe value=UTF-8>
+                <input type=hidden name=hl value=zh-CN>
+                <input type=hidden name=domains value="http://www.wengweitao.com">
+                <input type=hidden name=sitesearch value="http://www.wengweitao.com">
+                </form>
+        </div>
+<!--Google站内搜索结束-->
+
+<h4>分类</h4>
+<ul>
+		<li><a href="http://www.wengweitao.com/category/bian-cheng-yu-yan.html">编程语言</a></li>
+		<li><a href="http://www.wengweitao.com/category/csji-chu.html">CS基础</a></li>
+		<li><a href="http://www.wengweitao.com/category/du-shu-bi-ji.html">读书笔记</a></li>
+		<li><a href="http://www.wengweitao.com/category/gong-ju.html">工具</a></li>
+		<li><a href="http://www.wengweitao.com/category/ji-qi-xue-xi.html">机器学习</a></li>
+		<li><a href="http://www.wengweitao.com/category/python.html">Python</a></li>
+		<li><a href="http://www.wengweitao.com/category/sheng-huo.html">生活</a></li>
+		<li><a href="http://www.wengweitao.com/category/suan-fa-yu-shu-ju-jie-gou.html">算法与数据结构</a></li>
+</ul>
+
+<!--
+<h4>标签</h4>
+<ul class="tagcloud">
+</ul>
+-->
+
+
+<nav class="widget">
+  <h4>社交</h4>
+  <ul>
+    <li><a href="http://weibo.com/u/2678027854">新浪微博</a></li>
+    <li><a href="http://www.douban.com/people/wengwt/">豆瓣</a></li>
+    <li><a href="http://www.zhihu.com/people/vita-49">知乎</a></li>
+    <li><a href="https://github.com/nurnoch">GitHub</a></li>
+    <li><a href="https://www.v2ex.com/member/wwttc">V2EX</a></li>
+    <li><a href="https://www.instagram.com/wwt836/">instagram</a></li>
+  </ul>
+</nav>
+
+<nav class="widget">
+  <h4>友情链接</h4>
+  <ul>
+    <li><a href="http://www.rudy-yuan.net/">rundy-yuan's blog</a></li>
+    <li><a href="http://www.houcj.net/">houcj's blog</a></li>
+    <li><a href="http://zwyang.me/blog/">zwyanswer's blog</a></li>
+  </ul>
+</nav>
+
+
+</div> </div><!-- /.row -->
+
+<p class="paginator">
+            <a href="http://www.wengweitao.com/author/wang-wang-tai4.html"><i class="icon-arrow-left"></i></a>
+    Page 5 / 14
+        <a href="http://www.wengweitao.com/author/wang-wang-tai6.html"><i class="icon-arrow-right"></i></a>
+</p>
+</section><!-- /#content -->
+
+       </div><!-- /.row -->
+    </div><!-- /.container -->
+
+
+       <div class="container.nopad bg">
+
+    
+        <footer id="credits" class="row">
+          <div class="seven columns left-center">
+
+                   <address id="about" class="vcard body">
+                    Proudly powered by  <a href="http://getpelican.com/">Pelican</a> and Theme by Gum © 2015 wwt       
+                       <!-- cnzz -->
+                    <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1255354158'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s4.cnzz.com/z_stat.php%3Fid%3D1255354158%26show%3Dpic2' type='text/javascript'%3E%3C/script%3E"));</script>  
+                    </address>
+                   
+          </div>
+
+
+          <div class="seven columns">
+            <div class="row">
+              <ul class="socbtns">
+
+
+
+
+
+              </ul>
+            </div>
+          </div>
+        </footer>
+
+    </div>
+
+
+
+<script type="text/javascript">
+    var disqus_shortname = 'wengwt';
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+  <script src="http://www.wengweitao.com/theme/js/libs/jquery-1.9.1.min.js"></script>
+  <script src="http://www.wengweitao.com/theme/js/libs/gumby.min.js"></script>
+  <script src="http://www.wengweitao.com/theme/js/plugins.js"></script>
+</body>
+</html>

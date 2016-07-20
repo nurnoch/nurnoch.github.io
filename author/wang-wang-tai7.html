@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+
+        <title>往往台的博客 - Articles by 往往台</title>
+        <meta charset="utf-8" />
+        <link href="http://www.wengweitao.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="往往台的博客 Full Atom Feed" />
+        <link href="http://www.wengweitao.com/feeds/all.rss.xml" type="application/rss+xml" rel="alternate" title="往往台的博客 Full RSS Feed" />
+
+
+        <!-- Mobile viewport optimized: j.mp/bplateviewport -->
+        <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1">
+        <meta name="google-site-verification" content="pEViDEEJCicDD__DfnOAQ7xKtjtxJhVDoGDAOahOWy0" />
+
+        <meta name="sogou_site_verification" content="ia8yXdZS0p"/>
+
+        <link rel="stylesheet" type="text/css" href="http://www.wengweitao.com/theme/gumby.css" />
+        <link rel="stylesheet" type="text/css" href="http://www.wengweitao.com/theme/style.css" />
+        <link rel="stylesheet" type="text/css" href="http://www.wengweitao.com/theme/pygment.css" />
+
+
+        <script src="http://www.wengweitao.com/theme/js/libs/modernizr-2.6.2.min.js"></script>
+
+
+
+
+</head>
+
+<body id="index" class="home">
+
+
+    <div class="container">
+
+        <div class="row">
+
+          <header id="banner" class="body">
+                  <h1><a href="http://www.wengweitao.com/">往往台的博客 <strong></strong></a></h1>
+          </header><!-- /#banner -->
+
+            <div id="navigation" class="navbar row">
+              <a href="#" gumby-trigger="#navigation &gt; ul" class="toggle"><i class="icon-menu"></i></a>
+             
+              <ul class="columns">
+                <li><a href="http://www.wengweitao.com/">首页</a></li>
+
+                <li><a href="/categories.html">分类</a></li>
+                <li><a href="/tags.html">标签</a></li>
+                <li><a href="/archives.html">归档</a></li>
+                <li><a href="/pages/about-me.html">关于我</a></li>
+
+              </ul>
+            </div>
+
+<section id="content">
+<h2>Articles by 往往台</h2>
+
+
+   <div class="row">
+
+
+        <div class="eleven columns">
+                 <ol id="post-list">
+                        <li><article class="hentry">
+                                <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/mou-pao-pai-xu.html" rel="bookmark" title="Permalink to 冒泡排序">冒泡排序</a></h2> </header>
+                                <footer class="post-info">
+                                    <abbr class="published" title="2015-05-13T16:13:00+08:00"> 三 13 五月 2015 </abbr>
+                                    <address class="vcard author">By 
+                                    <a class="url fn" href="http://www.wengweitao.com/author/wang-wang-tai.html"> 往往台</a>
+                                    </address>
+                                </footer><!-- /.post-info -->
+                                <div class="entry-content"> <p>冒泡排序算法比较简单，假设待排序列的长度为n，其思想是：</p>
+<p>从后往前（或者从前往后）两两比较相邻元素的值，若为逆序（即前一个大于后一个），则交换它们，直到序列比较完，我们称进行了一趟冒泡排序，结果将最小的元素交换到待排序列的第一个位置。下一趟冒泡排序，第一个元素不再参与比较，待排序列的个数减少1，每趟冒泡排序的结果把子序列中最小元素放到了最终的位置。关键字如同气泡一般逐渐往上漂浮至水面，这就是冒泡排序名字的由来。最多n-1趟就能把所有元素排好序。</p>
+<p>代码实现如下：</p>
+<div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">bubbleSort</span><span class="p">(</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">A</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="n">A</span><span class="p">.</span><span class="n">size</span><span class="p">();</span>
+    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kt">bool</span> <span class="n">flag</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>  <span class="c1">// 表示本趟冒泡是否发生了交换的标志</span>
+        <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span> <span class="n">j</span> <span class="o">&gt;</span> <span class="n">i</span><span class="p">;</span> <span class="o">--</span><span class="n">j</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">if ...</span></pre></div> </div><!-- /.entry-content -->
+
+                                <div class="medium primary btn"><a href="http://www.wengweitao.com/mou-pao-pai-xu.html" rel="bookmark" title="Permalink to 冒泡排序">Read more <i class="icon-arrow-right"></i></a></div>
+
+
+
+                                <div class="row tag-row">
+                                        <span>Tagged as : </span>
+                                            <a class="danger label" href="http://www.wengweitao.com/tag/pai-xu-suan-fa-ji-chu.html">排序 算法 基础</a>
+                                </div>
+
+
+
+                        </article></li>
+                        <li><article class="hentry">
+                                <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/centos-sheng-ji-gcc-he-g-de-fang-fa.html" rel="bookmark" title="Permalink to CentOS 升级 gcc 和 g++ 的方法">CentOS 升级 gcc 和 g++ 的方法</a></h2> </header>
+                                <footer class="post-info">
+                                    <abbr class="published" title="2015-05-12T19:02:00+08:00"> 二 12 五月 2015 </abbr>
+                                    <address class="vcard author">By 
+                                    <a class="url fn" href="http://www.wengweitao.com/author/wang-wang-tai.html"> 往往台</a>
+                                    </address>
+                                </footer><!-- /.post-info -->
+                                <div class="entry-content"> <p>CentOS 系统自带的 gcc 或者 g++ 的版本是：g++ (GCC) 4.4.6. GCC 版本太旧，导致了很多使用上的不便，如：无法使用g++ -std=c++11 命令来编译 C++11、无法使用Vim的很多插件（YouCompleteMe等）。因此，有必要对它进行升级。</p>
+<p>对 GCC 升级无法直接使用：</p>
+<div class="highlight"><pre><span></span>yum update gcc
+</pre></div>
+
+
+<p>以下是升级的详细过程。</p>
+<h3>1.使用 redhat developer toolset 1.1 的repo，安装GCC</h3>
+<div class="highlight"><pre><span></span><span class="nb">cd</span> /etc/yum.repos.d
+
+wget http://people ...</pre></div> </div><!-- /.entry-content -->
+
+                                <div class="medium primary btn"><a href="http://www.wengweitao.com/centos-sheng-ji-gcc-he-g-de-fang-fa.html" rel="bookmark" title="Permalink to CentOS 升级 gcc 和 g++ 的方法">Read more <i class="icon-arrow-right"></i></a></div>
+
+
+
+                                <div class="row tag-row">
+                                        <span>Tagged as : </span>
+                                            <a class="danger label" href="http://www.wengweitao.com/tag/jiao-cheng-linux.html">教程、Linux</a>
+                                </div>
+
+
+
+                        </article></li>
+                        <li><article class="hentry">
+                                <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/zhong-duan-chuang-kou-guan-li-shen-qi-tmux.html" rel="bookmark" title="Permalink to 终端窗口管理神器——tmux">终端窗口管理神器——tmux</a></h2> </header>
+                                <footer class="post-info">
+                                    <abbr class="published" title="2015-05-11T09:12:00+08:00"> 一 11 五月 2015 </abbr>
+                                    <address class="vcard author">By 
+                                    <a class="url fn" href="http://www.wengweitao.com/author/wang-wang-tai.html"> 往往台</a>
+                                    </address>
+                                </footer><!-- /.post-info -->
+                                <div class="entry-content"> <h2>什么是tmux</h2>
+<p>tmux是一个终端的复用器（terminal multiplexer），可以简单理解为一个终端的窗口管理程序。相比系统自带的 screen 功能要强大许多。其使用场景和特性包括：</p>
+<ul>
+<li>当你使用SSH连接到服务器的时候，由于网络掉线导致连接中断（这是经常发生的。。。）。当你重新连接后，所有的工作现场丢失了。你还得重新打开之前的各种窗口，进入各种很深的目录，非常麻烦。而如果使用tmux，即时掉线之后，重新连接也能直接回到之前的工作环境，极大提高工作的效率。</li>
+<li>可以完全通过键盘操控</li>
+<li>支持自定义的按键绑定模式，例如设置成vim按键绑定模式</li>
+<li>可以在一个SSH连接下打开多个会话、窗口，也可以对窗口进行各种分割，效果如下图所示。</li>
+</ul>
+<p><img alt="tmux示例" src="http://tmux.sourceforge.net/tmux4.png" /></p>
+<h2>tmux的基本概念</h2>
+<p>首先，需要先安装tmux：</p>
+<div class="highlight"><pre><span></span>sudo yum install tmux
+</pre></div>
+
+
+<p>安装好后，直接输入 <strong>tmux</strong> 即可运行 tmux. </p>
+<p>tmux 包括以下3个基本概念：</p>
+<ul>
+<li><strong>session：</strong>会话，是一组窗口的集合，通常同一个任务可以放入一个session。可以同时打开多个session，每个session可以有自己的名字方便任务的切换。</li>
+<li><strong>window：</strong>窗口 ...</li></ul> </div><!-- /.entry-content -->
+
+                                <div class="medium primary btn"><a href="http://www.wengweitao.com/zhong-duan-chuang-kou-guan-li-shen-qi-tmux.html" rel="bookmark" title="Permalink to 终端窗口管理神器——tmux">Read more <i class="icon-arrow-right"></i></a></div>
+
+
+
+                                <div class="row tag-row">
+                                        <span>Tagged as : </span>
+                                            <a class="danger label" href="http://www.wengweitao.com/tag/tmux.html">tmux</a>
+                                </div>
+
+
+
+                        </article></li>
+                        <li><article class="hentry">
+                                <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/xuan-ze-wen-ti-ji-fu-za-du-fen-xi.html" rel="bookmark" title="Permalink to 选择问题及复杂度分析">选择问题及复杂度分析</a></h2> </header>
+                                <footer class="post-info">
+                                    <abbr class="published" title="2015-05-06T11:10:00+08:00"> 三 06 五月 2015 </abbr>
+                                    <address class="vcard author">By 
+                                    <a class="url fn" href="http://www.wengweitao.com/author/wang-wang-tai.html"> 往往台</a>
+                                    </address>
+                                </footer><!-- /.post-info -->
+                                <div class="entry-content"> <p>选择问题是在实际应用中经常碰到的问题，最常见的选择问题有：选最大、选最小、选中位数、选第二大等。</p>
+<p>可以描述为从n个元素的集合L中选出第k小的元素，其中<span class="math">\(1 \leq k \leq n\)</span>。这里的第k小表示：将L中的元素按照升序排列，排在第k个位置的元素。如k=1时，选出的就是最小元素。</p>
+<p>本文将对选择问题进行总结并对它们的复杂度进行分析。</p>
+<h2>选最大最小问题</h2>
+<h3>选最大算法</h3>
+<p>选最大问题，最容易想到的方法就是顺序比较算法，从第一个元素开始依次往后比较n个元素，用一个变量max保存当前的最大值，算法实现如下：</p>
+<div class="highlight"><pre><span></span><span class="kt">int</span> <span class="nf">findMax</span><span class="p">(</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">L</span><span class="p">,</span> <span class="kt">int</span> <span class="n">n</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">max</span> <span class="o">=</span> <span class="n">L</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>  
+    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">L</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">max</span><span class="p">)</span>
+            <span class="n">max ...</span></pre></div> </div><!-- /.entry-content -->
+
+                                <div class="medium primary btn"><a href="http://www.wengweitao.com/xuan-ze-wen-ti-ji-fu-za-du-fen-xi.html" rel="bookmark" title="Permalink to 选择问题及复杂度分析">Read more <i class="icon-arrow-right"></i></a></div>
+
+
+
+                                <div class="row tag-row">
+                                        <span>Tagged as : </span>
+                                            <a class="danger label" href="http://www.wengweitao.com/tag/suan-fa-fen-xi.html">算法分析</a>
+                                </div>
+
+
+
+                        </article></li>
+                        <li><article class="hentry">
+                                <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/linuxshang-da-jian-vpnfu-wu-qi.html" rel="bookmark" title="Permalink to Linux上搭建VPN服务器">Linux上搭建VPN服务器</a></h2> </header>
+                                <footer class="post-info">
+                                    <abbr class="published" title="2015-05-01T21:21:00+08:00"> 五 01 五月 2015 </abbr>
+                                    <address class="vcard author">By 
+                                    <a class="url fn" href="http://www.wengweitao.com/author/wang-wang-tai.html"> 往往台</a>
+                                    </address>
+                                </footer><!-- /.post-info -->
+                                <div class="entry-content"> <p>今天是五一劳动节，也就是五月份的第一天，不巧的是校园上网账号欠费了，导致无法通过认证上网。于是，就琢磨着如何不通过认证直接上网。实验室有几台服务器，这些服务器都无需认证可直接访问外网，很自然的就想到以下两种方法：</p>
+<p>（1）在服务器上设置代理服务器，然后在自己的PC和iPhone上设置代理上网</p>
+<p>（2）在服务器上搭建一个VPN PPTP服务器，在PC和iPhone上新建一个VPN连接上网。</p>
+<p>根据校园网的环境和平时的使用情况，最终决定采用VPN的方式。接下来，我以Red Hat系统为例，详细说明搭建的过程。</p>
+<hr />
+<h2>1. 判断PPP是否可用</h2>
+<p>首先，我们需要检查服务器是否支持搭建PPTP，在shell中输入：</p>
+<div class="highlight"><pre><span></span>cat /dev/ppp
+
+cat: /dev/ppp: 没有那个设备或地址
+</pre></div>
+
+
+<p>如果出现以上提示，说明这台服务器PPP可用；若出现"Permission denied"提示，则无法使用PPP，考虑更换一台服务器。</p>
+<h2>2. 安装所需的软件包</h2>
+<p>主要需要以下3个软件包：</p>
+<ul>
+<li>PPP：点对点协议</li>
+<li>PPTP：点对点通道协议</li>
+<li>IPtables ...</li></ul> </div><!-- /.entry-content -->
+
+                                <div class="medium primary btn"><a href="http://www.wengweitao.com/linuxshang-da-jian-vpnfu-wu-qi.html" rel="bookmark" title="Permalink to Linux上搭建VPN服务器">Read more <i class="icon-arrow-right"></i></a></div>
+
+
+
+                                <div class="row tag-row">
+                                        <span>Tagged as : </span>
+                                            <a class="danger label" href="http://www.wengweitao.com/tag/jiao-cheng.html">教程</a>
+                                </div>
+
+
+
+                        </article></li>
+                </ol><!-- /#posts-list -->
+
+        </div><!-- /.eleven.columns -->
+        
+<div class="three columns">
+
+<!--
+<h4>Pages</h4>
+
+ <ul>
+      <li><a href="/categories.html">分类</a></li>
+      <li><a href="/tags.html">标签</a></li>
+      <li><a href="/archives.html">归档</a></li>
+      <li><a href="/pages/about-me.html">关于我</a></li>
+  </ul>
+-->
+
+<aside id="sidebar"><!--Google站内搜索开始-->
+        <div class="search">
+                <!--<h2>站内搜索</h2>-->
+                <form method=get action="http://www.google.com/search">
+                <input type=text name=q>
+                <input type=submit name=btnG value="搜索">
+                <input type=hidden name=ie value=UTF-8>
+                <input type=hidden name=oe value=UTF-8>
+                <input type=hidden name=hl value=zh-CN>
+                <input type=hidden name=domains value="http://www.wengweitao.com">
+                <input type=hidden name=sitesearch value="http://www.wengweitao.com">
+                </form>
+        </div>
+<!--Google站内搜索结束-->
+
+<h4>分类</h4>
+<ul>
+		<li><a href="http://www.wengweitao.com/category/bian-cheng-yu-yan.html">编程语言</a></li>
+		<li><a href="http://www.wengweitao.com/category/csji-chu.html">CS基础</a></li>
+		<li><a href="http://www.wengweitao.com/category/du-shu-bi-ji.html">读书笔记</a></li>
+		<li><a href="http://www.wengweitao.com/category/gong-ju.html">工具</a></li>
+		<li><a href="http://www.wengweitao.com/category/ji-qi-xue-xi.html">机器学习</a></li>
+		<li><a href="http://www.wengweitao.com/category/python.html">Python</a></li>
+		<li><a href="http://www.wengweitao.com/category/sheng-huo.html">生活</a></li>
+		<li><a href="http://www.wengweitao.com/category/suan-fa-yu-shu-ju-jie-gou.html">算法与数据结构</a></li>
+</ul>
+
+<!--
+<h4>标签</h4>
+<ul class="tagcloud">
+</ul>
+-->
+
+
+<nav class="widget">
+  <h4>社交</h4>
+  <ul>
+    <li><a href="http://weibo.com/u/2678027854">新浪微博</a></li>
+    <li><a href="http://www.douban.com/people/wengwt/">豆瓣</a></li>
+    <li><a href="http://www.zhihu.com/people/vita-49">知乎</a></li>
+    <li><a href="https://github.com/nurnoch">GitHub</a></li>
+    <li><a href="https://www.v2ex.com/member/wwttc">V2EX</a></li>
+    <li><a href="https://www.instagram.com/wwt836/">instagram</a></li>
+  </ul>
+</nav>
+
+<nav class="widget">
+  <h4>友情链接</h4>
+  <ul>
+    <li><a href="http://www.rudy-yuan.net/">rundy-yuan's blog</a></li>
+    <li><a href="http://www.houcj.net/">houcj's blog</a></li>
+    <li><a href="http://zwyang.me/blog/">zwyanswer's blog</a></li>
+  </ul>
+</nav>
+
+
+</div> </div><!-- /.row -->
+
+<p class="paginator">
+            <a href="http://www.wengweitao.com/author/wang-wang-tai6.html"><i class="icon-arrow-left"></i></a>
+    Page 7 / 14
+        <a href="http://www.wengweitao.com/author/wang-wang-tai8.html"><i class="icon-arrow-right"></i></a>
+</p>
+</section><!-- /#content -->
+
+       </div><!-- /.row -->
+    </div><!-- /.container -->
+
+
+       <div class="container.nopad bg">
+
+    
+        <footer id="credits" class="row">
+          <div class="seven columns left-center">
+
+                   <address id="about" class="vcard body">
+                    Proudly powered by  <a href="http://getpelican.com/">Pelican</a> and Theme by Gum © 2015 wwt       
+                       <!-- cnzz -->
+                    <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1255354158'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s4.cnzz.com/z_stat.php%3Fid%3D1255354158%26show%3Dpic2' type='text/javascript'%3E%3C/script%3E"));</script>  
+                    </address>
+                   
+          </div>
+
+
+          <div class="seven columns">
+            <div class="row">
+              <ul class="socbtns">
+
+
+
+
+
+              </ul>
+            </div>
+          </div>
+        </footer>
+
+    </div>
+
+
+
+<script type="text/javascript">
+    var disqus_shortname = 'wengwt';
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+  <script src="http://www.wengweitao.com/theme/js/libs/jquery-1.9.1.min.js"></script>
+  <script src="http://www.wengweitao.com/theme/js/libs/gumby.min.js"></script>
+  <script src="http://www.wengweitao.com/theme/js/plugins.js"></script>
+</body>
+</html>

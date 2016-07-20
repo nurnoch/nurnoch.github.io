@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>wwt's blog</title><link href="http://www.wengweitao.com/" rel="alternate"></link><link href="http://www.wengweitao.com/feeds/ji-qi-xue-xi.rss.xml" rel="self"></link><id>http://www.wengweitao.com/</id><updated>2015-08-21T16:49:00+08:00</updated><entry><title>Kaggle 入门指南</title><link href="http://www.wengweitao.com/kaggle-ru-men-zhi-nan.html" rel="alternate"></link><published>2015-08-21T16:49:00+08:00</published><author><name>wwt</name></author><id>tag:www.wengweitao.com,2015-08-21:kaggle-ru-men-zhi-nan.html</id><summary type="html">&lt;hr /&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>往往台的博客</title><link href="http://www.wengweitao.com/" rel="alternate"></link><link href="http://www.wengweitao.com/feeds/ji-qi-xue-xi.rss.xml" rel="self"></link><id>http://www.wengweitao.com/</id><updated>2015-08-21T16:49:00+08:00</updated><entry><title>Kaggle 入门指南</title><link href="http://www.wengweitao.com/kaggle-ru-men-zhi-nan.html" rel="alternate"></link><published>2015-08-21T16:49:00+08:00</published><author><name>往往台</name></author><id>tag:www.wengweitao.com,2015-08-21:kaggle-ru-men-zhi-nan.html</id><summary type="html">&lt;hr /&gt;
 &lt;p&gt;&lt;a href="https://www.kaggle.com"&gt;Kaggle&lt;/a&gt;是一个非常著名的数据建模和分析的竞赛平台，对于数据挖掘的爱好者来说是一个非常好的学习平台。我们可以通过Kaggle提供的数据集，通过实战提高自己的数据挖掘和分析能力。这篇文章就介绍如何参与一个Kaggle的竞赛，希望能够让更多的数据挖掘爱好者能够熟悉Kaggle竞赛的基本流程，加入到Kaggle中。&lt;/p&gt;
 &lt;p&gt;我们就以一个简单的竞赛任务——&lt;a href="https://www.kaggle.com/c/digit-recognizer"&gt;手写数字识别&lt;/a&gt;为例，进行介绍。&lt;/p&gt;
 &lt;h2&gt;查看竞赛任务描述&lt;/h2&gt;
@@ -97,7 +97,7 @@
 
 
 &lt;p&gt;几行的代码就可以取得0.96的准确率还是挺不错的。&lt;/p&gt;
-&lt;p&gt;以上就是参加Kaggle竞赛的一个简单入门教程。Have fun!&lt;/p&gt;</summary><category term="机器学习"></category><category term="教程"></category></entry><entry><title>生成学习算法与判别学习算法</title><link href="http://www.wengweitao.com/sheng-cheng-xue-xi-suan-fa-yu-pan-bie-xue-xi-suan-fa.html" rel="alternate"></link><published>2015-08-05T22:42:00+08:00</published><author><name>wwt</name></author><id>tag:www.wengweitao.com,2015-08-05:sheng-cheng-xue-xi-suan-fa-yu-pan-bie-xue-xi-suan-fa.html</id><summary type="html">&lt;p&gt;机器学习中有两类学习算法：&lt;strong&gt;生成学习算法&lt;/strong&gt;（Generative learning algorithm）和&lt;strong&gt;判别学习算法&lt;/strong&gt;（Discriminative learning algorithm），它们所学到的模型分别成为生成模型和判别模型。那么这两种学习算法的区别是什么呢？&lt;/p&gt;
+&lt;p&gt;以上就是参加Kaggle竞赛的一个简单入门教程。Have fun!&lt;/p&gt;</summary><category term="机器学习"></category><category term="教程"></category></entry><entry><title>生成学习算法与判别学习算法</title><link href="http://www.wengweitao.com/sheng-cheng-xue-xi-suan-fa-yu-pan-bie-xue-xi-suan-fa.html" rel="alternate"></link><published>2015-08-05T22:42:00+08:00</published><author><name>往往台</name></author><id>tag:www.wengweitao.com,2015-08-05:sheng-cheng-xue-xi-suan-fa-yu-pan-bie-xue-xi-suan-fa.html</id><summary type="html">&lt;p&gt;机器学习中有两类学习算法：&lt;strong&gt;生成学习算法&lt;/strong&gt;（Generative learning algorithm）和&lt;strong&gt;判别学习算法&lt;/strong&gt;（Discriminative learning algorithm），它们所学到的模型分别成为生成模型和判别模型。那么这两种学习算法的区别是什么呢？&lt;/p&gt;
 &lt;p&gt;举一个具体的例子，假设我们现在要对两种动物进行分类，给定一个动物要么是大象（y=1），要么是狗（y=0）。&lt;/p&gt;
 &lt;p&gt;对于生成学习算法，我们需要利用训练数据分别构建一个描述大象的模型和一个描述狗的模型，然后给定一个新的动物作为输入，我们分别将该动物与大象模型和狗模型进行匹配，然后根据匹配的结果更像哪一个进行分类。用数学公式可以描述为：&lt;/p&gt;
 &lt;p&gt;大象的模型：P(x|y=1)表示了大象的特征分布；&lt;/p&gt;
@@ -158,7 +158,7 @@
         "}); ";
     (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
 }
-&lt;/script&gt;</summary><category term="机器学习"></category><category term="基础"></category></entry><entry><title>EM算法</title><link href="http://www.wengweitao.com/emsuan-fa.html" rel="alternate"></link><published>2014-08-10T19:09:00+08:00</published><author><name>wwt</name></author><id>tag:www.wengweitao.com,2014-08-10:emsuan-fa.html</id><summary type="html">&lt;blockquote&gt;
+&lt;/script&gt;</summary><category term="机器学习"></category><category term="基础"></category></entry><entry><title>EM算法</title><link href="http://www.wengweitao.com/emsuan-fa.html" rel="alternate"></link><published>2014-08-10T19:09:00+08:00</published><author><name>往往台</name></author><id>tag:www.wengweitao.com,2014-08-10:emsuan-fa.html</id><summary type="html">&lt;blockquote&gt;
 &lt;p&gt;EM算法是一种迭代算法，用于含有隐变量（hidden variable）的概率模型参数的极大似然估计，或极大后验概率估计。EM算法的每次迭代分为两步：E步，求期望（Expectation）；M步，求极大（Maximization）。所以这一算法称为期望极大算法。&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h2&gt;EM算法的引入&lt;/h2&gt;
@@ -383,7 +383,7 @@
         "}); ";
     (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
 }
-&lt;/script&gt;</summary><category term="读书笔记"></category></entry><entry><title>提升树</title><link href="http://www.wengweitao.com/ti-sheng-shu.html" rel="alternate"></link><published>2014-08-07T22:27:00+08:00</published><author><name>wwt</name></author><id>tag:www.wengweitao.com,2014-08-07:ti-sheng-shu.html</id><summary type="html">&lt;blockquote&gt;
+&lt;/script&gt;</summary><category term="读书笔记"></category></entry><entry><title>提升树</title><link href="http://www.wengweitao.com/ti-sheng-shu.html" rel="alternate"></link><published>2014-08-07T22:27:00+08:00</published><author><name>往往台</name></author><id>tag:www.wengweitao.com,2014-08-07:ti-sheng-shu.html</id><summary type="html">&lt;blockquote&gt;
 &lt;p&gt;提升树是以分类树或回归树为基本分类器的提升方法。提升树被认为是统计学习中性能最好的方法之一。&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h2&gt;提升树模型&lt;/h2&gt;
@@ -506,7 +506,7 @@ J是回归树的复杂度即叶节点的个数。&lt;/p&gt;
         "}); ";
     (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
 }
-&lt;/script&gt;</summary><category term="读书笔记"></category></entry><entry><title>AdaBoost算法</title><link href="http://www.wengweitao.com/adaboostsuan-fa.html" rel="alternate"></link><published>2014-08-06T19:56:00+08:00</published><author><name>wwt</name></author><id>tag:www.wengweitao.com,2014-08-06:adaboostsuan-fa.html</id><summary type="html">&lt;blockquote&gt;
+&lt;/script&gt;</summary><category term="读书笔记"></category></entry><entry><title>AdaBoost算法</title><link href="http://www.wengweitao.com/adaboostsuan-fa.html" rel="alternate"></link><published>2014-08-06T19:56:00+08:00</published><author><name>往往台</name></author><id>tag:www.wengweitao.com,2014-08-06:adaboostsuan-fa.html</id><summary type="html">&lt;blockquote&gt;
 &lt;p&gt;提升（boosting）方法是一种常用的统计学习方法。在分类问题中，它通过改变训练样本的权重，学习多个分类器，并将这些分类器进行线性组合，提高分类的性能。&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h2&gt;提升方法AdaBoost算法&lt;/h2&gt;
@@ -654,7 +654,7 @@ J是回归树的复杂度即叶节点的个数。&lt;/p&gt;
         "}); ";
     (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
 }
-&lt;/script&gt;</summary><category term="读书笔记"></category></entry><entry><title>支持向量机——SMO（序列最小最优化算法）</title><link href="http://www.wengweitao.com/zhi-chi-xiang-liang-ji-smoxu-lie-zui-xiao-zui-you-hua-suan-fa.html" rel="alternate"></link><published>2014-08-05T10:02:00+08:00</published><author><name>wwt</name></author><id>tag:www.wengweitao.com,2014-08-05:zhi-chi-xiang-liang-ji-smoxu-lie-zui-xiao-zui-you-hua-suan-fa.html</id><summary type="html">&lt;blockquote&gt;
+&lt;/script&gt;</summary><category term="读书笔记"></category></entry><entry><title>支持向量机——SMO（序列最小最优化算法）</title><link href="http://www.wengweitao.com/zhi-chi-xiang-liang-ji-smoxu-lie-zui-xiao-zui-you-hua-suan-fa.html" rel="alternate"></link><published>2014-08-05T10:02:00+08:00</published><author><name>往往台</name></author><id>tag:www.wengweitao.com,2014-08-05:zhi-chi-xiang-liang-ji-smoxu-lie-zui-xiao-zui-you-hua-suan-fa.html</id><summary type="html">&lt;blockquote&gt;
 &lt;p&gt;SVM的学习算法可以归结为凸二次规划问题。这样的凸二次规划问题你具有全局最优解，并且许多最优化算法可以用来求解，但是当训练样本容量很大，这些算法往往变得非常低效，以致无法使用。所以本文介绍了如何高效地实现支持向量机学习。&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;我们将用序列最小最优化（sequential minimal optimization, SMO）算法，求解
@@ -850,7 +850,7 @@ L,　\alpha_2^{new, unc}　&amp;lt; L
         "}); ";
     (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
 }
-&lt;/script&gt;</summary><category term="读书笔记"></category></entry><entry><title>支持向量机——非线性支持向量机</title><link href="http://www.wengweitao.com/zhi-chi-xiang-liang-ji-fei-xian-xing-zhi-chi-xiang-liang-ji.html" rel="alternate"></link><published>2014-08-04T19:39:00+08:00</published><author><name>wwt</name></author><id>tag:www.wengweitao.com,2014-08-04:zhi-chi-xiang-liang-ji-fei-xian-xing-zhi-chi-xiang-liang-ji.html</id><summary type="html">&lt;blockquote&gt;
+&lt;/script&gt;</summary><category term="读书笔记"></category></entry><entry><title>支持向量机——非线性支持向量机</title><link href="http://www.wengweitao.com/zhi-chi-xiang-liang-ji-fei-xian-xing-zhi-chi-xiang-liang-ji.html" rel="alternate"></link><published>2014-08-04T19:39:00+08:00</published><author><name>往往台</name></author><id>tag:www.wengweitao.com,2014-08-04:zhi-chi-xiang-liang-ji-fei-xian-xing-zhi-chi-xiang-liang-ji.html</id><summary type="html">&lt;blockquote&gt;
 &lt;p&gt;如果分类问题是非线性的，那么就要用到非线性支持向量机。非线性支持向量机主要特点就是利用核技巧。&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h2&gt;核技巧&lt;/h2&gt;
@@ -1053,7 +1053,7 @@ M是半正定矩阵当且仅当对所有不为零&lt;span class="math"&gt;\(的x
         "}); ";
     (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
 }
-&lt;/script&gt;</summary><category term="读书笔记"></category></entry><entry><title>支持向量机——线性支持向量机</title><link href="http://www.wengweitao.com/zhi-chi-xiang-liang-ji-xian-xing-zhi-chi-xiang-liang-ji.html" rel="alternate"></link><published>2014-08-03T14:54:00+08:00</published><author><name>wwt</name></author><id>tag:www.wengweitao.com,2014-08-03:zhi-chi-xiang-liang-ji-xian-xing-zhi-chi-xiang-liang-ji.html</id><summary type="html">&lt;blockquote&gt;
+&lt;/script&gt;</summary><category term="读书笔记"></category></entry><entry><title>支持向量机——线性支持向量机</title><link href="http://www.wengweitao.com/zhi-chi-xiang-liang-ji-xian-xing-zhi-chi-xiang-liang-ji.html" rel="alternate"></link><published>2014-08-03T14:54:00+08:00</published><author><name>往往台</name></author><id>tag:www.wengweitao.com,2014-08-03:zhi-chi-xiang-liang-ji-xian-xing-zhi-chi-xiang-liang-ji.html</id><summary type="html">&lt;blockquote&gt;
 &lt;p&gt;对于理想情况下线性可分的问题，可以使用上文介绍的线性可分支持向量机（硬间隔最大化）完美解决。但是，实际情况中，训练数据往往是线性不可分的，即在样本中存在噪声或特异点。此时，可以使用本文中介绍的更一般的学习算法——线性支持向量机（软间隔最大化）。&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h2&gt;线性支持向量机&lt;/h2&gt;
@@ -1209,7 +1209,7 @@ z, z &amp;gt; 0\\
         "}); ";
     (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
 }
-&lt;/script&gt;</summary><category term="读书笔记"></category></entry><entry><title>支持向量机——线性可分支持向量机</title><link href="http://www.wengweitao.com/zhi-chi-xiang-liang-ji-xian-xing-ke-fen-zhi-chi-xiang-liang-ji.html" rel="alternate"></link><published>2014-08-02T20:32:00+08:00</published><author><name>wwt</name></author><id>tag:www.wengweitao.com,2014-08-02:zhi-chi-xiang-liang-ji-xian-xing-ke-fen-zhi-chi-xiang-liang-ji.html</id><summary type="html">&lt;blockquote&gt;
+&lt;/script&gt;</summary><category term="读书笔记"></category></entry><entry><title>支持向量机——线性可分支持向量机</title><link href="http://www.wengweitao.com/zhi-chi-xiang-liang-ji-xian-xing-ke-fen-zhi-chi-xiang-liang-ji.html" rel="alternate"></link><published>2014-08-02T20:32:00+08:00</published><author><name>往往台</name></author><id>tag:www.wengweitao.com,2014-08-02:zhi-chi-xiang-liang-ji-xian-xing-ke-fen-zhi-chi-xiang-liang-ji.html</id><summary type="html">&lt;blockquote&gt;
 &lt;p&gt;支持向量机（support vector machine， SVM）是一种二类分类模型。它的基本模型是定义在特征空间上的间隔最大的线性分类器，间隔最大使之有别与感知机。支持向量机还包括核技巧，这使它成为实质上的非线性分类器。SVM的学习策略是间隔最大化，可形式化为一个求解凸二次规划的问题，也等价于正则化的合页损失函数的最小化问题。SVM的学习算法是求解凸二次规划的最优算法。SVM学习方法包含构建由简至烦的模型：
 - 线性可分支持向量机：当训练数据线性可分时，通过硬间隔最大化（hard margin maximization），学习一个线性分类器
 - 线性支持向量机：当训练数据近似线性可分时，通过软间隔最大化（soft margin maximization），学习一个线性分类器，也称为软间隔支持向量机
@@ -1384,7 +1384,7 @@ z, z &amp;gt; 0\\
         "}); ";
     (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
 }
-&lt;/script&gt;</summary><category term="读书笔记"></category></entry><entry><title>逻辑斯谛回归与最大熵模型</title><link href="http://www.wengweitao.com/luo-ji-si-di-hui-gui-yu-zui-da-shang-mo-xing.html" rel="alternate"></link><published>2014-08-01T09:53:00+08:00</published><author><name>wwt</name></author><id>tag:www.wengweitao.com,2014-08-01:luo-ji-si-di-hui-gui-yu-zui-da-shang-mo-xing.html</id><summary type="html">&lt;blockquote&gt;
+&lt;/script&gt;</summary><category term="读书笔记"></category></entry><entry><title>逻辑斯谛回归与最大熵模型</title><link href="http://www.wengweitao.com/luo-ji-si-di-hui-gui-yu-zui-da-shang-mo-xing.html" rel="alternate"></link><published>2014-08-01T09:53:00+08:00</published><author><name>往往台</name></author><id>tag:www.wengweitao.com,2014-08-01:luo-ji-si-di-hui-gui-yu-zui-da-shang-mo-xing.html</id><summary type="html">&lt;blockquote&gt;
 &lt;p&gt;逻辑斯谛回归（logistic regression）是统计学习中的经典分类方法，可以用于二类分类也可以用于多类分类。最大熵模型由最大熵原理推导出来，最大熵原理是概率模型学习或估计的一个准则，最大熵原理认为在所有可能的概率模型的集合中，熵最大的模型是最好的模型，最大熵模型也可以用于二类分类和多类分类。逻辑斯谛回归模型与最大熵模型都属于对数线性模型&lt;sup id="fnref:log"&gt;&lt;a class="footnote-ref" href="#fn:log" rel="footnote"&gt;1&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h2&gt;逻辑斯谛回归模型&lt;/h2&gt;
@@ -1565,7 +1565,7 @@ w就可以学到逻辑斯谛回归模型。&lt;/p&gt;
         "}); ";
     (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
 }
-&lt;/script&gt;</summary><category term="读书笔记"></category></entry><entry><title>牛顿法</title><link href="http://www.wengweitao.com/niu-dun-fa.html" rel="alternate"></link><published>2014-07-30T20:12:00+08:00</published><author><name>wwt</name></author><id>tag:www.wengweitao.com,2014-07-30:niu-dun-fa.html</id><summary type="html">&lt;blockquote&gt;
+&lt;/script&gt;</summary><category term="读书笔记"></category></entry><entry><title>牛顿法</title><link href="http://www.wengweitao.com/niu-dun-fa.html" rel="alternate"></link><published>2014-07-30T20:12:00+08:00</published><author><name>往往台</name></author><id>tag:www.wengweitao.com,2014-07-30:niu-dun-fa.html</id><summary type="html">&lt;blockquote&gt;
 &lt;p&gt;牛顿法是近似求解方程的方法，方法是使用函数的泰勒级数的前面几项来寻找方程的根。在统计学习中，牛顿法（Newton method）和拟牛顿法（quasi Newton method）也是&lt;strong&gt;求解无约束最优化问题&lt;/strong&gt;的常用方法。有&lt;strong&gt;收敛速度快&lt;/strong&gt;的优点。牛顿法是&lt;strong&gt;迭代方法&lt;/strong&gt;，每一步需要求解目标函数的海森矩阵（Hessian matrix）的逆矩阵，计算比较复杂。拟牛顿法通过正定矩阵近似海赛矩阵的逆矩阵或海赛矩阵，简化了这一过程。&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h2&gt;牛顿法&lt;/h2&gt;
@@ -1741,7 +1741,7 @@ w就可以学到逻辑斯谛回归模型。&lt;/p&gt;
         "}); ";
     (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
 }
-&lt;/script&gt;</summary><category term="基本概念"></category></entry><entry><title>拉格朗日对偶性（Lagrange Duality）</title><link href="http://www.wengweitao.com/la-ge-lang-ri-dui-ou-xing-lagrange-duality.html" rel="alternate"></link><published>2014-07-30T09:56:00+08:00</published><author><name>wwt</name></author><id>tag:www.wengweitao.com,2014-07-30:la-ge-lang-ri-dui-ou-xing-lagrange-duality.html</id><summary type="html">&lt;blockquote&gt;
+&lt;/script&gt;</summary><category term="基本概念"></category></entry><entry><title>拉格朗日对偶性（Lagrange Duality）</title><link href="http://www.wengweitao.com/la-ge-lang-ri-dui-ou-xing-lagrange-duality.html" rel="alternate"></link><published>2014-07-30T09:56:00+08:00</published><author><name>往往台</name></author><id>tag:www.wengweitao.com,2014-07-30:la-ge-lang-ri-dui-ou-xing-lagrange-duality.html</id><summary type="html">&lt;blockquote&gt;
 &lt;p&gt;在求解约束优化问题的时候，常常利用拉格朗日对偶性（Lagrange Duality）将原始问题转化为对偶问题，通过求解对偶问题而得到原始问题的解。该方法用在许多统计学习方法中，如最大熵模型和SVM等。&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h2&gt;原始问题&lt;/h2&gt;
@@ -1862,7 +1862,7 @@ f(x)   \:\:\:\:\: x满足约束条件\\
         "}); ";
     (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
 }
-&lt;/script&gt;</summary><category term="基础概念"></category></entry><entry><title>决策树</title><link href="http://www.wengweitao.com/jue-ce-shu.html" rel="alternate"></link><published>2014-07-29T10:00:00+08:00</published><author><name>wwt</name></author><id>tag:www.wengweitao.com,2014-07-29:jue-ce-shu.html</id><summary type="html">&lt;blockquote&gt;
+&lt;/script&gt;</summary><category term="基础概念"></category></entry><entry><title>决策树</title><link href="http://www.wengweitao.com/jue-ce-shu.html" rel="alternate"></link><published>2014-07-29T10:00:00+08:00</published><author><name>往往台</name></author><id>tag:www.wengweitao.com,2014-07-29:jue-ce-shu.html</id><summary type="html">&lt;blockquote&gt;
 &lt;p&gt;决策树（decision tree）是一种基本的分类与回归方法。它可以认为是if-then规则的集合，也可以认为是定义在特征空间与类空间上的条件概率分布。其主要优点是模型可读性好，分类速度快。决策树的学习通常包含3个部分：特征选择、决策树生成和决策树的修剪。学习时，利用训练数据，根据损失函数最小化的原则建立决策树模型；预测时，对新的数据，利用决策树模型进行分类。常用的算法有ID3、C4.5和CART。&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h2&gt;决策树模型与学习&lt;/h2&gt;
@@ -2094,7 +2094,7 @@ f(x)   \:\:\:\:\: x满足约束条件\\
         "}); ";
     (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
 }
-&lt;/script&gt;</summary><category term="读书笔记"></category></entry><entry><title>朴素贝叶斯法</title><link href="http://www.wengweitao.com/po-su-bei-xie-si-fa.html" rel="alternate"></link><published>2014-07-28T14:06:00+08:00</published><author><name>wwt</name></author><id>tag:www.wengweitao.com,2014-07-28:po-su-bei-xie-si-fa.html</id><summary type="html">&lt;blockquote&gt;
+&lt;/script&gt;</summary><category term="读书笔记"></category></entry><entry><title>朴素贝叶斯法</title><link href="http://www.wengweitao.com/po-su-bei-xie-si-fa.html" rel="alternate"></link><published>2014-07-28T14:06:00+08:00</published><author><name>往往台</name></author><id>tag:www.wengweitao.com,2014-07-28:po-su-bei-xie-si-fa.html</id><summary type="html">&lt;blockquote&gt;
 &lt;p&gt;朴素贝叶斯法（naive Bayes）是基于贝叶斯定理与特征条件独立假设的分类方法。对于给定的训练数据集，利用特征条件独立假设学习输入/输出的联合概率分布；然后基于此模型，对给定的输入x，利用贝叶斯定理求出后验概率最大的输出y。&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h2&gt;朴素贝叶斯法的学习与分类&lt;/h2&gt;
@@ -2182,7 +2182,7 @@ f(x)   \:\:\:\:\: x满足约束条件\\
         "}); ";
     (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
 }
-&lt;/script&gt;</summary><category term="读书笔记"></category></entry><entry><title>k近邻法</title><link href="http://www.wengweitao.com/kjin-lin-fa.html" rel="alternate"></link><published>2014-07-27T16:18:00+08:00</published><author><name>wwt</name></author><id>tag:www.wengweitao.com,2014-07-27:kjin-lin-fa.html</id><summary type="html">&lt;blockquote&gt;
+&lt;/script&gt;</summary><category term="读书笔记"></category></entry><entry><title>k近邻法</title><link href="http://www.wengweitao.com/kjin-lin-fa.html" rel="alternate"></link><published>2014-07-27T16:18:00+08:00</published><author><name>往往台</name></author><id>tag:www.wengweitao.com,2014-07-27:kjin-lin-fa.html</id><summary type="html">&lt;blockquote&gt;
 &lt;p&gt;k近邻法（k-nearest neighbor, k-NN）是一种基于分类与回归的方法。分类时，对新的待分类的实例，根据其k个最近邻的训练实例的类别，通过多数表决等方式进行预测。因此，k近邻算法不具有显示的学习过程。k值的选择、距离度量及分类决策规则是k近邻法的3个基本要素。&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h2&gt;k近邻算法&lt;/h2&gt;
@@ -2277,7 +2277,7 @@ f(x)   \:\:\:\:\: x满足约束条件\\
         "}); ";
     (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
 }
-&lt;/script&gt;</summary><category term="读书笔记"></category></entry><entry><title>感知机</title><link href="http://www.wengweitao.com/gan-zhi-ji.html" rel="alternate"></link><published>2014-07-26T20:12:00+08:00</published><author><name>wwt</name></author><id>tag:www.wengweitao.com,2014-07-26:gan-zhi-ji.html</id><summary type="html">&lt;blockquote&gt;
+&lt;/script&gt;</summary><category term="读书笔记"></category></entry><entry><title>感知机</title><link href="http://www.wengweitao.com/gan-zhi-ji.html" rel="alternate"></link><published>2014-07-26T20:12:00+08:00</published><author><name>往往台</name></author><id>tag:www.wengweitao.com,2014-07-26:gan-zhi-ji.html</id><summary type="html">&lt;blockquote&gt;
 &lt;p&gt;感知机（perceptron）是二类分类的线性分类模型，其输入为实例的特征向量，输出为实例的类别，取+1和-1二值。感知机对应于输入空间中将实例划分为正负两类的分离超平面，属于判别模型。感知机学习旨在求出将训练数据进行线性划分的分离超平面，为此导入了基于误分类的损失函数，利用梯度下降法对损失函数进行极小化，求得感知机模型。感知机学习算法具有简单而易于实现的优点，分为原始形式和对偶形式。感知机是神经网络与支持向量机的基础。&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h2&gt;感知机模型&lt;/h2&gt;
@@ -2421,7 +2421,7 @@ f(x)   \:\:\:\:\: x满足约束条件\\
         "}); ";
     (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
 }
-&lt;/script&gt;</summary><category term="读书笔记"></category></entry><entry><title>梯度下降法</title><link href="http://www.wengweitao.com/ti-du-xia-jiang-fa.html" rel="alternate"></link><published>2014-07-26T16:18:00+08:00</published><author><name>wwt</name></author><id>tag:www.wengweitao.com,2014-07-26:ti-du-xia-jiang-fa.html</id><summary type="html">&lt;p&gt;&lt;strong&gt;梯度下降法（Gradient Descent）&lt;/strong&gt;是一种常见的最优化算法，用于求解函数的最大值或者最小值。&lt;/p&gt;
+&lt;/script&gt;</summary><category term="读书笔记"></category></entry><entry><title>梯度下降法</title><link href="http://www.wengweitao.com/ti-du-xia-jiang-fa.html" rel="alternate"></link><published>2014-07-26T16:18:00+08:00</published><author><name>往往台</name></author><id>tag:www.wengweitao.com,2014-07-26:ti-du-xia-jiang-fa.html</id><summary type="html">&lt;p&gt;&lt;strong&gt;梯度下降法（Gradient Descent）&lt;/strong&gt;是一种常见的最优化算法，用于求解函数的最大值或者最小值。&lt;/p&gt;
 &lt;h2&gt;梯度的概念&lt;/h2&gt;
 &lt;p&gt;一个函数&lt;span class="math"&gt;\(J(\theta)\)&lt;/span&gt;对它的一个变量&lt;span class="math"&gt;\(\theta\)&lt;/span&gt;的梯度定义为：
 &lt;/p&gt;
@@ -2522,7 +2522,7 @@ for i=1 to m, {
         "}); ";
     (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
 }
-&lt;/script&gt;</summary><category term="基本概念"></category></entry><entry><title>统计学习方法概论</title><link href="http://www.wengweitao.com/tong-ji-xue-xi-fang-fa-gai-lun.html" rel="alternate"></link><published>2014-07-25T20:12:00+08:00</published><author><name>wwt</name></author><id>tag:www.wengweitao.com,2014-07-25:tong-ji-xue-xi-fang-fa-gai-lun.html</id><summary type="html">&lt;blockquote&gt;
+&lt;/script&gt;</summary><category term="基本概念"></category></entry><entry><title>统计学习方法概论</title><link href="http://www.wengweitao.com/tong-ji-xue-xi-fang-fa-gai-lun.html" rel="alternate"></link><published>2014-07-25T20:12:00+08:00</published><author><name>往往台</name></author><id>tag:www.wengweitao.com,2014-07-25:tong-ji-xue-xi-fang-fa-gai-lun.html</id><summary type="html">&lt;blockquote&gt;
 &lt;p&gt;本文主要介绍统计学习方法的一些基本概念。首先叙述统计学习的定义、研究对象与方法；然后叙述什么是监督学习；接着提出统计学习方法的三要素：模型、测量和算法；然后又介绍了模型选择的方法，包括：正则化与交叉验证；也介绍了学习方法的泛化能力；接着介绍了监督学习中的两种模型：生成模型和判别模型；最后介绍了监督学习方法的应用：分类问题、标注问题与回归问题。&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h2&gt;统计学习&lt;/h2&gt;

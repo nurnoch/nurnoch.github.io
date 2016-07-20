@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+
+        <title>往往台的博客 - Articles by 往往台</title>
+        <meta charset="utf-8" />
+        <link href="http://www.wengweitao.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="往往台的博客 Full Atom Feed" />
+        <link href="http://www.wengweitao.com/feeds/all.rss.xml" type="application/rss+xml" rel="alternate" title="往往台的博客 Full RSS Feed" />
+
+
+        <!-- Mobile viewport optimized: j.mp/bplateviewport -->
+        <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1">
+        <meta name="google-site-verification" content="pEViDEEJCicDD__DfnOAQ7xKtjtxJhVDoGDAOahOWy0" />
+
+        <meta name="sogou_site_verification" content="ia8yXdZS0p"/>
+
+        <link rel="stylesheet" type="text/css" href="http://www.wengweitao.com/theme/gumby.css" />
+        <link rel="stylesheet" type="text/css" href="http://www.wengweitao.com/theme/style.css" />
+        <link rel="stylesheet" type="text/css" href="http://www.wengweitao.com/theme/pygment.css" />
+
+
+        <script src="http://www.wengweitao.com/theme/js/libs/modernizr-2.6.2.min.js"></script>
+
+
+
+
+</head>
+
+<body id="index" class="home">
+
+
+    <div class="container">
+
+        <div class="row">
+
+          <header id="banner" class="body">
+                  <h1><a href="http://www.wengweitao.com/">往往台的博客 <strong></strong></a></h1>
+          </header><!-- /#banner -->
+
+            <div id="navigation" class="navbar row">
+              <a href="#" gumby-trigger="#navigation &gt; ul" class="toggle"><i class="icon-menu"></i></a>
+             
+              <ul class="columns">
+                <li><a href="http://www.wengweitao.com/">首页</a></li>
+
+                <li><a href="/categories.html">分类</a></li>
+                <li><a href="/tags.html">标签</a></li>
+                <li><a href="/archives.html">归档</a></li>
+                <li><a href="/pages/about-me.html">关于我</a></li>
+
+              </ul>
+            </div>
+
+<section id="content">
+<h2>Articles by 往往台</h2>
+
+
+   <div class="row">
+
+
+        <div class="eleven columns">
+                 <ol id="post-list">
+                        <li><article class="hentry">
+                                <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/zhi-chi-xiang-liang-ji-xian-xing-zhi-chi-xiang-liang-ji.html" rel="bookmark" title="Permalink to 支持向量机——线性支持向量机">支持向量机——线性支持向量机</a></h2> </header>
+                                <footer class="post-info">
+                                    <abbr class="published" title="2014-08-03T14:54:00+08:00"> 日 03 八月 2014 </abbr>
+                                    <address class="vcard author">By 
+                                    <a class="url fn" href="http://www.wengweitao.com/author/wang-wang-tai.html"> 往往台</a>
+                                    </address>
+                                </footer><!-- /.post-info -->
+                                <div class="entry-content"> <blockquote>
+<p>对于理想情况下线性可分的问题，可以使用上文介绍的线性可分支持向量机（硬间隔最大化）完美解决。但是，实际情况中，训练数据往往是线性不可分的，即在样本中存在噪声或特异点。此时，可以使用本文中介绍的更一般的学习算法——线性支持向量机（软间隔最大化）。</p>
+</blockquote>
+<h2>线性支持向量机</h2>
+<p>怎样才能把<a href="http://www.wengweitao.com/zhi-chi-xiang-liang-ji-xian-xing-ke-fen-zhi-chi-xiang-liang-ji.html">上文中介绍的线性可分支持向量机</a>扩展到线性不可分的数据集中呢？这就需要改变硬间隔最大化，使其成为软间隔最大化。</p>
+<p>通常情况下，数据集中存在一些特异点（outlier），将这些特异点去除后，剩下大部分样本点组成的集合是线性可分的。那些线性不可分的样本点<span class="math">\((x_i, y_i)\)</span>意味着不能满足函数间隔大于等于1的约束条件（即<span class="math">\(y_i(w.x_i + b)-1 \geq 0\)</span>）。为了解决这个问题，可以为每个样本点引入一个松弛变量<span class="math">\(\xi_i \geq 0\)</span>，使函数间隔加上松弛变量后大于等于1.同时对每个松弛变量<span class="math">\(\xi_i\)</span>，支付一个代价<span class="math">\(\xi_i\)</span>。这样线性不可分的线性支持向量机的学习问题变成如下的凸二次规划问题：
+</p>
+<div class="math">$$min_{w,b,\xi ...</div> </div><!-- /.entry-content -->
+
+                                <div class="medium primary btn"><a href="http://www.wengweitao.com/zhi-chi-xiang-liang-ji-xian-xing-zhi-chi-xiang-liang-ji.html" rel="bookmark" title="Permalink to 支持向量机——线性支持向量机">Read more <i class="icon-arrow-right"></i></a></div>
+
+
+
+                                <div class="row tag-row">
+                                        <span>Tagged as : </span>
+                                            <a class="danger label" href="http://www.wengweitao.com/tag/du-shu-bi-ji.html">读书笔记</a>
+                                </div>
+
+
+
+                        </article></li>
+                        <li><article class="hentry">
+                                <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/zhi-chi-xiang-liang-ji-xian-xing-ke-fen-zhi-chi-xiang-liang-ji.html" rel="bookmark" title="Permalink to 支持向量机——线性可分支持向量机">支持向量机——线性可分支持向量机</a></h2> </header>
+                                <footer class="post-info">
+                                    <abbr class="published" title="2014-08-02T20:32:00+08:00"> 六 02 八月 2014 </abbr>
+                                    <address class="vcard author">By 
+                                    <a class="url fn" href="http://www.wengweitao.com/author/wang-wang-tai.html"> 往往台</a>
+                                    </address>
+                                </footer><!-- /.post-info -->
+                                <div class="entry-content"> <blockquote>
+<p>支持向量机（support vector machine， SVM）是一种二类分类模型。它的基本模型是定义在特征空间上的间隔最大的线性分类器，间隔最大使之有别与感知机。支持向量机还包括核技巧，这使它成为实质上的非线性分类器。SVM的学习策略是间隔最大化，可形式化为一个求解凸二次规划的问题，也等价于正则化的合页损失函数的最小化问题。SVM的学习算法是求解凸二次规划的最优算法。SVM学习方法包含构建由简至烦的模型：
+- 线性可分支持向量机：当训练数据线性可分时，通过硬间隔最大化（hard margin maximization），学习一个线性分类器
+- 线性支持向量机：当训练数据近似线性可分时，通过软间隔最大化（soft margin maximization），学习一个线性分类器，也称为软间隔支持向量机
+- 非线性支持向量机：当训练数据线性不可分时，通过使用核技巧（kernel trick）即软间隔最大化，学习非线性支持向量机。
+核函数（kernel function）表示将输入从输入空间映射到特征空间得到的特征向量之间的内积。通过使用核函数可以学习非线性支持向量机，等价于隐式地在高维的特征空间中学习线性支持向量机。这样的方法称为核技巧。核方法是比支持向量机更为一般的机器学习方法。</p>
+</blockquote>
+<h2>线性可分支持向量机与硬间隔最大化</h2>
+<h3>线性可分支持向量机</h3>
+<p>支持向量机中，输入都由输入空间转换到特征空间将输入映射为特征向量，支持向量机的学习是在特征空间中进行的 ...</p> </div><!-- /.entry-content -->
+
+                                <div class="medium primary btn"><a href="http://www.wengweitao.com/zhi-chi-xiang-liang-ji-xian-xing-ke-fen-zhi-chi-xiang-liang-ji.html" rel="bookmark" title="Permalink to 支持向量机——线性可分支持向量机">Read more <i class="icon-arrow-right"></i></a></div>
+
+
+
+                                <div class="row tag-row">
+                                        <span>Tagged as : </span>
+                                            <a class="danger label" href="http://www.wengweitao.com/tag/du-shu-bi-ji.html">读书笔记</a>
+                                </div>
+
+
+
+                        </article></li>
+                        <li><article class="hentry">
+                                <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/luo-ji-si-di-hui-gui-yu-zui-da-shang-mo-xing.html" rel="bookmark" title="Permalink to 逻辑斯谛回归与最大熵模型">逻辑斯谛回归与最大熵模型</a></h2> </header>
+                                <footer class="post-info">
+                                    <abbr class="published" title="2014-08-01T09:53:00+08:00"> 五 01 八月 2014 </abbr>
+                                    <address class="vcard author">By 
+                                    <a class="url fn" href="http://www.wengweitao.com/author/wang-wang-tai.html"> 往往台</a>
+                                    </address>
+                                </footer><!-- /.post-info -->
+                                <div class="entry-content"> <blockquote>
+<p>逻辑斯谛回归（logistic regression）是统计学习中的经典分类方法，可以用于二类分类也可以用于多类分类。最大熵模型由最大熵原理推导出来，最大熵原理是概率模型学习或估计的一个准则，最大熵原理认为在所有可能的概率模型的集合中，熵最大的模型是最好的模型，最大熵模型也可以用于二类分类和多类分类。逻辑斯谛回归模型与最大熵模型都属于对数线性模型<sup id="fnref:log"><a class="footnote-ref" href="#fn:log" rel="footnote">1</a></sup></p>
+</blockquote>
+<h2>逻辑斯谛回归模型</h2>
+<h3>逻辑斯谛分布</h3>
+<p>设X是连续随机变量，X服从逻辑斯谛分布是指X具有如下分布函数和密度函数：
+</p>
+<div class="math">$$F(X)=P(X \leq x)=\frac{1}{1+e^{-(x-u)/\gamma}}$$</div>
+<div class="math">$$f(x)=F'(x)=\frac{e^{-(x-u)/\gamma}}{\gamma(1+e^{-(x-u)/\gamma})^2}$$</div>
+<p>
+其中<span class="math">\(\mu\)</span>为位置参数，<span class="math">\(\gamma &gt; 0\)</span>为形状参数。
+<strong>分布函数的图形是一条S形曲线</strong>（sigmoid ...</p> </div><!-- /.entry-content -->
+
+                                <div class="medium primary btn"><a href="http://www.wengweitao.com/luo-ji-si-di-hui-gui-yu-zui-da-shang-mo-xing.html" rel="bookmark" title="Permalink to 逻辑斯谛回归与最大熵模型">Read more <i class="icon-arrow-right"></i></a></div>
+
+
+
+                                <div class="row tag-row">
+                                        <span>Tagged as : </span>
+                                            <a class="danger label" href="http://www.wengweitao.com/tag/du-shu-bi-ji.html">读书笔记</a>
+                                </div>
+
+
+
+                        </article></li>
+                        <li><article class="hentry">
+                                <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/niu-dun-fa.html" rel="bookmark" title="Permalink to 牛顿法">牛顿法</a></h2> </header>
+                                <footer class="post-info">
+                                    <abbr class="published" title="2014-07-30T20:12:00+08:00"> 三 30 七月 2014 </abbr>
+                                    <address class="vcard author">By 
+                                    <a class="url fn" href="http://www.wengweitao.com/author/wang-wang-tai.html"> 往往台</a>
+                                    </address>
+                                </footer><!-- /.post-info -->
+                                <div class="entry-content"> <blockquote>
+<p>牛顿法是近似求解方程的方法，方法是使用函数的泰勒级数的前面几项来寻找方程的根。在统计学习中，牛顿法（Newton method）和拟牛顿法（quasi Newton method）也是<strong>求解无约束最优化问题</strong>的常用方法。有<strong>收敛速度快</strong>的优点。牛顿法是<strong>迭代方法</strong>，每一步需要求解目标函数的海森矩阵（Hessian matrix）的逆矩阵，计算比较复杂。拟牛顿法通过正定矩阵近似海赛矩阵的逆矩阵或海赛矩阵，简化了这一过程。</p>
+</blockquote>
+<h2>牛顿法</h2>
+<h3>目标</h3>
+<p>考虑无约束最优化问题
+</p>
+<div class="math">$$minf(x)$$</div>
+<p>其中<span class="math">\(x^*\)</span>为目标函数的极小点。求出f(x)的极小点 <span class="math">\(x^*\)</span></p>
+<p>首先，我们先了解下泰勒级数与海森矩阵。</p>
+<h3>基本概念</h3>
+<h4>泰勒级数</h4>
+<p>若函数f（x）在点的某一临域内具有直到（n+1）阶导数，则在该邻域内f（x）的n阶泰勒公式为 ...</p> </div><!-- /.entry-content -->
+
+                                <div class="medium primary btn"><a href="http://www.wengweitao.com/niu-dun-fa.html" rel="bookmark" title="Permalink to 牛顿法">Read more <i class="icon-arrow-right"></i></a></div>
+
+
+
+                                <div class="row tag-row">
+                                        <span>Tagged as : </span>
+                                            <a class="danger label" href="http://www.wengweitao.com/tag/ji-ben-gai-nian.html">基本概念</a>
+                                </div>
+
+
+
+                        </article></li>
+                        <li><article class="hentry">
+                                <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/la-ge-lang-ri-dui-ou-xing-lagrange-duality.html" rel="bookmark" title="Permalink to 拉格朗日对偶性（Lagrange Duality）">拉格朗日对偶性（Lagrange Duality）</a></h2> </header>
+                                <footer class="post-info">
+                                    <abbr class="published" title="2014-07-30T09:56:00+08:00"> 三 30 七月 2014 </abbr>
+                                    <address class="vcard author">By 
+                                    <a class="url fn" href="http://www.wengweitao.com/author/wang-wang-tai.html"> 往往台</a>
+                                    </address>
+                                </footer><!-- /.post-info -->
+                                <div class="entry-content"> <blockquote>
+<p>在求解约束优化问题的时候，常常利用拉格朗日对偶性（Lagrange Duality）将原始问题转化为对偶问题，通过求解对偶问题而得到原始问题的解。该方法用在许多统计学习方法中，如最大熵模型和SVM等。</p>
+</blockquote>
+<h2>原始问题</h2>
+<h3>原始最优化问题</h3>
+<p>考虑最优化问题：</p>
+<blockquote>
+<p>
+<div class="math">$$min_x f(x)$$</div>
+<div class="math">$$s.t. c_i(x) \leq 0  \:\:\:\:\: i=1,2,...,k$$</div>
+<div class="math">$$h_j(x) = 0   \:\:\:\:\: j=1,2,...,l$$</div>
+</p>
+</blockquote>
+<p>称此约束最优化问题为原始最优化问题或原始问题。</p>
+<h3>广义拉格朗日函数</h3>
+<p>为了解决原始问题，我们先引入<strong>广义拉格朗日（generalized Lagrangian）函数</strong>：
+</p>
+<div class="math">$$L(x, \alpha, \beta) = f(x) + \sum_{i=1}^{k}\alpha_i ...</div> </div><!-- /.entry-content -->
+
+                                <div class="medium primary btn"><a href="http://www.wengweitao.com/la-ge-lang-ri-dui-ou-xing-lagrange-duality.html" rel="bookmark" title="Permalink to 拉格朗日对偶性（Lagrange Duality）">Read more <i class="icon-arrow-right"></i></a></div>
+
+
+
+                                <div class="row tag-row">
+                                        <span>Tagged as : </span>
+                                            <a class="danger label" href="http://www.wengweitao.com/tag/ji-chu-gai-nian.html">基础概念</a>
+                                </div>
+
+
+
+                        </article></li>
+                </ol><!-- /#posts-list -->
+
+        </div><!-- /.eleven.columns -->
+        
+<div class="three columns">
+
+<!--
+<h4>Pages</h4>
+
+ <ul>
+      <li><a href="/categories.html">分类</a></li>
+      <li><a href="/tags.html">标签</a></li>
+      <li><a href="/archives.html">归档</a></li>
+      <li><a href="/pages/about-me.html">关于我</a></li>
+  </ul>
+-->
+
+<aside id="sidebar"><!--Google站内搜索开始-->
+        <div class="search">
+                <!--<h2>站内搜索</h2>-->
+                <form method=get action="http://www.google.com/search">
+                <input type=text name=q>
+                <input type=submit name=btnG value="搜索">
+                <input type=hidden name=ie value=UTF-8>
+                <input type=hidden name=oe value=UTF-8>
+                <input type=hidden name=hl value=zh-CN>
+                <input type=hidden name=domains value="http://www.wengweitao.com">
+                <input type=hidden name=sitesearch value="http://www.wengweitao.com">
+                </form>
+        </div>
+<!--Google站内搜索结束-->
+
+<h4>分类</h4>
+<ul>
+		<li><a href="http://www.wengweitao.com/category/bian-cheng-yu-yan.html">编程语言</a></li>
+		<li><a href="http://www.wengweitao.com/category/csji-chu.html">CS基础</a></li>
+		<li><a href="http://www.wengweitao.com/category/du-shu-bi-ji.html">读书笔记</a></li>
+		<li><a href="http://www.wengweitao.com/category/gong-ju.html">工具</a></li>
+		<li><a href="http://www.wengweitao.com/category/ji-qi-xue-xi.html">机器学习</a></li>
+		<li><a href="http://www.wengweitao.com/category/python.html">Python</a></li>
+		<li><a href="http://www.wengweitao.com/category/sheng-huo.html">生活</a></li>
+		<li><a href="http://www.wengweitao.com/category/suan-fa-yu-shu-ju-jie-gou.html">算法与数据结构</a></li>
+</ul>
+
+<!--
+<h4>标签</h4>
+<ul class="tagcloud">
+</ul>
+-->
+
+
+<nav class="widget">
+  <h4>社交</h4>
+  <ul>
+    <li><a href="http://weibo.com/u/2678027854">新浪微博</a></li>
+    <li><a href="http://www.douban.com/people/wengwt/">豆瓣</a></li>
+    <li><a href="http://www.zhihu.com/people/vita-49">知乎</a></li>
+    <li><a href="https://github.com/nurnoch">GitHub</a></li>
+    <li><a href="https://www.v2ex.com/member/wwttc">V2EX</a></li>
+    <li><a href="https://www.instagram.com/wwt836/">instagram</a></li>
+  </ul>
+</nav>
+
+<nav class="widget">
+  <h4>友情链接</h4>
+  <ul>
+    <li><a href="http://www.rudy-yuan.net/">rundy-yuan's blog</a></li>
+    <li><a href="http://www.houcj.net/">houcj's blog</a></li>
+    <li><a href="http://zwyang.me/blog/">zwyanswer's blog</a></li>
+  </ul>
+</nav>
+
+
+</div> </div><!-- /.row -->
+
+<p class="paginator">
+            <a href="http://www.wengweitao.com/author/wang-wang-tai11.html"><i class="icon-arrow-left"></i></a>
+    Page 12 / 14
+        <a href="http://www.wengweitao.com/author/wang-wang-tai13.html"><i class="icon-arrow-right"></i></a>
+</p>
+</section><!-- /#content -->
+
+       </div><!-- /.row -->
+    </div><!-- /.container -->
+
+
+       <div class="container.nopad bg">
+
+    
+        <footer id="credits" class="row">
+          <div class="seven columns left-center">
+
+                   <address id="about" class="vcard body">
+                    Proudly powered by  <a href="http://getpelican.com/">Pelican</a> and Theme by Gum © 2015 wwt       
+                       <!-- cnzz -->
+                    <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1255354158'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s4.cnzz.com/z_stat.php%3Fid%3D1255354158%26show%3Dpic2' type='text/javascript'%3E%3C/script%3E"));</script>  
+                    </address>
+                   
+          </div>
+
+
+          <div class="seven columns">
+            <div class="row">
+              <ul class="socbtns">
+
+
+
+
+
+              </ul>
+            </div>
+          </div>
+        </footer>
+
+    </div>
+
+
+
+<script type="text/javascript">
+    var disqus_shortname = 'wengwt';
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+  <script src="http://www.wengweitao.com/theme/js/libs/jquery-1.9.1.min.js"></script>
+  <script src="http://www.wengweitao.com/theme/js/libs/gumby.min.js"></script>
+  <script src="http://www.wengweitao.com/theme/js/plugins.js"></script>
+</body>
+</html>

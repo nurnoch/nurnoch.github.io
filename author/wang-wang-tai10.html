@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+
+        <title>往往台的博客 - Articles by 往往台</title>
+        <meta charset="utf-8" />
+        <link href="http://www.wengweitao.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="往往台的博客 Full Atom Feed" />
+        <link href="http://www.wengweitao.com/feeds/all.rss.xml" type="application/rss+xml" rel="alternate" title="往往台的博客 Full RSS Feed" />
+
+
+        <!-- Mobile viewport optimized: j.mp/bplateviewport -->
+        <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1">
+        <meta name="google-site-verification" content="pEViDEEJCicDD__DfnOAQ7xKtjtxJhVDoGDAOahOWy0" />
+
+        <meta name="sogou_site_verification" content="ia8yXdZS0p"/>
+
+        <link rel="stylesheet" type="text/css" href="http://www.wengweitao.com/theme/gumby.css" />
+        <link rel="stylesheet" type="text/css" href="http://www.wengweitao.com/theme/style.css" />
+        <link rel="stylesheet" type="text/css" href="http://www.wengweitao.com/theme/pygment.css" />
+
+
+        <script src="http://www.wengweitao.com/theme/js/libs/modernizr-2.6.2.min.js"></script>
+
+
+
+
+</head>
+
+<body id="index" class="home">
+
+
+    <div class="container">
+
+        <div class="row">
+
+          <header id="banner" class="body">
+                  <h1><a href="http://www.wengweitao.com/">往往台的博客 <strong></strong></a></h1>
+          </header><!-- /#banner -->
+
+            <div id="navigation" class="navbar row">
+              <a href="#" gumby-trigger="#navigation &gt; ul" class="toggle"><i class="icon-menu"></i></a>
+             
+              <ul class="columns">
+                <li><a href="http://www.wengweitao.com/">首页</a></li>
+
+                <li><a href="/categories.html">分类</a></li>
+                <li><a href="/tags.html">标签</a></li>
+                <li><a href="/archives.html">归档</a></li>
+                <li><a href="/pages/about-me.html">关于我</a></li>
+
+              </ul>
+            </div>
+
+<section id="content">
+<h2>Articles by 往往台</h2>
+
+
+   <div class="row">
+
+
+        <div class="eleven columns">
+                 <ol id="post-list">
+                        <li><article class="hentry">
+                                <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/bian-xie-gao-zhi-liang-pythondai-ma-2.html" rel="bookmark" title="Permalink to 编写高质量Python代码（2）">编写高质量Python代码（2）</a></h2> </header>
+                                <footer class="post-info">
+                                    <abbr class="published" title="2015-04-07T22:39:00+08:00"> 二 07 四月 2015 </abbr>
+                                    <address class="vcard author">By 
+                                    <a class="url fn" href="http://www.wengweitao.com/author/wang-wang-tai.html"> 往往台</a>
+                                    </address>
+                                </footer><!-- /.post-info -->
+                                <div class="entry-content"> <blockquote>
+<p>这篇文章基础语法出发讲述Python的使用技巧和注意事项</p>
+</blockquote>
+<h3>建议8： 利用assert语句来发现问题</h3>
+<p>assert语句主要为调试程序服务，能够快速方便地检查程序的异常或者发现不恰当的输入等，防止意想不到的情况出现。
+基本语法如下：</p>
+<div class="highlight"><pre><span></span><span class="k">assert</span> <span class="n">expression1</span> <span class="p">[</span><span class="s2">&quot;,&quot;</span> <span class="n">expression2</span><span class="p">]</span> 
+<span class="c1">#assert x == y, &quot;not equals&quot;</span>
+</pre></div>
+
+
+<p>其中计算expressi1的值若为False则会引发一个AssertionError，expression是可选的，用来传递具体的异常信息。</p>
+<p>另外，需要注意的是断言是对程序的性能有一定的影响，禁用断言的方法是运行时加上 -O标志。</p>
+<h3>建议9： 交换值时不推荐使用中间变量</h3>
+<div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">1</span><span class="p">]:</span> <span class="kn">from</span> <span class="nn">timeit</span> <span class="kn">import</span> <span class="n">Timer</span>
+<span class="n">In</span> <span class="p">[</span><span class="mi">2</span><span class="p">]:</span> <span class="n">Timer</span><span class="p">(</span><span class="s1">&#39;temp = x; x = y; y = temp&#39;</span><span class="p">,</span> <span class="s1">&#39;x = 2; y = 3&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">timeit</span><span class="p">()</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">2</span><span class="p">]:</span> <span class="mf">0.054762504979284254</span>
+<span class="n">In</span> <span class="p">[</span><span class="mi">3 ...</span></pre></div> </div><!-- /.entry-content -->
+
+                                <div class="medium primary btn"><a href="http://www.wengweitao.com/bian-xie-gao-zhi-liang-pythondai-ma-2.html" rel="bookmark" title="Permalink to 编写高质量Python代码（2）">Read more <i class="icon-arrow-right"></i></a></div>
+
+
+
+                                <div class="row tag-row">
+                                        <span>Tagged as : </span>
+                                            <a class="danger label" href="http://www.wengweitao.com/tag/python.html">Python</a>
+                                </div>
+
+
+
+                        </article></li>
+                        <li><article class="hentry">
+                                <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/pythondai-ma-ge-shi-hua-gong-ju-yapf.html" rel="bookmark" title="Permalink to Python代码格式化工具——YAPF">Python代码格式化工具——YAPF</a></h2> </header>
+                                <footer class="post-info">
+                                    <abbr class="published" title="2015-04-07T15:10:00+08:00"> 二 07 四月 2015 </abbr>
+                                    <address class="vcard author">By 
+                                    <a class="url fn" href="http://www.wengweitao.com/author/wang-wang-tai.html"> 往往台</a>
+                                    </address>
+                                </footer><!-- /.post-info -->
+                                <div class="entry-content"> <blockquote>
+<p><a href="https://github.com/google/yapf">YAPF</a>是Google开源的一个工具，可以用来格式化Python代码，使Python代码拥有一致的编程风格，减轻了团队或者个人进行代码风格维护的单调的工作。</p>
+</blockquote>
+<h3>介绍</h3>
+<p>之前已经有一些类似的Python代码风格格式化工具如：<a href="https://github.com/hhatto/autopep8">autopep8</a>和<a href="https://github.com/spulec/pep8ify">pep8ify</a>等。这些工具基于<a href="http://clang.llvm.org/docs/ClangFormat.html">clang-format</a>,能够很好的解决大多数pep8报告的格式问题。然而，有些代码虽然遵从了PEP8的编程风格指南，但这并不意味着这些代码看起来就足够好，对于这种问题之前的那些Python代码格式化工具就无能为力了。
+YAPF与其他的格式化工具不同，其算法能够把代码重新格式化为符合编程风格的最佳格式，无论原始的代码是否违法了某种指定的编程风格指南。YAPF的最终目标就是通过YAPF格式化后的代码能够与程序员完全遵从编程风格写的代码一样的好。</p>
+<h3>YAPF的使用</h3>
+<h4>1.安装</h4>
+<p>可以直接通过pip进行安装：</p>
+<div class="highlight"><pre><span></span>pip install yapf
+</pre></div>
+
+
+<h4>2.使用。</h4>
+<p>安装完成之后，就可以直接在命令行中使用了。
+以下是yapf的命令行参数：</p>
+<div class="highlight"><pre><span></span>usage: yapf <span class="o">[</span>-h<span class="o">]</span> <span class="o">[</span>--style STYLE<span class="o">]</span> <span class="o">[</span>-d <span class="p">|</span> -i<span class="o">]</span> <span class="o">[</span>-l START-END <span class="p">|</span> -r<span class="o">]</span> ...
+
+Formatter <span class="k">for</span> Python code.
+
+positional arguments ...</pre></div> </div><!-- /.entry-content -->
+
+                                <div class="medium primary btn"><a href="http://www.wengweitao.com/pythondai-ma-ge-shi-hua-gong-ju-yapf.html" rel="bookmark" title="Permalink to Python代码格式化工具——YAPF">Read more <i class="icon-arrow-right"></i></a></div>
+
+
+
+                                <div class="row tag-row">
+                                        <span>Tagged as : </span>
+                                            <a class="danger label" href="http://www.wengweitao.com/tag/python.html">Python</a>
+                                            <a class="danger label" href="http://www.wengweitao.com/tag/gong-ju.html">工具</a>
+                                </div>
+
+
+
+                        </article></li>
+                        <li><article class="hentry">
+                                <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/bian-xie-gao-zhi-liang-pythondai-ma-1.html" rel="bookmark" title="Permalink to 编写高质量Python代码（1）">编写高质量Python代码（1）</a></h2> </header>
+                                <footer class="post-info">
+                                    <abbr class="published" title="2015-04-06T18:42:00+08:00"> 一 06 四月 2015 </abbr>
+                                    <address class="vcard author">By 
+                                    <a class="url fn" href="http://www.wengweitao.com/author/wang-wang-tai.html"> 往往台</a>
+                                    </address>
+                                </footer><!-- /.post-info -->
+                                <div class="entry-content"> <blockquote>
+<p>去年参加了珠海的PyCon大会，幸运地抽中了三本书，其中一本是《编写高质量代码：改善Python程序的91个建议》。本书从多个方面给出了编写高质量Python代码的91个建议，我把每一章的建议都先总结下来，分享给大家。</p>
+</blockquote>
+<h3>建议1： 理解Pythonic概念</h3>
+<h4>（1）Pythonic的定义</h4>
+<p>遵循Pythonic的代码看起来像伪代码：</p>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">quicksort</span><span class="p">(</span><span class="n">array</span><span class="p">):</span>
+    <span class="n">less</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">greater</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">array</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">array</span>
+    <span class="n">pivot</span> <span class="o">=</span> <span class="n">array</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">array</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="n">pivot</span><span class="p">:</span>
+            <span class="n">greater</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">less</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">quicksort</span><span class="p">(</span><span class="n">less</span><span class="p">)</span> <span class="o">+</span> <span class="p">[</span><span class="n">pivot</span><span class="p">]</span> <span class="o">+</span> <span class="n">quicksort</span><span class="p">(</span><span class="n">greater</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__ ...</span></pre></div> </div><!-- /.entry-content -->
+
+                                <div class="medium primary btn"><a href="http://www.wengweitao.com/bian-xie-gao-zhi-liang-pythondai-ma-1.html" rel="bookmark" title="Permalink to 编写高质量Python代码（1）">Read more <i class="icon-arrow-right"></i></a></div>
+
+
+
+                                <div class="row tag-row">
+                                        <span>Tagged as : </span>
+                                            <a class="danger label" href="http://www.wengweitao.com/tag/python.html">Python</a>
+                                </div>
+
+
+
+                        </article></li>
+                        <li><article class="hentry">
+                                <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/fei-bo-na-qi-shu-lie-ji-qi-xiang-guan-wen-ti.html" rel="bookmark" title="Permalink to 斐波那契数列及其相关问题">斐波那契数列及其相关问题</a></h2> </header>
+                                <footer class="post-info">
+                                    <abbr class="published" title="2015-04-05T00:00:00+08:00"> 日 05 四月 2015 </abbr>
+                                    <address class="vcard author">By 
+                                    <a class="url fn" href="http://www.wengweitao.com/author/wang-wang-tai.html"> 往往台</a>
+                                    </address>
+                                </footer><!-- /.post-info -->
+                                <div class="entry-content"> <p>很多书在提到递归的时候，总是会拿斐波那契数列作为例子，它的定义如下：
+<img alt="Fibonacci" src="http://ac.jobdu.com/upload/201201/image/fbncslie.jpg" /></p>
+<p>现在要求输出斐波那契数列的第n项。</p>
+<p>首先，最容易想到的方法就是直接利用递归求解：</p>
+<div class="highlight"><pre><span></span><span class="kt">long</span> <span class="kt">long</span> <span class="nf">fib</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">n</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="n">n</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="k">return</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="k">else</span>
+        <span class="k">return</span> <span class="n">fib</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">fib</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">2</span><span class="p">);</span> 
+<span class="p">}</span>
+</pre></div>
+
+
+<p>递归求解的形式非常简单易懂，但是递归的解法存在很严重的效率问题，因为计算过程中很多结点都是重复计算的，而且重复的结点数随着n的增大而急剧增加。例如，假设n=100，那么程序的速度将慢到无法忍受！</p>
+<p>上面递归的方法之所以慢，是因为大量的重复计算，我们只需要把已经得到的数列的中间项保存起来，下次需要的时候直接查找，就不用重复计算了。</p>
+<div class="highlight"><pre><span></span><span class="kt">long</span> <span class="kt">long</span> <span class="nf">fib</span><span class="p">(</span><span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">n</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int ...</span></pre></div> </div><!-- /.entry-content -->
+
+                                <div class="medium primary btn"><a href="http://www.wengweitao.com/fei-bo-na-qi-shu-lie-ji-qi-xiang-guan-wen-ti.html" rel="bookmark" title="Permalink to 斐波那契数列及其相关问题">Read more <i class="icon-arrow-right"></i></a></div>
+
+
+
+                                <div class="row tag-row">
+                                        <span>Tagged as : </span>
+                                            <a class="danger label" href="http://www.wengweitao.com/tag/mian-shi-ti.html">面试题</a>
+                                </div>
+
+
+
+                        </article></li>
+                        <li><article class="hentry">
+                                <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/xin-xi-ji-zhu-xie-hui-di-yi-qi-dian-nao-ji-zhu-pei-xun-shun-li-ju-ban.html" rel="bookmark" title="Permalink to 信息技术协会第一期电脑技术培训顺利举办">信息技术协会第一期电脑技术培训顺利举办</a></h2> </header>
+                                <footer class="post-info">
+                                    <abbr class="published" title="2014-10-18T20:12:00+08:00"> 六 18 十月 2014 </abbr>
+                                    <address class="vcard author">By 
+                                    <a class="url fn" href="http://www.wengweitao.com/author/wang-wang-tai.html"> 往往台</a>
+                                    </address>
+                                </footer><!-- /.post-info -->
+                                <div class="entry-content"> <blockquote>
+<p>新的学年开始了，一直想着信协能够举办几个新的有意思的活动，想了好久觉得既有意义，又能吸引其他专业的同学参加的，那么技术培训是个不错的选择。于是，就和协会的小伙伴们商量，准备定期举办同学们最感兴趣的系列技术专题培训。第一期便是Photoshop培训。</p>
+</blockquote>
+<p>2014年10月17日晚七点，南燕信息技术协会举办了第一期电脑培训活动--Photoshop基础入门与应用的培训讲座。活动受到了同学们的广泛欢迎和好评。 </p>
+<p>本次培训讲座邀请2013级计算机应用技术的高龙飞同学担任主讲人。他深入浅出地介绍了Photoshop中常用的工具并通过实例操作向同学们清晰地展示各种操作方法。在讲解各种基础知识和工具之后，又通过PS常用的三个实例讲述了PS的使用技巧。同学们跟随主讲人的演示学习操作。两个小时的讲座很快就进入了尾声，同学们依然兴致盎然。</p>
+<p><img alt="培训现场" src="http://www.pkusz.edu.cn/uploadfile/2014/1020/20141020050506774.jpg" /></p>
+<p>培训结束后，信息协会会长翁蔚涛对本次讲座作了简单的总结，并强调希望同学们在讲座后能多多练习，“纸上得来终觉浅，绝知此事要躬行”，并向同学们有奖征集协会的新海报设计，鼓励大家学以致用。简单总结过后，进入到抽奖环节，来自汇丰的陈敬钰同学获得了由协会送出的精美礼品。</p>
+<p>最后，协会成员和部分到场同学合影留念，第一期电脑培训活动圆满结束。接下来信息技术协会还会举办一系列培训，包括Matlab编程、网页制作等，希望同学们能够继续踊跃参加。</p>
+<p><img alt="合影" src="http://www.pkusz.edu.cn/uploadfile/2014/1020/20141020050520418.jpg" /></p>
+<blockquote>
+<p>信息技术协会致力于为北大深研院的同学们营造一个学习和交流信息学科得环境和氛围，为大家提供有关信息领域的设计、应用、资讯等方面的信息。信息技术协会积极打造与深港信息类企业合作和联动的平台，帮助学生走出校园，观察产业发展动态；积极开展电脑维护活动，帮助同学们解决生活中遇到的技术困难。在以后，信息技术协会仍然会坚持协会宗旨，继续为大家服务。</p>
+</blockquote>
+<p>转自：http ...</p> </div><!-- /.entry-content -->
+
+                                <div class="medium primary btn"><a href="http://www.wengweitao.com/xin-xi-ji-zhu-xie-hui-di-yi-qi-dian-nao-ji-zhu-pei-xun-shun-li-ju-ban.html" rel="bookmark" title="Permalink to 信息技术协会第一期电脑技术培训顺利举办">Read more <i class="icon-arrow-right"></i></a></div>
+
+
+
+                                <div class="row tag-row">
+                                        <span>Tagged as : </span>
+                                            <a class="danger label" href="http://www.wengweitao.com/tag/xiao-yuan.html">校园</a>
+                                </div>
+
+
+
+                        </article></li>
+                </ol><!-- /#posts-list -->
+
+        </div><!-- /.eleven.columns -->
+        
+<div class="three columns">
+
+<!--
+<h4>Pages</h4>
+
+ <ul>
+      <li><a href="/categories.html">分类</a></li>
+      <li><a href="/tags.html">标签</a></li>
+      <li><a href="/archives.html">归档</a></li>
+      <li><a href="/pages/about-me.html">关于我</a></li>
+  </ul>
+-->
+
+<aside id="sidebar"><!--Google站内搜索开始-->
+        <div class="search">
+                <!--<h2>站内搜索</h2>-->
+                <form method=get action="http://www.google.com/search">
+                <input type=text name=q>
+                <input type=submit name=btnG value="搜索">
+                <input type=hidden name=ie value=UTF-8>
+                <input type=hidden name=oe value=UTF-8>
+                <input type=hidden name=hl value=zh-CN>
+                <input type=hidden name=domains value="http://www.wengweitao.com">
+                <input type=hidden name=sitesearch value="http://www.wengweitao.com">
+                </form>
+        </div>
+<!--Google站内搜索结束-->
+
+<h4>分类</h4>
+<ul>
+		<li><a href="http://www.wengweitao.com/category/bian-cheng-yu-yan.html">编程语言</a></li>
+		<li><a href="http://www.wengweitao.com/category/csji-chu.html">CS基础</a></li>
+		<li><a href="http://www.wengweitao.com/category/du-shu-bi-ji.html">读书笔记</a></li>
+		<li><a href="http://www.wengweitao.com/category/gong-ju.html">工具</a></li>
+		<li><a href="http://www.wengweitao.com/category/ji-qi-xue-xi.html">机器学习</a></li>
+		<li><a href="http://www.wengweitao.com/category/python.html">Python</a></li>
+		<li><a href="http://www.wengweitao.com/category/sheng-huo.html">生活</a></li>
+		<li><a href="http://www.wengweitao.com/category/suan-fa-yu-shu-ju-jie-gou.html">算法与数据结构</a></li>
+</ul>
+
+<!--
+<h4>标签</h4>
+<ul class="tagcloud">
+</ul>
+-->
+
+
+<nav class="widget">
+  <h4>社交</h4>
+  <ul>
+    <li><a href="http://weibo.com/u/2678027854">新浪微博</a></li>
+    <li><a href="http://www.douban.com/people/wengwt/">豆瓣</a></li>
+    <li><a href="http://www.zhihu.com/people/vita-49">知乎</a></li>
+    <li><a href="https://github.com/nurnoch">GitHub</a></li>
+    <li><a href="https://www.v2ex.com/member/wwttc">V2EX</a></li>
+    <li><a href="https://www.instagram.com/wwt836/">instagram</a></li>
+  </ul>
+</nav>
+
+<nav class="widget">
+  <h4>友情链接</h4>
+  <ul>
+    <li><a href="http://www.rudy-yuan.net/">rundy-yuan's blog</a></li>
+    <li><a href="http://www.houcj.net/">houcj's blog</a></li>
+    <li><a href="http://zwyang.me/blog/">zwyanswer's blog</a></li>
+  </ul>
+</nav>
+
+
+</div> </div><!-- /.row -->
+
+<p class="paginator">
+            <a href="http://www.wengweitao.com/author/wang-wang-tai9.html"><i class="icon-arrow-left"></i></a>
+    Page 10 / 14
+        <a href="http://www.wengweitao.com/author/wang-wang-tai11.html"><i class="icon-arrow-right"></i></a>
+</p>
+</section><!-- /#content -->
+
+       </div><!-- /.row -->
+    </div><!-- /.container -->
+
+
+       <div class="container.nopad bg">
+
+    
+        <footer id="credits" class="row">
+          <div class="seven columns left-center">
+
+                   <address id="about" class="vcard body">
+                    Proudly powered by  <a href="http://getpelican.com/">Pelican</a> and Theme by Gum © 2015 wwt       
+                       <!-- cnzz -->
+                    <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1255354158'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s4.cnzz.com/z_stat.php%3Fid%3D1255354158%26show%3Dpic2' type='text/javascript'%3E%3C/script%3E"));</script>  
+                    </address>
+                   
+          </div>
+
+
+          <div class="seven columns">
+            <div class="row">
+              <ul class="socbtns">
+
+
+
+
+
+              </ul>
+            </div>
+          </div>
+        </footer>
+
+    </div>
+
+
+
+<script type="text/javascript">
+    var disqus_shortname = 'wengwt';
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+  <script src="http://www.wengweitao.com/theme/js/libs/jquery-1.9.1.min.js"></script>
+  <script src="http://www.wengweitao.com/theme/js/libs/gumby.min.js"></script>
+  <script src="http://www.wengweitao.com/theme/js/plugins.js"></script>
+</body>
+</html>
