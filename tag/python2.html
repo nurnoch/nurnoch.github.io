@@ -61,118 +61,6 @@
         <div class="eleven columns">
                  <ol id="post-list">
                         <li><article class="hentry">
-<<<<<<< HEAD
-=======
-                                <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/bian-xie-gao-zhi-liang-pythondai-ma-4-she-ji-mo-shi.html" rel="bookmark" title="Permalink to 编写高质量Python代码（4）——设计模式">编写高质量Python代码（4）——设计模式</a></h2> </header>
-                                <footer class="post-info">
-                                    <abbr class="published" title="2015-04-13T23:31:00+08:00"> 一 13 四月 2015 </abbr>
-                                    <address class="vcard author">By 
-                                    <a class="url fn" href="http://www.wengweitao.com/author/wwt.html"> wwt</a>
-                                    </address>
-                                </footer><!-- /.post-info -->
-                                <div class="entry-content"> <blockquote>
-<p>本文将介绍如何写出Pythonic的设计模式代码，让设计模式更好的应用在实际的Python编程当中。</p>
-</blockquote>
-<h3>建议50：利用模块设计实现单例模式</h3>
-<p>GOF的23种设计模式中，单例是最常用的模式，通过单例模式可以保证系统中一个类只有一个实例而且该实例易于被外界访问，从而方便对实例个数的控制并节约系统资源。</p>
-<p>Python语言实现实例没有那么方便，因为缺乏声明私有构造函数的语法元素，实例又带有类型信息。如：</p>
-<div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">_Singleton</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="k">pass</span>
-<span class="n">Singleton</span> <span class="o">=</span> <span class="n">_Singleton</span><span class="p">()</span>
-<span class="k">del</span> <span class="n">_Singleton</span>
-<span class="n">another</span> <span class="o">=</span> <span class="n">Singleton</span><span class="o">.</span><span class="n">__class__</span><span class="p">()</span>
-<span class="k">print</span> <span class="nb">type</span><span class="p">(</span><span class="n">another</span><span class="p">)</span>
-
-<span class="c1"># 输出 &lt;class &#39;__main__._Singleton&#39;&gt;</span>
-</pre></div>
-
-
-<p>虽然把Singleton的类定义删除了，但是还是可以通过已有实例的__class__属性生成一个新的实例。</p>
-<p>其实模块采用的方法是天然的单例实现方式：</p>
-<ul>
-<li>所有变量都会绑定到模块</li>
-<li>模块只初始化一次</li>
-<li>import 机制是线程安全的</li>
-</ul>
-<p>例如：</p>
-<div class="highlight"><pre><span></span><span class="c1"># World.py</span>
-<span class="kn">import</span> <span class="nn">Sun</span>
-<span class="k">def</span> <span class="nf">run</span><span class="p">():</span>
-    <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
-        <span class="n">Sun</span><span class="o">.</span><span class="n">rise</span><span class="p">()</span>
-        <span class="n">Sun</span><span class="o">.</span><span class="n">set ...</span></pre></div> </div><!-- /.entry-content -->
-
-                                <div class="medium primary btn"><a href="http://www.wengweitao.com/bian-xie-gao-zhi-liang-pythondai-ma-4-she-ji-mo-shi.html" rel="bookmark" title="Permalink to 编写高质量Python代码（4）——设计模式">Read more <i class="icon-arrow-right"></i></a></div>
-
-
-
-                                <div class="row tag-row">
-                                        <span>Tagged as : </span>
-                                            <a class="danger label" href="http://www.wengweitao.com/tag/python.html">Python</a>
-                                </div>
-
-
-
-                        </article></li>
-                        <li><article class="hentry">
-                                <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/bian-xie-gao-zhi-liang-pythondai-ma-3-ku.html" rel="bookmark" title="Permalink to 编写高质量Python代码（3）——库">编写高质量Python代码（3）——库</a></h2> </header>
-                                <footer class="post-info">
-                                    <abbr class="published" title="2015-04-08T22:58:00+08:00"> 三 08 四月 2015 </abbr>
-                                    <address class="vcard author">By 
-                                    <a class="url fn" href="http://www.wengweitao.com/author/wwt.html"> wwt</a>
-                                    </address>
-                                </footer><!-- /.post-info -->
-                                <div class="entry-content"> <blockquote>
-<p>Python具有非常丰富的库，这篇文章介绍了常用库的使用和技巧。</p>
-</blockquote>
-<h3>建议36：掌握字符串的基本用法</h3>
-<p>有个小技巧：</p>
-<div class="highlight"><pre><span></span> <span class="n">s</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;SELECT *&#39;</span>
-         <span class="s1">&#39;FROM atable &#39;</span>
-         <span class="s1">&#39;WHERE afield=&quot;value&quot;&#39;</span><span class="p">)</span>
- <span class="n">s</span>
- <span class="s1">&#39;SELECT *FROM atable WHERE afield=&quot;value&quot;&#39;</span>
-</pre></div>
-
-
-<p>以上利用了Python遇到未闭合的小括号时会自动将多行代码拼接为一行和把相邻的两个字符串字面量拼接在一起的特性做到的。（而如果使用三个引号会把换行符和空格都当做字符串的一部分）</p>
-<p>Python字符串分为str和unicode两种。当需要判断变量是否为字符串时，应该使用</p>
-<div class="highlight"><pre><span></span><span class="nb">isinstance</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="nb">basestring</span><span class="p">)</span>
-</pre></div>
-
-
-<p>Python提供了很多判定字符串的函数如：</p>
-<ul>
-<li>isalnum()</li>
-<li>isalpha() </li>
-<li>isdigit() </li>
-<li>islower()</li>
-<li>isupper()</li>
-<li>isspace()</li>
-<li>istitle() 首字母大写</li>
-<li>startswith(prefix, start, end)</li>
-<li>endswith</li>
-</ul>
-<p>查找和替换：</p>
-<ul>
-<li>count(sub, start, end )</li>
-<li>find  找不到返回-1</li>
-<li>index   找不到返回ValueError ...</li></ul> </div><!-- /.entry-content -->
-
-                                <div class="medium primary btn"><a href="http://www.wengweitao.com/bian-xie-gao-zhi-liang-pythondai-ma-3-ku.html" rel="bookmark" title="Permalink to 编写高质量Python代码（3）——库">Read more <i class="icon-arrow-right"></i></a></div>
-
-
-
-                                <div class="row tag-row">
-                                        <span>Tagged as : </span>
-                                            <a class="danger label" href="http://www.wengweitao.com/tag/python.html">Python</a>
-                                </div>
-
-
-
-                        </article></li>
-                        <li><article class="hentry">
->>>>>>> 700a254393e115d0e8df2dc309357b2ba17b3d4a
                                 <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/pythonrong-qi-counterde-shi-yong.html" rel="bookmark" title="Permalink to Python容器——Counter的使用">Python容器——Counter的使用</a></h2> </header>
                                 <footer class="post-info">
                                     <abbr class="published" title="2015-04-08T14:52:00+08:00"> 三 08 四月 2015 </abbr>
@@ -300,6 +188,46 @@ positional arguments ...</pre></div> </div><!-- /.entry-content -->
 
 
                         </article></li>
+                        <li><article class="hentry">
+                                <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/bian-xie-gao-zhi-liang-pythondai-ma-1.html" rel="bookmark" title="Permalink to 编写高质量Python代码（1）">编写高质量Python代码（1）</a></h2> </header>
+                                <footer class="post-info">
+                                    <abbr class="published" title="2015-04-06T18:42:00+08:00"> 一 06 四月 2015 </abbr>
+                                    <address class="vcard author">By 
+                                    <a class="url fn" href="http://www.wengweitao.com/author/wwt.html"> wwt</a>
+                                    </address>
+                                </footer><!-- /.post-info -->
+                                <div class="entry-content"> <blockquote>
+<p>去年参加了珠海的PyCon大会，幸运地抽中了三本书，其中一本是《编写高质量代码：改善Python程序的91个建议》。本书从多个方面给出了编写高质量Python代码的91个建议，我把每一章的建议都先总结下来，分享给大家。</p>
+</blockquote>
+<h3>建议1： 理解Pythonic概念</h3>
+<h4>（1）Pythonic的定义</h4>
+<p>遵循Pythonic的代码看起来像伪代码：</p>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">quicksort</span><span class="p">(</span><span class="n">array</span><span class="p">):</span>
+    <span class="n">less</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">greater</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">array</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">array</span>
+    <span class="n">pivot</span> <span class="o">=</span> <span class="n">array</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">array</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="n">pivot</span><span class="p">:</span>
+            <span class="n">greater</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">less</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">quicksort</span><span class="p">(</span><span class="n">less</span><span class="p">)</span> <span class="o">+</span> <span class="p">[</span><span class="n">pivot</span><span class="p">]</span> <span class="o">+</span> <span class="n">quicksort</span><span class="p">(</span><span class="n">greater</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__ ...</span></pre></div> </div><!-- /.entry-content -->
+
+                                <div class="medium primary btn"><a href="http://www.wengweitao.com/bian-xie-gao-zhi-liang-pythondai-ma-1.html" rel="bookmark" title="Permalink to 编写高质量Python代码（1）">Read more <i class="icon-arrow-right"></i></a></div>
+
+
+
+                                <div class="row tag-row">
+                                        <span>Tagged as : </span>
+                                            <a class="danger label" href="http://www.wengweitao.com/tag/python.html">Python</a>
+                                </div>
+
+
+
+                        </article></li>
                 </ol><!-- /#posts-list -->
 
         </div><!-- /.eleven.columns -->
@@ -339,7 +267,6 @@ positional arguments ...</pre></div> </div><!-- /.entry-content -->
 		<li><a href="http://www.wengweitao.com/category/du-shu-bi-ji.html">读书笔记</a></li>
 		<li><a href="http://www.wengweitao.com/category/gong-ju.html">工具</a></li>
 		<li><a href="http://www.wengweitao.com/category/ji-qi-xue-xi.html">机器学习</a></li>
-		<li><a href="http://www.wengweitao.com/category/ji-zhu.html">技术</a></li>
 		<li><a href="http://www.wengweitao.com/category/python.html">Python</a></li>
 		<li><a href="http://www.wengweitao.com/category/sheng-huo.html">生活</a></li>
 		<li><a href="http://www.wengweitao.com/category/suan-fa-yu-shu-ju-jie-gou.html">算法与数据结构</a></li>
@@ -378,8 +305,7 @@ positional arguments ...</pre></div> </div><!-- /.entry-content -->
 
 <p class="paginator">
             <a href="http://www.wengweitao.com/tag/python.html"><i class="icon-arrow-left"></i></a>
-    Page 2 / 3
-        <a href="http://www.wengweitao.com/tag/python3.html"><i class="icon-arrow-right"></i></a>
+    Page 2 / 2
 </p>
 </section><!-- /#content -->
 
