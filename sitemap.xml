@@ -5,28 +5,44 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://www.wengweitao.com/</loc>
+<<<<<<< HEAD
 <lastmod>2016-07-20T21:03:04-00:00</lastmod>
+=======
+<lastmod>2016-04-16T13:10:52-00:00</lastmod>
+>>>>>>> 700a254393e115d0e8df2dc309357b2ba17b3d4a
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://www.wengweitao.com/archives.html</loc>
+<<<<<<< HEAD
 <lastmod>2016-07-20T21:03:04-00:00</lastmod>
+=======
+<lastmod>2016-04-16T13:10:52-00:00</lastmod>
+>>>>>>> 700a254393e115d0e8df2dc309357b2ba17b3d4a
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://www.wengweitao.com/tags.html</loc>
+<<<<<<< HEAD
 <lastmod>2016-07-20T21:03:04-00:00</lastmod>
+=======
+<lastmod>2016-04-16T13:10:52-00:00</lastmod>
+>>>>>>> 700a254393e115d0e8df2dc309357b2ba17b3d4a
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://www.wengweitao.com/categories.html</loc>
+<<<<<<< HEAD
 <lastmod>2016-07-20T21:03:04-00:00</lastmod>
+=======
+<lastmod>2016-04-16T13:10:52-00:00</lastmod>
+>>>>>>> 700a254393e115d0e8df2dc309357b2ba17b3d4a
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -39,6 +55,58 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
+<<<<<<< HEAD
+=======
+<loc>http://www.wengweitao.com/zai-carinashang-shi-yong-dockerda-jian-mian-fei-de-shadowsocks.html</loc>
+<lastmod>2016-04-16T13:06:00+08:00</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+
+<url>
+<loc>http://www.wengweitao.com/dockerxue-xi.html</loc>
+<lastmod>2016-04-16T12:06:00+08:00</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+
+<url>
+<loc>http://www.wengweitao.com/shi-yong-pythonchu-li-excelwen-jian.html</loc>
+<lastmod>2016-03-07T21:06:00+08:00</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+
+<url>
+<loc>http://www.wengweitao.com/virtualenvjie-shao.html</loc>
+<lastmod>2016-03-01T22:48:00+08:00</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+
+<url>
+<loc>http://www.wengweitao.com/2015nian-xiao-zhao-zhao-gong-zuo-zong-jie-zhi-guo-qi-pian.html</loc>
+<lastmod>2016-02-29T22:48:00+08:00</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+
+<url>
+<loc>http://www.wengweitao.com/2015nian-xiao-zhao-zhao-gong-zuo-zong-jie-zhi-hu-lian-wang-gong-si-ji-zhu-pian.html</loc>
+<lastmod>2015-12-27T14:22:00+08:00</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+
+<url>
+<loc>http://www.wengweitao.com/kaggleru-men-zhi-nan.html</loc>
+<lastmod>2015-08-21T19:22:00+08:00</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+
+<url>
+>>>>>>> 700a254393e115d0e8df2dc309357b2ba17b3d4a
 <loc>http://www.wengweitao.com/sheng-cheng-xue-xi-suan-fa-yu-pan-bie-xue-xi-suan-fa.html</loc>
 <lastmod>2015-08-05T22:42:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
@@ -488,7 +556,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://www.wengweitao.com/category/gong-ju.html</loc>
-<lastmod>2015-05-12T19:02:00+08:06</lastmod>
+<lastmod>2016-04-16T13:06:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -501,8 +569,19 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
+<loc>http://www.wengweitao.com/category/ji-zhu.html</loc>
+<lastmod>2016-04-16T12:06:00+08:06</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
 <loc>http://www.wengweitao.com/category/python.html</loc>
+<<<<<<< HEAD
 <lastmod>2015-07-27T18:49:00+08:06</lastmod>
+=======
+<lastmod>2016-03-07T21:06:00+08:06</lastmod>
+>>>>>>> 700a254393e115d0e8df2dc309357b2ba17b3d4a
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -579,7 +658,11 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://www.wengweitao.com/tag/jiao-cheng.html</loc>
+<<<<<<< HEAD
 <lastmod>2015-07-27T18:49:00+08:06</lastmod>
+=======
+<lastmod>2016-04-16T13:06:00+08:06</lastmod>
+>>>>>>> 700a254393e115d0e8df2dc309357b2ba17b3d4a
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -627,8 +710,13 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
+<<<<<<< HEAD
 <loc>http://www.wengweitao.com/tag/shu-ju-ku.html</loc>
 <lastmod>2015-07-30T22:42:00+08:06</lastmod>
+=======
+<loc>http://www.wengweitao.com/tag/python.html</loc>
+<lastmod>2016-03-07T21:06:00+08:06</lastmod>
+>>>>>>> 700a254393e115d0e8df2dc309357b2ba17b3d4a
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -676,6 +764,13 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
+<loc>http://www.wengweitao.com/tag/docker.html</loc>
+<lastmod>2016-04-16T13:06:00+08:06</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
 <loc>http://www.wengweitao.com/tag/leetcode.html</loc>
 <lastmod>2015-06-29T10:42:00+08:06</lastmod>
 <changefreq>daily</changefreq>
@@ -684,7 +779,11 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://www.wengweitao.com/author/wwt.html</loc>
+<<<<<<< HEAD
 <lastmod>2015-08-05T22:42:00+08:06</lastmod>
+=======
+<lastmod>2016-04-16T13:06:00+08:06</lastmod>
+>>>>>>> 700a254393e115d0e8df2dc309357b2ba17b3d4a
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>

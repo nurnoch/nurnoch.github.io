@@ -1,5 +1,151 @@
 <?xml version="1.0" encoding="utf-8"?>
+<<<<<<< HEAD
 <feed xmlns="http://www.w3.org/2005/Atom"><title>wwt's blog</title><link href="http://www.wengweitao.com/" rel="alternate"></link><link href="http://www.wengweitao.com/feeds/python.rss.xml" rel="self"></link><id>http://www.wengweitao.com/</id><updated>2015-07-27T18:49:00+08:00</updated><entry><title>Python Socket网络编程</title><link href="http://www.wengweitao.com/python-socketwang-luo-bian-cheng.html" rel="alternate"></link><published>2015-07-27T18:49:00+08:00</published><author><name>wwt</name></author><id>tag:www.wengweitao.com,2015-07-27:python-socketwang-luo-bian-cheng.html</id><summary type="html">&lt;p&gt;在网络通信中socket几乎无处不在，它可以看成是应用层与TCP/IP协议簇通信的中间软件抽象层，是两个应用程序彼此进行通信的接口，并且把复杂的TCP/IP协议细节隐藏在接口之后。Python提供了socket模块，可以非常方便的进行socket编程。&lt;/p&gt;
+=======
+<feed xmlns="http://www.w3.org/2005/Atom"><title>wwt's blog</title><link href="http://www.wengweitao.com/" rel="alternate"></link><link href="http://www.wengweitao.com/feeds/python.rss.xml" rel="self"></link><id>http://www.wengweitao.com/</id><updated>2016-03-07T21:06:00+08:00</updated><entry><title>使用Python处理excel文件</title><link href="http://www.wengweitao.com/shi-yong-pythonchu-li-excelwen-jian.html" rel="alternate"></link><updated>2016-03-07T21:06:00+08:00</updated><author><name>wwt</name></author><id>tag:www.wengweitao.com,2016-03-07:shi-yong-pythonchu-li-excelwen-jian.html</id><summary type="html">&lt;p&gt;最近一段时间好几个其他学院的同学找我帮忙处理保存在excel中的数据。对于非计算机专业的同学，平时可能仅仅是用excel做一些简单的数据处理，稍微复杂一些的excel函数可能就写不了，于是就找我们计算机专业的同学帮忙。不过excel，我几乎从来不用，只能借助于编程实现对excel的数据处理了。对于这类问题，首选自然是Python啦。其实，Python是一门非常容易掌握和使用的语言，我也经常向非计算机专业的同学推荐学习Python，学完之后非常有用。这篇文章就面向非计算机专业的同学介绍如何使用Python来对excel文件进行数据处理。&lt;/p&gt;
+&lt;h2&gt;安装Python环境&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://www.continuum.io/downloads"&gt;ANACONDA&lt;/a&gt;是一个Python的发行版本，包含了400多个Python最常用的库，其中就包括了数据分析中需要经常使用到的Numpy和Pandas等。更重要的是，不论在哪个平台上，都可以一键安装，自动配置好环境，不需要用户任何的额外操作，非常方便。因此，安装Python环境就只需要到ANACONDA网站上下载安装文件，双击安装即可。&lt;/p&gt;
+&lt;p&gt;安装完成之后，使用&lt;code&gt;windows + r&lt;/code&gt;键打开Windows命令行，输入ipython，然后回车：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;Python&lt;/span&gt; &lt;span class="mf"&gt;2.7.11&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="n"&gt;Anaconda&lt;/span&gt; &lt;span class="mf"&gt;2.5.0&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;64&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;bit&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;default&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;Jan&lt;/span&gt; &lt;span class="mi"&gt;29&lt;/span&gt; &lt;span class="mi"&gt;2016&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;14&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;26&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;21&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;MSC&lt;/span&gt; &lt;span class="n"&gt;v&lt;/span&gt;&lt;span class="mf"&gt;.1500&lt;/span&gt; &lt;span class="mi"&gt;64&lt;/span&gt; &lt;span class="n"&gt;bit&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;AMD64&lt;/span&gt;&lt;span class="p"&gt;)]&lt;/span&gt;
+
+&lt;span class="n"&gt;Type&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;copyright&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;credits&amp;quot;&lt;/span&gt; &lt;span class="n"&gt;or&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;license&amp;quot;&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;more&lt;/span&gt; &lt;span class="n"&gt;information&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;
+
+&lt;span class="n"&gt;IPython&lt;/span&gt; &lt;span class="mf"&gt;4.0.3&lt;/span&gt; &lt;span class="o"&gt;--&lt;/span&gt; &lt;span class="n"&gt;An&lt;/span&gt; &lt;span class="n"&gt;enhanced&lt;/span&gt; &lt;span class="n"&gt;Interactive&lt;/span&gt; &lt;span class="n"&gt;Python&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;
+
+&lt;span class="o"&gt;?&lt;/span&gt;         &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;Introduction&lt;/span&gt; &lt;span class="n"&gt;and&lt;/span&gt; &lt;span class="n"&gt;overview&lt;/span&gt; &lt;span class="n"&gt;of&lt;/span&gt; &lt;span class="n"&gt;IPython&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="n"&gt;s&lt;/span&gt; &lt;span class="n"&gt;features&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;
+
+&lt;span class="nf"&gt;%quickref&lt;/span&gt; &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;Quick&lt;/span&gt; &lt;span class="n"&gt;reference&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;
+
+&lt;span class="n"&gt;help&lt;/span&gt;      &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;Python&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="n"&gt;s&lt;/span&gt; &lt;span class="n"&gt;own&lt;/span&gt; &lt;span class="n"&gt;help&lt;/span&gt; &lt;span class="n"&gt;system&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;
+
+&lt;span class="n"&gt;object&lt;/span&gt;&lt;span class="o"&gt;?&lt;/span&gt;   &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;Details&lt;/span&gt; &lt;span class="n"&gt;about&lt;/span&gt; &lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="n"&gt;object&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;use&lt;/span&gt; &lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="n"&gt;object&lt;/span&gt;&lt;span class="o"&gt;??&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;extra&lt;/span&gt; &lt;span class="n"&gt;details&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;如上所示，如果成功进入了Python环境，则代表安装成功。&lt;/p&gt;
+&lt;h2&gt;使用pandas处理excel&lt;/h2&gt;
+&lt;p&gt;在本文我以&lt;code&gt;log.xls&lt;/code&gt;文件为例，来说明如何使用pandas处理excel文件。&lt;code&gt;log.xls&lt;/code&gt;文件的内容如下所示：&lt;/p&gt;
+&lt;p&gt;&lt;img alt="excel" src="http://ww4.sinaimg.cn/large/9f9f764egw1f2bpur7t6oj21400l3jwu.jpg" /&gt;&lt;/p&gt;
+&lt;p&gt;可以看到&lt;code&gt;log.xls&lt;/code&gt;中包含了多个的表（sheet），每个表主要包括了member和activity两个属性，相同的member ID的数据相邻的排列在一起，并且最后一行是前面所有的汇总。这里，我们假设需要提取出每个member汇总的信息，即提取每个member连续出现的最后一行的数据。如何实现呢？&lt;/p&gt;
+&lt;p&gt;导入pandas模块：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;pandas&lt;/span&gt; &lt;span class="kn"&gt;as&lt;/span&gt; &lt;span class="nn"&gt;pd&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;使用import读入pandas模块，并且为了方便使用其缩写&lt;code&gt;pd&lt;/code&gt;指代。&lt;/p&gt;
+&lt;p&gt;读入待处理的excel文件：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;df&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;pd&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;read_excel&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;log.xls&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;通过使用&lt;code&gt;read_excel&lt;/code&gt;函数读入excel文件，后面需要替换成excel文件所在的路径。读入之后变为pandas的DataFrame对象。DataFrame是一个面向列(column-oriented)的二维表结构，且含有列表和行标，对excel文件的操作就转换为对DataFrame操作。另外，如果一个excel含有多个表，如果你只想读入其中一个可以：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;df&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;pd&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;read_excel&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;log.xls&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;sheetname&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;增加了一个参数&lt;code&gt;sheetname&lt;/code&gt;，表示的是第几个表，从0开始计数。我上面设置的是1，也就是第二个表。&lt;/p&gt;
+&lt;p&gt;读入之后，可以先查看表头信息和每一列的数据类型：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;df&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;dtypes&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;输出如下：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Member         object
+Unnamed: 1    float64
+Unnamed: 2    float64
+Unnamed: 3    float64
+Unnamed: 4    float64
+Unnamed: 5    float64
+家内外活动类型        object
+Unnamed: 7     object
+activity       object
+dtype: object
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;提取每个member连续出现的最后一行数据：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt; &lt;span class="n"&gt;new_df&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;df&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;drop_duplicates&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;subset&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Member&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;keep&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;last&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;以上语句的意思是根据&lt;code&gt;Member&lt;/code&gt;字段去除掉多余的行，并且保留相同行的最后一行数据。这些就得到了每一个member最后一行的数据了，返回了经过筛选后的DataFrame。&lt;/p&gt;
+&lt;p&gt;接下来需要将处理后的结果，保存为excel文件：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;out&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;pd&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;ExcelWriter&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;output.xls&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;new_df&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;to_excel&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;out&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;out&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;save&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;code&gt;output.xls&lt;/code&gt;是你要保存的文件名，可以任取；然后将DataFrame的内容保存到该文件，最后保存该文件到系统的磁盘上。&lt;/p&gt;
+&lt;p&gt;接下来，你就可以在当前目录看到一个新的文件，可以直接使用excel打开查看。&lt;/p&gt;
+&lt;p&gt;Pandas还提供了很多的API，可以根据具体的任务，查找API文档，找到合适的函数来完成任务。&lt;/p&gt;
+&lt;h2&gt;附：一个完整的示例&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;#coding=utf-8&lt;/span&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;pandas&lt;/span&gt; &lt;span class="kn"&gt;as&lt;/span&gt; &lt;span class="nn"&gt;pd&lt;/span&gt;
+
+&lt;span class="c1"&gt;# 读入excel文件中的第2个表&lt;/span&gt;
+&lt;span class="n"&gt;df&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;pd&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;read_excel&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;log.xls&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;sheetname&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="c1"&gt;# 查看表的数据类型&lt;/span&gt;
+&lt;span class="k"&gt;print&lt;/span&gt; &lt;span class="n"&gt;df&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;dtypes&lt;/span&gt;
+&lt;span class="c1"&gt;# 查看Member列的数据&lt;/span&gt;
+&lt;span class="k"&gt;print&lt;/span&gt; &lt;span class="n"&gt;df&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Member&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+
+&lt;span class="sd"&gt;&amp;#39;&amp;#39;&amp;#39;&lt;/span&gt;
+&lt;span class="sd"&gt;# 新建一列，每一行的值是Member列和activity列相同行值的和&lt;/span&gt;
+&lt;span class="sd"&gt;for i in df.index:&lt;/span&gt;
+&lt;span class="sd"&gt;    df[&amp;#39;activity_2&amp;#39;][i] = df[&amp;#39;Member&amp;#39;][i] + df[&amp;#39;activity&amp;#39;][i]&lt;/span&gt;
+&lt;span class="sd"&gt;&amp;#39;&amp;#39;&amp;#39;&lt;/span&gt;
+
+&lt;span class="c1"&gt;# 根据Member字段去除掉多余的行，并且保留相同行的最后一行数据&lt;/span&gt;
+&lt;span class="n"&gt;new_df&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;df&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;drop_duplicates&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;subset&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Member&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;keep&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;last&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="c1"&gt;# 导出结果&lt;/span&gt;
+&lt;span class="n"&gt;out&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;pd&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;ExcelWriter&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;output.xls&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;new_df&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;to_excel&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;out&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;out&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;save&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;</summary><category term="Python"></category><category term="教程"></category></entry><entry><title>virtualenv介绍</title><link href="http://www.wengweitao.com/virtualenvjie-shao.html" rel="alternate"></link><updated>2016-03-01T22:48:00+08:00</updated><author><name>wwt</name></author><id>tag:www.wengweitao.com,2016-03-01:virtualenvjie-shao.html</id><summary type="html">&lt;p&gt;virtualenv是一个用来创建独立Python环境的工具。&lt;/p&gt;
+&lt;h2&gt;什么时候会用到virtualenv？&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;假设系统中的两个应用，其中A应用对库LibFoo的版本要求为1，而B应用对同一个库LibFoo的版本要求为2，两个应用对同一个库的要求想冲突了，而系统中库默认都安装到&lt;code&gt;/usr/lib/python2.7/site-packages&lt;/code&gt;，那么如何能够同时使用这两个应用呢？&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;你的用户权限不够，使得无法将包安装到&lt;code&gt;site-packages&lt;/code&gt;目录&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;需要使用一个应用，并且与系统其它应用相独立。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;如果你遇到以上的问题，那么virtualenv会对你有帮助。virtualenv可以创建一个环境，拥有着自己的安装目录，而不会与系统的共享库或者其它virtualenv环境相干扰。&lt;/p&gt;
+&lt;h2&gt;如何安装virtualenv？&lt;/h2&gt;
+&lt;p&gt;如果系统上已经安装了pip：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;sudo&lt;span class="o"&gt;]&lt;/span&gt; pip install virtualenv
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;如何使用virtualenv？&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nb"&gt;cd&lt;/span&gt; my_project_folder
+
+virtual ENV
+
+&lt;span class="nb"&gt;source&lt;/span&gt; bin/activate
+
+deactivate
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;以上就是virtualenv的基本使用过程。&lt;/p&gt;
+&lt;h3&gt;创建一个虚拟环境&lt;/h3&gt;
+&lt;p&gt;首先，&lt;code&gt;virtual ENV&lt;/code&gt;会在当前目录创建名为ENV的虚拟环境，此时在当前目录会自动生成三个目录：bin, include和lib。默认情况下创建的虚拟环境会依赖于系统中的site-packages，即系统中已经安装好的库在虚拟环境中仍然可以使用，如果想去除依赖，那么可以：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;virtualenv --no-site-packages ENV
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;启动虚拟环境&lt;/h3&gt;
+&lt;p&gt;通过&lt;code&gt;source bin/activate&lt;/code&gt;可以启动当前目录下的虚拟环境。启动后，shell的提示符就会发生改变，表示进入了虚拟环境。&lt;/p&gt;
+&lt;h3&gt;离开虚拟环境&lt;/h3&gt;
+&lt;p&gt;使用&lt;code&gt;deactivate&lt;/code&gt;离开虚拟环境。&lt;/p&gt;
+&lt;p&gt;以上。&lt;/p&gt;</summary><category term="Python"></category><category term="教程"></category></entry><entry><title>Python Socket网络编程</title><link href="http://www.wengweitao.com/python-socketwang-luo-bian-cheng.html" rel="alternate"></link><updated>2015-07-27T18:49:00+08:00</updated><author><name>wwt</name></author><id>tag:www.wengweitao.com,2015-07-27:python-socketwang-luo-bian-cheng.html</id><summary type="html">&lt;p&gt;在网络通信中socket几乎无处不在，它可以看成是应用层与TCP/IP协议簇通信的中间软件抽象层，是两个应用程序彼此进行通信的接口，并且把复杂的TCP/IP协议细节隐藏在接口之后。Python提供了socket模块，可以非常方便的进行socket编程。&lt;/p&gt;
+>>>>>>> 700a254393e115d0e8df2dc309357b2ba17b3d4a
 &lt;h2&gt;创建一个server socket&lt;/h2&gt;
 &lt;p&gt;使用&lt;code&gt;socket&lt;/code&gt;方法创建一个新的socket，通常提供两个参数，第一个参数是address family, 第二个是socket type。&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;#create an INET, STREAMing socket&lt;/span&gt;

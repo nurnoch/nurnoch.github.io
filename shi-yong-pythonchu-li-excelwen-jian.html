@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+
+        <title>使用Python处理excel文件</title>
+        <meta charset="utf-8" />
+        <link href="http://www.wengweitao.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="wwt's blog Full Atom Feed" />
+        <link href="http://www.wengweitao.com/feeds/all.rss.xml" type="application/rss+xml" rel="alternate" title="wwt's blog Full RSS Feed" />
+        <link href="http://www.wengweitao.com/feeds/python.rss.xml" type="application/atom+xml" rel="alternate" title="wwt's blog Categories Atom Feed" />
+
+
+        <!-- Mobile viewport optimized: j.mp/bplateviewport -->
+        <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1">
+        <meta name="google-site-verification" content="pEViDEEJCicDD__DfnOAQ7xKtjtxJhVDoGDAOahOWy0" />
+
+        <meta name="sogou_site_verification" content="ia8yXdZS0p"/>
+
+        <link rel="stylesheet" type="text/css" href="http://www.wengweitao.com/theme/gumby.css" />
+        <link rel="stylesheet" type="text/css" href="http://www.wengweitao.com/theme/style.css" />
+        <link rel="stylesheet" type="text/css" href="http://www.wengweitao.com/theme/pygment.css" />
+
+
+        <script src="http://www.wengweitao.com/theme/js/libs/modernizr-2.6.2.min.js"></script>
+
+
+
+
+</head>
+
+<body id="index" class="home">
+
+
+    <div class="container">
+
+        <div class="row">
+
+          <header id="banner" class="body">
+                  <h1><a href="http://www.wengweitao.com/">wwt's blog <strong></strong></a></h1>
+          </header><!-- /#banner -->
+
+            <div id="navigation" class="navbar row">
+              <a href="#" gumby-trigger="#navigation &gt; ul" class="toggle"><i class="icon-menu"></i></a>
+             
+              <ul class="columns">
+                <li><a href="http://www.wengweitao.com/">首页</a></li>
+
+                <li><a href="/categories.html">分类</a></li>
+                <li><a href="/tags.html">标签</a></li>
+                <li><a href="/archives.html">归档</a></li>
+                <li><a href="/pages/about-me.html">关于我</a></li>
+
+              </ul>
+            </div>
+
+<section id="content" class="body">
+
+   <div class="row">
+        <div class="eleven columns">
+
+
+            <header>
+              <h2 class="entry-title">
+                <a href="http://www.wengweitao.com/shi-yong-pythonchu-li-excelwen-jian.html" rel="bookmark"
+                   title="Permalink to 使用Python处理excel文件">使用Python处理excel文件</a></h2>
+           
+
+            </header>
+            <footer class="post-info">
+              <abbr class="published" title="2016-03-07T21:06:00+08:00">
+                一 07 三月 2016
+              </abbr>
+              <address class="vcard author">By 
+                <a class="url fn" href="http://www.wengweitao.com/author/wwt.html"> wwt</a>
+              </address>
+            </footer><!-- /.post-info -->
+            <div class="entry-content">
+              <p>最近一段时间好几个其他学院的同学找我帮忙处理保存在excel中的数据。对于非计算机专业的同学，平时可能仅仅是用excel做一些简单的数据处理，稍微复杂一些的excel函数可能就写不了，于是就找我们计算机专业的同学帮忙。不过excel，我几乎从来不用，只能借助于编程实现对excel的数据处理了。对于这类问题，首选自然是Python啦。其实，Python是一门非常容易掌握和使用的语言，我也经常向非计算机专业的同学推荐学习Python，学完之后非常有用。这篇文章就面向非计算机专业的同学介绍如何使用Python来对excel文件进行数据处理。</p>
+<h2>安装Python环境</h2>
+<p><a href="https://www.continuum.io/downloads">ANACONDA</a>是一个Python的发行版本，包含了400多个Python最常用的库，其中就包括了数据分析中需要经常使用到的Numpy和Pandas等。更重要的是，不论在哪个平台上，都可以一键安装，自动配置好环境，不需要用户任何的额外操作，非常方便。因此，安装Python环境就只需要到ANACONDA网站上下载安装文件，双击安装即可。</p>
+<p>安装完成之后，使用<code>windows + r</code>键打开Windows命令行，输入ipython，然后回车：</p>
+<div class="highlight"><pre><span></span><span class="n">Python</span> <span class="mf">2.7.11</span> <span class="o">|</span><span class="n">Anaconda</span> <span class="mf">2.5.0</span> <span class="p">(</span><span class="mi">64</span><span class="o">-</span><span class="n">bit</span><span class="p">)</span><span class="o">|</span> <span class="p">(</span><span class="k">default</span><span class="p">,</span> <span class="n">Jan</span> <span class="mi">29</span> <span class="mi">2016</span><span class="p">,</span> <span class="mi">14</span><span class="o">:</span><span class="mi">26</span><span class="o">:</span><span class="mi">21</span><span class="p">)</span> <span class="p">[</span><span class="n">MSC</span> <span class="n">v</span><span class="mf">.1500</span> <span class="mi">64</span> <span class="n">bit</span> <span class="p">(</span><span class="n">AMD64</span><span class="p">)]</span>
+
+<span class="n">Type</span> <span class="s">&quot;copyright&quot;</span><span class="p">,</span> <span class="s">&quot;credits&quot;</span> <span class="n">or</span> <span class="s">&quot;license&quot;</span> <span class="k">for</span> <span class="n">more</span> <span class="n">information</span><span class="p">.</span>
+
+<span class="n">IPython</span> <span class="mf">4.0.3</span> <span class="o">--</span> <span class="n">An</span> <span class="n">enhanced</span> <span class="n">Interactive</span> <span class="n">Python</span><span class="p">.</span>
+
+<span class="o">?</span>         <span class="o">-&gt;</span> <span class="n">Introduction</span> <span class="n">and</span> <span class="n">overview</span> <span class="n">of</span> <span class="n">IPython</span><span class="err">&#39;</span><span class="n">s</span> <span class="n">features</span><span class="p">.</span>
+
+<span class="nf">%quickref</span> <span class="o">-&gt;</span> <span class="n">Quick</span> <span class="n">reference</span><span class="p">.</span>
+
+<span class="n">help</span>      <span class="o">-&gt;</span> <span class="n">Python</span><span class="err">&#39;</span><span class="n">s</span> <span class="n">own</span> <span class="n">help</span> <span class="n">system</span><span class="p">.</span>
+
+<span class="n">object</span><span class="o">?</span>   <span class="o">-&gt;</span> <span class="n">Details</span> <span class="n">about</span> <span class="err">&#39;</span><span class="n">object</span><span class="err">&#39;</span><span class="p">,</span> <span class="n">use</span> <span class="err">&#39;</span><span class="n">object</span><span class="o">??</span><span class="err">&#39;</span> <span class="k">for</span> <span class="n">extra</span> <span class="n">details</span><span class="p">.</span>
+</pre></div>
+
+
+<p>如上所示，如果成功进入了Python环境，则代表安装成功。</p>
+<h2>使用pandas处理excel</h2>
+<p>在本文我以<code>log.xls</code>文件为例，来说明如何使用pandas处理excel文件。<code>log.xls</code>文件的内容如下所示：</p>
+<p><img alt="excel" src="http://ww4.sinaimg.cn/large/9f9f764egw1f2bpur7t6oj21400l3jwu.jpg" /></p>
+<p>可以看到<code>log.xls</code>中包含了多个的表（sheet），每个表主要包括了member和activity两个属性，相同的member ID的数据相邻的排列在一起，并且最后一行是前面所有的汇总。这里，我们假设需要提取出每个member汇总的信息，即提取每个member连续出现的最后一行的数据。如何实现呢？</p>
+<p>导入pandas模块：</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
+</pre></div>
+
+
+<p>使用import读入pandas模块，并且为了方便使用其缩写<code>pd</code>指代。</p>
+<p>读入待处理的excel文件：</p>
+<div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s1">&#39;log.xls&#39;</span><span class="p">)</span>
+</pre></div>
+
+
+<p>通过使用<code>read_excel</code>函数读入excel文件，后面需要替换成excel文件所在的路径。读入之后变为pandas的DataFrame对象。DataFrame是一个面向列(column-oriented)的二维表结构，且含有列表和行标，对excel文件的操作就转换为对DataFrame操作。另外，如果一个excel含有多个表，如果你只想读入其中一个可以：</p>
+<div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s1">&#39;log.xls&#39;</span><span class="p">,</span> <span class="n">sheetname</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+
+
+<p>增加了一个参数<code>sheetname</code>，表示的是第几个表，从0开始计数。我上面设置的是1，也就是第二个表。</p>
+<p>读入之后，可以先查看表头信息和每一列的数据类型：</p>
+<div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">dtypes</span>
+</pre></div>
+
+
+<p>输出如下：</p>
+<div class="highlight"><pre><span></span>Member         object
+Unnamed: 1    float64
+Unnamed: 2    float64
+Unnamed: 3    float64
+Unnamed: 4    float64
+Unnamed: 5    float64
+家内外活动类型        object
+Unnamed: 7     object
+activity       object
+dtype: object
+</pre></div>
+
+
+<p>提取每个member连续出现的最后一行数据：</p>
+<div class="highlight"><pre><span></span> <span class="n">new_df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="s1">&#39;Member&#39;</span><span class="p">,</span> <span class="n">keep</span><span class="o">=</span><span class="s1">&#39;last&#39;</span><span class="p">)</span>
+</pre></div>
+
+
+<p>以上语句的意思是根据<code>Member</code>字段去除掉多余的行，并且保留相同行的最后一行数据。这些就得到了每一个member最后一行的数据了，返回了经过筛选后的DataFrame。</p>
+<p>接下来需要将处理后的结果，保存为excel文件：</p>
+<div class="highlight"><pre><span></span><span class="n">out</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">ExcelWriter</span><span class="p">(</span><span class="s1">&#39;output.xls&#39;</span><span class="p">)</span>
+<span class="n">new_df</span><span class="o">.</span><span class="n">to_excel</span><span class="p">(</span><span class="n">out</span><span class="p">)</span>
+<span class="n">out</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+</pre></div>
+
+
+<p><code>output.xls</code>是你要保存的文件名，可以任取；然后将DataFrame的内容保存到该文件，最后保存该文件到系统的磁盘上。</p>
+<p>接下来，你就可以在当前目录看到一个新的文件，可以直接使用excel打开查看。</p>
+<p>Pandas还提供了很多的API，可以根据具体的任务，查找API文档，找到合适的函数来完成任务。</p>
+<h2>附：一个完整的示例</h2>
+<div class="highlight"><pre><span></span><span class="c1">#coding=utf-8</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
+
+<span class="c1"># 读入excel文件中的第2个表</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s1">&#39;log.xls&#39;</span><span class="p">,</span> <span class="n">sheetname</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="c1"># 查看表的数据类型</span>
+<span class="k">print</span> <span class="n">df</span><span class="o">.</span><span class="n">dtypes</span>
+<span class="c1"># 查看Member列的数据</span>
+<span class="k">print</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Member&#39;</span><span class="p">]</span>
+
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd"># 新建一列，每一行的值是Member列和activity列相同行值的和</span>
+<span class="sd">for i in df.index:</span>
+<span class="sd">    df[&#39;activity_2&#39;][i] = df[&#39;Member&#39;][i] + df[&#39;activity&#39;][i]</span>
+<span class="sd">&#39;&#39;&#39;</span>
+
+<span class="c1"># 根据Member字段去除掉多余的行，并且保留相同行的最后一行数据</span>
+<span class="n">new_df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="s1">&#39;Member&#39;</span><span class="p">,</span> <span class="n">keep</span><span class="o">=</span><span class="s1">&#39;last&#39;</span><span class="p">)</span>
+<span class="c1"># 导出结果</span>
+<span class="n">out</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">ExcelWriter</span><span class="p">(</span><span class="s1">&#39;output.xls&#39;</span><span class="p">)</span>
+<span class="n">new_df</span><span class="o">.</span><span class="n">to_excel</span><span class="p">(</span><span class="n">out</span><span class="p">)</span>
+<span class="n">out</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+</pre></div>
+            </div><!-- /.entry-content -->
+            <div class="comments">
+              <h3>Comments</h3>
+              <div id="disqus_thread"></div>
+              <script type="text/javascript">
+                var disqus_identifier = "shi-yong-pythonchu-li-excelwen-jian.html";
+                (function() {
+                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                dsq.src = 'http://wengwt.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                })();
+              </script>
+            </div>
+
+
+        </div><!-- /.eleven.columns -->
+
+<div class="three columns">
+
+<!--
+<h4>Pages</h4>
+
+ <ul>
+      <li><a href="/categories.html">分类</a></li>
+      <li><a href="/tags.html">标签</a></li>
+      <li><a href="/archives.html">归档</a></li>
+      <li><a href="/pages/about-me.html">关于我</a></li>
+  </ul>
+-->
+
+<aside id="sidebar"><!--Google站内搜索开始-->
+        <div class="search">
+                <!--<h2>站内搜索</h2>-->
+                <form method=get action="http://www.google.com/search">
+                <input type=text name=q>
+                <input type=submit name=btnG value="搜索">
+                <input type=hidden name=ie value=UTF-8>
+                <input type=hidden name=oe value=UTF-8>
+                <input type=hidden name=hl value=zh-CN>
+                <input type=hidden name=domains value="http://www.wengweitao.com">
+                <input type=hidden name=sitesearch value="http://www.wengweitao.com">
+                </form>
+        </div>
+<!--Google站内搜索结束-->
+
+<h4>分类</h4>
+<ul>
+		<li><a href="http://www.wengweitao.com/category/bian-cheng-yu-yan.html">编程语言</a></li>
+		<li><a href="http://www.wengweitao.com/category/csji-chu.html">CS基础</a></li>
+		<li><a href="http://www.wengweitao.com/category/du-shu-bi-ji.html">读书笔记</a></li>
+		<li><a href="http://www.wengweitao.com/category/gong-ju.html">工具</a></li>
+		<li><a href="http://www.wengweitao.com/category/ji-qi-xue-xi.html">机器学习</a></li>
+		<li><a href="http://www.wengweitao.com/category/ji-zhu.html">技术</a></li>
+		<li><a href="http://www.wengweitao.com/category/python.html">Python</a></li>
+		<li><a href="http://www.wengweitao.com/category/sheng-huo.html">生活</a></li>
+		<li><a href="http://www.wengweitao.com/category/suan-fa-yu-shu-ju-jie-gou.html">算法与数据结构</a></li>
+</ul>
+
+<!--
+<h4>标签</h4>
+<ul class="tagcloud">
+</ul>
+-->
+
+
+<nav class="widget">
+  <h4>社交</h4>
+  <ul>
+    <li><a href="http://weibo.com/u/2678027854">新浪微博</a></li>
+    <li><a href="http://www.douban.com/people/wengwt/">豆瓣</a></li>
+    <li><a href="http://www.zhihu.com/people/vita-49">知乎</a></li>
+    <li><a href="https://github.com/nurnoch">Github</a></li>
+    <li><a href="https://www.v2ex.com/member/wwttc">V2EX</a></li>
+  </ul>
+</nav>
+
+<nav class="widget">
+  <h4>友情链接</h4>
+  <ul>
+    <li><a href="http://netlab.pkusz.edu.cn/">互联网信息工程研发中心</a></li>
+    <li><a href="http://www.houcj.net/">houcj's blog</a></li>
+    <li><a href="http://www.rudy-yuan.net/">rundy-yuan's blog</a></li>
+    <li><a href="http://zwyang.me/blog/">zwyanswer's blog</a></li>
+  </ul>
+</nav>
+
+
+</div> </div><!-- /.row -->
+
+
+</section>
+
+       </div><!-- /.row -->
+    </div><!-- /.container -->
+
+
+       <div class="container.nopad bg">
+
+    
+        <footer id="credits" class="row">
+          <div class="seven columns left-center">
+
+                   <address id="about" class="vcard body">
+                    Proudly powered by  <a href="http://getpelican.com/">Pelican</a> and Theme by Gum © 2015 wwt       
+                       <!-- cnzz -->
+                    <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1255354158'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s4.cnzz.com/z_stat.php%3Fid%3D1255354158%26show%3Dpic2' type='text/javascript'%3E%3C/script%3E"));</script>  
+                    </address>
+                   
+          </div>
+
+
+          <div class="seven columns">
+            <div class="row">
+              <ul class="socbtns">
+
+
+
+
+
+              </ul>
+            </div>
+          </div>
+        </footer>
+
+    </div>
+
+
+
+<script type="text/javascript">
+    var disqus_shortname = 'wengwt';
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+  <script src="http://www.wengweitao.com/theme/js/libs/jquery-1.9.1.min.js"></script>
+  <script src="http://www.wengweitao.com/theme/js/libs/gumby.min.js"></script>
+  <script src="http://www.wengweitao.com/theme/js/plugins.js"></script>
+</body>
+</html>

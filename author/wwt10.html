@@ -61,14 +61,21 @@
         <div class="eleven columns">
                  <ol id="post-list">
                         <li><article class="hentry">
+<<<<<<< HEAD
                                 <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/ti-sheng-shu.html" rel="bookmark" title="Permalink to 提升树">提升树</a></h2> </header>
                                 <footer class="post-info">
                                     <abbr class="published" title="2014-08-07T22:27:00+08:00"> 四 07 八月 2014 </abbr>
+=======
+                                <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/pythonrong-qi-counterde-shi-yong.html" rel="bookmark" title="Permalink to Python容器——Counter的使用">Python容器——Counter的使用</a></h2> </header>
+                                <footer class="post-info">
+                                    <abbr class="published" title="2015-04-08T14:52:00+08:00"> 三 08 四月 2015 </abbr>
+>>>>>>> 700a254393e115d0e8df2dc309357b2ba17b3d4a
                                     <address class="vcard author">By 
                                     <a class="url fn" href="http://www.wengweitao.com/author/wwt.html"> wwt</a>
                                     </address>
                                 </footer><!-- /.post-info -->
                                 <div class="entry-content"> <blockquote>
+<<<<<<< HEAD
 <p>提升树是以分类树或回归树为基本分类器的提升方法。提升树被认为是统计学习中性能最好的方法之一。</p>
 </blockquote>
 <h2>提升树模型</h2>
@@ -84,6 +91,34 @@
 其中，<span class="math">\(f_{m-1 ...</span></p> </div><!-- /.entry-content -->
 
                                 <div class="medium primary btn"><a href="http://www.wengweitao.com/ti-sheng-shu.html" rel="bookmark" title="Permalink to 提升树">Read more <i class="icon-arrow-right"></i></a></div>
+=======
+<p>Counter是Python标准库提供的一个非常有用的容器，可以用来对序列中出现的各个元素，进行计数。这篇文章中，利用Counter来实现多元集合(MultiSets)、概率质量函数(PMFs)以及贝叶斯假设。</p>
+</blockquote>
+<p>在Python代码中使用Counter，只需从collections包引入：</p>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">Counter</span>
+</pre></div>
+
+
+<h3>1.判断两个字符串是否由相同的字母集合调换顺序而成的（anagram）</h3>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">is_anagram</span><span class="p">(</span><span class="n">word1</span><span class="p">,</span> <span class="n">word2</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Checks whether the words are anagrams.</span>
+
+<span class="sd">    word1: string</span>
+<span class="sd">    word2: string</span>
+
+<span class="sd">    returns: boolean</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">return</span> <span class="n">Counter</span><span class="p">(</span><span class="n">word1</span><span class="p">)</span> <span class="o">==</span> <span class="n">Counter</span><span class="p">(</span><span class="n">word2</span><span class="p">)</span>
+</pre></div>
+
+
+<p>Counter如果传入的参数是字符串，就会统计字符串中每个字符出现的次数，如果两个字符串由相同的字母集合颠倒顺序而成，则它们Counter的结果应该是一样的。</p>
+<h3>2.多元集合(MultiSets)</h3>
+<p>multiset是相同元素可以出现多次的集合，Counter可以非常自然地用来表示multiset。并且可以将Counter扩展，使之拥有set的一些操作如is_subset ...</p> </div><!-- /.entry-content -->
+
+                                <div class="medium primary btn"><a href="http://www.wengweitao.com/pythonrong-qi-counterde-shi-yong.html" rel="bookmark" title="Permalink to Python容器——Counter的使用">Read more <i class="icon-arrow-right"></i></a></div>
+>>>>>>> 700a254393e115d0e8df2dc309357b2ba17b3d4a
 
 
 
@@ -96,14 +131,21 @@
 
                         </article></li>
                         <li><article class="hentry">
+<<<<<<< HEAD
                                 <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/adaboostsuan-fa.html" rel="bookmark" title="Permalink to AdaBoost算法">AdaBoost算法</a></h2> </header>
                                 <footer class="post-info">
                                     <abbr class="published" title="2014-08-06T19:56:00+08:00"> 三 06 八月 2014 </abbr>
+=======
+                                <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/bian-xie-gao-zhi-liang-pythondai-ma-2.html" rel="bookmark" title="Permalink to 编写高质量Python代码（2）">编写高质量Python代码（2）</a></h2> </header>
+                                <footer class="post-info">
+                                    <abbr class="published" title="2015-04-07T22:39:00+08:00"> 二 07 四月 2015 </abbr>
+>>>>>>> 700a254393e115d0e8df2dc309357b2ba17b3d4a
                                     <address class="vcard author">By 
                                     <a class="url fn" href="http://www.wengweitao.com/author/wwt.html"> wwt</a>
                                     </address>
                                 </footer><!-- /.post-info -->
                                 <div class="entry-content"> <blockquote>
+<<<<<<< HEAD
 <p>提升（boosting）方法是一种常用的统计学习方法。在分类问题中，它通过改变训练样本的权重，学习多个分类器，并将这些分类器进行线性组合，提高分类的性能。</p>
 </blockquote>
 <h2>提升方法AdaBoost算法</h2>
@@ -114,26 +156,58 @@
 <p>对于分类问题而言，一个粗糙的分类规则要比精确的分类规则容易的多。<strong>提升方法就是从弱学习算法出发，反复学习，得到一系列弱分类器，然后组合这些弱分类器构成一个强分类器。</strong>大多数提升方法都是改变训练数据的概率分布（训练数据的权值分布 ...</p> </div><!-- /.entry-content -->
 
                                 <div class="medium primary btn"><a href="http://www.wengweitao.com/adaboostsuan-fa.html" rel="bookmark" title="Permalink to AdaBoost算法">Read more <i class="icon-arrow-right"></i></a></div>
+=======
+<p>这篇文章基础语法出发讲述Python的使用技巧和注意事项</p>
+</blockquote>
+<h3>建议8： 利用assert语句来发现问题</h3>
+<p>assert语句主要为调试程序服务，能够快速方便地检查程序的异常或者发现不恰当的输入等，防止意想不到的情况出现。
+基本语法如下：</p>
+<div class="highlight"><pre><span></span><span class="k">assert</span> <span class="n">expression1</span> <span class="p">[</span><span class="s2">&quot;,&quot;</span> <span class="n">expression2</span><span class="p">]</span> 
+<span class="c1">#assert x == y, &quot;not equals&quot;</span>
+</pre></div>
+
+
+<p>其中计算expressi1的值若为False则会引发一个AssertionError，expression是可选的，用来传递具体的异常信息。</p>
+<p>另外，需要注意的是断言是对程序的性能有一定的影响，禁用断言的方法是运行时加上 -O标志。</p>
+<h3>建议9： 交换值时不推荐使用中间变量</h3>
+<div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">1</span><span class="p">]:</span> <span class="kn">from</span> <span class="nn">timeit</span> <span class="kn">import</span> <span class="n">Timer</span>
+<span class="n">In</span> <span class="p">[</span><span class="mi">2</span><span class="p">]:</span> <span class="n">Timer</span><span class="p">(</span><span class="s1">&#39;temp = x; x = y; y = temp&#39;</span><span class="p">,</span> <span class="s1">&#39;x = 2; y = 3&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">timeit</span><span class="p">()</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">2</span><span class="p">]:</span> <span class="mf">0.054762504979284254</span>
+<span class="n">In</span> <span class="p">[</span><span class="mi">3 ...</span></pre></div> </div><!-- /.entry-content -->
+
+                                <div class="medium primary btn"><a href="http://www.wengweitao.com/bian-xie-gao-zhi-liang-pythondai-ma-2.html" rel="bookmark" title="Permalink to 编写高质量Python代码（2）">Read more <i class="icon-arrow-right"></i></a></div>
+>>>>>>> 700a254393e115d0e8df2dc309357b2ba17b3d4a
 
 
 
                                 <div class="row tag-row">
                                         <span>Tagged as : </span>
+<<<<<<< HEAD
                                             <a class="danger label" href="http://www.wengweitao.com/tag/du-shu-bi-ji.html">读书笔记</a>
+=======
+                                            <a class="danger label" href="http://www.wengweitao.com/tag/python.html">Python</a>
+>>>>>>> 700a254393e115d0e8df2dc309357b2ba17b3d4a
                                 </div>
 
 
 
                         </article></li>
                         <li><article class="hentry">
+<<<<<<< HEAD
                                 <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/zhi-chi-xiang-liang-ji-smoxu-lie-zui-xiao-zui-you-hua-suan-fa.html" rel="bookmark" title="Permalink to 支持向量机——SMO（序列最小最优化算法）">支持向量机——SMO（序列最小最优化算法）</a></h2> </header>
                                 <footer class="post-info">
                                     <abbr class="published" title="2014-08-05T10:02:00+08:00"> 二 05 八月 2014 </abbr>
+=======
+                                <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/pythondai-ma-ge-shi-hua-gong-ju-yapf.html" rel="bookmark" title="Permalink to Python代码格式化工具——YAPF">Python代码格式化工具——YAPF</a></h2> </header>
+                                <footer class="post-info">
+                                    <abbr class="published" title="2015-04-07T15:10:00+08:00"> 二 07 四月 2015 </abbr>
+>>>>>>> 700a254393e115d0e8df2dc309357b2ba17b3d4a
                                     <address class="vcard author">By 
                                     <a class="url fn" href="http://www.wengweitao.com/author/wwt.html"> wwt</a>
                                     </address>
                                 </footer><!-- /.post-info -->
                                 <div class="entry-content"> <blockquote>
+<<<<<<< HEAD
 <p>SVM的学习算法可以归结为凸二次规划问题。这样的凸二次规划问题你具有全局最优解，并且许多最优化算法可以用来求解，但是当训练样本容量很大，这些算法往往变得非常低效，以致无法使用。所以本文介绍了如何高效地实现支持向量机学习。</p>
 </blockquote>
 <p>我们将用序列最小最优化（sequential minimal optimization, SMO）算法，求解
@@ -143,26 +217,62 @@
 <div class="math">$$0 \leq \alpha_i \leq C 　i ...</div> </div><!-- /.entry-content -->
 
                                 <div class="medium primary btn"><a href="http://www.wengweitao.com/zhi-chi-xiang-liang-ji-smoxu-lie-zui-xiao-zui-you-hua-suan-fa.html" rel="bookmark" title="Permalink to 支持向量机——SMO（序列最小最优化算法）">Read more <i class="icon-arrow-right"></i></a></div>
+=======
+<p><a href="https://github.com/google/yapf">YAPF</a>是Google开源的一个工具，可以用来格式化Python代码，使Python代码拥有一致的编程风格，减轻了团队或者个人进行代码风格维护的单调的工作。</p>
+</blockquote>
+<h3>介绍</h3>
+<p>之前已经有一些类似的Python代码风格格式化工具如：<a href="https://github.com/hhatto/autopep8">autopep8</a>和<a href="https://github.com/spulec/pep8ify">pep8ify</a>等。这些工具基于<a href="http://clang.llvm.org/docs/ClangFormat.html">clang-format</a>,能够很好的解决大多数pep8报告的格式问题。然而，有些代码虽然遵从了PEP8的编程风格指南，但这并不意味着这些代码看起来就足够好，对于这种问题之前的那些Python代码格式化工具就无能为力了。
+YAPF与其他的格式化工具不同，其算法能够把代码重新格式化为符合编程风格的最佳格式，无论原始的代码是否违法了某种指定的编程风格指南。YAPF的最终目标就是通过YAPF格式化后的代码能够与程序员完全遵从编程风格写的代码一样的好。</p>
+<h3>YAPF的使用</h3>
+<h4>1.安装</h4>
+<p>可以直接通过pip进行安装：</p>
+<div class="highlight"><pre><span></span>pip install yapf
+</pre></div>
+
+
+<h4>2.使用。</h4>
+<p>安装完成之后，就可以直接在命令行中使用了。
+以下是yapf的命令行参数：</p>
+<div class="highlight"><pre><span></span>usage: yapf <span class="o">[</span>-h<span class="o">]</span> <span class="o">[</span>--style STYLE<span class="o">]</span> <span class="o">[</span>-d <span class="p">|</span> -i<span class="o">]</span> <span class="o">[</span>-l START-END <span class="p">|</span> -r<span class="o">]</span> ...
+
+Formatter <span class="k">for</span> Python code.
+
+positional arguments ...</pre></div> </div><!-- /.entry-content -->
+
+                                <div class="medium primary btn"><a href="http://www.wengweitao.com/pythondai-ma-ge-shi-hua-gong-ju-yapf.html" rel="bookmark" title="Permalink to Python代码格式化工具——YAPF">Read more <i class="icon-arrow-right"></i></a></div>
+>>>>>>> 700a254393e115d0e8df2dc309357b2ba17b3d4a
 
 
 
                                 <div class="row tag-row">
                                         <span>Tagged as : </span>
+<<<<<<< HEAD
                                             <a class="danger label" href="http://www.wengweitao.com/tag/du-shu-bi-ji.html">读书笔记</a>
+=======
+                                            <a class="danger label" href="http://www.wengweitao.com/tag/python.html">Python</a>
+                                            <a class="danger label" href="http://www.wengweitao.com/tag/gong-ju.html">工具</a>
+>>>>>>> 700a254393e115d0e8df2dc309357b2ba17b3d4a
                                 </div>
 
 
 
                         </article></li>
                         <li><article class="hentry">
+<<<<<<< HEAD
                                 <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/zhi-chi-xiang-liang-ji-fei-xian-xing-zhi-chi-xiang-liang-ji.html" rel="bookmark" title="Permalink to 支持向量机——非线性支持向量机">支持向量机——非线性支持向量机</a></h2> </header>
                                 <footer class="post-info">
                                     <abbr class="published" title="2014-08-04T19:39:00+08:00"> 一 04 八月 2014 </abbr>
+=======
+                                <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/bian-xie-gao-zhi-liang-pythondai-ma-1.html" rel="bookmark" title="Permalink to 编写高质量Python代码（1）">编写高质量Python代码（1）</a></h2> </header>
+                                <footer class="post-info">
+                                    <abbr class="published" title="2015-04-06T18:42:00+08:00"> 一 06 四月 2015 </abbr>
+>>>>>>> 700a254393e115d0e8df2dc309357b2ba17b3d4a
                                     <address class="vcard author">By 
                                     <a class="url fn" href="http://www.wengweitao.com/author/wwt.html"> wwt</a>
                                     </address>
                                 </footer><!-- /.post-info -->
                                 <div class="entry-content"> <blockquote>
+<<<<<<< HEAD
 <p>如果分类问题是非线性的，那么就要用到非线性支持向量机。非线性支持向量机主要特点就是利用核技巧。</p>
 </blockquote>
 <h2>核技巧</h2>
@@ -175,25 +285,54 @@
 <p>设<span class="math">\(\chi\)</span>是输入空间（欧氏空间<span class="math">\(R^n\)</span>的子集或离散集合），<span class="math">\(H\)</span>为特征空间（希尔伯特空间 ...</p> </div><!-- /.entry-content -->
 
                                 <div class="medium primary btn"><a href="http://www.wengweitao.com/zhi-chi-xiang-liang-ji-fei-xian-xing-zhi-chi-xiang-liang-ji.html" rel="bookmark" title="Permalink to 支持向量机——非线性支持向量机">Read more <i class="icon-arrow-right"></i></a></div>
+=======
+<p>去年参加了珠海的PyCon大会，幸运地抽中了三本书，其中一本是《编写高质量代码：改善Python程序的91个建议》。本书从多个方面给出了编写高质量Python代码的91个建议，我把每一章的建议都先总结下来，分享给大家。</p>
+</blockquote>
+<h3>建议1： 理解Pythonic概念</h3>
+<h4>（1）Pythonic的定义</h4>
+<p>遵循Pythonic的代码看起来像伪代码：</p>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">quicksort</span><span class="p">(</span><span class="n">array</span><span class="p">):</span>
+    <span class="n">less</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">greater</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">array</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">array</span>
+    <span class="n">pivot</span> <span class="o">=</span> <span class="n">array</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">array</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="n">pivot</span><span class="p">:</span>
+            <span class="n">greater</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">less</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">quicksort</span><span class="p">(</span><span class="n">less</span><span class="p">)</span> <span class="o">+</span> <span class="p">[</span><span class="n">pivot</span><span class="p">]</span> <span class="o">+</span> <span class="n">quicksort</span><span class="p">(</span><span class="n">greater</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__ ...</span></pre></div> </div><!-- /.entry-content -->
+
+                                <div class="medium primary btn"><a href="http://www.wengweitao.com/bian-xie-gao-zhi-liang-pythondai-ma-1.html" rel="bookmark" title="Permalink to 编写高质量Python代码（1）">Read more <i class="icon-arrow-right"></i></a></div>
+>>>>>>> 700a254393e115d0e8df2dc309357b2ba17b3d4a
 
 
 
                                 <div class="row tag-row">
                                         <span>Tagged as : </span>
-                                            <a class="danger label" href="http://www.wengweitao.com/tag/du-shu-bi-ji.html">读书笔记</a>
+                                            <a class="danger label" href="http://www.wengweitao.com/tag/python.html">Python</a>
                                 </div>
 
 
 
                         </article></li>
                         <li><article class="hentry">
+<<<<<<< HEAD
                                 <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/zhi-chi-xiang-liang-ji-xian-xing-zhi-chi-xiang-liang-ji.html" rel="bookmark" title="Permalink to 支持向量机——线性支持向量机">支持向量机——线性支持向量机</a></h2> </header>
                                 <footer class="post-info">
                                     <abbr class="published" title="2014-08-03T14:54:00+08:00"> 日 03 八月 2014 </abbr>
+=======
+                                <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/fei-bo-na-qi-shu-lie-ji-qi-xiang-guan-wen-ti.html" rel="bookmark" title="Permalink to 斐波那契数列及其相关问题">斐波那契数列及其相关问题</a></h2> </header>
+                                <footer class="post-info">
+                                    <abbr class="published" title="2015-04-05T00:00:00+08:00"> 日 05 四月 2015 </abbr>
+>>>>>>> 700a254393e115d0e8df2dc309357b2ba17b3d4a
                                     <address class="vcard author">By 
                                     <a class="url fn" href="http://www.wengweitao.com/author/wwt.html"> wwt</a>
                                     </address>
                                 </footer><!-- /.post-info -->
+<<<<<<< HEAD
                                 <div class="entry-content"> <blockquote>
 <p>对于理想情况下线性可分的问题，可以使用上文介绍的线性可分支持向量机（硬间隔最大化）完美解决。但是，实际情况中，训练数据往往是线性不可分的，即在样本中存在噪声或特异点。此时，可以使用本文中介绍的更一般的学习算法——线性支持向量机（软间隔最大化）。</p>
 </blockquote>
@@ -204,12 +343,35 @@
 <div class="math">$$min_{w,b,\xi ...</div> </div><!-- /.entry-content -->
 
                                 <div class="medium primary btn"><a href="http://www.wengweitao.com/zhi-chi-xiang-liang-ji-xian-xing-zhi-chi-xiang-liang-ji.html" rel="bookmark" title="Permalink to 支持向量机——线性支持向量机">Read more <i class="icon-arrow-right"></i></a></div>
+=======
+                                <div class="entry-content"> <p>很多书在提到递归的时候，总是会拿斐波那契数列作为例子，它的定义如下：
+<img alt="Fibonacci" src="http://ac.jobdu.com/upload/201201/image/fbncslie.jpg" /></p>
+<p>现在要求输出斐波那契数列的第n项。</p>
+<p>首先，最容易想到的方法就是直接利用递归求解：</p>
+<div class="highlight"><pre><span></span><span class="kt">long</span> <span class="kt">long</span> <span class="nf">fib</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">n</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="n">n</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="k">return</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="k">else</span>
+        <span class="k">return</span> <span class="n">fib</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">fib</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">2</span><span class="p">);</span> 
+<span class="p">}</span>
+</pre></div>
+
+
+<p>递归求解的形式非常简单易懂，但是递归的解法存在很严重的效率问题，因为计算过程中很多结点都是重复计算的，而且重复的结点数随着n的增大而急剧增加。例如，假设n=100，那么程序的速度将慢到无法忍受！</p>
+<p>上面递归的方法之所以慢，是因为大量的重复计算，我们只需要把已经得到的数列的中间项保存起来，下次需要的时候直接查找，就不用重复计算了。</p>
+<div class="highlight"><pre><span></span><span class="kt">long</span> <span class="kt">long</span> <span class="nf">fib</span><span class="p">(</span><span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">n</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int ...</span></pre></div> </div><!-- /.entry-content -->
+
+                                <div class="medium primary btn"><a href="http://www.wengweitao.com/fei-bo-na-qi-shu-lie-ji-qi-xiang-guan-wen-ti.html" rel="bookmark" title="Permalink to 斐波那契数列及其相关问题">Read more <i class="icon-arrow-right"></i></a></div>
+>>>>>>> 700a254393e115d0e8df2dc309357b2ba17b3d4a
 
 
 
                                 <div class="row tag-row">
                                         <span>Tagged as : </span>
-                                            <a class="danger label" href="http://www.wengweitao.com/tag/du-shu-bi-ji.html">读书笔记</a>
+                                            <a class="danger label" href="http://www.wengweitao.com/tag/mian-shi-ti.html">面试题</a>
                                 </div>
 
 
@@ -254,6 +416,7 @@
 		<li><a href="http://www.wengweitao.com/category/du-shu-bi-ji.html">读书笔记</a></li>
 		<li><a href="http://www.wengweitao.com/category/gong-ju.html">工具</a></li>
 		<li><a href="http://www.wengweitao.com/category/ji-qi-xue-xi.html">机器学习</a></li>
+		<li><a href="http://www.wengweitao.com/category/ji-zhu.html">技术</a></li>
 		<li><a href="http://www.wengweitao.com/category/python.html">Python</a></li>
 		<li><a href="http://www.wengweitao.com/category/sheng-huo.html">生活</a></li>
 		<li><a href="http://www.wengweitao.com/category/suan-fa-yu-shu-ju-jie-gou.html">算法与数据结构</a></li>
@@ -292,7 +455,7 @@
 
 <p class="paginator">
             <a href="http://www.wengweitao.com/author/wwt9.html"><i class="icon-arrow-left"></i></a>
-    Page 10 / 13
+    Page 10 / 14
         <a href="http://www.wengweitao.com/author/wwt11.html"><i class="icon-arrow-right"></i></a>
 </p>
 </section><!-- /#content -->

@@ -1,5 +1,719 @@
 <?xml version="1.0" encoding="utf-8"?>
+<<<<<<< HEAD
 <rss version="2.0"><channel><title>wwt's blog</title><link>http://www.wengweitao.com/</link><description></description><lastBuildDate>Wed, 05 Aug 2015 22:42:00 +0800</lastBuildDate><item><title>生成学习算法与判别学习算法</title><link>http://www.wengweitao.com/sheng-cheng-xue-xi-suan-fa-yu-pan-bie-xue-xi-suan-fa.html</link><description>&lt;p&gt;机器学习中有两类学习算法：&lt;strong&gt;生成学习算法&lt;/strong&gt;（Generative learning algorithm）和&lt;strong&gt;判别学习算法&lt;/strong&gt;（Discriminative learning algorithm），它们所学到的模型分别成为生成模型和判别模型。那么这两种学习算法的区别是什么呢？&lt;/p&gt;
+=======
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>wwt's blog</title><link>http://www.wengweitao.com/</link><description></description><atom:link href="http://www.wengweitao.com/feeds/all.rss.xml" rel="self"></atom:link><lastBuildDate>Sat, 16 Apr 2016 13:06:00 +0800</lastBuildDate><item><title>在carina上使用Docker搭建免费的ShadowSocks</title><link>http://www.wengweitao.com/zai-carinashang-shi-yong-dockerda-jian-mian-fei-de-shadowsocks.html</link><description>&lt;h2&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://getcarina.com/"&gt;Carina&lt;/a&gt;是Rackspace旗下的一个网站，提供了Docker服务。最近，看到消息可以在该网站上注册账号，免费试用Docker服务。竟然有这么好的事，于是尝试注册了一个账号，搭建了一个免费的shadowsocks服务器。&lt;/p&gt;
+&lt;h3&gt;账号注册&lt;/h3&gt;
+&lt;p&gt;注册的过程需要发送验证码短信，才能注册成功。而且，不支持中国大陆的手机号。解决方法是在手机上下载 &lt;a href="https://go-text.me/"&gt;textme&lt;/a&gt;  APP，可以得到一个美国的虚拟手机号，用于发送和接收短信。得到虚拟手机号后，输入接收到的短信验证码即可成功注册。&lt;/p&gt;
+&lt;h3&gt;创建cluster&lt;/h3&gt;
+&lt;p&gt;登陆进去后，界面非常简单，点击&lt;code&gt;Add Cluster...&lt;/code&gt;新建一个docker集群，待会儿就在这个集群上面搭建shadowsocks服务。输入cluster的名称，这里我用&lt;code&gt;wwt&lt;/code&gt;，点击&lt;code&gt;Create Cluster&lt;/code&gt;，需要等待几分钟的时间即可创建完毕。&lt;/p&gt;
+&lt;p&gt;&lt;img alt="cluster" src="http://ww3.sinaimg.cn/large/9f9f764egw1f2yg3kq0thj20fj0jaq4d.jpg" /&gt;&lt;/p&gt;
+&lt;h3&gt;配置Docker CLI&lt;/h3&gt;
+&lt;p&gt;点击cluster下面的按钮&lt;code&gt;Get access&lt;/code&gt;，下载一个Docker集群配置信息文件。&lt;/p&gt;
+&lt;p&gt;解压后，进入该目录。source docker.env设置合适的docker环境变量：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nb"&gt;source&lt;/span&gt; docker.env
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;查看是否连接上：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;➜ docker info
+Containers: 11
+Images: 6
+Role: primary
+Strategy: spread
+Filters: health, port, dependency, affinity, constraint
+Nodes: 1
+ 2ede2591-1ec0-4c2b-a3ef-59697ff02ba7-n1: 104.130.22.24:42376
+  └ Status: Healthy
+  └ Containers: 11
+  └ Reserved CPUs: &lt;span class="m"&gt;0&lt;/span&gt; / 12
+  └ Reserved Memory: &lt;span class="m"&gt;0&lt;/span&gt; B / 4.2 GiB
+  └ Labels: com.docker.network.driver.overlay.bind_interface&lt;span class="o"&gt;=&lt;/span&gt;eth1, &lt;span class="nv"&gt;executiondriver&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;native-0.2, &lt;span class="nv"&gt;kernelversion&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;3.18.21-2-rackos, &lt;span class="nv"&gt;operatingsystem&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;Debian GNU/Linux &lt;span class="m"&gt;7&lt;/span&gt; &lt;span class="o"&gt;(&lt;/span&gt;wheezy&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="o"&gt;(&lt;/span&gt;containerized&lt;span class="o"&gt;)&lt;/span&gt;, &lt;span class="nv"&gt;storagedriver&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;aufs
+  └ Error: &lt;span class="o"&gt;(&lt;/span&gt;none&lt;span class="o"&gt;)&lt;/span&gt;
+  └ UpdatedAt: 2016-04-15T11:53:04Z
+Kernel Version: 3.18.21-2-rackos
+Operating System: linux
+CPUs: 12
+Total Memory: 4.2 GiB
+Name: 2ede2591-1ec0-4c2b-a3ef-59697ff02ba7-n1
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;可以看到cluster中结点的具体信息。&lt;/p&gt;
+&lt;h3&gt;通过Docker安装shadowsocks&lt;/h3&gt;
+&lt;p&gt;通过Docker安装shadowsocks非常方便，只需要一个命令：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;docker run -d --name shadowsocks -p 12306:12306 oddrationale/docker-shadowsocks -s 0.0.0.0 -p &lt;span class="m"&gt;12306&lt;/span&gt; -k yourpassword -m aes-256-cfb
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;-p是设置shadowsocks的服务器端口号；-k后面设置自己的密码。&lt;/p&gt;
+&lt;p&gt;使用&lt;code&gt;docker ps&lt;/code&gt;查看是否安装成功：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;➜  docker ps                                                                                                                        
+CONTAINER ID        IMAGE                             COMMAND                CREATED                  STATUS              PORTS                            NAMES
+1016c8cc0ce4        oddrationale/docker-shadowsocks   &lt;span class="s2"&gt;&amp;quot;/usr/local/bin/ssse   Less than a second ago   Up 22 seconds       104.130.22.24:12306-&amp;gt;12306/tcp   2ede2591-1ec0-4c2b-a3ef-59697ff02ba7-n1/shadowsocks   &lt;/span&gt;
+&lt;span class="s2"&gt;b47dd901c3dd        carina/consul                     &amp;quot;&lt;/span&gt;/bin/consul agent -   &lt;span class="m"&gt;5&lt;/span&gt; hours ago              Up &lt;span class="m"&gt;5&lt;/span&gt; hours                                           2ede2591-1ec0-4c2b-a3ef-59697ff02ba7-n1/carina-svcd  
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;可以看到shadowsocks服务已经在运行了。&lt;/p&gt;
+&lt;p&gt;使用port命令，可以查看shadowsocks服务的IP和端口：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;➜  docker port shadowsocks
+12306/tcp -&amp;gt; 104.130.22.24:12306
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;记住shadowsocks的IP和端口号，待会儿需要填入shadowsocks代理软件中。&lt;/p&gt;
+&lt;h3&gt;使用shadowsocks科学上网&lt;/h3&gt;
+&lt;p&gt;（1）下载Windows系统的&lt;a href="http://pan.baidu.com/s/1c05CZT2"&gt;Shadowsocks客户端&lt;/a&gt;，解压到任意目录，运行其中的shadowsocks.exe。&lt;/p&gt;
+&lt;p&gt;（2）添加shadowsocks的服务器IP和端口号、密码。点确定即可。&lt;/p&gt;
+&lt;p&gt;&lt;img alt="shadowsocks" src="http://ww2.sinaimg.cn/large/9f9f764egw1f2ygf33os1j207c07vaai.jpg" /&gt;&lt;/p&gt;
+&lt;p&gt;（3）右键点击任务栏中shadowsocks.exe的图标，勾选“启用系统代理”。&lt;/p&gt;
+&lt;p&gt;（4）打开任意浏览器，即可自由上网。&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h3&gt;References&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href="http://www.rendoumi.com/wan-quan-mian-fei-de-shadowsocksfu-wu-qi/"&gt;不花一分钱，搭建一个完全免费的Shadowsocks服务器&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://liujin.me/blog/2015/05/27/Docker-DigitalOcean-Shadowsocks-5-%E5%88%86%E9%92%9F%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/"&gt;Docker + DigitalOcean + Shadowsocks 5分钟科学上网&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://leohxj.gitbooks.io/a-programmer-prepares/content/effciency/break-through-intranet.html"&gt;程序员的自我修养&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://www.ishadowsocks.net/"&gt;shadowsocks客户端&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">wwt</dc:creator><pubDate>Sat, 16 Apr 2016 13:06:00 +0800</pubDate><guid>tag:www.wengweitao.com,2016-04-16:zai-carinashang-shi-yong-dockerda-jian-mian-fei-de-shadowsocks.html</guid><category>Docker</category><category>教程</category></item><item><title>Docker学习</title><link>http://www.wengweitao.com/dockerxue-xi.html</link><description>&lt;blockquote&gt;
+&lt;p&gt;Docker是诞生于2013年的一个开源项目，在开源之后就受到了广泛的关注和讨论。3年时间过去了，Docker已经成为了广大程序员耳熟能详的一个工具，在业界也得到了非常广泛的应用。我也一直对Docker十分感兴趣，便抽空了解了下Docker。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3&gt;简介&lt;/h3&gt;
+&lt;p&gt;了解Docker的人都知道它的概念与集装箱类似，但是Docker英文翻译过来的名字是“码头工人”。那么问题来了：Docker到底是码头工人还是集装箱呢？这就需要先简单的介绍一下集装箱的历史了。在1956年集装箱出现之前，货物的运输是一件成本非常高的事情，物流系统非常的零散和低效。假设内陆的地方想将大米出口到国外，那么首先需要工人将大米装到汽车上，然后通过汽车运输到沿海的港口，港口上的码头工人需要将大米从汽车转到轮船之上。可以看出这个过程中需要大量的人力作为货物的中转，不同运输工具之间的转换也存在着消耗，成本很高而且效率极低。于是，就出现了集装箱这个改变世界的箱子。集装箱是一个标准化的箱子，规定了标准的尺寸，使得不同的货物都可以装在集装箱中，无论是在公路或者海洋等各种运输场景中，集装箱都可以不用转变形态直接运输，中间的转运工作可以通过相同的搬运机械自动化运作。而且，集装箱也为不同的货物之间实现了隔离和保护，使得不同货物之间不会相互影响，也避免了外部环境对货物的影响。随着集装箱的出现，大大提高了运输的效率，使得码头工人这个职业基本消失。可以说，集装箱是人类现代社会最重要的发明之一，没有集装箱就没有经济的全球化。&lt;strong&gt;Docker就是软件世界的集装箱化&lt;/strong&gt;。Docker允许开发人员将一个应用及其所有的依赖装到一个标准化的单元，这保证了不管它所运行的环境如何，它总是可以相同的运行。&lt;/p&gt;
+&lt;p&gt;&lt;img alt="logo" src="http://ww4.sinaimg.cn/large/9f9f764egw1f2ycqndgtqj208301ygln.jpg" /&gt;&lt;/p&gt;
+&lt;p&gt;Docker是使用Go语言实现的一个开源项目，目标是&lt;strong&gt;实现轻量级的操作系统虚拟化解决方案&lt;/strong&gt;，是在Linux容器（LXC）的基础上进行封装，让用户不必操心容器的管理细节，使得用户操作Docker容器就像操作一个快速轻量级的虚拟机一样简单。Docker提供了一套集成的工具，使得开发人员可以在任何地方构建、传输和运行应用。Docker提供的这种CaaS（Docker Container as a Service）服务具有以下几个优点：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;灵活性：开发人员可以自由的定义环境，更加容易和快速的创建和部署应用；&lt;/li&gt;
+&lt;li&gt;可控制性：开发人员可以控制从基础设施到应用层面的所有代码，并且提供了对IT运维操作环境的标准化、安全和扩展。&lt;/li&gt;
+&lt;li&gt;可移植性：开发人员不定担心开发和生产环境的差异，使得容器可以运行于所有主流的Linux发行版和Windows操作系统中。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;从实现的功能上看，Docker与虚拟机有着相似的地方，但是Docker更加高效。虚拟机中每一个封装的应用都包括完整的guest操作系统，所以大小很可能有几十GB大；而Docker包括应用和其所有的依赖，但是与其他容器共享操作系统内核。他们作为独立的进程在宿主操作系统的用户空间中运行。并且不会限制于某些特定的设施，可以运行于任何计算机上。下图展现了虚拟机与Docker的区别。&lt;/p&gt;
+&lt;p&gt;&lt;img alt="虚拟机与Docker" src="http://ww1.sinaimg.cn/large/9f9f764egw1f2ycodfhlwj20or0eeacy.jpg" /&gt;&lt;/p&gt;
+&lt;h3&gt;安装Docker&lt;/h3&gt;
+&lt;p&gt;Docker可以在Linux、Mac OSX以及Windows上进行安装。本文以Linux系统的Cent OS发行版为例进行说明。在Cent OS中安装Docker可以直接使用yum包管理工具进行安装。&lt;/p&gt;
+&lt;p&gt;（1）首先，确保当前的yum软件源是最新的：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo yum update
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;（2）增加Docker的yum软件源：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo tee /etc/yum.repos.d/docker.repo &lt;span class="s"&gt;&amp;lt;&amp;lt;-&amp;#39;EOF&amp;#39;&lt;/span&gt;
+&lt;span class="s"&gt;[dockerrepo]&lt;/span&gt;
+&lt;span class="s"&gt;name=Docker Repository&lt;/span&gt;
+&lt;span class="s"&gt;baseurl=https://yum.dockerproject.org/repo/main/centos/$releasever/&lt;/span&gt;
+&lt;span class="s"&gt;enabled=1&lt;/span&gt;
+&lt;span class="s"&gt;gpgcheck=1&lt;/span&gt;
+&lt;span class="s"&gt;gpgkey=https://yum.dockerproject.org/gpg&lt;/span&gt;
+&lt;span class="s"&gt;EOF&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;（3）使用yum install安装Docker：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo yum install docker-engine
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;（4）查看是否安装成功：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;➜  docker docker --version
+Docker version 1.7.1, build 786b29d
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;运行一个官方示例，检查Docker是否能正常运行：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;➜  docker docker run hello-world
+Hello from Docker.
+This message shows that your installation appears to be working correctly.
+To generate this message, Docker took the following steps:
+ 1. The Docker client contacted the Docker daemon.
+ 2. The Docker daemon pulled the &lt;span class="s2"&gt;&amp;quot;hello-world&amp;quot;&lt;/span&gt; image from the Docker Hub.
+ 3. The Docker daemon created a new container from that image which runs the
+    executable that produces the output you are currently reading.
+ 4. The Docker daemon streamed that output to the Docker client, which sent it
+    to your terminal.
+To try something more ambitious, you can run an Ubuntu container with:
+ $ docker run -it ubuntu bash
+Share images, automate workflows, and more with a free Docker Hub account:
+ https://hub.docker.com
+For more examples and ideas, visit:
+ https://docs.docker.com/userguide/
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;容器和镜像的概念&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;容器（container）&lt;/strong&gt;：容器可以看成一个精简的Linux操作系统，利用容器来运行应用。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;镜像（image）&lt;/strong&gt;：镜像是可以载入到容器中的软件，一个镜像可以是一个非常简单的应用也可以是复杂的应用，这取决于你如何构建它。例如上面例子中的&lt;code&gt;hello-world&lt;/code&gt;就是一个镜像。&lt;/p&gt;
+&lt;p&gt;当我们运行&lt;code&gt;docker docker run hello-world&lt;/code&gt;，Docker引擎会完成以下几个过程：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;检查你是否拥有hello-world软件镜像&lt;/li&gt;
+&lt;li&gt;从Docker Hub（一个Docker镜像仓库）下载镜像&lt;/li&gt;
+&lt;li&gt;将镜像加载到容器中并且运行它&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;运行镜像&lt;/h3&gt;
+&lt;p&gt;每个人都可以创建各种各样的Docker镜像，并且发布在Docker Hub上。我们可以通过Docker Hub找到这些镜像。&lt;/p&gt;
+&lt;p&gt;（1）寻找whalesay镜像&lt;/p&gt;
+&lt;p&gt;whalesay是一个从cowsay改变得到的一个应用，将原本牛的图案改成了Docker的logo中的鲸。打开Docker Hub：https://hub.docker.com/，在搜索框中输入&lt;code&gt;whalesay&lt;/code&gt;搜索该镜像，找到&lt;code&gt;docker/whalesay&lt;/code&gt;后点击进去，可以看到关于这个镜像的详细信息。&lt;/p&gt;
+&lt;p&gt;（2）运行whalesay镜像&lt;/p&gt;
+&lt;p&gt;可以使用&lt;code&gt;docker run&lt;/code&gt;命令运行该镜像：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;docker run docker/whalesay cowsay boo
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;效果如下所示：&lt;/p&gt;
+&lt;p&gt;&lt;img alt="whalesay" src="http://ww3.sinaimg.cn/large/9f9f764egw1f2ydebuahjj20d707aaae.jpg" /&gt;&lt;/p&gt;
+&lt;p&gt;此时，可以运行&lt;code&gt;docker images&lt;/code&gt;可以查看到whalesay镜像已经下载到本地。&lt;/p&gt;
+&lt;h3&gt;创建镜像&lt;/h3&gt;
+&lt;p&gt;（1）写一个Dockerfile&lt;/p&gt;
+&lt;p&gt;首先，需要创建一个Dockerfile，包含了如何创建镜像的一些指令。&lt;/p&gt;
+&lt;p&gt;新建一个目录，这个目录就是构建镜像的上下文，包括了创建镜像所需要的一切：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;mkdir myFirstDocker
+&lt;span class="nb"&gt;cd&lt;/span&gt; myFirstDocker
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;然后创建Dockerfile文件，然后输入以下内容：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;FROM docker/whalesay:latest
+RUN apt-get -y update &lt;span class="o"&gt;&amp;amp;&amp;amp;&lt;/span&gt; apt-get install -y fortunes
+CMD /usr/games/fortune -a &lt;span class="p"&gt;|&lt;/span&gt; cowsay
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;FROM&lt;/code&gt;告诉Docker镜像是基于哪个镜像的。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;RUN&lt;/code&gt;在创建中运行apt-get安装fortunes应用，这个应用可以随机产生一个名人名言谚语等。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;CMD&lt;/code&gt;一旦镜像拥有了需要的应用之后，只需要将镜像加载好后运行应用。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;#&lt;/code&gt;注释&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;（2）从Dockerfile构建一个镜像&lt;/p&gt;
+&lt;p&gt;编写好Dockerfile后，就可以使用&lt;code&gt;docker build&lt;/code&gt;命令生成一个镜像：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ docker build -t docker-whale .
+Sending build context to Docker daemon 158.8 MB
+...snip...
+Removing intermediate container a8e6faa88df3
+Successfully built 7d9495d03763
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;（3）了解构建镜像的过程&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;docker build -t docker-whale .&lt;/code&gt;命令，从当前目录读取Dockerfile，并且构建了一个称为docker-whale的镜像。包含了以下几个过程：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Docker检查确保所有构建需要的东西都满足&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Docker载入whalesay镜像&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;更新apt-get包管理器&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;下载fortunes应用&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;完成构建并输出结果&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;（4）运行新构建的docker-whale&lt;/p&gt;
+&lt;p&gt;首先，可以使用&lt;code&gt;docker images&lt;/code&gt;命令查看新的docker-whale在本地已经存在。然后，运行之：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;➜  myFirstDocker docker run docker-whale
+ ________________________________________ 
+/ The truth you speak has no past and no &lt;span class="se"&gt;\&lt;/span&gt;
+&lt;span class="p"&gt;|&lt;/span&gt; future. It is, and that&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;s all it needs &lt;span class="p"&gt;|&lt;/span&gt;
+&lt;span class="se"&gt;\ &lt;/span&gt;to be.                                 /
+ ---------------------------------------- 
+    &lt;span class="se"&gt;\&lt;/span&gt;
+     &lt;span class="se"&gt;\&lt;/span&gt;
+      &lt;span class="se"&gt;\ &lt;/span&gt;    
+                    &lt;span class="c1"&gt;##        .            &lt;/span&gt;
+              &lt;span class="c1"&gt;## ## ##       ==            &lt;/span&gt;
+           &lt;span class="c1"&gt;## ## ## ##      ===            &lt;/span&gt;
+       /&lt;span class="s2"&gt;&amp;quot;&amp;quot;&amp;quot;&amp;quot;&amp;quot;&amp;quot;&amp;quot;&amp;quot;&amp;quot;&amp;quot;&amp;quot;&amp;quot;&amp;quot;&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;___/ &lt;span class="o"&gt;===&lt;/span&gt;        
+  ~~~ &lt;span class="o"&gt;{&lt;/span&gt;~~ ~~~~ ~~~ ~~~~ ~~ ~ /  &lt;span class="o"&gt;===&lt;/span&gt;- ~~~   
+       &lt;span class="se"&gt;\_&lt;/span&gt;_____ o          __/            
+        &lt;span class="se"&gt;\ &lt;/span&gt;   &lt;span class="se"&gt;\ &lt;/span&gt;       __/             
+          &lt;span class="se"&gt;\_&lt;/span&gt;___&lt;span class="se"&gt;\_&lt;/span&gt;_____/  
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;使用Docker Hub&lt;/h3&gt;
+&lt;p&gt;Docker Hub有点像GitHub上面有很多用户创建的各种镜像，可以使用push和pull等命令发布和使用这些镜像。&lt;/p&gt;
+&lt;p&gt;（1）注册账号&lt;/p&gt;
+&lt;p&gt;首先在Docker Hub上创建一个账号。&lt;/p&gt;
+&lt;p&gt;（2）新建仓库&lt;/p&gt;
+&lt;p&gt;新建一个仓库，用来发布刚刚创建的docker-whale&lt;/p&gt;
+&lt;p&gt;（3）修改镜像标签&lt;/p&gt;
+&lt;p&gt;先使用&lt;code&gt;docker images&lt;/code&gt;查看镜像的repo名字和IMAGE ID。&lt;/p&gt;
+&lt;p&gt;&lt;img alt="images" src="http://ww4.sinaimg.cn/large/9f9f764egw1f2ydwbklvvj20mg03m0u0.jpg" /&gt;&lt;/p&gt;
+&lt;p&gt;repo名字为docker-whale不包括命名空间，需要根据你的Docker Hub的账号包括命名空间如：&lt;code&gt;nurnoch/docker-whale&lt;/code&gt;。&lt;/p&gt;
+&lt;p&gt;然后使用docker tag命令修改docker-whale镜像的标签：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;docker tag sha256:3ae87 nurnoch/docker-whale:latest
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;再次使用docker images就可以看到新的一个tagged image了。&lt;/p&gt;
+&lt;p&gt;（4）上传镜像&lt;/p&gt;
+&lt;p&gt;登陆到Docker Hub：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;docker login --username&lt;span class="o"&gt;=&lt;/span&gt;nurnoch --email&lt;span class="o"&gt;=&lt;/span&gt;wengweitao@foxmail.com
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;使用docker push上传镜像到仓库：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;docker push nurnoch/docker-whale
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;（5）运行上传的镜像&lt;/p&gt;
+&lt;p&gt;先将本地的映像删除：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;docker rmi -f sha256:3ae87
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;可以跟IMAGE ID或者镜像名。&lt;/p&gt;
+&lt;p&gt;然后运行：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;docker run nurnoch/docker-whale
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;以上就是Docker的简单介绍。&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h3&gt;References&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href="https://docs.docker.com/"&gt;Docker官网&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://book.douban.com/subject/2354988/"&gt;集装箱改变世界&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://ipn.li/kernelpanic/8/"&gt;内和恐慌#8：「集装箱化」与运维管理&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://v.youku.com/v_show/id_XNzUyMzA4MTE2.html?from=y1.6-91.3.1.5bdbf57c947311e3b8b7"&gt;罗辑思维：改变世界的箱子 84  &lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.gitbook.com/book/yeasy/docker_practice"&gt;Docker —— 从入门到实践&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">wwt</dc:creator><pubDate>Sat, 16 Apr 2016 12:06:00 +0800</pubDate><guid>tag:www.wengweitao.com,2016-04-16:dockerxue-xi.html</guid><category>Docker</category><category>教程</category></item><item><title>使用Python处理excel文件</title><link>http://www.wengweitao.com/shi-yong-pythonchu-li-excelwen-jian.html</link><description>&lt;p&gt;最近一段时间好几个其他学院的同学找我帮忙处理保存在excel中的数据。对于非计算机专业的同学，平时可能仅仅是用excel做一些简单的数据处理，稍微复杂一些的excel函数可能就写不了，于是就找我们计算机专业的同学帮忙。不过excel，我几乎从来不用，只能借助于编程实现对excel的数据处理了。对于这类问题，首选自然是Python啦。其实，Python是一门非常容易掌握和使用的语言，我也经常向非计算机专业的同学推荐学习Python，学完之后非常有用。这篇文章就面向非计算机专业的同学介绍如何使用Python来对excel文件进行数据处理。&lt;/p&gt;
+&lt;h2&gt;安装Python环境&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://www.continuum.io/downloads"&gt;ANACONDA&lt;/a&gt;是一个Python的发行版本，包含了400多个Python最常用的库，其中就包括了数据分析中需要经常使用到的Numpy和Pandas等。更重要的是，不论在哪个平台上，都可以一键安装，自动配置好环境，不需要用户任何的额外操作，非常方便。因此，安装Python环境就只需要到ANACONDA网站上下载安装文件，双击安装即可。&lt;/p&gt;
+&lt;p&gt;安装完成之后，使用&lt;code&gt;windows + r&lt;/code&gt;键打开Windows命令行，输入ipython，然后回车：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;Python&lt;/span&gt; &lt;span class="mf"&gt;2.7.11&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="n"&gt;Anaconda&lt;/span&gt; &lt;span class="mf"&gt;2.5.0&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;64&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;bit&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;default&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;Jan&lt;/span&gt; &lt;span class="mi"&gt;29&lt;/span&gt; &lt;span class="mi"&gt;2016&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;14&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;26&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;21&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;MSC&lt;/span&gt; &lt;span class="n"&gt;v&lt;/span&gt;&lt;span class="mf"&gt;.1500&lt;/span&gt; &lt;span class="mi"&gt;64&lt;/span&gt; &lt;span class="n"&gt;bit&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;AMD64&lt;/span&gt;&lt;span class="p"&gt;)]&lt;/span&gt;
+
+&lt;span class="n"&gt;Type&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;copyright&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;credits&amp;quot;&lt;/span&gt; &lt;span class="n"&gt;or&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;license&amp;quot;&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;more&lt;/span&gt; &lt;span class="n"&gt;information&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;
+
+&lt;span class="n"&gt;IPython&lt;/span&gt; &lt;span class="mf"&gt;4.0.3&lt;/span&gt; &lt;span class="o"&gt;--&lt;/span&gt; &lt;span class="n"&gt;An&lt;/span&gt; &lt;span class="n"&gt;enhanced&lt;/span&gt; &lt;span class="n"&gt;Interactive&lt;/span&gt; &lt;span class="n"&gt;Python&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;
+
+&lt;span class="o"&gt;?&lt;/span&gt;         &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;Introduction&lt;/span&gt; &lt;span class="n"&gt;and&lt;/span&gt; &lt;span class="n"&gt;overview&lt;/span&gt; &lt;span class="n"&gt;of&lt;/span&gt; &lt;span class="n"&gt;IPython&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="n"&gt;s&lt;/span&gt; &lt;span class="n"&gt;features&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;
+
+&lt;span class="nf"&gt;%quickref&lt;/span&gt; &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;Quick&lt;/span&gt; &lt;span class="n"&gt;reference&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;
+
+&lt;span class="n"&gt;help&lt;/span&gt;      &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;Python&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="n"&gt;s&lt;/span&gt; &lt;span class="n"&gt;own&lt;/span&gt; &lt;span class="n"&gt;help&lt;/span&gt; &lt;span class="n"&gt;system&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;
+
+&lt;span class="n"&gt;object&lt;/span&gt;&lt;span class="o"&gt;?&lt;/span&gt;   &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;Details&lt;/span&gt; &lt;span class="n"&gt;about&lt;/span&gt; &lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="n"&gt;object&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;use&lt;/span&gt; &lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="n"&gt;object&lt;/span&gt;&lt;span class="o"&gt;??&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;extra&lt;/span&gt; &lt;span class="n"&gt;details&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;如上所示，如果成功进入了Python环境，则代表安装成功。&lt;/p&gt;
+&lt;h2&gt;使用pandas处理excel&lt;/h2&gt;
+&lt;p&gt;在本文我以&lt;code&gt;log.xls&lt;/code&gt;文件为例，来说明如何使用pandas处理excel文件。&lt;code&gt;log.xls&lt;/code&gt;文件的内容如下所示：&lt;/p&gt;
+&lt;p&gt;&lt;img alt="excel" src="http://ww4.sinaimg.cn/large/9f9f764egw1f2bpur7t6oj21400l3jwu.jpg" /&gt;&lt;/p&gt;
+&lt;p&gt;可以看到&lt;code&gt;log.xls&lt;/code&gt;中包含了多个的表（sheet），每个表主要包括了member和activity两个属性，相同的member ID的数据相邻的排列在一起，并且最后一行是前面所有的汇总。这里，我们假设需要提取出每个member汇总的信息，即提取每个member连续出现的最后一行的数据。如何实现呢？&lt;/p&gt;
+&lt;p&gt;导入pandas模块：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;pandas&lt;/span&gt; &lt;span class="kn"&gt;as&lt;/span&gt; &lt;span class="nn"&gt;pd&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;使用import读入pandas模块，并且为了方便使用其缩写&lt;code&gt;pd&lt;/code&gt;指代。&lt;/p&gt;
+&lt;p&gt;读入待处理的excel文件：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;df&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;pd&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;read_excel&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;log.xls&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;通过使用&lt;code&gt;read_excel&lt;/code&gt;函数读入excel文件，后面需要替换成excel文件所在的路径。读入之后变为pandas的DataFrame对象。DataFrame是一个面向列(column-oriented)的二维表结构，且含有列表和行标，对excel文件的操作就转换为对DataFrame操作。另外，如果一个excel含有多个表，如果你只想读入其中一个可以：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;df&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;pd&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;read_excel&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;log.xls&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;sheetname&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;增加了一个参数&lt;code&gt;sheetname&lt;/code&gt;，表示的是第几个表，从0开始计数。我上面设置的是1，也就是第二个表。&lt;/p&gt;
+&lt;p&gt;读入之后，可以先查看表头信息和每一列的数据类型：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;df&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;dtypes&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;输出如下：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Member         object
+Unnamed: 1    float64
+Unnamed: 2    float64
+Unnamed: 3    float64
+Unnamed: 4    float64
+Unnamed: 5    float64
+家内外活动类型        object
+Unnamed: 7     object
+activity       object
+dtype: object
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;提取每个member连续出现的最后一行数据：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt; &lt;span class="n"&gt;new_df&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;df&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;drop_duplicates&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;subset&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Member&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;keep&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;last&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;以上语句的意思是根据&lt;code&gt;Member&lt;/code&gt;字段去除掉多余的行，并且保留相同行的最后一行数据。这些就得到了每一个member最后一行的数据了，返回了经过筛选后的DataFrame。&lt;/p&gt;
+&lt;p&gt;接下来需要将处理后的结果，保存为excel文件：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;out&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;pd&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;ExcelWriter&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;output.xls&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;new_df&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;to_excel&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;out&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;out&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;save&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;code&gt;output.xls&lt;/code&gt;是你要保存的文件名，可以任取；然后将DataFrame的内容保存到该文件，最后保存该文件到系统的磁盘上。&lt;/p&gt;
+&lt;p&gt;接下来，你就可以在当前目录看到一个新的文件，可以直接使用excel打开查看。&lt;/p&gt;
+&lt;p&gt;Pandas还提供了很多的API，可以根据具体的任务，查找API文档，找到合适的函数来完成任务。&lt;/p&gt;
+&lt;h2&gt;附：一个完整的示例&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;#coding=utf-8&lt;/span&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;pandas&lt;/span&gt; &lt;span class="kn"&gt;as&lt;/span&gt; &lt;span class="nn"&gt;pd&lt;/span&gt;
+
+&lt;span class="c1"&gt;# 读入excel文件中的第2个表&lt;/span&gt;
+&lt;span class="n"&gt;df&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;pd&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;read_excel&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;log.xls&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;sheetname&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="c1"&gt;# 查看表的数据类型&lt;/span&gt;
+&lt;span class="k"&gt;print&lt;/span&gt; &lt;span class="n"&gt;df&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;dtypes&lt;/span&gt;
+&lt;span class="c1"&gt;# 查看Member列的数据&lt;/span&gt;
+&lt;span class="k"&gt;print&lt;/span&gt; &lt;span class="n"&gt;df&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Member&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+
+&lt;span class="sd"&gt;&amp;#39;&amp;#39;&amp;#39;&lt;/span&gt;
+&lt;span class="sd"&gt;# 新建一列，每一行的值是Member列和activity列相同行值的和&lt;/span&gt;
+&lt;span class="sd"&gt;for i in df.index:&lt;/span&gt;
+&lt;span class="sd"&gt;    df[&amp;#39;activity_2&amp;#39;][i] = df[&amp;#39;Member&amp;#39;][i] + df[&amp;#39;activity&amp;#39;][i]&lt;/span&gt;
+&lt;span class="sd"&gt;&amp;#39;&amp;#39;&amp;#39;&lt;/span&gt;
+
+&lt;span class="c1"&gt;# 根据Member字段去除掉多余的行，并且保留相同行的最后一行数据&lt;/span&gt;
+&lt;span class="n"&gt;new_df&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;df&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;drop_duplicates&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;subset&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Member&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;keep&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;last&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="c1"&gt;# 导出结果&lt;/span&gt;
+&lt;span class="n"&gt;out&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;pd&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;ExcelWriter&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;output.xls&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;new_df&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;to_excel&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;out&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;out&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;save&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">wwt</dc:creator><pubDate>Mon, 07 Mar 2016 21:06:00 +0800</pubDate><guid>tag:www.wengweitao.com,2016-03-07:shi-yong-pythonchu-li-excelwen-jian.html</guid><category>Python</category><category>教程</category></item><item><title>virtualenv介绍</title><link>http://www.wengweitao.com/virtualenvjie-shao.html</link><description>&lt;p&gt;virtualenv是一个用来创建独立Python环境的工具。&lt;/p&gt;
+&lt;h2&gt;什么时候会用到virtualenv？&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;假设系统中的两个应用，其中A应用对库LibFoo的版本要求为1，而B应用对同一个库LibFoo的版本要求为2，两个应用对同一个库的要求想冲突了，而系统中库默认都安装到&lt;code&gt;/usr/lib/python2.7/site-packages&lt;/code&gt;，那么如何能够同时使用这两个应用呢？&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;你的用户权限不够，使得无法将包安装到&lt;code&gt;site-packages&lt;/code&gt;目录&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;需要使用一个应用，并且与系统其它应用相独立。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;如果你遇到以上的问题，那么virtualenv会对你有帮助。virtualenv可以创建一个环境，拥有着自己的安装目录，而不会与系统的共享库或者其它virtualenv环境相干扰。&lt;/p&gt;
+&lt;h2&gt;如何安装virtualenv？&lt;/h2&gt;
+&lt;p&gt;如果系统上已经安装了pip：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;sudo&lt;span class="o"&gt;]&lt;/span&gt; pip install virtualenv
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;如何使用virtualenv？&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nb"&gt;cd&lt;/span&gt; my_project_folder
+
+virtual ENV
+
+&lt;span class="nb"&gt;source&lt;/span&gt; bin/activate
+
+deactivate
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;以上就是virtualenv的基本使用过程。&lt;/p&gt;
+&lt;h3&gt;创建一个虚拟环境&lt;/h3&gt;
+&lt;p&gt;首先，&lt;code&gt;virtual ENV&lt;/code&gt;会在当前目录创建名为ENV的虚拟环境，此时在当前目录会自动生成三个目录：bin, include和lib。默认情况下创建的虚拟环境会依赖于系统中的site-packages，即系统中已经安装好的库在虚拟环境中仍然可以使用，如果想去除依赖，那么可以：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;virtualenv --no-site-packages ENV
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;启动虚拟环境&lt;/h3&gt;
+&lt;p&gt;通过&lt;code&gt;source bin/activate&lt;/code&gt;可以启动当前目录下的虚拟环境。启动后，shell的提示符就会发生改变，表示进入了虚拟环境。&lt;/p&gt;
+&lt;h3&gt;离开虚拟环境&lt;/h3&gt;
+&lt;p&gt;使用&lt;code&gt;deactivate&lt;/code&gt;离开虚拟环境。&lt;/p&gt;
+&lt;p&gt;以上。&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">wwt</dc:creator><pubDate>Tue, 01 Mar 2016 22:48:00 +0800</pubDate><guid>tag:www.wengweitao.com,2016-03-01:virtualenvjie-shao.html</guid><category>Python</category><category>教程</category></item><item><title>2015年校招找工作总结之国企篇</title><link>http://www.wengweitao.com/2015nian-xiao-zhao-zhao-gong-zuo-zong-jie-zhi-guo-qi-pian.html</link><description>&lt;p&gt;在上一篇的文章中&lt;a href="http://www.wengweitao.com/2015nian-xiao-zhao-zhao-gong-zuo-zong-jie-zhi-hu-lian-wang-gong-si-ji-zhu-pian.html"&gt;上一篇&lt;/a&gt;，我已经提到过我最终签约了一家银行。选择太重要了，一念天堂一念地狱啊。其实，最开始也没怎么想过去国企的，准备了几个月也基本是围绕互联网技术岗位来准备的，真是没想到还是去了国企。&lt;/p&gt;
+&lt;p&gt;最早有进国企的想法（仅仅是想法）是在研一的时候，听一个去了国企的11级师兄介绍银行的求职经历，他当时介绍了去银行的各种好处，并且说到总行的时候，提到：&lt;code&gt;别看了，能进就进去吧!!&lt;/code&gt; 当时，我听完还是比较心动的，还跟同学说要是以后能进总行就好了。不过，当时师兄一直强调总行本部有多那么难进，我也就只是随便心里想想而已，没想到现在竟然真的成真了。其实，我的性格还是最适合当程序员的，而且本身也挺喜欢接触各种技术，最终放弃程序员的工作，虽然当时签工行的时候没有多少犹豫，但是签完自己再想想还是会觉得有些可惜，不知道未来在自己完全不熟悉的岗位上会发展的如何（当然，如果放弃工总签约互联网也会有同样的感觉）。选择程序员或者银行国企都各有各的好处，无论选择了什么岗位都一样需要努力奋斗的，既然做出了选择，那么就&lt;strong&gt;但行好事莫问前程&lt;/strong&gt;吧！好了，不废话了，接下来就介绍一些我的银行求职经历。&lt;/p&gt;
+&lt;h2&gt;为什么去银行？&lt;/h2&gt;
+&lt;p&gt;作为计算机专业的学生，大部分人肯定都会选择进入互联网行业。现在互联网公司这么火，开的工资又高，一个应届毕业生也可以比较轻松的拿到30w+的年薪，以后还可以自己创业，还能有暴富的机会。互联网这么好，我为什么还要加入银行呢？以下是我的几个想法：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;单位足够好。我之所以选择加入银行很大一部分原因就是：宇宙行总行给了我offer。其实，我一共就参加了两家银行的面试，如果是非四大行总行给的offer，那么我还是更愿意从事技术岗位当一名程序员。之前也只是听别人老是提到总行怎么怎么好，具体怎样其实我也不清楚。总之，宇宙行的总行不至于差吧。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;稳定安逸的工作。互联网公司的工作强度大家肯定都听说过，996工作制并不少见，在游戏公司加班的就更多了。而且，在业余时间，作为一名程序员肯定还会自己额外在家学点新技术，看些技术书籍或者文章。这样以后生活的时间就会被工作的时间大量占用，还得整天对着电脑，会过得比较累。在银行的工作强度就小很多了，以后就能有更多私人自由的时间，多看看书、看看电影、出去走走、陪陪家里人以及编程。银行也有编制，工作很稳定，在“论资排辈”的国企，要是你愿意可以在一家公司待一辈子。Life is too short, I prefer easy mode now!&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;一定的社会地位。无论在哪个地方，在银行工作都算一个比较体面的工作，特别是对于国有银行来说。国企都有编制，据说工行总行最低的编制是副处，级别应该比支行行长更高。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;发展的前景。在互联网时代大家都在唱衰传统行业，但是《财富》杂志评选的中国500强企业的利润最高的前四名被四大行所包揽，宇宙行仍然是全球利润最高的公司，事实上BAT三家一年的利润总和不到宇宙行的零头。虽然这其中很大一部分是由于占了国有企业的优势，但是这么大的企业足够成为一个好的职业发展平台。况且，目前互联网金融如此火爆，未来银行也更多的需要金融+计算机的复合人才，拥有计算机专业背景或许能成为一个优势。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;较好的收入。当然对于应届毕业生，刚毕业的工资估计任何行业都无法和互联网公司相比。银行业也算工资待遇不错的。银行的工资制度比较复杂，包括基本工资、N险1金以及可能存在的各种隐性福利。据已经毕业的师兄师姐介绍，四大行软件中心的应届毕业生待遇在12-20w左右，也还算不错。至于总行具体待遇，我也不知道。。。银行很多单位还会帮忙申请公租房、每个月有租房补贴以及解决员工儿女上幼儿园等问题。其实，刚毕业前几年的工资并没有那么重要，并不具有太大的可比性。以现在的房价，刚毕业工资再高恐怕也买不起吧。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;户口。对于要长期留京发展的同学来说，户口就太重要了，甚至是必须的。孩子上学、买车、买房以及办理各种事情的时候，有了户口都会方便许多。现在的趋势是户口的名额越来越严，以前还能拿到户口的单位，今年的名额也大量缩减。互联网公司的户口名额都比较少，很难解决户口。而国企解决户口就相对容易多了。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2&gt;计算机专业去银行能做什么？&lt;/h2&gt;
+&lt;p&gt;去银行最多的当然是经济金融类专业的同学了，近些年咱们计算机专业每年也有不少同学加入各大银行。计算机专业其实是现在找工作最容易的一个公司，在信息时代哪个单位还不需要计算机啊。对于计算机专业，银行的岗位可以简单分为：技术岗和非技术岗，区分的方法就是：是否需要写代码。以中国工商银行为例，包括：总行本部、总行直属机构、各省市分行。&lt;/p&gt;
+&lt;h3&gt;总行本部&lt;/h3&gt;
+&lt;p&gt;工行总行本部是四大行中最早开始招聘的，大约在9月初就开始了，而大部分的银行招聘在10月和11月才开始启动。这也是为了能够招到更好的人才，先下手为强嘛。总行本部招聘岗位分为三类，每位应聘者限报一类岗位，分别是：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;职能部门类。新员工入行后将安排为期两年的培养锻炼计划，主要派赴北京地区分支机构轮岗，部分员工第二年将赴海外分支机构锻炼。两年培养期满后转入总行本部内设职能部门工作。&lt;/li&gt;
+&lt;li&gt;运作中心类。总行本部部门内设的业务运作中心，新员工入行后直接安排到运作中心工作。&lt;/li&gt;
+&lt;li&gt;利润中心类。总行本部内设的独立核算的利润中心，新员工入行后直接安排到利润中心工作。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;对于报考的要求：
+- 学历要求：职能部门类和利润中心要求硕士研究生学历，运作中心要求本科学历；
+- 专业要求：经济、金融、会计、管理、法律以及计算机等理工类专业均可报名，小语种专业包括德语、法语、西班牙语、葡萄牙语等。
+- 外语要求：通过国家大学英语六级（CET6）考试（成绩在425分及以上），或托业（TOEIC）听读公开考试715分及以上，或新托福（TOEFL-IBT）考试85分及以上，或雅思（IELTS）考试6.5分及以上。&lt;/p&gt;
+&lt;p&gt;其他的没有明确规定的要求，不过在简历筛选的时候，估计他们内部还有一套标准，会筛掉一部分的简历。&lt;/p&gt;
+&lt;p&gt;因为，实验室之前也没有进入总行本部的师兄师姐，所以目前我也不清楚总行本部的具体工作情况。对于职能部门，需要先委托北京分行轮岗两年，需要在各个岗位上进行锻炼，包括：前台柜员、大堂经理以及后台科室。每个岗位的轮岗时间不低于半年。等两年期满后，回总行。去了总行，以管理为主，基本上就和技术就没啥关系了。&lt;/p&gt;
+&lt;h3&gt;软件开发中心&lt;/h3&gt;
+&lt;p&gt;软件开发中心顾名思义就是负责软件开发的，也是跟计算机专业最对口的岗位。软件中心的岗位具体包括应用研发岗位、应用测试岗位、应用支持岗位。除了在北京工作之外，软件中心在南方的几个城市也都设了研发部，对于不想到北京工作的同学就多了几个选择。本科和研究生都可以参加软开的应聘，研究生要求必须通过英语六级。&lt;/p&gt;
+&lt;p&gt;软件开发中心是银行所有机构中最接近互联网公司的，对应聘者的技术有一定的要求，同时也存在着加班的可能性。&lt;/p&gt;
+&lt;h3&gt;数据中心&lt;/h3&gt;
+&lt;p&gt;数据中心也是技术类岗位，承担集团测试统一管理及信息安全技术研究职能。数据中心的岗位具体包括业务测试岗位、技术测试岗位、信息安全岗位。业务测试岗要求的是金融类相关专业，而后面两个岗位要求的是计算机相关岗位。报考的条件基本与软开类似。&lt;/p&gt;
+&lt;h3&gt;分行&lt;/h3&gt;
+&lt;p&gt;各个银行在全国的大部分省市都设有分支行，主要面向银行业务，这也是各家银行招聘人数最多的机构。在投简历的时候需要注意区别招聘岗位是分行还是支行，因为支行也是统一在分行里面招聘的。对于分行以管理为主，而支行以义务为主。刚加入分支行的时候，也需要1-2年的轮岗经验。&lt;/p&gt;
+&lt;h3&gt;其他机构&lt;/h3&gt;
+&lt;p&gt;除了软开和数据中心，总行还有一些直属的机构，例如信用卡中心、产品研发中心以及电子银行中心等。具体信息可以登录各大银行的招聘网站查看。&lt;/p&gt;
+&lt;h2&gt;想进银行如何准备？&lt;/h2&gt;
+&lt;p&gt;相对求职互联网技术岗位时，需要看各种书以及在leetcode上刷题，准备银行的话就相对轻松一些。首先，介绍下国企一般都看重应聘者的条件。&lt;/p&gt;
+&lt;h3&gt;银行看重应聘者哪些能力&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;好的学历背景。国企的确会看重学历背景，985高校毕业的学生有助于通过简历的筛选。&lt;/li&gt;
+&lt;li&gt;丰富的社团活动经历。在校期间担任各种学生会社团学生干部，可以提现出你的组织协调和领导能力。&lt;/li&gt;
+&lt;li&gt;特长。包括但不限于：弹琴、舞蹈、体育等。不知道coding算不算。。。&lt;/li&gt;
+&lt;li&gt;口头表达和组织协调能力。这个能力是非常重要的，如果太差肯定也过不了面试。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3&gt;现在应该如何准备？&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;丰富简历。如果有打算进入国企，应该多参加一些社团活动，丰富简历。对于本专业的科研项目，也要做好，这也是你能力的一个证明。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;锻炼表达和社交能力。主要为了面试中的无领导小组讨论做准备，对于以后的工作也十分重要。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;练习往年笔试真题。银行的笔试内容与公务员的行测类似，市面上有很多教材，其中比较有名的是《银行考试一本通》。这本书我也买了，不过就翻了几页，感觉用处不是太大，当然有时间多看看肯定是好的。还有就是配套的历年银行笔试的真题，这个我还是比较推荐的，做真题比什么都好。至少在笔试前做一套熟悉下题型。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;准备好本专业知识。特别是对于应聘软开和数据中心的岗位，笔试也有考察编程语言、数据库以及计算机系统等计算机知识，面试中面试官也会根据你的专业和项目经历进行有针对性的提问。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;suit up! 去挑一套帅气（美丽）的正装，面试的时候是必备的。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;以上所说的都是道听途说后的想法，仅作参考。&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">wwt</dc:creator><pubDate>Mon, 29 Feb 2016 22:48:00 +0800</pubDate><guid>tag:www.wengweitao.com,2016-02-29:2015nian-xiao-zhao-zhao-gong-zuo-zong-jie-zhi-guo-qi-pian.html</guid><category>校招</category><category>总结</category></item><item><title>2015年校招找工作总结之互联网公司（技术篇）</title><link>http://www.wengweitao.com/2015nian-xiao-zhao-zhao-gong-zuo-zong-jie-zhi-hu-lian-wang-gong-si-ji-zhu-pian.html</link><description>&lt;p&gt;2015年校招基本已经结束，回学校之后不少14级的师弟师妹们都在问我找工作的一些问题。经历了2个月的找工作经历，也积累了一些经验，虽然并没有像大牛们那样拿了许多牛逼的offer，但是作为普通的校招求职者，还是希望能够记录下自己的经验和教训，作为一个总结，也希望能够给明年找工作的师弟师妹们一点帮助。&lt;/p&gt;
+&lt;p&gt;首先，介绍下我的基本情况。我本科是物理学，研究生转到计算机，在找工作之前没有任何互联网公司的实习经历，主要报的是数据挖掘和机器学习工程师岗位，投了多家公司的简历，最终拿到了：蚂蚁金服（C++研发工程师）、大众点评（算法工程师）、猎豹移动、摩根斯坦利、工行总行、农行软开这些offer。简历投了很多，后来拿到宇宙行的offer后，就没怎么面试了，很多面试就都放弃了。这篇文章先介绍我找技术相关岗位的一些经历。&lt;/p&gt;
+&lt;h2&gt;校招的基本流程&lt;/h2&gt;
+&lt;p&gt;通常互联网公司招聘的基本流程为：投递简历，参加笔试（部分公司内推可以免笔试），3-4轮面试，发出offer，HR通过电话告知薪资待遇，决定是否接受offer，签订合同和三方。&lt;/p&gt;
+&lt;h2&gt;简历制作&lt;/h2&gt;
+&lt;p&gt;找工作的时候制作一份合格的简历非常重要。当然，大牛无论简历怎样都不是问题。曾经听过一个播客节目，节目中七牛CEO许世伟说，他当时校招的时候简历都没做，金山到他们学校宣讲的时候，直接现场手写简历就投了。。。但是对于普通人还是要认真做好简历。对于互联网公司的简历，我网上看了不少资料，主要需要注意以下几点：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;页数最好控制到一页。精简掉不必要的信息，简历应该只留最重要的内容，要学会取舍。&lt;/li&gt;
+&lt;li&gt;简历应该生成PDF格式再投递。之所以不用WORD，是因为大量程序员使用的是Linux或者Mac OSX系统，不一定装了Windows。而且很多人会在邮件里面直接预览，WORD文件的预览效果就差很多。不同版本的WORD，排版的结果可能也会乱了。所以要用PDF。&lt;/li&gt;
+&lt;li&gt;不要简单罗列项目经历。挑选出自己最得意最有把握的2-3个项目重点介绍， 可以详细描述自己在其中的贡献、遇到的困难是如何解决的或者可以量化的成果。&lt;/li&gt;
+&lt;li&gt;要诚实，不要填写虚假信息。作为一名程序员，诚实的品德是必须的，有啥说啥。然后，也不要夸大自己的能力，如精通C++、Java等等。&lt;/li&gt;
+&lt;li&gt;不要使用QQ邮箱。虽然QQ邮箱非常好用，但是据说很多公司的HR看到QQ邮箱投递的简历就直接不看了。我的做法就是注册一个Foxmail的邮箱，使用上与QQ邮箱没有任何差别，但看上去感觉正式些。&lt;/li&gt;
+&lt;li&gt;乱七八糟的信息就不要写了。这些信息包括：个人图片、党员、毫无意义的大作业项目等。&lt;/li&gt;
+&lt;li&gt;简历中加上个人网站和GitHub应该有一定加分（当然里面得有点货）&lt;/li&gt;
+&lt;li&gt;不要出现书写错误。简历完成之后，要多检查下是否有错别字或者拼写错误的，比如iOS这种大小写的细节问题。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;提前批（内推）&lt;/h2&gt;
+&lt;p&gt;很多人以为校招应该是从9月份开始的，但是互联网公司的校招在暑假大概8月份的时候就开始了。也就是说如果顺利的话，在8月份就能拿到offer了！今年BAT三家都有提前批招聘，&lt;strong&gt;如果能够提前拿到BAT任何一家的offer，那么之后找工作的心态就能轻松很多&lt;/strong&gt;，毕竟有一个“垫底”了。参加提前批招聘很容易，只需要找已经工作的师兄师姐内推即可，如果实在找不到师兄师姐可以在微博或者知乎以及其他一些论坛上找找，很容易的。&lt;/p&gt;
+&lt;p&gt;提前批的面试如果在外地的话，主要以电话面试为主，中间可能要求在线编程实现算法题。以我今年参加的阿里巴巴内推面试为例，我内推的是蚂蚁金服C++研发工程师岗位，帮忙内推的人是我直接在Google搜索到的，后来加了一个群，发现光帮我内推的一个人就内推了几百个人。。。估计参加今年阿里内推的得有上万了吧。因为不在杭州，所以4轮面试全部都是电面。面试的主要包括：项目经历、编程语言、数据库、算法题以及一些开放性的问题。难度应该比后面正式的校招要容易，面试官更加看重的是你的学习能力、对技术的热爱等综合能力。&lt;/p&gt;
+&lt;p&gt;很多同学在暑假的时候可能没有准备好，就放弃了参加提前批的招聘。但是，我建议大家无论准备的如何，都尽量参加。一方面是提前批不影响9月份之后正式的校招，也就是说就算提前批没有拿到offer，然后可以参加后面的校招，相当于多了一次面试机会。另一方面，可以积累宝贵的面试经验，了解面试官看重什么样的能力，进行有针对性的准备。&lt;/p&gt;
+&lt;h2&gt;笔试&lt;/h2&gt;
+&lt;p&gt;现在互联网公司的笔试基本都放在线上进行，国内大部分互联网公司都是在&lt;strong&gt;赛码网&lt;/strong&gt;上进行。笔试的时候要求在一台有摄像头的电脑上进行，并且不允许开着QQ等通讯软件，也不能离开考试窗口。题型主要有：选择题、简答题、算法编程题。笔试题占分值最大的是编程题，需要注意的是输入输出的处理，因为大家可能平时都在leetcode上面刷题，不需要处理输入输出，而在笔试的时候，形式与OJ类似，需要自己处理输入输出。例如：输入一个数组，但是没有给定数组的大小；输入一个二维矩阵，没有给出行数和列数。就是这些小问题，不知道坑了多少人。
+最后，如果大家要准备笔试的话，推荐一个网站&lt;strong&gt;牛客网&lt;/strong&gt;，上面搜集了各个互联网公司最新的笔试题。&lt;/p&gt;
+&lt;h2&gt;面试&lt;/h2&gt;
+&lt;p&gt;笔试通过之后，就会有HR打电话和邮件通知你去面试了。面试通常有3-4轮，主要考察项目经历、编程语言的知识、算法题等。这里就列举几家我面试过的公司。&lt;/p&gt;
+&lt;h3&gt;大众点评&lt;/h3&gt;
+&lt;p&gt;大众点评在北京的校招集中在2-3天面，第一天先一面，然后通过的第二天继续。前2轮技术面，最后一轮是HR面。面试官都挺nice，面试最后还跟我聊了一些职业发展规划、学习经验等。&lt;/p&gt;
+&lt;p&gt;部分面试题：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;自我介绍 &lt;/li&gt;
+&lt;li&gt;介绍项目&lt;/li&gt;
+&lt;li&gt;logistic regression为什么使用sigmoid函数？ &lt;/li&gt;
+&lt;li&gt;描述random forest。与GBDT的区别？&lt;/li&gt;
+&lt;li&gt;有个升序的数组A和B，求abs(A[i] - B[j])的最小值。&lt;/li&gt;
+&lt;li&gt;快排实现&lt;/li&gt;
+&lt;li&gt;大数据处理问题&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3&gt;百度&lt;/h3&gt;
+&lt;p&gt;面试百度的机器学习工程师，不得不说现在面这个岗位的人太多了，面试的现场队伍很长，通知的时候HR直接喊：再来20个机器学习的。。。面试地点在百度大厦的食堂，整个大食堂人山人海啊。一面主要还是考察一些基础知识，问了简历上的几个项目，写了2个代码，问了几个机器学习算法的细节以及开放性的问题。一面通过后，等会儿就通知到另外一个面试官那进行二面。二面的面试官看上去好像非常年轻，说话也很温柔，温文尔雅的那种感觉。直接打开我的博客和GitHub，问了我很多机器学习算法和Python的问题。上午二面结束之后，三面在下午，重新排队的时候发现，上午2面通过寥寥无几，好像就剩3-4个人了。三面的面试官看了我的简历跟HR说指定要面我，所以我一直在那等啊等。三面的面试官是一个女生，看上去年纪也不大就能担任3面的面试官，很厉害！后来发现她还是我本科的校友，算是我师姐，因此心态就放松了很多。三面就不需要写代码了，问了很多百度实际中可能会遇到的应用问题，题目都比较开放性。最好还问了概率和智力题。&lt;/p&gt;
+&lt;p&gt;感觉面试整个过程都还比较顺利，原来以为能拿到offer，不过面试完第二天，就看到了百度宣布停止招聘的消息，问了师兄说只是停止社招，校招不影响。但是后来听同学说我那一批之后就没人能拿到offer了。&lt;/p&gt;
+&lt;p&gt;部分面试题：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;自我介绍&lt;/li&gt;
+&lt;li&gt;具体介绍简历上的三个项目&lt;/li&gt;
+&lt;li&gt;快排&lt;/li&gt;
+&lt;li&gt;反转链表（这几个问题在面试中太常见了）&lt;/li&gt;
+&lt;li&gt;开放性问题：有用户的搜索历史数据，如何判断用户此时的各种状态（准备买车、已经买车等）&lt;/li&gt;
+&lt;li&gt;random forest&lt;/li&gt;
+&lt;li&gt;logistic regression介绍，lr的正则化，与SVM的区别&lt;/li&gt;
+&lt;li&gt;决策树分裂&lt;/li&gt;
+&lt;li&gt;单链表转二叉树，二叉树转单链表（要求原地）&lt;/li&gt;
+&lt;li&gt;特征选择&lt;/li&gt;
+&lt;li&gt;jaccard index的分布式计算&lt;/li&gt;
+&lt;li&gt;Python装饰器、yield等&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3&gt;豆瓣&lt;/h3&gt;
+&lt;p&gt;豆瓣一直是Pythonista很仰慕的一个地方，所以就投了豆瓣的简历，报的是数据挖掘工程师，正好借这个机会参观了文艺小清新的豆瓣办公室。豆瓣数据挖掘工程师一共就几个人，是一个非常精简的团队，不过通过面试官可以感觉应该都比较牛。这次面试表现的挺不好的，面试官问了许多细节问题，很长时间没有复习，一些非常细节的推导记不太清楚了。所以，要提醒大家自己简历上面项目中使用的算法，一定要牢牢掌握好，如果自己的项目都说不清楚，那面试官当然也不会给你任何机会了。&lt;/p&gt;
+&lt;h3&gt;宜信大数据中心&lt;/h3&gt;
+&lt;p&gt;宜信大数据中心之前没怎么听过，不过确实是一个很不错的单位。参加了他们的宣讲会，确实可以看出他们对人才的重视，宣讲会各种大奖，包括：无人机、iPad、Go Pro，还来了宜信大数据中心的几个大牛，有：项亮、教主洪强宁、Joyce Zhang等。参加面试的时候已经比较晚了，那之前决定跟工总签约了，所以那段时间都没什么准备，面试的时候状态也比较差，没能通过面试。&lt;/p&gt;
+&lt;p&gt;部分面试题：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;项目介绍&lt;/li&gt;
+&lt;li&gt;谱聚类处理同心圆的情况如何处理&lt;/li&gt;
+&lt;li&gt;给定一个文件，包含了data, ciyt, count等信息，写代码实现给定city和date1-date2日期内，count最高的日期&lt;/li&gt;
+&lt;li&gt;给定年龄、性别、学历等信息，对用户的信用进行评估&lt;/li&gt;
+&lt;li&gt;SVM的支持向量的数学表示&lt;/li&gt;
+&lt;li&gt;LR与最大熵的关系&lt;/li&gt;
+&lt;li&gt;概率题：一个游戏，升一级的概率为p1，等级保持不变的概率为p2，等级下降一级的概率为p3。一个用户经过n个回合，等级为m的概率&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3&gt;搜狐&lt;/h3&gt;
+&lt;p&gt;报了搜狐的大数据中心，面试的时间很晚了，好像都11月份了。一面进行的比较顺利，除了项目经历外，主要问了一些机器学习算法相关的题目，最后写了两个代码。一面等二面的时候，听到隔壁桌几个面试官在讨论说现在名额都超了，所以参加面试要趁早！晚了HC就没了！二面的感觉非常奇怪，面试官看上去像是个实习生，问的问题基本都是关于设计模式、面向对象以及编程语言这些问题，二面问这种问题还是比较奇怪的。完了之后，跟我说我们leader今天出去开会了，三面等通知。。。&lt;/p&gt;
+&lt;p&gt;部分面试题：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;自我介绍&lt;/li&gt;
+&lt;li&gt;spectral clustering的实现&lt;/li&gt;
+&lt;li&gt;推导softmax regression模型&lt;/li&gt;
+&lt;li&gt;用过哪些机器学习算法&lt;/li&gt;
+&lt;li&gt;linear regression 如何处理离散值的情况，如特征为：男1，女0&lt;/li&gt;
+&lt;li&gt;常见的最优化方法&lt;/li&gt;
+&lt;li&gt;牛顿法的原理&lt;/li&gt;
+&lt;li&gt;L1正则化的优化&lt;/li&gt;
+&lt;li&gt;算法题1：打印出矩阵的所有组合数&lt;/li&gt;
+&lt;li&gt;算法题2：从1T的数据中找出top1w的数，实现必要的数据结构&lt;/li&gt;
+&lt;li&gt;工厂方法和单例模式实现&lt;/li&gt;
+&lt;li&gt;汉诺塔的非递归实现&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3&gt;摩根斯坦利&lt;/h3&gt;
+&lt;p&gt;一直觉得大摩很高大上，国际投行，招聘网站全英文，也要求英文简历。当时抱着试一试的心态，做了一份英文简历投了，后来就接到了笔试通知。值得一提的是大摩的笔试非常不一样，一共有五套试题供你选择(C++,JAVA,PERL/PYTHON,SYSTEMS ENGINEERING,INFORMATION SECURITY)，至少完成你所擅长的其中一套，取最高分作为笔试成绩。每套题就半个小时左右，都是不定项选择，评分方法也很特殊，多选少选扣的分数不同，不同的选错的选项扣分也不同。笔试过后几天，在五道口逛街的时候，收到了大摩电话面试的通知。电话面试全程英文，问的全是基础知识，C++、数据库、计算机网络、操作系统等，虽然好几年都没开口说过英语了，不过还是比较顺利的完成了。后来，接到去上海AC的通知，可以报销来回飞机票和一晚住宿。面试一共持续了3-4个小时，面试开始之前会让你填一个类似技能表的东西，按照熟悉程度对这些技能进行一个评分，然后先完成一道编程题。接着，一大批面试官来了之后，叫了每个人的名字分别领走进行单面，分别由不同的面试官进行3轮的面试。面试官基本都是直接从国外回来的，例如我碰到的几个面试官之前是在Amazon和微软工作的，甚至还有不少是老外，所以全程也都是英文面试。面试的时候会讨论你之前写的代码，然后问了不少技术问题，涉及的范围比较广，每轮面试中间也会要求算法题。3面过后，要进行群面，类似国企面试中的无领导小组讨论，然后旁边坐了一圈面试官。群面的内容大概就是要求分为两个小组讨论一个问题的解决方案，最后进行总结。群面的时候说了一下午的英语，有点累已经不大想说了，就随便说了几句。原以为没戏了，不过正像HR所说的，面试官会根据你总体的表现来评估，而不会因为某一个环节的发挥好坏来决定，后来我还是收到了大摩的offer。&lt;/p&gt;
+&lt;h3&gt;猎豹移动&lt;/h3&gt;
+&lt;p&gt;面试的时候和HR聊天的时候才发现，金山网络已经是属于猎豹移动的子部门了，万万没想到。猎豹移动今年是第一年校园招聘，很多人对傅盛的这家公司不了解，其实猎豹移动在海外的移动互联网市场发展的非常好，有5亿多的用户，营收也非常不错，是一家纽约上市公司。猎豹的办公楼在朝阳区的某个村里，那地方真是偏啊，走到半路差点想回去了，而且到了之后发现他们给我安排面试的岗位是大数据运维工程师。。。我记得我根本报的不是这个啊。一面面试官看了我简历就知道我不是面运维的，就问我是不是报其他岗位的，之前有很多人这种情况，不是报运维岗却被HR安排面运维。我去，这还不是我一个人这种情况啊。得了，既然来了，就面吧。不过面试官都还比较nice，自己平时对这方面也比较感兴趣，有一定了解，就聊了些运维工具、Linux以及Hadoop这些。二面面试官穿着Yahoo的衣服，估计是从雅虎过来的，问了Linux相关的问题，也写了几个脚本。后来，他说ok了，待会儿会有hr过来，不过等了一会儿来了一个人，问了我几个问题发现他不是hr，而是对我进行了加面，可以让我转到研发工程师。全部面完之后，HR找我聊了天，问了我其他公司offer的情况，给了一个口头offer。等到了11月中下旬，才打电话过来谈offer，猎豹移动给的offer还是很有诚意的，直接就开到了每个月19k，而且也有部分户口名额，大家也可以试试这家公司。&lt;/p&gt;
+&lt;h2&gt;吐槽&lt;/h2&gt;
+&lt;p&gt;当然面试的过程中也碰到很多坑爹的事情：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;阿里缩招。说好的招3000人，结果9月份的时候突然大幅度缩招，搞得人心惶惶，骂声一片。&lt;/li&gt;
+&lt;li&gt;腾讯的基础研究岗。我提前批的时候报了，简历评级是A，但是还是没有接到任何面试通知，周围同学报的应用开发岗，全都拿了offer。。。后来正常参加校招，笔试完之后也是杳无音讯，据说腾讯在北京根本就没面几个这个岗位的&lt;/li&gt;
+&lt;li&gt;有些公司根本不是来校招的。面了一家在知春路的某移动互联网公司，刚出电梯刚好碰到技术主管，直接就进行面试。面试过程中一直问我能不能来实习，我说不能，得明年7月份之后才能入职，结果他说那我们那时候项目都结束了。。。&lt;/li&gt;
+&lt;li&gt;有多少人参加京东面试，是因为现场的混乱程度而中途放弃了&lt;/li&gt;
+&lt;li&gt;经常在论文和QQ群里看到大家吐槽赛码网的，笔试坑了不少人&lt;/li&gt;
+&lt;li&gt;刷题的速度已经跟不上leetcode更新题的速度了&lt;/li&gt;
+&lt;li&gt;蘑菇街笔试编程题给的输出样例是错的是要哪样！&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2&gt;经验总结和建议&lt;/h2&gt;
+&lt;p&gt;这几个月参加了不少公司的笔试和面试，这里总结点经验，供大家参考。&lt;/p&gt;
+&lt;h3&gt;书籍推荐&lt;/h3&gt;
+&lt;p&gt;最近几年针对程序员找工作的书是越来越多了。这里我推荐几本，我觉得是必读的书：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;C++：《C++ Primer  第五版》夯实基础了解C++ 11、《Effective C++》很多面试题都能从里面找到答案、《STL源码剖析》大概了解下常见容器的实现、《深度探索C++对象模型》有时间也可以看看。&lt;/li&gt;
+&lt;li&gt;计算机网络：《TCP/IP详解》重点掌握TCP连接建立和断开的过程&lt;/li&gt;
+&lt;li&gt;面试书：《剑指offer》、《编程之美》、《编程珠玑》、《程序员面试金典》&lt;/li&gt;
+&lt;li&gt;机器学习：《统计学习方法》、《机器学习实战》&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;网络资源&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;leetcode：现在程序员找工作基本都在刷这个网站的题目，现在有200多道题了，面试的时候不少题目都是上面的原题或者相似题。以现在的大家找工作的形势来看，leetcode上面的题能刷几遍就尽可能多刷几遍。另外，还有一个类似的网站lintcode。&lt;/li&gt;
+&lt;li&gt;牛客网：今年刚成立的网站，上面有很多各大互联网公司往年的笔试题，可以进行在线测试，里面的论坛也有很多人会分享一些面试经验。&lt;/li&gt;
+&lt;li&gt;应届生网：掌握公司的招聘信息&lt;/li&gt;
+&lt;li&gt;各个博客：很多人都会在个人博客上面分享自己的面试经验，善用Google搜索，搜集一些往年面试的真题和经验。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;每年都是“史上最难就业季”，很多人都说今年是互联网的寒冬，但是只要好好准备，平日里注意积累，找一家不错的互联网公司还是不难的。希望大家都能拿到满意的offer。&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">wwt</dc:creator><pubDate>Sun, 27 Dec 2015 14:22:00 +0800</pubDate><guid>tag:www.wengweitao.com,2015-12-27:2015nian-xiao-zhao-zhao-gong-zuo-zong-jie-zhi-hu-lian-wang-gong-si-ji-zhu-pian.html</guid><category>校招</category><category>总结</category></item><item><title>Kaggle入门指南</title><link>http://www.wengweitao.com/kaggleru-men-zhi-nan.html</link><description>&lt;p&gt;&lt;a href="https://www.kaggle.com"&gt;Kaggle&lt;/a&gt;是一个非常著名的数据建模和分析的竞赛平台，对于数据挖掘的爱好者来说是一个非常好的学习平台。我们可以通过Kaggle提供的数据集，通过实战提高自己的数据挖掘和分析能力。这篇文章就介绍如何参与一个Kaggle的竞赛，希望能够让更多的数据挖掘爱好者能够熟悉Kaggle竞赛的基本流程，加入到Kaggle中。&lt;/p&gt;
+&lt;p&gt;我们就以一个简单的竞赛任务——&lt;a href="https://www.kaggle.com/c/digit-recognizer"&gt;手写数字识别&lt;/a&gt;为例，进行介绍。&lt;/p&gt;
+&lt;h2&gt;查看竞赛任务描述&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://www.kaggle.com/c/digit-recognizer"&gt;Classify handwritten digits using the famous MNIST data&lt;/a&gt;的任务就是训练一个模型，然后输入一个手写数字作为输入，能够判断出它是哪一个数字。&lt;/p&gt;
+&lt;h2&gt;分析数据集&lt;/h2&gt;
+&lt;p&gt;手写字体识别这个比赛，提供了两个数据文件：&lt;code&gt;train.csv&lt;/code&gt;和&lt;code&gt;test.csv&lt;/code&gt;。这两个文件一个是训练数据集，另外一个是测试数据集。我们需要通过训练数据集生成一个分类器，然后在测试集上进行测试，并且将最终的结果提交给Kaggle。&lt;/p&gt;
+&lt;p&gt;两个数据文件的内容是0~9数字的手写图像。我们可以先将数据集下载到本地查看数据格式。训练数据集（train.csv）一共有785列，其中第一列为该样本（图像）的标签（label），而其余784列是这个图像的像素值（手写数字的图像为28 * 28）。如下所示。&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;label&lt;/th&gt;
+&lt;th&gt;pixel0&lt;/th&gt;
+&lt;th&gt;pixel1&lt;/th&gt;
+&lt;th&gt;...&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;1&lt;/td&gt;
+&lt;td&gt;0&lt;/td&gt;
+&lt;td&gt;0&lt;/td&gt;
+&lt;td&gt;...&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;0&lt;/td&gt;
+&lt;td&gt;0&lt;/td&gt;
+&lt;td&gt;0&lt;/td&gt;
+&lt;td&gt;...&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;对于测试数据集（test.csv）一共有784列，除了没有lable之外，每个列的含义与训练数据集相同。&lt;/p&gt;
+&lt;p&gt;测试数据集一共有28000个待分类的手写数字，我们提交分类结果的时候应该按照一行一个结果的格式提交（具体要求的结果格式可以参照页面给的样例），并且需要有一个header表示每列的内容如：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;ImageId,Label
+1,3
+2,5
+3,1
+剩余的27997个分类结果
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;分类的结果必须是&lt;code&gt;csv&lt;/code&gt;的格式。
+最终，通过分类的准确率来衡量你的模型的好坏。&lt;/p&gt;
+&lt;h2&gt;开始比赛吧&lt;/h2&gt;
+&lt;h3&gt;1. 编程环境配置&lt;/h3&gt;
+&lt;p&gt;这里我们使用Python作为编程语言，此外我们还需要安装以下几个非常强大有用的Python科学计算和机器学习的库：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;numpy：提供了大量数组和矩阵计算的函数&lt;/li&gt;
+&lt;li&gt;scipy：Python科学工程计算工具&lt;/li&gt;
+&lt;li&gt;scikit-learn：Python最流行的机器学习库&lt;/li&gt;
+&lt;li&gt;pandas：提供了很多操作数据集的函数&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;以上的的库都可以通过pip方便的安装。&lt;/p&gt;
+&lt;h3&gt;2. 模型训练&lt;/h3&gt;
+&lt;p&gt;对于手写数字识别的问题，很多模型都可以解决，例如：logistic归回、SVM以及随机森林等。这里我们选用随机森林作为分类器，随机森林虽然稍微有点复杂，但是通常效果还不错，而且利用scikit-learn可以非常方便的实现。
+很多人可能对随机森林不太熟悉，这里我还是简单的介绍一下。随机森林（random forest）就是以随机的方式生成一个森林，这个森林是由很多棵决策树构成的。当有一个新的输入的时候，就让每棵决策树去分类，然后查看哪个类被选择的最多，这个输入就属于哪个类。
+下面我们就利用scikit-learn来实现随机森林：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;#coding=utf-8&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;sklearn.ensemble&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;RandomForestClassifier&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;numpy&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;genfromtxt&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;savetxt&lt;/span&gt;
+
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;main&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
+    &lt;span class="c1"&gt;# 创建训练集&lt;/span&gt;
+    &lt;span class="n"&gt;dataset&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;genfromtxt&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;open&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;train.csv&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;r&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="n"&gt;delimiter&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;,&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;dtype&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;f8&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;:]&lt;/span&gt;
+    &lt;span class="n"&gt;target&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;dataset&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="c1"&gt;# 第一列为label&lt;/span&gt;
+    &lt;span class="n"&gt;train&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;:]&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;dataset&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+
+    &lt;span class="c1"&gt;# 创建测试集&lt;/span&gt;
+    &lt;span class="n"&gt;test&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;genfromtxt&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;open&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;test.csv&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;r&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="n"&gt;delimiter&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;,&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;dtype&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;f8&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;:]&lt;/span&gt;
+
+    &lt;span class="c1"&gt;# 创建并且训练一个随机森林模型&lt;/span&gt;
+    &lt;span class="n"&gt;rf&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;RandomForestClassifier&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;n_estimators&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;100&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;rf&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;fit&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;train&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;target&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;predicted_results&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[[&lt;/span&gt;&lt;span class="n"&gt;index&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;index&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="nb"&gt;enumerate&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;rf&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;predict&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;test&lt;/span&gt;&lt;span class="p"&gt;))]&lt;/span&gt;
+
+    &lt;span class="c1"&gt;# 利用随机森林对测试集进行预测，并将结果保存到输出文件中&lt;/span&gt;
+    &lt;span class="n"&gt;savetxt&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;result.csv&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;predicted_results&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;delimiter&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;,&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;fmt&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;&lt;/span&gt;&lt;span class="si"&gt;%d&lt;/span&gt;&lt;span class="s1"&gt;,&lt;/span&gt;&lt;span class="si"&gt;%d&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; 
+            &lt;span class="n"&gt;header&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;ImageId,Label&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;comments&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;__name__&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;__main__&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+    &lt;span class="n"&gt;main&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;首先，分别从两个文件创建训练集和数据集；然后，利用训练集训练一个随机森林模型，直接调用&lt;code&gt;sklearn.ensemble.RandomForestClassifier&lt;/code&gt;传入的参数&lt;code&gt;100&lt;/code&gt;表示森林有100棵树；最后输出结果的格式为(ImageId,Label)，写出到文件&lt;code&gt;result.csv&lt;/code&gt;中。&lt;/p&gt;
+&lt;h3&gt;3. 提交结果&lt;/h3&gt;
+&lt;p&gt;既然已经得到了预测的结果，那么就将结果上传到Kaggle。如果上传格式不对，就无法提交成功，所以要确保按照指定的要求提交。我们将&lt;code&gt;result.csv&lt;/code&gt;文件提交，经过判定就得出了模型的准确率和排名，如下所示，排名为395，分数（准确率）为0.96457。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;395 new nurnoch 0.96457 1   Fri, 21 Aug 2015 11:10:40
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;几行的代码就可以取得0.96的准确率还是挺不错的。&lt;/p&gt;
+&lt;p&gt;以上就是参加Kaggle竞赛的一个简单入门教程。
+Have fun!&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">wwt</dc:creator><pubDate>Fri, 21 Aug 2015 19:22:00 +0800</pubDate><guid>tag:www.wengweitao.com,2015-08-21:kaggleru-men-zhi-nan.html</guid><category>机器学习</category><category>教程</category></item><item><title>生成学习算法与判别学习算法</title><link>http://www.wengweitao.com/sheng-cheng-xue-xi-suan-fa-yu-pan-bie-xue-xi-suan-fa.html</link><description>&lt;p&gt;机器学习中有两类学习算法：&lt;strong&gt;生成学习算法&lt;/strong&gt;（Generative learning algorithm）和&lt;strong&gt;判别学习算法&lt;/strong&gt;（Discriminative learning algorithm），它们所学到的模型分别成为生成模型和判别模型。那么这两种学习算法的区别是什么呢？&lt;/p&gt;
+>>>>>>> 700a254393e115d0e8df2dc309357b2ba17b3d4a
 &lt;p&gt;举一个具体的例子，假设我们现在要对两种动物进行分类，给定一个动物要么是大象（y=1），要么是狗（y=0）。&lt;/p&gt;
 &lt;p&gt;对于生成学习算法，我们需要利用训练数据分别构建一个描述大象的模型和一个描述狗的模型，然后给定一个新的动物作为输入，我们分别将该动物与大象模型和狗模型进行匹配，然后根据匹配的结果更像哪一个进行分类。用数学公式可以描述为：&lt;/p&gt;
 &lt;p&gt;大象的模型：P(x|y=1)表示了大象的特征分布；&lt;/p&gt;

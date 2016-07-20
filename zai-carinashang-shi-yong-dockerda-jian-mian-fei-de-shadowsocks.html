@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+
+        <title>在carina上使用Docker搭建免费的ShadowSocks</title>
+        <meta charset="utf-8" />
+        <link href="http://www.wengweitao.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="wwt's blog Full Atom Feed" />
+        <link href="http://www.wengweitao.com/feeds/all.rss.xml" type="application/rss+xml" rel="alternate" title="wwt's blog Full RSS Feed" />
+        <link href="http://www.wengweitao.com/feeds/gong-ju.rss.xml" type="application/atom+xml" rel="alternate" title="wwt's blog Categories Atom Feed" />
+
+
+        <!-- Mobile viewport optimized: j.mp/bplateviewport -->
+        <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1">
+        <meta name="google-site-verification" content="pEViDEEJCicDD__DfnOAQ7xKtjtxJhVDoGDAOahOWy0" />
+
+        <meta name="sogou_site_verification" content="ia8yXdZS0p"/>
+
+        <link rel="stylesheet" type="text/css" href="http://www.wengweitao.com/theme/gumby.css" />
+        <link rel="stylesheet" type="text/css" href="http://www.wengweitao.com/theme/style.css" />
+        <link rel="stylesheet" type="text/css" href="http://www.wengweitao.com/theme/pygment.css" />
+
+
+        <script src="http://www.wengweitao.com/theme/js/libs/modernizr-2.6.2.min.js"></script>
+
+
+
+
+</head>
+
+<body id="index" class="home">
+
+
+    <div class="container">
+
+        <div class="row">
+
+          <header id="banner" class="body">
+                  <h1><a href="http://www.wengweitao.com/">wwt's blog <strong></strong></a></h1>
+          </header><!-- /#banner -->
+
+            <div id="navigation" class="navbar row">
+              <a href="#" gumby-trigger="#navigation &gt; ul" class="toggle"><i class="icon-menu"></i></a>
+             
+              <ul class="columns">
+                <li><a href="http://www.wengweitao.com/">首页</a></li>
+
+                <li><a href="/categories.html">分类</a></li>
+                <li><a href="/tags.html">标签</a></li>
+                <li><a href="/archives.html">归档</a></li>
+                <li><a href="/pages/about-me.html">关于我</a></li>
+
+              </ul>
+            </div>
+
+<section id="content" class="body">
+
+   <div class="row">
+        <div class="eleven columns">
+
+
+            <header>
+              <h2 class="entry-title">
+                <a href="http://www.wengweitao.com/zai-carinashang-shi-yong-dockerda-jian-mian-fei-de-shadowsocks.html" rel="bookmark"
+                   title="Permalink to 在carina上使用Docker搭建免费的ShadowSocks">在carina上使用Docker搭建免费的ShadowSocks</a></h2>
+           
+
+            </header>
+            <footer class="post-info">
+              <abbr class="published" title="2016-04-16T13:06:00+08:00">
+                六 16 四月 2016
+              </abbr>
+              <address class="vcard author">By 
+                <a class="url fn" href="http://www.wengweitao.com/author/wwt.html"> wwt</a>
+              </address>
+            </footer><!-- /.post-info -->
+            <div class="entry-content">
+              <h2></h2>
+<p><a href="https://getcarina.com/">Carina</a>是Rackspace旗下的一个网站，提供了Docker服务。最近，看到消息可以在该网站上注册账号，免费试用Docker服务。竟然有这么好的事，于是尝试注册了一个账号，搭建了一个免费的shadowsocks服务器。</p>
+<h3>账号注册</h3>
+<p>注册的过程需要发送验证码短信，才能注册成功。而且，不支持中国大陆的手机号。解决方法是在手机上下载 <a href="https://go-text.me/">textme</a>  APP，可以得到一个美国的虚拟手机号，用于发送和接收短信。得到虚拟手机号后，输入接收到的短信验证码即可成功注册。</p>
+<h3>创建cluster</h3>
+<p>登陆进去后，界面非常简单，点击<code>Add Cluster...</code>新建一个docker集群，待会儿就在这个集群上面搭建shadowsocks服务。输入cluster的名称，这里我用<code>wwt</code>，点击<code>Create Cluster</code>，需要等待几分钟的时间即可创建完毕。</p>
+<p><img alt="cluster" src="http://ww3.sinaimg.cn/large/9f9f764egw1f2yg3kq0thj20fj0jaq4d.jpg" /></p>
+<h3>配置Docker CLI</h3>
+<p>点击cluster下面的按钮<code>Get access</code>，下载一个Docker集群配置信息文件。</p>
+<p>解压后，进入该目录。source docker.env设置合适的docker环境变量：</p>
+<div class="highlight"><pre><span></span><span class="nb">source</span> docker.env
+</pre></div>
+
+
+<p>查看是否连接上：</p>
+<div class="highlight"><pre><span></span>➜ docker info
+Containers: 11
+Images: 6
+Role: primary
+Strategy: spread
+Filters: health, port, dependency, affinity, constraint
+Nodes: 1
+ 2ede2591-1ec0-4c2b-a3ef-59697ff02ba7-n1: 104.130.22.24:42376
+  └ Status: Healthy
+  └ Containers: 11
+  └ Reserved CPUs: <span class="m">0</span> / 12
+  └ Reserved Memory: <span class="m">0</span> B / 4.2 GiB
+  └ Labels: com.docker.network.driver.overlay.bind_interface<span class="o">=</span>eth1, <span class="nv">executiondriver</span><span class="o">=</span>native-0.2, <span class="nv">kernelversion</span><span class="o">=</span>3.18.21-2-rackos, <span class="nv">operatingsystem</span><span class="o">=</span>Debian GNU/Linux <span class="m">7</span> <span class="o">(</span>wheezy<span class="o">)</span> <span class="o">(</span>containerized<span class="o">)</span>, <span class="nv">storagedriver</span><span class="o">=</span>aufs
+  └ Error: <span class="o">(</span>none<span class="o">)</span>
+  └ UpdatedAt: 2016-04-15T11:53:04Z
+Kernel Version: 3.18.21-2-rackos
+Operating System: linux
+CPUs: 12
+Total Memory: 4.2 GiB
+Name: 2ede2591-1ec0-4c2b-a3ef-59697ff02ba7-n1
+</pre></div>
+
+
+<p>可以看到cluster中结点的具体信息。</p>
+<h3>通过Docker安装shadowsocks</h3>
+<p>通过Docker安装shadowsocks非常方便，只需要一个命令：</p>
+<div class="highlight"><pre><span></span>docker run -d --name shadowsocks -p 12306:12306 oddrationale/docker-shadowsocks -s 0.0.0.0 -p <span class="m">12306</span> -k yourpassword -m aes-256-cfb
+</pre></div>
+
+
+<p>-p是设置shadowsocks的服务器端口号；-k后面设置自己的密码。</p>
+<p>使用<code>docker ps</code>查看是否安装成功：</p>
+<div class="highlight"><pre><span></span>➜  docker ps                                                                                                                        
+CONTAINER ID        IMAGE                             COMMAND                CREATED                  STATUS              PORTS                            NAMES
+1016c8cc0ce4        oddrationale/docker-shadowsocks   <span class="s2">&quot;/usr/local/bin/ssse   Less than a second ago   Up 22 seconds       104.130.22.24:12306-&gt;12306/tcp   2ede2591-1ec0-4c2b-a3ef-59697ff02ba7-n1/shadowsocks   </span>
+<span class="s2">b47dd901c3dd        carina/consul                     &quot;</span>/bin/consul agent -   <span class="m">5</span> hours ago              Up <span class="m">5</span> hours                                           2ede2591-1ec0-4c2b-a3ef-59697ff02ba7-n1/carina-svcd  
+</pre></div>
+
+
+<p>可以看到shadowsocks服务已经在运行了。</p>
+<p>使用port命令，可以查看shadowsocks服务的IP和端口：</p>
+<div class="highlight"><pre><span></span>➜  docker port shadowsocks
+12306/tcp -&gt; 104.130.22.24:12306
+</pre></div>
+
+
+<p>记住shadowsocks的IP和端口号，待会儿需要填入shadowsocks代理软件中。</p>
+<h3>使用shadowsocks科学上网</h3>
+<p>（1）下载Windows系统的<a href="http://pan.baidu.com/s/1c05CZT2">Shadowsocks客户端</a>，解压到任意目录，运行其中的shadowsocks.exe。</p>
+<p>（2）添加shadowsocks的服务器IP和端口号、密码。点确定即可。</p>
+<p><img alt="shadowsocks" src="http://ww2.sinaimg.cn/large/9f9f764egw1f2ygf33os1j207c07vaai.jpg" /></p>
+<p>（3）右键点击任务栏中shadowsocks.exe的图标，勾选“启用系统代理”。</p>
+<p>（4）打开任意浏览器，即可自由上网。</p>
+<hr />
+<h3>References</h3>
+<ol>
+<li><a href="http://www.rendoumi.com/wan-quan-mian-fei-de-shadowsocksfu-wu-qi/">不花一分钱，搭建一个完全免费的Shadowsocks服务器</a></li>
+<li><a href="http://liujin.me/blog/2015/05/27/Docker-DigitalOcean-Shadowsocks-5-%E5%88%86%E9%92%9F%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/">Docker + DigitalOcean + Shadowsocks 5分钟科学上网</a></li>
+<li><a href="https://leohxj.gitbooks.io/a-programmer-prepares/content/effciency/break-through-intranet.html">程序员的自我修养</a></li>
+<li><a href="http://www.ishadowsocks.net/">shadowsocks客户端</a></li>
+</ol>
+            </div><!-- /.entry-content -->
+            <div class="comments">
+              <h3>Comments</h3>
+              <div id="disqus_thread"></div>
+              <script type="text/javascript">
+                var disqus_identifier = "zai-carinashang-shi-yong-dockerda-jian-mian-fei-de-shadowsocks.html";
+                (function() {
+                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                dsq.src = 'http://wengwt.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                })();
+              </script>
+            </div>
+
+
+        </div><!-- /.eleven.columns -->
+
+<div class="three columns">
+
+<!--
+<h4>Pages</h4>
+
+ <ul>
+      <li><a href="/categories.html">分类</a></li>
+      <li><a href="/tags.html">标签</a></li>
+      <li><a href="/archives.html">归档</a></li>
+      <li><a href="/pages/about-me.html">关于我</a></li>
+  </ul>
+-->
+
+<aside id="sidebar"><!--Google站内搜索开始-->
+        <div class="search">
+                <!--<h2>站内搜索</h2>-->
+                <form method=get action="http://www.google.com/search">
+                <input type=text name=q>
+                <input type=submit name=btnG value="搜索">
+                <input type=hidden name=ie value=UTF-8>
+                <input type=hidden name=oe value=UTF-8>
+                <input type=hidden name=hl value=zh-CN>
+                <input type=hidden name=domains value="http://www.wengweitao.com">
+                <input type=hidden name=sitesearch value="http://www.wengweitao.com">
+                </form>
+        </div>
+<!--Google站内搜索结束-->
+
+<h4>分类</h4>
+<ul>
+		<li><a href="http://www.wengweitao.com/category/bian-cheng-yu-yan.html">编程语言</a></li>
+		<li><a href="http://www.wengweitao.com/category/csji-chu.html">CS基础</a></li>
+		<li><a href="http://www.wengweitao.com/category/du-shu-bi-ji.html">读书笔记</a></li>
+		<li><a href="http://www.wengweitao.com/category/gong-ju.html">工具</a></li>
+		<li><a href="http://www.wengweitao.com/category/ji-qi-xue-xi.html">机器学习</a></li>
+		<li><a href="http://www.wengweitao.com/category/ji-zhu.html">技术</a></li>
+		<li><a href="http://www.wengweitao.com/category/python.html">Python</a></li>
+		<li><a href="http://www.wengweitao.com/category/sheng-huo.html">生活</a></li>
+		<li><a href="http://www.wengweitao.com/category/suan-fa-yu-shu-ju-jie-gou.html">算法与数据结构</a></li>
+</ul>
+
+<!--
+<h4>标签</h4>
+<ul class="tagcloud">
+</ul>
+-->
+
+
+<nav class="widget">
+  <h4>社交</h4>
+  <ul>
+    <li><a href="http://weibo.com/u/2678027854">新浪微博</a></li>
+    <li><a href="http://www.douban.com/people/wengwt/">豆瓣</a></li>
+    <li><a href="http://www.zhihu.com/people/vita-49">知乎</a></li>
+    <li><a href="https://github.com/nurnoch">Github</a></li>
+    <li><a href="https://www.v2ex.com/member/wwttc">V2EX</a></li>
+  </ul>
+</nav>
+
+<nav class="widget">
+  <h4>友情链接</h4>
+  <ul>
+    <li><a href="http://netlab.pkusz.edu.cn/">互联网信息工程研发中心</a></li>
+    <li><a href="http://www.houcj.net/">houcj's blog</a></li>
+    <li><a href="http://www.rudy-yuan.net/">rundy-yuan's blog</a></li>
+    <li><a href="http://zwyang.me/blog/">zwyanswer's blog</a></li>
+  </ul>
+</nav>
+
+
+</div> </div><!-- /.row -->
+
+
+</section>
+
+       </div><!-- /.row -->
+    </div><!-- /.container -->
+
+
+       <div class="container.nopad bg">
+
+    
+        <footer id="credits" class="row">
+          <div class="seven columns left-center">
+
+                   <address id="about" class="vcard body">
+                    Proudly powered by  <a href="http://getpelican.com/">Pelican</a> and Theme by Gum © 2015 wwt       
+                       <!-- cnzz -->
+                    <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1255354158'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s4.cnzz.com/z_stat.php%3Fid%3D1255354158%26show%3Dpic2' type='text/javascript'%3E%3C/script%3E"));</script>  
+                    </address>
+                   
+          </div>
+
+
+          <div class="seven columns">
+            <div class="row">
+              <ul class="socbtns">
+
+
+
+
+
+              </ul>
+            </div>
+          </div>
+        </footer>
+
+    </div>
+
+
+
+<script type="text/javascript">
+    var disqus_shortname = 'wengwt';
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+  <script src="http://www.wengweitao.com/theme/js/libs/jquery-1.9.1.min.js"></script>
+  <script src="http://www.wengweitao.com/theme/js/libs/gumby.min.js"></script>
+  <script src="http://www.wengweitao.com/theme/js/plugins.js"></script>
+</body>
+</html>

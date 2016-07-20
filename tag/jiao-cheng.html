@@ -61,27 +61,86 @@
         <div class="eleven columns">
                  <ol id="post-list">
                         <li><article class="hentry">
+<<<<<<< HEAD
                                 <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/python-socketwang-luo-bian-cheng.html" rel="bookmark" title="Permalink to Python Socket网络编程">Python Socket网络编程</a></h2> </header>
+=======
+                                <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/zai-carinashang-shi-yong-dockerda-jian-mian-fei-de-shadowsocks.html" rel="bookmark" title="Permalink to 在carina上使用Docker搭建免费的ShadowSocks">在carina上使用Docker搭建免费的ShadowSocks</a></h2> </header>
                                 <footer class="post-info">
-                                    <abbr class="published" title="2015-07-27T18:49:00+08:00"> 一 27 七月 2015 </abbr>
+                                    <abbr class="published" title="2016-04-16T13:06:00+08:00"> 六 16 四月 2016 </abbr>
                                     <address class="vcard author">By 
                                     <a class="url fn" href="http://www.wengweitao.com/author/wwt.html"> wwt</a>
                                     </address>
                                 </footer><!-- /.post-info -->
-                                <div class="entry-content"> <p>在网络通信中socket几乎无处不在，它可以看成是应用层与TCP/IP协议簇通信的中间软件抽象层，是两个应用程序彼此进行通信的接口，并且把复杂的TCP/IP协议细节隐藏在接口之后。Python提供了socket模块，可以非常方便的进行socket编程。</p>
-<h2>创建一个server socket</h2>
-<p>使用<code>socket</code>方法创建一个新的socket，通常提供两个参数，第一个参数是address family, 第二个是socket type。</p>
-<div class="highlight"><pre><span></span><span class="c1">#create an INET, STREAMing socket</span>
-<span class="n">s</span> <span class="o">=</span> <span class="n">socket</span><span class="o">.</span><span class="n">socket</span><span class="p">(</span><span class="n">socket</span><span class="o">.</span><span class="n">AF_INET</span><span class="p">,</span> <span class="n">socket</span><span class="o">.</span><span class="n">SOCK_STREAM</span><span class="p">)</span>
-</pre></div>
+                                <div class="entry-content"> <h2></h2>
+<p><a href="https://getcarina.com/">Carina</a>是Rackspace旗下的一个网站，提供了Docker服务。最近，看到消息可以在该网站上注册账号，免费试用Docker服务。竟然有这么好的事，于是尝试注册了一个账号，搭建了一个免费的shadowsocks服务器。</p>
+<h3>账号注册</h3>
+<p>注册的过程需要发送验证码短信，才能注册成功。而且，不支持中国大陆的手机号。解决方法是在手机上下载 <a href="https://go-text.me/">textme</a>  APP，可以得到一个美国的虚拟手机号，用于发送和接收短信。得到虚拟手机号后，输入接收到的短信验证码即可成功注册。</p>
+<h3>创建cluster</h3>
+<p>登陆进去后，界面非常简单，点击<code>Add Cluster...</code>新建一个docker集群，待会儿就在这个集群上面搭建shadowsocks服务。输入cluster的名称，这里我用<code>wwt</code>，点击<code>Create Cluster</code>，需要等待几分钟的时间即可创建完毕。</p>
+<p><img alt="cluster" src="http://ww3.sinaimg.cn/large/9f9f764egw1f2yg3kq0thj20fj0jaq4d.jpg" /></p>
+<h3>配置Docker CLI</h3>
+<p>点击cluster下面的按钮<code>Get access</code>，下载一个Docker集群配置信息文件。</p>
+<p>解压后，进入该目录。source docker.env设置合适的docker环境变量：</p>
+<div class="highlight"><pre><span></span><span class="nb">source</span> docker.env ...</pre></div> </div><!-- /.entry-content -->
+
+                                <div class="medium primary btn"><a href="http://www.wengweitao.com/zai-carinashang-shi-yong-dockerda-jian-mian-fei-de-shadowsocks.html" rel="bookmark" title="Permalink to 在carina上使用Docker搭建免费的ShadowSocks">Read more <i class="icon-arrow-right"></i></a></div>
 
 
-<p>以上创建了一个address family为IP协议，并且传输协议为TCP的socket。</p>
-<p>服务器端在创建一个socket之后，需要绑定到一个IP地址与端口，提供服务，这就要用到<code>bind</code>方法。</p>
-<div class="highlight"><pre><span></span><span class="c1"># bind the socket to all available interfaces on port 8888</span>
-<span class="n">s ...</span></pre></div> </div><!-- /.entry-content -->
 
-                                <div class="medium primary btn"><a href="http://www.wengweitao.com/python-socketwang-luo-bian-cheng.html" rel="bookmark" title="Permalink to Python Socket网络编程">Read more <i class="icon-arrow-right"></i></a></div>
+                                <div class="row tag-row">
+                                        <span>Tagged as : </span>
+                                            <a class="danger label" href="http://www.wengweitao.com/tag/docker.html">Docker</a>
+                                            <a class="danger label" href="http://www.wengweitao.com/tag/jiao-cheng.html">教程</a>
+                                </div>
+
+
+
+                        </article></li>
+                        <li><article class="hentry">
+                                <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/dockerxue-xi.html" rel="bookmark" title="Permalink to Docker学习">Docker学习</a></h2> </header>
+                                <footer class="post-info">
+                                    <abbr class="published" title="2016-04-16T12:06:00+08:00"> 六 16 四月 2016 </abbr>
+                                    <address class="vcard author">By 
+                                    <a class="url fn" href="http://www.wengweitao.com/author/wwt.html"> wwt</a>
+                                    </address>
+                                </footer><!-- /.post-info -->
+                                <div class="entry-content"> <blockquote>
+<p>Docker是诞生于2013年的一个开源项目，在开源之后就受到了广泛的关注和讨论。3年时间过去了，Docker已经成为了广大程序员耳熟能详的一个工具，在业界也得到了非常广泛的应用。我也一直对Docker十分感兴趣，便抽空了解了下Docker。</p>
+</blockquote>
+<h3>简介</h3>
+<p>了解Docker的人都知道它的概念与集装箱类似，但是Docker英文翻译过来的名字是“码头工人”。那么问题来了：Docker到底是码头工人还是集装箱呢？这就需要先简单的介绍一下集装箱的历史了。在1956年集装箱出现之前，货物的运输是一件成本非常高的事情，物流系统非常的零散和低效。假设内陆的地方想将大米出口到国外，那么首先需要工人将大米装到汽车上，然后通过汽车运输到沿海的港口，港口上的码头工人需要将大米从汽车转到轮船之上。可以看出这个过程中需要大量的人力作为货物的中转，不同运输工具之间的转换也存在着消耗，成本很高而且效率极低。于是，就出现了集装箱这个改变世界的箱子。集装箱是一个标准化的箱子，规定了标准的尺寸，使得不同的货物都可以装在集装箱中，无论是在公路或者海洋等各种运输场景中，集装箱都可以不用转变形态直接运输，中间的转运工作可以通过相同的搬运机械自动化运作。而且，集装箱也为不同的货物之间实现了隔离和保护，使得不同货物之间不会相互影响，也避免了外部环境对货物的影响。随着集装箱的出现，大大提高了运输的效率，使得码头工人这个职业基本消失。可以说，集装箱是人类现代社会最重要的发明之一，没有集装箱就没有经济的全球化。<strong>Docker就是软件世界的集装箱化</strong>。Docker允许开发人员将一个应用及其所有的依赖装到一个标准化的单元，这保证了不管它所运行的环境如何，它总是可以相同的运行。</p>
+<p><img alt="logo" src="http://ww4.sinaimg.cn/large/9f9f764egw1f2ycqndgtqj208301ygln.jpg" /></p>
+<p>Docker是使用Go语言实现的一个开源项目，目标是<strong>实现轻量级的操作系统虚拟化解决方案</strong>，是在Linux容器 ...</p> </div><!-- /.entry-content -->
+
+                                <div class="medium primary btn"><a href="http://www.wengweitao.com/dockerxue-xi.html" rel="bookmark" title="Permalink to Docker学习">Read more <i class="icon-arrow-right"></i></a></div>
+
+
+
+                                <div class="row tag-row">
+                                        <span>Tagged as : </span>
+                                            <a class="danger label" href="http://www.wengweitao.com/tag/docker.html">Docker</a>
+                                            <a class="danger label" href="http://www.wengweitao.com/tag/jiao-cheng.html">教程</a>
+                                </div>
+
+
+
+                        </article></li>
+                        <li><article class="hentry">
+                                <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/shi-yong-pythonchu-li-excelwen-jian.html" rel="bookmark" title="Permalink to 使用Python处理excel文件">使用Python处理excel文件</a></h2> </header>
+>>>>>>> 700a254393e115d0e8df2dc309357b2ba17b3d4a
+                                <footer class="post-info">
+                                    <abbr class="published" title="2016-03-07T21:06:00+08:00"> 一 07 三月 2016 </abbr>
+                                    <address class="vcard author">By 
+                                    <a class="url fn" href="http://www.wengweitao.com/author/wwt.html"> wwt</a>
+                                    </address>
+                                </footer><!-- /.post-info -->
+                                <div class="entry-content"> <p>最近一段时间好几个其他学院的同学找我帮忙处理保存在excel中的数据。对于非计算机专业的同学，平时可能仅仅是用excel做一些简单的数据处理，稍微复杂一些的excel函数可能就写不了，于是就找我们计算机专业的同学帮忙。不过excel，我几乎从来不用，只能借助于编程实现对excel的数据处理了。对于这类问题，首选自然是Python啦。其实，Python是一门非常容易掌握和使用的语言，我也经常向非计算机专业的同学推荐学习Python，学完之后非常有用。这篇文章就面向非计算机专业的同学介绍如何使用Python来对excel文件进行数据处理。</p>
+<h2>安装Python环境</h2>
+<p><a href="https://www.continuum.io/downloads">ANACONDA</a>是一个Python的发行版本，包含了400多个Python最常用的库，其中就包括了数据分析中需要经常使用到的Numpy和Pandas等。更重要的是，不论在哪个平台上，都可以一键安装，自动配置好环境，不需要用户任何的额外操作，非常方便。因此，安装Python环境就只需要到ANACONDA网站上下载安装文件，双击安装即可。</p>
+<p>安装完成之后，使用<code>windows + r</code>键打开Windows命令行，输入ipython，然后回车：</p>
+<div class="highlight"><pre><span></span><span class="n">Python</span> <span class="mf">2.7.11</span> <span class="o">|</span><span class="n">Anaconda</span> <span class="mf">2.5.0</span> <span class="p">(</span><span class="mi">64</span><span class="o">-</span><span class="n">bit</span><span class="p">)</span><span class="o">|</span> <span class="p">(</span><span class="k">default</span><span class="p">,</span> <span class="n">Jan</span> <span class="mi">29</span> <span class="mi">2016 ...</span></pre></div> </div><!-- /.entry-content -->
+
+                                <div class="medium primary btn"><a href="http://www.wengweitao.com/shi-yong-pythonchu-li-excelwen-jian.html" rel="bookmark" title="Permalink to 使用Python处理excel文件">Read more <i class="icon-arrow-right"></i></a></div>
 
 
 
@@ -95,40 +154,55 @@
 
                         </article></li>
                         <li><article class="hentry">
-                                <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/linuxshang-da-jian-vpnfu-wu-qi.html" rel="bookmark" title="Permalink to Linux上搭建VPN服务器">Linux上搭建VPN服务器</a></h2> </header>
+                                <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/virtualenvjie-shao.html" rel="bookmark" title="Permalink to virtualenv介绍">virtualenv介绍</a></h2> </header>
                                 <footer class="post-info">
-                                    <abbr class="published" title="2015-05-01T21:21:00+08:00"> 五 01 五月 2015 </abbr>
+                                    <abbr class="published" title="2016-03-01T22:48:00+08:00"> 二 01 三月 2016 </abbr>
                                     <address class="vcard author">By 
                                     <a class="url fn" href="http://www.wengweitao.com/author/wwt.html"> wwt</a>
                                     </address>
                                 </footer><!-- /.post-info -->
-                                <div class="entry-content"> <p>今天是五一劳动节，也就是五月份的第一天，不巧的是校园上网账号欠费了，导致无法通过认证上网。于是，就琢磨着如何不通过认证直接上网。实验室有几台服务器，这些服务器都无需认证可直接访问外网，很自然的就想到以下两种方法：</p>
-<p>（1）在服务器上设置代理服务器，然后在自己的PC和iPhone上设置代理上网</p>
-<p>（2）在服务器上搭建一个VPN PPTP服务器，在PC和iPhone上新建一个VPN连接上网。</p>
-<p>根据校园网的环境和平时的使用情况，最终决定采用VPN的方式。接下来，我以Red Hat系统为例，详细说明搭建的过程。</p>
-<hr />
-<h2>1. 判断PPP是否可用</h2>
-<p>首先，我们需要检查服务器是否支持搭建PPTP，在shell中输入：</p>
-<div class="highlight"><pre><span></span>cat /dev/ppp
-
-cat: /dev/ppp: 没有那个设备或地址
+                                <div class="entry-content"> <p>virtualenv是一个用来创建独立Python环境的工具。</p>
+<h2>什么时候会用到virtualenv？</h2>
+<ol>
+<li>
+<p>假设系统中的两个应用，其中A应用对库LibFoo的版本要求为1，而B应用对同一个库LibFoo的版本要求为2，两个应用对同一个库的要求想冲突了，而系统中库默认都安装到<code>/usr/lib/python2.7/site-packages</code>，那么如何能够同时使用这两个应用呢？</p>
+</li>
+<li>
+<p>你的用户权限不够，使得无法将包安装到<code>site-packages</code>目录</p>
+</li>
+<li>
+<p>需要使用一个应用，并且与系统其它应用相独立。</p>
+</li>
+</ol>
+<p>如果你遇到以上的问题，那么virtualenv会对你有帮助。virtualenv可以创建一个环境，拥有着自己的安装目录，而不会与系统的共享库或者其它virtualenv环境相干扰。</p>
+<h2>如何安装virtualenv？</h2>
+<p>如果系统上已经安装了pip：</p>
+<div class="highlight"><pre><span></span><span class="o">[</span>sudo<span class="o">]</span> pip install virtualenv
 </pre></div>
 
 
-<p>如果出现以上提示，说明这台服务器PPP可用；若出现"Permission denied"提示，则无法使用PPP，考虑更换一台服务器。</p>
-<h2>2. 安装所需的软件包</h2>
-<p>主要需要以下3个软件包：</p>
-<ul>
-<li>PPP：点对点协议</li>
-<li>PPTP：点对点通道协议</li>
-<li>IPtables ...</li></ul> </div><!-- /.entry-content -->
+<h2>如何使用virtualenv？</h2>
+<div class="highlight"><pre><span></span><span class="nb">cd</span> my_project_folder
 
-                                <div class="medium primary btn"><a href="http://www.wengweitao.com/linuxshang-da-jian-vpnfu-wu-qi.html" rel="bookmark" title="Permalink to Linux上搭建VPN服务器">Read more <i class="icon-arrow-right"></i></a></div>
+virtual ENV
+
+<span class="nb">source</span> bin/activate
+
+deactivate
+</pre></div>
+
+
+<p>以上就是virtualenv的基本使用过程。</p>
+<h3>创建一个虚拟环境</h3>
+<p>首先，<code>virtual ENV</code>会在当前目录创建名为ENV的虚拟环境，此时在当前目录会自动生成三个目录：bin, include和lib。默认情况下创建的虚拟环境会依赖于系统中的site-packages，即系统中已经安装好的库在虚拟环境中仍然可以使用 ...</p> </div><!-- /.entry-content -->
+
+                                <div class="medium primary btn"><a href="http://www.wengweitao.com/virtualenvjie-shao.html" rel="bookmark" title="Permalink to virtualenv介绍">Read more <i class="icon-arrow-right"></i></a></div>
 
 
 
                                 <div class="row tag-row">
                                         <span>Tagged as : </span>
+                                            <a class="danger label" href="http://www.wengweitao.com/tag/python.html">Python</a>
                                             <a class="danger label" href="http://www.wengweitao.com/tag/jiao-cheng.html">教程</a>
                                 </div>
 
@@ -136,42 +210,28 @@ cat: /dev/ppp: 没有那个设备或地址
 
                         </article></li>
                         <li><article class="hentry">
-                                <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/shi-yong-pelican-github-pagesda-jian-ge-ren-bo-ke.html" rel="bookmark" title="Permalink to 使用Pelican + Github Pages搭建个人博客">使用Pelican + Github Pages搭建个人博客</a></h2> </header>
+                                <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/kaggleru-men-zhi-nan.html" rel="bookmark" title="Permalink to Kaggle入门指南">Kaggle入门指南</a></h2> </header>
                                 <footer class="post-info">
-                                    <abbr class="published" title="2015-04-16T13:46:00+08:00"> 四 16 四月 2015 </abbr>
+                                    <abbr class="published" title="2015-08-21T19:22:00+08:00"> 五 21 八月 2015 </abbr>
                                     <address class="vcard author">By 
                                     <a class="url fn" href="http://www.wengweitao.com/author/wwt.html"> wwt</a>
                                     </address>
                                 </footer><!-- /.post-info -->
-                                <div class="entry-content"> <blockquote>
-<p>最近有不少同学问我，如何使用Python的Pelican搭建一个像我这样的一个个人博客。今天正好论文投稿结束，于是便抽出时间写这篇教程，希望对大家有用。有任何疑问欢迎在评论里说明。</p>
-</blockquote>
-<h2>静态网站</h2>
-<p>早在多年之前，我就使用过WordPress + MySQL + Apache在国外的主机上搭建过个人博客。但是，对于个人博客而言，使用WordPress这种动态网站，还需要后台支持各种数据库，就显得过于臃肿。最近几年人们纷纷转向静态博客，加之Github Pages和Dropbox这些地方可以免费的放置这些静态页面，于是各种静态网站生成器便如雨后春笋出现，不完全统计的就有392种之多，这里由列出了所有的<a href="https://staticsitegenerators.net/">Static site generator 列表及 Github 关注度排名</a>。</p>
-<h3>什么是静态网站</h3>
-<p>静态的网站全部由静态网页构成，这些网页都是提前生成好的，不需要与后台数据库进行交交互，并且内容不会动态改变。静态网站具有如下特点：</p>
-<ul>
-<li>
-<p>不需要数据库</p>
-</li>
-<li>
-<p>访问速度更快</p>
-</li>
-<li>
-<p>基本没有安全性的问题</p>
-</li>
-<li>
-<p>使写作者更加专注于内容本身</p>
-</li>
-</ul>
-<p>所以我们只需要使用任何一个编辑器利用markdown写出文章，生成静态html即可，不需要php，也不需要数据库，你可以发布在任何你喜爱的服务器上。 也可以运行在 GitHub Page 上，也就是说，你可以使用 GitHub ...</p> </div><!-- /.entry-content -->
+                                <div class="entry-content"> <p><a href="https://www.kaggle.com">Kaggle</a>是一个非常著名的数据建模和分析的竞赛平台，对于数据挖掘的爱好者来说是一个非常好的学习平台。我们可以通过Kaggle提供的数据集，通过实战提高自己的数据挖掘和分析能力。这篇文章就介绍如何参与一个Kaggle的竞赛，希望能够让更多的数据挖掘爱好者能够熟悉Kaggle竞赛的基本流程，加入到Kaggle中。</p>
+<p>我们就以一个简单的竞赛任务——<a href="https://www.kaggle.com/c/digit-recognizer">手写数字识别</a>为例，进行介绍。</p>
+<h2>查看竞赛任务描述</h2>
+<p><a href="https://www.kaggle.com/c/digit-recognizer">Classify handwritten digits using the famous MNIST data</a>的任务就是训练一个模型，然后输入一个手写数字作为输入，能够判断出它是哪一个数字。</p>
+<h2>分析数据集</h2>
+<p>手写字体识别这个比赛，提供了两个数据文件：<code>train.csv</code>和<code>test.csv</code>。这两个文件一个是训练数据集，另外一个是测试数据集。我们需要通过训练数据集生成一个分类器，然后在测试集上进行测试，并且将最终的结果提交给Kaggle。</p>
+<p>两个数据文件的内容是0~9数字的手写图像。我们可以先将数据集下载到本地查看数据格式。训练数据集（train.csv）一共有785列，其中第一列为该样本（图像）的标签（label），而其余784列是这个图像的像素值（手写数字的图像为28 ...</p> </div><!-- /.entry-content -->
 
-                                <div class="medium primary btn"><a href="http://www.wengweitao.com/shi-yong-pelican-github-pagesda-jian-ge-ren-bo-ke.html" rel="bookmark" title="Permalink to 使用Pelican + Github Pages搭建个人博客">Read more <i class="icon-arrow-right"></i></a></div>
+                                <div class="medium primary btn"><a href="http://www.wengweitao.com/kaggleru-men-zhi-nan.html" rel="bookmark" title="Permalink to Kaggle入门指南">Read more <i class="icon-arrow-right"></i></a></div>
 
 
 
                                 <div class="row tag-row">
                                         <span>Tagged as : </span>
+                                            <a class="danger label" href="http://www.wengweitao.com/tag/ji-qi-xue-xi.html">机器学习</a>
                                             <a class="danger label" href="http://www.wengweitao.com/tag/jiao-cheng.html">教程</a>
                                 </div>
 
@@ -255,6 +315,7 @@ cat: /dev/ppp: 没有那个设备或地址
 		<li><a href="http://www.wengweitao.com/category/du-shu-bi-ji.html">读书笔记</a></li>
 		<li><a href="http://www.wengweitao.com/category/gong-ju.html">工具</a></li>
 		<li><a href="http://www.wengweitao.com/category/ji-qi-xue-xi.html">机器学习</a></li>
+		<li><a href="http://www.wengweitao.com/category/ji-zhu.html">技术</a></li>
 		<li><a href="http://www.wengweitao.com/category/python.html">Python</a></li>
 		<li><a href="http://www.wengweitao.com/category/sheng-huo.html">生活</a></li>
 		<li><a href="http://www.wengweitao.com/category/suan-fa-yu-shu-ju-jie-gou.html">算法与数据结构</a></li>
