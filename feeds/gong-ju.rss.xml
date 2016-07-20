@@ -280,7 +280,49 @@ Successfully built 7d9495d03763
 &lt;li&gt;&lt;a href="https://ipn.li/kernelpanic/8/"&gt;内和恐慌#8：「集装箱化」与运维管理&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="http://v.youku.com/v_show/id_XNzUyMzA4MTE2.html?from=y1.6-91.3.1.5bdbf57c947311e3b8b7"&gt;罗辑思维：改变世界的箱子 84  &lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://www.gitbook.com/book/yeasy/docker_practice"&gt;Docker —— 从入门到实践&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;</summary><category term="工具"></category><category term="教程"></category></entry><entry><title>CentOS 升级 gcc 和 g++ 的方法</title><link href="http://www.wengweitao.com/centos-sheng-ji-gcc-he-g-de-fang-fa.html" rel="alternate"></link><published>2015-05-12T19:02:00+08:00</published><author><name>往往台</name></author><id>tag:www.wengweitao.com,2015-05-12:centos-sheng-ji-gcc-he-g-de-fang-fa.html</id><summary type="html">&lt;p&gt;CentOS 系统自带的 gcc 或者 g++ 的版本是：g++ (GCC) 4.4.6. GCC 版本太旧，导致了很多使用上的不便，如：无法使用g++ -std=c++11 命令来编译 C++11、无法使用Vim的很多插件（YouCompleteMe等）。因此，有必要对它进行升级。&lt;/p&gt;
+&lt;/ol&gt;</summary><category term="工具"></category><category term="教程"></category></entry><entry><title>virtualenv使用</title><link href="http://www.wengweitao.com/virtualenvshi-yong.html" rel="alternate"></link><published>2016-03-01T22:48:00+08:00</published><author><name>往往台</name></author><id>tag:www.wengweitao.com,2016-03-01:virtualenvshi-yong.html</id><summary type="html">&lt;p&gt;virtualenv是一个用来创建独立Python环境的工具。&lt;/p&gt;
+&lt;h2&gt;什么时候会用到virtualenv？&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;假设系统中的两个应用，其中A应用对库LibFoo的版本要求为1，而B应用对同一个库LibFoo的版本要求为2，两个应用对同一个库的要求想冲突了，而系统中库默认都安装到&lt;code&gt;/usr/lib/python2.7/site-packages&lt;/code&gt;，那么如何能够同时使用这两个应用呢？&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;你的用户权限不够，使得无法将包安装到&lt;code&gt;site-packages&lt;/code&gt;目录&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;需要使用一个应用，并且与系统其它应用相独立。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;如果你遇到以上的问题，那么virtualenv会对你有帮助。virtualenv可以创建一个环境，拥有着自己的安装目录，而不会与系统的共享库或者其它virtualenv环境相干扰。&lt;/p&gt;
+&lt;h2&gt;如何安装virtualenv？&lt;/h2&gt;
+&lt;p&gt;如果系统上已经安装了pip：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;sudo&lt;span class="o"&gt;]&lt;/span&gt; pip install virtualenv
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;如何使用virtualenv？&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nb"&gt;cd&lt;/span&gt; my_project_folder
+
+virtualenv ENV
+
+&lt;span class="nb"&gt;source&lt;/span&gt; bin/activate
+
+deactivate
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;以上就是virtualenv的基本使用过程。&lt;/p&gt;
+&lt;h3&gt;创建一个虚拟环境&lt;/h3&gt;
+&lt;p&gt;首先，&lt;code&gt;virtualenv ENV&lt;/code&gt;会在当前目录创建名为ENV的虚拟环境，此时在当前目录会自动生成三个目录：bin, include和lib。默认情况下创建的虚拟环境会依赖于系统中的site-packages，即系统中已经安装好的库在虚拟环境中仍然可以使用，如果想去除依赖，那么可以：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;virtualenv --no-site-packages ENV
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;启动虚拟环境&lt;/h3&gt;
+&lt;p&gt;通过&lt;code&gt;source bin/activate&lt;/code&gt;可以启动当前目录下的虚拟环境。启动后，shell的提示符就会发生改变，表示进入了虚拟环境。&lt;/p&gt;
+&lt;h3&gt;离开虚拟环境&lt;/h3&gt;
+&lt;p&gt;使用&lt;code&gt;deactivate&lt;/code&gt;离开虚拟环境。&lt;/p&gt;
+&lt;p&gt;以上。&lt;/p&gt;</summary><category term="工具"></category><category term="教程"></category><category term="Python"></category></entry><entry><title>CentOS 升级 gcc 和 g++ 的方法</title><link href="http://www.wengweitao.com/centos-sheng-ji-gcc-he-g-de-fang-fa.html" rel="alternate"></link><published>2015-05-12T19:02:00+08:00</published><author><name>往往台</name></author><id>tag:www.wengweitao.com,2015-05-12:centos-sheng-ji-gcc-he-g-de-fang-fa.html</id><summary type="html">&lt;p&gt;CentOS 系统自带的 gcc 或者 g++ 的版本是：g++ (GCC) 4.4.6. GCC 版本太旧，导致了很多使用上的不便，如：无法使用g++ -std=c++11 命令来编译 C++11、无法使用Vim的很多插件（YouCompleteMe等）。因此，有必要对它进行升级。&lt;/p&gt;
 &lt;p&gt;对 GCC 升级无法直接使用：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;yum update gcc
 &lt;/pre&gt;&lt;/div&gt;

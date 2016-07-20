@@ -380,7 +380,49 @@ dtype: object
 &lt;span class="n"&gt;out&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;pd&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;ExcelWriter&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;output.xls&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;span class="n"&gt;new_df&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;to_excel&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;out&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;span class="n"&gt;out&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;save&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">往往台</dc:creator><pubDate>Mon, 07 Mar 2016 22:48:00 +0800</pubDate><guid isPermaLink="false">tag:www.wengweitao.com,2016-03-07:shi-yong-pythonchu-li-excelwen-jian.html</guid><category>Python</category><category>教程</category></item><item><title>2015年校招找工作总结之国企篇</title><link>http://www.wengweitao.com/2015nian-xiao-zhao-zhao-gong-zuo-zong-jie-zhi-guo-qi-pian.html</link><description>&lt;p&gt;在上一篇的文章中&lt;a href="http://www.wengweitao.com/2015nian-xiao-zhao-zhao-gong-zuo-zong-jie-zhi-hu-lian-wang-gong-si-ji-zhu-pian.html"&gt;上一篇&lt;/a&gt;，我已经提到过我最终签约了一家银行。选择太重要了，一念天堂一念地狱啊。其实，最开始也没怎么想过去国企的，准备了几个月也基本是围绕互联网技术岗位来准备的，真是没想到还是去了国企。&lt;/p&gt;
+&lt;/pre&gt;&lt;/div&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">往往台</dc:creator><pubDate>Mon, 07 Mar 2016 22:48:00 +0800</pubDate><guid isPermaLink="false">tag:www.wengweitao.com,2016-03-07:shi-yong-pythonchu-li-excelwen-jian.html</guid><category>Python</category><category>教程</category></item><item><title>virtualenv使用</title><link>http://www.wengweitao.com/virtualenvshi-yong.html</link><description>&lt;p&gt;virtualenv是一个用来创建独立Python环境的工具。&lt;/p&gt;
+&lt;h2&gt;什么时候会用到virtualenv？&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;假设系统中的两个应用，其中A应用对库LibFoo的版本要求为1，而B应用对同一个库LibFoo的版本要求为2，两个应用对同一个库的要求想冲突了，而系统中库默认都安装到&lt;code&gt;/usr/lib/python2.7/site-packages&lt;/code&gt;，那么如何能够同时使用这两个应用呢？&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;你的用户权限不够，使得无法将包安装到&lt;code&gt;site-packages&lt;/code&gt;目录&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;需要使用一个应用，并且与系统其它应用相独立。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;如果你遇到以上的问题，那么virtualenv会对你有帮助。virtualenv可以创建一个环境，拥有着自己的安装目录，而不会与系统的共享库或者其它virtualenv环境相干扰。&lt;/p&gt;
+&lt;h2&gt;如何安装virtualenv？&lt;/h2&gt;
+&lt;p&gt;如果系统上已经安装了pip：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;sudo&lt;span class="o"&gt;]&lt;/span&gt; pip install virtualenv
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;如何使用virtualenv？&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nb"&gt;cd&lt;/span&gt; my_project_folder
+
+virtualenv ENV
+
+&lt;span class="nb"&gt;source&lt;/span&gt; bin/activate
+
+deactivate
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;以上就是virtualenv的基本使用过程。&lt;/p&gt;
+&lt;h3&gt;创建一个虚拟环境&lt;/h3&gt;
+&lt;p&gt;首先，&lt;code&gt;virtualenv ENV&lt;/code&gt;会在当前目录创建名为ENV的虚拟环境，此时在当前目录会自动生成三个目录：bin, include和lib。默认情况下创建的虚拟环境会依赖于系统中的site-packages，即系统中已经安装好的库在虚拟环境中仍然可以使用，如果想去除依赖，那么可以：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;virtualenv --no-site-packages ENV
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;启动虚拟环境&lt;/h3&gt;
+&lt;p&gt;通过&lt;code&gt;source bin/activate&lt;/code&gt;可以启动当前目录下的虚拟环境。启动后，shell的提示符就会发生改变，表示进入了虚拟环境。&lt;/p&gt;
+&lt;h3&gt;离开虚拟环境&lt;/h3&gt;
+&lt;p&gt;使用&lt;code&gt;deactivate&lt;/code&gt;离开虚拟环境。&lt;/p&gt;
+&lt;p&gt;以上。&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">往往台</dc:creator><pubDate>Tue, 01 Mar 2016 22:48:00 +0800</pubDate><guid isPermaLink="false">tag:www.wengweitao.com,2016-03-01:virtualenvshi-yong.html</guid><category>工具</category><category>教程</category><category>Python</category></item><item><title>2015年校招找工作总结之国企篇</title><link>http://www.wengweitao.com/2015nian-xiao-zhao-zhao-gong-zuo-zong-jie-zhi-guo-qi-pian.html</link><description>&lt;p&gt;在上一篇的文章中&lt;a href="http://www.wengweitao.com/2015nian-xiao-zhao-zhao-gong-zuo-zong-jie-zhi-hu-lian-wang-gong-si-ji-zhu-pian.html"&gt;上一篇&lt;/a&gt;，我已经提到过我最终签约了一家银行。选择太重要了，一念天堂一念地狱啊。其实，最开始也没怎么想过去国企的，准备了几个月也基本是围绕互联网技术岗位来准备的，真是没想到还是去了国企。&lt;/p&gt;
 &lt;p&gt;最早有进国企的想法（仅仅是想法）是在研一的时候，听一个去了国企的11级师兄介绍银行的求职经历，他当时介绍了去银行的各种好处，并且说到总行的时候，提到：&lt;code&gt;别看了，能进就进去吧!!&lt;/code&gt; 当时，我听完还是比较心动的，还跟同学说要是以后能进总行就好了。不过，当时师兄一直强调总行本部有多那么难进，我也就只是随便心里想想而已，没想到现在竟然真的成真了。其实，我的性格还是最适合当程序员的，而且本身也挺喜欢接触各种技术，最终放弃程序员的工作，虽然当时签工行的时候没有多少犹豫，但是签完自己再想想还是会觉得有些可惜，不知道未来在自己完全不熟悉的岗位上会发展的如何（当然，如果放弃工总签约互联网也会有同样的感觉）。选择程序员或者银行国企都各有各的好处，无论选择了什么岗位都一样需要努力奋斗的，既然做出了选择，那么就&lt;strong&gt;但行好事莫问前程&lt;/strong&gt;吧！好了，不废话了，接下来就介绍一些我的银行求职经历。&lt;/p&gt;
 &lt;h2&gt;为什么去银行？&lt;/h2&gt;
 &lt;p&gt;作为计算机专业的学生，大部分人肯定都会选择进入互联网行业。现在互联网公司这么火，开的工资又高，一个应届毕业生也可以比较轻松的拿到30w+的年薪，以后还可以自己创业，还能有暴富的机会。互联网这么好，我为什么还要加入银行呢？以下是我的几个想法：&lt;/p&gt;

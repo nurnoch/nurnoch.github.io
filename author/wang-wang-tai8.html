@@ -61,6 +61,47 @@
         <div class="eleven columns">
                  <ol id="post-list">
                         <li><article class="hentry">
+                                <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/linuxshang-da-jian-vpnfu-wu-qi.html" rel="bookmark" title="Permalink to Linux上搭建VPN服务器">Linux上搭建VPN服务器</a></h2> </header>
+                                <footer class="post-info">
+                                    <abbr class="published" title="2015-05-01T21:21:00+08:00"> 五 01 五月 2015 </abbr>
+                                    <address class="vcard author">By 
+                                    <a class="url fn" href="http://www.wengweitao.com/author/wang-wang-tai.html"> 往往台</a>
+                                    </address>
+                                </footer><!-- /.post-info -->
+                                <div class="entry-content"> <p>今天是五一劳动节，也就是五月份的第一天，不巧的是校园上网账号欠费了，导致无法通过认证上网。于是，就琢磨着如何不通过认证直接上网。实验室有几台服务器，这些服务器都无需认证可直接访问外网，很自然的就想到以下两种方法：</p>
+<p>（1）在服务器上设置代理服务器，然后在自己的PC和iPhone上设置代理上网</p>
+<p>（2）在服务器上搭建一个VPN PPTP服务器，在PC和iPhone上新建一个VPN连接上网。</p>
+<p>根据校园网的环境和平时的使用情况，最终决定采用VPN的方式。接下来，我以Red Hat系统为例，详细说明搭建的过程。</p>
+<hr />
+<h2>1. 判断PPP是否可用</h2>
+<p>首先，我们需要检查服务器是否支持搭建PPTP，在shell中输入：</p>
+<div class="highlight"><pre><span></span>cat /dev/ppp
+
+cat: /dev/ppp: 没有那个设备或地址
+</pre></div>
+
+
+<p>如果出现以上提示，说明这台服务器PPP可用；若出现"Permission denied"提示，则无法使用PPP，考虑更换一台服务器。</p>
+<h2>2. 安装所需的软件包</h2>
+<p>主要需要以下3个软件包：</p>
+<ul>
+<li>PPP：点对点协议</li>
+<li>PPTP：点对点通道协议</li>
+<li>IPtables ...</li></ul> </div><!-- /.entry-content -->
+
+                                <div class="medium primary btn"><a href="http://www.wengweitao.com/linuxshang-da-jian-vpnfu-wu-qi.html" rel="bookmark" title="Permalink to Linux上搭建VPN服务器">Read more <i class="icon-arrow-right"></i></a></div>
+
+
+
+                                <div class="row tag-row">
+                                        <span>Tagged as : </span>
+                                            <a class="danger label" href="http://www.wengweitao.com/tag/jiao-cheng.html">教程</a>
+                                </div>
+
+
+
+                        </article></li>
+                        <li><article class="hentry">
                                 <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/goyu-yan-ru-men-jiao-cheng-1.html" rel="bookmark" title="Permalink to Go语言入门教程（1）">Go语言入门教程（1）</a></h2> </header>
                                 <footer class="post-info">
                                     <abbr class="published" title="2015-04-30T22:30:00+08:00"> 四 30 四月 2015 </abbr>
@@ -218,57 +259,6 @@
                                 <div class="row tag-row">
                                         <span>Tagged as : </span>
                                             <a class="danger label" href="http://www.wengweitao.com/tag/jiao-cheng.html">教程</a>
-                                </div>
-
-
-
-                        </article></li>
-                        <li><article class="hentry">
-                                <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/hu-lian-wang-shi-yan-shi-he-yuan-you-wan.html" rel="bookmark" title="Permalink to 互联网实验室河源游玩">互联网实验室河源游玩</a></h2> </header>
-                                <footer class="post-info">
-                                    <abbr class="published" title="2015-04-14T20:12:00+08:00"> 二 14 四月 2015 </abbr>
-                                    <address class="vcard author">By 
-                                    <a class="url fn" href="http://www.wengweitao.com/author/wang-wang-tai.html"> 往往台</a>
-                                    </address>
-                                </footer><!-- /.post-info -->
-                                <div class="entry-content"> <p>4月份，春暖花开，正是出游的好时间。实验室一年一度的集体出游（当然是老板全部报销啦~），就定在了4月11日和12日这两天，今年去的地方是——河源。实验室一群小伙伴度过了非常欢乐的一个周末。</p>
-<h3>河源</h3>
-<p>在去<a href="http://zh.wikipedia.org/wiki/%E6%B2%B3%E6%BA%90%E5%B8%82">河源</a>游玩之前，仅仅是听过有河源这个地方，其他的都是这次旅游完才了解到的。</p>
-<ul>
-<li>河源在广东的东北部，从深圳坐大巴过去大概2个半小时。</li>
-<li>河源是一个地级市，河源市辖1个市辖区、5个县，但是地方感觉不太大。市区里面还分新城区和老城区，虽然是新城区不过高楼大厦仍然极少。</li>
-<li>大量客家人</li>
-<li>河源菜是东江菜的典型代表，而东江菜是粤菜的主要流派之一，其特点是偏重“肥、咸、熟”</li>
-<li>景点：<ul>
-<li>万绿湖</li>
-<li>镜花缘</li>
-<li>野趣沟</li>
-</ul>
-</li>
-</ul>
-<h3>行程</h3>
-<p><strong>野趣沟风景区</strong></p>
-<p><img alt="野趣沟1" src="./imgs/河源1.JPG" /></p>
-<p><img alt="野趣沟2" src="./imgs/河源2.JPG" /></p>
-<p><img alt="野趣沟3" src="./imgs/河源5.JPG" /></p>
-<p>山上的风景还挺不错</p>
-<p><strong>镜花缘</strong>
-<img alt="镜花缘" src="./imgs/河源8.JPG" /></p>
-<p>镜花缘里面实验室大合影</p>
-<p><img alt="镜花缘2" src="./imgs/河源7.JPG" /></p>
-<p>通过镜子合影，有创意</p>
-<p><img alt="镜花缘3" src="./imgs/河源9.JPG" /></p>
-<p>女儿国表演</p>
-<p>此外，晚上我们还泡了温泉，一共60多个池子，牛奶的、艾草的、薰衣草的等等，非常舒服。</p>
-<h3>聚餐 ...</h3> </div><!-- /.entry-content -->
-
-                                <div class="medium primary btn"><a href="http://www.wengweitao.com/hu-lian-wang-shi-yan-shi-he-yuan-you-wan.html" rel="bookmark" title="Permalink to 互联网实验室河源游玩">Read more <i class="icon-arrow-right"></i></a></div>
-
-
-
-                                <div class="row tag-row">
-                                        <span>Tagged as : </span>
-                                            <a class="danger label" href="http://www.wengweitao.com/tag/wan.html">玩</a>
                                 </div>
 
 

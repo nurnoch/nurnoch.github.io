@@ -5,28 +5,28 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://www.wengweitao.com/</loc>
-<lastmod>2016-07-20T22:46:20-00:00</lastmod>
+<lastmod>2016-07-20T22:52:09-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://www.wengweitao.com/archives.html</loc>
-<lastmod>2016-07-20T22:46:20-00:00</lastmod>
+<lastmod>2016-07-20T22:52:09-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://www.wengweitao.com/tags.html</loc>
-<lastmod>2016-07-20T22:46:20-00:00</lastmod>
+<lastmod>2016-07-20T22:52:09-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://www.wengweitao.com/categories.html</loc>
-<lastmod>2016-07-20T22:46:20-00:00</lastmod>
+<lastmod>2016-07-20T22:52:09-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -55,6 +55,13 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
 <loc>http://www.wengweitao.com/shi-yong-pythonchu-li-excelwen-jian.html</loc>
 <lastmod>2016-03-07T22:48:00+08:00</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+
+<url>
+<loc>http://www.wengweitao.com/virtualenvshi-yong.html</loc>
+<lastmod>2016-03-01T22:48:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>

@@ -61,6 +61,38 @@
         <div class="eleven columns">
                  <ol id="post-list">
                         <li><article class="hentry">
+                                <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/zhi-chi-xiang-liang-ji-fei-xian-xing-zhi-chi-xiang-liang-ji.html" rel="bookmark" title="Permalink to 支持向量机——非线性支持向量机">支持向量机——非线性支持向量机</a></h2> </header>
+                                <footer class="post-info">
+                                    <abbr class="published" title="2014-08-04T19:39:00+08:00"> 一 04 八月 2014 </abbr>
+                                    <address class="vcard author">By 
+                                    <a class="url fn" href="http://www.wengweitao.com/author/wang-wang-tai.html"> 往往台</a>
+                                    </address>
+                                </footer><!-- /.post-info -->
+                                <div class="entry-content"> <blockquote>
+<p>如果分类问题是非线性的，那么就要用到非线性支持向量机。非线性支持向量机主要特点就是利用核技巧。</p>
+</blockquote>
+<h2>核技巧</h2>
+<h3>非线性分类问题</h3>
+<p>利用非线性模型才能很好地进行分类的问题，就是非线性分类问题。如果能用<span class="math">\(R^n\)</span>中的一个超平面将正负例正确分开，则称这个问题为非线性可分问题。如下的例子，无法用直线（线性模型）将正负实例正确分开，但可以用一条椭圆（非线性模型）将它们正确分开。</p>
+<p><img alt="非线性可分例子" src="./imgs/nolinear.png" /></p>
+<p>通常进行一个非线性变换，将非线性问题变换为线性问题，通过解变换后的线性问题的方法求解原来的非线性问题。例如，上图中将椭圆变换为右图中的直线，将非线性分类问题变换为线性分类问题。</p>
+<p>核技巧应用到支持向量机，其基本思想就是通过一个非线性变换将输入空间（欧氏空间<span class="math">\(R^n\)</span>或离散集合）对应于一个特征空间（希尔伯特空间<sup id="fnref:Hilbert"><a class="footnote-ref" href="#fn:Hilbert" rel="footnote">1</a></sup>H），使得在输入空间中的超平面模型对应于特征空间中的超平面模型（支持向量机）。这样，分类问题的学习任务通过在特征空间中求解线性支持向量机就可以完成。</p>
+<h3>核函数的定义</h3>
+<p>设<span class="math">\(\chi\)</span>是输入空间（欧氏空间<span class="math">\(R^n\)</span>的子集或离散集合），<span class="math">\(H\)</span>为特征空间（希尔伯特空间 ...</p> </div><!-- /.entry-content -->
+
+                                <div class="medium primary btn"><a href="http://www.wengweitao.com/zhi-chi-xiang-liang-ji-fei-xian-xing-zhi-chi-xiang-liang-ji.html" rel="bookmark" title="Permalink to 支持向量机——非线性支持向量机">Read more <i class="icon-arrow-right"></i></a></div>
+
+
+
+                                <div class="row tag-row">
+                                        <span>Tagged as : </span>
+                                            <a class="danger label" href="http://www.wengweitao.com/tag/du-shu-bi-ji.html">读书笔记</a>
+                                </div>
+
+
+
+                        </article></li>
+                        <li><article class="hentry">
                                 <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/zhi-chi-xiang-liang-ji-xian-xing-zhi-chi-xiang-liang-ji.html" rel="bookmark" title="Permalink to 支持向量机——线性支持向量机">支持向量机——线性支持向量机</a></h2> </header>
                                 <footer class="post-info">
                                     <abbr class="published" title="2014-08-03T14:54:00+08:00"> 日 03 八月 2014 </abbr>
@@ -182,45 +214,6 @@
                                 <div class="row tag-row">
                                         <span>Tagged as : </span>
                                             <a class="danger label" href="http://www.wengweitao.com/tag/ji-ben-gai-nian.html">基本概念</a>
-                                </div>
-
-
-
-                        </article></li>
-                        <li><article class="hentry">
-                                <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/la-ge-lang-ri-dui-ou-xing-lagrange-duality.html" rel="bookmark" title="Permalink to 拉格朗日对偶性（Lagrange Duality）">拉格朗日对偶性（Lagrange Duality）</a></h2> </header>
-                                <footer class="post-info">
-                                    <abbr class="published" title="2014-07-30T09:56:00+08:00"> 三 30 七月 2014 </abbr>
-                                    <address class="vcard author">By 
-                                    <a class="url fn" href="http://www.wengweitao.com/author/wang-wang-tai.html"> 往往台</a>
-                                    </address>
-                                </footer><!-- /.post-info -->
-                                <div class="entry-content"> <blockquote>
-<p>在求解约束优化问题的时候，常常利用拉格朗日对偶性（Lagrange Duality）将原始问题转化为对偶问题，通过求解对偶问题而得到原始问题的解。该方法用在许多统计学习方法中，如最大熵模型和SVM等。</p>
-</blockquote>
-<h2>原始问题</h2>
-<h3>原始最优化问题</h3>
-<p>考虑最优化问题：</p>
-<blockquote>
-<p>
-<div class="math">$$min_x f(x)$$</div>
-<div class="math">$$s.t. c_i(x) \leq 0  \:\:\:\:\: i=1,2,...,k$$</div>
-<div class="math">$$h_j(x) = 0   \:\:\:\:\: j=1,2,...,l$$</div>
-</p>
-</blockquote>
-<p>称此约束最优化问题为原始最优化问题或原始问题。</p>
-<h3>广义拉格朗日函数</h3>
-<p>为了解决原始问题，我们先引入<strong>广义拉格朗日（generalized Lagrangian）函数</strong>：
-</p>
-<div class="math">$$L(x, \alpha, \beta) = f(x) + \sum_{i=1}^{k}\alpha_i ...</div> </div><!-- /.entry-content -->
-
-                                <div class="medium primary btn"><a href="http://www.wengweitao.com/la-ge-lang-ri-dui-ou-xing-lagrange-duality.html" rel="bookmark" title="Permalink to 拉格朗日对偶性（Lagrange Duality）">Read more <i class="icon-arrow-right"></i></a></div>
-
-
-
-                                <div class="row tag-row">
-                                        <span>Tagged as : </span>
-                                            <a class="danger label" href="http://www.wengweitao.com/tag/ji-chu-gai-nian.html">基础概念</a>
                                 </div>
 
 

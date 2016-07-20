@@ -61,6 +61,36 @@
         <div class="eleven columns">
                  <ol id="post-list">
                         <li><article class="hentry">
+                                <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/ji-shu-pai-xu-radix-sort.html" rel="bookmark" title="Permalink to 基数排序（radix sort）">基数排序（radix sort）</a></h2> </header>
+                                <footer class="post-info">
+                                    <abbr class="published" title="2015-05-17T14:12:00+08:00"> 日 17 五月 2015 </abbr>
+                                    <address class="vcard author">By 
+                                    <a class="url fn" href="http://www.wengweitao.com/author/wang-wang-tai.html"> 往往台</a>
+                                    </address>
+                                </footer><!-- /.post-info -->
+                                <div class="entry-content"> <p>本文继续介绍另外一种非比较排序算法——<strong>基数排序（radix sort）</strong>，最早用在卡片排序机上。基数排序的原理是将整数按位切割成不同的数字，然后按每个位数分别比较。对于十进制的数字，每列只会用到10个位置，一个d位数将占用d列。</p>
+<p>基数排序<strong>先按最低有效位进行排序</strong>，然后按次低有效位进行排序，直到对所有的d位数字都进行了排序。为了确保基数排序的正确性，<strong>一位数的排序算法必须是稳定的</strong>。</p>
+<p>我们有时会用基数排序来对具有多关键字域的记录进行排序。例如，我们希望用3个关键字（年、月、日）来对日期进行排序。我们可以使用基于特殊比较函数的排序算法，先比较年，如果相同再比较月，如果还相同再比较日。我们也可以采用基数排序，用一种稳定排序算法对这些信息进行三次排序：先日，再月，最后年。</p>
+<h2>基数排序的实现</h2>
+<p>基数排序的代码实现：</p>
+<div class="highlight"><pre><span></span><span class="k">const</span> <span class="kt">int</span> <span class="n">k</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>  <span class="c1">// 每个位的数值大小为从0~9</span>
+<span class="kt">int</span> <span class="n">base</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+
+<span class="kt">void</span> <span class="nf">countingSort</span><span class="p">(</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">A</span><span class="p">,</span> <span class="n">vector</span><span class="o">&lt;</span><span class="kt">int ...</span></pre></div> </div><!-- /.entry-content -->
+
+                                <div class="medium primary btn"><a href="http://www.wengweitao.com/ji-shu-pai-xu-radix-sort.html" rel="bookmark" title="Permalink to 基数排序（radix sort）">Read more <i class="icon-arrow-right"></i></a></div>
+
+
+
+                                <div class="row tag-row">
+                                        <span>Tagged as : </span>
+                                            <a class="danger label" href="http://www.wengweitao.com/tag/pai-xu-suan-fa-ji-chu.html">排序 算法 基础</a>
+                                </div>
+
+
+
+                        </article></li>
+                        <li><article class="hentry">
                                 <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/ji-shu-pai-xu.html" rel="bookmark" title="Permalink to 计数排序">计数排序</a></h2> </header>
                                 <footer class="post-info">
                                     <abbr class="published" title="2015-05-17T11:21:00+08:00"> 日 17 五月 2015 </abbr>
@@ -173,39 +203,6 @@
 <p>对于数组A[1..A.length ...</p> </div><!-- /.entry-content -->
 
                                 <div class="medium primary btn"><a href="http://www.wengweitao.com/dui-pai-xu.html" rel="bookmark" title="Permalink to 堆排序">Read more <i class="icon-arrow-right"></i></a></div>
-
-
-
-                                <div class="row tag-row">
-                                        <span>Tagged as : </span>
-                                            <a class="danger label" href="http://www.wengweitao.com/tag/pai-xu-suan-fa-ji-chu.html">排序 算法 基础</a>
-                                </div>
-
-
-
-                        </article></li>
-                        <li><article class="hentry">
-                                <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/cha-ru-pai-xu.html" rel="bookmark" title="Permalink to 插入排序">插入排序</a></h2> </header>
-                                <footer class="post-info">
-                                    <abbr class="published" title="2015-05-13T18:34:00+08:00"> 三 13 五月 2015 </abbr>
-                                    <address class="vcard author">By 
-                                    <a class="url fn" href="http://www.wengweitao.com/author/wang-wang-tai.html"> 往往台</a>
-                                    </address>
-                                </footer><!-- /.post-info -->
-                                <div class="entry-content"> <p>本文介绍一种非常简单的排序算法——<strong>插入排序</strong>。对于少量元素的排序，它是一个有效的算法。插入排序可以形象的类比为手中扑克牌的排序。开始时，左手为空并且桌子上的扑克牌的牌面朝下。然后我们每次从桌子上拿一张扑克牌，插入左手中正确的位置，我们从右向左将它与手中的每张牌进行比较，任何时候左手上的牌总是有序的。</p>
-<p>对数组A[1..n]进行插入排序步骤：</p>
-<ol>
-<li>初始时只含有一个元素A<a href="http://book.douban.com/subject/1885170/">1</a>，所以是有序的</li>
-<li>依次将A[2]~A[n]依次插入到前面已经排好序的子序列中</li>
-<li>n - 1次即可得到一个有序的表</li>
-</ol>
-<div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">insertionSort</span><span class="p">(</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">A</span><span class="p">)</span> <span class="p">{</span>
-    <span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="n">A</span><span class="p">.</span><span class="n">size</span><span class="p">();</span>
-    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="o">++</span><span class="n">j</span><span class="p">)</span> <span class="p">{</span>
-        <span class="kt">int</span> <span class="n">key</span> <span class="o">=</span> <span class="n">A</span><span class="p">[</span><span class="n">j</span><span class="p">];</span>
-        <span class="c1">// Insert A[j] into the ...</span></pre></div> </div><!-- /.entry-content -->
-
-                                <div class="medium primary btn"><a href="http://www.wengweitao.com/cha-ru-pai-xu.html" rel="bookmark" title="Permalink to 插入排序">Read more <i class="icon-arrow-right"></i></a></div>
 
 
 
