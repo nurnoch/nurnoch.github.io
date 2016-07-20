@@ -62,6 +62,35 @@
         <div class="eleven columns">
                  <ol id="post-list">
                         <li><article class="hentry">
+                                <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/zhi-chi-xiang-liang-ji-smoxu-lie-zui-xiao-zui-you-hua-suan-fa.html" rel="bookmark" title="Permalink to 支持向量机——SMO（序列最小最优化算法）">支持向量机——SMO（序列最小最优化算法）</a></h2> </header>
+                                <footer class="post-info">
+                                    <abbr class="published" title="2014-08-05T10:02:00+08:00"> 二 05 八月 2014 </abbr>
+                                    <address class="vcard author">By 
+                                    <a class="url fn" href="http://www.wengweitao.com/author/wwt.html"> wwt</a>
+                                    </address>
+                                </footer><!-- /.post-info -->
+                                <div class="entry-content"> <blockquote>
+<p>SVM的学习算法可以归结为凸二次规划问题。这样的凸二次规划问题你具有全局最优解，并且许多最优化算法可以用来求解，但是当训练样本容量很大，这些算法往往变得非常低效，以致无法使用。所以本文介绍了如何高效地实现支持向量机学习。</p>
+</blockquote>
+<p>我们将用序列最小最优化（sequential minimal optimization, SMO）算法，求解
+</p>
+<div class="math">$$min_{\alpha}\frac{1}{2} \sum_{i=1}^{N}\sum_{j=1}^{N}\alpha_i\alpha_jy_iy_jK(x_i,x_j)- \sum_{i=1}^{N}\alpha_i$$</div>
+<div class="math">$$s.t. 　\sum_{i=1}^{N}\alpha_iy_i = 0$$</div>
+<div class="math">$$0 \leq \alpha_i \leq C 　i ...</div> </div><!-- /.entry-content -->
+
+                                <div class="medium primary btn"><a href="http://www.wengweitao.com/zhi-chi-xiang-liang-ji-smoxu-lie-zui-xiao-zui-you-hua-suan-fa.html" rel="bookmark" title="Permalink to 支持向量机——SMO（序列最小最优化算法）">Read more <i class="icon-arrow-right"></i></a></div>
+
+
+
+                                <div class="row tag-row">
+                                        <span>Tagged as : </span>
+                                            <a class="danger label" href="http://www.wengweitao.com/tag/du-shu-bi-ji.html">读书笔记</a>
+                                </div>
+
+
+
+                        </article></li>
+                        <li><article class="hentry">
                                 <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/zhi-chi-xiang-liang-ji-fei-xian-xing-zhi-chi-xiang-liang-ji.html" rel="bookmark" title="Permalink to 支持向量机——非线性支持向量机">支持向量机——非线性支持向量机</a></h2> </header>
                                 <footer class="post-info">
                                     <abbr class="published" title="2014-08-04T19:39:00+08:00"> 一 04 八月 2014 </abbr>
@@ -181,40 +210,6 @@
                                 <div class="row tag-row">
                                         <span>Tagged as : </span>
                                             <a class="danger label" href="http://www.wengweitao.com/tag/du-shu-bi-ji.html">读书笔记</a>
-                                </div>
-
-
-
-                        </article></li>
-                        <li><article class="hentry">
-                                <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/niu-dun-fa.html" rel="bookmark" title="Permalink to 牛顿法">牛顿法</a></h2> </header>
-                                <footer class="post-info">
-                                    <abbr class="published" title="2014-07-30T20:12:00+08:00"> 三 30 七月 2014 </abbr>
-                                    <address class="vcard author">By 
-                                    <a class="url fn" href="http://www.wengweitao.com/author/wwt.html"> wwt</a>
-                                    </address>
-                                </footer><!-- /.post-info -->
-                                <div class="entry-content"> <blockquote>
-<p>牛顿法是近似求解方程的方法，方法是使用函数的泰勒级数的前面几项来寻找方程的根。在统计学习中，牛顿法（Newton method）和拟牛顿法（quasi Newton method）也是<strong>求解无约束最优化问题</strong>的常用方法。有<strong>收敛速度快</strong>的优点。牛顿法是<strong>迭代方法</strong>，每一步需要求解目标函数的海森矩阵（Hessian matrix）的逆矩阵，计算比较复杂。拟牛顿法通过正定矩阵近似海赛矩阵的逆矩阵或海赛矩阵，简化了这一过程。</p>
-</blockquote>
-<h2>牛顿法</h2>
-<h3>目标</h3>
-<p>考虑无约束最优化问题
-</p>
-<div class="math">$$minf(x)$$</div>
-<p>其中<span class="math">\(x^*\)</span>为目标函数的极小点。求出f(x)的极小点 <span class="math">\(x^*\)</span></p>
-<p>首先，我们先了解下泰勒级数与海森矩阵。</p>
-<h3>基本概念</h3>
-<h4>泰勒级数</h4>
-<p>若函数f（x）在点的某一临域内具有直到（n+1）阶导数，则在该邻域内f（x）的n阶泰勒公式为 ...</p> </div><!-- /.entry-content -->
-
-                                <div class="medium primary btn"><a href="http://www.wengweitao.com/niu-dun-fa.html" rel="bookmark" title="Permalink to 牛顿法">Read more <i class="icon-arrow-right"></i></a></div>
-
-
-
-                                <div class="row tag-row">
-                                        <span>Tagged as : </span>
-                                            <a class="danger label" href="http://www.wengweitao.com/tag/ji-ben-gai-nian.html">基本概念</a>
                                 </div>
 
 

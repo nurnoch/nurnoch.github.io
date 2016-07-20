@@ -62,6 +62,67 @@
         <div class="eleven columns">
                  <ol id="post-list">
                         <li><article class="hentry">
+                                <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/zai-carinashang-shi-yong-dockerda-jian-mian-fei-de-shadowsocks.html" rel="bookmark" title="Permalink to 在carina上使用Docker搭建免费的ShadowSocks">在carina上使用Docker搭建免费的ShadowSocks</a></h2> </header>
+                                <footer class="post-info">
+                                    <abbr class="published" title="2016-04-17T22:48:00+08:00"> 日 17 四月 2016 </abbr>
+                                    <address class="vcard author">By 
+                                    <a class="url fn" href="http://www.wengweitao.com/author/wwt.html"> wwt</a>
+                                    </address>
+                                </footer><!-- /.post-info -->
+                                <div class="entry-content"> <p><a href="https://getcarina.com/">Carina</a>是Rackspace旗下的一个网站，提供了Docker服务。最近，看到消息可以在该网站上注册账号，免费试用Docker服务。竟然有这么好的事，于是尝试注册了一个账号，搭建了一个免费的shadowsocks服务器。</p>
+<h3>账号注册</h3>
+<p>注册的过程需要发送验证码短信，才能注册成功。而且，不支持中国大陆的手机号。解决方法是在手机上下载 <a href="https://go-text.me/">textme</a>  APP，可以得到一个美国的虚拟手机号，用于发送和接收短信。得到虚拟手机号后，输入接收到的短信验证码即可成功注册。</p>
+<h3>创建cluster</h3>
+<p>登陆进去后，界面非常简单，点击<code>Add Cluster...</code>新建一个docker集群，待会儿就在这个集群上面搭建shadowsocks服务。输入cluster的名称，这里我用<code>wwt</code>，点击<code>Create Cluster</code>，需要等待几分钟的时间即可创建完毕。</p>
+<p><img alt="cluster" src="http://ww3.sinaimg.cn/large/9f9f764egw1f2yg3kq0thj20fj0jaq4d.jpg" /></p>
+<h3>配置Docker CLI</h3>
+<p>点击cluster下面的按钮<code>Get access</code>，下载一个Docker集群配置信息文件。</p>
+<p>解压后，进入该目录。source docker.env设置合适的docker环境变量：</p>
+<div class="highlight"><pre><span></span><span class="nb">source</span> docker.env ...</pre></div> </div><!-- /.entry-content -->
+
+                                <div class="medium primary btn"><a href="http://www.wengweitao.com/zai-carinashang-shi-yong-dockerda-jian-mian-fei-de-shadowsocks.html" rel="bookmark" title="Permalink to 在carina上使用Docker搭建免费的ShadowSocks">Read more <i class="icon-arrow-right"></i></a></div>
+
+
+
+                                <div class="row tag-row">
+                                        <span>Tagged as : </span>
+                                            <a class="danger label" href="http://www.wengweitao.com/tag/gong-ju.html">工具</a>
+                                            <a class="danger label" href="http://www.wengweitao.com/tag/jiao-cheng.html">教程</a>
+                                </div>
+
+
+
+                        </article></li>
+                        <li><article class="hentry">
+                                <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/dockerxue-xi.html" rel="bookmark" title="Permalink to Docker学习">Docker学习</a></h2> </header>
+                                <footer class="post-info">
+                                    <abbr class="published" title="2016-04-16T22:48:00+08:00"> 六 16 四月 2016 </abbr>
+                                    <address class="vcard author">By 
+                                    <a class="url fn" href="http://www.wengweitao.com/author/wwt.html"> wwt</a>
+                                    </address>
+                                </footer><!-- /.post-info -->
+                                <div class="entry-content"> <blockquote>
+<p>Docker是诞生于2013年的一个开源项目，在开源之后就受到了广泛的关注和讨论。3年时间过去了，Docker已经成为了广大程序员耳熟能详的一个工具，在业界也得到了非常广泛的应用。我也一直对Docker十分感兴趣，便抽空了解了下Docker。</p>
+</blockquote>
+<h3>简介</h3>
+<p>了解Docker的人都知道它的概念与集装箱类似，但是Docker英文翻译过来的名字是“码头工人”。那么问题来了：Docker到底是码头工人还是集装箱呢？这就需要先简单的介绍一下集装箱的历史了。在1956年集装箱出现之前，货物的运输是一件成本非常高的事情，物流系统非常的零散和低效。假设内陆的地方想将大米出口到国外，那么首先需要工人将大米装到汽车上，然后通过汽车运输到沿海的港口，港口上的码头工人需要将大米从汽车转到轮船之上。可以看出这个过程中需要大量的人力作为货物的中转，不同运输工具之间的转换也存在着消耗，成本很高而且效率极低。于是，就出现了集装箱这个改变世界的箱子。集装箱是一个标准化的箱子，规定了标准的尺寸，使得不同的货物都可以装在集装箱中，无论是在公路或者海洋等各种运输场景中，集装箱都可以不用转变形态直接运输，中间的转运工作可以通过相同的搬运机械自动化运作。而且，集装箱也为不同的货物之间实现了隔离和保护，使得不同货物之间不会相互影响，也避免了外部环境对货物的影响。随着集装箱的出现，大大提高了运输的效率，使得码头工人这个职业基本消失。可以说，集装箱是人类现代社会最重要的发明之一，没有集装箱就没有经济的全球化。<strong>Docker就是软件世界的集装箱化</strong>。Docker允许开发人员将一个应用及其所有的依赖装到一个标准化的单元，这保证了不管它所运行的环境如何，它总是可以相同的运行。</p>
+<p><img alt="logo" src="http://ww4.sinaimg.cn/large/9f9f764egw1f2ycqndgtqj208301ygln.jpg" /></p>
+<p>Docker是使用Go语言实现的一个开源项目，目标是<strong>实现轻量级的操作系统虚拟化解决方案</strong>，是在Linux容器 ...</p> </div><!-- /.entry-content -->
+
+                                <div class="medium primary btn"><a href="http://www.wengweitao.com/dockerxue-xi.html" rel="bookmark" title="Permalink to Docker学习">Read more <i class="icon-arrow-right"></i></a></div>
+
+
+
+                                <div class="row tag-row">
+                                        <span>Tagged as : </span>
+                                            <a class="danger label" href="http://www.wengweitao.com/tag/gong-ju.html">工具</a>
+                                            <a class="danger label" href="http://www.wengweitao.com/tag/jiao-cheng.html">教程</a>
+                                </div>
+
+
+
+                        </article></li>
+                        <li><article class="hentry">
                                 <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/centos-sheng-ji-gcc-he-g-de-fang-fa.html" rel="bookmark" title="Permalink to CentOS 升级 gcc 和 g++ 的方法">CentOS 升级 gcc 和 g++ 的方法</a></h2> </header>
                                 <footer class="post-info">
                                     <abbr class="published" title="2015-05-12T19:02:00+08:00"> 二 12 五月 2015 </abbr>
@@ -164,93 +225,6 @@ cat: /dev/ppp: 没有那个设备或地址
 <li>IPtables ...</li></ul> </div><!-- /.entry-content -->
 
                                 <div class="medium primary btn"><a href="http://www.wengweitao.com/linuxshang-da-jian-vpnfu-wu-qi.html" rel="bookmark" title="Permalink to Linux上搭建VPN服务器">Read more <i class="icon-arrow-right"></i></a></div>
-
-
-
-                                <div class="row tag-row">
-                                        <span>Tagged as : </span>
-                                            <a class="danger label" href="http://www.wengweitao.com/tag/jiao-cheng.html">教程</a>
-                                </div>
-
-
-
-                        </article></li>
-                        <li><article class="hentry">
-                                <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/vimru-men-jiao-cheng.html" rel="bookmark" title="Permalink to Vim入门教程">Vim入门教程</a></h2> </header>
-                                <footer class="post-info">
-                                    <abbr class="published" title="2015-04-16T20:12:00+08:00"> 四 16 四月 2015 </abbr>
-                                    <address class="vcard author">By 
-                                    <a class="url fn" href="http://www.wengweitao.com/author/wwt.html"> wwt</a>
-                                    </address>
-                                </footer><!-- /.post-info -->
-                                <div class="entry-content"> <blockquote>
-<p>Vim 在编辑器中是神一样的存在，熟练掌握Vim将极大提高编辑文本的效率。本文将介绍Vim最基本的操作和技巧。</p>
-</blockquote>
-<h2>操作篇</h2>
-<h3>模式</h3>
-<p>Vim中一共有4种模式：</p>
-<ol>
-<li>普通模式：启动Vim后，为普通模式，所有键都为功能键。</li>
-<li>插入模式：按下键i，进入插入模式，此时可以输入文本，返回普通模式，按Esc键。</li>
-<li>可视模式：按下键v，进入可视模式，可以移动光标对文本进行选择</li>
-<li>命令行模式：输入":"进入命令行模式，运行Vim的命令</li>
-</ol>
-<h3>最基本的移动</h3>
-<p>将光标上下左右移动，分别对应kjhl四个键。可以在前面加数字代表移动多个单位。如10j下移10行。</p>
-<h3>在文件中的移动</h3>
-<p>G-----移动到最后一行</p>
-<p>gg ------ 移动到第一行</p>
-<p>10G ------ 跳到第10行</p>
-<p>75% ----- 跳转到全文75%的地方</p>
-<h3>移动到指定字符</h3>
-<p>使用f,t,F,T可以再当前行快速移动。</p>
-<p>fx ----- 移动到光标右边的第一个’x'字符上</p>
-<p>Fx ----- 反方向查找 ...</p> </div><!-- /.entry-content -->
-
-                                <div class="medium primary btn"><a href="http://www.wengweitao.com/vimru-men-jiao-cheng.html" rel="bookmark" title="Permalink to Vim入门教程">Read more <i class="icon-arrow-right"></i></a></div>
-
-
-
-                                <div class="row tag-row">
-                                        <span>Tagged as : </span>
-                                            <a class="danger label" href="http://www.wengweitao.com/tag/vim.html">Vim</a>
-                                </div>
-
-
-
-                        </article></li>
-                        <li><article class="hentry">
-                                <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/shi-yong-pelican-github-pagesda-jian-ge-ren-bo-ke.html" rel="bookmark" title="Permalink to 使用Pelican + Github Pages搭建个人博客">使用Pelican + Github Pages搭建个人博客</a></h2> </header>
-                                <footer class="post-info">
-                                    <abbr class="published" title="2015-04-16T13:46:00+08:00"> 四 16 四月 2015 </abbr>
-                                    <address class="vcard author">By 
-                                    <a class="url fn" href="http://www.wengweitao.com/author/wwt.html"> wwt</a>
-                                    </address>
-                                </footer><!-- /.post-info -->
-                                <div class="entry-content"> <blockquote>
-<p>最近有不少同学问我，如何使用Python的Pelican搭建一个像我这样的一个个人博客。今天正好论文投稿结束，于是便抽出时间写这篇教程，希望对大家有用。有任何疑问欢迎在评论里说明。</p>
-</blockquote>
-<h2>静态网站</h2>
-<p>早在多年之前，我就使用过WordPress + MySQL + Apache在国外的主机上搭建过个人博客。但是，对于个人博客而言，使用WordPress这种动态网站，还需要后台支持各种数据库，就显得过于臃肿。最近几年人们纷纷转向静态博客，加之Github Pages和Dropbox这些地方可以免费的放置这些静态页面，于是各种静态网站生成器便如雨后春笋出现，不完全统计的就有392种之多，这里由列出了所有的<a href="https://staticsitegenerators.net/">Static site generator 列表及 Github 关注度排名</a>。</p>
-<h3>什么是静态网站</h3>
-<p>静态的网站全部由静态网页构成，这些网页都是提前生成好的，不需要与后台数据库进行交交互，并且内容不会动态改变。静态网站具有如下特点：</p>
-<ul>
-<li>
-<p>不需要数据库</p>
-</li>
-<li>
-<p>访问速度更快</p>
-</li>
-<li>
-<p>基本没有安全性的问题</p>
-</li>
-<li>
-<p>使写作者更加专注于内容本身</p>
-</li>
-</ul>
-<p>所以我们只需要使用任何一个编辑器利用markdown写出文章，生成静态html即可，不需要php，也不需要数据库，你可以发布在任何你喜爱的服务器上。 也可以运行在 GitHub Page 上，也就是说，你可以使用 GitHub ...</p> </div><!-- /.entry-content -->
-
-                                <div class="medium primary btn"><a href="http://www.wengweitao.com/shi-yong-pelican-github-pagesda-jian-ge-ren-bo-ke.html" rel="bookmark" title="Permalink to 使用Pelican + Github Pages搭建个人博客">Read more <i class="icon-arrow-right"></i></a></div>
 
 
 

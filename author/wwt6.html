@@ -61,185 +61,157 @@
         <div class="eleven columns">
                  <ol id="post-list">
                         <li><article class="hentry">
-                                <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/centos-sheng-ji-gcc-he-g-de-fang-fa.html" rel="bookmark" title="Permalink to CentOS 升级 gcc 和 g++ 的方法">CentOS 升级 gcc 和 g++ 的方法</a></h2> </header>
+                                <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/ji-shu-pai-xu.html" rel="bookmark" title="Permalink to 计数排序">计数排序</a></h2> </header>
                                 <footer class="post-info">
-                                    <abbr class="published" title="2015-05-12T19:02:00+08:00"> 二 12 五月 2015 </abbr>
+                                    <abbr class="published" title="2015-05-17T11:21:00+08:00"> 日 17 五月 2015 </abbr>
                                     <address class="vcard author">By 
                                     <a class="url fn" href="http://www.wengweitao.com/author/wwt.html"> wwt</a>
                                     </address>
                                 </footer><!-- /.post-info -->
-                                <div class="entry-content"> <p>CentOS 系统自带的 gcc 或者 g++ 的版本是：g++ (GCC) 4.4.6. GCC 版本太旧，导致了很多使用上的不便，如：无法使用g++ -std=c++11 命令来编译 C++11、无法使用Vim的很多插件（YouCompleteMe等）。因此，有必要对它进行升级。</p>
-<p>对 GCC 升级无法直接使用：</p>
-<div class="highlight"><pre><span></span>yum update gcc
-</pre></div>
-
-
-<p>以下是升级的详细过程。</p>
-<h3>1.使用 redhat developer toolset 1.1 的repo，安装GCC</h3>
-<div class="highlight"><pre><span></span><span class="nb">cd</span> /etc/yum.repos.d
-
-wget http://people ...</pre></div> </div><!-- /.entry-content -->
-
-                                <div class="medium primary btn"><a href="http://www.wengweitao.com/centos-sheng-ji-gcc-he-g-de-fang-fa.html" rel="bookmark" title="Permalink to CentOS 升级 gcc 和 g++ 的方法">Read more <i class="icon-arrow-right"></i></a></div>
-
-
-
-                                <div class="row tag-row">
-                                        <span>Tagged as : </span>
-                                            <a class="danger label" href="http://www.wengweitao.com/tag/jiao-cheng-linux.html">教程、Linux</a>
-                                </div>
-
-
-
-                        </article></li>
-                        <li><article class="hentry">
-                                <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/zhong-duan-chuang-kou-guan-li-shen-qi-tmux.html" rel="bookmark" title="Permalink to 终端窗口管理神器——tmux">终端窗口管理神器——tmux</a></h2> </header>
-                                <footer class="post-info">
-                                    <abbr class="published" title="2015-05-11T09:12:00+08:00"> 一 11 五月 2015 </abbr>
-                                    <address class="vcard author">By 
-                                    <a class="url fn" href="http://www.wengweitao.com/author/wwt.html"> wwt</a>
-                                    </address>
-                                </footer><!-- /.post-info -->
-                                <div class="entry-content"> <h2>什么是tmux</h2>
-<p>tmux是一个终端的复用器（terminal multiplexer），可以简单理解为一个终端的窗口管理程序。相比系统自带的 screen 功能要强大许多。其使用场景和特性包括：</p>
+                                <div class="entry-content"> <p>之前介绍的都是基于比较的排序算法，对于包含n个元素的输入序列来说，任何比较排序在最坏情况下都要经过O(nlogn)次比较。本文将介绍第一种非比较排序算法——<strong>计数排序</strong>。</p>
+<h2>计数排序的基本思想</h2>
+<p>计数排序假设n个输入元素中的每一个都是在0到k区间内的一个整数，其中k为某个整数。当k=O(n)时，计数排序的运算时间为O(n)。</p>
+<p>基本思想：</p>
 <ul>
-<li>当你使用SSH连接到服务器的时候，由于网络掉线导致连接中断（这是经常发生的。。。）。当你重新连接后，所有的工作现场丢失了。你还得重新打开之前的各种窗口，进入各种很深的目录，非常麻烦。而如果使用tmux，即时掉线之后，重新连接也能直接回到之前的工作环境，极大提高工作的效率。</li>
-<li>可以完全通过键盘操控</li>
-<li>支持自定义的按键绑定模式，例如设置成vim按键绑定模式</li>
-<li>可以在一个SSH连接下打开多个会话、窗口，也可以对窗口进行各种分割，效果如下图所示。</li>
+<li>对于每一个输入元素x，确定小于x的输入元素的个数</li>
+<li>根据这一信息将x放到它在输出数组中的位置上</li>
 </ul>
-<p><img alt="tmux示例" src="http://tmux.sourceforge.net/tmux4.png" /></p>
-<h2>tmux的基本概念</h2>
-<p>首先，需要先安装tmux：</p>
-<div class="highlight"><pre><span></span>sudo yum install tmux
-</pre></div>
+<h2>计数排序的代码实现</h2>
+<p>在计数排序算法的代码中，假设输入是一个数组A[1...n]，A.length = n。我们还需要两个数组：B[1..n]存放排序的输出，C[0..k]提供临时存储空间。</p>
+<div class="highlight"><pre><span></span><span class="c1">// B: output of the sorted array</span>
+<span class="c1">// k: every element in A: 0 &lt;= A ...</span></pre></div> </div><!-- /.entry-content -->
 
-
-<p>安装好后，直接输入 <strong>tmux</strong> 即可运行 tmux. </p>
-<p>tmux 包括以下3个基本概念：</p>
-<ul>
-<li><strong>session：</strong>会话，是一组窗口的集合，通常同一个任务可以放入一个session。可以同时打开多个session，每个session可以有自己的名字方便任务的切换。</li>
-<li><strong>window：</strong>窗口 ...</li></ul> </div><!-- /.entry-content -->
-
-                                <div class="medium primary btn"><a href="http://www.wengweitao.com/zhong-duan-chuang-kou-guan-li-shen-qi-tmux.html" rel="bookmark" title="Permalink to 终端窗口管理神器——tmux">Read more <i class="icon-arrow-right"></i></a></div>
+                                <div class="medium primary btn"><a href="http://www.wengweitao.com/ji-shu-pai-xu.html" rel="bookmark" title="Permalink to 计数排序">Read more <i class="icon-arrow-right"></i></a></div>
 
 
 
                                 <div class="row tag-row">
                                         <span>Tagged as : </span>
-                                            <a class="danger label" href="http://www.wengweitao.com/tag/tmux.html">tmux</a>
+                                            <a class="danger label" href="http://www.wengweitao.com/tag/pai-xu-suan-fa-ji-chu.html">排序 算法 基础</a>
                                 </div>
 
 
 
                         </article></li>
                         <li><article class="hentry">
-                                <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/xuan-ze-wen-ti-ji-fu-za-du-fen-xi.html" rel="bookmark" title="Permalink to 选择问题及复杂度分析">选择问题及复杂度分析</a></h2> </header>
+                                <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/kuai-su-pai-xu.html" rel="bookmark" title="Permalink to 快速排序">快速排序</a></h2> </header>
                                 <footer class="post-info">
-                                    <abbr class="published" title="2015-05-06T11:10:00+08:00"> 三 06 五月 2015 </abbr>
+                                    <abbr class="published" title="2015-05-16T10:22:00+08:00"> 六 16 五月 2015 </abbr>
                                     <address class="vcard author">By 
                                     <a class="url fn" href="http://www.wengweitao.com/author/wwt.html"> wwt</a>
                                     </address>
                                 </footer><!-- /.post-info -->
-                                <div class="entry-content"> <p>选择问题是在实际应用中经常碰到的问题，最常见的选择问题有：选最大、选最小、选中位数、选第二大等。</p>
-<p>可以描述为从n个元素的集合L中选出第k小的元素，其中<span class="math">\(1 \leq k \leq n\)</span>。这里的第k小表示：将L中的元素按照升序排列，排在第k个位置的元素。如k=1时，选出的就是最小元素。</p>
-<p>本文将对选择问题进行总结并对它们的复杂度进行分析。</p>
-<h2>选最大最小问题</h2>
-<h3>选最大算法</h3>
-<p>选最大问题，最容易想到的方法就是顺序比较算法，从第一个元素开始依次往后比较n个元素，用一个变量max保存当前的最大值，算法实现如下：</p>
-<div class="highlight"><pre><span></span><span class="kt">int</span> <span class="nf">findMax</span><span class="p">(</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">L</span><span class="p">,</span> <span class="kt">int</span> <span class="n">n</span><span class="p">)</span> <span class="p">{</span>
-    <span class="kt">int</span> <span class="n">max</span> <span class="o">=</span> <span class="n">L</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>  
-    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">if</span><span class="p">(</span><span class="n">L</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">max</span><span class="p">)</span>
-            <span class="n">max ...</span></pre></div> </div><!-- /.entry-content -->
+                                <div class="entry-content"> <p>本文介绍的是实际排序应用中最常用的一种排序算法——<strong>快速排序</strong>。快速排序虽然在最坏情况下时间复杂度为<span class="math">\(O(n^2)\)</span>，但是它的平均性能非常好，它的期望运行时间是O(nlogn)，而且O(nlogn)所隐含的常数因子非常小。另外，它还能够进行原址排序。</p>
+<h2>快速排序描述</h2>
+<p>与归并排序一样，快速排序也使用了分治的思想。下面是对一个数组A[p..r]进行快速排序的三步分治过程：</p>
+<ul>
+<li>分解：数组A[p..r]被划分成两个子数组A[p..q-1]和A[q+1..r]，使得A[p..q-1]中的每一个元素都小于等于A[q]，A[q+1..r]中的每个元素都大于等于A[q]；</li>
+<li>解决：通过递归调用快速排序，对两个子数组A[p..q-1]和A[q ...</li></ul> </div><!-- /.entry-content -->
 
-                                <div class="medium primary btn"><a href="http://www.wengweitao.com/xuan-ze-wen-ti-ji-fu-za-du-fen-xi.html" rel="bookmark" title="Permalink to 选择问题及复杂度分析">Read more <i class="icon-arrow-right"></i></a></div>
+                                <div class="medium primary btn"><a href="http://www.wengweitao.com/kuai-su-pai-xu.html" rel="bookmark" title="Permalink to 快速排序">Read more <i class="icon-arrow-right"></i></a></div>
 
 
 
                                 <div class="row tag-row">
                                         <span>Tagged as : </span>
-                                            <a class="danger label" href="http://www.wengweitao.com/tag/suan-fa-fen-xi.html">算法分析</a>
+                                            <a class="danger label" href="http://www.wengweitao.com/tag/pai-xu-suan-fa-ji-chu.html">排序 算法 基础</a>
                                 </div>
 
 
 
                         </article></li>
                         <li><article class="hentry">
-                                <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/linuxshang-da-jian-vpnfu-wu-qi.html" rel="bookmark" title="Permalink to Linux上搭建VPN服务器">Linux上搭建VPN服务器</a></h2> </header>
+                                <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/gui-bing-pai-xu.html" rel="bookmark" title="Permalink to 归并排序">归并排序</a></h2> </header>
                                 <footer class="post-info">
-                                    <abbr class="published" title="2015-05-01T21:21:00+08:00"> 五 01 五月 2015 </abbr>
+                                    <abbr class="published" title="2015-05-15T19:45:00+08:00"> 五 15 五月 2015 </abbr>
                                     <address class="vcard author">By 
                                     <a class="url fn" href="http://www.wengweitao.com/author/wwt.html"> wwt</a>
                                     </address>
                                 </footer><!-- /.post-info -->
-                                <div class="entry-content"> <p>今天是五一劳动节，也就是五月份的第一天，不巧的是校园上网账号欠费了，导致无法通过认证上网。于是，就琢磨着如何不通过认证直接上网。实验室有几台服务器，这些服务器都无需认证可直接访问外网，很自然的就想到以下两种方法：</p>
-<p>（1）在服务器上设置代理服务器，然后在自己的PC和iPhone上设置代理上网</p>
-<p>（2）在服务器上搭建一个VPN PPTP服务器，在PC和iPhone上新建一个VPN连接上网。</p>
-<p>根据校园网的环境和平时的使用情况，最终决定采用VPN的方式。接下来，我以Red Hat系统为例，详细说明搭建的过程。</p>
-<hr />
-<h2>1. 判断PPP是否可用</h2>
-<p>首先，我们需要检查服务器是否支持搭建PPTP，在shell中输入：</p>
-<div class="highlight"><pre><span></span>cat /dev/ppp
-
-cat: /dev/ppp: 没有那个设备或地址
-</pre></div>
-
-
-<p>如果出现以上提示，说明这台服务器PPP可用；若出现"Permission denied"提示，则无法使用PPP，考虑更换一台服务器。</p>
-<h2>2. 安装所需的软件包</h2>
-<p>主要需要以下3个软件包：</p>
+                                <div class="entry-content"> <p>本文介绍利用分治法思想的一种排序算法——<strong>归并排序</strong>。直观上其操作如下：</p>
 <ul>
-<li>PPP：点对点协议</li>
-<li>PPTP：点对点通道协议</li>
-<li>IPtables ...</li></ul> </div><!-- /.entry-content -->
-
-                                <div class="medium primary btn"><a href="http://www.wengweitao.com/linuxshang-da-jian-vpnfu-wu-qi.html" rel="bookmark" title="Permalink to Linux上搭建VPN服务器">Read more <i class="icon-arrow-right"></i></a></div>
-
-
-
-                                <div class="row tag-row">
-                                        <span>Tagged as : </span>
-                                            <a class="danger label" href="http://www.wengweitao.com/tag/jiao-cheng.html">教程</a>
-                                </div>
-
-
-
-                        </article></li>
-                        <li><article class="hentry">
-                                <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/goyu-yan-ru-men-jiao-cheng-1.html" rel="bookmark" title="Permalink to Go语言入门教程（1）">Go语言入门教程（1）</a></h2> </header>
-                                <footer class="post-info">
-                                    <abbr class="published" title="2015-04-30T22:30:00+08:00"> 四 30 四月 2015 </abbr>
-                                    <address class="vcard author">By 
-                                    <a class="url fn" href="http://www.wengweitao.com/author/wwt.html"> wwt</a>
-                                    </address>
-                                </footer><!-- /.post-info -->
-                                <div class="entry-content"> <h2>什么是Go？</h2>
-<p>以下是<a href="https://golang.org/doc/">Go官方网站</a>对其解释：</p>
-<p>Go 编程语言是一个使得程序员更加有效率的开源项目。Go是有表达力、简洁、清晰和有效率的。它的并行机制使其很容易编写多核和网络应用，而新奇的类型系统允许构建有弹性的模块化程序。Go编译到机器码非常快速，同时具有便利的垃圾回收和强大的运行时反射。它是快速的、静态类型编译语言，但是感觉上是动态类型的，解释型语言。</p>
-<h2>Go的特性</h2>
-<ul>
-<li>清晰并且简洁</li>
-<li>并行。很容易让函数变成一个轻量的线程，这些线程被称为goroutines。</li>
-<li>Channel。goroutines直接的通信由channel完成。</li>
-<li>快速。编译和执行都很快。</li>
-<li>安全。类型转换遵循严格的规则并且需要显式的转换；有垃圾收集，无序free()。</li>
-<li>标准格式化。gofmt的输出是官方认可的格式</li>
-<li>类型后置。与类C语言不同，Go的类型在变量名之后</li>
-<li>UTF-8。任何地方都是UTF-8（用过Python的人应该体会到不是UTF-8的痛苦。。。）</li>
+<li><strong>分解</strong>：分解待排序的n个元素的序列成2个具有n/2个元素的子序列</li>
+<li><strong>解决</strong>：使用归并排序递归地排序两个子序列</li>
+<li><strong>合并</strong>：合并两个已排序的子序列并产生已排序的答案</li>
 </ul>
-<p>Go语言与Erlang比较类似，区别在于Erlang是函数式编程语言，而Go是命令式；Erlang运行在虚拟机上，而Go是编译后运行的。</p>
-<h2>安装Go</h2>
-<p>这里以Linux平台为例。</p>
-<p>下载<a href="https://golang.org/dl/">Go的压缩包</a>并解压到 /usr/local ...</p> </div><!-- /.entry-content -->
+<p>当待排序的序列的长度为1时，递归“开始回升”，在这种情况下，我们不需要做任何工作，因为只有一个元素的序列已经是有序的了。</p>
+<h2>合并操作</h2>
+<p>归并排序算法的关键操作是“合并”步骤中将两个已排序的子序列进行合并。我们通过函数MERGE(A, p, q, r)来完成合并，其中A是一个数组，p、q和r是数组下标，该过程假设A[p..q]和A[q+1..r]都已有序。</p>
+<div class="highlight"><pre><span></span><span class="c1">// 对A[p..q] 和 A[q+1..r]两个有序子序列进行合并</span>
+<span class="kt">void</span> <span class="nf">merge</span><span class="p">(</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int ...</span></pre></div> </div><!-- /.entry-content -->
 
-                                <div class="medium primary btn"><a href="http://www.wengweitao.com/goyu-yan-ru-men-jiao-cheng-1.html" rel="bookmark" title="Permalink to Go语言入门教程（1）">Read more <i class="icon-arrow-right"></i></a></div>
+                                <div class="medium primary btn"><a href="http://www.wengweitao.com/gui-bing-pai-xu.html" rel="bookmark" title="Permalink to 归并排序">Read more <i class="icon-arrow-right"></i></a></div>
 
 
 
                                 <div class="row tag-row">
                                         <span>Tagged as : </span>
-                                            <a class="danger label" href="http://www.wengweitao.com/tag/go.html">Go</a>
+                                            <a class="danger label" href="http://www.wengweitao.com/tag/pai-xu-suan-fa-ji-chu.html">排序 算法 基础</a>
+                                </div>
+
+
+
+                        </article></li>
+                        <li><article class="hentry">
+                                <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/dui-pai-xu.html" rel="bookmark" title="Permalink to 堆排序">堆排序</a></h2> </header>
+                                <footer class="post-info">
+                                    <abbr class="published" title="2015-05-14T22:23:00+08:00"> 四 14 五月 2015 </abbr>
+                                    <address class="vcard author">By 
+                                    <a class="url fn" href="http://www.wengweitao.com/author/wwt.html"> wwt</a>
+                                    </address>
+                                </footer><!-- /.post-info -->
+                                <div class="entry-content"> <p>本文将介绍一种排序算法，称为<strong>堆排序（heapsort）</strong>。堆排序最坏情况下运行时间为O(nlogn)，并且具有空间原址性：任何时候只需要常数个额外的元素空间存储临时数据。堆排序中使用了堆这个数据结构进行管理，堆这种数据结构也可以用来构造一种 有效的优先级队列。</p>
+<h2>堆</h2>
+<p><strong>堆</strong>（二叉堆）是一个数组，可以看成一个近似的完全二叉树，树中每一个结点对应数组中的一个元素，除了最底层外，该树是完全满的，而且是从左至右填充。二叉堆有两种形式：最大堆和最小堆。在最大堆中，除了根结点之外的所有结点的值小于等于其父节点的值，因此，堆中最大的元素存放在根结点中，并且在任一子树中，该子树所包含的所有结点的值都不大于该子树根结点的值。最小堆的组织方式正好相反。</p>
+<p>在堆排序算法中，我们使用最大堆，而最小堆通常用于构造优先级队列。</p>
+<p>如果把堆看成一棵树，那么堆的高度就是O(logn)。我们会发现在堆上进行的很多基本操作的运行时间至多与树的高度成正比，即时间复杂度为O(nlogn)。</p>
+<p>表示堆的数组A包括的基本属性：</p>
+<ul>
+<li>A.length() ： 返回数组元素的个数</li>
+<li>A.heap-size()：返回有多少个堆元素存放在该数组中（通常小于等于length）</li>
+</ul>
+<p>对于数组A[1..A.length ...</p> </div><!-- /.entry-content -->
+
+                                <div class="medium primary btn"><a href="http://www.wengweitao.com/dui-pai-xu.html" rel="bookmark" title="Permalink to 堆排序">Read more <i class="icon-arrow-right"></i></a></div>
+
+
+
+                                <div class="row tag-row">
+                                        <span>Tagged as : </span>
+                                            <a class="danger label" href="http://www.wengweitao.com/tag/pai-xu-suan-fa-ji-chu.html">排序 算法 基础</a>
+                                </div>
+
+
+
+                        </article></li>
+                        <li><article class="hentry">
+                                <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/cha-ru-pai-xu.html" rel="bookmark" title="Permalink to 插入排序">插入排序</a></h2> </header>
+                                <footer class="post-info">
+                                    <abbr class="published" title="2015-05-13T18:34:00+08:00"> 三 13 五月 2015 </abbr>
+                                    <address class="vcard author">By 
+                                    <a class="url fn" href="http://www.wengweitao.com/author/wwt.html"> wwt</a>
+                                    </address>
+                                </footer><!-- /.post-info -->
+                                <div class="entry-content"> <p>本文介绍一种非常简单的排序算法——<strong>插入排序</strong>。对于少量元素的排序，它是一个有效的算法。插入排序可以形象的类比为手中扑克牌的排序。开始时，左手为空并且桌子上的扑克牌的牌面朝下。然后我们每次从桌子上拿一张扑克牌，插入左手中正确的位置，我们从右向左将它与手中的每张牌进行比较，任何时候左手上的牌总是有序的。</p>
+<p>对数组A[1..n]进行插入排序步骤：</p>
+<ol>
+<li>初始时只含有一个元素A<a href="http://book.douban.com/subject/1885170/">1</a>，所以是有序的</li>
+<li>依次将A[2]~A[n]依次插入到前面已经排好序的子序列中</li>
+<li>n - 1次即可得到一个有序的表</li>
+</ol>
+<div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">insertionSort</span><span class="p">(</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">A</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="n">A</span><span class="p">.</span><span class="n">size</span><span class="p">();</span>
+    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="o">++</span><span class="n">j</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kt">int</span> <span class="n">key</span> <span class="o">=</span> <span class="n">A</span><span class="p">[</span><span class="n">j</span><span class="p">];</span>
+        <span class="c1">// Insert A[j] into the ...</span></pre></div> </div><!-- /.entry-content -->
+
+                                <div class="medium primary btn"><a href="http://www.wengweitao.com/cha-ru-pai-xu.html" rel="bookmark" title="Permalink to 插入排序">Read more <i class="icon-arrow-right"></i></a></div>
+
+
+
+                                <div class="row tag-row">
+                                        <span>Tagged as : </span>
+                                            <a class="danger label" href="http://www.wengweitao.com/tag/pai-xu-suan-fa-ji-chu.html">排序 算法 基础</a>
                                 </div>
 
 
@@ -322,7 +294,7 @@ cat: /dev/ppp: 没有那个设备或地址
 
 <p class="paginator">
             <a href="http://www.wengweitao.com/author/wwt5.html"><i class="icon-arrow-left"></i></a>
-    Page 6 / 13
+    Page 6 / 14
         <a href="http://www.wengweitao.com/author/wwt7.html"><i class="icon-arrow-right"></i></a>
 </p>
 </section><!-- /#content -->
