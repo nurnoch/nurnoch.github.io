@@ -61,6 +61,63 @@
         <div class="eleven columns">
                  <ol id="post-list">
                         <li><article class="hentry">
+                                <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/bian-xie-gao-zhi-liang-pythondai-ma-3-ku.html" rel="bookmark" title="Permalink to 编写高质量Python代码（3）——库">编写高质量Python代码（3）——库</a></h2> </header>
+                                <footer class="post-info">
+                                    <abbr class="published" title="2015-04-08T22:58:00+08:00"> 三 08 四月 2015 </abbr>
+                                    <address class="vcard author">By 
+                                    <a class="url fn" href="http://www.wengweitao.com/author/wang-wang-tai.html"> 往往台</a>
+                                    </address>
+                                </footer><!-- /.post-info -->
+                                <div class="entry-content"> <blockquote>
+<p>Python具有非常丰富的库，这篇文章介绍了常用库的使用和技巧。</p>
+</blockquote>
+<h3>建议36：掌握字符串的基本用法</h3>
+<p>有个小技巧：</p>
+<div class="highlight"><pre><span></span> <span class="n">s</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;SELECT *&#39;</span>
+         <span class="s1">&#39;FROM atable &#39;</span>
+         <span class="s1">&#39;WHERE afield=&quot;value&quot;&#39;</span><span class="p">)</span>
+ <span class="n">s</span>
+ <span class="s1">&#39;SELECT *FROM atable WHERE afield=&quot;value&quot;&#39;</span>
+</pre></div>
+
+
+<p>以上利用了Python遇到未闭合的小括号时会自动将多行代码拼接为一行和把相邻的两个字符串字面量拼接在一起的特性做到的。（而如果使用三个引号会把换行符和空格都当做字符串的一部分）</p>
+<p>Python字符串分为str和unicode两种。当需要判断变量是否为字符串时，应该使用</p>
+<div class="highlight"><pre><span></span><span class="nb">isinstance</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="nb">basestring</span><span class="p">)</span>
+</pre></div>
+
+
+<p>Python提供了很多判定字符串的函数如：</p>
+<ul>
+<li>isalnum()</li>
+<li>isalpha() </li>
+<li>isdigit() </li>
+<li>islower()</li>
+<li>isupper()</li>
+<li>isspace()</li>
+<li>istitle() 首字母大写</li>
+<li>startswith(prefix, start, end)</li>
+<li>endswith</li>
+</ul>
+<p>查找和替换：</p>
+<ul>
+<li>count(sub, start, end )</li>
+<li>find  找不到返回-1</li>
+<li>index   找不到返回ValueError ...</li></ul> </div><!-- /.entry-content -->
+
+                                <div class="medium primary btn"><a href="http://www.wengweitao.com/bian-xie-gao-zhi-liang-pythondai-ma-3-ku.html" rel="bookmark" title="Permalink to 编写高质量Python代码（3）——库">Read more <i class="icon-arrow-right"></i></a></div>
+
+
+
+                                <div class="row tag-row">
+                                        <span>Tagged as : </span>
+                                            <a class="danger label" href="http://www.wengweitao.com/tag/python.html">Python</a>
+                                </div>
+
+
+
+                        </article></li>
+                        <li><article class="hentry">
                                 <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/pythonrong-qi-counterde-shi-yong.html" rel="bookmark" title="Permalink to Python容器——Counter的使用">Python容器——Counter的使用</a></h2> </header>
                                 <footer class="post-info">
                                     <abbr class="published" title="2015-04-08T14:52:00+08:00"> 三 08 四月 2015 </abbr>
@@ -223,46 +280,6 @@ positional arguments ...</pre></div> </div><!-- /.entry-content -->
                                 <div class="row tag-row">
                                         <span>Tagged as : </span>
                                             <a class="danger label" href="http://www.wengweitao.com/tag/python.html">Python</a>
-                                </div>
-
-
-
-                        </article></li>
-                        <li><article class="hentry">
-                                <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/fei-bo-na-qi-shu-lie-ji-qi-xiang-guan-wen-ti.html" rel="bookmark" title="Permalink to 斐波那契数列及其相关问题">斐波那契数列及其相关问题</a></h2> </header>
-                                <footer class="post-info">
-                                    <abbr class="published" title="2015-04-05T00:00:00+08:00"> 日 05 四月 2015 </abbr>
-                                    <address class="vcard author">By 
-                                    <a class="url fn" href="http://www.wengweitao.com/author/wang-wang-tai.html"> 往往台</a>
-                                    </address>
-                                </footer><!-- /.post-info -->
-                                <div class="entry-content"> <p>很多书在提到递归的时候，总是会拿斐波那契数列作为例子，它的定义如下：
-<img alt="Fibonacci" src="http://ac.jobdu.com/upload/201201/image/fbncslie.jpg" /></p>
-<p>现在要求输出斐波那契数列的第n项。</p>
-<p>首先，最容易想到的方法就是直接利用递归求解：</p>
-<div class="highlight"><pre><span></span><span class="kt">long</span> <span class="kt">long</span> <span class="nf">fib</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">if</span><span class="p">(</span><span class="n">n</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
-        <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
-    <span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="n">n</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span>
-        <span class="k">return</span> <span class="mi">1</span><span class="p">;</span>
-    <span class="k">else</span>
-        <span class="k">return</span> <span class="n">fib</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">fib</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">2</span><span class="p">);</span> 
-<span class="p">}</span>
-</pre></div>
-
-
-<p>递归求解的形式非常简单易懂，但是递归的解法存在很严重的效率问题，因为计算过程中很多结点都是重复计算的，而且重复的结点数随着n的增大而急剧增加。例如，假设n=100，那么程序的速度将慢到无法忍受！</p>
-<p>上面递归的方法之所以慢，是因为大量的重复计算，我们只需要把已经得到的数列的中间项保存起来，下次需要的时候直接查找，就不用重复计算了。</p>
-<div class="highlight"><pre><span></span><span class="kt">long</span> <span class="kt">long</span> <span class="nf">fib</span><span class="p">(</span><span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">n</span><span class="p">)</span> <span class="p">{</span>
-    <span class="kt">int ...</span></pre></div> </div><!-- /.entry-content -->
-
-                                <div class="medium primary btn"><a href="http://www.wengweitao.com/fei-bo-na-qi-shu-lie-ji-qi-xiang-guan-wen-ti.html" rel="bookmark" title="Permalink to 斐波那契数列及其相关问题">Read more <i class="icon-arrow-right"></i></a></div>
-
-
-
-                                <div class="row tag-row">
-                                        <span>Tagged as : </span>
-                                            <a class="danger label" href="http://www.wengweitao.com/tag/mian-shi-ti.html">面试题</a>
                                 </div>
 
 

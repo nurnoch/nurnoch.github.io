@@ -61,6 +61,38 @@
         <div class="eleven columns">
                  <ol id="post-list">
                         <li><article class="hentry">
+                                <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/xuan-ze-wen-ti-ji-fu-za-du-fen-xi.html" rel="bookmark" title="Permalink to 选择问题及复杂度分析">选择问题及复杂度分析</a></h2> </header>
+                                <footer class="post-info">
+                                    <abbr class="published" title="2015-05-06T11:10:00+08:00"> 三 06 五月 2015 </abbr>
+                                    <address class="vcard author">By 
+                                    <a class="url fn" href="http://www.wengweitao.com/author/wang-wang-tai.html"> 往往台</a>
+                                    </address>
+                                </footer><!-- /.post-info -->
+                                <div class="entry-content"> <p>选择问题是在实际应用中经常碰到的问题，最常见的选择问题有：选最大、选最小、选中位数、选第二大等。</p>
+<p>可以描述为从n个元素的集合L中选出第k小的元素，其中<span class="math">\(1 \leq k \leq n\)</span>。这里的第k小表示：将L中的元素按照升序排列，排在第k个位置的元素。如k=1时，选出的就是最小元素。</p>
+<p>本文将对选择问题进行总结并对它们的复杂度进行分析。</p>
+<h2>选最大最小问题</h2>
+<h3>选最大算法</h3>
+<p>选最大问题，最容易想到的方法就是顺序比较算法，从第一个元素开始依次往后比较n个元素，用一个变量max保存当前的最大值，算法实现如下：</p>
+<div class="highlight"><pre><span></span><span class="kt">int</span> <span class="nf">findMax</span><span class="p">(</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">L</span><span class="p">,</span> <span class="kt">int</span> <span class="n">n</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">max</span> <span class="o">=</span> <span class="n">L</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>  
+    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">L</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">max</span><span class="p">)</span>
+            <span class="n">max ...</span></pre></div> </div><!-- /.entry-content -->
+
+                                <div class="medium primary btn"><a href="http://www.wengweitao.com/xuan-ze-wen-ti-ji-fu-za-du-fen-xi.html" rel="bookmark" title="Permalink to 选择问题及复杂度分析">Read more <i class="icon-arrow-right"></i></a></div>
+
+
+
+                                <div class="row tag-row">
+                                        <span>Tagged as : </span>
+                                            <a class="danger label" href="http://www.wengweitao.com/tag/suan-fa-fen-xi.html">算法分析</a>
+                                </div>
+
+
+
+                        </article></li>
+                        <li><article class="hentry">
                                 <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/linuxshang-da-jian-vpnfu-wu-qi.html" rel="bookmark" title="Permalink to Linux上搭建VPN服务器">Linux上搭建VPN服务器</a></h2> </header>
                                 <footer class="post-info">
                                     <abbr class="published" title="2015-05-01T21:21:00+08:00"> 五 01 五月 2015 </abbr>
@@ -216,49 +248,6 @@ cat: /dev/ppp: 没有那个设备或地址
                                 <div class="row tag-row">
                                         <span>Tagged as : </span>
                                             <a class="danger label" href="http://www.wengweitao.com/tag/vim.html">Vim</a>
-                                </div>
-
-
-
-                        </article></li>
-                        <li><article class="hentry">
-                                <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/shi-yong-pelican-github-pagesda-jian-ge-ren-bo-ke.html" rel="bookmark" title="Permalink to 使用Pelican + Github Pages搭建个人博客">使用Pelican + Github Pages搭建个人博客</a></h2> </header>
-                                <footer class="post-info">
-                                    <abbr class="published" title="2015-04-16T13:46:00+08:00"> 四 16 四月 2015 </abbr>
-                                    <address class="vcard author">By 
-                                    <a class="url fn" href="http://www.wengweitao.com/author/wang-wang-tai.html"> 往往台</a>
-                                    </address>
-                                </footer><!-- /.post-info -->
-                                <div class="entry-content"> <blockquote>
-<p>最近有不少同学问我，如何使用Python的Pelican搭建一个像我这样的一个个人博客。今天正好论文投稿结束，于是便抽出时间写这篇教程，希望对大家有用。有任何疑问欢迎在评论里说明。</p>
-</blockquote>
-<h2>静态网站</h2>
-<p>早在多年之前，我就使用过WordPress + MySQL + Apache在国外的主机上搭建过个人博客。但是，对于个人博客而言，使用WordPress这种动态网站，还需要后台支持各种数据库，就显得过于臃肿。最近几年人们纷纷转向静态博客，加之Github Pages和Dropbox这些地方可以免费的放置这些静态页面，于是各种静态网站生成器便如雨后春笋出现，不完全统计的就有392种之多，这里由列出了所有的<a href="https://staticsitegenerators.net/">Static site generator 列表及 Github 关注度排名</a>。</p>
-<h3>什么是静态网站</h3>
-<p>静态的网站全部由静态网页构成，这些网页都是提前生成好的，不需要与后台数据库进行交交互，并且内容不会动态改变。静态网站具有如下特点：</p>
-<ul>
-<li>
-<p>不需要数据库</p>
-</li>
-<li>
-<p>访问速度更快</p>
-</li>
-<li>
-<p>基本没有安全性的问题</p>
-</li>
-<li>
-<p>使写作者更加专注于内容本身</p>
-</li>
-</ul>
-<p>所以我们只需要使用任何一个编辑器利用markdown写出文章，生成静态html即可，不需要php，也不需要数据库，你可以发布在任何你喜爱的服务器上。 也可以运行在 GitHub Page 上，也就是说，你可以使用 GitHub ...</p> </div><!-- /.entry-content -->
-
-                                <div class="medium primary btn"><a href="http://www.wengweitao.com/shi-yong-pelican-github-pagesda-jian-ge-ren-bo-ke.html" rel="bookmark" title="Permalink to 使用Pelican + Github Pages搭建个人博客">Read more <i class="icon-arrow-right"></i></a></div>
-
-
-
-                                <div class="row tag-row">
-                                        <span>Tagged as : </span>
-                                            <a class="danger label" href="http://www.wengweitao.com/tag/jiao-cheng.html">教程</a>
                                 </div>
 
 

@@ -61,6 +61,36 @@
         <div class="eleven columns">
                  <ol id="post-list">
                         <li><article class="hentry">
+                                <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/leetcode-basic-calculator.html" rel="bookmark" title="Permalink to [leetcode] Basic Calculator">[leetcode] Basic Calculator</a></h2> </header>
+                                <footer class="post-info">
+                                    <abbr class="published" title="2015-06-10T10:12:00+08:00"> 三 10 六月 2015 </abbr>
+                                    <address class="vcard author">By 
+                                    <a class="url fn" href="http://www.wengweitao.com/author/wang-wang-tai.html"> 往往台</a>
+                                    </address>
+                                </footer><!-- /.post-info -->
+                                <div class="entry-content"> <h3>题目</h3>
+<p><a href="https://leetcode.com/problems/basic-calculator/">Basic Calculator</a></p>
+<p>Implement a basic calculator to evaluate a simple expression string.</p>
+<p>The expression string may contain open ( and closing parentheses ), the plus + or minus sign -, non-negative integers and empty spaces .</p>
+<p>You may assume that the given expression is always valid.</p>
+<p>Some examples:
+"1 + 1" = 2
+" 2-1 + 2 " = 3 ...</p> </div><!-- /.entry-content -->
+
+                                <div class="medium primary btn"><a href="http://www.wengweitao.com/leetcode-basic-calculator.html" rel="bookmark" title="Permalink to [leetcode] Basic Calculator">Read more <i class="icon-arrow-right"></i></a></div>
+
+
+
+                                <div class="row tag-row">
+                                        <span>Tagged as : </span>
+                                            <a class="danger label" href="http://www.wengweitao.com/tag/leetcode.html">leetcode</a>
+                                            <a class="danger label" href="http://www.wengweitao.com/tag/mian-shi-ti.html">面试题</a>
+                                </div>
+
+
+
+                        </article></li>
+                        <li><article class="hentry">
                                 <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/lian-xu-zi-shu-zu-de-zui-da-he.html" rel="bookmark" title="Permalink to 连续子数组的最大和">连续子数组的最大和</a></h2> </header>
                                 <footer class="post-info">
                                     <abbr class="published" title="2015-06-09T21:46:00+08:00"> 二 09 六月 2015 </abbr>
@@ -187,54 +217,6 @@ the contiguous subarray [4,−1,2,1 ...</p></blockquote> </div><!-- /.entry-cont
                                 <div class="row tag-row">
                                         <span>Tagged as : </span>
                                             <a class="danger label" href="http://www.wengweitao.com/tag/du-shu-bi-ji.html">读书笔记</a>
-                                </div>
-
-
-
-                        </article></li>
-                        <li><article class="hentry">
-                                <header> <h2 class="entry-title"><a href="http://www.wengweitao.com/er-cha-shu-de-san-chong-bian-li-fang-shi-di-gui-fei-di-gui-he-morrisbian-li.html" rel="bookmark" title="Permalink to 二叉树的三种遍历方式（递归、非递归和Morris遍历）">二叉树的三种遍历方式（递归、非递归和Morris遍历）</a></h2> </header>
-                                <footer class="post-info">
-                                    <abbr class="published" title="2015-05-27T21:41:00+08:00"> 三 27 五月 2015 </abbr>
-                                    <address class="vcard author">By 
-                                    <a class="url fn" href="http://www.wengweitao.com/author/wang-wang-tai.html"> 往往台</a>
-                                    </address>
-                                </footer><!-- /.post-info -->
-                                <div class="entry-content"> <p>二叉树遍历是二叉树的最基本的操作，其实现方式主要有三种：</p>
-<ol>
-<li>递归遍历</li>
-<li>非递归遍历</li>
-<li>Morris遍历</li>
-</ol>
-<p>递归遍历的实现非常容易，非递归实现需要用到栈。而Morris算法可能很多人都不太熟悉，其强大之处在于只需要使用O(1)的空间就能实现对二叉树O(n)时间的遍历。</p>
-<h2>二叉树结点的定义</h2>
-<p>每个二叉树结点包括一个值以及左孩子和右孩子结点，其定义如下：</p>
-<div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">TreeNode</span> <span class="p">{</span>
-    <span class="k">public</span><span class="o">:</span>
-        <span class="kt">int</span> <span class="n">val</span><span class="p">;</span>
-        <span class="n">TreeNode</span> <span class="o">*</span><span class="n">left</span><span class="p">,</span> <span class="o">*</span><span class="n">right</span><span class="p">;</span>
-        <span class="n">TreeNode</span><span class="p">(</span><span class="kt">int</span> <span class="n">val</span><span class="p">)</span> <span class="p">{</span>
-            <span class="k">this</span><span class="o">-&gt;</span><span class="n">val</span> <span class="o">=</span> <span class="n">val</span><span class="p">;</span>
-            <span class="k">this</span><span class="o">-&gt;</span><span class="n">left</span> <span class="o">=</span> <span class="k">this</span><span class="o">-&gt;</span><span class="n">right</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
-        <span class="p">}</span>   
-<span class="p">};</span>
-</pre></div>
-
-
-<h2>二叉树的遍历</h2>
-<p>二叉树的遍历，就是按照某条搜索路径访问树中的每一个结点，使得每个结点均被访问一次，而且仅被访问一次。常见的遍历次序有：</p>
-<ol>
-<li>先序遍历：先访问根结点，再访问左子树，最后访问右子树</li>
-<li>中序遍历：先访问左子树，再访问根结点，最后访问右子树</li>
-<li>后序遍历 ...</li></ol> </div><!-- /.entry-content -->
-
-                                <div class="medium primary btn"><a href="http://www.wengweitao.com/er-cha-shu-de-san-chong-bian-li-fang-shi-di-gui-fei-di-gui-he-morrisbian-li.html" rel="bookmark" title="Permalink to 二叉树的三种遍历方式（递归、非递归和Morris遍历）">Read more <i class="icon-arrow-right"></i></a></div>
-
-
-
-                                <div class="row tag-row">
-                                        <span>Tagged as : </span>
-                                            <a class="danger label" href="http://www.wengweitao.com/tag/er-cha-shu.html">二叉树</a>
                                 </div>
 
 

@@ -5,28 +5,28 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://www.wengweitao.com/</loc>
-<lastmod>2016-07-20T22:52:09-00:00</lastmod>
+<lastmod>2016-07-31T22:33:00-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://www.wengweitao.com/archives.html</loc>
-<lastmod>2016-07-20T22:52:09-00:00</lastmod>
+<lastmod>2016-07-31T22:33:00-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://www.wengweitao.com/tags.html</loc>
-<lastmod>2016-07-20T22:52:09-00:00</lastmod>
+<lastmod>2016-07-31T22:33:00-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://www.wengweitao.com/categories.html</loc>
-<lastmod>2016-07-20T22:52:09-00:00</lastmod>
+<lastmod>2016-07-31T22:33:00-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -36,6 +36,13 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <lastmod>2013-04-18T00:00:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.3</priority>
+</url>
+
+<url>
+<loc>http://www.wengweitao.com/chu-men-wen-wen-ticwatch2zhi-neng-shou-biao-shi-yong-ti-yan.html</loc>
+<lastmod>2016-07-31T10:29:00+08:00</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
 </url>
 
 <url>
@@ -558,7 +565,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://www.wengweitao.com/category/sheng-huo.html</loc>
-<lastmod>2016-02-29T22:48:00+08:06</lastmod>
+<lastmod>2016-07-31T10:29:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -704,6 +711,13 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
+<loc>http://www.wengweitao.com/tag/dian-zi-chan-pin.html</loc>
+<lastmod>2016-07-31T10:29:00+08:06</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
 <loc>http://www.wengweitao.com/tag/er-cha-shu.html</loc>
 <lastmod>2015-05-27T21:41:00+08:06</lastmod>
 <changefreq>daily</changefreq>
@@ -739,6 +753,13 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
+<loc>http://www.wengweitao.com/tag/ping-ce.html</loc>
+<lastmod>2016-07-31T10:29:00+08:06</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
 <loc>http://www.wengweitao.com/tag/leetcode.html</loc>
 <lastmod>2015-06-29T10:42:00+08:06</lastmod>
 <changefreq>daily</changefreq>
@@ -747,7 +768,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://www.wengweitao.com/author/wang-wang-tai.html</loc>
-<lastmod>2016-04-17T22:48:00+08:06</lastmod>
+<lastmod>2016-07-31T10:29:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
